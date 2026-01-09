@@ -1,0 +1,35 @@
+{
+  "name": "shun-claude-plugin",
+  "version": "1.0.0",
+  "description": "A collection of skills, commands, hooks, and agents for Claude Code.",
+  "author": "shun",
+  "homepage": "https://github.com/shun/claude-plugin",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "skills",
+    "commands",
+    "hooks",
+    "agents"
+  ],
+  "skills": [
+    "skills/openproject/*/"
+  ],
+  "commands": [
+    "commands/*.md"
+  ],
+  "hooks": "hooks/hooks.json",
+  "dependencies": {
+    "python": ">=3.9"
+  },
+  "optionalEnv": {
+    "OPENPROJECT_URL": {
+      "description": "OpenProject instance URL (required for openproject-* skills)",
+      "required": false
+    },
+    "OPENPROJECT_API_KEY": {
+      "description": "OpenProject API key (required for openproject-* skills)",
+      "required": false
+    }
+  }
+}

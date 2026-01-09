@@ -1,0 +1,1 @@
+"""OpenProject Notifications scripts."""
