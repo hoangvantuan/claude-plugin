@@ -1,1 +1,0 @@
-"""OpenProject Documents scripts."""

@@ -12,9 +12,9 @@ claude plugin install gh:shun/claude-plugin
 
 ### Skills
 
-| Skill | Description | Docs |
-|-------|-------------|------|
-| `openproject-*` | OpenProject API v3 integration (9 modules) | [README](skills/openproject/README.md) |
+| Skill         | Description                                | Docs                                   |
+| ------------- | ------------------------------------------ | -------------------------------------- |
+| `openproject` | OpenProject API v3 integration (9 modules) | [README](skills/openproject/README.md) |
 
 ### Commands
 

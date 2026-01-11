@@ -1,1 +1,0 @@
-"""Tests for OpenProject Admin."""
