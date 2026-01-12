@@ -1,0 +1,54 @@
+[project]
+name = "openproject-skill"
+version = "1.0.0"
+description = "OpenProject API v3 integration for Claude Code"
+requires-python = ">=3.10"
+dependencies = [
+    "httpx>=0.24.0",
+    "python-dotenv>=1.0.0",
+    "openproject-core",
+    "openproject-projects",
+    "openproject-work-packages",
+    "openproject-time",
+    "openproject-users",
+    "openproject-documents",
+    "openproject-queries",
+    "openproject-notifications",
+    "openproject-admin",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-httpx>=0.21.0",
+]
+
+[tool.uv.sources]
+openproject-core = { workspace = true }
+openproject-projects = { workspace = true }
+openproject-work-packages = { workspace = true }
+openproject-time = { workspace = true }
+openproject-users = { workspace = true }
+openproject-documents = { workspace = true }
+openproject-queries = { workspace = true }
+openproject-notifications = { workspace = true }
+openproject-admin = { workspace = true }
+
+[tool.uv.workspace]
+members = [
+    "openproject-core",
+    "openproject-projects",
+    "openproject-work-packages",
+    "openproject-time",
+    "openproject-users",
+    "openproject-documents",
+    "openproject-queries",
+    "openproject-notifications",
+    "openproject-admin",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
