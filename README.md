@@ -28,19 +28,6 @@ Coming soon.
 
 See each skill's README for setup instructions.
 
-### Run Tests
-
-```bash
-# Install uv (fast Python package manager)
-curl -LsSf https://astral.sh/uv/install.sh | sh
-
-# Setup and run tests for a skill
-cd skills/openproject
-uv venv --python 3.9 && source .venv/bin/activate
-uv pip install -r openproject-core/requirements.txt
-pytest -v
-```
-
 ## License
 
 MIT
