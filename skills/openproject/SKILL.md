@@ -49,15 +49,95 @@ OPENPROJECT_API_KEY=your-api-key
 
 API key from: **OpenProject → My Account → Access Tokens**
 
+## Config Initialization (REQUIRED)
+
+**CRITICAL: Phải init config trước khi sử dụng bất kỳ tính năng nào!**
+
+Config lưu project metadata vào `.openproject-config.yml` để tránh gọi API lặp lại mỗi lần. Bao gồm: project info, members, types, statuses, priorities, versions, categories, custom fields.
+
+### Init Config (lần đầu)
+
+```bash
+cd .claude/skills/openproject
+uv run python -c "
+from openproject_core import init_config, print_config_summary
+from dotenv import load_dotenv
+load_dotenv()
+init_config(PROJECT_ID)  # Thay PROJECT_ID bằng ID số của project
+print_config_summary()
+"
+```
+
+### Refresh Config (khi có thay đổi)
+
+```bash
+cd .claude/skills/openproject
+uv run python -c "
+from openproject_core import refresh_config, print_config_summary
+from dotenv import load_dotenv
+load_dotenv()
+refresh_config()
+print_config_summary()
+"
+```
+
+### Sử dụng Config
+
+```python
+from openproject_core import (
+    load_config,           # Load toàn bộ config
+    require_config,        # Load config, raise error nếu chưa init
+    get_project_id,        # Lấy project ID đã config
+    get_type_id,           # Lấy type ID theo tên: get_type_id("Task") → 1
+    get_status_id,         # Lấy status ID theo tên: get_status_id("New") → 1
+    get_priority_id,       # Lấy priority ID theo tên: get_priority_id("Normal") → 8
+    get_version_id,        # Lấy version ID theo tên
+    get_custom_field_name, # Lấy tên custom field: get_custom_field_name("customField8", 1) → "Excute Point"
+    is_config_initialized, # Kiểm tra config đã init chưa
+)
+```
+
+**Luôn dùng `require_config()` hoặc `is_config_initialized()` trước khi thực hiện operations!**
+
+## Session Startup (BẮT BUỘC)
+
+**CRITICAL: Phải load config trước MỌI phiên làm việc mới!**
+
+Mỗi khi bắt đầu session mới hoặc khi skill được activate, PHẢI chạy đoạn code sau ĐẦU TIÊN trước khi làm bất kỳ thao tác nào khác:
+
+```bash
+cd .claude/skills/openproject
+uv run python -c "
+from openproject_core import load_session_config
+from dotenv import load_dotenv
+load_dotenv()
+session = load_session_config()
+if not session['ok']:
+    print(f'ERROR: {session[\"error\"]}')
+    print('Run init_config(project_id) to initialize!')
+else:
+    print(f'Project: {session[\"project\"]} (ID: {session[\"project_id\"]})')
+    print(f'User: {session[\"user\"]} @ {session[\"instance\"]}')
+    print(f'Config updated: {session[\"updated_at\"]}')
+    print(f'Types: {session[\"types_count\"]}, Members: {session[\"members_count\"]}')
+"
+```
+
+Nếu `ok=False` → phải chạy `init_config(project_id)` trước.
+Nếu `ok=True` → sẵn sàng sử dụng các tính năng.
+
 ## Instructions
 
 **CRITICAL: Always use package imports - NEVER write inline API calls!**
 
-1. **Use package imports** - All operations via clean imports
-2. **Run with uv** - Always `uv run python` from skill directory
-3. **Load dotenv** - Always call `load_dotenv()` before API calls
-4. **Check permissions** - Some operations require admin
-5. **Handle pagination** - Use `paginate()` for large datasets
+1. **Load session config first** - Phải chạy `load_session_config()` trước mỗi phiên làm việc
+2. **Init config if needed** - Nếu session config trả `ok=False`, chạy `init_config(project_id)`
+3. **Use package imports** - All operations via clean imports
+4. **Run with uv** - Always `uv run python` from skill directory
+5. **Load dotenv** - Always call `load_dotenv()` before API calls
+6. **Use config helpers** - Dùng `get_type_id()`, `get_status_id()` thay vì hardcode IDs
+7. **Check permissions** - Some operations require admin
+8. **Handle pagination** - Use `paginate()` for large datasets
 
 ## ⚠️ Important Notes
 
@@ -252,8 +332,28 @@ print(f"Connected as: {status['user']}")
 
 ```python
 from openproject_core import (
+    # Connection
     check_connection,      # Verify API connection
     OpenProjectClient,     # HTTP client class
+
+    # Session (REQUIRED - call first each session!)
+    load_session_config,   # Load & verify config for session
+
+    # Config (init once, use helpers)
+    init_config,           # Init config: init_config(project_id)
+    load_config,           # Load full config from YAML
+    refresh_config,        # Refresh/update config
+    require_config,        # Load config, raise if not init
+    is_config_initialized, # Check if config exists
+    get_project_id,        # Get configured project ID
+    get_type_id,           # Get type ID by name
+    get_status_id,         # Get status ID by name
+    get_priority_id,       # Get priority ID by name
+    get_version_id,        # Get version ID by name
+    get_custom_field_name, # Get custom field name
+    print_config_summary,  # Print human-readable config
+
+    # Helpers
     build_filters,         # Build filter JSON
     build_sort,            # Build sort JSON
     paginate,              # Auto-paginate results
