@@ -1,0 +1,23 @@
+# Writer-Agent Skill Dependencies
+# Python 3.10+ required
+# Install with: uv pip install -r requirements.txt
+
+# Document conversion (primary)
+docling>=2.0.0
+
+# OCR support for scanned documents (optional)
+# Uncomment if processing scanned PDFs/images:
+# easyocr>=1.7.0
+
+# EPUB support
+ebooklib>=0.18.0
+beautifulsoup4>=4.12.0
+lxml>=4.9.0
+
+# YouTube support
+youtube-transcript-api>=1.0.0
+yt-dlp>=2024.0.0  # For video metadata (title, description, chapters)
+
+# Fallback converters (optional)
+# PyMuPDF>=1.24.0  # PDF fallback
+# python-docx>=1.0.0  # DOCX fallback

@@ -1,0 +1,15 @@
+#!/bin/bash
+# Wrapper for paste_text_handler.py
+# Usage: wa-paste-text /path/to/text.txt [--title "Title"] [--output output_dir]
+# Or: echo "content" | wa-paste-text - --title "Title"
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+VENV_PYTHON="$SCRIPT_DIR/.venv/bin/python"
+
+if [ ! -f "$VENV_PYTHON" ]; then
+    echo "Error: Virtual environment not found."
+    echo "Run setup first: $SCRIPT_DIR/setup.sh"
+    exit 1
+fi
+
+exec "$VENV_PYTHON" "$SCRIPT_DIR/paste_text_handler.py" "$@"

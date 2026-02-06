@@ -1,0 +1,15 @@
+#!/bin/bash
+# Validate coverage report for writer-agent
+# Usage: wa-validate <coverage_file> [threshold]
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+VENV_PYTHON="$SCRIPT_DIR/.venv/bin/python"
+
+# Check venv exists
+if [ ! -f "$VENV_PYTHON" ]; then
+    echo '{"success": false, "error": "Virtual environment not found. Run setup.sh first."}' | python3 -m json.tool 2>/dev/null || cat
+    exit 2
+fi
+
+# Run validation script
+"$VENV_PYTHON" "$SCRIPT_DIR/validate_coverage.py" "$@"
