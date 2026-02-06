@@ -149,7 +149,7 @@ Khi tạo outline L1, tuân thủ quy tắc sau. L1 = **executive presentation**
 
 * **Bullet style**: Mỗi bullet là 1 assertion ngắn, bắt đầu bằng action verb, <8 words
 
-* **Title slide**: title\_size lớn hơn (dùng giá trị từ style YAML), tạo ấn tượng mạnh
+* **Title slide**: font size lớn hơn body, tạo ấn tượng mạnh
 
 * **Takeaway slide**: Max 2 points (không phải 3), text lớn hơn để dễ đọc từ xa
 
@@ -242,12 +242,17 @@ Trước khi tạo outline, BẮT BUỘC tạo Content Map từ source material.
 === END CONTENT MAP ===
 ```
 
-**Tag `[R]` (Researched):** Items có prefix `[R]` là thông tin bổ sung từ web research (Step 1.5), không có trong source gốc. Quy tắc:
-- `[R]` items vẫn phải gán priority (`must`/`should`/`nice`) theo tiêu chí bình thường
-- `[R]` items KHÔNG được gán `must` trừ khi source gốc thiếu data critical cho topic chính
-- Thông thường `[R]` items là `should` hoặc `nice`
-- Max 10 `[R]` items trong 1 Content Map (tránh overwhelming source gốc)
-- Coverage Report phải phân biệt source gốc vs researched items
+**Tag** **`[R]`** **(Researched):** Items có prefix `[R]` là thông tin bổ sung từ web research (Step 1.5), không có trong source gốc. Quy tắc:
+
+* `[R]` items vẫn phải gán priority (`must`/`should`/`nice`) theo tiêu chí bình thường
+
+* `[R]` items KHÔNG được gán `must` trừ khi source gốc thiếu data critical cho topic chính
+
+* Thông thường `[R]` items là `should` hoặc `nice`
+
+* Max 10 `[R]` items trong 1 Content Map (tránh overwhelming source gốc)
+
+* Coverage Report phải phân biệt source gốc vs researched items
 
 ## Coverage Report Rules
 
@@ -421,13 +426,13 @@ N+1. [cta] Call to Action
 
 Khi outline chứa code snippets (L2/L3), tuân thủ:
 
-* **Font**: Dùng `fonts.code` từ style YAML (fallback Arial vì monospace fonts không Vietnamese-safe)
+* **Font**: Dùng monospace font từ Slidev theme (Fira Code mặc định)
 
-* **Size**: `fonts.code_size` (default 14pt), nhỏ hơn body text để fit nhiều dòng hơn
+* **Size**: Code font nhỏ hơn body text để fit nhiều dòng hơn
 
 * **Max lines**: 10-15 dòng code/slide. Nếu dài hơn → tách thành nhiều slides
 
-* **Background**: Dùng `slide_styles.code.code_bg` để phân biệt code block với text
+* **Background**: Slidev tự động render code blocks với background phân biệt (do theme quy định)
 
 * **Slide structure**: Title (giải thích code làm gì) + code block + optional 1-2 bullet giải thích key points
 
