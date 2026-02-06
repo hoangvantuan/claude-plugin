@@ -1,6 +1,7 @@
 ---
 name: proslide
 description: "Tạo slide chuyên nghiệp từ nội dung đầu vào. Sử dụng khi user yêu cầu tạo presentation, slide deck, hoặc gọi /proslide. Hỗ trợ 3 mức độ chi tiết và Slidev theme tùy chọn. Reuse outline để generate nhiều variants."
+disable-model-invocation: true
 ---
 
 # ProSlide - Professional Slide Generator
@@ -112,6 +113,7 @@ Chạy sau Step 1, trước Step 2. Quyết định dựa trên câu hỏi 4 ở
 **Process:**
 
 1. Extract 3-5 topic keywords từ source input (dựa trên content type đã chọn)
+
 2. Tạo 2-3 search queries phù hợp:
 
    * Query 1: `"{topic chính}" statistics data {năm hiện tại}` (tìm số liệu mới nhất)
@@ -119,14 +121,18 @@ Chạy sau Step 1, trước Step 2. Quyết định dựa trên câu hỏi 4 ở
    * Query 2: `"{topic chính}" trends insights` (tìm xu hướng, insights)
 
    * Query 3: `"{topic chính}" examples best practices` (tìm ví dụ, case studies)
+
 3. Chạy WebSearch cho mỗi query
+
 4. Extract findings relevant: statistics, data points, examples, quotes, trends
+
 5. Lưu kết quả vào `{output_folder}/research-notes.md` theo format:
 
 ```markdown
 # Research Notes — [Topic]
 
 ## Search Queries
+
 1. [query 1]
 2. [query 2]
 3. [query 3]
@@ -134,19 +140,24 @@ Chạy sau Step 1, trước Step 2. Quyết định dựa trên câu hỏi 4 ở
 ## Findings
 
 ### Statistics & Data
+
 - [stat 1] — Source: [url/name]
 - [stat 2] — Source: [url/name]
 
 ### Trends & Insights
+
 - [insight 1]
 - [insight 2]
 
 ### Examples & Case Studies
+
 - [example 1]
 - [example 2]
 
 ## Selected for Slides
+
 Items below sẽ được đưa vào Content Map với tag [R]:
+
 1. [item] — lý do chọn
 2. [item] — lý do chọn
 ```
@@ -215,8 +226,11 @@ User cũng có thể nhập tên bất kỳ Slidev theme từ npm.
 ## Step 2: Phân tích nội dung & Tạo outline (New mode)
 
 1. Tạo output folder: `output/{slug}-{YYMMDD-HHmm}/` và subfolder `slides/`
+
 2. Đọc `references/outline-rules.md` (relative to this skill folder) để nắm quy tắc outline
+
 3. Áp dụng framework tương ứng với content type đã chọn ở Step 1 (xem Content Type → Framework Mapping trong outline-rules.md)
+
 4. **Content Map** (xem "Content Map Rules" trong outline-rules.md):
 
    * Parse source → extract topics → assign priority (`must`/`should`/`nice`) theo detail level
@@ -224,15 +238,21 @@ User cũng có thể nhập tên bất kỳ Slidev theme từ npm.
    * Nếu Step 1.5 đã chạy → append research items vào Content Map với prefix `[R]` (xem outline-rules.md)
 
    * Lưu Content Map ra file `{output_folder}/content-map.md`
+
 5. Phân tích nội dung theo detail level đã chọn (xem Detail Level Mapping + Content Selection Criteria trong outline-rules.md)
+
 6. Tạo outline theo cấu trúc bắt buộc: Opening > Body > Closing. **Cross-check** với Content Map: mọi `must` topics phải xuất hiện, `should`/`nice` theo threshold
+
 7. **Lưu outline** ra file `{output_folder}/outline.md` với metadata header (xem Outline File Format trong outline-rules.md)
+
 8. Hiển thị outline cho user review (numbered list với slide titles + brief content description)
+
 9. **Coverage Report** (xem "Coverage Report Rules" trong outline-rules.md):
 
    * Generate file `{output_folder}/coverage-report.md` mapping source topics → slides + omission justification
 
    * Thông báo cho user: tóm tắt 1 dòng coverage % + mention report file path
+
 10. **Feedback loop**: Hỏi user "Outline OK? Bạn có muốn chỉnh sửa gì không?" bằng AskUserQuestion (header: "Outline review"):
 
 * "OK, tiếp tục" - Chấp nhận outline, chuyển sang chọn theme
@@ -270,7 +290,7 @@ User cũng có thể nhập tên bất kỳ Slidev theme từ npm.
    * **Headmatter config**:
 
      ```yaml
-     theme: {theme-name}
+     theme: { theme-name }
      fonts:
        sans: Tahoma
        serif: Arial
@@ -350,7 +370,7 @@ Khi activate slidev skill, PHẢI tuân thủ các constraints sau:
 
 * **Speaker notes**: Dùng HTML comments `<!-- notes -->` sau content mỗi slide
 
-* **Code blocks**: Dùng native Markdown fenced blocks với language tag (`python, `javascript, etc.). Slidev tự động syntax highlight. Max 10-15 dòng/slide. Dùng line highlighting `{2,3}` để nhấn mạnh dòng quan trọng, hoặc click-based highlighting `{1|3-4|all}` để walkthrough từng phần (xem templates trong `references/slide-templates.md`)
+* **Code blocks**: Dùng native Markdown fenced blocks với language tag (`python, `  javascript, etc.). Slidev tự động syntax highlight. Max 10-15 dòng/slide. Dùng line highlighting `{2,3}` để nhấn mạnh dòng quan trọng, hoặc click-based highlighting `{1|3-4|all}` để walkthrough từng phần (xem templates trong `references/slide-templates.md`)
 
 * **Nested lists**: Slidev Markdown hỗ trợ nested lists tốt (indent 2 spaces). Dùng thoải mái cho L2/L3 sub-bullets
 
