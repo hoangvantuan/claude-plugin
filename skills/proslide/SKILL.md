@@ -275,7 +275,7 @@ User cũng có thể nhập tên bất kỳ Slidev theme từ npm.
        sans: Tahoma
        serif: Arial
        mono: Fira Code
-       provider: google
+       provider: none
      ```
 
    * **Layout mapping table** cho mỗi slide type:
@@ -344,13 +344,13 @@ User cũng có thể nhập tên bất kỳ Slidev theme từ npm.
 
 Khi activate slidev skill, PHẢI tuân thủ các constraints sau:
 
-* **Vietnamese fonts**: Dùng `Tahoma, Arial, sans-serif` qua fonts config trong headmatter. KHÔNG dùng Impact, Courier New (Vietnamese rendering kém)
+* **Vietnamese fonts**: Dùng `Tahoma, Arial, sans-serif` qua fonts config trong headmatter với `provider: none` (system fonts, không fetch từ Google Fonts). KHÔNG dùng Impact, Courier New (Vietnamese rendering kém)
 
 * **Text-only**: Không dùng image layouts, không embed images. Chỉ text, bullets, code blocks
 
 * **Speaker notes**: Dùng HTML comments `<!-- notes -->` sau content mỗi slide
 
-* **Code blocks**: Dùng native Markdown fenced blocks với language tag (`python, `   javascript, etc.). Slidev tự động syntax highlight. Max 10-15 dòng/slide
+* **Code blocks**: Dùng native Markdown fenced blocks với language tag (`python, `javascript, etc.). Slidev tự động syntax highlight. Max 10-15 dòng/slide. Dùng line highlighting `{2,3}` để nhấn mạnh dòng quan trọng, hoặc click-based highlighting `{1|3-4|all}` để walkthrough từng phần (xem templates trong `references/slide-templates.md`)
 
 * **Nested lists**: Slidev Markdown hỗ trợ nested lists tốt (indent 2 spaces). Dùng thoải mái cho L2/L3 sub-bullets
 
@@ -372,7 +372,7 @@ Khi activate slidev skill, PHẢI tuân thủ các constraints sau:
 
 * Chỉ tạo text-only slides, không hình ảnh
 
-* Vietnamese fonts: `Tahoma, Arial, sans-serif` (qua Slidev fonts config)
+* Vietnamese fonts: `Tahoma, Arial, sans-serif` (qua Slidev fonts config, `provider: none`)
 
 * Chi tiết quy tắc outline: xem `references/outline-rules.md`
 

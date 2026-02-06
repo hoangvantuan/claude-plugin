@@ -200,6 +200,8 @@ Speaker notes here
 
 ## code → default
 
+Basic code block:
+
 ```md
 ---
 layout: default
@@ -219,4 +221,59 @@ Speaker notes here
 -->
 ```
 
-**Lưu ý code blocks:** Dùng ngôn ngữ cụ thể sau triple backtick (python, javascript, bash, etc.) để có syntax highlighting tự động. Max 10-15 dòng code/slide.
+Với line highlighting (highlight dòng cụ thể):
+
+```md
+---
+layout: default
+---
+
+# {Code Slide Title}
+
+\`\`\`python {3,4}
+def process_data(items):
+    results = []
+    for item in items:        # highlighted
+        results.append(item)  # highlighted
+    return results
+\`\`\`
+
+- Dòng 3-4: vòng lặp xử lý chính
+
+<!--
+Speaker notes here
+-->
+```
+
+Với click-based highlighting (highlight từng phần khi click):
+
+```md
+---
+layout: default
+---
+
+# {Code Slide Title}
+
+\`\`\`python {1|3-4|6|all}
+def process_data(items):
+    results = []
+    for item in items:
+        results.append(item)
+    return results
+\`\`\`
+
+<!--
+Click 1: highlight dòng 1 (function signature)
+Click 2: highlight dòng 3-4 (loop logic)
+Click 3: highlight dòng 6 (return)
+Click 4: highlight all
+-->
+```
+
+**Lưu ý code blocks:**
+
+* Dùng ngôn ngữ cụ thể sau triple backtick (python, javascript, bash, etc.) để có syntax highlighting tự động
+* Max 10-15 dòng code/slide
+* **Line highlighting** `{2,3}`: highlight cố định — dùng khi muốn nhấn mạnh dòng quan trọng ngay lập tức
+* **Click-based highlighting** `{1|3-4|all}`: highlight theo click — dùng khi muốn giải thích code từng phần, phù hợp cho walkthrough/tutorial
+* Ưu tiên click-based highlighting cho L2/L3 technical presentations để tạo progressive disclosure
