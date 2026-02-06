@@ -273,7 +273,12 @@ Click 4: highlight all
 **Lưu ý code blocks:**
 
 * Dùng ngôn ngữ cụ thể sau triple backtick (python, javascript, bash, etc.) để có syntax highlighting tự động
+
 * Max 10-15 dòng code/slide
+
 * **Line highlighting** `{2,3}`: highlight cố định — dùng khi muốn nhấn mạnh dòng quan trọng ngay lập tức
+
 * **Click-based highlighting** `{1|3-4|all}`: highlight theo click — dùng khi muốn giải thích code từng phần, phù hợp cho walkthrough/tutorial
+
 * Ưu tiên click-based highlighting cho L2/L3 technical presentations để tạo progressive disclosure
+

@@ -1,8 +1,18 @@
 """OpenProject Work Packages API operations."""
 
-from typing import Optional, Iterator
+from typing import Optional, Iterator, Union
 
 from openproject_core import OpenProjectClient, build_filters, build_sort, paginate
+
+API_V3_PREFIX = "/api/v3"
+
+
+def _to_href(resource: str, value: Union[int, str]) -> str:
+    """Build /api/v3 href from ID or full path."""
+    s = str(value)
+    if s.startswith(f"{API_V3_PREFIX}/"):
+        return s
+    return f"{API_V3_PREFIX}/{resource}/{value}"
 
 
 def get_client() -> OpenProjectClient:
@@ -53,12 +63,12 @@ def get_work_package(wp_id: int) -> dict:
 def create_work_package(
     project_id: int,
     subject: str,
-    type_id: Optional[int] = None,
-    description: Optional[str] = None,
-    assignee_id: Optional[int] = None,
-    status_id: Optional[int] = None,
-    priority_id: Optional[int] = None,
-    parent_id: Optional[int] = None,
+    type_id: Optional[Union[int, str]] = None,
+    description: Optional[Union[str, dict]] = None,
+    assignee_id: Optional[Union[int, str]] = None,
+    status_id: Optional[Union[int, str]] = None,
+    priority_id: Optional[Union[int, str]] = None,
+    parent_id: Optional[Union[int, str]] = None,
     start_date: Optional[str] = None,
     due_date: Optional[str] = None,
     estimated_hours: Optional[float] = None,
@@ -86,25 +96,28 @@ def create_work_package(
     data = {"subject": subject}
     links = {}
 
-    # Build _links
-    links["project"] = {"href": f"/projects/{project_id}"}
+    # Build _links with /api/v3 prefix
+    links["project"] = {"href": _to_href("projects", project_id)}
 
     if type_id:
-        links["type"] = {"href": f"/types/{type_id}"}
+        links["type"] = {"href": _to_href("types", type_id)}
     if assignee_id:
-        links["assignee"] = {"href": f"/users/{assignee_id}"}
+        links["assignee"] = {"href": _to_href("users", assignee_id)}
     if status_id:
-        links["status"] = {"href": f"/statuses/{status_id}"}
+        links["status"] = {"href": _to_href("statuses", status_id)}
     if priority_id:
-        links["priority"] = {"href": f"/priorities/{priority_id}"}
+        links["priority"] = {"href": _to_href("priorities", priority_id)}
     if parent_id:
-        links["parent"] = {"href": f"/work_packages/{parent_id}"}
+        links["parent"] = {"href": _to_href("work_packages", parent_id)}
 
     data["_links"] = links
 
     # Add scalar fields
     if description:
-        data["description"] = {"raw": description}
+        if isinstance(description, dict):
+            data["description"] = description
+        else:
+            data["description"] = {"raw": description}
     if start_date:
         data["startDate"] = start_date
     if due_date:
@@ -165,7 +178,11 @@ def update_work_package(wp_id: int, **updates) -> dict:
 
     # 3. Handle description (special format)
     if "description" in updates:
-        data["description"] = {"raw": updates["description"]}
+        desc = updates["description"]
+        if isinstance(desc, dict):
+            data["description"] = desc
+        else:
+            data["description"] = {"raw": desc}
         processed.add("description")
 
     # 4. Handle estimated_hours (ISO duration format)
@@ -187,7 +204,7 @@ def update_work_package(wp_id: int, **updates) -> dict:
         if arg_name in updates:
             value = updates[arg_name]
             if value:
-                links[link_name] = {"href": f"/{resource}/{value}"}
+                links[link_name] = {"href": _to_href(resource, value)}
             else:
                 links[link_name] = {"href": None}
             processed.add(arg_name)
