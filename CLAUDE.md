@@ -14,6 +14,9 @@ claude plugin install gh:shun/claude-plugin
 
 ## Development Principles
 
-- **YAGNI/KISS/DRY** - Minimal, focused implementations
-- **kebab-case** file naming with descriptive names
-- **<200 lines** per code file
+* **YAGNI/KISS/DRY** - Minimal, focused implementations
+
+* **kebab-case** file naming with descriptive names
+
+* **<200 lines** per code file
+

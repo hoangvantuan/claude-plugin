@@ -102,6 +102,8 @@ def _fetch_project_info(client: OpenProjectClient, project_id: int) -> dict:
 
 def _fetch_members(client: OpenProjectClient, project_id: int) -> list:
     """Fetch project members via memberships."""
+    from .helpers import extract_id_from_href
+
     members = []
     for membership in paginate(client, "/memberships", params={
         "filters": f'[{{"project":{{"operator":"=","values":["{project_id}"]}}}}]'
@@ -109,6 +111,9 @@ def _fetch_members(client: OpenProjectClient, project_id: int) -> list:
         principal = membership.get("_links", {}).get("principal", {})
         principal_href = principal.get("href", "")
         principal_title = principal.get("title", "")
+
+        # Extract user_id from href
+        user_id = extract_id_from_href(principal_href)
 
         roles = []
         for role_link in membership.get("_links", {}).get("roles", []):
@@ -119,6 +124,7 @@ def _fetch_members(client: OpenProjectClient, project_id: int) -> list:
 
         members.append({
             "membership_id": membership.get("id"),
+            "user_id": user_id,
             "principal_href": principal_href,
             "principal_name": principal_title,
             "roles": roles
@@ -345,6 +351,70 @@ def get_version_id(version_name: str) -> Optional[int]:
     for v in config.get("versions", []):
         if v["name"].lower() == version_name.lower():
             return v["id"]
+    return None
+
+
+def get_member_id(name: str) -> Optional[int]:
+    """Get user ID by member name (case-insensitive partial match).
+
+    Args:
+        name: Member name to search (e.g., "Hung NB", "hung")
+
+    Returns:
+        User ID or None if not found
+    """
+    config = load_config()
+    if not config:
+        return None
+    name_lower = name.lower()
+    for m in config.get("members", []):
+        if name_lower in m.get("principal_name", "").lower():
+            return m.get("user_id")
+    return None
+
+
+def get_member_name(user_id: int) -> Optional[str]:
+    """Get member name by user ID.
+
+    Args:
+        user_id: User ID
+
+    Returns:
+        Member name or None
+    """
+    config = load_config()
+    if not config:
+        return None
+    for m in config.get("members", []):
+        if m.get("user_id") == user_id:
+            return m.get("principal_name")
+    return None
+
+
+def get_custom_field_id(field_name: str, type_id: Optional[int] = None) -> Optional[str]:
+    """Get custom field key by name (e.g., "Excute Point" -> "customField8").
+
+    Args:
+        field_name: Human-readable field name
+        type_id: Optional type ID to search in (if None, search all types)
+
+    Returns:
+        Custom field key (e.g., "customField8") or None
+    """
+    config = load_config()
+    if not config:
+        return None
+
+    name_lower = field_name.lower()
+    custom_fields = config.get("custom_fields", {})
+
+    types_to_search = [str(type_id)] if type_id else custom_fields.keys()
+
+    for tid in types_to_search:
+        type_fields = custom_fields.get(tid, {})
+        for field_key, field_info in type_fields.items():
+            if field_info.get("name", "").lower() == name_lower:
+                return field_key
     return None
 
 

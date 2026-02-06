@@ -1,0 +1,102 @@
+name: "Corporate Dark"
+description: "Nền tối sang trọng, dense, impactful - phù hợp business, pitch deck"
+
+colors:
+  primary: "#FFFFFF"
+  secondary: "#B0BEC5"
+  background: "#1A1A2E"
+  text: "#E0E0E0"
+  accent: "#4DD0E1"
+  light_bg: "#16213E"
+  muted: "#90A4AE"
+
+fonts:
+  heading: "Arial"
+  body: "Tahoma"
+  code: "Arial"
+  heading_size: 40
+  subheading_size: 26
+  body_size: 16
+  caption_size: 13
+  bullet_size: 16
+  code_size: 14
+
+layout:
+  aspect_ratio: "16:9"
+  width: 720
+  height: 405
+  margin: 36
+  line_spacing: 1.4
+  bullet_spacing: 6
+  section_spacing: 20
+
+decorations:
+  title_accent: "topbar"
+  accent_thickness: 4
+  accent_width: 100
+  content_left_bar: true
+  content_left_bar_width: 4
+  shape_radius: 0
+  title_slide_divider: true
+  bullet_style: "dash"
+
+slide_styles:
+  title:
+    title_size: 48
+    title_color: "#FFFFFF"
+    subtitle_size: 22
+    subtitle_color: "#4DD0E1"
+    align: "center"
+    vertical_center: true
+  agenda:
+    title_size: 34
+    title_color: "#FFFFFF"
+    item_size: 20
+    item_color: "#E0E0E0"
+    number_color: "#4DD0E1"
+    align: "left"
+  content:
+    title_size: 34
+    title_color: "#FFFFFF"
+    body_color: "#E0E0E0"
+    bullet_color: "#4DD0E1"
+    align: "left"
+  comparison:
+    title_size: 34
+    column_gap: 40
+    divider_color: "#37474F"
+    left_header_color: "#FFFFFF"
+    right_header_color: "#FFFFFF"
+  summary:
+    title_size: 34
+    check_color: "#66BB6A"
+    point_size: 20
+  cta:
+    message_size: 38
+    message_color: "#FFFFFF"
+    detail_size: 18
+    detail_color: "#4DD0E1"
+    align: "center"
+  transition:
+    section_size: 38
+    section_color: "#FFFFFF"
+    progress_size: 16
+    progress_color: "#90A4AE"
+    bg_color: "#16213E"
+    align: "center"
+  statement:
+    message_size: 42
+    source_size: 14
+  metric:
+    number_size: 68
+    label_size: 22
+    context_size: 14
+  code:
+    title_size: 34
+    title_color: "#FFFFFF"
+    code_bg: "#0A0A1A"
+    code_border: "#37474F"
+    code_text: "#E0E0E0"
+    keyword_color: "#CE93D8"
+    string_color: "#A5D6A7"
+    comment_color: "#78909C"

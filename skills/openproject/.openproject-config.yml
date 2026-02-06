@@ -1,0 +1,469 @@
+generated_at: '2026-02-03T20:28:12.349478'
+updated_at: '2026-02-03T20:28:12.349478'
+instance:
+  url: http://172.16.0.48:8080
+  user_id: 5
+  user_name: Tuan HV
+  user_login: tuanhv@miichisoft.com
+  user_email: tuanhv@miichisoft.com
+  is_admin: true
+project:
+  id: 13
+  identifier: sol-proj-26001
+  name: sol-proj-26001
+  description: ''
+  active: true
+  public: false
+members:
+- membership_id: 35
+  user_id: 5
+  principal_href: /api/v3/users/5
+  principal_name: Tuan HV
+  roles:
+  - href: /api/v3/roles/3
+    title: Member
+- membership_id: 34
+  user_id: 9
+  principal_href: /api/v3/users/9
+  principal_name: Con  Sen
+  roles:
+  - href: /api/v3/roles/3
+    title: Member
+- membership_id: 33
+  user_id: 15
+  principal_href: /api/v3/users/15
+  principal_name: Thoan NT
+  roles:
+  - href: /api/v3/roles/3
+    title: Member
+- membership_id: 32
+  user_id: 18
+  principal_href: /api/v3/users/18
+  principal_name: Hung NB
+  roles:
+  - href: /api/v3/roles/3
+    title: Member
+types:
+- id: 1
+  name: Task
+  color: '#00B0F0'
+  is_milestone: false
+- id: 6
+  name: User story
+  color: '#1A67A3'
+  is_milestone: false
+- id: 5
+  name: Epic
+  color: '#F783AC'
+  is_milestone: false
+- id: 7
+  name: Bug
+  color: '#FF3300'
+  is_milestone: false
+- id: 9
+  name: Bug UAT
+  color: '#5F3DC4'
+  is_milestone: false
+- id: 10
+  name: TechDebt
+  color: '#DA77F2'
+  is_milestone: false
+- id: 2
+  name: Milestone
+  color: '#35C53F'
+  is_milestone: true
+- id: 8
+  name: Sub Task
+  color: null
+  is_milestone: false
+- id: 12
+  name: KPT
+  color: '#B1D13A'
+  is_milestone: false
+statuses:
+- id: 1
+  name: New
+  color: '#1098AD'
+  is_closed: false
+  is_default: true
+  position: 1
+- id: 22
+  name: In Disscuss
+  color: '#FFCC00'
+  is_closed: false
+  is_default: false
+  position: 2
+- id: 2
+  name: In specification
+  color: '#A5D8FF'
+  is_closed: false
+  is_default: false
+  position: 3
+- id: 3
+  name: Specified
+  color: '#A5D8FF'
+  is_closed: false
+  is_default: false
+  position: 4
+- id: 20
+  name: In Research
+  color: '#FF922B'
+  is_closed: false
+  is_default: false
+  position: 5
+- id: 21
+  name: Researched
+  color: '#D9480F'
+  is_closed: false
+  is_default: false
+  position: 6
+- id: 4
+  name: Confirmed
+  color: '#D0BFFF'
+  is_closed: false
+  is_default: false
+  position: 7
+- id: 5
+  name: To be scheduled
+  color: '#FFEC99'
+  is_closed: false
+  is_default: false
+  position: 8
+- id: 6
+  name: Scheduled
+  color: '#D8F5A2'
+  is_closed: false
+  is_default: false
+  position: 9
+- id: 7
+  name: In progress
+  color: '#CC5DE8'
+  is_closed: false
+  is_default: false
+  position: 10
+- id: 8
+  name: Resolved
+  color: '#8CE99A'
+  is_closed: false
+  is_default: false
+  position: 11
+- id: 17
+  name: Feedback
+  color: '#FA5252'
+  is_closed: false
+  is_default: false
+  position: 12
+- id: 15
+  name: Reviewing
+  color: '#F7983A'
+  is_closed: false
+  is_default: false
+  position: 13
+- id: 16
+  name: Reviewed
+  color: '#7950F2'
+  is_closed: false
+  is_default: false
+  position: 14
+- id: 9
+  name: In verifying
+  color: '#22B8CF'
+  is_closed: false
+  is_default: false
+  position: 15
+- id: 10
+  name: Verified
+  color: '#12B886'
+  is_closed: false
+  is_default: false
+  position: 16
+- id: 11
+  name: Test failed
+  color: '#FF6B6B'
+  is_closed: false
+  is_default: false
+  position: 17
+- id: 12
+  name: Closed
+  color: '#DEE2E6'
+  is_closed: true
+  is_default: false
+  position: 18
+- id: 13
+  name: On hold
+  color: '#FFC078'
+  is_closed: false
+  is_default: false
+  position: 19
+- id: 14
+  name: Rejected
+  color: '#FFA8A8'
+  is_closed: true
+  is_default: false
+  position: 20
+priorities:
+- id: 7
+  name: Low
+  color: '#C5F6FA'
+  is_default: false
+  position: 1
+- id: 8
+  name: Normal
+  color: '#74C0FC'
+  is_default: true
+  position: 2
+- id: 9
+  name: High
+  color: '#F59F00'
+  is_default: false
+  position: 3
+- id: 10
+  name: Immediate
+  color: '#CC5DE8'
+  is_default: false
+  position: 4
+versions: []
+categories: []
+custom_fields:
+  '1':
+    customField9:
+      name: Verify Point
+      type: Float
+      required: false
+      writable: true
+    customField15:
+      name: Review Point
+      type: Float
+      required: false
+      writable: true
+    customField10:
+      name: Research Point
+      type: Float
+      required: false
+      writable: true
+    customField8:
+      name: Excute Point
+      type: Float
+      required: false
+      writable: true
+  '6':
+    customField9:
+      name: Verify Point
+      type: Float
+      required: false
+      writable: true
+    customField8:
+      name: Excute Point
+      type: Float
+      required: false
+      writable: true
+    customField10:
+      name: Research Point
+      type: Float
+      required: false
+      writable: true
+    customField15:
+      name: Review Point
+      type: Float
+      required: false
+      writable: true
+  '5':
+    customField9:
+      name: Verify Point
+      type: Float
+      required: false
+      writable: true
+    customField8:
+      name: Excute Point
+      type: Float
+      required: false
+      writable: true
+    customField10:
+      name: Research Point
+      type: Float
+      required: false
+      writable: true
+    customField15:
+      name: Review Point
+      type: Float
+      required: false
+      writable: true
+  '7':
+    customField3:
+      name: Reason
+      type: Formattable
+      required: false
+      writable: true
+    customField5:
+      name: How to fix
+      type: Formattable
+      required: false
+      writable: true
+    customField6:
+      name: Bug Type
+      type: CustomOption
+      required: false
+      writable: true
+    customField10:
+      name: Research Point
+      type: Float
+      required: false
+      writable: true
+    customField18:
+      name: Need Lookback
+      type: CustomOption
+      required: false
+      writable: true
+    customField15:
+      name: Review Point
+      type: Float
+      required: false
+      writable: true
+    customField22:
+      name: Bug Point
+      type: Integer
+      required: false
+      writable: true
+    customField20:
+      name: Feedback No
+      type: Integer
+      required: true
+      writable: true
+    customField8:
+      name: Excute Point
+      type: Float
+      required: false
+      writable: true
+    customField9:
+      name: Verify Point
+      type: Float
+      required: false
+      writable: true
+    customField1:
+      name: Bug Count For
+      type: User
+      required: false
+      writable: true
+    customField21:
+      name: Bug Severity
+      type: CustomOption
+      required: true
+      writable: true
+    customField19:
+      name: Discovery date
+      type: Date
+      required: false
+      writable: true
+  '9':
+    customField1:
+      name: Bug Count For
+      type: User
+      required: false
+      writable: true
+    customField2:
+      name: Bug Level
+      type: CustomOption
+      required: false
+      writable: true
+    customField3:
+      name: Reason
+      type: Formattable
+      required: false
+      writable: true
+    customField5:
+      name: How to fix
+      type: Formattable
+      required: false
+      writable: true
+    customField6:
+      name: Bug Type
+      type: CustomOption
+      required: false
+      writable: true
+    customField8:
+      name: Excute Point
+      type: Float
+      required: false
+      writable: true
+    customField9:
+      name: Verify Point
+      type: Float
+      required: false
+      writable: true
+    customField10:
+      name: Research Point
+      type: Float
+      required: false
+      writable: true
+    customField15:
+      name: Review Point
+      type: Float
+      required: false
+      writable: true
+    customField18:
+      name: Need Lookback
+      type: CustomOption
+      required: false
+      writable: true
+    customField19:
+      name: Discovery date
+      type: Date
+      required: false
+      writable: true
+    customField20:
+      name: Feedback No
+      type: Integer
+      required: true
+      writable: true
+    customField21:
+      name: Bug Severity
+      type: CustomOption
+      required: true
+      writable: true
+    customField22:
+      name: Bug Point
+      type: Integer
+      required: false
+      writable: true
+  '10':
+    customField9:
+      name: Verify Point
+      type: Float
+      required: false
+      writable: true
+    customField8:
+      name: Excute Point
+      type: Float
+      required: false
+      writable: true
+    customField10:
+      name: Research Point
+      type: Float
+      required: false
+      writable: true
+    customField15:
+      name: Review Point
+      type: Float
+      required: false
+      writable: true
+  '8':
+    customField9:
+      name: Verify Point
+      type: Float
+      required: false
+      writable: true
+    customField8:
+      name: Excute Point
+      type: Float
+      required: false
+      writable: true
+    customField10:
+      name: Research Point
+      type: Float
+      required: false
+      writable: true
+    customField15:
+      name: Review Point
+      type: Float
+      required: false
+      writable: true

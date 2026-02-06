@@ -122,17 +122,35 @@ def create_work_package(
 def update_work_package(wp_id: int, **updates) -> dict:
     """Update existing work package.
 
+    Automatically fetches lockVersion if not provided to prevent 409 Conflict.
+
     Args:
         wp_id: Work package ID
-        **updates: Fields to update (subject, description, status_id, etc.)
+        **updates: Fields to update:
+            - lockVersion: Optional, auto-fetched if omitted
+            - subject, description, start_date, due_date, done_ratio
+            - status_id, assignee_id, type_id, priority_id, parent_id, version_id
+            - customFieldN: Custom fields (e.g., customField8=3)
 
     Returns:
         Updated work package dict
     """
+    # Auto-fetch lockVersion if not provided
+    if "lockVersion" not in updates:
+        current = get_work_package(wp_id)
+        updates["lockVersion"] = current.get("lockVersion")
+
     data = {}
     links = {}
 
-    # Handle simple fields
+    # Track processed fields to forward remaining kwargs
+    processed = set()
+
+    # 1. Handle lockVersion
+    data["lockVersion"] = updates["lockVersion"]
+    processed.add("lockVersion")
+
+    # 2. Handle simple scalar fields
     field_mapping = {
         "subject": "subject",
         "start_date": "startDate",
@@ -143,14 +161,19 @@ def update_work_package(wp_id: int, **updates) -> dict:
     for arg_name, api_name in field_mapping.items():
         if arg_name in updates:
             data[api_name] = updates[arg_name]
+            processed.add(arg_name)
 
+    # 3. Handle description (special format)
     if "description" in updates:
         data["description"] = {"raw": updates["description"]}
+        processed.add("description")
 
+    # 4. Handle estimated_hours (ISO duration format)
     if "estimated_hours" in updates:
         data["estimatedTime"] = f"PT{updates['estimated_hours']}H"
+        processed.add("estimated_hours")
 
-    # Handle link fields
+    # 5. Handle link fields
     link_mapping = {
         "type_id": ("type", "types"),
         "assignee_id": ("assignee", "users"),
@@ -167,9 +190,15 @@ def update_work_package(wp_id: int, **updates) -> dict:
                 links[link_name] = {"href": f"/{resource}/{value}"}
             else:
                 links[link_name] = {"href": None}
+            processed.add(arg_name)
 
     if links:
         data["_links"] = links
+
+    # 6. Forward remaining kwargs (custom fields, etc.)
+    for key, value in updates.items():
+        if key not in processed:
+            data[key] = value
 
     with get_client() as client:
         return client.patch(f"/work_packages/{wp_id}", data)

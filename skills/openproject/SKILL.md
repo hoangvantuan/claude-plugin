@@ -350,7 +350,10 @@ from openproject_core import (
     get_status_id,         # Get status ID by name
     get_priority_id,       # Get priority ID by name
     get_version_id,        # Get version ID by name
-    get_custom_field_name, # Get custom field name
+    get_member_id,         # Get user ID by member name (partial match)
+    get_member_name,       # Get member name by user ID
+    get_custom_field_id,   # Get custom field key by name
+    get_custom_field_name, # Get custom field name by key
     print_config_summary,  # Print human-readable config
 
     # Helpers
@@ -382,17 +385,17 @@ from openproject_projects import (
 
 ```python
 from openproject_work_packages import (
-    list_work_packages,   # List with filters
-    get_work_package,     # Get by ID
-    create_work_package,  # Create task/issue
-    update_work_package,  # Update fields
-    delete_work_package,  # Delete
-    get_schema,           # Get form schema
-    list_activities,      # Get comments/history
-    add_comment,          # Add comment
-    list_relations,       # Get relations
-    create_relation,      # Create relation
-    delete_relation,      # Delete relation
+    list_work_packages,       # List with filters
+    get_work_package,         # Get by ID
+    create_work_package,      # Create task/issue
+    update_work_package,      # Update fields (auto-handles lockVersion)
+    delete_work_package,      # Delete
+    get_schema,               # Get form schema
+    list_activities,          # Get comments/history
+    add_comment,              # Add comment
+    list_relations,           # Get relations
+    create_relation,          # Create relation
+    delete_relation,          # Delete relation
 )
 ```
 

@@ -8,23 +8,32 @@ description: Manage OpenProject saved queries via API v3. Create, update, delete
 Manage saved queries for work package views.
 
 ## Prerequisites
-- Environment: `OPENPROJECT_URL`, `OPENPROJECT_API_KEY` in `.env`
+
+* Environment: `OPENPROJECT_URL`, `OPENPROJECT_API_KEY` in `.env`
 
 ## Package: `openproject_queries`
 
 Functions:
-- `list_queries(project_id)` - List queries
-- `get_query(id)` - Get query with filters
-- `create_query(name, filters, **kwargs)` - Create query
-- `update_query(id, **kwargs)` - Update query
-- `delete_query(id)` - Delete query
-- `star_query(id)` / `unstar_query(id)` - Manage favorites
-- `get_query_default(project_id)` - Get default query
-- `get_available_columns()` - Get column options
+
+* `list_queries(project_id)` - List queries
+
+* `get_query(id)` - Get query with filters
+
+* `create_query(name, filters, **kwargs)` - Create query
+
+* `update_query(id, **kwargs)` - Update query
+
+* `delete_query(id)` - Delete query
+
+* `star_query(id)` / `unstar_query(id)` - Manage favorites
+
+* `get_query_default(project_id)` - Get default query
+
+* `get_available_columns()` - Get column options
 
 ## Usage
 
-**Always run from skill directory with `uv run`:**
+**Always run from skill directory with** **`uv run`:**
 
 ```bash
 cd .claude/skills/openproject
@@ -65,4 +74,6 @@ for col in get_available_columns():
 ```
 
 ## References
-- `references/queries-api.md` - Full API details
+
+* `references/queries-api.md` - Full API details
+
