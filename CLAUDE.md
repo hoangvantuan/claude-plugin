@@ -4,12 +4,18 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Claude Code plugin marketplace package - provides skills, commands, hooks, and agents for enhanced Claude Code workflows.
+Claude Code plugin package - provides skills, commands, hooks, and agents for enhanced Claude Code workflows.
+
+## Structure
+
+* `.claude-plugin/plugin.json` - Plugin manifest
+
+* `skills/` - Plugin skills (openproject, ghost-blog, proslide, writer-agent)
 
 ## Installation
 
 ```bash
-claude plugin install gh:shun/claude-plugin
+claude plugin install gh:hoangvantuan/shun-claude-plugin
 ```
 
 ## Development Principles

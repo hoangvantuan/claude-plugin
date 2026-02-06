@@ -5,28 +5,17 @@ A collection of skills, commands, hooks, and agents for Claude Code.
 ## Installation
 
 ```bash
-claude plugin install gh:shun/claude-plugin
+claude plugin install gh:hoangvantuan/shun-claude-plugin
 ```
 
-## Contents
+## Skills
 
-### Skills
-
-| Skill         | Description                                | Docs                                   |
-| ------------- | ------------------------------------------ | -------------------------------------- |
-| `openproject` | OpenProject API v3 integration (9 modules) | [README](skills/openproject/README.md) |
-
-### Commands
-
-Coming soon.
-
-### Hooks
-
-Coming soon.
-
-## Development
-
-See each skill's README for setup instructions.
+| Skill | Description |
+| --- | --- |
+| `openproject` | OpenProject API v3 integration |
+| `ghost-blog` | Ghost CMS blog management |
+| `proslide` | Professional slide/presentation creation |
+| `writer-agent` | Document transformation and article writing |
 
 ## License
 
