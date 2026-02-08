@@ -1,0 +1,13 @@
+#!/bin/bash
+# Writer-Agent: Output skill directory paths
+# Used by main agent to resolve paths at runtime (Step 0)
+# Works regardless of installation location (project-local or global)
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SKILL_DIR="$(dirname "$SCRIPT_DIR")"
+
+echo "SCRIPTS_DIR=$SCRIPT_DIR"
+echo "SKILL_DIR=$SKILL_DIR"
+echo "STYLES_DIR=$SKILL_DIR/output_styles"
+echo "TEMPLATES_DIR=$SKILL_DIR/templates"
+echo "REFERENCES_DIR=$SKILL_DIR/references"

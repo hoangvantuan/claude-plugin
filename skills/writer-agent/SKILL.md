@@ -49,6 +49,33 @@ Input → Convert → Plan → Write(parallel) → Synthesize → Verify
   1        1        3          4              5           6
 ```
 
+## Step 0: Resolve Skill Paths
+
+**PHẢI chạy trước mọi bước khác.** Resolve đường dẫn thực tế của skill để tương thích cả project-local và global install.
+
+```bash
+# Tìm wa-env script
+WA_ENV=$(find ~/.claude -name wa-env -path "*/writer-agent/*" -type f 2>/dev/null | head -1)
+[ -z "$WA_ENV" ] && WA_ENV=$(find .claude -name wa-env -path "*/writer-agent/*" -type f 2>/dev/null | head -1)
+
+# Parse output → lấy các biến
+eval "$($WA_ENV)"
+```
+
+**Kết quả**: Các biến `SCRIPTS_DIR`, `SKILL_DIR`, `STYLES_DIR` sẵn sàng dùng cho các bước sau.
+
+**Fallback** (nếu wa-env không tìm thấy):
+
+```bash
+# Tìm bất kỳ wa-convert nào
+WA_CONVERT=$(find ~/.claude .claude -name wa-convert -path "*/writer-agent/*" -type f 2>/dev/null | head -1)
+SCRIPTS_DIR=$(dirname "$WA_CONVERT")
+SKILL_DIR=$(dirname "$SCRIPTS_DIR")
+STYLES_DIR="$SKILL_DIR/output_styles"
+```
+
+> **Lưu ý**: Tất cả commands trong các bước sau dùng `$SCRIPTS_DIR`, `$SKILL_DIR`, `$STYLES_DIR` thay vì hardcoded paths.
+
 ## Step 1: Input Handling
 
 Detect input type and convert to markdown.
@@ -62,7 +89,7 @@ Detect input type and convert to markdown.
 ### File/URL Conversion
 
 ```bash
-.claude/skills/writer-agent/scripts/wa-convert [/path/to/file.pdf or url]
+$SCRIPTS_DIR/wa-convert [/path/to/file.pdf or url]
 ```
 
 **Output**: `docs/generated/{slug}-{timestamp}/input-handling/content.md`
@@ -75,7 +102,7 @@ Detect input type and convert to markdown.
 4. Execute:
 
 ```bash
-echo "{rewritten_content}" | .claude/skills/writer-agent/scripts/wa-paste-text - --title "{title}"
+echo "{rewritten_content}" | $SCRIPTS_DIR/wa-paste-text - --title "{title}"
 ```
 
 ### Error Handling
@@ -102,7 +129,7 @@ Use `AskUserQuestion` to confirm output style.
 | Mindful Storytelling    | `mindful-storytelling.md`    | First person storytelling            |
 | Deep Dive               | `deep-dive.md`               | Investigative, assumption-challenging |
 
-Style files: `output_styles/{style}.md`
+Style files: `$STYLES_DIR/{style}.md`
 
 ## Step 2.5: Select Detail Level
 
@@ -399,7 +426,7 @@ Thông tin này sẽ được embed vào `SERIES_CONTEXT` block trong mỗi suba
 **Validate after split:**
 
 ```bash
-uv run .claude/skills/writer-agent/scripts/validate_split.py docs/generated/{book}/analysis/_plan.md
+$SCRIPTS_DIR/wa-validate-split docs/generated/{book}/analysis/_plan.md
 ```
 
 **Part naming**: `02-core.md` → `02-core-part1.md`, `02-core-part2.md`
@@ -594,7 +621,7 @@ def extract_context_bridge(completed_part):
 **Prompt validation (optional, for debugging):**
 
 ```bash
-echo "{prompt_text}" | uv run .claude/skills/writer-agent/scripts/validate_prompt.py --tier {1|2|3} --stdin
+echo "{prompt_text}" | $SCRIPTS_DIR/wa-validate-prompt --tier {1|2|3} --stdin
 ```
 
 Validates all required template variables are present. Exit code 0 = PASS, 1 = missing variables.
@@ -803,7 +830,7 @@ Collect subagent coverage tables → aggregate into `analysis/_coverage.md`
 Run validation:
 
 ```bash
-uv run .claude/skills/writer-agent/scripts/validate_coverage.py docs/generated/{book}/analysis/_coverage.md
+$SCRIPTS_DIR/wa-validate docs/generated/{book}/analysis/_coverage.md
 ```
 
 ## Step 6: Verify
@@ -935,17 +962,17 @@ See [retry-workflow.md](references/retry-workflow.md) for user decision flow.
 
 ## Cài đặt thư viện mới
 
-Skill sử dụng virtual environment tại `.claude/skills/writer-agent/scripts/.venv`. Khi cần cài thêm thư viện, **PHẢI activate venv trước**:
+Skill sử dụng virtual environment tại `$SCRIPTS_DIR/.venv`. Khi cần cài thêm thư viện, **PHẢI activate venv trước**:
 
 ```bash
-# 1. Activate venv
-source .claude/skills/writer-agent/scripts/.venv/bin/activate
+# 1. Activate venv (dùng SCRIPTS_DIR từ Step 0)
+source $SCRIPTS_DIR/.venv/bin/activate
 
 # 2. Cài package
 uv pip install <package>
 
 # 3. Cập nhật requirements.txt
-uv pip freeze > .claude/skills/writer-agent/scripts/requirements.txt
+uv pip freeze > $SCRIPTS_DIR/requirements.txt
 ```
 
 **KHÔNG dùng:**

@@ -153,7 +153,7 @@ Style: introspective-narrative | Source: content.md (111K words)
 TASK: Write "{title}" for {seriesTitle}
 
 SOURCE: {sourcePath} L{start}-{end}
-STYLE: output_styles/{style}.md
+STYLE: {STYLES_DIR}/{style}.md
 OUTPUT: {outputPath}
 
 TERMS:

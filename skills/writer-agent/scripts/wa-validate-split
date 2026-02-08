@@ -1,0 +1,14 @@
+#!/bin/bash
+# Writer-Agent: Validate article splitting
+# Usage: wa-validate-split <plan_file> [--content path/to/content.md]
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+VENV_PYTHON="$SCRIPT_DIR/.venv/bin/python"
+
+if [ ! -f "$VENV_PYTHON" ]; then
+    echo "Error: Virtual environment not found."
+    echo "Run setup first: $SCRIPT_DIR/setup.sh"
+    exit 1
+fi
+
+exec "$VENV_PYTHON" "$SCRIPT_DIR/validate_split.py" "$@"

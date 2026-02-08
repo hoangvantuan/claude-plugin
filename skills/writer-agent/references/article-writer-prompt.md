@@ -120,7 +120,7 @@ Task tool:
     TASK: Write "{title}" for {seriesTitle}
 
     SOURCE: {sourcePath} L{start}-{end}
-    STYLE: .claude/skills/writer-agent/output_styles/{style}.md
+    STYLE: {STYLES_DIR}/{style}.md
     OUTPUT: {outputPath}
 
     TARGET: ~{target_words} words (reference only) | MODE: {detail_level}
@@ -190,7 +190,7 @@ Task tool:
     TASK: Write article #{articleNumber} "{title}"
 
     SOURCE: {sourcePath} L{start}-{end}
-    STYLE: .claude/skills/writer-agent/output_styles/{style}.md
+    STYLE: {STYLES_DIR}/{style}.md
     OUTPUT: {outputPath}
 
     TARGET: ~{target_words} words (reference only, source: {source_words} words)
@@ -270,7 +270,7 @@ Task tool:
     READ:
     1. Context: {contextFilePath}
     2. Glossary: {glossaryFilePath}
-    3. Style: .claude/skills/writer-agent/output_styles/{style}.md
+    3. Style: {STYLES_DIR}/{style}.md
 
     OUTPUT: {outputPath}
 
@@ -537,7 +537,7 @@ Task tool:
     TASK: Write "{title} (Phần {partNumber}/{totalParts})"
 
     SOURCE: {sourcePath} L{start}-{end}
-    STYLE: .claude/skills/writer-agent/output_styles/{style}.md
+    STYLE: {STYLES_DIR}/{style}.md
     OUTPUT: {outputPath}
 
     TARGET: ~{target_words} words (reference only)
