@@ -25,7 +25,7 @@ Viết như một người thầy giỏi đang chia sẻ kiến thức với c�
 
 ## Voice
 
-Xưng **"chúng ta"** hoặc **"tôi"** (khi chia sẻ kinh nghiệm) — đồng hành cùng người đọc. Kiên nhẫn, rõ ràng, thân thiện, ấm áp. Không phải giảng dạy từ trên cao mà cùng nhau khám phá.
+Xưng **"chúng ta"** hoặc **"tôi"** (khi chia sẻ kinh nghiệm), đồng hành cùng người đọc. Kiên nhẫn, rõ ràng, thân thiện, ấm áp. Không phải giảng dạy từ trên cao mà cùng nhau khám phá.
 
 ## Structure
 
@@ -73,6 +73,11 @@ Mỗi khái niệm có:
 - Nhảy ý không liên kết
 - Giọng trịch thượng, xa cách
 - Tạo cảm giác chủ đề quá khó cho người đọc
+- Em dash (—), thay bằng dấu phẩy, dấu hai chấm, hoặc tách câu
+- AI vocabulary: "bức tranh toàn cảnh", "hệ sinh thái", "đa chiều", "delve", "tapestry", "landscape"
+- Câu đều tăm tắp cùng độ dài. Xen kẽ câu ngắn (5-10 từ) và giải thích dài hơn
+- Mở bài "Trong bối cảnh...", "Trong thế giới hiện đại...", "Với sự phát triển..."
+- Từ Hán-Việt khi có từ thuần Việt: "cung cấp khả năng" thay vì "giúp", "tối ưu hóa" thay vì "làm tốt hơn"
 
 ## Example
 
@@ -82,7 +87,7 @@ Mỗi khái niệm có:
 >
 > Hãy nghĩ về nó như thế này: tưởng tượng bạn nắm một nắm cát. Nắm càng chặt, cát chảy qua kẽ tay càng nhiều. Buông lỏng tay, cát nằm yên.
 >
-> Buông bỏ giống như việc mở lỏng tay ra vậy. Đừng lo nếu điều này ban đầu có vẻ trừu tượng — chúng ta sẽ cùng khám phá qua những ví dụ cụ thể hơn.
+> Buông bỏ giống như việc mở lỏng tay ra vậy. Đừng lo nếu điều này ban đầu có vẻ trừu tượng. Chúng ta sẽ cùng khám phá qua những ví dụ cụ thể hơn.
 
 ## Common Mistakes
 
@@ -94,7 +99,7 @@ Mỗi khái niệm có:
 
 ### Correct
 
-> [Xem Example — intuition trước (nắm cát), definition đơn giản, encouragement]
+> [Xem Example: intuition trước (nắm cát), definition đơn giản, encouragement]
 
 ## Core Techniques
 
@@ -191,7 +196,7 @@ Frame chủ đề phức tạp thành accessible cho mọi người:
 When using this style, provide:
 
 - **Audience**: Beginners to intermediate learners, diverse backgrounds
-- **Purpose**: Understand + Apply — hiểu và có thể áp dụng ngay
+- **Purpose**: Understand + Apply: hiểu và có thể áp dụng ngay
 - **Success criteria**: Người đọc hiểu concept VÀ cảm thấy có thể tiếp tục học
 - **Constraints**: Không jargon không giải thích, không tạo cảm giác chủ đề quá khó
 

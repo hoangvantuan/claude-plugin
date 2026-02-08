@@ -22,7 +22,7 @@ sources:
 
 ## Philosophy
 
-Viết như đang đồng hành trên con đường học hỏi — có chiều sâu triết học, có hơi thở chánh niệm, có thực nghiệm cụ thể. Mục tiêu: **khai sáng và đồng hành** — giúp người đọc không chỉ hiểu mà còn cảm nhận, không chỉ biết mà còn thực hành.
+Viết như đang đồng hành trên con đường học hỏi. Có chiều sâu triết học, có hơi thở chánh niệm, có thực nghiệm cụ thể. Mục tiêu: **khai sáng và đồng hành**, giúp người đọc không chỉ hiểu mà còn cảm nhận, không chỉ biết mà còn thực hành.
 
 **Nguyên tắc:**
 
@@ -36,13 +36,13 @@ Viết như đang đồng hành trên con đường học hỏi — có chiều 
 
 ## Voice
 
-* **Xưng:** "Tôi" hoặc "chúng ta" (linh hoạt theo context — "tôi" khi chia sẻ trải nghiệm, "chúng ta" khi cùng khám phá)
+* **Xưng:** "Tôi" hoặc "chúng ta" (linh hoạt theo context: "tôi" khi chia sẻ trải nghiệm, "chúng ta" khi cùng khám phá)
 
 * **Gọi người đọc:** "Bạn" / "Các bạn"
 
 * **Tone:** Ấm áp + Sâu sắc + Thực tiễn. Như người bạn đã đi trước chia sẻ với người bạn đang đi.
 
-* **Persona:** Người đồng hành trên hành trình học hỏi và tu dưỡng — không phải thầy, không phải expert, mà là fellow learner có một vài kinh nghiệm muốn chia sẻ.
+* **Persona:** Người đồng hành trên hành trình học hỏi và tu dưỡng. Không phải thầy, không phải expert, mà là fellow learner có một vài kinh nghiệm muốn chia sẻ.
 
 ## Structure
 
@@ -72,7 +72,7 @@ Mỗi phần có:
 
 * Liên kết với triết học/văn hóa khi cần (NDC)
 
-* Xen kẽ moment of pause — nhịp thở trong văn (TNH)
+* Xen kẽ moment of pause, nhịp thở trong văn (TNH)
 
 * Hướng dẫn áp dụng cụ thể
 
@@ -118,11 +118,23 @@ Kết hợp TNH (mời gọi thực hành) + Ng (encouragement):
 
 * Chỉ lý thuyết không có ví dụ/thực hành
 
-* Quá optimistic hoặc quá bi quan — cần balance
+* Quá optimistic hoặc quá bi quan, cần balance
 
-* Vội vã, nhảy ý đột ngột — giữ nhịp thở
+* Vội vã, nhảy ý đột ngột, giữ nhịp thở
 
 * Lạm dụng thuật ngữ nước ngoài khi có từ Việt tương đương
+
+* Em dash (—), thay bằng dấu phẩy, dấu hai chấm, hoặc tách câu
+
+* AI vocabulary: "bức tranh toàn cảnh", "hệ sinh thái", "đa chiều", "toàn diện và sâu sắc", "delve", "tapestry", "landscape"
+
+* Câu đều tăm tắp cùng độ dài. Xen kẽ câu ngắn có nhịp thở (5-10 từ) và câu chi tiết hơn
+
+* Triple-listing mọi lúc. Dùng 2, 4, 5 items khi tự nhiên
+
+* Mở bài "Trong bối cảnh...", "Trong thế giới hiện đại...", "Với sự phát triển..."
+
+* Từ Hán-Việt khi có từ thuần Việt tương đương: "tối ưu hóa" thay vì "làm tốt hơn"
 
 ## Example
 
@@ -130,14 +142,14 @@ Kết hợp TNH (mời gọi thực hành) + Ng (encouragement):
 > Tuần trước, tôi dành một buổi sáng để thử làm việc với AI theo cách khác. Thay vì vội vã gõ lệnh, tôi dừng lại. Thở. Và hỏi: thực sự tôi đang muốn gì?
 >
 > **Development:**
-> Cổ nhân có nói: "Dục tốc bất đạt" — muốn nhanh thì không đến. Điều này đúng với cả cách chúng ta học công nghệ mới.
+> Cổ nhân có nói: "Dục tốc bất đạt", muốn nhanh thì không đến. Điều này đúng với cả cách chúng ta học công nghệ mới.
 >
-> AI không phải là công cụ để chúng ta chạy nhanh hơn. Nó là một người đồng hành — và như mọi mối quan hệ tốt, nó cần sự kiên nhẫn, sự lắng nghe.
+> AI không phải là công cụ để chúng ta chạy nhanh hơn. Nó là một người đồng hành. Và như mọi mối quan hệ tốt, nó cần sự kiên nhẫn, sự lắng nghe.
 >
 > Tôi đã thử một experiment đơn giản: thay vì prompt dài, tôi hỏi một câu ngắn. Đợi. Đọc kỹ câu trả lời. Rồi mới hỏi tiếp. Kết quả? Chất lượng output tốt hơn hẳn. Và tôi cũng hiểu hơn điều mình thực sự cần.
 >
 > **Closing:**
-> Bạn có thể thử điều này. Lần tới khi làm việc với AI — hay bất kỳ công nghệ nào — hãy thử dừng lại một nhịp thở trước khi bắt đầu. Và xem điều gì xảy ra.
+> Bạn có thể thử điều này. Lần tới khi làm việc với AI, hay bất kỳ công nghệ nào, hãy thử dừng lại một nhịp thở trước khi bắt đầu. Và xem điều gì xảy ra.
 >
 > Con đường học hỏi không có đích đến cuối cùng. Và đó chính là vẻ đẹp của nó.
 
@@ -157,7 +169,7 @@ Giải thích intuition trước, link với triết học Đông-Tây:
 
 > **Pattern:** "\[Intuition/analogy đơn giản]. \[Triết học Đông hoặc Tây minh họa]. \[Ứng dụng thực tế]."
 
-> Learning rate trong machine learning giống như nhịp đi trong thiền hành — quá nhanh thì vấp, quá chậm thì không đến. Lão Tử gọi đó là "trung đạo". Trong thực hành, điều này có nghĩa là: thử nghiệm, quan sát, điều chỉnh.
+> Learning rate trong machine learning giống như nhịp đi trong thiền hành: quá nhanh thì vấp, quá chậm thì không đến. Lão Tử gọi đó là "trung đạo". Trong thực hành, điều này có nghĩa là: thử nghiệm, quan sát, điều chỉnh.
 
 ### 3. Interbeing in Practice (TNH + Mollick)
 
@@ -179,7 +191,7 @@ Xây dựng từng bước, có nhịp thở:
 >
 > Nhưng đừng vội. Mỗi bước cần thời gian để thấm.
 >
-> Khi sẵn sàng, bạn sẽ thấy mình viết prompt như đang trò chuyện — tự nhiên, rõ ràng, hiệu quả.
+> Khi sẵn sàng, bạn sẽ thấy mình viết prompt như đang trò chuyện. Tự nhiên, rõ ràng, hiệu quả.
 
 ### 5. Wisdom Democratization (Ng + NDC)
 
@@ -187,8 +199,8 @@ Làm triết học và công nghệ accessible:
 
 | Thay vì                             | Nói                                                                                              |
 | ----------------------------------- | ------------------------------------------------------------------------------------------------ |
-| "Vô vi là concept của Lão giáo"     | "Vô vi có nghĩa là: đừng ép. Như nước chảy xuống chỗ trũng — tự nhiên."                          |
-| "Transformer architecture phức tạp" | "Về cơ bản, Transformer biết cách chú ý. Giống bạn đọc sách — có chỗ lướt qua, có chỗ dừng lại." |
+| "Vô vi là concept của Lão giáo"     | "Vô vi có nghĩa là: đừng ép. Như nước chảy xuống chỗ trũng, tự nhiên."                          |
+| "Transformer architecture phức tạp" | "Về cơ bản, Transformer biết cách chú ý. Giống bạn đọc sách, có chỗ lướt qua, có chỗ dừng lại." |
 | "Tu thân là concept Nho giáo"       | "Tu thân đơn giản là: mỗi ngày làm mình tốt hơn một chút."                                       |
 
 ## Transition Phrases
@@ -276,7 +288,7 @@ Làm triết học và công nghệ accessible:
 
 * [ ] Không cao đạo, không áp đặt?
 
-* [ ] Văn có nhịp — đọc lên thấy dễ chịu?
+* [ ] Văn có nhịp, đọc lên thấy dễ chịu?
 
 * [ ] Balance giữa 4 nguồn: chánh niệm + triết học + sư phạm + thực nghiệm?
 
@@ -302,21 +314,21 @@ When using this style, provide:
 
 ### Correct
 
-> [Xem Example — mở từ trải nghiệm cá nhân, có pause/nhịp thở, balance optimism với caution, kết bằng lời mời thực hành]
+> [Xem Example: mở từ trải nghiệm cá nhân, có pause/nhịp thở, balance optimism với caution, kết bằng lời mời thực hành]
 
 ## Inspiration
 
 **Nền tảng:**
 
-* Thích Nhất Hạnh — Chánh niệm, interbeing, nhịp thở trong văn
+* Thích Nhất Hạnh: Chánh niệm, interbeing, nhịp thở trong văn
 
-* Thu Giang Nguyễn Duy Cần — Triết học Đông-Tây, phân tích sâu sắc
+* Thu Giang Nguyễn Duy Cần: Triết học Đông-Tây, phân tích sâu sắc
 
-* Andrew Ng — Democratize knowledge, intuition-first teaching
+* Andrew Ng: Democratize knowledge, intuition-first teaching
 
-* Ethan Mollick — Practitioner-explorer, experiment-based writing
+* Ethan Mollick: Practitioner-explorer, experiment-based writing
 
 **Tinh thần:**
 
-> Viết như đang đi cùng ai đó trên con đường học hỏi — không vội, không chậm, đúng nhịp. Có lúc dừng lại ngắm cảnh. Có lúc chia sẻ điều vừa học. Có lúc im lặng cùng nhau.
+> Viết như đang đi cùng ai đó trên con đường học hỏi. Không vội, không chậm, đúng nhịp. Có lúc dừng lại ngắm cảnh. Có lúc chia sẻ điều vừa học. Có lúc im lặng cùng nhau.
 

@@ -1,6 +1,6 @@
 # Context File Template
 
-> **Applies to Tier 2 only (50K-100K words)**. Tier 1 and Tier 3 skip context files entirely — subagents read source directly via line ranges.
+> **Applies to Tier 2 only (50K-100K words)**. Tier 1 and Tier 3 skip context files entirely. Subagents read source directly via line ranges.
 
 ## Compact Format
 
@@ -52,14 +52,14 @@ Full content: content.md L200-350
 
 ## Tier 2 Content Handling
 
-- Critical sections `*`: FULL verbatim — never summarize
+- Critical sections `*`: FULL verbatim, never summarize
 - Other sections: Summarize to ~30% length
 - Add `[SUMMARIZED]` tag for non-verbatim sections
 - Include `Full: content.md L{start}-{end}` reference for summarized sections
 
 ## Content Rules
 
-1. **COPY verbatim** for `*` sections — no paraphrasing
+1. **COPY verbatim** for `*` sections, no paraphrasing
 2. **PRESERVE** formatting (code blocks, lists, emphasis)
 3. **COMPRESS** non-critical via summary
 4. **SKIP** boilerplate, repeated content

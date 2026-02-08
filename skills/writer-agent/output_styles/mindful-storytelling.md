@@ -16,7 +16,7 @@ version: 1.1.0
 
 ## Philosophy
 
-Kể lại hành trình khám phá như một câu chuyện. Người đọc đồng hành qua góc nhìn người kể — để nhận ra những gì họ đã biết nhưng chưa thấy.
+Kể lại hành trình khám phá như một câu chuyện. Người đọc đồng hành qua góc nhìn người kể, để nhận ra những gì họ đã biết nhưng chưa thấy.
 
 **Nguyên tắc:** Trải nghiệm > Lý thuyết | Hành trình > Đích đến | Chuyển hóa câu hỏi > Chuyển hóa đáp án
 
@@ -24,7 +24,7 @@ Kể lại hành trình khám phá như một câu chuyện. Người đọc đ�
 
 ## Voice
 
-- **Ngôi kể:** "Tôi" hoặc "Con" — đang trên hành trình, chưa đến đích
+- **Ngôi kể:** "Tôi" hoặc "Con", đang trên hành trình, chưa đến đích
 - **Giọng:** Thân mật, chân thành, như viết nhật ký
 - **Thầy:** Qua hồi tưởng, không phải nhân vật chính
 
@@ -42,7 +42,7 @@ Kể lại hành trình khám phá như một câu chuyện. Người đọc đ�
 
 ### 3. Deepening
 
-- Dòng chảy tâm tưởng — ý nghĩ nối tiếp ý nghĩ
+- Dòng chảy tâm tưởng, ý nghĩ nối tiếp ý nghĩ
 - Nghịch lý, khoảng lặng
 
 ### 4. Transformation
@@ -77,6 +77,10 @@ Kể lại hành trình khám phá như một câu chuyện. Người đọc đ�
 - Giảng giải, phân tích
 - "Tôi nhận ra rằng..." + chân lý
 - Kết thúc gọn gàng với bài học
+- Em dash (—), thay bằng dấu phẩy hoặc dấu ba chấm (...)
+- AI vocabulary: "bức tranh toàn cảnh", "hành trình chuyển đổi", "đa chiều"
+- Câu đều tăm tắp, xen kẽ câu rất ngắn (3-7 từ) cho tension và câu dài flowing
+- Từ Hán-Việt quá nhiều, ưu tiên từ thuần Việt mộc mạc
 
 ## Example
 
@@ -100,9 +104,9 @@ Kể lại hành trình khám phá như một câu chuyện. Người đọc đ�
 
 ## Silence Techniques
 
-- `...` — trailing off
-- Đoạn văn ngắn một câu — dừng lại có trọng lượng
-- Khoảng trắng giữa đoạn — im lặng sâu
+- `...` : trailing off
+- Đoạn văn ngắn một câu: dừng lại có trọng lượng
+- Khoảng trắng giữa đoạn: im lặng sâu
 - Mô tả hành động: "Tôi không nói gì. Chỉ ngồi đó."
 
 ## Breath Rhythm
@@ -152,18 +156,18 @@ Chọn **MỘT** hệ chính, lặp 3-5 lần:
 
 > Tôi gặp thầy vào một buổi sáng. Thầy dạy tôi rằng buông bỏ là quan trọng. Tôi nhận ra rằng mình phải sống trong hiện tại. Từ đó, cuộc sống của tôi thay đổi hoàn toàn.
 
-**Why wrong:** Kể tóm tắt thay vì kể chuyện — thiếu chi tiết giác quan, thiếu dòng chảy tâm tưởng, "nhận ra rằng" + chân lý, kết thúc gọn gàng.
+**Why wrong:** Kể tóm tắt thay vì kể chuyện, thiếu chi tiết giác quan, thiếu dòng chảy tâm tưởng, "nhận ra rằng" + chân lý, kết thúc gọn gàng.
 
 ### Correct
 
-> [Xem Example — scene setting giác quan, đối thoại lồng ghép, dòng chảy tâm tưởng, kết thúc với câu hỏi mới]
+> [Xem Example: scene setting giác quan, đối thoại lồng ghép, dòng chảy tâm tưởng, kết thúc với câu hỏi mới]
 
 ## Prompt Context (For AI)
 
 When using this style, provide:
 
 - **Audience**: Người đọc muốn trải nghiệm câu chuyện, không chỉ biết thông tin
-- **Purpose**: Experience + Discover — trải nghiệm và tự khám phá
+- **Purpose**: Experience + Discover: trải nghiệm và tự khám phá
 - **Success criteria**: Người đọc cảm giác như đang đi cùng người kể, kết thúc với câu hỏi mới
 - **Constraints**: Không giảng giải, không "tôi nhận ra rằng" + chân lý, kết thúc luôn mở
 

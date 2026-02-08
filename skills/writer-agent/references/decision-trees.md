@@ -294,4 +294,4 @@ Sau khi tất cả articles xong:
 
 ## 9. Inline Glossary Strategy
 
-> See [SKILL.md §3.4](../SKILL.md#34-shared-context-inline-glossary) for full glossary strategy by tier and [context-optimization.md](context-optimization.md#glossary-extraction-algorithm) for extraction algorithm.
+> See [SKILL.md §3.4](../SKILL.md#34-shared-context-inline-glossary) for full glossary strategy by tier and [context-optimization.md](context-optimization.md#glossary-extraction-algorithm-step-34) for extraction algorithm.

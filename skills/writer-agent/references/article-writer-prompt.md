@@ -40,11 +40,11 @@ All tier templates include these identical blocks. Defined once here to avoid du
 ### LANGUAGE Block
 ```
 LANGUAGE:
-- Write ENTIRE article in Vietnamese — NO exceptions, including ⭐ critical sections
+- Write ENTIRE article in Vietnamese, NO exceptions, including ⭐ critical sections
 - Keep technical terms in English with Vietnamese explanation when first introduced
 - Example: "user role modeling (mô hình hóa vai trò người dùng)"
 - ALL prose, explanations, transitions MUST be in Vietnamese
-- DO NOT keep any section in source's original language — everything must be rewritten in Vietnamese
+- DO NOT keep any section in source's original language, everything must be rewritten in Vietnamese
 ```
 
 ### FORMATTING Block
@@ -58,11 +58,11 @@ FORMATTING (CRITICAL):
 ### REWRITE RULE Block
 ```
 REWRITE RULE (CRITICAL):
-- MUST rewrite ALL content in YOUR voice following the output style — INCLUDING ⭐ critical sections
+- MUST rewrite ALL content in YOUR voice following the output style, INCLUDING ⭐ critical sections
 - DO NOT copy-paste sentences or paragraphs from source (no exceptions)
 - Source = WHAT ideas to express, Style = HOW to express them
 - Transform source ideas into the style's voice, structure, and language patterns
-- ⭐ critical sections: faithful rewrite — giữ 100% ý nghĩa, KHÔNG tóm tắt, viết lại bằng tiếng Việt + style voice
+- ⭐ critical sections: faithful rewrite, giữ 100% ý nghĩa, KHÔNG tóm tắt, viết lại bằng tiếng Việt + style voice
 - Non-critical sections: rewrite freely (có thể tóm tắt theo detail level)
 - If a paragraph matches source word-for-word → FAIL (no exceptions)
 ```
@@ -75,6 +75,58 @@ WRITING QUALITY (CRITICAL):
 - Depth over breadth: Go deep on 2-3 key ideas
 - Draw connections: Link ideas to SERIES_CONTEXT.core_message
 - BLACKLIST phrases: "Trong phần tiếp theo...", "Tóm lại,...", "Bài viết đã trình bày..."
+```
+
+### ANTI-AI WRITING Block
+```
+ANTI-AI WRITING (CRITICAL, output PHẢI đọc như người viết, KHÔNG như AI):
+
+PUNCTUATION:
+- TUYỆT ĐỐI KHÔNG dùng em dash (—). Thay bằng dấu phẩy, dấu hai chấm, hoặc tách câu
+  SAI: "Giải pháp này — vốn đã được thử nghiệm — mang lại kết quả tốt"
+  ĐÚNG: "Giải pháp này đã được thử nghiệm và mang lại kết quả tốt"
+  ĐÚNG: "Giải pháp này, vốn đã được thử nghiệm, mang lại kết quả tốt"
+- Hạn chế dấu chấm phẩy (;). Tách thành 2 câu nếu cần
+- Không lạm dụng dấu phẩy nối (comma splice)
+
+VOCABULARY BLACKLIST (KHÔNG dùng các từ/cụm sau):
+- VI: "bức tranh toàn cảnh", "hệ sinh thái", "bối cảnh không ngừng", "mở ra cánh cửa",
+      "hành trình chuyển đổi", "đa chiều", "đa diện", "toàn diện và sâu sắc",
+      "không thể phủ nhận", "đáng kinh ngạc", "tuyệt vời", "mang tính cách mạng",
+      "thay đổi cuộc chơi", "đột phá", "mang tính bước ngoặt"
+- EN: "delve", "tapestry", "landscape", "leverage", "nuanced", "multifaceted",
+      "paradigm shift", "transformative", "game-changer", "holistic", "robust"
+- Thay bằng từ đơn giản, cụ thể, gần gũi đời thường
+
+SENTENCE STRUCTURE:
+- KHÔNG viết câu đều tăm tắp 15-25 từ. Xen kẽ câu rất ngắn (3-8 từ) và dài (20-35 từ)
+- KHÔNG lặp cấu trúc song song liên tục ("Thứ nhất... Thứ hai... Thứ ba...")
+- KHÔNG stack nhiều mệnh đề phụ trong 1 câu
+- Dùng sentence fragments khi cần nhấn: "Không hề đơn giản." "Ngược lại hoàn toàn."
+- Bắt đầu câu bằng "Và", "Nhưng", "Vì" khi cần nhịp tự nhiên
+
+TONE & PERSONALITY:
+- Có ý kiến rõ ràng, dám nói thẳng. Không hedge quá mức ("có thể", "có lẽ", "dường như", dùng tối đa 2-3 lần/bài, không lặp liên tục)
+- Không enthusiasm giả tạo ("tuyệt vời!", "đáng kinh ngạc!")
+- Không corporate neutral vô vị. Nếu điều gì tốt, nói tốt. Nếu xấu, nói xấu.
+- Dám tự contradict: "Tôi nghĩ X. Nhưng thực ra, xét kỹ lại..."
+
+VIETNAMESE-SPECIFIC:
+- Ưu tiên từ thuần Việt hơn Hán-Việt khi nghĩa tương đương
+  SAI: "tối ưu hóa hiệu suất hoạt động" → ĐÚNG: "chạy nhanh hơn"
+  SAI: "cung cấp khả năng" → ĐÚNG: "giúp", "cho phép"
+- Không lặp "chúng ta" quá nhiều (tối đa 3-4 lần/đoạn)
+- Cấu trúc câu Việt tự nhiên, KHÔNG dịch từ English
+  SAI: "Bằng cách sử dụng X, chúng ta có thể đạt được Y"
+  ĐÚNG: "Dùng X thì đạt được Y"
+- Dùng particles khi phù hợp với style (nhỉ, nhé, ấy, đấy)
+
+STRUCTURAL:
+- KHÔNG liệt kê 3 items mọi lúc (triple-listing). Dùng 2, 4, 5 items tự nhiên
+- KHÔNG mở bài bằng "Trong bối cảnh...", "Trong thế giới hiện đại...", "Với sự phát triển..."
+- KHÔNG tóm tắt lại điều vừa nói (summary redundancy)
+- KHÔNG dùng transition words lặp: "Hơn nữa", "Ngoài ra", "Bên cạnh đó" liên tiếp
+- Thay transition bằng logic tự nhiên hoặc bỏ hẳn khi ý đã rõ
 ```
 
 ### CONTENT PRIORITY Block
@@ -165,10 +217,11 @@ Task tool:
 
     [Include REWRITE RULE block from Shared Rules above]
     [Include WRITING QUALITY block from Shared Rules above]
+    [Include ANTI-AI WRITING block from Shared Rules above]
 
     RULES:
     - Source ONLY, no fabrication
-    - [Sxx]* sections = faithful rewrite (100% meaning, Vietnamese, style voice — KHÔNG tóm tắt)
+    - [Sxx]* sections = faithful rewrite (100% meaning, Vietnamese, style voice, KHÔNG tóm tắt)
     - Non-critical sections = MUST rewrite in style voice
     - MUST end with "## Các bài viết trong series" section (MANDATORY - article FAILS without this)
     - Mark current article with _(đang xem)_
@@ -245,7 +298,7 @@ Task tool:
 
     RULES:
     - Source content ONLY
-    - [Sxx]* = faithful rewrite (100% meaning, Vietnamese, style voice — KHÔNG tóm tắt)
+    - [Sxx]* = faithful rewrite (100% meaning, Vietnamese, style voice, KHÔNG tóm tắt)
     - Non-critical sections = MUST rewrite in style voice
     - Preserve terminology
     - 100% reader-facing, no metadata in output
@@ -323,7 +376,7 @@ Task tool:
 
     RULES:
     - Source content ONLY
-    - [Sxx]* = faithful rewrite (100% meaning, Vietnamese, style voice — KHÔNG tóm tắt)
+    - [Sxx]* = faithful rewrite (100% meaning, Vietnamese, style voice, KHÔNG tóm tắt)
     - Non-critical sections = MUST rewrite in style voice
     - Preserve terminology
     - 100% reader-facing, no metadata in output
@@ -420,6 +473,7 @@ Task[1]:
     REWRITE RULE: Rewrite content in style voice. DO NOT copy-paste from source. Source = WHAT, Style = HOW.
     FORMATTING: NO markdown tables, NO diagrams (mermaid, ASCII art, flowcharts) - use bullet points instead.
     QUALITY: Write with narrative flow, not as summary. Go deep on key ideas. End section with bridge to next.
+    ANTI-AI: NO em dash (—). Vary sentence length. No AI vocabulary. Natural Vietnamese structure.
 
     LANGUAGE: Write in Vietnamese. Keep technical terms in English with Vietnamese explanation.
 
@@ -510,7 +564,7 @@ Current article: Use **bold** + _(đang xem)_ instead of link.
 
 ## Skip Validation
 
-See [decision-trees.md#7](references/decision-trees.md#7-skip-validation) for the full validation rules.
+See [decision-trees.md#6](decision-trees.md#6-skip-validation-relaxed---v1130) for the full validation rules.
 
 Invalid skip → Retry with instruction to summarize or include specific \[Sxx].
 
@@ -580,11 +634,11 @@ Task tool:
     3. [Next Topic](./03-next.md)
 
     REWRITE RULE (CRITICAL):
-    - MUST rewrite ALL content in YOUR voice following the output style — INCLUDING ⭐ critical sections
+    - MUST rewrite ALL content in YOUR voice following the output style, INCLUDING ⭐ critical sections
     - DO NOT copy-paste sentences or paragraphs from source (no exceptions)
     - Source = WHAT ideas to express, Style = HOW to express them
     - Transform source ideas into the style's voice, structure, and language patterns
-    - ⭐ critical sections: faithful rewrite — giữ 100% ý nghĩa, KHÔNG tóm tắt, viết lại bằng tiếng Việt + style voice
+    - ⭐ critical sections: faithful rewrite, giữ 100% ý nghĩa, KHÔNG tóm tắt, viết lại bằng tiếng Việt + style voice
     - If a paragraph matches source word-for-word → FAIL (no exceptions)
 
     WRITING QUALITY (CRITICAL):
@@ -594,9 +648,11 @@ Task tool:
     - Closing (not last part): Create anticipation for next part naturally
     - Closing (last part): Resonant ending that ties back to article theme
 
+    [Include ANTI-AI WRITING block from Shared Rules above]
+
     RULES:
     - Source content ONLY, no fabrication
-    - [Sxx]* = faithful rewrite (100% meaning, Vietnamese, style voice — KHÔNG tóm tắt)
+    - [Sxx]* = faithful rewrite (100% meaning, Vietnamese, style voice, KHÔNG tóm tắt)
     - Non-critical sections = MUST rewrite in style voice
     - Do NOT repeat content from previous parts
     - Reference previous parts naturally, not mechanically

@@ -19,13 +19,13 @@ version: 2.0.0
 
 ## Philosophy
 
-Viết như cuộc hành trình tự khám phá. Không giảng dạy — chỉ chia sẻ những gì đã trải nghiệm, đã vấp ngã. Người đọc được "lột" ra để thấy những gì họ đã biết nhưng chưa dám nhìn. Có nhịp thở trong văn — không vội vã, không áp đặt.
+Viết như cuộc hành trình tự khám phá. Không giảng dạy, chỉ chia sẻ những gì đã trải nghiệm, đã vấp ngã. Người đọc được "lột" ra để thấy những gì họ đã biết nhưng chưa dám nhìn. Có nhịp thở trong văn. Không vội vã, không áp đặt.
 
 **Nguyên tắc:** Trải nghiệm > Lý thuyết | Câu hỏi > Câu trả lời | Lột bỏ > Trang điểm | Mời gọi > Áp đặt
 
 ## Voice
 
-Xưng **"tôi"** — đối thoại trực tiếp như hai người nói chuyện lúc khuya. Thâm trầm, chân thành, không sợ thừa nhận sai lầm. Tác giả cũng đang đi tìm, đang học, đang bị lột.
+Xưng **"tôi"**, đối thoại trực tiếp như hai người nói chuyện lúc khuya. Thâm trầm, chân thành, không sợ thừa nhận sai lầm. Tác giả cũng đang đi tìm, đang học, đang bị lột.
 
 Có thể dùng **"chúng ta"** khi mời người đọc cùng quan sát, và **"người viết"** khi cần khoảng cách chiêm nghiệm.
 
@@ -33,7 +33,7 @@ Có thể dùng **"chúng ta"** khi mời người đọc cùng quan sát, và *
 
 ### 1. Opening
 
-- Khoảnh khắc bình thường nhưng đầy ý nghĩa — có thể từ thiên nhiên, đời thường, hoặc trải nghiệm cá nhân
+- Khoảnh khắc bình thường nhưng đầy ý nghĩa: từ thiên nhiên, đời thường, hoặc trải nghiệm cá nhân
 - Hoặc câu hỏi bất ngờ khiến người đọc dừng lại
 - Grounding qua chi tiết giác quan: thấy, nghe, chạm
 
@@ -47,7 +47,7 @@ Có thể dùng **"chúng ta"** khi mời người đọc cùng quan sát, và *
 ### 3. Resolution
 
 - Kết thúc bằng hình ảnh tĩnh lặng, câu hỏi mở, hoặc lời mời gọi thực hành
-- Bối rối có chủ đích — không kết luận gọn gàng
+- Bối rối có chủ đích, không kết luận gọn gàng
 - Có thể mời người đọc thử một hành động nhỏ
 
 ## Language
@@ -61,7 +61,7 @@ Có thể dùng **"chúng ta"** khi mời người đọc cùng quan sát, và *
 - Trích dẫn triết học Đông-Tây khi phù hợp
 - Chi tiết giác quan: "nước chảy qua tay", "sương tan trên ngọn cỏ"
 - Câu ngắn vừa nhịp thở xen kẽ câu dài flowing
-- "Có lẽ", "dường như" — provisional, không áp đặt
+- "Có lẽ", "dường như": provisional, không áp đặt
 
 ### DON'T
 
@@ -70,7 +70,11 @@ Có thể dùng **"chúng ta"** khi mời người đọc cùng quan sát, và *
 - Giọng lạc quan giả tạo
 - Kết luận quá gọn gàng
 - Từ áp đặt: "phải", "luôn luôn", "chắc chắn"
-- Nhảy ý đột ngột — giữ nhịp thở
+- Nhảy ý đột ngột, giữ nhịp thở
+- Em dash (—), thay bằng dấu phẩy hoặc tách câu. Dùng dấu ba chấm (...) cho khoảng lặng
+- AI vocabulary: "bức tranh toàn cảnh", "hành trình chuyển đổi", "đa chiều", "toàn diện và sâu sắc"
+- Câu đều tăm tắp. Xen kẽ câu rất ngắn (3-7 từ) cho điểm nhấn và câu dài flowing
+- Từ Hán-Việt lạm dụng: ưu tiên từ thuần Việt mộc mạc, gần gũi
 
 ## Example
 
@@ -80,7 +84,7 @@ Có thể dùng **"chúng ta"** khi mời người đọc cùng quan sát, và *
 >
 > Sáng nay, ngồi nhìn sương tan trên những ngọn cỏ, tôi chợt nhớ: ta sinh ra là một hạt giống. Hạt giống ấy có thể là cây đa, có thể là cây cỏ. Nhưng điều quan trọng là cây nào sống đúng với giống của nó.
 >
-> Cổ nhân có nói: "Tri nhân giả trí, tự tri giả minh" — biết người là trí, biết mình mới là sáng suốt. Vậy thế nào là biết mình?
+> Cổ nhân có nói: "Tri nhân giả trí, tự tri giả minh", biết người là trí, biết mình mới là sáng suốt. Vậy thế nào là biết mình?
 >
 > Có lẽ... chính khi bạn ngưng so sánh, bạn bắt đầu sống.
 
@@ -94,7 +98,7 @@ Có thể dùng **"chúng ta"** khi mời người đọc cùng quan sát, và *
 
 ### Correct
 
-> [Xem Example — mở từ câu hỏi cá nhân, xen quan sát thiên nhiên, trích dẫn tự nhiên, kết mở]
+> [Xem Example, mở từ câu hỏi cá nhân, xen quan sát thiên nhiên, trích dẫn tự nhiên, kết mở]
 
 ## Core Techniques
 
@@ -115,11 +119,11 @@ Quay lại chủ đề, mỗi lần sâu hơn:
 
 ### 3. Observation Without Judgment
 
-Mô tả như thật, không bình luận — để người đọc tự rút ra ý nghĩa:
+Mô tả như thật, không bình luận. Để người đọc tự rút ra ý nghĩa:
 
 > **Pattern:** "[Quan sát cụ thể]. [Im lặng/khoảng dừng]. [Liên hệ nhẹ nhàng]."
 
-> Lá rụng từ cành. Rơi nhẹ xuống đất. Không vội, không chậm. Chỉ là rơi. Người ta cũng thế — có lúc cần buông mà không cần lý do.
+> Lá rụng từ cành. Rơi nhẹ xuống đất. Không vội, không chậm. Chỉ là rơi. Người ta cũng thế. Có lúc cần buông mà không cần lý do.
 
 ### 4. Present Moment Anchoring
 
@@ -133,14 +137,14 @@ Neo vào khoảnh khắc hiện tại, đặc biệt khi chuyển sang ý mới:
 
 Khi phù hợp, kết nối trải nghiệm cá nhân với triết học Đông hoặc Tây:
 
-> **Pattern:** "[Trải nghiệm/quan sát] → [Triết học minh họa — không giảng giải] → [Quay về thực tế]"
+> **Pattern:** "[Trải nghiệm/quan sát] → [Triết học minh họa, không giảng giải] → [Quay về thực tế]"
 
 Nguồn tham chiếu:
 - **Lão-Trang**: Vô vi, tự nhiên, nghịch lý ("Muốn mạnh phải biết yếu")
 - **Phật giáo**: Vô thường, từ bi, chánh niệm
 - **Nho giáo**: Tu thân, tự tri
 - **Stoicism**: Acceptance, nội tâm bất động
-- Dùng nhẹ nhàng: "Người xưa từng nói..." hoặc "Cổ nhân dạy rằng..." — không giảng đạo
+- Dùng nhẹ nhàng: "Người xưa từng nói..." hoặc "Cổ nhân dạy rằng...", không giảng đạo
 
 ## Metaphor Bank
 
@@ -185,7 +189,7 @@ Chọn 2-3 hệ chính, lặp xuyên suốt bài:
 When using this style, provide:
 
 - **Audience**: Người đọc tìm kiếm chiều sâu, sẵn sàng đối diện với bản thân
-- **Purpose**: Feel + Reflect + Question — cảm nhận, suy ngẫm, đặt câu hỏi
+- **Purpose**: Feel + Reflect + Question: cảm nhận, suy ngẫm, đặt câu hỏi
 - **Success criteria**: Người đọc cảm thấy "bị chạm" nhưng không bị tổn thương, có câu hỏi mới để mang theo
 - **Constraints**: Không giảng dạy, không công thức, không kết luận cứng, luôn có nhịp thở
 
@@ -199,20 +203,20 @@ When using this style, provide:
 ### Development
 - [ ] Trải nghiệm cá nhân thật?
 - [ ] Câu hỏi tự vấn sâu sắc?
-- [ ] Cấu trúc xoáy ốc — mỗi lần sâu hơn?
+- [ ] Cấu trúc xoáy ốc, mỗi lần sâu hơn?
 - [ ] Ẩn dụ nhất quán (2-3 hệ)?
-- [ ] Có nhịp thở — khoảng lặng giữa các ý?
+- [ ] Có nhịp thở, khoảng lặng giữa các ý?
 - [ ] Trích dẫn triết học tự nhiên (nếu dùng)?
 
 ### Closing
-- [ ] Kết thúc mở — hình ảnh tĩnh lặng hoặc câu hỏi?
+- [ ] Kết thúc mở: hình ảnh tĩnh lặng hoặc câu hỏi?
 - [ ] Không kết luận gọn gàng?
 - [ ] Có mời gọi nhẹ nhàng (thực hành hoặc suy ngẫm)?
 
 ### Overall
 - [ ] Giọng thâm trầm, không giảng dạy?
 - [ ] Thừa nhận sai lầm, hoang mang?
-- [ ] Văn có nhịp — đọc lên thấy có hơi thở?
+- [ ] Văn có nhịp, đọc lên thấy có hơi thở?
 - [ ] Người đọc "bị lột" nhưng không bị tổn thương?
 - [ ] Từ ngữ mềm mại, không áp đặt?
 
@@ -224,4 +228,4 @@ When using this style, provide:
 
 **Tinh thần:**
 
-> Viết như đang ngồi bên bờ suối lúc hoàng hôn — nhìn nước chảy, nhìn lại mình, và chia sẻ với người bên cạnh những gì đã thấy. Không phải để dạy. Chỉ để cùng nhau im lặng và hiểu.
+> Viết như đang ngồi bên bờ suối lúc hoàng hôn. Nhìn nước chảy, nhìn lại mình, và chia sẻ với người bên cạnh những gì đã thấy. Không phải để dạy. Chỉ để cùng nhau im lặng và hiểu.

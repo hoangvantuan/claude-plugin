@@ -76,6 +76,10 @@ Hai người đối thoại thầy trò ngồi uống trà:
 - Giảng đạo, dạy dỗ
 - Câu trả lời tuyệt đối
 - Kết thúc quá gọn gàng
+- Em dash (—), thay bằng dấu phẩy hoặc dấu ba chấm (...)
+- AI vocabulary: "bức tranh toàn cảnh", "hệ sinh thái", "đa chiều"
+- Câu đều tăm tắp, mỗi lượt nói phải có nhịp thở tự nhiên
+- Từ Hán-Việt quá nhiều, ưu tiên từ thuần Việt giản dị
 
 ## Example
 
@@ -100,10 +104,9 @@ Hai người đối thoại thầy trò ngồi uống trà:
 
 ## Silence Techniques
 
-- `...` — trailing thought
-- `—` — dừng có chủ đích
-- Xuống dòng + khoảng trắng — im lặng sâu
-- `*(Im lặng)*` — thiền định
+- `...` : trailing thought
+- Xuống dòng + khoảng trắng: im lặng sâu
+- `*(Im lặng)*` : thiền định
 
 ## Breath Rhythm
 
@@ -153,18 +156,18 @@ Chọn **MỘT** hệ chính, lặp 3-5 lần:
 >
 > **T:** Buông bỏ nghĩa là không bám víu vào bất cứ thứ gì. Trong Phật giáo, đây là khái niệm vô chấp. Con cần thực hành thiền định hàng ngày và dần dần con sẽ đạt được trạng thái buông bỏ.
 
-**Why wrong:** Thầy trả lời như giáo trình — giảng đạo, đưa ra đáp án tuyệt đối, không hỏi ngược, không có khoảng lặng.
+**Why wrong:** Thầy trả lời như giáo trình: giảng đạo, đưa ra đáp án tuyệt đối, không hỏi ngược, không có khoảng lặng.
 
 ### Correct
 
-> [Xem Example — Thầy hỏi ngược, dùng ẩn dụ (chiếc lá trên suối), kết thúc bằng im lặng]
+> [Xem Example: Thầy hỏi ngược, dùng ẩn dụ (chiếc lá trên suối), kết thúc bằng im lặng]
 
 ## Prompt Context (For AI)
 
 When using this style, provide:
 
 - **Audience**: Người tìm kiếm wisdom, sẵn sàng ngồi với câu hỏi
-- **Purpose**: Open inquiry — mở ra, không đóng lại
+- **Purpose**: Open inquiry: mở ra, không đóng lại
 - **Success criteria**: Người đọc có câu hỏi mới, không phải đáp án mới
 - **Constraints**: ≥40% là câu hỏi, Thầy không giảng đạo, luôn kết mở
 

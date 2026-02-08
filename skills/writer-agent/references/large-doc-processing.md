@@ -79,7 +79,7 @@ TIER:1 | LINES:1-500 | WORDS:8500 | CRIT:S02,S05
 {Source text}
 
 [S02]* {Critical Title}
-{FULL source text — article writer sẽ faithful rewrite sang Vietnamese + style voice}
+{FULL source text, article writer sẽ faithful rewrite sang Vietnamese + style voice}
 ```
 
 ### Tier 2: Smart Compression (50K-100K words)
@@ -96,7 +96,7 @@ TIER:2 | LINES:1-1500 | WORDS:25K | CRIT:S02,S05
 {Source text}
 
 [S02]* {Critical Title}
-{FULL source text — article writer sẽ faithful rewrite}
+{FULL source text, article writer sẽ faithful rewrite}
 
 [S03] {Supporting} [SUMMARIZED]
 Key points:

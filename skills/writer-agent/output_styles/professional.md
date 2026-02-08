@@ -24,7 +24,7 @@ Viết như một chuyên gia đang trình bày cho đồng nghiệp. Mục tiê
 
 ## Voice
 
-Xưng **"tác giả"** hoặc **không xưng** (passive voice khi cần). Giọng điệu khách quan, trung lập, có thẩm quyền nhưng không kiêu ngạo. Tự tin nhưng cân bằng — thừa nhận giới hạn khi cần.
+Xưng **"tác giả"** hoặc **không xưng** (passive voice khi cần). Giọng điệu khách quan, trung lập, có thẩm quyền nhưng không kiêu ngạo. Tự tin nhưng cân bằng, thừa nhận giới hạn khi cần.
 
 ## Structure
 
@@ -71,7 +71,12 @@ Mỗi phần có:
 - Colloquialisms và slang
 - Anecdotes cá nhân làm bằng chứng chính
 - Câu mơ hồ, không kiểm chứng được
-- Chỉ lạc quan hoặc chỉ bi quan — cần balance
+- Chỉ lạc quan hoặc chỉ bi quan, cần balance
+- Em dash (—), thay bằng dấu phẩy, dấu hai chấm, hoặc tách câu
+- AI vocabulary: "bức tranh toàn cảnh", "hệ sinh thái", "đa chiều", "toàn diện và sâu sắc", "delve", "tapestry", "landscape", "leverage"
+- Câu đều tăm tắp cùng độ dài. Xen kẽ câu ngắn mạnh (5-10 từ) và câu phân tích dài (15-25 từ)
+- Triple-listing mọi lúc. Dùng 2, 4, 5 items khi tự nhiên
+- Từ Hán-Việt khi có từ thuần Việt tương đương: "tối ưu hóa" thay vì "chạy tốt hơn", "cung cấp khả năng" thay vì "giúp"
 
 ## Example
 
@@ -81,7 +86,7 @@ Mỗi phần có:
 >
 > Tuy nhiên, automated testing không thay thế hoàn toàn manual QA. Kết quả thử nghiệm trên 3 teams cho thấy: teams kết hợp cả hai phương pháp giảm 62% sự cố, trong khi teams chỉ dùng automated testing giảm 47%.
 >
-> **Khuyến nghị**: Triển khai hybrid approach — automated cho regression, manual cho UX và edge cases. Ưu tiên integration tests cho API endpoints có traffic cao nhất.
+> **Khuyến nghị**: Triển khai hybrid approach: automated cho regression, manual cho UX và edge cases. Ưu tiên integration tests cho API endpoints có traffic cao nhất.
 
 ## Common Mistakes
 
@@ -93,7 +98,7 @@ Mỗi phần có:
 
 ### Correct
 
-> [Xem Example — mỗi claim có data, có nuance, có recommendation cụ thể]
+> [Xem Example: mỗi claim có data, có nuance, có recommendation cụ thể]
 
 ## Core Techniques
 
@@ -182,7 +187,7 @@ Luôn kèm giới hạn: sample size, điều kiện, reproducibility.
 When using this style, provide:
 
 - **Audience**: Decision makers, professionals, technical teams cần thông tin chính xác
-- **Purpose**: Inform, analyze, recommend — dựa trên evidence
+- **Purpose**: Inform, analyze, recommend: dựa trên evidence
 - **Success criteria**: Mỗi claim có evidence, mỗi section có value, người đọc có thể action
 - **Constraints**: Không emotional appeals, không vague claims, luôn có data hoặc evidence
 

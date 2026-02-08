@@ -75,7 +75,7 @@ STYLES_DIR  = SKILL_DIR/output_styles    (ví dụ: /Users/x/.claude/skills/writ
 - Gọi convert: `/Users/x/.claude/skills/writer-agent/scripts/wa-convert file.pdf`
 - Đọc style: `/Users/x/.claude/skills/writer-agent/output_styles/professional.md`
 
-> **QUAN TRỌNG**: KHÔNG BAO GIỜ hardcode `.claude/skills/writer-agent/...` — luôn dùng đường dẫn tuyệt đối từ Glob.
+> **QUAN TRỌNG**: KHÔNG BAO GIỜ hardcode `.claude/skills/writer-agent/...`, luôn dùng đường dẫn tuyệt đối từ Glob.
 
 ## Step 1: Input Handling
 
@@ -457,7 +457,7 @@ word_count < 50,000 (Tier 1)?
         └─ Larger than Tier 1 due to more technical terminology
 ```
 
-**Extraction algorithm**: See [context-optimization.md#glossary-extraction-algorithm](references/context-optimization.md#glossary-extraction-algorithm) for detailed process.
+**Extraction algorithm**: See [context-optimization.md#glossary-extraction-algorithm](references/context-optimization.md#glossary-extraction-algorithm-step-34) for detailed process.
 
 **Quick process**:
 
@@ -494,7 +494,7 @@ Article dependencies: Embed 1-2 sentences in prompt, not separate file.
 - Tier 3 (>=100K words): Subagents read source directly via line ranges
 - Direct Path (<20K words): Main agent writes directly
 
-**Decision** (see [decision-trees.md#3](references/decision-trees.md#3-context-extraction-strategy) for full tree):
+**Decision** (see [decision-trees.md#3](references/decision-trees.md#3-context-extraction-strategy-updated-v1110) for full tree):
 
 - Tier 1/3 or <20K words: Skip context files (subagents read source directly via line ranges)
 - Tier 2 (50K-100K): Spawn context extractor subagents (batch: min(3, article_count))
@@ -632,7 +632,7 @@ After each article completes, update TaskUpdate:
 
 **Workflow**: Phase 1 (skeleton) → Phase 2 (expand ALL sections parallel) → Phase 3 (merge + transitions)
 
-**Benefits**: 45-50% faster for long articles. See [article-writer-prompt.md#sot-pattern](references/article-writer-prompt.md#sot-pattern) for template and [performance-benchmarks.md#test-case-5](references/performance-benchmarks.md#test-case-5-sot-pattern-long-article) for benchmarks.
+**Benefits**: 45-50% faster for long articles. See [article-writer-prompt.md#sot-pattern](references/article-writer-prompt.md#sot-pattern-long-articles-2000-words) for template and [performance-benchmarks.md#test-case-5](references/performance-benchmarks.md#test-case-5-sot-pattern-long-article) for benchmarks.
 
 **Limitations**: Priority 3 (paragraph breaks) not implemented. Ambiguous structure → default to standard write.
 
@@ -666,7 +666,7 @@ Main agent enriches with "Assigned To" and "Used In" columns → aggregates into
 
 **⭐ sections MUST be faithfully rewritten** (không tóm tắt, không bỏ ý):
 
-- Giữ 100% ý nghĩa và thông tin gốc — KHÔNG được tóm tắt hay lược bỏ
+- Giữ 100% ý nghĩa và thông tin gốc, KHÔNG được tóm tắt hay lược bỏ
 - PHẢI viết lại bằng tiếng Việt theo voice của output style đã chọn
 - KHÔNG copy nguyên văn từ source
 - If unable to include fully → flag for review
@@ -817,13 +817,21 @@ Coverage results:
 
 - [ ] _coverage.md reported (>=95% target, >=90% acceptable)
 
-- [ ] Critical ⭐ sections included (faithful rewrite — 100% meaning, Vietnamese, style voice)
+- [ ] Critical ⭐ sections included (faithful rewrite, 100% meaning, Vietnamese, style voice)
 
 - [ ] Warnings logged for any skipped sections
 
 - [ ] **No mechanical openings** ("Trong bài này...", "Bài viết sẽ trình bày...")
 
 - [ ] **No mechanical closings** ("Tóm lại, bài viết đã...", "Trong phần tiếp theo...")
+
+- [ ] **No em dash (—)** trong toàn bộ output
+
+- [ ] **No AI vocabulary** ("bức tranh toàn cảnh", "hệ sinh thái", "đa chiều", "delve", "tapestry", "landscape")
+
+- [ ] **Sentence length variation** (xen kẽ ngắn 3-8 từ và dài 20-35 từ, không đều tăm tắp)
+
+- [ ] **Natural Vietnamese** (ưu tiên từ thuần Việt, cấu trúc câu Việt, không dịch từ English)
 
 ### 6.3 Error Recovery (User-Driven)
 
@@ -846,10 +854,10 @@ See [retry-workflow.md](references/retry-workflow.md) for user decision flow.
 ### Source Fidelity
 
 - Use ONLY source material, no fabrication
-- **REWRITE ALL content in output style voice** — Source defines WHAT to say, Style defines HOW to say it
+- **REWRITE ALL content in output style voice**: Source defines WHAT to say, Style defines HOW to say it
 - DO NOT copy-paste sentences from source (bao gồm cả ⭐ critical sections)
 - Maintain original terminology (thuật ngữ giữ nguyên, nhưng câu văn phải được viết lại)
-- ⭐ Critical sections: faithful rewrite — giữ 100% ý nghĩa, KHÔNG tóm tắt, viết lại bằng tiếng Việt + style voice
+- ⭐ Critical sections: faithful rewrite, giữ 100% ý nghĩa, KHÔNG tóm tắt, viết lại bằng tiếng Việt + style voice
 - Non-critical sections: MUST be rewritten in the selected output style's voice, structure, and language patterns
 - VERIFY quotes prove source origin, but article content must be rewritten (not copied)
 
@@ -879,6 +887,17 @@ See [retry-workflow.md](references/retry-workflow.md) for user decision flow.
 - Dùng ví dụ cụ thể, relatable thay vì abstract
 - Tạo tension/curiosity trước khi giải đáp
 - Vary sentence length: xen kẽ câu ngắn và dài
+
+**Anti-AI Writing (output phải tự nhiên, giống người viết):**
+
+- TUYỆT ĐỐI KHÔNG dùng em dash (—). Thay bằng dấu phẩy, dấu hai chấm, hoặc tách câu
+- KHÔNG dùng vocabulary AI: "bức tranh toàn cảnh", "hệ sinh thái", "đa chiều", "toàn diện và sâu sắc", "delve", "tapestry", "landscape", "leverage", "nuanced", "multifaceted"
+- KHÔNG viết câu đều tăm tắp. Xen kẽ câu rất ngắn (3-8 từ) và dài (20-35 từ)
+- KHÔNG liệt kê 3 items mọi lúc. Dùng 2, 4, 5 items tự nhiên
+- Ưu tiên từ thuần Việt hơn Hán-Việt khi nghĩa tương đương
+- Có ý kiến rõ ràng, không hedge quá mức, không enthusiasm giả tạo
+- Cấu trúc câu Việt tự nhiên, không dịch từ English
+- Chi tiết đầy đủ: xem [article-writer-prompt.md#anti-ai-writing-block](references/article-writer-prompt.md#anti-ai-writing-block)
 
 ### Formatting
 
