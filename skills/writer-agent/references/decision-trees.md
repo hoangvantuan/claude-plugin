@@ -54,7 +54,7 @@ tier == 1 (< 50K)?
 │
 └─ tier == 3 (>= 100K)?
     └─ Tier 3: Reference-Based → USE FAST PATH
-        ├─ SKIP: _inventory.md, _glossary.md, context files
+        ├─ SKIP: _glossary.md, context files
         ├─ CREATE: minimal _plan.md only
         ├─ Subagents read source DIRECTLY via line ranges
         └─ See large-doc-processing.md#tier-3-fast-path
@@ -109,7 +109,7 @@ Step 1: Minimal Analysis
 ├─ Read structure.json
 ├─ Read first chunk (~300 lines) for key terms
 ├─ Create minimal _plan.md (mapping only)
-└─ SKIP: _inventory.md, _glossary.md, context files
+└─ SKIP: _glossary.md, context files
 
 Step 2: Write Overview
 └─ Main agent writes 00-overview.md
@@ -292,19 +292,6 @@ Sau khi tất cả articles xong:
 └─ User quyết định actions (nếu cần)
 ```
 
-## 9. Inline Glossary Strategy (UPDATED v1.10.0)
+## 9. Inline Glossary Strategy
 
-```
-Creating subagent prompts
-
-tier == 1 (< 50K) OR tier == 3 (>= 100K)?
-├─ YES → Embed inline glossary in prompt
-│   └─ Tier 1: ~200 words key terms
-│   └─ Tier 3: ~300 words key terms
-│   └─ Skip separate _glossary.md file
-│   └─ Saves 1 Read call per subagent
-│
-└─ NO (Tier 2: 50K-100K) → Create _glossary.md (shared file)
-    └─ ~300-600 words
-    └─ Subagents read once, reuse terms
-```
+> See [SKILL.md §3.4](../SKILL.md#34-shared-context-inline-glossary) for full glossary strategy by tier and [context-optimization.md](context-optimization.md#glossary-extraction-algorithm) for extraction algorithm.

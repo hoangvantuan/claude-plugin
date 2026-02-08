@@ -4,39 +4,27 @@ Quick reference để chọn style phù hợp.
 
 ## Overview Table
 
-| Style                        | Category               | Voice                  | Formality | Evidence Type              | Emotion | Difficulty |
-| ---------------------------- | ---------------------- | ---------------------- | --------- | -------------------------- | ------- | ---------- |
-| **Professional**             | Analytical             | 3rd person / passive   | High      | Data, research             | Low     | Medium     |
-| **Casual**                   | Conversational         | 1st/2nd person         | Low       | Stories, analogies         | Medium  | Easy       |
-| **Contemplative**            | Reflective             | "Người viết"           | Medium    | Metaphors, nature          | High    | Hard       |
-| **Explanatory**              | Educational            | "Chúng ta"             | Medium    | Examples, bullets          | Low     | Medium     |
-| **Introspective Narrative**  | Reflective             | "Tôi"                  | Medium    | Personal experience        | High    | Hard       |
-| **Mindful Dialogue**         | Conversational         | C:/T: format           | Medium    | Questions, koans           | Medium  | Hard       |
-| **Mindful Storytelling**     | Narrative              | "Tôi" / "Con"          | Medium    | Sensory details            | High    | Hard       |
-| **Ethan Mollick**            | Analytical             | "Tôi" practitioner     | Medium    | Experiments, tests         | Medium  | Medium     |
-| **Andrew Ng**                | Educational            | "Tôi" / "Chúng ta"     | Medium    | Analogies, examples        | Medium  | Easy       |
-| **Thích Nhất Hạnh**          | Reflective             | "Chúng ta" / inclusive | Medium    | Practice, gathas           | High    | Medium     |
-| **Mindful Educator**         | Reflective-Educational | "Tôi" / "Chúng ta"     | Medium    | Experiments, philosophy    | Medium  | Medium     |
-| **Thu Giang Nguyễn Duy Cần** | Reflective             | "Ta" / học giả         | Medium    | Classical quotes, analysis | Medium  | Hard       |
-| **Deep Dive**                | Analytical-Reflective  | "Chúng ta" / investigator | Medium | Questions, reasoning chains | Medium | Hard       |
+| Style                       | Category               | Voice                     | Formality | Evidence Type               | Emotion | Difficulty |
+| --------------------------- | ---------------------- | ------------------------- | --------- | --------------------------- | ------- | ---------- |
+| **Professional**            | Analytical             | 3rd person / passive      | High      | Data, research, experiments | Low     | Medium     |
+| **Explanatory**             | Educational            | "Chúng ta" / "Tôi"       | Medium    | Examples, analogies         | Low     | Medium     |
+| **Introspective Narrative** | Reflective             | "Tôi" / "Chúng ta"       | Medium    | Personal experience, nature | High    | Hard       |
+| **Mindful Dialogue**        | Conversational         | C:/T: format              | Medium    | Questions, koans            | Medium  | Hard       |
+| **Mindful Storytelling**    | Narrative              | "Tôi" / "Con"            | Medium    | Sensory details             | High    | Hard       |
+| **Mindful Educator**        | Reflective-Educational | "Tôi" / "Chúng ta"       | Medium    | Experiments, philosophy     | Medium  | Medium     |
+| **Deep Dive**               | Analytical-Reflective  | "Chúng ta" / investigator | Medium    | Questions, reasoning chains | Medium  | Hard       |
 
 ## Best For Matrix
 
 | Style                    | Technical Reports | Blog Posts | Philosophy | Tutorials | Personal Essays | Mindfulness |
 | ------------------------ | :---------------: | :--------: | :--------: | :-------: | :-------------: | :---------: |
 | Professional             |        ★★★        |      ★     |      ★     |     ★★    |        ★        |      ★      |
-| Casual                   |         ★         |     ★★★    |      ★     |     ★★    |        ★★       |      ★      |
-| Contemplative            |         ★         |      ★     |     ★★★    |     ★     |        ★★       |     ★★★     |
-| Explanatory              |         ★★        |     ★★     |      ★     |    ★★★    |        ★        |      ★      |
-| Introspective Narrative  |         ★         |     ★★     |     ★★★    |     ★     |       ★★★       |      ★★     |
+| Explanatory              |         ★★        |     ★★★    |      ★     |    ★★★    |        ★        |      ★      |
+| Introspective Narrative  |         ★         |     ★★     |     ★★★    |     ★     |       ★★★       |     ★★★     |
 | Mindful Dialogue         |         ★         |      ★     |     ★★     |     ★★    |        ★        |     ★★★     |
 | Mindful Storytelling     |         ★         |     ★★     |     ★★     |     ★     |       ★★★       |     ★★★     |
-| Ethan Mollick            |         ★★        |     ★★★    |      ★     |     ★★    |        ★        |      ★      |
-| Andrew Ng                |         ★★        |     ★★★    |      ★     |    ★★★    |        ★        |      ★      |
-| Thích Nhất Hạnh          |         ★         |     ★★     |     ★★★    |     ★★    |        ★★       |     ★★★     |
 | Mindful Educator         |         ★★        |     ★★★    |     ★★★    |    ★★★    |        ★★       |      ★★     |
-| Thu Giang Nguyễn Duy Cần |         ★         |     ★★     |     ★★★    |     ★★    |        ★★       |      ★★     |
-| Deep Dive                |        ★★         |     ★★     |     ★★★    |     ★★    |        ★★       |      ★      |
+| Deep Dive                |         ★★        |     ★★     |     ★★★    |     ★★    |        ★★       |      ★      |
 
 **Legend:** ★★★ = Best fit | ★★ = Good | ★ = Not recommended
 
@@ -47,20 +35,17 @@ Mục đích chính của bạn là gì?
 
 ├─ Truyền tải thông tin/phân tích
 │   ├─ Cần data-driven, formal → Professional
-│   ├─ Cần accessible, experimental → Ethan Mollick
-│   ├─ Cần dạy concept (beginner-friendly) → Andrew Ng
-│   └─ Cần dạy concept → Explanatory
+│   ├─ Cần dạy concept (beginner-friendly) → Explanatory
+│   └─ Cần balance depth + practice + mindfulness → Mindful Educator
 │
 ├─ Kết nối cảm xúc với người đọc
-│   ├─ Giọng tâm sự, gần gũi → Casual
-│   ├─ Chia sẻ hành trình cá nhân → Introspective Narrative
+│   ├─ Chia sẻ hành trình cá nhân, chiêm nghiệm → Introspective Narrative
 │   └─ Kể chuyện có chiều sâu → Mindful Storytelling
 │
 ├─ Gợi mở suy ngẫm/tỉnh thức
-│   ├─ Quan sát thiên nhiên, tĩnh lặng → Contemplative
 │   ├─ Đối thoại thầy-trò → Mindful Dialogue
 │   ├─ Narrative với insight → Mindful Storytelling
-│   └─ Kết hợp triết học + thực nghiệm + chánh niệm → Mindful Educator
+│   └─ Tự sự + triết học + chánh niệm → Introspective Narrative
 │
 ├─ Đào sâu, phản biện, tư duy chủ động
 │   └─ Muốn hiểu sâu, thách thức giả định → Deep Dive
@@ -71,74 +56,50 @@ Mục đích chính của bạn là gì?
 | Style                    | Beginner | Intermediate | Advanced | General Public | Specialists |
 | ------------------------ | :------: | :----------: | :------: | :------------: | :---------: |
 | Professional             |     ★    |      ★★      |    ★★★   |        ★       |     ★★★     |
-| Casual                   |    ★★★   |      ★★      |     ★    |       ★★★      |      ★      |
-| Contemplative            |    ★★    |      ★★★     |    ★★★   |       ★★       |      ★★     |
 | Explanatory              |    ★★★   |      ★★      |     ★    |       ★★★      |      ★      |
 | Introspective Narrative  |    ★★    |      ★★★     |    ★★★   |       ★★       |      ★★     |
 | Mindful Dialogue         |    ★★    |      ★★★     |    ★★    |       ★★       |      ★★     |
 | Mindful Storytelling     |    ★★    |      ★★★     |    ★★    |       ★★       |      ★★     |
-| Ethan Mollick            |    ★★    |      ★★★     |    ★★    |       ★★★      |      ★★     |
-| Andrew Ng                |    ★★★   |      ★★★     |    ★★    |       ★★★      |      ★★     |
-| Thích Nhất Hạnh          |    ★★★   |      ★★★     |    ★★    |       ★★★      |      ★★     |
 | Mindful Educator         |    ★★★   |      ★★★     |    ★★    |       ★★★      |      ★★     |
-| Thu Giang Nguyễn Duy Cần |    ★★    |      ★★★     |    ★★★   |       ★★       |      ★★     |
 | Deep Dive                |    ★★    |      ★★★     |    ★★★   |       ★★       |     ★★★     |
 
 ## Key Differentiators
 
 ### Analytical Styles
 
-| Aspect    | Professional        | Ethan Mollick          |
-| --------- | ------------------- | ---------------------- |
-| Voice     | Objective, distant  | Personal, engaged      |
-| Evidence  | Research, data      | Direct experiments     |
-| Tone      | Formal authority    | Exploratory curiosity  |
-| Best when | Credibility matters | Innovation/tech topics |
+| Aspect    | Professional             | Deep Dive                    |
+| --------- | ------------------------ | ---------------------------- |
+| Voice     | Objective, distant       | "Chúng ta" investigator      |
+| Evidence  | Data, research           | Questions, reasoning chains  |
+| Tone      | Formal authority         | Curious, honest              |
+| Best when | Credibility matters      | Critical analysis needed     |
 
 ### Educational Styles
 
-| Aspect    | Explanatory           | Andrew Ng               |
-| --------- | --------------------- | ----------------------- |
-| Voice     | "Chúng ta" collective | "Tôi/Chúng ta" warm     |
-| Evidence  | Examples, bullets    | Analogies, intuition    |
-| Tone      | Teaching, structured  | Encouraging, optimistic |
-| Best when | Concept explanation   | Beginner-friendly AI/ML |
+| Aspect    | Explanatory               | Mindful Educator            |
+| --------- | ------------------------- | --------------------------- |
+| Voice     | "Chúng ta" collective     | "Tôi/Chúng ta" companion   |
+| Evidence  | Examples, analogies       | Experiments, philosophy     |
+| Tone      | Clear, encouraging        | Warm, deep, practical       |
+| Best when | Concept explanation       | Balance depth + mindfulness |
 
 ### Reflective Styles
 
-| Aspect    | Contemplative           | Introspective Narrative |
-| --------- | ----------------------- | ----------------------- |
-| Voice     | Observer ("người viết") | Participant ("tôi")     |
-| Emotion   | Serene, gentle          | Raw, vulnerable         |
-| Questions | Few, rhetorical         | Many, challenging       |
-| Best when | Peace/mindfulness       | Personal growth         |
-
-### Conversational Styles
-
-| Aspect    | Casual             | Mindful Dialogue    |
-| --------- | ------------------ | ------------------- |
-| Format    | Narrative          | C:/T: exchanges     |
-| Depth     | Surface, fun       | Deep, philosophical |
-| Goal      | Connect, entertain | Open inquiry        |
-| Best when | Mass audience      | Seeking wisdom      |
+| Aspect    | Introspective Narrative     | Deep Dive                    |
+| --------- | --------------------------- | ---------------------------- |
+| Voice     | "Tôi" participant          | "Chúng ta" investigator      |
+| Focus     | Internal journey, emotion   | Assumptions, tensions        |
+| Questions | Self-reflective, vulnerable | Evidence-driven, analytical  |
+| Best when | Personal growth, philosophy | Critical analysis, research  |
 
 ### Narrative Styles
 
-| Aspect     | Introspective Narrative | Mindful Storytelling   |
-| ---------- | ----------------------- | ---------------------- |
-| Focus      | Internal journey        | External + internal    |
-| Dialogue   | Minimal                 | Embedded (recalled)    |
-| Resolution | Open, questioning       | Open, new question     |
-| Best when  | Self-reflection         | Teaching through story |
-
-### Analytical-Reflective Styles
-
-| Aspect    | Deep Dive                  | Mindful Educator            | Thu Giang Nguyễn Duy Cần   |
-| --------- | -------------------------- | --------------------------- | --------------------------- |
-| Voice     | "Chúng ta" investigator    | "Tôi/Chúng ta" companion   | "Ta" scholar                |
-| Focus     | Assumptions, tensions      | Practice + mindfulness      | Classical philosophy        |
-| Questions | Genuine, evidence-driven   | Reflective, inviting        | Rhetorical, scholarly       |
-| Best when | Critical analysis needed   | Balance depth + practice    | East-West philosophy        |
+| Aspect     | Mindful Storytelling     | Mindful Dialogue         |
+| ---------- | ------------------------ | ------------------------ |
+| Format     | Story narrative          | C:/T: exchanges          |
+| Focus      | External + internal      | Deep philosophical       |
+| Dialogue   | Embedded (recalled)      | Direct format            |
+| Best when  | Teaching through story   | Seeking wisdom           |
 
 ## Quick Selection Guide
 
@@ -146,41 +107,27 @@ Mục đích chính của bạn là gì?
 
 1. **Người đọc cần gì?**
 
-   * Thông tin → Professional, Explanatory, Ethan Mollick, Andrew Ng
-
-   * Cảm hứng → Casual, Introspective Narrative
-
-   * Suy ngẫm → Contemplative, Mindful Dialogue, Mindful Storytelling
-
+   * Thông tin chính xác → Professional
+   * Hiểu concept → Explanatory, Mindful Educator
+   * Cảm hứng/suy ngẫm → Introspective Narrative, Mindful Storytelling
    * Đào sâu, phản biện → Deep Dive
 
 2. **Bạn có dữ liệu/research không?**
 
-   * Có → Professional, Ethan Mollick
-
-   * Không, có trải nghiệm → Casual, Introspective Narrative, Mindful Storytelling
-
-   * Không, chỉ quan sát → Contemplative
+   * Có → Professional, Deep Dive
+   * Không, có trải nghiệm → Introspective Narrative, Mindful Storytelling
+   * Không, muốn dạy → Explanatory, Mindful Educator
 
 3. **Tone mong muốn?**
 
    * Formal → Professional
-
-   * Friendly → Casual
-
-   * Wise → Contemplative, Mindful Dialogue
-
-   * Vulnerable → Introspective Narrative
-
-   * Curious → Ethan Mollick
-
-   * Encouraging/Teacher → Andrew Ng
-
+   * Encouraging/Teacher → Explanatory
+   * Vulnerable/Reflective → Introspective Narrative
+   * Wise/Dialogue → Mindful Dialogue
+   * Story-driven → Mindful Storytelling
    * Balanced (depth + practice + mindfulness) → Mindful Educator
-
    * Investigative → Deep Dive
 
 ## Default Fallback
 
-All 12 output styles have a `## Structure` section defining their article organization pattern (Opening/Development/Closing or equivalent). The article-writer-prompt delegates structure to the style file. If a style's Structure section is too generic, subagents should use the default pattern: Opening → Main Sections → Closing, while still following the style's voice and tone.
-
+All 7 output styles have a `## Structure` section defining their article organization pattern (Opening/Development/Closing or equivalent). The article-writer-prompt delegates structure to the style file. If a style's Structure section is too generic, subagents should use the default pattern: Opening → Main Sections → Closing, while still following the style's voice and tone.

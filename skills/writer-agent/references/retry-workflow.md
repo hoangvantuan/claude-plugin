@@ -179,15 +179,14 @@ Partial output saved to: {output_path}
 ### Save State After Each Step
 
 ```python
-def save_state(step, articles_done, articles_pending, retries):
+def save_state(step, articles_done, articles_pending):
     state = {
-        "version": "1.0",
+        "version": "1.1",
         "status": "in_progress",
         "current_step": step,
         "timestamp": datetime.now().isoformat(),
         "completed_articles": articles_done,
-        "pending_articles": articles_pending,
-        "retries": retries
+        "pending_articles": articles_pending
     }
     write("analysis/_state.json", json.dumps(state))
 ```
@@ -292,11 +291,11 @@ When `_state.json` exists AND user requests partial changes (style change, singl
 ### Workflow
 
 1. **Identify scope**: Which articles need regeneration?
-2. **Reuse artifacts**: Keep structure.json, _plan.md, _inventory.md, context files
+2. **Reuse artifacts**: Keep structure.json, _plan.md, context files
 3. **Update state**:
    - Set `status: "in_progress"`
    - Move target articles from `completed_articles` to `pending_articles`
-   - Preserve retry counts for unchanged articles
+
 4. **Execute**: Spawn subagent(s) for target article(s) only
 5. **Always re-run**: Synthesis (Step 5) and Verification (Step 6)
 6. **Collect coverage**: Update `_coverage.md` with new results
@@ -305,6 +304,7 @@ When `_state.json` exists AND user requests partial changes (style change, singl
 
 ```json
 {
+  "version": "1.1",
   "status": "in_progress",
   "current_step": 4,
   "completed_articles": ["00-overview.md", "01-intro.md"],

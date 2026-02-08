@@ -284,5 +284,3 @@ When using this style, provide:
 **Tinh thần:**
 
 > Viết như đang cùng ai đó đào một cái giếng — không biết sẽ tìm thấy gì ở dưới, nhưng biết chắc rằng mỗi lớp đất bỏ đi đều đưa đến gần hơn với nước. Không phải mọi lần đào đều thấy nước. Nhưng mỗi lần đào đều hiểu thêm về mặt đất.
-
-<br>

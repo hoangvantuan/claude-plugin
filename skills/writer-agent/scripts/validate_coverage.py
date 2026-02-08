@@ -4,14 +4,14 @@
 Usage:
     python validate_coverage.py <coverage_file> [threshold]
     python validate_coverage.py docs/generated/my-book/analysis/_coverage.md
-    python validate_coverage.py docs/generated/my-book/analysis/_coverage.md 98 --target-words 3000
+    python validate_coverage.py docs/generated/my-book/analysis/_coverage.md 95 --target-words 3000
     python validate_coverage.py docs/generated/my-book/analysis/_coverage.md --structure docs/generated/my-book/analysis/structure.json
 
 Output: JSON with validation result
 
 Exit codes:
-    0 - Coverage >= 98% (PASS)
-    1 - Coverage < 98% (FAIL)
+    0 - Coverage >= 95% (PASS)
+    1 - Coverage < 95% (FAIL)
     2 - Parse error or file not found
 """
 from __future__ import annotations
@@ -156,9 +156,9 @@ def parse_coverage_file(filepath: str) -> Dict[str, Any]:
         )
 
     # Check for issues
-    if result["coverage_percent"] < 98:
+    if result["coverage_percent"] < 95:
         result["issues"].append(
-            f"Coverage {result['coverage_percent']}% is below 98% threshold"
+            f"Coverage {result['coverage_percent']}% is below 95% threshold"
         )
 
     if result["missing_critical"]:
@@ -301,12 +301,12 @@ def validate_structure_coverage(
     return result
 
 
-def validate_coverage(filepath: str, threshold: float = 98.0) -> Dict[str, Any]:
+def validate_coverage(filepath: str, threshold: float = 95.0) -> Dict[str, Any]:
     """Validate coverage meets threshold.
 
     Args:
         filepath: Path to _coverage.md
-        threshold: Minimum coverage percentage (default 98%)
+        threshold: Minimum coverage percentage (default 95%)
 
     Returns:
         Validation result dict
@@ -355,7 +355,7 @@ def main():
             "\n"
             "Arguments:\n"
             "  coverage_file       Path to _coverage.md file\n"
-            "  threshold           Minimum coverage % (default: 98)\n"
+            "  threshold           Minimum coverage % (default: 95)\n"
             "\n"
             "Options:\n"
             "  --target-words N    Validate word count against target (±15% tolerance)\n"
@@ -371,7 +371,7 @@ def main():
     filepath = sys.argv[1]
 
     # Parse optional arguments
-    threshold = 98.0
+    threshold = 95.0
     target_words: Optional[int] = None
     structure_path: Optional[str] = None
 

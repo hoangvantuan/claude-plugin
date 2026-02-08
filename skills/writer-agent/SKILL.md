@@ -2,7 +2,7 @@
 name: writer-agent
 description: Transform documents into styled article series. Analyze input (md, txt, pdf, docx, pptx, xlsx, html, epub, images, url), extract core ideas, decompose into logical sections, write articles with user-selectable styles (professional, casual, custom), synthesize into organized output. Uses Docling for high-quality document conversion. Handles large documents with hierarchical summarization. Output to docs/generated/.
 disable-model-invocation: true
-version: 1.15.0
+version: 1.16.0
 license: MIT
 ---
 
@@ -277,7 +277,7 @@ For very large documents, minimize analysis overhead:
 
 | Action | Detail                                                            |
 | ------ | ----------------------------------------------------------------- |
-| SKIP   | `_inventory.md`, `_glossary.md`, context files                    |
+| SKIP   | `_glossary.md`, context files                                     |
 | CREATE | Minimal `_plan.md` (section-to-article mapping + line ranges)     |
 | EMBED  | Key terms (\~300 words) + dependencies inline in subagent prompts |
 | SPAWN  | Subagents immediately after `_plan.md` (continuous batching)      |
@@ -286,30 +286,9 @@ For very large documents, minimize analysis overhead:
 
 See [large-doc-processing.md](references/large-doc-processing.md#tier-3-fast-path) for `_plan.md` format, subagent prompt template, and workflow details.
 
-### 3.2 Content Inventory (`analysis/_inventory.md`)
+### 3.2 Content Inventory
 
-**Skip for Tier 3**: Use `structure.json` outline directly.
-
-Create section registry with IDs:
-
-```markdown
-| ID  | Section Title | Line Range | Words | Critical |
-| --- | ------------- | ---------- | ----- | -------- |
-| S01 | Introduction  | 1-50       | 650   |          |
-| S02 | Core Argument | 51-120     | 900   | \*       |
-```
-
-**\* Critical criteria** (mark if ANY match):
-
-* Contains >3 direct quotes
-
-* Defines foundational terms
-
-* Core thesis/argument
-
-* Data tables, specs, proofs, code blocks
-
-* Max 30% sections should be critical
+Use `structure.json` outline directly. Section IDs, line ranges, word counts, and critical markers are all available in `structure.json`.
 
 ### 3.3 Article Plan (`analysis/_plan.md`)
 
@@ -514,7 +493,7 @@ Each context file: `analysis/XX-{slug}-context.md`
 
 Before proceeding to Step 4, verify:
 
-* [ ] All sections have IDs (from structure.json or \_inventory.md)
+* [ ] All sections have IDs (from structure.json)
 
 * [ ] Critical sections marked (\* auto-detected in structure.json)
   * **Guideline**: Thường <=30% sections là critical

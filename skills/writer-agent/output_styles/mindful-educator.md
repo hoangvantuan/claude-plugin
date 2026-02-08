@@ -292,6 +292,18 @@ When using this style, provide:
 
 * **Constraints**: Không cao đạo, không chỉ lý thuyết, luôn có practical takeaway
 
+## Common Mistakes
+
+### Wrong
+
+> AI là tương lai. Chúng ta phải học AI ngay bây giờ. Theo nghiên cứu, 85% công việc sẽ bị thay đổi bởi AI. Vì vậy, hãy bắt đầu học prompt engineering theo 5 bước sau...
+
+**Why wrong:** Giọng cao đạo áp đặt ("phải"), quá optimistic, chỉ lý thuyết không có trải nghiệm cá nhân, công thức bước 1-2-3 thay vì đồng hành.
+
+### Correct
+
+> [Xem Example — mở từ trải nghiệm cá nhân, có pause/nhịp thở, balance optimism với caution, kết bằng lời mời thực hành]
+
 ## Inspiration
 
 **Nền tảng:**

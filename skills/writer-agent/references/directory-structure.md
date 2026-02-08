@@ -11,7 +11,6 @@ docs/generated/{book-name}/
 │   └── structure.json           # Document structure analysis
 │
 ├── analysis/                    # Step 3: Analysis artifacts
-│   ├── _inventory.md            # Section registry (Optional Tier 1-2, consider using structure.json directly)
 │   ├── _plan.md                 # Article grouping plan
 │   ├── _glossary.md             # Shared terminology (Tier 2 only)
 │   ├── _coverage.md             # Aggregated coverage report
@@ -31,7 +30,6 @@ docs/generated/{book-name}/
 | File | Tier 1 (<50K) | Tier 2 (50K-100K) | Tier 3 (>=100K) |
 |------|:---:|:---:|:---:|
 | `_plan.md` | Required | Required | Required (minimal) |
-| `_inventory.md` | Optional | Optional | Skip (use structure.json) |
 | `_glossary.md` | Skip (inline) | Required | Skip (inline) |
 | Context files | Skip | Required | Skip |
 | `_coverage.md` | Required | Required | Required |

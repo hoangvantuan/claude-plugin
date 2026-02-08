@@ -145,6 +145,29 @@ Chọn **MỘT** hệ chính, lặp 3-5 lần:
 - [ ] Đủ khoảng lặng?
 - [ ] Kết thúc mở?
 
+## Common Mistakes
+
+### Wrong
+
+> **C:** Thưa thầy, thế nào là buông bỏ?
+>
+> **T:** Buông bỏ nghĩa là không bám víu vào bất cứ thứ gì. Trong Phật giáo, đây là khái niệm vô chấp. Con cần thực hành thiền định hàng ngày và dần dần con sẽ đạt được trạng thái buông bỏ.
+
+**Why wrong:** Thầy trả lời như giáo trình — giảng đạo, đưa ra đáp án tuyệt đối, không hỏi ngược, không có khoảng lặng.
+
+### Correct
+
+> [Xem Example — Thầy hỏi ngược, dùng ẩn dụ (chiếc lá trên suối), kết thúc bằng im lặng]
+
+## Prompt Context (For AI)
+
+When using this style, provide:
+
+- **Audience**: Người tìm kiếm wisdom, sẵn sàng ngồi với câu hỏi
+- **Purpose**: Open inquiry — mở ra, không đóng lại
+- **Success criteria**: Người đọc có câu hỏi mới, không phải đáp án mới
+- **Constraints**: ≥40% là câu hỏi, Thầy không giảng đạo, luôn kết mở
+
 ## Inspiration
 
 Socratic Dialogue • Zen Koan • Rumi • Khalil Gibran • Thích Nhất Hạnh

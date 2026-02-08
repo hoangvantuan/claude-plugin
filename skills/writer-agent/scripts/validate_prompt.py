@@ -28,8 +28,6 @@ REQUIRED_ALL = [
     "{outputPath}",
     "{seriesList}",
     "{target_words}",
-    "{min_words}",
-    "{max_words}",
     "{detail_level}",
 ]
 

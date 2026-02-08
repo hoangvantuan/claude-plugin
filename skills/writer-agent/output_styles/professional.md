@@ -7,22 +7,24 @@ best_for:
   - Research summaries
   - Case studies
   - White papers
+  - Technology analysis
+  - Experiment reports
 reading_level: intermediate
 formality: high
 difficulty: medium
-version: 1.1.0
+version: 2.0.0
 ---
 # Professional (Chuyên Nghiệp)
 
 ## Philosophy
 
-Viết như một chuyên gia đang trình bày cho đồng nghiệp. Mục tiêu: truyền tải thông tin chính xác, có cấu trúc, và đáng tin cậy.
+Viết như một chuyên gia đang trình bày cho đồng nghiệp. Mục tiêu: truyền tải thông tin chính xác, có cấu trúc, và đáng tin cậy. Khi phù hợp, sử dụng thử nghiệm trực tiếp làm bằng chứng bên cạnh data và research.
 
-**Nguyên tắc:** Chính xác > Cảm xúc | Bằng chứng > Ý kiến | Rõ ràng > Hoa mỹ
+**Nguyên tắc:** Chính xác > Cảm xúc | Bằng chứng > Ý kiến | Rõ ràng > Hoa mỹ | Accessible > Academic
 
 ## Voice
 
-Xưng **"tác giả"** hoặc **không xưng** (passive voice khi cần). Giọng điệu khách quan, trung lập, có thẩm quyền nhưng không kiêu ngạo.
+Xưng **"tác giả"** hoặc **không xưng** (passive voice khi cần). Giọng điệu khách quan, trung lập, có thẩm quyền nhưng không kiêu ngạo. Tự tin nhưng cân bằng — thừa nhận giới hạn khi cần.
 
 ## Structure
 
@@ -34,7 +36,7 @@ Xưng **"tác giả"** hoặc **không xưng** (passive voice khi cần). Giọn
 
 ### 2. Development (Evidence-Based)
 
-- **Evidence**: Dữ liệu, nghiên cứu, case study
+- **Evidence**: Dữ liệu, nghiên cứu, case study, kết quả thử nghiệm
 - **Analysis**: Phân tích ý nghĩa của evidence
 - **Implications**: Hàm ý và ứng dụng
 
@@ -42,6 +44,7 @@ Mỗi phần có:
 - Heading rõ ràng
 - Transition logic giữa các ý
 - Citations khi cần thiết
+- Balance: cả cơ hội và giới hạn
 
 ### 3. Closing (Action-Oriented)
 
@@ -58,7 +61,8 @@ Mỗi phần có:
 - Quantify khi có thể: "47%" thay vì "gần một nửa"
 - Hedging có kiểm soát: "suggests", "indicates" cho kết quả không chắc chắn
 - Parallel structure trong danh sách
-- Câu 10-25 từ, tránh quá dài
+- Mix câu ngắn mạnh (5-10 từ) và câu chi tiết (15-25 từ) tạo rhythm
+- Giải thích thuật ngữ phức tạp bằng ngôn ngữ đơn giản khi cần
 
 ### DON'T
 
@@ -67,6 +71,7 @@ Mỗi phần có:
 - Colloquialisms và slang
 - Anecdotes cá nhân làm bằng chứng chính
 - Câu mơ hồ, không kiểm chứng được
+- Chỉ lạc quan hoặc chỉ bi quan — cần balance
 
 ## Example
 
@@ -74,7 +79,21 @@ Mỗi phần có:
 >
 > **Phân tích**: Dữ liệu từ deployment logs cho thấy việc phát hiện sớm integration failures đóng góp phần lớn vào việc ngăn ngừa sự cố. Cụ thể, 78% các issues được bắt tại CI/CD pipeline, trước khi đến môi trường staging.
 >
-> **Khuyến nghị**: Các tổ chức áp dụng practices tương tự có thể kỳ vọng cải thiện tương đương trong quý đầu tiên triển khai. Ưu tiên integration tests cho các API endpoints có traffic cao nhất.
+> Tuy nhiên, automated testing không thay thế hoàn toàn manual QA. Kết quả thử nghiệm trên 3 teams cho thấy: teams kết hợp cả hai phương pháp giảm 62% sự cố, trong khi teams chỉ dùng automated testing giảm 47%.
+>
+> **Khuyến nghị**: Triển khai hybrid approach — automated cho regression, manual cho UX và edge cases. Ưu tiên integration tests cho API endpoints có traffic cao nhất.
+
+## Common Mistakes
+
+### Wrong
+
+> Automated testing là một công nghệ tuyệt vời và đáng kinh ngạc. Nó giúp cải thiện đáng kể chất lượng phần mềm. Nhiều công ty đã áp dụng và thấy kết quả rất tốt. Chúng ta nên triển khai ngay.
+
+**Why wrong:** Từ cảm xúc ("tuyệt vời", "đáng kinh ngạc"), vague claims ("đáng kể", "rất tốt"), không có data, không có nuance.
+
+### Correct
+
+> [Xem Example — mỗi claim có data, có nuance, có recommendation cụ thể]
 
 ## Core Techniques
 
@@ -82,121 +101,90 @@ Mỗi phần có:
 
 Kết luận đầu tiên, chi tiết sau:
 
-```
-[Kết luận chính]
-↓
-[Bằng chứng hỗ trợ]
-↓
-[Phân tích chi tiết]
-↓
-[Khuyến nghị]
-```
-
-> **Pattern**: "X tăng/giảm Y% do Z. Cụ thể, [evidence]. Do đó, [recommendation]."
+> **Pattern**: "[Kết luận chính + metric]. Cụ thể, [evidence]. Do đó, [recommendation]."
 
 ### 2. Evidence Hierarchy
 
 Sắp xếp evidence theo độ tin cậy:
 
-| Tier | Loại Evidence | Khi nào dùng |
-| ---- | ------------- | ------------ |
-| **Tier 1** | Meta-analyses, systematic reviews | Khẳng định chắc chắn |
-| **Tier 2** | Randomized controlled trials | Kết luận mạnh |
-| **Tier 3** | Observational studies, surveys | Supporting evidence |
-| **Tier 4** | Case studies, expert opinions | Minh họa, context |
+| Tier       | Loại Evidence                       | Khi nào dùng               |
+| ---------- | ----------------------------------- | -------------------------- |
+| **Tier 1** | Meta-analyses, systematic reviews   | Khẳng định chắc chắn       |
+| **Tier 2** | Controlled trials, A/B tests        | Kết luận mạnh              |
+| **Tier 3** | Observational studies, experiments  | Supporting evidence         |
+| **Tier 4** | Case studies, expert opinions       | Minh họa, context          |
 
-### 3. Structured Argumentation
+### 3. Structured Argumentation (Minto Pyramid)
 
-Minto Pyramid cho lập luận phức tạp:
-
-```
-         [Governing Thought]
-              /    |    \
-     [Key Point] [Key Point] [Key Point]
-        /  \       /  \        /  \
-   [Support] [Support] [Support] [Support]
-```
+Governing Thought → Key Points → Supporting Evidence. Mỗi layer phải support layer trên.
 
 ### 4. Precision Language
 
-| Thay vì | Dùng |
-| ------- | ---- |
-| "nhiều" | "67%" hoặc "majority (>50%)" |
-| "gần đây" | "Q4 2024" hoặc "trong 6 tháng qua" |
-| "cải thiện đáng kể" | "cải thiện 23% so với baseline" |
-| "một số nghiên cứu" | "[Author, Year]" hoặc "N=3 studies" |
+| Thay vì               | Dùng                                    |
+| ---------------------- | --------------------------------------- |
+| "nhiều"               | "67%" hoặc "majority (>50%)"           |
+| "gần đây"             | "Q4 2024" hoặc "trong 6 tháng qua"    |
+| "cải thiện đáng kể"    | "cải thiện 23% so với baseline"         |
+| "một số nghiên cứu"    | "[Author, Year]" hoặc "N=3 studies"    |
 
-## Tone Calibration
+### 5. Experimentation as Evidence
 
-| Ngữ cảnh | Tone | Ví dụ |
-| -------- | ---- | ----- |
-| **Technical report** | Formal, data-heavy | "Kết quả benchmark cho thấy throughput tăng 2.3x..." |
-| **Business proposal** | Confident, benefit-focused | "Giải pháp này sẽ giảm operational costs 15%..." |
-| **Analysis** | Balanced, evidence-based | "Dữ liệu suggest rằng... tuy nhiên, cần xem xét..." |
-| **Recommendation** | Actionable, clear | "Khuyến nghị: Triển khai Phase 1 trong Q2..." |
+Khi có kết quả thử nghiệm trực tiếp, trình bày như evidence:
+
+> **Pattern**: "[Mô tả thử nghiệm] → [Kết quả quan sát] → [Implications] → [Giới hạn]"
+
+Luôn kèm giới hạn: sample size, điều kiện, reproducibility.
+
+### 6. Balance Optimism with Caution
+
+| Aspect       | Cách thể hiện                            |
+| ------------ | ---------------------------------------- |
+| **Tiềm năng** | "Kết quả cho thấy tiềm năng đáng kể..." |
+| **Giới hạn**  | "...tuy nhiên, cần xem xét [factors]"    |
+| **Rủi ro**    | "Rủi ro chính bao gồm..."               |
+| **Cơ hội**    | "Cơ hội áp dụng nếu [điều kiện]"        |
 
 ## Transition Phrases
 
-| Mục đích | Cụm từ |
-| -------- | ------ |
-| Giới thiệu evidence | "Dữ liệu cho thấy...", "Nghiên cứu indicates..." |
-| Phân tích | "Điều này suggests...", "Phân tích reveals..." |
-| Contrast | "Tuy nhiên,", "Ngược lại,", "Mặt khác," |
-| Causation | "Do đó,", "Kết quả là,", "Dẫn đến," |
-| Conclusion | "Tóm lại,", "Kết luận,", "Dựa trên analysis," |
-| Recommendation | "Khuyến nghị:", "Đề xuất:", "Next steps:" |
+| Mục đích          | Cụm từ                                              |
+| ----------------- | ---------------------------------------------------- |
+| Giới thiệu evidence | "Dữ liệu cho thấy...", "Nghiên cứu indicates..."   |
+| Phân tích         | "Điều này suggests...", "Phân tích reveals..."        |
+| Contrast          | "Tuy nhiên,", "Ngược lại,", "Mặt khác,"             |
+| Causation         | "Do đó,", "Kết quả là,", "Dẫn đến,"                 |
+| Conclusion        | "Tóm lại,", "Kết luận,", "Dựa trên analysis,"       |
+| Recommendation    | "Khuyến nghị:", "Đề xuất:", "Next steps:"             |
+| Experimentation   | "Kết quả thử nghiệm cho thấy...", "Testing reveals..." |
 
-## Citation & Reference
+## Tone Calibration
 
-### In-text Citations
-
-- **(Author, Year)**: "...cognitive load theory (Sweller, 1988)."
-- **Author (Year)**: "Kahneman (2011) argues that..."
-- **Multiple sources**: "(Smith, 2020; Jones, 2021)"
-
-### Data Attribution
-
-- Internal data: "Theo internal analytics (Q4 2024)..."
-- Third-party: "Theo báo cáo của McKinsey (2024)..."
-- Survey: "Khảo sát N=500 respondents cho thấy..."
-
-## Document Patterns
-
-### Technical Analysis
-
-```
-1. Executive Summary
-2. Background / Context
-3. Methodology
-4. Findings
-   - Finding 1: [Evidence + Analysis]
-   - Finding 2: [Evidence + Analysis]
-5. Discussion
-6. Recommendations
-7. Appendix (nếu cần)
-```
-
-### Business Case
-
-```
-1. Problem Statement
-2. Proposed Solution
-3. Cost-Benefit Analysis
-4. Risk Assessment
-5. Implementation Plan
-6. Metrics & KPIs
-```
+| Ngữ cảnh             | Tone                     | Ví dụ                                                |
+| -------------------- | ------------------------ | ---------------------------------------------------- |
+| **Technical report**  | Formal, data-heavy       | "Kết quả benchmark cho thấy throughput tăng 2.3x..." |
+| **Business proposal** | Confident, benefit-focused | "Giải pháp này sẽ giảm operational costs 15%..."     |
+| **Analysis**          | Balanced, evidence-based | "Dữ liệu suggest rằng... tuy nhiên, cần xem xét..." |
+| **Recommendation**    | Actionable, clear        | "Khuyến nghị: Triển khai Phase 1 trong Q2..."         |
+| **Exploratory**       | Curious, grounded        | "Kết quả thử nghiệm gợi ý một hướng tiếp cận mới..." |
 
 ## Pacing Rules
 
-| Yếu tố | Quy tắc |
-| ------ | ------- |
-| Đoạn văn | 3-6 câu, focused on one idea |
-| Câu | 10-25 từ, avoid >30 từ |
-| Headings | H2 cho major sections, H3 cho subsections |
-| Lists | Bullet cho items không có thứ tự, number cho steps/rankings |
-| Structured data | Dùng bullet points cho so sánh, không dùng tables |
-| Data points | Ít nhất 1/major claim |
+| Yếu tố         | Quy tắc                                                      |
+| --------------- | ------------------------------------------------------------ |
+| Đoạn văn        | 3-6 câu, focused on one idea                                 |
+| Câu             | Mix: ngắn (5-10 từ) cho punch, dài (15-25 từ) cho reasoning |
+| Headings        | H2 cho major sections, H3 cho subsections                    |
+| Lists           | Bullet cho items không thứ tự, number cho steps              |
+| Structured data | Dùng bullet points cho so sánh, không dùng tables            |
+| Data points     | Ít nhất 1/major claim                                        |
+
+## Prompt Context (For AI)
+
+When using this style, provide:
+
+- **Audience**: Decision makers, professionals, technical teams cần thông tin chính xác
+- **Purpose**: Inform, analyze, recommend — dựa trên evidence
+- **Success criteria**: Mỗi claim có evidence, mỗi section có value, người đọc có thể action
+- **Constraints**: Không emotional appeals, không vague claims, luôn có data hoặc evidence
 
 ## Quality Checklist
 
@@ -208,7 +196,7 @@ Minto Pyramid cho lập luận phức tạp:
 ### Development
 - [ ] Evidence-based cho mỗi claim?
 - [ ] Analysis logic và consistent?
-- [ ] Transitions smooth giữa sections?
+- [ ] Balance giữa opportunities và limitations?
 - [ ] Technical terms được định nghĩa?
 
 ### Closing
@@ -219,9 +207,9 @@ Minto Pyramid cho lập luận phức tạp:
 ### Overall
 - [ ] Tone objective và professional?
 - [ ] Không có emotional appeals?
-- [ ] Citations đầy đủ?
+- [ ] Mix câu ngắn + dài tạo rhythm?
 - [ ] Format consistent?
 
 ## Inspiration
 
-Barbara Minto (Pyramid Principle) • McKinsey Style • Harvard Business Review • The Economist • Nature/Science journals
+Barbara Minto (Pyramid Principle) • McKinsey Style • Harvard Business Review • The Economist • Paul Graham • Ben Thompson (Stratechery) • Nature/Science journals
