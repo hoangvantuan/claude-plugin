@@ -80,7 +80,7 @@ Write (static batching) → Synthesize → Verify
 
 * **Tier**: 2 (50K-100K words)
 
-* **Style**: Contemplative
+* **Style**: Mindful Educator
 
 | Metric             | Baseline (v1.9.x)   | Optimized (v1.10.0) | Improvement      |
 | ------------------ | ------------------- | ------------------- | ---------------- |
@@ -190,7 +190,7 @@ Write (static batching) → Synthesize → Verify
 
   * 12 articles: maximum batching efficiency (\~35%)
 
-* **Style complexity**: Professional/Casual styles faster than Introspective Narrative
+* **Style complexity**: Professional/Explanatory styles faster than Introspective Narrative
 
   * Simpler voice = faster generation
 

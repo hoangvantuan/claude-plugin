@@ -92,21 +92,15 @@ echo "{rewritten_content}" | .claude/skills/writer-agent/scripts/wa-paste-text -
 
 Use `AskUserQuestion` to confirm output style.
 
-| Style                    | File                          | Voice                           |
-| ------------------------ | ----------------------------- | ------------------------------- |
-| Professional             | `professional.md`             | Formal, data-driven, 3rd person |
-| Casual                   | `casual.md`                   | Friendly, 2nd person (you)      |
-| Contemplative            | `contemplative.md`            | Observational, "the writer"     |
-| Explanatory              | `explanatory.md`              | Teaching, "we" together         |
-| Ethan Mollick            | `ethan-mollick.md`            | Practitioner-explorer, "I"      |
-| Andrew Ng                | `andrew-ng.md`                | Educator-democratizer, warm     |
-| Thích Nhất Hạnh          | `thich-nhat-hanh.md`          | Mindful, compassionate, "we"    |
-| Mindful Educator         | `mindful-educator.md`         | Depth + practice + mindfulness  |
-| Thu Giang Nguyễn Duy Cần | `thu-giang-nguyen-duy-can.md` | Scholar, East-West philosophy   |
-| Introspective Narrative  | `introspective-narrative.md`  | Personal journey, "I"           |
-| Mindful Dialogue         | `mindful-dialogue.md`         | Master-student dialogue         |
-| Mindful Storytelling     | `mindful-storytelling.md`     | First person storytelling       |
-| Deep Dive                | `deep-dive.md`                | Investigative, assumption-challenging |
+| Style                   | File                         | Voice                                |
+| ----------------------- | ---------------------------- | ------------------------------------ |
+| Professional            | `professional.md`            | Formal, data-driven, 3rd person      |
+| Explanatory             | `explanatory.md`             | Teaching, "we" together              |
+| Mindful Educator        | `mindful-educator.md`        | Depth + practice + mindfulness       |
+| Introspective Narrative | `introspective-narrative.md` | Personal journey, "I"                |
+| Mindful Dialogue        | `mindful-dialogue.md`        | Master-student dialogue              |
+| Mindful Storytelling    | `mindful-storytelling.md`    | First person storytelling            |
+| Deep Dive               | `deep-dive.md`               | Investigative, assumption-challenging |
 
 Style files: `output_styles/{style}.md`
 
