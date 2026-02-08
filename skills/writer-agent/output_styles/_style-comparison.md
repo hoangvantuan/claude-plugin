@@ -18,6 +18,7 @@ Quick reference để chọn style phù hợp.
 | **Thích Nhất Hạnh**          | Reflective             | "Chúng ta" / inclusive | Medium    | Practice, gathas           | High    | Medium     |
 | **Mindful Educator**         | Reflective-Educational | "Tôi" / "Chúng ta"     | Medium    | Experiments, philosophy    | Medium  | Medium     |
 | **Thu Giang Nguyễn Duy Cần** | Reflective             | "Ta" / học giả         | Medium    | Classical quotes, analysis | Medium  | Hard       |
+| **Deep Dive**                | Analytical-Reflective  | "Chúng ta" / investigator | Medium | Questions, reasoning chains | Medium | Hard       |
 
 ## Best For Matrix
 
@@ -35,6 +36,7 @@ Quick reference để chọn style phù hợp.
 | Thích Nhất Hạnh          |         ★         |     ★★     |     ★★★    |     ★★    |        ★★       |     ★★★     |
 | Mindful Educator         |         ★★        |     ★★★    |     ★★★    |    ★★★    |        ★★       |      ★★     |
 | Thu Giang Nguyễn Duy Cần |         ★         |     ★★     |     ★★★    |     ★★    |        ★★       |      ★★     |
+| Deep Dive                |        ★★         |     ★★     |     ★★★    |     ★★    |        ★★       |      ★      |
 
 **Legend:** ★★★ = Best fit | ★★ = Good | ★ = Not recommended
 
@@ -59,6 +61,9 @@ Mục đích chính của bạn là gì?
 │   ├─ Đối thoại thầy-trò → Mindful Dialogue
 │   ├─ Narrative với insight → Mindful Storytelling
 │   └─ Kết hợp triết học + thực nghiệm + chánh niệm → Mindful Educator
+│
+├─ Đào sâu, phản biện, tư duy chủ động
+│   └─ Muốn hiểu sâu, thách thức giả định → Deep Dive
 ```
 
 ## Audience Match
@@ -77,6 +82,7 @@ Mục đích chính của bạn là gì?
 | Thích Nhất Hạnh          |    ★★★   |      ★★★     |    ★★    |       ★★★      |      ★★     |
 | Mindful Educator         |    ★★★   |      ★★★     |    ★★    |       ★★★      |      ★★     |
 | Thu Giang Nguyễn Duy Cần |    ★★    |      ★★★     |    ★★★   |       ★★       |      ★★     |
+| Deep Dive                |    ★★    |      ★★★     |    ★★★   |       ★★       |     ★★★     |
 
 ## Key Differentiators
 
@@ -125,6 +131,15 @@ Mục đích chính của bạn là gì?
 | Resolution | Open, questioning       | Open, new question     |
 | Best when  | Self-reflection         | Teaching through story |
 
+### Analytical-Reflective Styles
+
+| Aspect    | Deep Dive                  | Mindful Educator            | Thu Giang Nguyễn Duy Cần   |
+| --------- | -------------------------- | --------------------------- | --------------------------- |
+| Voice     | "Chúng ta" investigator    | "Tôi/Chúng ta" companion   | "Ta" scholar                |
+| Focus     | Assumptions, tensions      | Practice + mindfulness      | Classical philosophy        |
+| Questions | Genuine, evidence-driven   | Reflective, inviting        | Rhetorical, scholarly       |
+| Best when | Critical analysis needed   | Balance depth + practice    | East-West philosophy        |
+
 ## Quick Selection Guide
 
 **Cần chọn nhanh? Trả lời 3 câu hỏi:**
@@ -136,6 +151,8 @@ Mục đích chính của bạn là gì?
    * Cảm hứng → Casual, Introspective Narrative
 
    * Suy ngẫm → Contemplative, Mindful Dialogue, Mindful Storytelling
+
+   * Đào sâu, phản biện → Deep Dive
 
 2. **Bạn có dữ liệu/research không?**
 
@@ -160,6 +177,8 @@ Mục đích chính của bạn là gì?
    * Encouraging/Teacher → Andrew Ng
 
    * Balanced (depth + practice + mindfulness) → Mindful Educator
+
+   * Investigative → Deep Dive
 
 ## Default Fallback
 

@@ -106,6 +106,7 @@ Use `AskUserQuestion` to confirm output style.
 | Introspective Narrative  | `introspective-narrative.md`  | Personal journey, "I"           |
 | Mindful Dialogue         | `mindful-dialogue.md`         | Master-student dialogue         |
 | Mindful Storytelling     | `mindful-storytelling.md`     | First person storytelling       |
+| Deep Dive                | `deep-dive.md`                | Investigative, assumption-challenging |
 
 Style files: `output_styles/{style}.md`
 
