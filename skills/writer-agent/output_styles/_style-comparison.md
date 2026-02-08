@@ -161,3 +161,7 @@ Mục đích chính của bạn là gì?
 
    * Balanced (depth + practice + mindfulness) → Mindful Educator
 
+## Default Fallback
+
+All 12 output styles have a `## Structure` section defining their article organization pattern (Opening/Development/Closing or equivalent). The article-writer-prompt delegates structure to the style file. If a style's Structure section is too generic, subagents should use the default pattern: Opening → Main Sections → Closing, while still following the style's voice and tone.
+

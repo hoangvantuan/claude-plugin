@@ -344,6 +344,41 @@ Group sections into articles (default 3-7, or user-specified count):
 
 * Nếu user chỉ định số bài → tuân theo, không auto-split thêm
 
+**Content-Type Detection (tạo cùng lúc với plan):**
+
+Khi tạo `_plan.md`, xác định `content_type` cho mỗi article:
+
+| Content Type | Suggested Structure | Khi nào |
+|-------------|-------------------|---------|
+| `tutorial` | Problem → Solution → Steps → Practice | Hướng dẫn, how-to |
+| `conceptual` | Question → Exploration → Framework → Implications | Lý thuyết, triết học |
+| `narrative` | Scene → Conflict → Journey → Resolution | Câu chuyện, memoir |
+| `analysis` | Finding → Evidence → Discussion → Application | Nghiên cứu, report |
+| `mixed` | Follow output style's default Structure | Nội dung hỗn hợp |
+
+Detection signals:
+
+| Signal | Content Type |
+|--------|-------------|
+| Step-by-step headings, numbered lists, "how to" | `tutorial` |
+| Questions as headings, thesis statements, arguments | `conceptual` |
+| Narrative structure, characters, timeline | `narrative` |
+| Data tables, methodology, findings | `analysis` |
+| Mix of above | `mixed` (use dominant) |
+
+Ghi vào plan table:
+
+```markdown
+| #   | Slug  | Title         | Sections      | Est. Words | Content Type |
+| --- | ----- | ------------- | ------------- | ---------- | ------------ |
+| 1   | intro | Introduction  | S01, S02      | 2000       | conceptual   |
+| 2   | core  | Core Concepts | S03, S04, S05 | 2500       | tutorial     |
+```
+
+Subagent sử dụng: Embed `CONTENT_TYPE: {type}` vào prompt. Subagent ưu tiên:
+1. Output style's Structure (primary)
+2. Content-type hint (secondary, nếu style không có structure cụ thể cho loại này)
+
 **Series Context (QUAN TRỌNG - tạo cùng lúc với plan):**
 
 Khi tạo `_plan.md`, đồng thời xác định:
@@ -353,12 +388,16 @@ Khi tạo `_plan.md`, đồng thời xác định:
 
 Core message: "{1-2 câu thông điệp cốt lõi}"
 
-| #   | Title | Role        | Reader Journey           |
-| --- | ----- | ----------- | ------------------------ |
-| 1   | Intro | foundation  | Người đọc bắt đầu hiểu X |
-| 2   | Core  | development | Từ X, đi sâu vào Y       |
-| 3   | Adv   | climax      | Kết nối Y với Z          |
+| # | Title | Role | Reader Enters | Reader Exits | Bridge to Next |
+| 1 | Intro | foundation | Chưa biết X | Hiểu X cơ bản | "Nhưng X trong thực tế...?" |
+| 2 | Core | development | Hiểu X cơ bản | Nắm vững Y | "Y mở ra câu hỏi về Z..." |
+| 3 | Adv | climax | Nắm vững Y | Kết nối Y với Z | N/A (last) |
 ```
+
+**Cách tạo Reader Enters/Exits/Bridge:**
+- `Reader Enters`: Kiến thức người đọc có khi bắt đầu bài (từ bài trước hoặc kiến thức nền)
+- `Reader Exits`: Kiến thức người đọc đạt được sau bài (dẫn tới bài sau)
+- `Bridge to Next`: 1 câu gợi tò mò kết nối bài này với bài tiếp (KHÔNG dùng "Trong phần tiếp theo...")
 
 Thông tin này sẽ được embed vào `SERIES_CONTEXT` block trong mỗi subagent prompt (xem [article-writer-prompt.md](references/article-writer-prompt.md#series-context-block)).
 
@@ -532,7 +571,7 @@ Write `00-overview.md` in **main context**:
 
 **Phase 1 content**:
 
-* Hook + Introduction + Why It Matters + What You'll Learn
+* Surprising insight + Micro-story + Core questions + Why It Matters
 
 * Placeholder sections for Điểm chính and Mục lục
 
