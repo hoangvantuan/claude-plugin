@@ -145,7 +145,7 @@ Agent: An autonomous software component that can make decisions and take actions
 Subagent: A specialized agent spawned for a specific task
 Context window: The amount of text an LLM can process at once
 Tier: Processing strategy based on document size
-Critical section: Content that must be included verbatim
+Critical section: Content that must be faithfully rewritten (100% meaning preserved, Vietnamese, style voice)
 Coverage: Percentage of source sections used in output
 ```
 

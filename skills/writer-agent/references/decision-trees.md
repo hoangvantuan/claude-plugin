@@ -47,7 +47,7 @@ tier == 1 (< 50K)?
 │
 ├─ tier == 2 (50K-100K)?
 │   └─ Tier 2: Smart Compression
-│       ├─ * Critical sections → Full verbatim (never summarize)
+│       ├─ * Critical sections → Full source in context file (article writer faithful rewrites)
 │       └─ Supporting sections → Summarize
 │       └─ Create context files + _glossary.md
 │       └─ RECOMMEND: Use subagents

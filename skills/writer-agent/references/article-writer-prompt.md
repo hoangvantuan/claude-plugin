@@ -40,11 +40,11 @@ All tier templates include these identical blocks. Defined once here to avoid du
 ### LANGUAGE Block
 ```
 LANGUAGE:
-- Write ENTIRE article in Vietnamese
+- Write ENTIRE article in Vietnamese — NO exceptions, including ⭐ critical sections
 - Keep technical terms in English with Vietnamese explanation when first introduced
 - Example: "user role modeling (mô hình hóa vai trò người dùng)"
 - ALL prose, explanations, transitions MUST be in Vietnamese
-- Only preserve exact quotes from source in original language
+- DO NOT keep any section in source's original language — everything must be rewritten in Vietnamese
 ```
 
 ### FORMATTING Block
@@ -58,12 +58,13 @@ FORMATTING (CRITICAL):
 ### REWRITE RULE Block
 ```
 REWRITE RULE (CRITICAL):
-- MUST rewrite ALL non-critical content in YOUR voice following the output style
-- DO NOT copy-paste sentences or paragraphs from source
+- MUST rewrite ALL content in YOUR voice following the output style — INCLUDING ⭐ critical sections
+- DO NOT copy-paste sentences or paragraphs from source (no exceptions)
 - Source = WHAT ideas to express, Style = HOW to express them
 - Transform source ideas into the style's voice, structure, and language patterns
-- Only [Sxx]* critical sections may keep verbatim source text
-- If a paragraph matches source word-for-word → FAIL (except [Sxx]*)
+- ⭐ critical sections: faithful rewrite — giữ 100% ý nghĩa, KHÔNG tóm tắt, viết lại bằng tiếng Việt + style voice
+- Non-critical sections: rewrite freely (có thể tóm tắt theo detail level)
+- If a paragraph matches source word-for-word → FAIL (no exceptions)
 ```
 
 ### WRITING QUALITY Block
@@ -99,7 +100,7 @@ COVERAGE (determines PASS/FAIL):
 | Section | Status |
 |---------|--------|
 | S01 | ✅ {how_used} |
-| S02 ⭐ | ✅ verbatim |
+| S02 ⭐ | ✅ faithful |
 RESULT: {PASS if all sections covered, FAIL if missing}
 SERIES_LIST: {YES/NO}
 VERIFY: "quote..." (L45), "quote..." (L128)
@@ -167,7 +168,7 @@ Task tool:
 
     RULES:
     - Source ONLY, no fabrication
-    - [Sxx]* sections = FULL verbatim
+    - [Sxx]* sections = faithful rewrite (100% meaning, Vietnamese, style voice — KHÔNG tóm tắt)
     - Non-critical sections = MUST rewrite in style voice
     - MUST end with "## Các bài viết trong series" section (MANDATORY - article FAILS without this)
     - Mark current article with _(đang xem)_
@@ -244,7 +245,7 @@ Task tool:
 
     RULES:
     - Source content ONLY
-    - [Sxx]* = FULL verbatim, never summarize
+    - [Sxx]* = faithful rewrite (100% meaning, Vietnamese, style voice — KHÔNG tóm tắt)
     - Non-critical sections = MUST rewrite in style voice
     - Preserve terminology
     - 100% reader-facing, no metadata in output
@@ -322,7 +323,7 @@ Task tool:
 
     RULES:
     - Source content ONLY
-    - [Sxx]* = FULL verbatim, never summarize
+    - [Sxx]* = faithful rewrite (100% meaning, Vietnamese, style voice — KHÔNG tóm tắt)
     - Non-critical sections = MUST rewrite in style voice
     - Preserve terminology
     - 100% reader-facing, no metadata in output
@@ -335,12 +336,12 @@ Task tool:
 
 ### Detail Level Parameters
 
-| Level         | critical\_handling | non\_critical\_handling  | example\_percentage | Target Reading Time |
-| ------------- | ------------------ | ------------------------ | ------------------- | ------------------- |
-| Concise       | Full verbatim      | 1-2 sentences each       | 30%                 | \~5 min             |
-| Standard      | Full verbatim      | Summarize + key examples | 60%                 | \~10 min            |
-| Comprehensive | Full verbatim      | Most content             | 85%                 | \~13 min            |
-| Faithful      | Full verbatim      | Full content             | 100%                | \~15 min            |
+| Level         | critical\_handling                    | non\_critical\_handling  | example\_percentage | Target Reading Time |
+| ------------- | ------------------------------------- | ------------------------ | ------------------- | ------------------- |
+| Concise       | Full faithful rewrite (100% meaning)  | 1-2 sentences each       | 30%                 | \~5 min             |
+| Standard      | Full faithful rewrite (100% meaning)  | Summarize + key examples | 60%                 | \~10 min            |
+| Comprehensive | Full faithful rewrite (100% meaning)  | Most content             | 85%                 | \~13 min            |
+| Faithful      | Full faithful rewrite (100% meaning)  | Full content             | 100%                | \~15 min            |
 
 **Reading Time Targets (\~13-15 minutes per article):**
 
@@ -579,12 +580,12 @@ Task tool:
     3. [Next Topic](./03-next.md)
 
     REWRITE RULE (CRITICAL):
-    - MUST rewrite ALL non-critical content in YOUR voice following the output style
-    - DO NOT copy-paste sentences or paragraphs from source
+    - MUST rewrite ALL content in YOUR voice following the output style — INCLUDING ⭐ critical sections
+    - DO NOT copy-paste sentences or paragraphs from source (no exceptions)
     - Source = WHAT ideas to express, Style = HOW to express them
     - Transform source ideas into the style's voice, structure, and language patterns
-    - Only [Sxx]* critical sections may keep verbatim source text
-    - If a paragraph matches source word-for-word → FAIL (except [Sxx]*)
+    - ⭐ critical sections: faithful rewrite — giữ 100% ý nghĩa, KHÔNG tóm tắt, viết lại bằng tiếng Việt + style voice
+    - If a paragraph matches source word-for-word → FAIL (no exceptions)
 
     WRITING QUALITY (CRITICAL):
     - Opening (Part 1): Compelling hook, NOT "Trong bài này..."
@@ -595,7 +596,7 @@ Task tool:
 
     RULES:
     - Source content ONLY, no fabrication
-    - [Sxx]* = FULL verbatim, never summarize
+    - [Sxx]* = faithful rewrite (100% meaning, Vietnamese, style voice — KHÔNG tóm tắt)
     - Non-critical sections = MUST rewrite in style voice
     - Do NOT repeat content from previous parts
     - Reference previous parts naturally, not mechanically
@@ -613,7 +614,7 @@ Task tool:
     | Section | Status |
     |---------|--------|
     | S01 | ✅ {how_used} |
-    | S02 ⭐ | ✅ verbatim |
+    | S02 ⭐ | ✅ faithful |
     RESULT: {PASS if all sections covered, FAIL if missing}
     SERIES_LIST: {YES/NO}
     VERIFY: "quote..." (L45), "quote..." (L128)

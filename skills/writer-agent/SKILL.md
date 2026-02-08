@@ -649,7 +649,7 @@ COVERAGE (determines PASS/FAIL):
 | Section | Status |
 |---------|--------|
 | S01 | ✅ quoted |
-| S02 ⭐ | ✅ verbatim |
+| S02 ⭐ | ✅ faithful |
 RESULT: PASS # PASS nếu all sections covered
 ```
 
@@ -665,9 +665,13 @@ Main agent enriches with "Assigned To" and "Used In" columns → aggregates into
 
 ### 4.5 Critical Sections
 
-**\* sections MUST be included verbatim**:
+**⭐ sections MUST be faithfully rewritten** (không tóm tắt, không bỏ ý):
 
-* Never summarize critical sections
+* Giữ 100% ý nghĩa và thông tin gốc — KHÔNG được tóm tắt hay lược bỏ
+
+* PHẢI viết lại bằng tiếng Việt theo voice của output style đã chọn
+
+* KHÔNG copy nguyên văn từ source
 
 * If unable to include fully → flag for review
 
@@ -741,7 +745,7 @@ Collect subagent coverage tables → aggregate into `analysis/_coverage.md`
 | Section | Assigned To   | Used In       | Status        |
 | ------- | ------------- | ------------- | ------------- |
 | S01     | 01-article.md | 01-article.md | ✅ summarized |
-| S02 ⭐  | 01-article.md | 01-article.md | ✅ verbatim   |
+| S02 ⭐  | 01-article.md | 01-article.md | ✅ faithful   |
 
 - Total: {N} | Used: {N} | Missing: {N}
 ```
@@ -752,7 +756,7 @@ Collect subagent coverage tables → aggregate into `analysis/_coverage.md`
 
 * Column 4:
 
-  * For used sections: `✅` followed by one of: `used`, `verbatim`, `quoted`, `summarized`
+  * For used sections: `✅` followed by one of: `used`, `faithful`, `quoted`, `summarized`
 
   * For skipped sections: `⚠️ skipped` (requires Notes column with reason)
 
@@ -833,7 +837,7 @@ Coverage results:
 
 * [ ] \_coverage.md reported (>=95% target, >=90% acceptable)
 
-* [ ] Critical \* sections included (verbatim preferred)
+* [ ] Critical ⭐ sections included (faithful rewrite — 100% meaning, Vietnamese, style voice)
 
 * [ ] Warnings logged for any skipped sections
 
@@ -861,13 +865,13 @@ See [retry-workflow.md](references/retry-workflow.md) for user decision flow.
 
 * Use ONLY source material, no fabrication
 
-* **REWRITE all non-critical content in output style voice** - Source defines WHAT to say, Style defines HOW to say it
+* **REWRITE ALL content in output style voice** — Source defines WHAT to say, Style defines HOW to say it
 
-* DO NOT copy-paste sentences from source (except \* critical sections)
+* DO NOT copy-paste sentences from source (bao gồm cả ⭐ critical sections)
 
-* Maintain original terminology (terms stay the same, but sentences must be rewritten)
+* Maintain original terminology (thuật ngữ giữ nguyên, nhưng câu văn phải được viết lại)
 
-* \* Critical sections: verbatim, never summarize
+* ⭐ Critical sections: faithful rewrite — giữ 100% ý nghĩa, KHÔNG tóm tắt, viết lại bằng tiếng Việt + style voice
 
 * Non-critical sections: MUST be rewritten in the selected output style's voice, structure, and language patterns
 

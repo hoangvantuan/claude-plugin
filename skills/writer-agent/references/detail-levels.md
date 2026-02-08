@@ -20,7 +20,7 @@ ratio: 15-25%
 use_case: Người đọc bận, cần overview nhanh
 
 content_handling:
-  critical_sections: Full content, verbatim
+  critical_sections: Full content, faithful rewrite (100% meaning, Vietnamese, style voice)
   non_critical: 1-2 câu tóm tắt mỗi section
   examples: Giữ ~30%, chọn tiêu biểu nhất
   quotes: Chỉ quotes quan trọng nhất
@@ -35,7 +35,7 @@ ratio: 30-40%
 use_case: Cân bằng giữa chi tiết và ngắn gọn
 
 content_handling:
-  critical_sections: Full content, verbatim
+  critical_sections: Full content, faithful rewrite (100% meaning, Vietnamese, style voice)
   non_critical: Summarize nhưng giữ key examples
   examples: Giữ ~60%
   quotes: Giữ key quotes
@@ -50,7 +50,7 @@ ratio: 50-65%
 use_case: Người muốn học sâu, tham khảo
 
 content_handling:
-  critical_sections: Full content, verbatim
+  critical_sections: Full content, faithful rewrite (100% meaning, Vietnamese, style voice)
   non_critical: Include most content, light editing
   examples: Giữ ~85%
   quotes: Giữ most quotes
@@ -65,7 +65,7 @@ ratio: 75-90%
 use_case: Archive, reference, cần giữ gần như đầy đủ nội dung
 
 content_handling:
-  critical_sections: Full content, verbatim
+  critical_sections: Full content, faithful rewrite (100% meaning, Vietnamese, style voice)
   non_critical: Full content, viết lại theo style
   examples: Giữ 100%
   quotes: Giữ all quotes
@@ -83,7 +83,7 @@ style_application: |
 
 ```yaml
 section_coverage: 100%        # Tất cả sections phải được đề cập
-critical_verbatim: 100%       # Critical sections MUST be 100% verbatim at ALL detail levels
+critical_faithful: 100%      # Critical sections MUST preserve 100% meaning (faithful rewrite) at ALL detail levels
 
 # IMPORTANT: Word count chỉ mang tính thống kê
 # - PASS/FAIL dựa trên section_coverage (100%)
@@ -91,7 +91,7 @@ critical_verbatim: 100%       # Critical sections MUST be 100% verbatim at ALL d
 # - Target ratio là tham khảo, không phải yêu cầu bắt buộc
 
 # NOTE: Concise mode may exceed target ratio when critical sections are large.
-# Priority: section_coverage (100%) > critical_verbatim (100%) > output_ratio.
+# Priority: section_coverage (100%) > critical_faithful (100%) > output_ratio.
 # If content is complete but word count differs from target, ACCEPT as-is.
 ```
 
@@ -154,7 +154,7 @@ COVERAGE (determines PASS/FAIL):
 | Section | Status |
 |---------|--------|
 | S01 | ✅ summarized |
-| S02 ⭐ | ✅ verbatim |
+| S02 ⭐ | ✅ faithful |
 RESULT: {PASS if all sections covered, FAIL if missing}
 MODE: {detail_level}
 

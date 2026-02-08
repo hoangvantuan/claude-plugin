@@ -93,7 +93,7 @@ Write (static batching) → Synthesize → Verify
 
 * Continuous batching (max\_concurrent=3)
 
-* Smart context compression (critical sections verbatim, others summarized)
+* Smart context compression (critical sections full source for faithful rewrite, others summarized)
 
 **Note**: Tier 2 still uses context files due to document size (50K-100K). Context savings smaller than Tier 1.
 

@@ -68,7 +68,7 @@ direct_path.eligible AND direct_path.capacity_ok?
 
 ### Tier 1: Full Content (20K-50K words)
 
-Extract entire source verbatim.
+Extract entire source for context (intermediate file). Article writer sẽ rewrite tất cả.
 
 ```markdown
 # {Article Title}
@@ -76,15 +76,15 @@ TIER:1 | LINES:1-500 | WORDS:8500 | CRIT:S02,S05
 
 ## Content
 [S01] {Title}
-{Verbatim text}
+{Source text}
 
 [S02]* {Critical Title}
-{FULL verbatim - never summarize}
+{FULL source text — article writer sẽ faithful rewrite sang Vietnamese + style voice}
 ```
 
 ### Tier 2: Smart Compression (50K-100K words)
 
-1. Critical sections (*): Keep FULL verbatim (never summarize)
+1. Critical sections (*): Keep FULL source in context file (article writer sẽ faithful rewrite)
 2. Supporting sections: Summarize
 
 ```markdown
@@ -93,10 +93,10 @@ TIER:2 | LINES:1-1500 | WORDS:25K | CRIT:S02,S05
 
 ## Content
 [S01] {Title}
-{Verbatim text}
+{Source text}
 
 [S02]* {Critical Title}
-{FULL verbatim}
+{FULL source text — article writer sẽ faithful rewrite}
 
 [S03] {Supporting} [SUMMARIZED]
 Key points:
