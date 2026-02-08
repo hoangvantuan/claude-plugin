@@ -210,6 +210,8 @@ See [detail-levels.md](references/detail-levels.md) for full specification.
 - Documents 20K-50K with ≤3 articles use Direct Path (not Tier 1)
 - Only documents failing Direct Path conditions fall through to tier selection
 
+> **Note**: Direct Path `<50K` condition is further limited by language: EN ~44K, VI ~32K, mixed ~38K words. These limits are pre-computed in `structure.json → direct_path.capacity_ok`. If capacity exceeded, fallback to Tier 1.
+
 **Key differences:**
 
 - Direct Path: Main agent handles everything (no subagents)
@@ -446,9 +448,10 @@ word_count < 50,000 (Tier 1)?
 │   └─ Saves 1 Read call per subagent (~400 words saved)
 │
 ├─ 50,000 <= word_count < 100,000 (Tier 2)?
-│   └─ SKIP inline extraction (context extractors in Step 3.5 will create _glossary.md)
-│       └─ Article writers (Step 4) will read shared _glossary.md file (~600 words)
-│       └─ More comprehensive terminology than inline approach
+│   └─ Extract seed glossary (~200 words) from first ~300 lines
+│       └─ Feed to context extractors in Step 3.5 as {inline_glossary} input
+│       └─ Context extractors produce comprehensive _glossary.md (~600 words)
+│       └─ Article writers (Step 4) read shared _glossary.md file
 │
 └─ word_count >= 100,000 (Tier 3)?
     └─ Extract inline glossary (~300 words) from first ~500 lines
@@ -628,7 +631,7 @@ After each article completes, update TaskUpdate:
 
 **When to use** Skeleton-of-Thought: estimated output >2000 words AND >=5 subsections (H3 preferred, fallback to H2).
 
-**Quick decision**: `h3_count >= 5` → SoT. `h3 == 0 AND h2 >= 5` → SoT. Otherwise → standard write.
+**Quick decision**: `h3_count >= 5` → SoT. `h3 == 0 AND h2 >= 5` → SoT. `h3 + h2 >= 5` → SoT. Otherwise → standard write.
 
 **Workflow**: Phase 1 (skeleton) → Phase 2 (expand ALL sections parallel) → Phase 3 (merge + transitions)
 
@@ -656,8 +659,8 @@ RESULT: PASS # PASS nếu all sections covered
 
 **Tiêu chí PASS/FAIL:**
 
-- **PASS**: Tất cả sections được assigned đều được covered (100% section coverage)
-- **FAIL**: Có section bị missing hoặc skipped không hợp lệ
+- **PASS**: Tất cả assigned sections được covered HOẶC skipped với lý do hợp lệ (redundant, off-topic, user instruction)
+- **FAIL**: Có section bị missing hoặc skipped không hợp lệ (không có lý do, hoặc "too long" / "already covered" thiếu reference)
 - **Word count**: Chỉ thống kê, KHÔNG ảnh hưởng PASS/FAIL
 
 Main agent enriches with "Assigned To" and "Used In" columns → aggregates into `_coverage.md` (4-column format, see [Step 5.2](#52-coverage-aggregation)).
