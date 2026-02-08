@@ -21,6 +21,8 @@ SERIES_CONTEXT:
   prev_article: "{Tên bài trước} - {1 câu tóm tắt nội dung chính}"
   next_article: "{Tên bài sau} - {1 câu tóm tắt nội dung chính}"
   reader_journey: "{Đến bài này, người đọc đã hiểu X, bài này sẽ đưa họ đến Y}"
+  reader_enters: "{Người đọc biết X nhưng chưa hiểu Y}"
+  reader_exits: "{Người đọc hiểu Y và muốn biết Z}"
 ```
 
 **Cách main agent tạo Series Context:**
@@ -28,6 +30,82 @@ SERIES_CONTEXT:
 2. core_message: trích từ thông điệp cốt lõi trong plan hoặc structure.json
 3. prev/next: tóm tắt 1 câu từ article titles trong plan
 4. reader_journey: mô tả progression logic
+5. reader_enters: mô tả kiến thức người đọc có khi bắt đầu bài (từ bài trước)
+6. reader_exits: mô tả kiến thức người đọc đạt được sau bài (dẫn tới bài sau)
+
+## Shared Rules (Referenced by All Tier Templates)
+
+All tier templates include these identical blocks. Defined once here to avoid duplication.
+
+### LANGUAGE Block
+```
+LANGUAGE:
+- Write ENTIRE article in Vietnamese
+- Keep technical terms in English with Vietnamese explanation when first introduced
+- Example: "user role modeling (mô hình hóa vai trò người dùng)"
+- ALL prose, explanations, transitions MUST be in Vietnamese
+- Only preserve exact quotes from source in original language
+```
+
+### FORMATTING Block
+```
+FORMATTING (CRITICAL):
+- NO markdown tables - convert to bullet lists
+- NO diagrams (mermaid, ASCII art, flowcharts) - describe in prose or bullets
+- Use bullet points for comparisons, lists, and structured data
+```
+
+### REWRITE RULE Block
+```
+REWRITE RULE (CRITICAL):
+- MUST rewrite ALL non-critical content in YOUR voice following the output style
+- DO NOT copy-paste sentences or paragraphs from source
+- Source = WHAT ideas to express, Style = HOW to express them
+- Transform source ideas into the style's voice, structure, and language patterns
+- Only [Sxx]* critical sections may keep verbatim source text
+- If a paragraph matches source word-for-word → FAIL (except [Sxx]*)
+```
+
+### WRITING QUALITY Block
+```
+WRITING QUALITY (CRITICAL):
+- Opening/Closing: Follow the style's Opening and Closing guidelines
+- Narrative flow: Each section leads naturally to the next
+- Depth over breadth: Go deep on 2-3 key ideas
+- Draw connections: Link ideas to SERIES_CONTEXT.core_message
+- BLACKLIST phrases: "Trong phần tiếp theo...", "Tóm lại,...", "Bài viết đã trình bày..."
+```
+
+### CONTENT PRIORITY Block
+```
+CONTENT PRIORITY:
+- FIRST: Cover ALL ideas from source sections completely
+- SECOND: Rewrite in output style voice (NOT copy source text)
+- THIRD: Write naturally, word count is for statistics only
+- If all sections covered AND rewritten in style → PASS
+- DO NOT rewrite to hit word count targets
+- Quality content coverage + style compliance > arbitrary word targets
+```
+
+### RETURN FORMAT Block
+```
+RETURN FORMAT (CRITICAL - Table format):
+- Article content ALREADY saved to {outputPath}
+- DO NOT return article content in message
+- Return ONLY this summary:
+
+DONE: {filename} | {N} words (stats)
+COVERAGE (determines PASS/FAIL):
+| Section | Status |
+|---------|--------|
+| S01 | ✅ {how_used} |
+| S02 ⭐ | ✅ verbatim |
+RESULT: {PASS if all sections covered, FAIL if missing}
+SERIES_LIST: {YES/NO}
+VERIFY: "quote..." (L45), "quote..." (L128)
+[Max 3 quotes, each ≤30 chars]
+[Mark critical with ⭐, skipped with ⚠️]
+```
 
 ## Tier 3 Compact Template (>=100K words)
 
@@ -54,37 +132,38 @@ Task tool:
       prev_article: "{prevArticleSummary}"
       next_article: "{nextArticleSummary}"
       reader_journey: "{readerJourney}"
+      reader_enters: "{readerEnters}"
+      reader_exits: "{readerExits}"
 
     SERIES_LIST:
     {seriesList}
 
-    LANGUAGE:
-    - Write ENTIRE article in Vietnamese
-    - Keep technical terms in English with Vietnamese explanation when first introduced
-    - Example: "user role modeling (mô hình hóa vai trò người dùng)"
-    - ALL prose, explanations, transitions MUST be in Vietnamese
-    - Only preserve exact quotes from source in original language
+    [Include LANGUAGE block from Shared Rules above]
+    [Include FORMATTING block from Shared Rules above]
 
-    FORMATTING (CRITICAL):
-    - NO markdown tables - convert to bullet lists
-    - NO diagrams (mermaid, ASCII art, flowcharts) - describe in prose or bullets
-    - Use bullet points for comparisons, lists, and structured data
+    STRUCTURE:
+    - Follow the Structure section in the output style file for article organization
+    - If style has Opening/Development/Closing → use that pattern
+    - If style has Scene/Encounter/Deepening/Transformation → use that pattern
+    - MANDATORY constraints (override style):
+      1. Title (H1) - descriptive, evocative
+      2. Before "## Các bài viết trong series", add a brief narrative bridge (1-2 sentences)
+         that creates natural curiosity for the next article.
+         Format: A question, image, or thought connecting this article's conclusion to the next.
+         DO NOT use: "Trong phần tiếp theo...", "Bài tiếp theo sẽ..."
+      3. Must end with "## Các bài viết trong series" (mark current with _(đang xem)_)
+    - The style's Structure section defines HOW to organize content
+    - The source sections [Sxx] define WHAT content to include
 
-    REWRITE RULE (CRITICAL):
-    - MUST rewrite ALL content in YOUR voice following the output style
-    - DO NOT copy-paste sentences or paragraphs from source
-    - Source = WHAT ideas to express, Style = HOW to express them
-    - Transform source ideas into the style's voice, structure, and language patterns
-    - Only [Sxx]* critical sections may keep verbatim source text
-    - If a paragraph matches source word-for-word → FAIL (except [Sxx]*)
+    CONTENT_TYPE: {contentType}
+    # Hint: Use this to adapt structure if the style's Structure section is generic.
+    # tutorial → include practical steps/examples
+    # conceptual → include thought experiments/frameworks
+    # narrative → include scenes/character development
+    # analysis → include evidence hierarchy/methodology
 
-    WRITING QUALITY (CRITICAL):
-    - Opening: Start with a compelling hook (question, image, moment) - NOT "Trong bài này..."
-    - Narrative flow: Each section should lead naturally to the next via logical or emotional bridge
-    - Depth: When an idea is important, go DEEP (examples, implications, questions) rather than listing
-    - Connections: Draw connections between ideas within this article AND to series theme
-    - Closing: End with resonance (question, image, invitation) - NOT a mechanical summary
-    - AVOID: "Trong phần tiếp theo...", "Tóm lại,...", "Bài viết này đã trình bày..."
+    [Include REWRITE RULE block from Shared Rules above]
+    [Include WRITING QUALITY block from Shared Rules above]
 
     RULES:
     - Source ONLY, no fabrication
@@ -94,28 +173,8 @@ Task tool:
     - Mark current article with _(đang xem)_
     - Focus on content coverage, word count is reference only
 
-    CONTENT PRIORITY:
-    - FIRST: Cover ALL ideas from source sections completely
-    - SECOND: Rewrite in output style voice (NOT copy source text)
-    - THIRD: Write naturally, word count is for statistics only
-    - If all sections covered AND rewritten in style → PASS
-    - DO NOT rewrite to hit word count targets
-    - Quality content coverage + style compliance > arbitrary word targets
-
-    RETURN (CRITICAL - Compact format):
-    - Article content ALREADY saved to {outputPath}
-    - DO NOT return article content in message
-    - Return ONLY this summary:
-
-    DONE: {filename} | {N} words (stats)
-    COVERAGE (determines PASS/FAIL):
-    | Section | Status |
-    |---------|--------|
-    | S01 | ✅ {how_used} |
-    RESULT: {PASS if all sections covered, FAIL if missing}
-    SERIES_LIST: {YES/NO}
-    VERIFY: "..." (L{x}), "..." (L{y})
-    [Max 3 quotes, each ≤30 chars]
+    [Include CONTENT PRIORITY block from Shared Rules above]
+    [Include RETURN FORMAT block from Shared Rules above]
 ```
 
 ## Standard Template - Tier 1 Variant (Inline Glossary)
@@ -150,44 +209,38 @@ Task tool:
       prev_article: "{prevArticleSummary}"
       next_article: "{nextArticleSummary}"
       reader_journey: "{readerJourney}"
+      reader_enters: "{readerEnters}"
+      reader_exits: "{readerExits}"
 
     SERIES_LIST:
     {seriesList}
 
-    LANGUAGE:
-    - Write ENTIRE article in Vietnamese
-    - Keep technical terms in English with Vietnamese explanation when first introduced
-    - Example: "user role modeling (mô hình hóa vai trò người dùng)"
-    - ALL prose, explanations, transitions MUST be in Vietnamese
-    - Only preserve exact quotes from source in original language
-
-    FORMATTING (CRITICAL):
-    - NO markdown tables - convert to bullet lists
-    - NO diagrams (mermaid, ASCII art, flowcharts) - describe in prose or bullets
-    - Use bullet points for comparisons, lists, and structured data
+    [Include LANGUAGE block from Shared Rules above]
+    [Include FORMATTING block from Shared Rules above]
 
     STRUCTURE:
-    1. Title (H1) - descriptive, evocative, NOT just section name
-    2. Hook intro - compelling opening (question, image, moment, NOT "Trong bài này...")
-    3. Main sections (from source [Sxx]) - with narrative bridges between sections
-    4. Closing - resonant ending (question, image, invitation, NOT mechanical summary)
-    5. "## Các bài viết trong series" section (MANDATORY - mark current with _(đang xem)_)
+    - Follow the Structure section in the output style file for article organization
+    - If style has Opening/Development/Closing → use that pattern
+    - If style has Scene/Encounter/Deepening/Transformation → use that pattern
+    - MANDATORY constraints (override style):
+      1. Title (H1) - descriptive, evocative
+      2. Before "## Các bài viết trong series", add a brief narrative bridge (1-2 sentences)
+         that creates natural curiosity for the next article.
+         Format: A question, image, or thought connecting this article's conclusion to the next.
+         DO NOT use: "Trong phần tiếp theo...", "Bài tiếp theo sẽ..."
+      3. Must end with "## Các bài viết trong series" (mark current with _(đang xem)_)
+    - The style's Structure section defines HOW to organize content
+    - The source sections [Sxx] define WHAT content to include
 
-    REWRITE RULE (CRITICAL):
-    - MUST rewrite ALL non-critical content in YOUR voice following the output style
-    - DO NOT copy-paste sentences or paragraphs from source
-    - Source = WHAT ideas to express, Style = HOW to express them
-    - Transform source ideas into the style's voice, structure, and language patterns
-    - Only [Sxx]* critical sections may keep verbatim source text
-    - If a paragraph matches source word-for-word → FAIL (except [Sxx]*)
+    CONTENT_TYPE: {contentType}
+    # Hint: Use this to adapt structure if the style's Structure section is generic.
+    # tutorial → include practical steps/examples
+    # conceptual → include thought experiments/frameworks
+    # narrative → include scenes/character development
+    # analysis → include evidence hierarchy/methodology
 
-    WRITING QUALITY (CRITICAL):
-    - Opening: Start with a compelling hook - NOT "Trong bài này chúng ta sẽ tìm hiểu..."
-    - Narrative flow: Each section leads naturally to the next, not just sequential summaries
-    - Depth over breadth: Go deep on 2-3 key ideas rather than listing all ideas superficially
-    - Draw connections: Link ideas within article and to SERIES_CONTEXT.core_message
-    - Closing: End with resonance - a question, image, or invitation that lingers
-    - AVOID mechanical phrases: "Tóm lại", "Trong phần tiếp theo", "Bài viết đã trình bày"
+    [Include REWRITE RULE block from Shared Rules above]
+    [Include WRITING QUALITY block from Shared Rules above]
 
     RULES:
     - Source content ONLY
@@ -198,31 +251,8 @@ Task tool:
     - Focus on content coverage, word count is reference only
     - MUST end with "## Các bài viết trong series" (MANDATORY - article FAILS without this)
 
-    CONTENT PRIORITY:
-    - FIRST: Cover ALL ideas from source sections completely
-    - SECOND: Rewrite in output style voice (NOT copy source text)
-    - THIRD: Write naturally, word count is for statistics only
-    - If all sections covered AND rewritten in style → PASS
-    - DO NOT rewrite to hit word count targets
-    - Quality content coverage + style compliance > arbitrary word targets
-
-    RETURN FORMAT (CRITICAL - Table format):
-    - Article content ALREADY saved to {outputPath}
-    - DO NOT return article content in message
-    - Return ONLY this summary:
-
-    DONE: {filename} | {N} words (stats)
-    COVERAGE (determines PASS/FAIL):
-    | Section | Status |
-    |---------|--------|
-    | S01 | ✅ {how_used} |
-    | S02 ⭐ | ✅ verbatim |
-    | S03 | ✅ {how_used} |
-    RESULT: {PASS if all sections covered, FAIL if missing}
-    SERIES_LIST: {YES/NO}
-    VERIFY: "quote..." (L45), "quote..." (L128)
-    [Max 3 quotes, each ≤30 chars]
-    [Mark critical with ⭐, skipped with ⚠️]
+    [Include CONTENT PRIORITY block from Shared Rules above]
+    [Include RETURN FORMAT block from Shared Rules above]
 ```
 
 ## Standard Template - Tier 2 Variant (Context Files)
@@ -257,44 +287,38 @@ Task tool:
       prev_article: "{prevArticleSummary}"
       next_article: "{nextArticleSummary}"
       reader_journey: "{readerJourney}"
+      reader_enters: "{readerEnters}"
+      reader_exits: "{readerExits}"
 
     SERIES_LIST:
     {seriesList}
 
-    LANGUAGE:
-    - Write ENTIRE article in Vietnamese
-    - Keep technical terms in English with Vietnamese explanation when first introduced
-    - Example: "user role modeling (mô hình hóa vai trò người dùng)"
-    - ALL prose, explanations, transitions MUST be in Vietnamese
-    - Only preserve exact quotes from source in original language
-
-    FORMATTING (CRITICAL):
-    - NO markdown tables - convert to bullet lists
-    - NO diagrams (mermaid, ASCII art, flowcharts) - describe in prose or bullets
-    - Use bullet points for comparisons, lists, and structured data
+    [Include LANGUAGE block from Shared Rules above]
+    [Include FORMATTING block from Shared Rules above]
 
     STRUCTURE:
-    1. Title (H1) - descriptive, evocative, NOT just section name
-    2. Hook intro - compelling opening (question, image, moment, NOT "Trong bài này...")
-    3. Main sections (from context [Sxx]) - with narrative bridges between sections
-    4. Closing - resonant ending (question, image, invitation, NOT mechanical summary)
-    5. "## Các bài viết trong series" section (MANDATORY - mark current with _(đang xem)_)
+    - Follow the Structure section in the output style file for article organization
+    - If style has Opening/Development/Closing → use that pattern
+    - If style has Scene/Encounter/Deepening/Transformation → use that pattern
+    - MANDATORY constraints (override style):
+      1. Title (H1) - descriptive, evocative
+      2. Before "## Các bài viết trong series", add a brief narrative bridge (1-2 sentences)
+         that creates natural curiosity for the next article.
+         Format: A question, image, or thought connecting this article's conclusion to the next.
+         DO NOT use: "Trong phần tiếp theo...", "Bài tiếp theo sẽ..."
+      3. Must end with "## Các bài viết trong series" (mark current with _(đang xem)_)
+    - The style's Structure section defines HOW to organize content
+    - The source sections [Sxx] define WHAT content to include
 
-    REWRITE RULE (CRITICAL):
-    - MUST rewrite ALL non-critical content in YOUR voice following the output style
-    - DO NOT copy-paste sentences or paragraphs from source
-    - Source = WHAT ideas to express, Style = HOW to express them
-    - Transform source ideas into the style's voice, structure, and language patterns
-    - Only [Sxx]* critical sections may keep verbatim source text
-    - If a paragraph matches source word-for-word → FAIL (except [Sxx]*)
+    CONTENT_TYPE: {contentType}
+    # Hint: Use this to adapt structure if the style's Structure section is generic.
+    # tutorial → include practical steps/examples
+    # conceptual → include thought experiments/frameworks
+    # narrative → include scenes/character development
+    # analysis → include evidence hierarchy/methodology
 
-    WRITING QUALITY (CRITICAL):
-    - Opening: Start with a compelling hook - NOT "Trong bài này chúng ta sẽ tìm hiểu..."
-    - Narrative flow: Each section leads naturally to the next, not just sequential summaries
-    - Depth over breadth: Go deep on 2-3 key ideas rather than listing all ideas superficially
-    - Draw connections: Link ideas within article and to SERIES_CONTEXT.core_message
-    - Closing: End with resonance - a question, image, or invitation that lingers
-    - AVOID mechanical phrases: "Tóm lại", "Trong phần tiếp theo", "Bài viết đã trình bày"
+    [Include REWRITE RULE block from Shared Rules above]
+    [Include WRITING QUALITY block from Shared Rules above]
 
     RULES:
     - Source content ONLY
@@ -305,31 +329,8 @@ Task tool:
     - Focus on content coverage, word count is reference only
     - MUST end with "## Các bài viết trong series" (MANDATORY - article FAILS without this)
 
-    CONTENT PRIORITY:
-    - FIRST: Cover ALL ideas from source sections completely
-    - SECOND: Rewrite in output style voice (NOT copy source text)
-    - THIRD: Write naturally, word count is for statistics only
-    - If all sections covered AND rewritten in style → PASS
-    - DO NOT rewrite to hit word count targets
-    - Quality content coverage + style compliance > arbitrary word targets
-
-    RETURN FORMAT (CRITICAL - Table format):
-    - Article content ALREADY saved to {outputPath}
-    - DO NOT return article content in message
-    - Return ONLY this summary:
-
-    DONE: {filename} | {N} words (stats)
-    COVERAGE (determines PASS/FAIL):
-    | Section | Status |
-    |---------|--------|
-    | S01 | ✅ {how_used} |
-    | S02 ⭐ | ✅ verbatim |
-    | S03 | ✅ {how_used} |
-    RESULT: {PASS if all sections covered, FAIL if missing}
-    SERIES_LIST: {YES/NO}
-    VERIFY: "quote..." (L45), "quote..." (L128)
-    [Max 3 quotes, each ≤30 chars]
-    [Mark critical with ⭐, skipped with ⚠️]
+    [Include CONTENT PRIORITY block from Shared Rules above]
+    [Include RETURN FORMAT block from Shared Rules above]
 ```
 
 ### Detail Level Parameters
@@ -431,7 +432,8 @@ Task[1]:
 
 ## 3b. Add transitions between H2 sections
 - Insert 1-2 bridge sentences between each H2 section
-- Use phrases: "Từ X, chúng ta chuyển sang...", "Dựa trên...", "Tiếp nối..."
+- Write organic bridge sentences (question, insight, or image that connects sections naturally)
+- Avoid mechanical transitions: "Từ X, chuyển sang Y", "Dựa trên phần trên", "Tiếp nối"
 - Transitions must NOT introduce new factual claims (style/flow only)
 - Match transition tone to selected output style
 
@@ -486,6 +488,9 @@ QUAN TRỌNG: Không tự động retry. User quyết định.
 | `{inlineGlossary}`   | \~200 words (embedded in prompt) | N/A                             | \~300 words (embedded in prompt)        |
 | `{style}`            | User selection                   | User selection                  | User selection                          |
 | `{seriesList}`       | From `_plan.md`                  | From `_plan.md`                 | From `_plan.md`                         |
+| `{contentType}`      | From `_plan.md` content type     | From `_plan.md` content type    | From `_plan.md` content type            |
+| `{readerEnters}`     | From `_plan.md` Series Context   | From `_plan.md` Series Context  | From `_plan.md` Series Context          |
+| `{readerExits}`      | From `_plan.md` Series Context   | From `_plan.md` Series Context  | From `_plan.md` Series Context          |
 
 **Note**: Tier 1 and Tier 3 both read source directly via line ranges, but Tier 3 uses larger inline glossary (\~300 words) because larger documents have more technical terminology and subagents need more context without access to the full document.
 
@@ -546,8 +551,14 @@ Task tool:
 
     CONTINUATION RULES:
     - Part 1: Start normally with hook intro
-    - Part 2+: Begin with brief recap (1-2 sentences)
-      - Use: "Tiếp tục từ Phần {N-1}, chúng ta đã..."
+    - Part 2+: Begin with visual recap block, then dive into new content
+      Format:
+      > **Từ phần trước:**
+      > - [Key point 1 from previous part]
+      > - [Key point 2 from previous part]
+      > - [Key point 3 from previous part]
+
+      Then continue with a hook into new content (NOT "Tiếp tục từ...")
     - Not last part: End with: "Xem tiếp Phần {N+1}..."
     - Last part: End with conclusion
 

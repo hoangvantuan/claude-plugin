@@ -2,7 +2,7 @@
 name: writer-agent
 description: Transform documents into styled article series. Analyze input (md, txt, pdf, docx, pptx, xlsx, html, epub, images, url), extract core ideas, decompose into logical sections, write articles with user-selectable styles (professional, casual, custom), synthesize into organized output. Uses Docling for high-quality document conversion. Handles large documents with hierarchical summarization. Output to docs/generated/.
 disable-model-invocation: true
-version: 1.15.0
+version: 1.16.0
 license: MIT
 ---
 
@@ -106,6 +106,7 @@ Use `AskUserQuestion` to confirm output style.
 | Introspective Narrative  | `introspective-narrative.md`  | Personal journey, "I"           |
 | Mindful Dialogue         | `mindful-dialogue.md`         | Master-student dialogue         |
 | Mindful Storytelling     | `mindful-storytelling.md`     | First person storytelling       |
+| Deep Dive                | `deep-dive.md`                | Investigative, assumption-challenging |
 
 Style files: `output_styles/{style}.md`
 
@@ -276,7 +277,7 @@ For very large documents, minimize analysis overhead:
 
 | Action | Detail                                                            |
 | ------ | ----------------------------------------------------------------- |
-| SKIP   | `_inventory.md`, `_glossary.md`, context files                    |
+| SKIP   | `_glossary.md`, context files                                     |
 | CREATE | Minimal `_plan.md` (section-to-article mapping + line ranges)     |
 | EMBED  | Key terms (\~300 words) + dependencies inline in subagent prompts |
 | SPAWN  | Subagents immediately after `_plan.md` (continuous batching)      |
@@ -285,30 +286,9 @@ For very large documents, minimize analysis overhead:
 
 See [large-doc-processing.md](references/large-doc-processing.md#tier-3-fast-path) for `_plan.md` format, subagent prompt template, and workflow details.
 
-### 3.2 Content Inventory (`analysis/_inventory.md`)
+### 3.2 Content Inventory
 
-**Skip for Tier 3**: Use `structure.json` outline directly.
-
-Create section registry with IDs:
-
-```markdown
-| ID  | Section Title | Line Range | Words | Critical |
-| --- | ------------- | ---------- | ----- | -------- |
-| S01 | Introduction  | 1-50       | 650   |          |
-| S02 | Core Argument | 51-120     | 900   | \*       |
-```
-
-**\* Critical criteria** (mark if ANY match):
-
-* Contains >3 direct quotes
-
-* Defines foundational terms
-
-* Core thesis/argument
-
-* Data tables, specs, proofs, code blocks
-
-* Max 30% sections should be critical
+Use `structure.json` outline directly. Section IDs, line ranges, word counts, and critical markers are all available in `structure.json`.
 
 ### 3.3 Article Plan (`analysis/_plan.md`)
 
@@ -344,6 +324,41 @@ Group sections into articles (default 3-7, or user-specified count):
 
 * Nếu user chỉ định số bài → tuân theo, không auto-split thêm
 
+**Content-Type Detection (tạo cùng lúc với plan):**
+
+Khi tạo `_plan.md`, xác định `content_type` cho mỗi article:
+
+| Content Type | Suggested Structure | Khi nào |
+|-------------|-------------------|---------|
+| `tutorial` | Problem → Solution → Steps → Practice | Hướng dẫn, how-to |
+| `conceptual` | Question → Exploration → Framework → Implications | Lý thuyết, triết học |
+| `narrative` | Scene → Conflict → Journey → Resolution | Câu chuyện, memoir |
+| `analysis` | Finding → Evidence → Discussion → Application | Nghiên cứu, report |
+| `mixed` | Follow output style's default Structure | Nội dung hỗn hợp |
+
+Detection signals:
+
+| Signal | Content Type |
+|--------|-------------|
+| Step-by-step headings, numbered lists, "how to" | `tutorial` |
+| Questions as headings, thesis statements, arguments | `conceptual` |
+| Narrative structure, characters, timeline | `narrative` |
+| Data tables, methodology, findings | `analysis` |
+| Mix of above | `mixed` (use dominant) |
+
+Ghi vào plan table:
+
+```markdown
+| #   | Slug  | Title         | Sections      | Est. Words | Content Type |
+| --- | ----- | ------------- | ------------- | ---------- | ------------ |
+| 1   | intro | Introduction  | S01, S02      | 2000       | conceptual   |
+| 2   | core  | Core Concepts | S03, S04, S05 | 2500       | tutorial     |
+```
+
+Subagent sử dụng: Embed `CONTENT_TYPE: {type}` vào prompt. Subagent ưu tiên:
+1. Output style's Structure (primary)
+2. Content-type hint (secondary, nếu style không có structure cụ thể cho loại này)
+
 **Series Context (QUAN TRỌNG - tạo cùng lúc với plan):**
 
 Khi tạo `_plan.md`, đồng thời xác định:
@@ -353,12 +368,16 @@ Khi tạo `_plan.md`, đồng thời xác định:
 
 Core message: "{1-2 câu thông điệp cốt lõi}"
 
-| #   | Title | Role        | Reader Journey           |
-| --- | ----- | ----------- | ------------------------ |
-| 1   | Intro | foundation  | Người đọc bắt đầu hiểu X |
-| 2   | Core  | development | Từ X, đi sâu vào Y       |
-| 3   | Adv   | climax      | Kết nối Y với Z          |
+| # | Title | Role | Reader Enters | Reader Exits | Bridge to Next |
+| 1 | Intro | foundation | Chưa biết X | Hiểu X cơ bản | "Nhưng X trong thực tế...?" |
+| 2 | Core | development | Hiểu X cơ bản | Nắm vững Y | "Y mở ra câu hỏi về Z..." |
+| 3 | Adv | climax | Nắm vững Y | Kết nối Y với Z | N/A (last) |
 ```
+
+**Cách tạo Reader Enters/Exits/Bridge:**
+- `Reader Enters`: Kiến thức người đọc có khi bắt đầu bài (từ bài trước hoặc kiến thức nền)
+- `Reader Exits`: Kiến thức người đọc đạt được sau bài (dẫn tới bài sau)
+- `Bridge to Next`: 1 câu gợi tò mò kết nối bài này với bài tiếp (KHÔNG dùng "Trong phần tiếp theo...")
 
 Thông tin này sẽ được embed vào `SERIES_CONTEXT` block trong mỗi subagent prompt (xem [article-writer-prompt.md](references/article-writer-prompt.md#series-context-block)).
 
@@ -474,7 +493,7 @@ Each context file: `analysis/XX-{slug}-context.md`
 
 Before proceeding to Step 4, verify:
 
-* [ ] All sections have IDs (from structure.json or \_inventory.md)
+* [ ] All sections have IDs (from structure.json)
 
 * [ ] Critical sections marked (\* auto-detected in structure.json)
   * **Guideline**: Thường <=30% sections là critical
@@ -532,7 +551,7 @@ Write `00-overview.md` in **main context**:
 
 **Phase 1 content**:
 
-* Hook + Introduction + Why It Matters + What You'll Learn
+* Surprising insight + Micro-story + Core questions + Why It Matters
 
 * Placeholder sections for Điểm chính and Mục lục
 

@@ -3,43 +3,47 @@
 ## Purpose
 
 The overview article (00-overview\.md) is the single entry point for the series.
-It combines introduction and key takeaways.
+It combines introduction and key takeaways as a "trailer" that hooks readers.
 
 ## Structure
 
-### 1. Hook (1-2 sentences)
+### 1. Surprising Insight (1-2 sentences)
 
-Capture attention with:
+The most surprising or counterintuitive finding from the entire series:
 
-* Surprising fact
+* Challenge assumptions
 
-* Provocative question
+* Create immediate curiosity
 
-* Relatable problem
+* Make the reader think "I didn't know that"
 
-### 2. Topic Introduction (1 paragraph)
+### 2. Micro-Story (1 short paragraph)
 
-* Define the subject clearly
+A representative case, example, or scenario from the source material:
 
-* Provide context/background
+* Concrete, relatable
 
-* Establish scope
+* Shows the topic in action
 
-### 3. Why It Matters (1 paragraph)
+* Draws the reader into the world of the content
+
+### 3. Core Questions (2-3 questions)
+
+Questions the series will explore (NOT "What You'll Learn" bullet list):
+
+* Thought-provoking, not generic
+
+* Create genuine curiosity
+
+* Each maps to 1-2 articles in the series
+
+### 4. Why It Matters (1 paragraph)
 
 * Relevance to reader
 
 * Real-world impact
 
 * Current importance
-
-### 4. What You'll Learn (bullet list)
-
-* 3-5 key outcomes
-
-* Concrete skills or knowledge
-
-* Promise of value
 
 ### 5. Key Takeaways (numbered list)
 
@@ -95,21 +99,21 @@ Update overview with actual Key Takeaways and Series List.
 ```markdown
 # [Series Title]
 
-[Hook sentence that captures attention]
+[Surprising insight - 1-2 sentences that challenge assumptions or reveal something unexpected]
 
-## Giới thiệu
+## Câu chuyện mở đầu
 
-[Topic introduction paragraph]
+[Micro-story - a brief, concrete example or scenario from the source material]
+
+## Câu hỏi khám phá
+
+- [Core question 1 - maps to articles 1-2]
+- [Core question 2 - maps to articles 3-4]
+- [Core question 3 - maps to articles 5-6]
 
 ## Vì sao quan trọng
 
 [Significance paragraph]
-
-## Bạn sẽ học được gì
-
-- [Outcome 1]
-- [Outcome 2]
-- [Outcome 3]
 
 ## Điểm chính
 
@@ -127,9 +131,11 @@ Update overview with actual Key Takeaways and Series List.
 
 ## Quality Checklist
 
-* [ ] Hook is compelling
+* [ ] Surprising insight captures attention
 
-* [ ] Topic is clearly defined
+* [ ] Micro-story is concrete and relatable
+
+* [ ] Core questions create genuine curiosity
 
 * [ ] Value proposition is clear
 
@@ -140,4 +146,3 @@ Update overview with actual Key Takeaways and Series List.
 * [ ] Tone matches chosen style
 
 * [ ] Within word count range (400-600 words)
-

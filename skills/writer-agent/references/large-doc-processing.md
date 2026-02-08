@@ -6,12 +6,7 @@ Load this reference when document word count > 20K.
 
 ## When to Use
 
-| Document Size | Strategy                        | Notes |
-| ------------- | ------------------------------- | ----- |
-| (<20K) OR (<50K AND ≤3 articles) | Direct Path (main agent writes) | Validate: word\_count ≤ max\_words (language-dependent) |
-| 20K-50K       | Standard with subagents (Tier 1) | Skip context files, read source directly |
-| 50K-100K      | Tier 2: Smart compression       | Use context extraction |
-| >=100K        | Tier 3: Fast Path (MUST use)    | Reference-based, minimal overhead |
+> See [SKILL.md §2.6](../SKILL.md#step-26-tier-reference-table) for canonical tier table with thresholds, strategies, and parameters.
 
 ## Quick Path (Structure JSON)
 
@@ -131,7 +126,7 @@ For documents >=100K words, reduce main agent overhead by ~40%.
 
 | Standard Step | Fast Path Action |
 |---------------|------------------|
-| `_inventory.md` | SKIP - use `structure.json` outline |
+| Analysis artifacts | SKIP - use `structure.json` outline |
 | `_glossary.md` | SKIP - embed ~300 words in subagent prompt |
 | Article dependencies | SKIP - embed 1-2 sentences per article in prompt |
 | Context files | SKIP - subagents read source directly |
@@ -183,7 +178,7 @@ NAV: [Prev](./{prev}.md) | [Next](./{next}.md)
    └─ Each: Read source chunk → Write → Return coverage
 7. Collect coverage reports → _coverage.md
 8. Update 00-overview.md (Key Takeaways + Article Index)
-9. Verify >=98% coverage
+9. Verify >=95% coverage
 ```
 
 ### Subagent Efficiency
@@ -464,48 +459,4 @@ pdftoppm -png -r 150 -f 1 -l 10 input.pdf /tmp/pages/page
 | Static (old) | Wait for batch N to complete → spawn batch N+1 | Baseline |
 | Continuous | Spawn next immediately when any slot frees | +25-40% |
 
-```python
-# Continuous batching pseudocode with dynamic adjustment
-# Base values:
-# - Tier 1-2: max_concurrent = 3 (smaller chunks ~3.5K words)
-# - Tier 3: max_concurrent = 2 (larger chunks ~10K words, avoid memory pressure)
-
-def estimate_chunk_words(article):
-    return sum(s.word_count for s in article.sections)
-
-# Validate and adjust max_concurrent based on actual chunk sizes (tier-specific)
-max_concurrent = 3 if tier <= 2 else 2
-
-if tier <= 2:
-    # Tier 1-2: Check if chunks are unexpectedly large
-    for article in articles:
-        chunk_words = estimate_chunk_words(article)
-        if chunk_words > 8000:
-            max_concurrent = min(max_concurrent, 2)
-            log_warning(f"{article.slug}: {chunk_words} words, reducing concurrency")
-        elif all(estimate_chunk_words(a) < 2000 for a in articles):
-            max_concurrent = 5
-            log_info("All chunks small, increasing concurrency")
-else:
-    # Tier 3: Check if chunks are unexpectedly small
-    for article in articles:
-        chunk_words = estimate_chunk_words(article)
-        if all(estimate_chunk_words(a) < 5000 for a in articles):
-            max_concurrent = 3
-            log_info("Chunks smaller than expected, safe to increase concurrency")
-
-# Continuous batching loop
-pending = [articles...]
-running = []
-
-while pending or running:
-    # Fill available slots
-    while len(running) < max_concurrent and pending:
-        article = pending.pop(0)
-        running.append(spawn(article))
-
-    # Wait for any completion
-    completed = wait_any(running)
-    running.remove(completed)
-    collect_coverage(completed)
-```
+> See [SKILL.md §4.2](../SKILL.md#42-content-articles) for continuous batching pseudocode with dynamic concurrency adjustment.

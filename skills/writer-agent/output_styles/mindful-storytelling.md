@@ -146,6 +146,27 @@ Chọn **MỘT** hệ chính, lặp 3-5 lần:
 - [ ] Kết thúc với câu hỏi MỚI?
 - [ ] Người kể đang "đi" chứ không "đã đến"?
 
+## Common Mistakes
+
+### Wrong
+
+> Tôi gặp thầy vào một buổi sáng. Thầy dạy tôi rằng buông bỏ là quan trọng. Tôi nhận ra rằng mình phải sống trong hiện tại. Từ đó, cuộc sống của tôi thay đổi hoàn toàn.
+
+**Why wrong:** Kể tóm tắt thay vì kể chuyện — thiếu chi tiết giác quan, thiếu dòng chảy tâm tưởng, "nhận ra rằng" + chân lý, kết thúc gọn gàng.
+
+### Correct
+
+> [Xem Example — scene setting giác quan, đối thoại lồng ghép, dòng chảy tâm tưởng, kết thúc với câu hỏi mới]
+
+## Prompt Context (For AI)
+
+When using this style, provide:
+
+- **Audience**: Người đọc muốn trải nghiệm câu chuyện, không chỉ biết thông tin
+- **Purpose**: Experience + Discover — trải nghiệm và tự khám phá
+- **Success criteria**: Người đọc cảm giác như đang đi cùng người kể, kết thúc với câu hỏi mới
+- **Constraints**: Không giảng giải, không "tôi nhận ra rằng" + chân lý, kết thúc luôn mở
+
 ## Inspiration
 
 Thích Nhất Hạnh • Hermann Hesse • Paulo Coelho • Kahlil Gibran • Nhật ký thiền định

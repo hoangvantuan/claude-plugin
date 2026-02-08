@@ -137,8 +137,7 @@ Options:
 Thêm vào subagent prompt:
 
 ```
-TARGET: {target_words} words (source: {source_words} words)
-MIN: {min_words} | MAX: {max_words}
+TARGET: {target_words} words (reference only, source: {source_words} words)
 MODE: {detail_level}
 
 DEPTH RULES:

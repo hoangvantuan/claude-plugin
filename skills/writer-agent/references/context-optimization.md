@@ -85,7 +85,7 @@ Step 4: Article Writing
 
 This is **SUFFICIENT** for:
 - Determining tier
-- Creating _inventory.md
+- Creating section registry (from structure.json)
 - Creating _plan.md
 - Planning article structure
 
@@ -179,50 +179,7 @@ Step 3: Analyze
 
 ## Tier-Specific Rules
 
-### Tier 1 (<50K words)
-
-```
-Main Agent:
-├─ Read structure.json ONLY
-└─ Create _plan.md from outline
-
-Subagents:
-└─ Read content.md via line ranges
-    └─ Read offset=3, limit=31 (lines 3-34)
-```
-
-**Context budget:**
-- Main: ~5K (structure + planning)
-- Each subagent: ~5K (source section)
-
-### Tier 2 (50K-100K words)
-
-```
-Main Agent:
-├─ Read structure.json
-└─ Spawn context extractors
-
-Context Extractors:
-└─ Read specific sections from content.md
-    └─ Create compressed context files
-
-Article Writers:
-└─ Read context files (not content.md directly)
-```
-
-### Tier 3 (>=100K words)
-
-```
-Main Agent:
-├─ Read structure.json
-├─ Read FIRST CHUNK ONLY for glossary
-└─ Create minimal _plan.md
-
-Subagents:
-└─ Read content.md via suggested_chunks
-    └─ Use structure.json → suggested_chunks[0]
-    └─ Read lines 1-257 (chunk 0)
-```
+> See [SKILL.md §2.6](../SKILL.md#step-26-tier-reference-table) for canonical tier definitions and [SKILL.md §3.5](../SKILL.md#35-context-files) for tier-specific context file strategy.
 
 ## Validation Checklist
 

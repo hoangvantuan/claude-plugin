@@ -116,7 +116,7 @@ while pending:
 | `{context_file_path}` | `analysis/XX-{slug}-context.md` |
 | `{source_path}` | `input-handling/content.md` |
 | `{start}`, `{end}` | From `_plan.md` or `structure.json` |
-| `{section_ids}` | From `_inventory.md` or `structure.json` |
+| `{section_ids}` | From `structure.json` |
 | `{inline_glossary}` | ~200 words initial key terms (input to extractor; extractor outputs comprehensive `_glossary.md` ~600 words) |
 
 ## Error Handling
