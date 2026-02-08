@@ -12,6 +12,7 @@ Transform documents and URLs into styled article series.
 
 ## Quick Reference
 
+
 | Reference                                                             | Purpose                            |
 | --------------------------------------------------------------------- | ---------------------------------- |
 | [directory-structure.md](references/directory-structure.md)           | Output folder layout               |
@@ -23,6 +24,7 @@ Transform documents and URLs into styled article series.
 | [context-optimization.md](references/context-optimization.md)         | Context optimization anti-patterns |
 | [performance-benchmarks.md](references/performance-benchmarks.md)     | Measured performance test cases    |
 | [detail-levels.md](references/detail-levels.md)                       | Output detail level options        |
+
 
 ## Workflow Overview
 
@@ -49,36 +51,36 @@ Input → Convert → Plan → Write(parallel) → Synthesize → Verify
   1        1        3          4              5           6
 ```
 
-## Step 0: Resolve Skill Paths
+## Step 0: Resolve Skill Paths (BẮT BUỘC)
 
-**PHẢI chạy trước mọi bước khác.** Resolve đường dẫn thực tế của skill để tương thích cả project-local và global install.
+**PHẢI thực hiện TRƯỚC mọi bước khác.** Skill có thể được cài ở nhiều vị trí khác nhau.
 
-```bash
-# Tìm wa-env script
-WA_ENV=$(find ~/.claude -name wa-env -path "*/writer-agent/*" -type f 2>/dev/null | head -1)
-[ -z "$WA_ENV" ] && WA_ENV=$(find .claude -name wa-env -path "*/writer-agent/*" -type f 2>/dev/null | head -1)
+**Bước 1**: Dùng Glob tìm `wa-convert`:
 
-# Parse output → lấy các biến
-eval "$($WA_ENV)"
+```
+Glob("**/writer-agent/scripts/wa-convert")
 ```
 
-**Kết quả**: Các biến `SCRIPTS_DIR`, `SKILL_DIR`, `STYLES_DIR` sẵn sàng dùng cho các bước sau.
+**Bước 2**: Từ kết quả, xác định 3 đường dẫn:
 
-**Fallback** (nếu wa-env không tìm thấy):
-
-```bash
-# Tìm bất kỳ wa-convert nào
-WA_CONVERT=$(find ~/.claude .claude -name wa-convert -path "*/writer-agent/*" -type f 2>/dev/null | head -1)
-SCRIPTS_DIR=$(dirname "$WA_CONVERT")
-SKILL_DIR=$(dirname "$SCRIPTS_DIR")
-STYLES_DIR="$SKILL_DIR/output_styles"
+```
+SCRIPTS_DIR = directory chứa wa-convert  (ví dụ: /Users/x/.claude/skills/writer-agent/scripts)
+SKILL_DIR   = parent của SCRIPTS_DIR     (ví dụ: /Users/x/.claude/skills/writer-agent)
+STYLES_DIR  = SKILL_DIR/output_styles    (ví dụ: /Users/x/.claude/skills/writer-agent/output_styles)
 ```
 
-> **Lưu ý**: Tất cả commands trong các bước sau dùng `$SCRIPTS_DIR`, `$SKILL_DIR`, `$STYLES_DIR` thay vì hardcoded paths.
+**Bước 3**: Ghi nhớ 3 đường dẫn này. Tất cả commands trong các bước sau PHẢI dùng đường dẫn đã resolve, KHÔNG dùng relative path.
+
+**Ví dụ**: Nếu Glob trả về `/Users/x/.claude/skills/writer-agent/scripts/wa-convert`:
+- Gọi convert: `/Users/x/.claude/skills/writer-agent/scripts/wa-convert file.pdf`
+- Đọc style: `/Users/x/.claude/skills/writer-agent/output_styles/professional.md`
+
+> **QUAN TRỌNG**: KHÔNG BAO GIỜ hardcode `.claude/skills/writer-agent/...` — luôn dùng đường dẫn tuyệt đối từ Glob.
 
 ## Step 1: Input Handling
 
 Detect input type and convert to markdown.
+
 
 | Input Type               | Detection               | Action                    |
 | ------------------------ | ----------------------- | ------------------------- |
@@ -86,10 +88,11 @@ Detect input type and convert to markdown.
 | URL                      | `http://` or `https://` | `wa-convert {url}`        |
 | Plain text / .txt / .md  | No complex extension    | Rewrite → `wa-paste-text` |
 
+
 ### File/URL Conversion
 
 ```bash
-$SCRIPTS_DIR/wa-convert [/path/to/file.pdf or url]
+{SCRIPTS_DIR}/wa-convert [/path/to/file.pdf or url]
 ```
 
 **Output**: `docs/generated/{slug}-{timestamp}/input-handling/content.md`
@@ -102,10 +105,11 @@ $SCRIPTS_DIR/wa-convert [/path/to/file.pdf or url]
 4. Execute:
 
 ```bash
-echo "{rewritten_content}" | $SCRIPTS_DIR/wa-paste-text - --title "{title}"
+echo "{rewritten_content}" | {SCRIPTS_DIR}/wa-paste-text - --title "{title}"
 ```
 
 ### Error Handling
+
 
 | Error              | Action                         |
 | ------------------ | ------------------------------ |
@@ -115,25 +119,29 @@ echo "{rewritten_content}" | $SCRIPTS_DIR/wa-paste-text - --title "{title}"
 | Empty content      | Warn, confirm before continue  |
 | Encrypted PDF      | Ask for decrypted version      |
 
+
 ## Step 2: Select Style
 
 Use `AskUserQuestion` to confirm output style.
 
-| Style                   | File                         | Voice                                |
-| ----------------------- | ---------------------------- | ------------------------------------ |
-| Professional            | `professional.md`            | Formal, data-driven, 3rd person      |
-| Explanatory             | `explanatory.md`             | Teaching, "we" together              |
-| Mindful Educator        | `mindful-educator.md`        | Depth + practice + mindfulness       |
-| Introspective Narrative | `introspective-narrative.md` | Personal journey, "I"                |
-| Mindful Dialogue        | `mindful-dialogue.md`        | Master-student dialogue              |
-| Mindful Storytelling    | `mindful-storytelling.md`    | First person storytelling            |
+
+| Style                   | File                         | Voice                                 |
+| ----------------------- | ---------------------------- | ------------------------------------- |
+| Professional            | `professional.md`            | Formal, data-driven, 3rd person       |
+| Explanatory             | `explanatory.md`             | Teaching, "we" together               |
+| Mindful Educator        | `mindful-educator.md`        | Depth + practice + mindfulness        |
+| Introspective Narrative | `introspective-narrative.md` | Personal journey, "I"                 |
+| Mindful Dialogue        | `mindful-dialogue.md`        | Master-student dialogue               |
+| Mindful Storytelling    | `mindful-storytelling.md`    | First person storytelling             |
 | Deep Dive               | `deep-dive.md`               | Investigative, assumption-challenging |
 
-Style files: `$STYLES_DIR/{style}.md`
+
+Style files: `{STYLES_DIR}/{style}.md`
 
 ## Step 2.5: Select Detail Level
 
 Use `AskUserQuestion` to confirm output detail level.
+
 
 | Level         | Ratio  | Description                         |
 | ------------- | ------ | ----------------------------------- |
@@ -141,6 +149,7 @@ Use `AskUserQuestion` to confirm output detail level.
 | **Standard**  | 30-40% | Cân bằng (Recommended)              |
 | Comprehensive | 50-65% | Chi tiết, giữ nhiều ví dụ           |
 | Faithful      | 75-90% | Gần như đầy đủ, viết lại theo style |
+
 
 **Default**: Standard (if user skips or unclear)
 
@@ -161,33 +170,22 @@ article_target = (article_source_words / source_words) × total_target
 
 **Two complementary concepts:**
 
-1. **`target_ratio`**: Controls total article length relative to source
-
-   * Standard level: 30-40% (midpoint 35%)
-
-   * This ratio applies to the entire article wordcount
-
-2. **`example_percentage`**: Controls retention of examples within kept content
-
-   * Standard level: 60% of examples
-
-   * This percentage applies only to example sections
+1. `**target_ratio**`: Controls total article length relative to source
+  - Standard level: 30-40% (midpoint 35%)
+  - This ratio applies to the entire article wordcount
+2. `**example_percentage**`: Controls retention of examples within kept content
+  - Standard level: 60% of examples
+  - This percentage applies only to example sections
 
 **Worked example (Standard level, 35% target ratio, 60% examples):**
 
-* Source section: 5,000 words total
-
-  * Main explanatory content: 4,000 words
-
-  * Examples (10 examples): 1,000 words
-
-* Target article length: 5,000 × 0.35 = 1,750 words
-
-* Keep 60% of examples: 6 examples ≈ 600 words
-
-* Remaining budget for main content: 1,750 - 600 = 1,150 words
-
-* Main content compression: 1,150 / 4,000 = 28.75% (summarized)
+- Source section: 5,000 words total
+  - Main explanatory content: 4,000 words
+  - Examples (10 examples): 1,000 words
+- Target article length: 5,000 × 0.35 = 1,750 words
+- Keep 60% of examples: 6 examples ≈ 600 words
+- Remaining budget for main content: 1,750 - 600 = 1,150 words
+- Main content compression: 1,150 / 4,000 = 28.75% (summarized)
 
 **Key insight:** Higher `example_percentage` (60%) than overall `target_ratio` (35%) means examples are preserved more than prose, reflecting their teaching value.
 
@@ -197,30 +195,27 @@ See [detail-levels.md](references/detail-levels.md) for full specification.
 
 **Canonical tier definitions** (referenced throughout documentation):
 
-| Tier            | Word Count                     | Strategy                       | Context Approach   | Glossary                    | max\_concurrent |
-| --------------- | ------------------------------ | ------------------------------ | ------------------ | --------------------------- | --------------- |
-| **Direct Path** | <20K OR (<50K AND ≤3 articles) | Main agent writes all          | N/A (no subagents) | Inline (\~200 words)        | N/A             |
-| **Tier 1**      | 20K-50K                        | Subagents read source directly | No context files   | Inline (\~200 words)        | 3               |
-| **Tier 2**      | 50K-100K                       | Smart compression              | Context extractors | Separate file (\~600 words) | 3               |
-| **Tier 3**      | >=100K                         | Fast Path, minimal overhead    | No context files   | Inline (\~300 words)        | 2               |
+
+| Tier            | Word Count                     | Strategy                       | Context Approach   | Glossary                   | max_concurrent |
+| --------------- | ------------------------------ | ------------------------------ | ------------------ | -------------------------- | -------------- |
+| **Direct Path** | <20K OR (<50K AND ≤3 articles) | Main agent writes all          | N/A (no subagents) | Inline (~200 words)        | N/A            |
+| **Tier 1**      | 20K-50K                        | Subagents read source directly | No context files   | Inline (~200 words)        | 3              |
+| **Tier 2**      | 50K-100K                       | Smart compression              | Context extractors | Separate file (~600 words) | 3              |
+| **Tier 3**      | >=100K                         | Fast Path, minimal overhead    | No context files   | Inline (~300 words)        | 2              |
+
 
 **Priority rules:**
 
-* Direct Path conditions are checked FIRST and override tier boundaries
-
-* Documents 20K-50K with ≤3 articles use Direct Path (not Tier 1)
-
-* Only documents failing Direct Path conditions fall through to tier selection
+- Direct Path conditions are checked FIRST and override tier boundaries
+- Documents 20K-50K with ≤3 articles use Direct Path (not Tier 1)
+- Only documents failing Direct Path conditions fall through to tier selection
 
 **Key differences:**
 
-* Direct Path: Main agent handles everything (no subagents)
-
-* Tier 1: Lightweight subagents, read source via line ranges
-
-* Tier 2: Context extraction for compression (only tier with separate glossary file)
-
-* Tier 3: Like Tier 1 but larger chunks, more selective glossary, lower concurrency
+- Direct Path: Main agent handles everything (no subagents)
+- Tier 1: Lightweight subagents, read source via line ranges
+- Tier 2: Context extraction for compression (only tier with separate glossary file)
+- Tier 3: Like Tier 1 but larger chunks, more selective glossary, lower concurrency
 
 ## Step 3: Analyze
 
@@ -253,14 +248,16 @@ structure.json → direct_path.eligible?
 
 **Examples:**
 
+
 | Document     | Words | Articles | Path            | Reason                                        |
 | ------------ | ----- | -------- | --------------- | --------------------------------------------- |
 | Blog post    | 15K   | 5        | Direct          | <20K words (first condition) ✓                |
 | Tutorial     | 45K   | 3        | Direct          | <50K AND ≤3 articles (second condition) ✓     |
-| Long guide   | 48K   | 3        | Direct → Tier 1 | Exceeds max\_words for mixed (38K) ⚠️         |
+| Long guide   | 48K   | 3        | Direct → Tier 1 | Exceeds max_words for mixed (38K) ⚠️          |
 | Paper        | 45K   | 4        | Standard        | Fails both conditions (4 > 3) → use subagents |
 | Book chapter | 67K   | 8        | Standard        | Tier 2: smart compression                     |
 | Full book    | 142K  | 12       | Fast            | Tier 3: reference-based                       |
+
 
 > **Note**: Direct Path capacity limit depends on language: EN ~44K, VI ~32K, mixed ~38K words. Use `structure.json → language` field for accurate limit.
 
@@ -270,11 +267,9 @@ structure.json → direct_path.eligible?
 
 **Quick path** (if `structure.json` exists):
 
-* **ONLY** read `structure.json` for outline, stats, tier recommendation
-
-* **DO NOT** read `content.md` - it wastes context budget
-
-* Skip manual scanning (outline already in JSON)
+- **ONLY** read `structure.json` for outline, stats, tier recommendation
+- **DO NOT** read `content.md` - it wastes context budget
+- Skip manual scanning (outline already in JSON)
 
 **Fallback** (if `structure.json` missing):
 
@@ -296,14 +291,16 @@ Read(file_path, offset=1, limit=100)  # Only to extract headings
 
 For very large documents, minimize analysis overhead:
 
-| Action | Detail                                                            |
-| ------ | ----------------------------------------------------------------- |
-| SKIP   | `_glossary.md`, context files                                     |
-| CREATE | Minimal `_plan.md` (section-to-article mapping + line ranges)     |
-| EMBED  | Key terms (\~300 words) + dependencies inline in subagent prompts |
-| SPAWN  | Subagents immediately after `_plan.md` (continuous batching)      |
 
-**Context savings**: \~40% reduction in main agent context.
+| Action | Detail                                                           |
+| ------ | ---------------------------------------------------------------- |
+| SKIP   | `_glossary.md`, context files                                    |
+| CREATE | Minimal `_plan.md` (section-to-article mapping + line ranges)    |
+| EMBED  | Key terms (~300 words) + dependencies inline in subagent prompts |
+| SPAWN  | Subagents immediately after `_plan.md` (continuous batching)     |
+
+
+**Context savings**: ~40% reduction in main agent context.
 
 See [large-doc-processing.md](references/large-doc-processing.md#tier-3-fast-path) for `_plan.md` format, subagent prompt template, and workflow details.
 
@@ -339,33 +336,35 @@ Group sections into articles (default 3-7, or user-specified count):
 
 **Rules**:
 
-* All sections must be mapped. Coverage check at end.
-
-* Target \~13-15 phút đọc/bài (2000-3000 từ)
-
-* Nếu user chỉ định số bài → tuân theo, không auto-split thêm
+- All sections must be mapped. Coverage check at end.
+- Target ~13-15 phút đọc/bài (2000-3000 từ)
+- Nếu user chỉ định số bài → tuân theo, không auto-split thêm
 
 **Content-Type Detection (tạo cùng lúc với plan):**
 
 Khi tạo `_plan.md`, xác định `content_type` cho mỗi article:
 
-| Content Type | Suggested Structure | Khi nào |
-|-------------|-------------------|---------|
-| `tutorial` | Problem → Solution → Steps → Practice | Hướng dẫn, how-to |
+
+| Content Type | Suggested Structure                               | Khi nào              |
+| ------------ | ------------------------------------------------- | -------------------- |
+| `tutorial`   | Problem → Solution → Steps → Practice             | Hướng dẫn, how-to    |
 | `conceptual` | Question → Exploration → Framework → Implications | Lý thuyết, triết học |
-| `narrative` | Scene → Conflict → Journey → Resolution | Câu chuyện, memoir |
-| `analysis` | Finding → Evidence → Discussion → Application | Nghiên cứu, report |
-| `mixed` | Follow output style's default Structure | Nội dung hỗn hợp |
+| `narrative`  | Scene → Conflict → Journey → Resolution           | Câu chuyện, memoir   |
+| `analysis`   | Finding → Evidence → Discussion → Application     | Nghiên cứu, report   |
+| `mixed`      | Follow output style's default Structure           | Nội dung hỗn hợp     |
+
 
 Detection signals:
 
-| Signal | Content Type |
-|--------|-------------|
-| Step-by-step headings, numbered lists, "how to" | `tutorial` |
-| Questions as headings, thesis statements, arguments | `conceptual` |
-| Narrative structure, characters, timeline | `narrative` |
-| Data tables, methodology, findings | `analysis` |
-| Mix of above | `mixed` (use dominant) |
+
+| Signal                                              | Content Type           |
+| --------------------------------------------------- | ---------------------- |
+| Step-by-step headings, numbered lists, "how to"     | `tutorial`             |
+| Questions as headings, thesis statements, arguments | `conceptual`           |
+| Narrative structure, characters, timeline           | `narrative`            |
+| Data tables, methodology, findings                  | `analysis`             |
+| Mix of above                                        | `mixed` (use dominant) |
+
 
 Ghi vào plan table:
 
@@ -377,6 +376,7 @@ Ghi vào plan table:
 ```
 
 Subagent sử dụng: Embed `CONTENT_TYPE: {type}` vào prompt. Subagent ưu tiên:
+
 1. Output style's Structure (primary)
 2. Content-type hint (secondary, nếu style không có structure cụ thể cho loại này)
 
@@ -396,6 +396,7 @@ Core message: "{1-2 câu thông điệp cốt lõi}"
 ```
 
 **Cách tạo Reader Enters/Exits/Bridge:**
+
 - `Reader Enters`: Kiến thức người đọc có khi bắt đầu bài (từ bài trước hoặc kiến thức nền)
 - `Reader Exits`: Kiến thức người đọc đạt được sau bài (dẫn tới bài sau)
 - `Bridge to Next`: 1 câu gợi tò mò kết nối bài này với bài tiếp (KHÔNG dùng "Trong phần tiếp theo...")
@@ -413,11 +414,9 @@ Thông tin này sẽ được embed vào `SERIES_CONTEXT` block trong mỗi suba
 
 **Key constants:**
 
-* `MAX_OUTPUT_WORDS = 3000` (\~15 min reading time)
-
-* `TARGET_PART_WORDS = 2000` (\~13 min reading time)
-
-* Atomic unit = H2 block (H2 + H3 children). NEVER split within paragraph, H3, or critical section.
+- `MAX_OUTPUT_WORDS = 3000` (~15 min reading time)
+- `TARGET_PART_WORDS = 2000` (~13 min reading time)
+- Atomic unit = H2 block (H2 + H3 children). NEVER split within paragraph, H3, or critical section.
 
 **When to split**: `estimated_output = source_words × detail_ratio > MAX_OUTPUT_WORDS`
 
@@ -426,7 +425,7 @@ Thông tin này sẽ được embed vào `SERIES_CONTEXT` block trong mỗi suba
 **Validate after split:**
 
 ```bash
-$SCRIPTS_DIR/wa-validate-split docs/generated/{book}/analysis/_plan.md
+{SCRIPTS_DIR}/wa-validate-split docs/generated/{book}/analysis/_plan.md
 ```
 
 **Part naming**: `02-core.md` → `02-core-part1.md`, `02-core-part2.md`
@@ -470,13 +469,10 @@ word_count < 50,000 (Tier 1)?
 
 **Tier 3 inline rationale:**
 
-* Avoids 1 Read call per subagent (saves \~400 words/subagent)
-
-* Trade-off: More selective terms (300 vs 1000) but faster execution
-
-* Larger than Tier 1 (300 vs 200 words) because large documents have more technical terminology
-
-* Combined with reading source directly via line ranges = maximum efficiency
+- Avoids 1 Read call per subagent (saves ~400 words/subagent)
+- Trade-off: More selective terms (300 vs 1000) but faster execution
+- Larger than Tier 1 (300 vs 200 words) because large documents have more technical terminology
+- Combined with reading source directly via line ranges = maximum efficiency
 
 **Inline glossary format**:
 
@@ -494,19 +490,15 @@ Article dependencies: Embed 1-2 sentences in prompt, not separate file.
 
 **Skip for**:
 
-* Tier 1 (<50K words): Subagents read source directly via line ranges
-
-* Tier 3 (>=100K words): Subagents read source directly via line ranges
-
-* Direct Path (<20K words): Main agent writes directly
+- Tier 1 (<50K words): Subagents read source directly via line ranges
+- Tier 3 (>=100K words): Subagents read source directly via line ranges
+- Direct Path (<20K words): Main agent writes directly
 
 **Decision** (see [decision-trees.md#3](references/decision-trees.md#3-context-extraction-strategy) for full tree):
 
-* Tier 1/3 or <20K words: Skip context files (subagents read source directly via line ranges)
-
-* Tier 2 (50K-100K): Spawn context extractor subagents (batch: min(3, article\_count))
-
-* Template: `templates/_context-file-template.md`
+- Tier 1/3 or <20K words: Skip context files (subagents read source directly via line ranges)
+- Tier 2 (50K-100K): Spawn context extractor subagents (batch: min(3, article_count))
+- Template: `templates/_context-file-template.md`
 
 Each context file: `analysis/XX-{slug}-context.md`
 
@@ -514,30 +506,22 @@ Each context file: `analysis/XX-{slug}-context.md`
 
 Before proceeding to Step 4, verify:
 
-* [ ] All sections have IDs (from structure.json)
+- [ ] All sections have IDs (from structure.json)
 
-* [ ] Critical sections marked (\* auto-detected in structure.json)
-  * **Guideline**: Thường <=30% sections là critical
+- [ ] Critical sections marked (* auto-detected in structure.json)
+  - **Guideline**: Thường <=30% sections là critical
+  - **If >30%**: Tự động ghi nhận trong `_plan.md`, KHÔNG cần user confirmation
+    - Document: "High critical ratio: {ratio}% - technical content"
+    - Tiếp tục workflow bình thường
+  - **If >50%**: Tự động chuyển sang Tier 3 strategy (read source directly)
+    - KHÔNG cần STOP hoặc ask user
+    - Tier 3 xử lý được high critical ratio vì đọc source trực tiếp
+    - Ghi log: "Auto-escalated to Tier 3 due to high critical ratio"
+  - **Rationale**: Tự động xử lý thay vì blocking workflow để hỏi user
 
-  * **If >30%**: Tự động ghi nhận trong `_plan.md`, KHÔNG cần user confirmation
+- [ ] Article plan covers 100% sections
 
-    * Document: "High critical ratio: {ratio}% - technical content"
-
-    * Tiếp tục workflow bình thường
-
-  * **If >50%**: Tự động chuyển sang Tier 3 strategy (read source directly)
-
-    * KHÔNG cần STOP hoặc ask user
-
-    * Tier 3 xử lý được high critical ratio vì đọc source trực tiếp
-
-    * Ghi log: "Auto-escalated to Tier 3 due to high critical ratio"
-
-  * **Rationale**: Tự động xử lý thay vì blocking workflow để hỏi user
-
-* [ ] Article plan covers 100% sections
-
-* [ ] For Tier 3: \_plan.md created with line ranges
+- [ ] For Tier 3: _plan.md created with line ranges
 
 ## Step 4: Write Articles
 
@@ -562,19 +546,15 @@ For selective re-runs (style change or single article rewrite), see [retry-workf
 
 Write `00-overview.md` in **main context**:
 
-* Requires full series knowledge
-
-* Template: `templates/_overview-template.md`
-
-* Target: 300-400 words (initial)
-
-* Include placeholders for Key Takeaways and Article Index
+- Requires full series knowledge
+- Template: `templates/_overview-template.md`
+- Target: 300-400 words (initial)
+- Include placeholders for Key Takeaways and Article Index
 
 **Phase 1 content**:
 
-* Surprising insight + Micro-story + Core questions + Why It Matters
-
-* Placeholder sections for Điểm chính and Mục lục
+- Surprising insight + Micro-story + Core questions + Why It Matters
+- Placeholder sections for Điểm chính and Mục lục
 
 ### 4.2 Content Articles
 
@@ -621,22 +601,18 @@ def extract_context_bridge(completed_part):
 **Prompt validation (optional, for debugging):**
 
 ```bash
-echo "{prompt_text}" | $SCRIPTS_DIR/wa-validate-prompt --tier {1|2|3} --stdin
+echo "{prompt_text}" | {SCRIPTS_DIR}/wa-validate-prompt --tier {1|2|3} --stdin
 ```
 
 Validates all required template variables are present. Exit code 0 = PASS, 1 = missing variables.
 
 **Continuous Batching** (preferred over static batching):
 
-* Tier 1-2: `max_concurrent = 3` (smaller chunks \~3.5K words)
-
-* Tier 3: `max_concurrent = 2` (larger chunks \~10K words)
-
-* Dynamic adjustment: large chunks (>8K) → reduce to 2, all small (<2K) → increase to 5
-
-* On any completion → spawn next immediately (no batch waiting)
-
-* **Benefits**: 25-35% faster than static batching
+- Tier 1-2: `max_concurrent = 3` (smaller chunks ~3.5K words)
+- Tier 3: `max_concurrent = 2` (larger chunks ~10K words)
+- Dynamic adjustment: large chunks (>8K) → reduce to 2, all small (<2K) → increase to 5
+- On any completion → spawn next immediately (no batch waiting)
+- **Benefits**: 25-35% faster than static batching
 
 See [large-doc-processing.md#continuous-batching-vs-static](references/large-doc-processing.md#continuous-batching-vs-static) for full algorithm and [performance-benchmarks.md](references/performance-benchmarks.md) for benchmarks.
 
@@ -644,11 +620,9 @@ See [large-doc-processing.md#continuous-batching-vs-static](references/large-doc
 
 After each article completes, update TaskUpdate:
 
-* Format: `"Writing articles: {completed}/{total} completed"`
-
-* Example: `"Writing articles: 3/7 completed"`
-
-* Do NOT include time estimates
+- Format: `"Writing articles: {completed}/{total} completed"`
+- Example: `"Writing articles: 3/7 completed"`
+- Do NOT include time estimates
 
 ### 4.3 SoT Pattern (Long Articles)
 
@@ -682,11 +656,9 @@ RESULT: PASS # PASS nếu all sections covered
 
 **Tiêu chí PASS/FAIL:**
 
-* **PASS**: Tất cả sections được assigned đều được covered (100% section coverage)
-
-* **FAIL**: Có section bị missing hoặc skipped không hợp lệ
-
-* **Word count**: Chỉ thống kê, KHÔNG ảnh hưởng PASS/FAIL
+- **PASS**: Tất cả sections được assigned đều được covered (100% section coverage)
+- **FAIL**: Có section bị missing hoặc skipped không hợp lệ
+- **Word count**: Chỉ thống kê, KHÔNG ảnh hưởng PASS/FAIL
 
 Main agent enriches with "Assigned To" and "Used In" columns → aggregates into `_coverage.md` (4-column format, see [Step 5.2](#52-coverage-aggregation)).
 
@@ -694,30 +666,27 @@ Main agent enriches with "Assigned To" and "Used In" columns → aggregates into
 
 **⭐ sections MUST be faithfully rewritten** (không tóm tắt, không bỏ ý):
 
-* Giữ 100% ý nghĩa và thông tin gốc — KHÔNG được tóm tắt hay lược bỏ
-
-* PHẢI viết lại bằng tiếng Việt theo voice của output style đã chọn
-
-* KHÔNG copy nguyên văn từ source
-
-* If unable to include fully → flag for review
+- Giữ 100% ý nghĩa và thông tin gốc — KHÔNG được tóm tắt hay lược bỏ
+- PHẢI viết lại bằng tiếng Việt theo voice của output style đã chọn
+- KHÔNG copy nguyên văn từ source
+- If unable to include fully → flag for review
 
 ### 4.6 Quality Gate: Articles Complete
 
 Before proceeding to Step 5, verify:
 
-* [ ] All articles written (check pending list)
+- [ ] All articles written (check pending list)
 
-* [ ] **Each article has "## Các bài viết trong series" at end** (check `SERIES_LIST: YES` in subagent return)
-  * If `SERIES_LIST: NO` → Append series list to article file before continuing
+- [ ] **Each article has "## Các bài viết trong series" at end** (check `SERIES_LIST: YES` in subagent return)
+  - If `SERIES_LIST: NO` → Append series list to article file before continuing
 
-* [ ] Coverage reports collected from all subagents
+- [ ] Coverage reports collected from all subagents
 
-* [ ] No placeholder text in articles
+- [ ] No placeholder text in articles
 
-* [ ] Source verification quotes provided
+- [ ] Source verification quotes provided
 
-* [ ] Opening of each article is NOT mechanical ("Trong bài này...")
+- [ ] Opening of each article is NOT mechanical ("Trong bài này...")
 
 ## Step 5: Synthesize
 
@@ -760,9 +729,8 @@ Collect subagent coverage tables → aggregate into `analysis/_coverage.md`
 
 **Column enrichment**: Main agent knows which article each subagent wrote, so it adds:
 
-* `Assigned To`: article filename (from `_plan.md`)
-
-* `Used In`: same as Assigned To (or different if reassigned during writing)
+- `Assigned To`: article filename (from `_plan.md`)
+- `Used In`: same as Assigned To (or different if reassigned during writing)
 
 **Coverage file format** (required by `validate_coverage.py`):
 
@@ -779,15 +747,11 @@ Collect subagent coverage tables → aggregate into `analysis/_coverage.md`
 
 **Format rules**:
 
-* Column 1: `S{NN}` with optional `⭐` for critical sections
-
-* Column 4:
-
-  * For used sections: `✅` followed by one of: `used`, `faithful`, `quoted`, `summarized`
-
-  * For skipped sections: `⚠️ skipped` (requires Notes column with reason)
-
-* Summary line at bottom: `- Total: {N} | Used: {N} | Missing: {N}`
+- Column 1: `S{NN}` with optional `⭐` for critical sections
+- Column 4:
+  - For used sections: `✅` followed by one of: `used`, `faithful`, `quoted`, `summarized`
+  - For skipped sections: `⚠️ skipped` (requires Notes column with reason)
+- Summary line at bottom: `- Total: {N} | Used: {N} | Missing: {N}`
 
 **Edge case examples**:
 
@@ -804,33 +768,22 @@ Collect subagent coverage tables → aggregate into `analysis/_coverage.md`
 **Edge case rules:**
 
 1. **Reassignment**: Section moved to different article (common when planning adjusts)
-
-   * "Assigned To" shows original plan
-
-   * "Used In" shows actual article that included it
-
-   * Validate coverage in "Used In" article
-
+  - "Assigned To" shows original plan
+  - "Used In" shows actual article that included it
+  - Validate coverage in "Used In" article
 2. **Shared sections** (one section used in multiple articles):
-
-   * Format: `Used In` = comma-separated list (e.g., `02-core.md, 03-adv.md`)
-
-   * Validation: Each article in the list MUST contain \[Sxx] reference
-
-   * Check both articles include the section (quoted, summarized, or paraphrased)
-
-   * Status reflects how primary article used it
-
+  - Format: `Used In` = comma-separated list (e.g., `02-core.md, 03-adv.md`)
+  - Validation: Each article in the list MUST contain [Sxx] reference
+  - Check both articles include the section (quoted, summarized, or paraphrased)
+  - Status reflects how primary article used it
 3. **Skipped**: Must document reason (redundant, off-topic, user instruction)
-
-   * Status: `⚠️ skipped` (not `✅`)
-
-   * Notes column required with explicit reason
+  - Status: `⚠️ skipped` (not `✅`)
+  - Notes column required with explicit reason
 
 Run validation:
 
 ```bash
-$SCRIPTS_DIR/wa-validate docs/generated/{book}/analysis/_coverage.md
+{SCRIPTS_DIR}/wa-validate docs/generated/{book}/analysis/_coverage.md
 ```
 
 ## Step 6: Verify
@@ -854,25 +807,26 @@ Coverage results:
 
 ### 6.2 Quality Checklist
 
-* [ ] All articles written, reader-ready (no metadata)
+- [ ] All articles written, reader-ready (no metadata)
 
-* [ ] Overview updated with Key Takeaways and Series List
+- [ ] Overview updated with Key Takeaways and Series List
 
-* [ ] **All articles have "## Các bài viết trong series" at the end** (MANDATORY)
+- [ ] **All articles have "## Các bài viết trong series" at the end** (MANDATORY)
 
-* [ ] All links in series lists verified
+- [ ] All links in series lists verified
 
-* [ ] \_coverage.md reported (>=95% target, >=90% acceptable)
+- [ ] _coverage.md reported (>=95% target, >=90% acceptable)
 
-* [ ] Critical ⭐ sections included (faithful rewrite — 100% meaning, Vietnamese, style voice)
+- [ ] Critical ⭐ sections included (faithful rewrite — 100% meaning, Vietnamese, style voice)
 
-* [ ] Warnings logged for any skipped sections
+- [ ] Warnings logged for any skipped sections
 
-* [ ] **No mechanical openings** ("Trong bài này...", "Bài viết sẽ trình bày...")
+- [ ] **No mechanical openings** ("Trong bài này...", "Bài viết sẽ trình bày...")
 
-* [ ] **No mechanical closings** ("Tóm lại, bài viết đã...", "Trong phần tiếp theo...")
+- [ ] **No mechanical closings** ("Tóm lại, bài viết đã...", "Trong phần tiếp theo...")
 
 ### 6.3 Error Recovery (User-Driven)
+
 
 | Error               | Action                         | Auto-retry? |
 | ------------------- | ------------------------------ | ----------- |
@@ -882,6 +836,7 @@ Coverage results:
 | Content fabrication | Flag for user review           | ❌ NO        |
 | Coverage < 90%      | Ask user for decision          | ❌ NO        |
 
+
 **Nguyên tắc**: Không tự động retry. User có toàn quyền quyết định.
 
 See [retry-workflow.md](references/retry-workflow.md) for user decision flow.
@@ -890,96 +845,74 @@ See [retry-workflow.md](references/retry-workflow.md) for user decision flow.
 
 ### Source Fidelity
 
-* Use ONLY source material, no fabrication
-
-* **REWRITE ALL content in output style voice** — Source defines WHAT to say, Style defines HOW to say it
-
-* DO NOT copy-paste sentences from source (bao gồm cả ⭐ critical sections)
-
-* Maintain original terminology (thuật ngữ giữ nguyên, nhưng câu văn phải được viết lại)
-
-* ⭐ Critical sections: faithful rewrite — giữ 100% ý nghĩa, KHÔNG tóm tắt, viết lại bằng tiếng Việt + style voice
-
-* Non-critical sections: MUST be rewritten in the selected output style's voice, structure, and language patterns
-
-* VERIFY quotes prove source origin, but article content must be rewritten (not copied)
+- Use ONLY source material, no fabrication
+- **REWRITE ALL content in output style voice** — Source defines WHAT to say, Style defines HOW to say it
+- DO NOT copy-paste sentences from source (bao gồm cả ⭐ critical sections)
+- Maintain original terminology (thuật ngữ giữ nguyên, nhưng câu văn phải được viết lại)
+- ⭐ Critical sections: faithful rewrite — giữ 100% ý nghĩa, KHÔNG tóm tắt, viết lại bằng tiếng Việt + style voice
+- Non-critical sections: MUST be rewritten in the selected output style's voice, structure, and language patterns
+- VERIFY quotes prove source origin, but article content must be rewritten (not copied)
 
 ### Writing Quality
 
 **Narrative Coherence:**
 
-* Mỗi bài viết phải có mạch logic riêng, KHÔNG phải tóm tắt tuần tự từng section
-
-* Sections phải nối với nhau bằng bridges (logical hoặc emotional), không phải "Tiếp theo..."
-
-* Draw connections giữa các ý trong bài VÀ với thông điệp cốt lõi của series
+- Mỗi bài viết phải có mạch logic riêng, KHÔNG phải tóm tắt tuần tự từng section
+- Sections phải nối với nhau bằng bridges (logical hoặc emotional), không phải "Tiếp theo..."
+- Draw connections giữa các ý trong bài VÀ với thông điệp cốt lõi của series
 
 **Opening & Closing (quyết định ấn tượng):**
 
-* Opening: Hook compelling (câu hỏi, hình ảnh, khoảnh khắc). TRÁNH: "Trong bài này chúng ta sẽ..."
-
-* Closing: Kết resonant (câu hỏi mở, hình ảnh, lời mời). TRÁNH: "Tóm lại, bài viết đã trình bày..."
-
-* Mechanical phrases BLACKLIST: "Trong phần tiếp theo", "Như đã đề cập ở trên", "Bài viết này sẽ", "Tóm lại"
+- Opening: Hook compelling (câu hỏi, hình ảnh, khoảnh khắc). TRÁNH: "Trong bài này chúng ta sẽ..."
+- Closing: Kết resonant (câu hỏi mở, hình ảnh, lời mời). TRÁNH: "Tóm lại, bài viết đã trình bày..."
+- Mechanical phrases BLACKLIST: "Trong phần tiếp theo", "Như đã đề cập ở trên", "Bài viết này sẽ", "Tóm lại"
 
 **Depth vs Breadth:**
 
-* Khi một ý quan trọng: đi SÂU (ví dụ, implications, câu hỏi) thay vì liệt kê
-
-* Khi nhiều ý nhỏ: nhóm lại thành pattern/theme, không liệt kê từng ý riêng lẻ
-
-* Priority: 2-3 key insights explored deeply > 10 points listed superficially
+- Khi một ý quan trọng: đi SÂU (ví dụ, implications, câu hỏi) thay vì liệt kê
+- Khi nhiều ý nhỏ: nhóm lại thành pattern/theme, không liệt kê từng ý riêng lẻ
+- Priority: 2-3 key insights explored deeply > 10 points listed superficially
 
 **Reader Engagement:**
 
-* Đặt câu hỏi cho người đọc (rhetorical hoặc reflective)
-
-* Dùng ví dụ cụ thể, relatable thay vì abstract
-
-* Tạo tension/curiosity trước khi giải đáp
-
-* Vary sentence length: xen kẽ câu ngắn và dài
+- Đặt câu hỏi cho người đọc (rhetorical hoặc reflective)
+- Dùng ví dụ cụ thể, relatable thay vì abstract
+- Tạo tension/curiosity trước khi giải đáp
+- Vary sentence length: xen kẽ câu ngắn và dài
 
 ### Formatting
 
-* Link between articles with relative paths
-
-* Track all sections with \[Sxx] IDs
-
-* NO markdown tables in article output - use bullet points instead
-
-* NO diagrams (mermaid, ASCII, flowcharts) - describe in prose or bullets
+- Link between articles with relative paths
+- Track all sections with [Sxx] IDs
+- NO markdown tables in article output - use bullet points instead
+- NO diagrams (mermaid, ASCII, flowcharts) - describe in prose or bullets
 
 ### Series List (MANDATORY)
 
-* **MỖI bài viết PHẢI có "## Các bài viết trong series" ở cuối** - Thiếu = FAIL
-
-* Mark current article with _(đang xem)_
-
-* Validation: Subagent return format includes `SERIES_LIST: YES/NO`
-
-* Main agent MUST check `SERIES_LIST: YES` trước khi accept article
+- **MỖI bài viết PHẢI có "## Các bài viết trong series" ở cuối** - Thiếu = FAIL
+- Mark current article with *(đang xem)*
+- Validation: Subagent return format includes `SERIES_LIST: YES/NO`
+- Main agent MUST check `SERIES_LIST: YES` trước khi accept article
 
 ## Cài đặt thư viện mới
 
-Skill sử dụng virtual environment tại `$SCRIPTS_DIR/.venv`. Khi cần cài thêm thư viện, **PHẢI activate venv trước**:
+Skill sử dụng virtual environment tại `{SCRIPTS_DIR}/.venv`. Khi cần cài thêm thư viện, **PHẢI activate venv trước**:
 
 ```bash
 # 1. Activate venv (dùng SCRIPTS_DIR từ Step 0)
-source $SCRIPTS_DIR/.venv/bin/activate
+source {SCRIPTS_DIR}/.venv/bin/activate
 
 # 2. Cài package
 uv pip install <package>
 
 # 3. Cập nhật requirements.txt
-uv pip freeze > $SCRIPTS_DIR/requirements.txt
+uv pip freeze > {SCRIPTS_DIR}/requirements.txt
 ```
 
 **KHÔNG dùng:**
 
-* `uv pip install <package>` khi chưa activate venv → lỗi "No virtual environment found"
+- `uv pip install <package>` khi chưa activate venv → lỗi "No virtual environment found"
+- `uv pip install <package> --system` → lỗi "externally managed" (Python Homebrew)
+- `uv add <package>` → cần pyproject.toml, skill dùng requirements.txt
 
-* `uv pip install <package> --system` → lỗi "externally managed" (Python Homebrew)
-
-* `uv add <package>` → cần pyproject.toml, skill dùng requirements.txt
-
+<br>
