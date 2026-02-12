@@ -90,11 +90,7 @@ direct_path.eligible AND direct_path.capacity_ok?
         └─ Use references/context-extractor-prompt.md
 ```
 
-**Examples:**
-- 15K words, 5 articles → Direct Path (structure.json: eligible=true, capacity_ok=true) ✓
-- 45K words, 3 articles → Direct Path for EN (capacity_ok=true), Warning for VI (capacity_ok=false) ⚠️
-- 48K words, 3 articles → Warning (exceeds mixed limit 38K) → Recommend Tier 1 ⚠️
-- 45K words, 4 articles → Standard Path (eligible=false → Tier 1, skip context files)
+**Examples:** See [SKILL.md §3.0](../SKILL.md#30-processing-path-selection) for detailed examples with word counts and article scenarios.
 
 **v1.10.0 change**: Tier 1 documents (20K-50K) now skip context files. Subagents read source directly via line ranges with inline glossary, same as Tier 3. Only Tier 2 (50K-100K) uses context extraction.
 

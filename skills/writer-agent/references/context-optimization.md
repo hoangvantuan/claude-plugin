@@ -177,9 +177,9 @@ Step 3: Analyze
 
 **Timing rule**: Steps 3.1-3.3 use structure.json exclusively. Step 3.4 (post-planning) is when first content.md read occurs for glossary extraction.
 
-## Tier-Specific Rules
+## Tier-Specific Context Rules
 
-> See [SKILL.md §2.6](../SKILL.md#step-26-tier-reference-table) for canonical tier definitions and [SKILL.md §3.5](../SKILL.md#35-context-files) for tier-specific context file strategy.
+> See [SKILL.md §2.6](../SKILL.md#step-26-tier-reference-table) for canonical tier definitions and [SKILL.md §3.5](../SKILL.md#35-context-files) for tier-specific context file strategy. This document focuses on **context optimization** (when to read content.md), not tier definitions.
 
 ## Validation Checklist
 

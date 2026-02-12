@@ -60,26 +60,20 @@ direct_path.eligible AND direct_path.capacity_ok?
 └─ NOT eligible → Use tier_recommendation.tier
 ```
 
-**Examples:**
-- 15K words, 5 articles → Direct Path (eligible=true, capacity_ok=true) ✓
-- 45K words, 3 articles → Direct Path for EN (capacity_ok=true), Warning for VI ⚠️
-- 48K words, 3 articles → Warning (exceeds mixed limit 38K) → Recommend Tier 1
-- 45K words, 4 articles → Tier 1 (eligible=false, 4 > 3)
+**Examples:** See [SKILL.md §3.0](../SKILL.md#30-processing-path-selection) for detailed examples.
 
-### Tier 1: Full Content (20K-50K words)
+### Tier 1: Direct Source Read (20K-50K words)
 
-Extract entire source for context (intermediate file). Article writer sẽ rewrite tất cả.
+> **Updated v1.10.0**: Tier 1 no longer uses context files. Subagents read source directly via line ranges (same as Tier 3).
 
-```markdown
-# {Article Title}
-TIER:1 | LINES:1-500 | WORDS:8500 | CRIT:S02,S05
+Subagents đọc source trực tiếp qua line ranges từ `structure.json`. Inline glossary (~200 words) embed trong prompt.
 
-## Content
-[S01] {Title}
-{Source text}
-
-[S02]* {Critical Title}
-{FULL source text, article writer sẽ faithful rewrite sang Vietnamese + style voice}
+```
+Subagent workflow:
+1. Read style file
+2. Read source content.md L{start}-{end} (from structure.json outline)
+3. Write article (rewrite in style voice)
+4. Return coverage report
 ```
 
 ### Tier 2: Smart Compression (50K-100K words)
@@ -167,7 +161,7 @@ NAV: [Prev](./{prev}.md) | [Next](./{next}.md)
 
 ```
 1. wa-convert → structure.json
-2. AskUserQuestion → style
+2. Hỏi user → style
 3. Read structure.json → extract key terms from first chunk
 4. Create minimal _plan.md
 5. Write 00-overview.md (main agent)

@@ -33,22 +33,22 @@ Transform documents and URLs into styled article series.
 Main agent writes all articles directly without subagents.
 
 ```
-Input → Convert → Plan → Write(main) → Synthesize → Verify
-  1        1        3         4            5           6
+Input → Convert → Style/Structure → Plan → Write(main) → Synthesize → Verify
+  1        1           2               3        4            5           6
 ```
 
 **Standard (Tier 1-2, 20K-100K words):**
 
 ```
-Input → Convert → Analyze → Extract → Write → Synthesize → Verify
-  1        1         3         3        4         5           6
+Input → Convert → Style/Structure → Analyze → Extract → Write → Synthesize → Verify
+  1        1           2               3         3         4        5           6
 ```
 
 **Fast Path (Tier 3, >=100K words):**
 
 ```
-Input → Convert → Plan → Write(parallel) → Synthesize → Verify
-  1        1        3          4              5           6
+Input → Convert → Style/Structure → Plan → Write(parallel) → Synthesize → Verify
+  1        1           2              3          4              5           6
 ```
 
 ## Step 0: Resolve Skill Paths (BẮT BUỘC)
@@ -61,7 +61,7 @@ Input → Convert → Plan → Write(parallel) → Synthesize → Verify
 Glob("**/writer-agent/scripts/wa-convert")
 ```
 
-**Bước 2**: Từ kết quả, xác định 3 đường dẫn:
+**Bước 2**: Từ kết quả, xác định 4 đường dẫn:
 
 ```
 SCRIPTS_DIR = directory chứa wa-convert  (ví dụ: /Users/x/.claude/skills/writer-agent/scripts)
@@ -70,7 +70,7 @@ STYLES_DIR  = SKILL_DIR/output_styles    (ví dụ: /Users/x/.claude/skills/writ
 STRUCTURES_DIR = SKILL_DIR/output_structures (ví dụ: /Users/x/.claude/skills/writer-agent/output_structures)
 ```
 
-**Bước 3**: Ghi nhớ 3 đường dẫn này. Tất cả commands trong các bước sau PHẢI dùng đường dẫn đã resolve, KHÔNG dùng relative path.
+**Bước 3**: Ghi nhớ 4 đường dẫn này. Tất cả commands trong các bước sau PHẢI dùng đường dẫn đã resolve, KHÔNG dùng relative path.
 
 **Ví dụ**: Nếu Glob trả về `/Users/x/.claude/skills/writer-agent/scripts/wa-convert`:
 - Gọi convert: `/Users/x/.claude/skills/writer-agent/scripts/wa-convert file.pdf`
@@ -124,7 +124,7 @@ echo "{rewritten_content}" | {SCRIPTS_DIR}/wa-paste-text - --title "{title}"
 
 ## Step 2a: Select Style
 
-Use `AskUserQuestion` to confirm output style (voice, tone, language).
+Hỏi user để confirm output style (voice, tone, language).
 
 
 | Style                   | File                         | Voice                                 |
@@ -142,7 +142,7 @@ Style files: `{STYLES_DIR}/{style}.md`
 
 ## Step 2b: Select Structure
 
-Use `AskUserQuestion` to confirm output structure (article organization).
+Hỏi user để confirm output structure (article organization).
 
 Mỗi style có `default_structure` trong frontmatter. Suggest default, user có thể override.
 
@@ -166,7 +166,7 @@ Xem `{STRUCTURES_DIR}/_structure-comparison.md` để so sánh và mix-match.
 
 ## Step 2.5: Select Detail Level
 
-Use `AskUserQuestion` to confirm output detail level.
+Hỏi user để confirm output detail level.
 
 
 | Level         | Ratio  | Description                         |
@@ -616,16 +616,7 @@ For split articles, spawn each part sequentially within the article:
 
 **Context bridge extraction:**
 
-```python
-def extract_context_bridge(completed_part):
-    """Extract context for next part from completed part"""
-    article_content = read(completed_part.output_path)
-    return {
-        'prevPartTopics': extract_h2_titles(article_content),
-        'prevPartEnding': get_last_paragraph(article_content, max_words=50),
-        'keyConceptsFromPrev': extract_bold_terms(article_content)
-    }
-```
+> See [large-doc-processing.md §Context Bridge](references/large-doc-processing.md#context-bridge) for the `extract_context_bridge()` function used between multi-part articles.
 
 **Prompt validation (optional, for debugging):**
 
@@ -864,19 +855,9 @@ Coverage results:
 
 ### 6.3 Error Recovery (User-Driven)
 
+**Nguyên tắc**: Không tự động retry. Mọi lỗi (đều report cho user và chờ quyết định: timeout, missing output, style mismatch, fabrication, coverage <90%.
 
-| Error               | Action                         | Auto-retry? |
-| ------------------- | ------------------------------ | ----------- |
-| Subagent timeout    | Report to user, ask what to do | ❌ NO        |
-| Missing output      | Log warning, continue          | ❌ NO        |
-| Style mismatch      | Report, user decides           | ❌ NO        |
-| Content fabrication | Flag for user review           | ❌ NO        |
-| Coverage < 90%      | Ask user for decision          | ❌ NO        |
-
-
-**Nguyên tắc**: Không tự động retry. User có toàn quyền quyết định.
-
-See [retry-workflow.md](references/retry-workflow.md) for user decision flow.
+> See [retry-workflow.md](references/retry-workflow.md) for full error→action table and user decision flow.
 
 ## Content Guidelines
 

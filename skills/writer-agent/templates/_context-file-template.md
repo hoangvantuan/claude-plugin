@@ -59,7 +59,9 @@ Full content: content.md L200-350
 
 ## Content Rules
 
-1. **COPY verbatim** for `*` sections, no paraphrasing
+> **LƯU Ý**: Các rules dưới đây áp dụng cho **context extractor** (tạo context file). Article writer PHẢI REWRITE toàn bộ content theo output style — xem [article-writer-prompt.md](../references/article-writer-prompt.md#rewrite-rule-block).
+
+1. **COPY verbatim** for `*` sections, no paraphrasing (context extractor giữ nguyên để article writer rewrite sau)
 2. **PRESERVE** formatting (code blocks, lists, emphasis)
 3. **COMPRESS** non-critical via summary
 4. **SKIP** boilerplate, repeated content

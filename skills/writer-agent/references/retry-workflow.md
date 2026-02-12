@@ -113,17 +113,17 @@ IF user requested supplementary:
 When retries exhausted but content important:
 
 ```markdown
-# Supplementary: {Topic}
+# Bổ sung: {Topic}
 
-This article covers additional content from the source document.
+Bài viết này bao gồm nội dung bổ sung từ tài liệu gốc.
 
-## Sections Covered
+## Các sections được bao phủ
 - [S06] {Section Title}
 - [S12] {Section Title}
 
-## Content
+## Nội dung
 
-{Extract content from context files}
+{Trích nội dung từ context files}
 ```
 
 Add to overview's Article Index (Mục lục):
@@ -174,7 +174,7 @@ Partial output saved to: {output_path}
 
 ## State Persistence
 
-> **Note**: `_state.json` is **recommended** (required for retry and resume support). Without it, recovery from failures requires re-running from the beginning. See [SKILL.md Step 4.0](../SKILL.md#40-state-tracking-recommended).
+> **Note**: `_state.json` is **recommended**. Without it, recovery from failures requires re-running from the beginning. See [SKILL.md Step 4.0](../SKILL.md#40-state-tracking-recommended).
 
 ### Save State After Each Step
 
@@ -236,7 +236,7 @@ Main agent fails during article writing?
     └─ Resume from last H2 heading boundary
 ```
 
-**Important**: Direct Path has no subagent retry mechanism. Recovery relies on `_state.json` for tracking progress. This is why state tracking is **recommended** (not optional).
+**Important**: Direct Path has no subagent retry mechanism. Recovery relies on `_state.json` for tracking progress. Nếu muốn retry/resume support, hãy tạo `_state.json`.
 
 ## User Decision Points
 

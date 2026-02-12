@@ -566,16 +566,11 @@ Current article: Use **bold** + _(đang xem)_ instead of link.
 
 See [decision-trees.md#6](decision-trees.md#6-skip-validation-relaxed---v1130) for the full validation rules.
 
-Invalid skip → Retry with instruction to summarize or include specific \[Sxx].
+> **v1.13.0**: Không tự động retry. Log warnings và report cho user quyết định.
 
 ## Error Recovery (User-Driven - v1.13.0)
 
-| Error          | Action                | Auto-retry? |
-| -------------- | --------------------- | ----------- |
-| Timeout        | Report to user        | ❌ NO        |
-| Missing output | Log warning, continue | ❌ NO        |
-| Style mismatch | Report, user decides  | ❌ NO        |
-| Fabrication    | Flag for user review  | ❌ NO        |
+> See [retry-workflow.md](retry-workflow.md) for full error recovery procedures and user decision points.
 
 **Nguyên tắc**: Log và report, không tự động retry.
 
@@ -677,26 +672,9 @@ Task tool:
     VERIFY: "quote..." (L45), "quote..." (L128)
 ```
 
-### Context Bridge Generation
+### Part Naming & Context Bridge
 
-Main agent generates context bridge for Part N based on Part N-1:
-
-```python
-def generate_context_bridge(prev_part, current_part):
-    return {
-        'prevPartSlug': prev_part['slug'],
-        'prevPartTopics': extract_h2_titles(prev_part),  # List of H2s
-        'prevPartEnding': get_last_paragraph(prev_part, max_words=50),
-        'keyConceptsFromPrev': extract_defined_terms(prev_part)
-    }
-```
-
-### Part Naming Convention
-
-| Original         | Split Into                                                 |
-| ---------------- | ---------------------------------------------------------- |
-| `02-core.md`     | `02-core-part1.md`, `02-core-part2.md`, `02-core-part3.md` |
-| `03-advanced.md` | `03-advanced-part1.md`, `03-advanced-part2.md`             |
+> See [large-doc-processing.md §Article Splitting](large-doc-processing.md#article-splitting-strategy) for part naming conventions, context bridge generation, and multi-part series list format.
 
 ### Coverage Tracking for Split Articles
 
