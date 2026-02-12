@@ -31,7 +31,7 @@ from datetime import datetime
 from typing import Optional
 
 # Import shared extract_structure module
-from extract_structure import extract_structure, generate_slug
+from extract_structure import extract_structure, generate_slug, get_output_base
 
 # Check EPUB support
 try:
@@ -69,7 +69,7 @@ def get_default_output_dir(input_path: str) -> Path:
     input_p = Path(input_path)
     slug = generate_slug(input_p.stem)
     timestamp = datetime.now().strftime("%y%m%d-%H%M")
-    return Path("docs/generated") / f"{slug}-{timestamp}" / "input-handling"
+    return get_output_base() / f"{slug}-{timestamp}" / "input-handling"
 
 
 def get_output_path(input_path: str, output_dir: Optional[str] = None) -> Path:
@@ -256,7 +256,7 @@ def convert_with_docling(
             else:
                 # Default: docs/generated/{slug}-{timestamp}/input-handling/
                 timestamp = datetime.now().strftime("%y%m%d-%H%M")
-                out_dir = Path("docs/generated") / f"{slug}-{timestamp}" / "input-handling"
+                out_dir = get_output_base() / f"{slug}-{timestamp}" / "input-handling"
             out_dir.mkdir(parents=True, exist_ok=True)
             output_path = out_dir / "content.md"
         else:

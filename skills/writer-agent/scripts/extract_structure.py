@@ -58,6 +58,8 @@ CRITICAL_PATTERNS = [
 __all__ = [
     "extract_structure",
     "generate_slug",
+    "get_project_root",
+    "get_output_base",
     "detect_critical_sections",
     "detect_language",
     "TIER_1_MAX_WORDS",
@@ -65,6 +67,20 @@ __all__ = [
     "TARGET_CHUNK_WORDS",
     "CHUNK_OVERLAP_LINES",
 ]
+
+
+def get_project_root() -> Path:
+    """Resolve project root directory.
+
+    Returns the current working directory (= workspace root being opened).
+    The skill can be installed anywhere, so we use CWD as the project root.
+    """
+    return Path.cwd().resolve()
+
+
+def get_output_base() -> Path:
+    """Return absolute path to docs/generated/ under project root."""
+    return get_project_root() / "docs" / "generated"
 
 
 def detect_language(text: str, sample_size: int = 5000) -> str:

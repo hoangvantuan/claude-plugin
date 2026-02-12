@@ -21,7 +21,7 @@ from datetime import datetime
 from pathlib import Path
 
 # Import shared extract_structure module
-from extract_structure import extract_structure, generate_slug
+from extract_structure import extract_structure, generate_slug, get_output_base
 
 
 def derive_title(content: str) -> str:
@@ -100,7 +100,7 @@ def handle_pasted_text(
     if output_dir:
         out_dir = Path(output_dir)
     else:
-        out_dir = Path("docs/generated") / f"{slug}-{timestamp}" / "input-handling"
+        out_dir = get_output_base() / f"{slug}-{timestamp}" / "input-handling"
 
     out_dir.mkdir(parents=True, exist_ok=True)
 
