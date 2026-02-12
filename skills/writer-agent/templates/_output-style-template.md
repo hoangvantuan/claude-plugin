@@ -1,6 +1,7 @@
 ---
 name: style-name
 category: analytical | reflective | narrative | educational | conversational
+default_structure: structure-name
 best_for:
   - Document type 1
   - Document type 2
@@ -25,20 +26,6 @@ version: 1.0.0
 - Xưng: "tôi" / "chúng ta" / "người viết" / không xưng
 - Gọi người đọc: "bạn" / "người đọc" / không gọi
 - Tone: formal / casual / contemplative / etc.
-
-## Structure
-
-### 1. Opening
-
-[Cách mở bài - hook, context, roadmap]
-
-### 2. Development
-
-[Cách phát triển ý - organization, transitions, evidence]
-
-### 3. Closing
-
-[Cách kết bài - summary, call-to-action, open ending]
 
 ## Language
 

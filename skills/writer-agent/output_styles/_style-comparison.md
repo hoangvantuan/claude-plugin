@@ -128,6 +128,18 @@ Mục đích chính của bạn là gì?
    * Balanced (depth + practice + mindfulness) → Mindful Educator
    * Investigative → Deep Dive
 
-## Default Fallback
+## Default Structure Mapping
 
-All 7 output styles have a `## Structure` section defining their article organization pattern (Opening/Development/Closing or equivalent). The article-writer-prompt delegates structure to the style file. If a style's Structure section is too generic, subagents should use the default pattern: Opening → Main Sections → Closing, while still following the style's voice and tone.
+Mỗi style có `default_structure` trong frontmatter, trỏ đến file trong `output_structures/`. Cấu trúc bài viết được chọn **riêng biệt** với style (voice/tone).
+
+| Style | Default Structure |
+|---|---|
+| Professional | `bluf-evidence` |
+| Explanatory | `building-blocks` |
+| Deep Dive | `five-layers` |
+| Introspective Narrative | `spiral-return` |
+| Mindful Dialogue | `master-student` |
+| Mindful Storytelling | `story-arc` |
+| Mindful Educator | `depth-practice` |
+
+Xem `output_structures/_structure-comparison.md` để so sánh và mix-match structures.

@@ -70,7 +70,7 @@ REWRITE RULE (CRITICAL):
 ### WRITING QUALITY Block
 ```
 WRITING QUALITY (CRITICAL):
-- Opening/Closing: Follow the style's Opening and Closing guidelines
+- Opening/Closing: Follow the structure file's Opening and Closing guidelines
 - Narrative flow: Each section leads naturally to the next
 - Depth over breadth: Go deep on 2-3 key ideas
 - Draw connections: Link ideas to SERIES_CONTEXT.core_message
@@ -173,6 +173,7 @@ Task tool:
 
     SOURCE: {sourcePath} L{start}-{end}
     STYLE: {STYLES_DIR}/{style}.md
+    STRUCTURE: {STRUCTURES_DIR}/{structure}.md
     OUTPUT: {outputPath}
 
     TARGET: ~{target_words} words (reference only) | MODE: {detail_level}
@@ -195,21 +196,20 @@ Task tool:
     [Include FORMATTING block from Shared Rules above]
 
     STRUCTURE:
-    - Follow the Structure section in the output style file for article organization
-    - If style has Opening/Development/Closing → use that pattern
-    - If style has Scene/Encounter/Deepening/Transformation → use that pattern
-    - MANDATORY constraints (override style):
+    - Follow the structure file ({STRUCTURES_DIR}/{structure}.md) for article organization
+    - The structure file defines phases (Opening/Development/Closing or equivalent)
+    - MANDATORY constraints (override structure):
       1. Title (H1) - descriptive, evocative
       2. Before "## Các bài viết trong series", add a brief narrative bridge (1-2 sentences)
          that creates natural curiosity for the next article.
          Format: A question, image, or thought connecting this article's conclusion to the next.
          DO NOT use: "Trong phần tiếp theo...", "Bài tiếp theo sẽ..."
       3. Must end with "## Các bài viết trong series" (mark current with _(đang xem)_)
-    - The style's Structure section defines HOW to organize content
+    - The structure file defines HOW to organize content
     - The source sections [Sxx] define WHAT content to include
 
     CONTENT_TYPE: {contentType}
-    # Hint: Use this to adapt structure if the style's Structure section is generic.
+    # Hint: Use this to adapt the structure file's patterns for the specific content type.
     # tutorial → include practical steps/examples
     # conceptual → include thought experiments/frameworks
     # narrative → include scenes/character development
@@ -244,6 +244,7 @@ Task tool:
 
     SOURCE: {sourcePath} L{start}-{end}
     STYLE: {STYLES_DIR}/{style}.md
+    STRUCTURE: {STRUCTURES_DIR}/{structure}.md
     OUTPUT: {outputPath}
 
     TARGET: ~{target_words} words (reference only, source: {source_words} words)
@@ -273,21 +274,20 @@ Task tool:
     [Include FORMATTING block from Shared Rules above]
 
     STRUCTURE:
-    - Follow the Structure section in the output style file for article organization
-    - If style has Opening/Development/Closing → use that pattern
-    - If style has Scene/Encounter/Deepening/Transformation → use that pattern
-    - MANDATORY constraints (override style):
+    - Follow the structure file ({STRUCTURES_DIR}/{structure}.md) for article organization
+    - The structure file defines phases (Opening/Development/Closing or equivalent)
+    - MANDATORY constraints (override structure):
       1. Title (H1) - descriptive, evocative
       2. Before "## Các bài viết trong series", add a brief narrative bridge (1-2 sentences)
          that creates natural curiosity for the next article.
          Format: A question, image, or thought connecting this article's conclusion to the next.
          DO NOT use: "Trong phần tiếp theo...", "Bài tiếp theo sẽ..."
       3. Must end with "## Các bài viết trong series" (mark current with _(đang xem)_)
-    - The style's Structure section defines HOW to organize content
+    - The structure file defines HOW to organize content
     - The source sections [Sxx] define WHAT content to include
 
     CONTENT_TYPE: {contentType}
-    # Hint: Use this to adapt structure if the style's Structure section is generic.
+    # Hint: Use this to adapt the structure file's patterns for the specific content type.
     # tutorial → include practical steps/examples
     # conceptual → include thought experiments/frameworks
     # narrative → include scenes/character development
@@ -324,6 +324,7 @@ Task tool:
     1. Context: {contextFilePath}
     2. Glossary: {glossaryFilePath}
     3. Style: {STYLES_DIR}/{style}.md
+    4. Structure: {STRUCTURES_DIR}/{structure}.md
 
     OUTPUT: {outputPath}
 
@@ -351,21 +352,20 @@ Task tool:
     [Include FORMATTING block from Shared Rules above]
 
     STRUCTURE:
-    - Follow the Structure section in the output style file for article organization
-    - If style has Opening/Development/Closing → use that pattern
-    - If style has Scene/Encounter/Deepening/Transformation → use that pattern
-    - MANDATORY constraints (override style):
+    - Follow the structure file ({STRUCTURES_DIR}/{structure}.md) for article organization
+    - The structure file defines phases (Opening/Development/Closing or equivalent)
+    - MANDATORY constraints (override structure):
       1. Title (H1) - descriptive, evocative
       2. Before "## Các bài viết trong series", add a brief narrative bridge (1-2 sentences)
          that creates natural curiosity for the next article.
          Format: A question, image, or thought connecting this article's conclusion to the next.
          DO NOT use: "Trong phần tiếp theo...", "Bài tiếp theo sẽ..."
       3. Must end with "## Các bài viết trong series" (mark current with _(đang xem)_)
-    - The style's Structure section defines HOW to organize content
+    - The structure file defines HOW to organize content
     - The source sections [Sxx] define WHAT content to include
 
     CONTENT_TYPE: {contentType}
-    # Hint: Use this to adapt structure if the style's Structure section is generic.
+    # Hint: Use this to adapt the structure file's patterns for the specific content type.
     # tutorial → include practical steps/examples
     # conceptual → include thought experiments/frameworks
     # narrative → include scenes/character development
@@ -592,6 +592,7 @@ Task tool:
 
     SOURCE: {sourcePath} L{start}-{end}
     STYLE: {STYLES_DIR}/{style}.md
+    STRUCTURE: {STRUCTURES_DIR}/{structure}.md
     OUTPUT: {outputPath}
 
     TARGET: ~{target_words} words (reference only)

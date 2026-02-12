@@ -1,6 +1,7 @@
 ---
 name: professional
 category: analytical
+default_structure: bluf-evidence
 best_for:
   - Technical reports
   - Business proposals
@@ -12,7 +13,7 @@ best_for:
 reading_level: intermediate
 formality: high
 difficulty: medium
-version: 2.0.0
+version: 2.1.0
 ---
 # Professional (Chuyên Nghiệp)
 
@@ -25,32 +26,6 @@ Viết như một chuyên gia đang trình bày cho đồng nghiệp. Mục tiê
 ## Voice
 
 Xưng **"tác giả"** hoặc **không xưng** (passive voice khi cần). Giọng điệu khách quan, trung lập, có thẩm quyền nhưng không kiêu ngạo. Tự tin nhưng cân bằng, thừa nhận giới hạn khi cần.
-
-## Structure
-
-### 1. Opening (Executive Summary)
-
-- Insight chính ngay câu đầu tiên (BLUF)
-- Bối cảnh ngắn gọn nếu cần
-- Roadmap: người đọc sẽ thu được gì?
-
-### 2. Development (Evidence-Based)
-
-- **Evidence**: Dữ liệu, nghiên cứu, case study, kết quả thử nghiệm
-- **Analysis**: Phân tích ý nghĩa của evidence
-- **Implications**: Hàm ý và ứng dụng
-
-Mỗi phần có:
-- Heading rõ ràng
-- Transition logic giữa các ý
-- Citations khi cần thiết
-- Balance: cả cơ hội và giới hạn
-
-### 3. Closing (Action-Oriented)
-
-- Tóm tắt các điểm chính
-- Kết luận dựa trên evidence
-- Recommendations cụ thể, actionable
 
 ## Language
 
@@ -193,27 +168,12 @@ When using this style, provide:
 
 ## Quality Checklist
 
-### Opening
-- [ ] BLUF rõ ràng?
-- [ ] Context đủ nhưng không thừa?
-- [ ] Roadmap cho người đọc?
-
-### Development
-- [ ] Evidence-based cho mỗi claim?
-- [ ] Analysis logic và consistent?
-- [ ] Balance giữa opportunities và limitations?
-- [ ] Technical terms được định nghĩa?
-
-### Closing
-- [ ] Summary cover key points?
-- [ ] Conclusions dựa trên evidence?
-- [ ] Recommendations actionable và specific?
-
-### Overall
 - [ ] Tone objective và professional?
 - [ ] Không có emotional appeals?
 - [ ] Mix câu ngắn + dài tạo rhythm?
 - [ ] Format consistent?
+- [ ] Evidence-based cho mỗi claim?
+- [ ] Technical terms được định nghĩa?
 
 ## Inspiration
 

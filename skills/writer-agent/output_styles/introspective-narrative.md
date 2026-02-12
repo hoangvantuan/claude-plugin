@@ -1,6 +1,7 @@
 ---
 name: introspective-narrative
 category: reflective
+default_structure: spiral-return
 best_for:
   - Personal essays
   - Memoirs
@@ -13,7 +14,7 @@ best_for:
 reading_level: intermediate
 formality: medium
 difficulty: hard
-version: 2.0.0
+version: 2.1.0
 ---
 # Introspective Narrative (Tự Sự Nội Tâm)
 
@@ -28,27 +29,6 @@ Viết như cuộc hành trình tự khám phá. Không giảng dạy, chỉ chi
 Xưng **"tôi"**, đối thoại trực tiếp như hai người nói chuyện lúc khuya. Thâm trầm, chân thành, không sợ thừa nhận sai lầm. Tác giả cũng đang đi tìm, đang học, đang bị lột.
 
 Có thể dùng **"chúng ta"** khi mời người đọc cùng quan sát, và **"người viết"** khi cần khoảng cách chiêm nghiệm.
-
-## Structure (Xoáy Ốc)
-
-### 1. Opening
-
-- Khoảnh khắc bình thường nhưng đầy ý nghĩa: từ thiên nhiên, đời thường, hoặc trải nghiệm cá nhân
-- Hoặc câu hỏi bất ngờ khiến người đọc dừng lại
-- Grounding qua chi tiết giác quan: thấy, nghe, chạm
-
-### 2. Development
-
-- **Xoáy ốc**: quay lại chủ đề, mỗi lần sâu hơn
-- Xen kẽ: trải nghiệm cá nhân, quan sát thiên nhiên/xã hội, tự vấn, ẩn dụ, trích dẫn triết học
-- Nhịp thở trong văn: xen kẽ đoạn ngắn (dừng lại) và đoạn dài (flowing)
-- Khi phù hợp, liên kết với triết học Đông-Tây
-
-### 3. Resolution
-
-- Kết thúc bằng hình ảnh tĩnh lặng, câu hỏi mở, hoặc lời mời gọi thực hành
-- Bối rối có chủ đích, không kết luận gọn gàng
-- Có thể mời người đọc thử một hành động nhỏ
 
 ## Language
 
@@ -195,30 +175,13 @@ When using this style, provide:
 
 ## Quality Checklist
 
-### Opening
-- [ ] Khoảnh khắc cụ thể hoặc câu hỏi khiến dừng lại?
-- [ ] Chi tiết giác quan (grounding)?
-- [ ] Tạo không gian tĩnh lặng hoặc curiosity?
-
-### Development
-- [ ] Trải nghiệm cá nhân thật?
-- [ ] Câu hỏi tự vấn sâu sắc?
-- [ ] Cấu trúc xoáy ốc, mỗi lần sâu hơn?
-- [ ] Ẩn dụ nhất quán (2-3 hệ)?
-- [ ] Có nhịp thở, khoảng lặng giữa các ý?
-- [ ] Trích dẫn triết học tự nhiên (nếu dùng)?
-
-### Closing
-- [ ] Kết thúc mở: hình ảnh tĩnh lặng hoặc câu hỏi?
-- [ ] Không kết luận gọn gàng?
-- [ ] Có mời gọi nhẹ nhàng (thực hành hoặc suy ngẫm)?
-
-### Overall
 - [ ] Giọng thâm trầm, không giảng dạy?
 - [ ] Thừa nhận sai lầm, hoang mang?
 - [ ] Văn có nhịp, đọc lên thấy có hơi thở?
 - [ ] Người đọc "bị lột" nhưng không bị tổn thương?
 - [ ] Từ ngữ mềm mại, không áp đặt?
+- [ ] Trải nghiệm cá nhân thật?
+- [ ] Ẩn dụ nhất quán (2-3 hệ)?
 
 ## Inspiration
 

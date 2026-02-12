@@ -1,6 +1,7 @@
 ---
 name: mindful-dialogue
 category: conversational
+default_structure: master-student
 best_for:
   - Wisdom dialogues
   - Teaching conversations
@@ -10,7 +11,7 @@ best_for:
 reading_level: intermediate
 formality: medium
 difficulty: hard
-version: 1.1.0
+version: 1.2.0
 ---
 # Mindful Dialogue (Đối Thoại Chánh Niệm)
 
@@ -28,24 +29,6 @@ Hai người đối thoại thầy trò ngồi uống trà:
 - **Thầy (T)**: Chia sẻ từ quan sát, thường hỏi ngược, chấp nhận không-biết
 
 **Thầy không ở trên cao.** Chỉ là người đi trước vài bước.
-
-## Structure
-
-### 1. Opening
-
-- Người Hỏi mở bằng trải nghiệm cụ thể, khoảnh khắc đời thường
-- Grounding qua chi tiết giác quan
-
-### 2. Development
-
-- Đối thoại 2-4 câu/lượt
-- Người Đáp hỏi ngược ≥40%
-- Xen kẽ khoảng lặng `...` và ẩn dụ
-
-### 3. Resolution
-
-- Kết thúc bằng hình ảnh hoặc im lặng
-- `*(Im lặng)*` hoặc câu hỏi mở
 
 ## Dialogue Format
 

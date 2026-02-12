@@ -1,6 +1,7 @@
 ---
 name: explanatory
 category: educational
+default_structure: building-blocks
 best_for:
   - Tutorials
   - Educational content
@@ -13,7 +14,7 @@ best_for:
 reading_level: beginner
 formality: medium
 difficulty: medium
-version: 2.0.0
+version: 2.1.0
 ---
 # Explanatory (Giải Thích)
 
@@ -26,30 +27,6 @@ Viết như một người thầy giỏi đang chia sẻ kiến thức với c�
 ## Voice
 
 Xưng **"chúng ta"** hoặc **"tôi"** (khi chia sẻ kinh nghiệm), đồng hành cùng người đọc. Kiên nhẫn, rõ ràng, thân thiện, ấm áp. Không phải giảng dạy từ trên cao mà cùng nhau khám phá.
-
-## Structure
-
-### 1. Opening
-
-- Câu hỏi người đọc đang thắc mắc hoặc tình huống thực tế
-- BLUF: kết luận ngay câu đầu khi phù hợp
-- Context ngắn gọn, tạo motivation cho người đọc
-
-### 2. Development (Building Blocks)
-
-**Pattern:** Intuition trước → Concept đơn giản → Ví dụ trực quan → Chi tiết khi cần → Ứng dụng thực tế
-
-Mỗi khái niệm có:
-- Giải thích intuition bằng analogy quen thuộc trước
-- Định nghĩa đơn giản (1-2 câu)
-- Ví dụ minh họa cụ thể
-- Liên kết với ứng dụng thực tế
-
-### 3. Closing
-
-- Tóm tắt các điểm chính
-- Ý nghĩa thực tiễn
-- Lời khuyến khích: người đọc có thể bắt đầu ngay
 
 ## Language
 
@@ -202,27 +179,12 @@ When using this style, provide:
 
 ## Quality Checklist
 
-### Opening
-- [ ] Câu hỏi hoặc tình huống gây relate?
-- [ ] BLUF hoặc context ngắn gọn?
-- [ ] Motivation cho người đọc?
-
-### Development
-- [ ] Intuition trước, chi tiết sau?
-- [ ] Analogies gần gũi?
-- [ ] Building block progression?
-- [ ] Practical applications?
-
-### Closing
-- [ ] Summary rõ ràng?
-- [ ] Ý nghĩa thực tiễn?
-- [ ] Encouragement hoặc next step?
-
-### Overall
 - [ ] Accessible language throughout?
 - [ ] Warm, inclusive voice?
 - [ ] Người đọc feels empowered?
 - [ ] Không có jargon unexplained?
+- [ ] Analogies gần gũi?
+- [ ] Practical applications?
 
 ## Inspiration
 

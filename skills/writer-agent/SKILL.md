@@ -67,6 +67,7 @@ Glob("**/writer-agent/scripts/wa-convert")
 SCRIPTS_DIR = directory chứa wa-convert  (ví dụ: /Users/x/.claude/skills/writer-agent/scripts)
 SKILL_DIR   = parent của SCRIPTS_DIR     (ví dụ: /Users/x/.claude/skills/writer-agent)
 STYLES_DIR  = SKILL_DIR/output_styles    (ví dụ: /Users/x/.claude/skills/writer-agent/output_styles)
+STRUCTURES_DIR = SKILL_DIR/output_structures (ví dụ: /Users/x/.claude/skills/writer-agent/output_structures)
 ```
 
 **Bước 3**: Ghi nhớ 3 đường dẫn này. Tất cả commands trong các bước sau PHẢI dùng đường dẫn đã resolve, KHÔNG dùng relative path.
@@ -74,6 +75,7 @@ STYLES_DIR  = SKILL_DIR/output_styles    (ví dụ: /Users/x/.claude/skills/writ
 **Ví dụ**: Nếu Glob trả về `/Users/x/.claude/skills/writer-agent/scripts/wa-convert`:
 - Gọi convert: `/Users/x/.claude/skills/writer-agent/scripts/wa-convert file.pdf`
 - Đọc style: `/Users/x/.claude/skills/writer-agent/output_styles/professional.md`
+- Đọc structure: `/Users/x/.claude/skills/writer-agent/output_structures/bluf-evidence.md`
 
 > **QUAN TRỌNG**: KHÔNG BAO GIỜ hardcode `.claude/skills/writer-agent/...`, luôn dùng đường dẫn tuyệt đối từ Glob.
 
@@ -120,9 +122,9 @@ echo "{rewritten_content}" | {SCRIPTS_DIR}/wa-paste-text - --title "{title}"
 | Encrypted PDF      | Ask for decrypted version      |
 
 
-## Step 2: Select Style
+## Step 2a: Select Style
 
-Use `AskUserQuestion` to confirm output style.
+Use `AskUserQuestion` to confirm output style (voice, tone, language).
 
 
 | Style                   | File                         | Voice                                 |
@@ -137,6 +139,30 @@ Use `AskUserQuestion` to confirm output style.
 
 
 Style files: `{STYLES_DIR}/{style}.md`
+
+## Step 2b: Select Structure
+
+Use `AskUserQuestion` to confirm output structure (article organization).
+
+Mỗi style có `default_structure` trong frontmatter. Suggest default, user có thể override.
+
+
+| Structure       | File                 | Organization                                       | Default for           |
+| --------------- | -------------------- |--------------------------------------------------- | --------------------- |
+| BLUF-Evidence   | `bluf-evidence.md`   | Executive Summary → Evidence → Action              | Professional          |
+| Building Blocks | `building-blocks.md` | Hook → Intuition → Concept → Example → Apply       | Explanatory           |
+| Five Layers     | `five-layers.md`     | Surface → Structure → Tension → Connection → Synth | Deep Dive             |
+| Spiral Return   | `spiral-return.md`   | Moment → Spiral deeper → Open ending               | Introspective Narr.   |
+| Master-Student  | `master-student.md`  | Experience → Dialogue → Silence                    | Mindful Dialogue      |
+| Story Arc       | `story-arc.md`       | Scene → Encounter → Deepening → Transformation     | Mindful Storytelling  |
+| Depth-Practice  | `depth-practice.md`  | Present moment → Layers → Practice invitation      | Mindful Educator      |
+
+
+Structure files: `{STRUCTURES_DIR}/{structure}.md`
+
+Xem `{STRUCTURES_DIR}/_structure-comparison.md` để so sánh và mix-match.
+
+**Flow:** Chọn style → Hệ thống suggest default structure → User confirm hoặc chọn khác
 
 ## Step 2.5: Select Detail Level
 
@@ -379,8 +405,8 @@ Ghi vào plan table:
 
 Subagent sử dụng: Embed `CONTENT_TYPE: {type}` vào prompt. Subagent ưu tiên:
 
-1. Output style's Structure (primary)
-2. Content-type hint (secondary, nếu style không có structure cụ thể cho loại này)
+1. Output structure file (primary)
+2. Content-type hint (secondary, nếu structure không có pattern cụ thể cho loại này)
 
 **Series Context (QUAN TRỌNG - tạo cùng lúc với plan):**
 

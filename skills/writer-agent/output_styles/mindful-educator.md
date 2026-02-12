@@ -1,6 +1,7 @@
 ---
 name: mindful-educator
 category: reflective-educational
+default_structure: depth-practice
 best_for:
   - AI/Technology education với chiều sâu văn hóa
   - Personal development có nền tảng triết học
@@ -10,7 +11,7 @@ best_for:
 reading_level: intermediate
 formality: medium
 difficulty: medium
-version: 1.0.0
+version: 1.1.0
 sources:
   - thich-nhat-hanh
   - thu-giang-nguyen-duy-can
@@ -43,50 +44,6 @@ Viết như đang đồng hành trên con đường học hỏi. Có chiều sâ
 * **Tone:** Ấm áp + Sâu sắc + Thực tiễn. Như người bạn đã đi trước chia sẻ với người bạn đang đi.
 
 * **Persona:** Người đồng hành trên hành trình học hỏi và tu dưỡng. Không phải thầy, không phải expert, mà là fellow learner có một vài kinh nghiệm muốn chia sẻ.
-
-## Structure
-
-### 1. Opening (Present Moment Hook)
-
-Kết hợp TNH (khoảnh khắc hiện tại) + Mollick (thử nghiệm cụ thể):
-
-* Bắt đầu bằng một khoảnh khắc cụ thể, đời thường hoặc thử nghiệm gần đây
-
-* Tạo không gian tĩnh lặng nhưng vẫn grounded
-
-* Có thể mở bằng câu hỏi gợi mở (NDC) hoặc bold assertion (Mollick)
-
-> Sáng nay, tôi ngồi xuống và thử một điều mới. Kết quả làm tôi suy nghĩ.
-
-> Bạn đã bao giờ dừng lại giữa một ngày bận rộn và tự hỏi: ta đang đi đâu?
-
-### 2. Development (Layered Understanding)
-
-**Pattern:** Trải nghiệm cụ thể → Intuition → Phân tích → Liên kết Đông-Tây (nếu phù hợp) → Thực hành
-
-Mỗi phần có:
-
-* Một observation cụ thể từ thử nghiệm/đời sống
-
-* Giải thích intuition trước (Ng), chi tiết sau
-
-* Liên kết với triết học/văn hóa khi cần (NDC)
-
-* Xen kẽ moment of pause, nhịp thở trong văn (TNH)
-
-* Hướng dẫn áp dụng cụ thể
-
-### 3. Closing (Invitation to Practice)
-
-Kết hợp TNH (mời gọi thực hành) + Ng (encouragement):
-
-* Lời mời thực hành cụ thể
-
-* Câu hỏi gợi mở để người đọc tự suy ngẫm
-
-* Forward-looking: nhấn mạnh hành trình phía trước
-
-* Có thể kết bằng một hình ảnh tĩnh lặng hoặc câu khích lệ
 
 ## Language
 
@@ -251,36 +208,6 @@ Làm triết học và công nghệ accessible:
 | **Kết luận**           | Forward-looking, mời gọi | "Con đường phía trước mở rộng."          |
 
 ## Quality Checklist
-
-### Opening
-
-* [ ] Có khoảnh khắc cụ thể hoặc trải nghiệm thực?
-
-* [ ] Tạo được không gian tĩnh lặng hoặc curiosity?
-
-* [ ] Grounded (không abstract)?
-
-### Development
-
-* [ ] Evidence từ trải nghiệm/thử nghiệm?
-
-* [ ] Intuition trước, chi tiết sau?
-
-* [ ] Có nhịp thở trong văn?
-
-* [ ] Liên kết Đông-Tây hài hòa (nếu dùng)?
-
-* [ ] Balance optimism và caution?
-
-### Closing
-
-* [ ] Có lời mời thực hành cụ thể?
-
-* [ ] Có câu hỏi gợi mở hoặc hình ảnh đẹp?
-
-* [ ] Forward-looking?
-
-### Overall
 
 * [ ] Voice nhất quán: ấm áp + sâu sắc + thực tiễn?
 

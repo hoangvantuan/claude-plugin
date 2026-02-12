@@ -1,6 +1,7 @@
 ---
 name: mindful-storytelling
 category: narrative
+default_structure: story-arc
 best_for:
   - Personal journeys
   - Transformation stories
@@ -10,7 +11,7 @@ best_for:
 reading_level: intermediate
 formality: medium
 difficulty: hard
-version: 1.1.0
+version: 1.2.0
 ---
 # Mindful Storytelling (Kể Chuyện Chánh Niệm)
 
@@ -27,28 +28,6 @@ Kể lại hành trình khám phá như một câu chuyện. Người đọc đ�
 - **Ngôi kể:** "Tôi" hoặc "Con", đang trên hành trình, chưa đến đích
 - **Giọng:** Thân mật, chân thành, như viết nhật ký
 - **Thầy:** Qua hồi tưởng, không phải nhân vật chính
-
-## Structure
-
-### 1. Scene Setting
-
-- Khoảnh khắc cụ thể: thời gian, không gian, trạng thái
-- Grounding qua chi tiết giác quan
-
-### 2. Encounter
-
-- Vấn đề/câu hỏi qua trải nghiệm sống
-- Đối thoại với Thầy được kể lại (không format trực tiếp)
-
-### 3. Deepening
-
-- Dòng chảy tâm tưởng, ý nghĩ nối tiếp ý nghĩ
-- Nghịch lý, khoảng lặng
-
-### 4. Transformation
-
-- Insight cuối về CÂU HỎI MỚI, không phải câu trả lời
-- Kết thúc mở
 
 ## Embedded Dialogue
 
