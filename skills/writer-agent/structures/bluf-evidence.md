@@ -1,6 +1,6 @@
 ---
 name: bluf-evidence
-based_on: professional
+recommended_voice: objective
 best_for:
   - Technical reports
   - Business proposals

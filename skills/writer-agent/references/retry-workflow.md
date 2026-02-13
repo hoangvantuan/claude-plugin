@@ -35,7 +35,7 @@ Lý do thay đổi:
 | Subagent timeout    | Report to user            | ❌ NO       |
 | Coverage 90-94%     | Log warning, continue     | ❌ NO       |
 | Coverage < 90%      | Ask user what to do       | ❌ NO       |
-| Style mismatch      | Report, user decides      | ❌ NO       |
+| Voice mismatch      | Report, user decides      | ❌ NO       |
 | Content fabrication | Flag for user review      | ❌ NO       |
 
 ## Coverage Recovery Procedure (User-Driven)

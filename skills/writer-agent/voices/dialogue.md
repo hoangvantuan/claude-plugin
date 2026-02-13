@@ -1,5 +1,5 @@
 ---
-name: mindful-dialogue
+name: dialogue
 category: conversational
 default_structure: master-student
 best_for:
@@ -13,7 +13,7 @@ formality: medium
 difficulty: hard
 version: 1.2.0
 ---
-# Mindful Dialogue (Đối Thoại Chánh Niệm)
+# Dialogue (Đối Thoại Chánh Niệm)
 
 ## Philosophy
 

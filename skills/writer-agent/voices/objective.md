@@ -1,5 +1,5 @@
 ---
-name: professional
+name: objective
 category: analytical
 default_structure: bluf-evidence
 best_for:
@@ -15,7 +15,7 @@ formality: high
 difficulty: medium
 version: 2.1.0
 ---
-# Professional (Chuyên Nghiệp)
+# Objective (Chuyên Nghiệp)
 
 ## Philosophy
 

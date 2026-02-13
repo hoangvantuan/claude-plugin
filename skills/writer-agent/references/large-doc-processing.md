@@ -2,11 +2,8 @@
 
 Load this reference when document word count > 20K.
 
-> **📖 Tier Definitions**: See [SKILL.md Step 2.6](../SKILL.md#step-26-tier-reference-table) for canonical tier table. Table below shows strategy summary.
-
-## When to Use
-
-> See [SKILL.md §2.6](../SKILL.md#step-26-tier-reference-table) for canonical tier table with thresholds, strategies, and parameters.
+> **📖 Tier Definitions**: See [SKILL.md Step 2.6](../SKILL.md#step-26-tier-reference-table) for canonical tier table with thresholds, strategies, and parameters.
+> [Decision Trees](decision-trees.md#2-context-tier-selection) for tier selection flow.
 
 ## Quick Path (Structure JSON)
 
@@ -64,15 +61,13 @@ direct_path.eligible AND direct_path.capacity_ok?
 
 ### Tier 1: Direct Source Read (20K-50K words)
 
-> **Updated v1.10.0**: Tier 1 no longer uses context files. Subagents read source directly via line ranges (same as Tier 3).
-
 Subagents đọc source trực tiếp qua line ranges từ `structure.json`. Inline glossary (~200 words) embed trong prompt.
 
 ```
 Subagent workflow:
-1. Read style file
+1. Read voice file
 2. Read source content.md L{start}-{end} (from structure.json outline)
-3. Write article (rewrite in style voice)
+3. Write article (rewrite in voice persona)
 4. Return coverage report
 ```
 
@@ -132,7 +127,7 @@ For documents >=100K words, reduce main agent overhead by ~40%.
 
 ```markdown
 # Article Plan
-Style: introspective-narrative | Source: content.md (111K words)
+Voice: personal | Source: content.md (111K words)
 
 | # | Slug | Outline Indices | Lines | Chunks |
 |---|------|-----------------|-------|--------|
@@ -147,7 +142,7 @@ Style: introspective-narrative | Source: content.md (111K words)
 TASK: Write "{title}" for {seriesTitle}
 
 SOURCE: {sourcePath} L{start}-{end}
-STYLE: {STYLES_DIR}/{style}.md
+STYLE: {VOICES_DIR}/{voice}.md
 OUTPUT: {outputPath}
 
 TERMS:

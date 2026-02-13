@@ -1,5 +1,5 @@
 ---
-name: introspective-narrative
+name: personal
 category: reflective
 default_structure: spiral-return
 best_for:
@@ -16,7 +16,7 @@ formality: medium
 difficulty: hard
 version: 2.1.0
 ---
-# Introspective Narrative (Tự Sự Nội Tâm)
+# Personal (Tự Sự Nội Tâm)
 
 ## Philosophy
 

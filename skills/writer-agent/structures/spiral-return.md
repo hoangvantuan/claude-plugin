@@ -1,6 +1,6 @@
 ---
 name: spiral-return
-based_on: introspective-narrative
+recommended_voice: personal
 best_for:
   - Personal essays
   - Memoirs

@@ -1,5 +1,5 @@
 ---
-name: mindful-storytelling
+name: storyteller
 category: narrative
 default_structure: story-arc
 best_for:
@@ -13,7 +13,7 @@ formality: medium
 difficulty: hard
 version: 1.2.0
 ---
-# Mindful Storytelling (Kể Chuyện Chánh Niệm)
+# Storyteller (Kể Chuyện Chánh Niệm)
 
 ## Philosophy
 
@@ -21,7 +21,7 @@ Kể lại hành trình khám phá như một câu chuyện. Người đọc đ�
 
 **Nguyên tắc:** Trải nghiệm > Lý thuyết | Hành trình > Đích đến | Chuyển hóa câu hỏi > Chuyển hóa đáp án
 
-**Khác với Mindful Dialogue:** Không format C:/T:, mà kể lại như câu chuyện với đối thoại lồng ghép.
+**Khác với Dialogue voice:** Không format C:/T:, mà kể lại như câu chuyện với đối thoại lồng ghép.
 
 ## Voice
 

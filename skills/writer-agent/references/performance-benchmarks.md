@@ -1,5 +1,7 @@
 # Performance Benchmarks
 
+> **REFERENCE ONLY**: File này KHÔNG cần đọc trong runtime. Chỉ dùng để verify performance hoặc khi user hỏi về benchmarks.
+
 Measured performance improvements for writer-agent optimizations.
 
 ## Methodology
@@ -33,7 +35,7 @@ Write (static batching) → Synthesize → Verify
 
 * **Tier**: 1 (<50K words)
 
-* **Style**: Professional
+* **Style**: objective + bluf-evidence
 
 | Metric            | Baseline (v1.9.x) | Direct Path (v1.10.0) | Improvement      |
 | ----------------- | ----------------- | --------------------- | ---------------- |
@@ -53,7 +55,7 @@ Write (static batching) → Synthesize → Verify
 
 * **Tier**: 1 (<50K words)
 
-* **Style**: Explanatory
+* **Style**: teacher + building-blocks
 
 | Metric             | Baseline (v1.9.x)     | Optimized (v1.10.0) | Improvement      |
 | ------------------ | --------------------- | ------------------- | ---------------- |
@@ -80,7 +82,7 @@ Write (static batching) → Synthesize → Verify
 
 * **Tier**: 2 (50K-100K words)
 
-* **Style**: Mindful Educator
+* **Style**: guide + depth-practice
 
 | Metric             | Baseline (v1.9.x)   | Optimized (v1.10.0) | Improvement      |
 | ------------------ | ------------------- | ------------------- | ---------------- |
@@ -107,7 +109,7 @@ Write (static batching) → Synthesize → Verify
 
 * **Tier**: 3 (>=100K words)
 
-* **Style**: Introspective Narrative
+* **Style**: personal + spiral-return
 
 | Metric            | Baseline (v1.9.x)     | Fast Path (v1.10.0)       | Improvement         |
 | ----------------- | --------------------- | ------------------------- | ------------------- |
@@ -190,7 +192,7 @@ Write (static batching) → Synthesize → Verify
 
   * 12 articles: maximum batching efficiency (\~35%)
 
-* **Style complexity**: Professional/Explanatory styles faster than Introspective Narrative
+* **Voice complexity**: Objective/Teacher voices faster than Personal/Storyteller
 
   * Simpler voice = faster generation
 

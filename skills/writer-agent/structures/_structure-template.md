@@ -1,6 +1,6 @@
 ---
 name: structure-name
-based_on: style-name-or-custom
+recommended_voice: voice-name
 best_for:
   - Content type 1
   - Content type 2

@@ -1,6 +1,6 @@
 ---
 name: master-student
-based_on: mindful-dialogue
+recommended_voice: dialogue
 best_for:
   - Wisdom dialogues
   - Teaching conversations

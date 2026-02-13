@@ -1,6 +1,6 @@
 ---
 name: building-blocks
-based_on: explanatory
+recommended_voice: teacher
 best_for:
   - Tutorials
   - Educational content

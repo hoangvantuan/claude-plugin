@@ -1,5 +1,5 @@
 ---
-name: deep-dive
+name: investigator
 category: analytical-reflective
 default_structure: five-layers
 best_for:
@@ -15,7 +15,7 @@ difficulty: hard
 version: 1.1.0
 ---
 
-# Deep Dive (Đào Sâu)
+# Investigator (Đào Sâu)
 
 ## Philosophy
 

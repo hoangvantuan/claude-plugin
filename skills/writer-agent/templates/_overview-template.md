@@ -63,12 +63,10 @@ Questions the series will explore (NOT "What You'll Learn" bullet list):
 
 ## Tone Guidelines
 
+* Follow the selected **voice** for the series
 * Welcoming, not academic
-
 * Confident, not arrogant
-
 * Clear, not oversimplified
-
 * Engaging, not sensational
 
 ## Length

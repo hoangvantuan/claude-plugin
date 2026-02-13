@@ -92,9 +92,7 @@ direct_path.eligible AND direct_path.capacity_ok?
 
 **Examples:** See [SKILL.md §3.0](../SKILL.md#30-processing-path-selection) for detailed examples with word counts and article scenarios.
 
-**v1.10.0 change**: Tier 1 documents (20K-50K) now skip context files. Subagents read source directly via line ranges with inline glossary, same as Tier 3. Only Tier 2 (50K-100K) uses context extraction.
 
-**v1.11.0 change**: Direct Path eligibility and capacity limits now pre-computed in structure.json (`direct_path` field). Main agent no longer needs to calculate these manually.
 
 ## 3.1 Tier 3 Fast Path Workflow
 
@@ -267,9 +265,9 @@ Error type?
 │   └─ Continue với các articles khác
 │   └─ Report cho user ở cuối
 │
-├─ Style mismatch
-│   └─ Log: "Article {X} style mismatch"
-│   └─ Accept as-is (style không critical)
+├─ Voice mismatch
+│   └─ Log: "Article {X} voice mismatch"
+│   └─ Accept as-is (voice không critical)
 │   └─ Note trong report
 │
 ├─ Content fabrication detected

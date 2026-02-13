@@ -20,7 +20,7 @@ ratio: 15-25%
 use_case: Người đọc bận, cần overview nhanh
 
 content_handling:
-  critical_sections: Full content, faithful rewrite (100% meaning, Vietnamese, style voice)
+  critical_sections: Full content, faithful rewrite (100% meaning, Vietnamese, selected voice)
   non_critical: 1-2 câu tóm tắt mỗi section
   examples: Giữ ~30%, chọn tiêu biểu nhất
   quotes: Chỉ quotes quan trọng nhất
@@ -35,7 +35,7 @@ ratio: 30-40%
 use_case: Cân bằng giữa chi tiết và ngắn gọn
 
 content_handling:
-  critical_sections: Full content, faithful rewrite (100% meaning, Vietnamese, style voice)
+  critical_sections: Full content, faithful rewrite (100% meaning, Vietnamese, selected voice)
   non_critical: Summarize nhưng giữ key examples
   examples: Giữ ~60%
   quotes: Giữ key quotes
@@ -50,7 +50,7 @@ ratio: 50-65%
 use_case: Người muốn học sâu, tham khảo
 
 content_handling:
-  critical_sections: Full content, faithful rewrite (100% meaning, Vietnamese, style voice)
+  critical_sections: Full content, faithful rewrite (100% meaning, Vietnamese, selected voice)
   non_critical: Include most content, light editing
   examples: Giữ ~85%
   quotes: Giữ most quotes
@@ -65,7 +65,7 @@ ratio: 75-90%
 use_case: Archive, reference, cần giữ gần như đầy đủ nội dung
 
 content_handling:
-  critical_sections: Full content, faithful rewrite (100% meaning, Vietnamese, style voice)
+  critical_sections: Full content, faithful rewrite (100% meaning, Vietnamese, selected voice)
   non_critical: Full content, viết lại theo style
   examples: Giữ 100%
   quotes: Giữ all quotes

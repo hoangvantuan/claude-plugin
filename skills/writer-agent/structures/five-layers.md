@@ -1,6 +1,6 @@
 ---
 name: five-layers
-based_on: deep-dive
+recommended_voice: investigator
 best_for:
   - Non-fiction books analysis
   - Research papers

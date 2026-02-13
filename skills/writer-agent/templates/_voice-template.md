@@ -1,5 +1,5 @@
 ---
-name: style-name
+name: voice-name
 category: analytical | reflective | narrative | educational | conversational
 default_structure: structure-name
 best_for:
@@ -11,7 +11,7 @@ difficulty: easy | medium | hard
 version: 1.0.0
 ---
 
-# Style Name (Tên Tiếng Việt)
+# Voice Name (Tên Tiếng Việt)
 
 ## Philosophy
 
@@ -38,8 +38,9 @@ version: 1.0.0
 ### DON'T
 
 - [Phrases, patterns to avoid]
-- [Word choices discouraged]
-- [Anti-patterns]
+- Em dash (—), thay bằng dấu phẩy, dấu hai chấm, hoặc tách câu
+- AI vocabulary: "bức tranh toàn cảnh", "hệ sinh thái", "đa chiều"
+- [Additional voice-specific anti-patterns]
 
 ## Example
 
@@ -53,7 +54,7 @@ version: 1.0.0
 
 ### Wrong
 
-> [Example of incorrect usage of this style]
+> [Example of incorrect usage of this voice]
 
 **Why wrong:** [Explanation]
 
@@ -93,35 +94,19 @@ version: 1.0.0
 
 ## Prompt Context (For AI)
 
-When using this style, provide:
+When using this voice, provide:
 
 - **Audience**: [Who will read this - expertise level, expectations]
 - **Purpose**: [Why they read - learn, decide, reflect]
 - **Success criteria**: [What good output looks like]
-- **Constraints**: [Word limits, format requirements, topics to avoid]
+- **Constraints**: [Format requirements, topics to avoid]
 
 ## Quality Checklist
 
-### Opening
-
 - [ ] [Checkpoint 1]
 - [ ] [Checkpoint 2]
-
-### Development
-
-- [ ] [Checkpoint 1]
-- [ ] [Checkpoint 2]
-
-### Closing
-
-- [ ] [Checkpoint 1]
-- [ ] [Checkpoint 2]
-
-### Overall
-
-- [ ] [Checkpoint 1]
-- [ ] [Checkpoint 2]
+- [ ] [Checkpoint 3]
 
 ## Inspiration
 
-[Authors, publications, or sources that exemplify this style]
+[Authors, publications, or sources that exemplify this voice]

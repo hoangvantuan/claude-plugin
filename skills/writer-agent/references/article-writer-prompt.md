@@ -5,6 +5,7 @@
 Subagent không chỉ tóm tắt source material. Subagent phải **biến đổi** source thành bài viết engaging, có chiều sâu, có mạch logic riêng. Mỗi bài viết phải đứng độc lập như một bài hoàn chỉnh, đồng thời kết nối với series.
 
 **Nguyên tắc cốt lõi:**
+
 - **Narrative > Summary**: Viết bài có mạch kể, không phải liệt kê ý
 - **Insight > Information**: Tạo connections giữa các ý, rút ra insight
 - **Engagement > Coverage**: Một bài viết hay mà cover 90% tốt hơn bài nhàm chán cover 100%
@@ -26,6 +27,7 @@ SERIES_CONTEXT:
 ```
 
 **Cách main agent tạo Series Context:**
+
 1. Từ `_plan.md`, xác định article_role dựa trên vị trí trong series
 2. core_message: trích từ thông điệp cốt lõi trong plan hoặc structure.json
 3. prev/next: tóm tắt 1 câu từ article titles trong plan
@@ -38,6 +40,7 @@ SERIES_CONTEXT:
 All tier templates include these identical blocks. Defined once here to avoid duplication.
 
 ### LANGUAGE Block
+
 ```
 LANGUAGE:
 - Write ENTIRE article in Vietnamese, NO exceptions, including ⭐ critical sections
@@ -48,6 +51,7 @@ LANGUAGE:
 ```
 
 ### FORMATTING Block
+
 ```
 FORMATTING (CRITICAL):
 - NO markdown tables - convert to bullet lists
@@ -56,18 +60,53 @@ FORMATTING (CRITICAL):
 ```
 
 ### REWRITE RULE Block
+
 ```
 REWRITE RULE (CRITICAL):
-- MUST rewrite ALL content in YOUR voice following the output style, INCLUDING ⭐ critical sections
+- MUST rewrite ALL content in YOUR voice following the selected voice, INCLUDING ⭐ critical sections
 - DO NOT copy-paste sentences or paragraphs from source (no exceptions)
-- Source = WHAT ideas to express, Style = HOW to express them
-- Transform source ideas into the style's voice, structure, and language patterns
-- ⭐ critical sections: faithful rewrite, giữ 100% ý nghĩa, KHÔNG tóm tắt, viết lại bằng tiếng Việt + style voice
+- Source = WHAT ideas to express, Voice = HOW to express them
+- Transform source ideas into the voice's persona, structure, and language patterns
+- ⭐ critical sections: faithful rewrite, giữ 100% ý nghĩa, KHÔNG tóm tắt, viết lại bằng tiếng Việt + voice persona
 - Non-critical sections: rewrite freely (có thể tóm tắt theo detail level)
 - If a paragraph matches source word-for-word → FAIL (no exceptions)
 ```
 
+### WRITER PROFILE Block (Optional, chỉ include khi user đã chọn)
+
+```
+WRITER_PROFILE (nếu có):
+  IDENTITY: {role} với chuyên môn {expertise}. Credibility: {credibility}. Unique angle: {unique_angle}
+  PHILOSOPHY: Worldview: {worldview}. Core beliefs: {core_beliefs}
+  AUDIENCE: Người đọc {knows}, cảm thấy {feels}, muốn {wants}, sợ {fears}. Objections: {objections}
+  EMOTIONAL_MAP: Primary: {primary}. Avoid: {avoid}. Arc: {emotional_arc}
+
+  PROFILE RULES:
+  - Profile BỔ SUNG voice, KHÔNG thay thế
+  - Nếu conflict giữa voice và profile → profile wins (vì user-specific)
+  - Identity shapes WHAT authority you write from
+  - Audience shapes HOW you address the reader
+  - Emotional map shapes WHAT emotions you aim to evoke and avoid
+```
+
+### How to Compose 5 Dimensions into Subagent Prompt
+
+```
+Dimension mapping:
+  Voice (mandatory)      → VOICE section: paste full voice file content
+  Structure (mandatory)  → STRUCTURE section: paste full structure file content
+  Identity (optional)    → WRITER_PROFILE.IDENTITY field
+  Audience (optional)    → WRITER_PROFILE.AUDIENCE field  
+  Emotion (optional)     → WRITER_PROFILE.EMOTIONAL_MAP field
+
+Rules:
+  - If no Identity/Audience/Emotion selected → OMIT entire WRITER PROFILE block
+  - If only some selected → include block with available fields, omit empty ones
+  - Voice and Structure are always separate sections, never merged into WRITER PROFILE
+```
+
 ### WRITING QUALITY Block
+
 ```
 WRITING QUALITY (CRITICAL):
 - Opening/Closing: Follow the structure file's Opening and Closing guidelines
@@ -78,6 +117,7 @@ WRITING QUALITY (CRITICAL):
 ```
 
 ### ANTI-AI WRITING Block
+
 ```
 ANTI-AI WRITING (CRITICAL, output PHẢI đọc như người viết, KHÔNG như AI):
 
@@ -130,17 +170,19 @@ STRUCTURAL:
 ```
 
 ### CONTENT PRIORITY Block
+
 ```
 CONTENT PRIORITY:
 - FIRST: Cover ALL ideas from source sections completely
-- SECOND: Rewrite in output style voice (NOT copy source text)
+- SECOND: Rewrite in selected voice (NOT copy source text)
 - THIRD: Write naturally, word count is for statistics only
-- If all sections covered AND rewritten in style → PASS
+- If all sections covered AND rewritten in voice → PASS
 - DO NOT rewrite to hit word count targets
-- Quality content coverage + style compliance > arbitrary word targets
+- Quality content coverage + voice compliance > arbitrary word targets
 ```
 
 ### RETURN FORMAT Block
+
 ```
 RETURN FORMAT (CRITICAL - Table format):
 - Article content ALREADY saved to {outputPath}
@@ -162,7 +204,7 @@ VERIFY: "quote..." (L45), "quote..." (L128)
 
 ## Tier 3 Compact Template (>=100K words)
 
-Streamlined prompt for large documents (\~40% context reduction):
+Streamlined prompt for large documents (~40% context reduction):
 
 ```
 Task tool:
@@ -172,7 +214,7 @@ Task tool:
     TASK: Write "{title}" for {seriesTitle}
 
     SOURCE: {sourcePath} L{start}-{end}
-    STYLE: {STYLES_DIR}/{style}.md
+    STYLE: {VOICES_DIR}/{voice}.md
     STRUCTURE: {STRUCTURES_DIR}/{structure}.md
     OUTPUT: {outputPath}
 
@@ -221,8 +263,8 @@ Task tool:
 
     RULES:
     - Source ONLY, no fabrication
-    - [Sxx]* sections = faithful rewrite (100% meaning, Vietnamese, style voice, KHÔNG tóm tắt)
-    - Non-critical sections = MUST rewrite in style voice
+    - [Sxx]* sections = faithful rewrite (100% meaning, Vietnamese, selected voice, KHÔNG tóm tắt)
+    - Non-critical sections = MUST rewrite in selected voice
     - MUST end with "## Các bài viết trong series" section (MANDATORY - article FAILS without this)
     - Mark current article with _(đang xem)_
     - Focus on content coverage, word count is reference only
@@ -243,7 +285,7 @@ Task tool:
     TASK: Write article #{articleNumber} "{title}"
 
     SOURCE: {sourcePath} L{start}-{end}
-    STYLE: {STYLES_DIR}/{style}.md
+    STYLE: {VOICES_DIR}/{voice}.md
     STRUCTURE: {STRUCTURES_DIR}/{structure}.md
     OUTPUT: {outputPath}
 
@@ -294,12 +336,14 @@ Task tool:
     # analysis → include evidence hierarchy/methodology
 
     [Include REWRITE RULE block from Shared Rules above]
+    [Include WRITER PROFILE block from Shared Rules above]
     [Include WRITING QUALITY block from Shared Rules above]
+    [Include ANTI-AI WRITING block from Shared Rules above]
 
     RULES:
     - Source content ONLY
-    - [Sxx]* = faithful rewrite (100% meaning, Vietnamese, style voice, KHÔNG tóm tắt)
-    - Non-critical sections = MUST rewrite in style voice
+    - [Sxx]* = faithful rewrite (100% meaning, Vietnamese, selected voice, KHÔNG tóm tắt)
+    - Non-critical sections = MUST rewrite in selected voice
     - Preserve terminology
     - 100% reader-facing, no metadata in output
     - Focus on content coverage, word count is reference only
@@ -323,7 +367,7 @@ Task tool:
     READ:
     1. Context: {contextFilePath}
     2. Glossary: {glossaryFilePath}
-    3. Style: {STYLES_DIR}/{style}.md
+    3. Style: {VOICES_DIR}/{voice}.md
     4. Structure: {STRUCTURES_DIR}/{structure}.md
 
     OUTPUT: {outputPath}
@@ -372,12 +416,14 @@ Task tool:
     # analysis → include evidence hierarchy/methodology
 
     [Include REWRITE RULE block from Shared Rules above]
+    [Include WRITER PROFILE block from Shared Rules above]
     [Include WRITING QUALITY block from Shared Rules above]
+    [Include ANTI-AI WRITING block from Shared Rules above]
 
     RULES:
     - Source content ONLY
-    - [Sxx]* = faithful rewrite (100% meaning, Vietnamese, style voice, KHÔNG tóm tắt)
-    - Non-critical sections = MUST rewrite in style voice
+    - [Sxx]* = faithful rewrite (100% meaning, Vietnamese, selected voice, KHÔNG tóm tắt)
+    - Non-critical sections = MUST rewrite in selected voice
     - Preserve terminology
     - 100% reader-facing, no metadata in output
     - Focus on content coverage, word count is reference only
@@ -389,14 +435,15 @@ Task tool:
 
 ### Detail Level Parameters
 
-| Level         | critical\_handling                    | non\_critical\_handling  | example\_percentage | Target Reading Time |
-| ------------- | ------------------------------------- | ------------------------ | ------------------- | ------------------- |
-| Concise       | Full faithful rewrite (100% meaning)  | 1-2 sentences each       | 30%                 | \~5 min             |
-| Standard      | Full faithful rewrite (100% meaning)  | Summarize + key examples | 60%                 | \~10 min            |
-| Comprehensive | Full faithful rewrite (100% meaning)  | Most content             | 85%                 | \~13 min            |
-| Faithful      | Full faithful rewrite (100% meaning)  | Full content             | 100%                | \~15 min            |
+| Level         | critical_handling                    | non_critical_handling    | example_percentage | Target Reading Time |
+| ------------- | ------------------------------------ | ------------------------ | ------------------ | ------------------- |
+| Concise       | Full faithful rewrite (100% meaning) | 1-2 sentences each       | 30%                | ~5 min              |
+| Standard      | Full faithful rewrite (100% meaning) | Summarize + key examples | 60%                | ~10 min             |
+| Comprehensive | Full faithful rewrite (100% meaning) | Most content             | 85%                | ~13 min             |
+| Faithful      | Full faithful rewrite (100% meaning) | Full content             | 100%               | ~15 min             |
 
-**Reading Time Targets (\~13-15 minutes per article):**
+
+**Reading Time Targets (~13-15 minutes per article):**
 
 ```python
 MAX_OUTPUT_WORDS = 3000      # ~15 min for general content (200 wpm)
@@ -434,11 +481,10 @@ else:  # Mixed (some H3, but <5)
 
 **Limitations:**
 
-* Priority 3 (paragraph breaks) is not implemented. Documents with no headings will skip SoT.
+- Priority 3 (paragraph breaks) is not implemented. Documents with no headings will skip SoT.
+- Mixed structure logic uses simple addition, which may not capture complexity of deeply nested hierarchies.
 
-* Mixed structure logic uses simple addition, which may not capture complexity of deeply nested hierarchies.
-
-**Note:** "Total source content" = combined content from ALL sections (\[Sxx]) mapped to this article.
+**Note:** "Total source content" = combined content from ALL sections ([Sxx]) mapped to this article.
 
 For articles meeting criteria, use Skeleton-of-Thought:
 
@@ -457,7 +503,7 @@ Task[0]:
 - prompt: |
     Write Introduction (~300 words) for "{title}"
     Context: {intro_content}
-    Style: {style}.md
+    Voice: {voice}.md
 
     LANGUAGE: Write in Vietnamese. Keep technical terms in English with Vietnamese explanation.
 
@@ -468,9 +514,9 @@ Task[1]:
 - prompt: |
     Write "{H2_title}" (~{word_target} words)
     Context: {section_content}
-    Style: {style}.md
+    Voice: {voice}.md
 
-    REWRITE RULE: Rewrite content in style voice. DO NOT copy-paste from source. Source = WHAT, Style = HOW.
+    REWRITE RULE: Rewrite content in voice persona. DO NOT copy-paste from source. Source = WHAT, Voice = HOW.
     FORMATTING: NO markdown tables, NO diagrams (mermaid, ASCII art, flowcharts) - use bullet points instead.
     QUALITY: Write with narrative flow, not as summary. Go deep on key ideas. End section with bridge to next.
     ANTI-AI: NO em dash (—). Vary sentence length. No AI vocabulary. Natural Vietnamese structure.
@@ -490,7 +536,7 @@ Task[1]:
 - Write organic bridge sentences (question, insight, or image that connects sections naturally)
 - Avoid mechanical transitions: "Từ X, chuyển sang Y", "Dựa trên phần trên", "Tiếp nối"
 - Transitions must NOT introduce new factual claims (style/flow only)
-- Match transition tone to selected output style
+- Match transition tone to selected voice
 
 ## 3c. Terminology consistency check
 - Scan all sections for variant spellings of key terms from glossary
@@ -530,24 +576,25 @@ Phase 2 section fails (timeout or error)?
 QUAN TRỌNG: Không tự động retry. User quyết định.
 ```
 
-**Benefits**: \~45-50% faster for long articles via parallel expansion
+**Benefits**: ~45-50% faster for long articles via parallel expansion
 
 ## Variable Reference
 
-| Variable             | Tier 1                           | Tier 2                          | Tier 3                                  |
-| -------------------- | -------------------------------- | ------------------------------- | --------------------------------------- |
-| `{contextFilePath}`  | N/A                              | `analysis/XX-{slug}-context.md` | N/A                                     |
-| `{glossaryFilePath}` | N/A                              | `analysis/_glossary.md`         | N/A                                     |
-| `{sourcePath}`       | `input-handling/content.md`      | N/A                             | `input-handling/content.md`             |
-| `{start}`, `{end}`   | From `structure.json` outline    | N/A                             | From `structure.json` suggested\_chunks |
-| `{inlineGlossary}`   | \~200 words (embedded in prompt) | N/A                             | \~300 words (embedded in prompt)        |
-| `{style}`            | User selection                   | User selection                  | User selection                          |
-| `{seriesList}`       | From `_plan.md`                  | From `_plan.md`                 | From `_plan.md`                         |
-| `{contentType}`      | From `_plan.md` content type     | From `_plan.md` content type    | From `_plan.md` content type            |
-| `{readerEnters}`     | From `_plan.md` Series Context   | From `_plan.md` Series Context  | From `_plan.md` Series Context          |
-| `{readerExits}`      | From `_plan.md` Series Context   | From `_plan.md` Series Context  | From `_plan.md` Series Context          |
+| Variable             | Tier 1                          | Tier 2                          | Tier 3                                 |
+| -------------------- | ------------------------------- | ------------------------------- | -------------------------------------- |
+| `{contextFilePath}`  | N/A                             | `analysis/XX-{slug}-context.md` | N/A                                    |
+| `{glossaryFilePath}` | N/A                             | `analysis/_glossary.md`         | N/A                                    |
+| `{sourcePath}`       | `input-handling/content.md`     | N/A                             | `input-handling/content.md`            |
+| `{start}`, `{end}`   | From `structure.json` outline   | N/A                             | From `structure.json` suggested_chunks |
+| `{inlineGlossary}`   | ~200 words (embedded in prompt) | N/A                             | ~300 words (embedded in prompt)        |
+| `{voice}`            | User selection                  | User selection                  | User selection                         |
+| `{seriesList}`       | From `_plan.md`                 | From `_plan.md`                 | From `_plan.md`                        |
+| `{contentType}`      | From `_plan.md` content type    | From `_plan.md` content type    | From `_plan.md` content type           |
+| `{readerEnters}`     | From `_plan.md` Series Context  | From `_plan.md` Series Context  | From `_plan.md` Series Context         |
+| `{readerExits}`      | From `_plan.md` Series Context  | From `_plan.md` Series Context  | From `_plan.md` Series Context         |
 
-**Note**: Tier 1 and Tier 3 both read source directly via line ranges, but Tier 3 uses larger inline glossary (\~300 words) because larger documents have more technical terminology and subagents need more context without access to the full document.
+
+**Note**: Tier 1 and Tier 3 both read source directly via line ranges, but Tier 3 uses larger inline glossary (~300 words) because larger documents have more technical terminology and subagents need more context without access to the full document.
 
 ## Series List Format
 
@@ -560,7 +607,7 @@ QUAN TRỌNG: Không tự động retry. User quyết định.
 4. [Article 3 Title](./03-slug.md) - Brief description
 ```
 
-Current article: Use **bold** + _(đang xem)_ instead of link.
+Current article: Use **bold** + *(đang xem)* instead of link.
 
 ## Skip Validation
 
@@ -586,7 +633,7 @@ Task tool:
     TASK: Write "{title} (Phần {partNumber}/{totalParts})"
 
     SOURCE: {sourcePath} L{start}-{end}
-    STYLE: {STYLES_DIR}/{style}.md
+    STYLE: {VOICES_DIR}/{voice}.md
     STRUCTURE: {STRUCTURES_DIR}/{structure}.md
     OUTPUT: {outputPath}
 
@@ -629,27 +676,18 @@ Task tool:
     2c. [Core Concepts - Phần 3](./02-core-part3.md)
     3. [Next Topic](./03-next.md)
 
-    REWRITE RULE (CRITICAL):
-    - MUST rewrite ALL content in YOUR voice following the output style, INCLUDING ⭐ critical sections
-    - DO NOT copy-paste sentences or paragraphs from source (no exceptions)
-    - Source = WHAT ideas to express, Style = HOW to express them
-    - Transform source ideas into the style's voice, structure, and language patterns
-    - ⭐ critical sections: faithful rewrite, giữ 100% ý nghĩa, KHÔNG tóm tắt, viết lại bằng tiếng Việt + style voice
-    - If a paragraph matches source word-for-word → FAIL (no exceptions)
+    [Include REWRITE RULE block from Shared Rules above]
 
-    WRITING QUALITY (CRITICAL):
-    - Opening (Part 1): Compelling hook, NOT "Trong bài này..."
+    [Include WRITING QUALITY block from Shared Rules above]
     - Opening (Part 2+): Brief recap then dive in, NOT mechanical "Ở phần trước..."
-    - Narrative flow: Sections lead naturally to each other
     - Closing (not last part): Create anticipation for next part naturally
-    - Closing (last part): Resonant ending that ties back to article theme
 
     [Include ANTI-AI WRITING block from Shared Rules above]
 
     RULES:
     - Source content ONLY, no fabrication
-    - [Sxx]* = faithful rewrite (100% meaning, Vietnamese, style voice, KHÔNG tóm tắt)
-    - Non-critical sections = MUST rewrite in style voice
+    - [Sxx]* = faithful rewrite (100% meaning, Vietnamese, selected voice, KHÔNG tóm tắt)
+    - Non-critical sections = MUST rewrite in selected voice
     - Do NOT repeat content from previous parts
     - Reference previous parts naturally, not mechanically
     - Include navigation links between parts
@@ -692,9 +730,6 @@ Main agent aggregates into `_coverage.md`:
 
 **Validation rules:**
 
-* Each section MUST have Total = 100%
-
-* No line can appear in multiple parts (no overlap)
-
-* All source lines must be covered (no miss)
-
+- Each section MUST have Total = 100%
+- No line can appear in multiple parts (no overlap)
+- All source lines must be covered (no miss)

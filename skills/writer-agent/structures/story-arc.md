@@ -1,6 +1,6 @@
 ---
 name: story-arc
-based_on: mindful-storytelling
+recommended_voice: storyteller
 best_for:
   - Personal journeys
   - Transformation stories

@@ -1,6 +1,6 @@
 ---
 name: depth-practice
-based_on: mindful-educator
+recommended_voice: guide
 best_for:
   - AI/Technology education với chiều sâu văn hóa
   - Personal development có nền tảng triết học

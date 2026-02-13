@@ -49,28 +49,27 @@ Mục đích chính của bài viết là gì?
 
 ## Mix-Match Guide
 
-Mỗi structure có thể kết hợp với BẤT KỲ style nào. Một số combo đặc biệt hiệu quả:
+Mỗi structure có thể kết hợp với BẤT KỲ voice nào. Một số combo đặc biệt hiệu quả:
 
-| Combo                                              | Hiệu quả | Khi nào                        |
-| -------------------------------------------------- | -------- | ------------------------------ |
-| Deep Dive voice + BLUF-Evidence structure          | ★★★      | Phản biện nhưng cần actionable |
-| Professional voice + Five Layers structure         | ★★★      | Phân tích formal nhưng sâu     |
-| Explanatory voice + Depth-Practice structure       | ★★★      | Dạy có chiều sâu triết học     |
-| Introspective voice + Story Arc structure          | ★★★      | Tự sự có narrative arc rõ      |
-| Mindful Educator voice + Building Blocks structure | ★★★      | Dạy step-by-step có chánh niệm |
+| Combo                                            | Hiệu quả | Khi nào                        |
+| ------------------------------------------------ | -------- | ------------------------------ |
+| Investigator voice + BLUF-Evidence structure     | ★★★      | Phản biện nhưng cần actionable |
+| Objective voice + Five Layers structure          | ★★★      | Phân tích formal nhưng sâu     |
+| Teacher voice + Depth-Practice structure         | ★★★      | Dạy có chiều sâu triết học     |
+| Personal voice + Story Arc structure             | ★★★      | Tự sự có narrative arc rõ      |
+| Guide voice + Building Blocks structure          | ★★★      | Dạy step-by-step có chánh niệm |
 
 
 ## Default Mappings
 
-Mỗi style có default structure (dùng khi user không chọn):
+Mỗi voice có default structure (dùng khi user không chọn):
 
-| Style                   | Default Structure |
-| ----------------------- | ----------------- |
-| Professional            | BLUF-Evidence     |
-| Explanatory             | Building Blocks   |
-| Deep Dive               | Five Layers       |
-| Introspective Narrative | Spiral Return     |
-| Mindful Dialogue        | Master-Student    |
-| Mindful Storytelling    | Story Arc         |
-| Mindful Educator        | Depth-Practice    |
-
+| Voice          | Default Structure |
+| -------------- | ----------------- |
+| Objective      | BLUF-Evidence     |
+| Teacher        | Building Blocks   |
+| Investigator   | Five Layers       |
+| Personal       | Spiral Return     |
+| Dialogue       | Master-Student    |
+| Storyteller    | Story Arc         |
+| Guide          | Depth-Practice    |

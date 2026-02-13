@@ -13,17 +13,18 @@ Transform documents and URLs into styled article series.
 ## Quick Reference
 
 
-| Reference                                                             | Purpose                            |
-| --------------------------------------------------------------------- | ---------------------------------- |
-| [directory-structure.md](references/directory-structure.md)           | Output folder layout               |
-| [decision-trees.md](references/decision-trees.md)                     | Workflow decision guides           |
-| [retry-workflow.md](references/retry-workflow.md)                     | Error recovery procedures          |
-| [large-doc-processing.md](references/large-doc-processing.md)         | Handling documents >50K words      |
-| [article-writer-prompt.md](references/article-writer-prompt.md)       | Subagent prompt templates          |
-| [context-extractor-prompt.md](references/context-extractor-prompt.md) | Context extraction template        |
-| [context-optimization.md](references/context-optimization.md)         | Context optimization anti-patterns |
-| [performance-benchmarks.md](references/performance-benchmarks.md)     | Measured performance test cases    |
-| [detail-levels.md](references/detail-levels.md)                       | Output detail level options        |
+| Reference                                                             | Purpose                            | Load at Step       | DP | T1 | T2 | T3 |
+| --------------------------------------------------------------------- | ---------------------------------- | ------------------ | -- | -- | -- | -- |
+| [directory-structure.md](references/directory-structure.md)           | Output folder layout               | Step 1             | ✓  | ✓  | ✓  | ✓  |
+| [decision-trees.md](references/decision-trees.md)                     | Workflow decision guides           | Step 3.0           | ✓  | ✓  | ✓  | ✓  |
+| [retry-workflow.md](references/retry-workflow.md)                     | Error recovery procedures          | On error only      | -  | ✓  | ✓  | ✓  |
+| [large-doc-processing.md](references/large-doc-processing.md)         | Handling documents >50K words      | Step 3 (if >20K)   | -  | -  | ✓  | ✓  |
+| [article-writer-prompt.md](references/article-writer-prompt.md)       | Subagent prompt templates          | Step 4             | -  | ✓  | ✓  | ✓  |
+| [context-extractor-prompt.md](references/context-extractor-prompt.md) | Context extraction template        | Step 3 (Tier 2)    | -  | -  | ✓  | -  |
+| [context-optimization.md](references/context-optimization.md)         | Context optimization anti-patterns | Step 3.1           | -  | ✓  | ✓  | ✓  |
+| [detail-levels.md](references/detail-levels.md)                       | Output detail level options        | Step 2.5           | ✓  | ✓  | ✓  | ✓  |
+
+**DP** = Direct Path | **T1-T3** = Tier 1-3 | **✓** = Load | **-** = Skip
 
 
 ## Workflow Overview
@@ -66,16 +67,20 @@ Glob("**/writer-agent/scripts/wa-convert")
 ```
 SCRIPTS_DIR = directory chứa wa-convert  (ví dụ: /Users/x/.claude/skills/writer-agent/scripts)
 SKILL_DIR   = parent của SCRIPTS_DIR     (ví dụ: /Users/x/.claude/skills/writer-agent)
-STYLES_DIR  = SKILL_DIR/output_styles    (ví dụ: /Users/x/.claude/skills/writer-agent/output_styles)
-STRUCTURES_DIR = SKILL_DIR/output_structures (ví dụ: /Users/x/.claude/skills/writer-agent/output_structures)
+VOICES_DIR  = SKILL_DIR/voices           (ví dụ: /Users/x/.claude/skills/writer-agent/voices)
+STRUCTURES_DIR = SKILL_DIR/structures    (ví dụ: /Users/x/.claude/skills/writer-agent/structures)
+IDENTITIES_DIR = SKILL_DIR/identities    (ví dụ: /Users/x/.claude/skills/writer-agent/identities)
+AUDIENCES_DIR  = SKILL_DIR/audiences     (ví dụ: /Users/x/.claude/skills/writer-agent/audiences)
+EMOTIONS_DIR   = SKILL_DIR/emotional_maps (ví dụ: /Users/x/.claude/skills/writer-agent/emotional_maps)
 ```
 
-**Bước 3**: Ghi nhớ 4 đường dẫn này. Tất cả commands trong các bước sau PHẢI dùng đường dẫn đã resolve, KHÔNG dùng relative path.
+**Bước 3**: Ghi nhớ các đường dẫn này. Tất cả commands trong các bước sau PHẢI dùng đường dẫn đã resolve, KHÔNG dùng relative path.
 
 **Ví dụ**: Nếu Glob trả về `/Users/x/.claude/skills/writer-agent/scripts/wa-convert`:
 - Gọi convert: `/Users/x/.claude/skills/writer-agent/scripts/wa-convert file.pdf`
-- Đọc style: `/Users/x/.claude/skills/writer-agent/output_styles/professional.md`
-- Đọc structure: `/Users/x/.claude/skills/writer-agent/output_structures/bluf-evidence.md`
+- Đọc voice: `/Users/x/.claude/skills/writer-agent/voices/teacher.md`
+- Đọc structure: `/Users/x/.claude/skills/writer-agent/structures/building-blocks.md`
+- Đọc identity: `/Users/x/.claude/skills/writer-agent/identities/tech-builder.md`
 
 > **QUAN TRỌNG**: KHÔNG BAO GIỜ hardcode `.claude/skills/writer-agent/...`, luôn dùng đường dẫn tuyệt đối từ Glob.
 
@@ -84,11 +89,12 @@ STRUCTURES_DIR = SKILL_DIR/output_structures (ví dụ: /Users/x/.claude/skills/
 Detect input type and convert to markdown.
 
 
-| Input Type               | Detection               | Action                    |
-| ------------------------ | ----------------------- | ------------------------- |
-| File (PDF/DOCX/EPUB/etc) | Path + extension        | `wa-convert {path}`       |
-| URL                      | `http://` or `https://` | `wa-convert {url}`        |
-| Plain text / .txt / .md  | No complex extension    | Rewrite → `wa-paste-text` |
+| Input Type               | Detection                        | Action                    |
+| ------------------------ | -------------------------------- | ------------------------- |
+| File (PDF/DOCX/EPUB/etc) | Path + extension                 | `wa-convert {path}`       |
+| URL (web page)           | `http://` or `https://`          | `wa-convert {url}`        |
+| YouTube URL              | `youtube.com` or `youtu.be`      | `wa-convert {url}`        |
+| Plain text / .txt / .md  | No complex extension             | Rewrite → `wa-paste-text` |
 
 
 ### File/URL Conversion
@@ -122,47 +128,89 @@ echo "{rewritten_content}" | {SCRIPTS_DIR}/wa-paste-text - --title "{title}"
 | Encrypted PDF      | Ask for decrypted version      |
 
 
-## Step 2a: Select Style
+## Step 2: Select Writing Dimensions (5 Dimensions)
 
-Hỏi user để confirm output style (voice, tone, language).
+Hệ thống 5 chiều độc lập. User chọn từng chiều, mix-match tự do.
 
+**Flow:** Voice (bắt buộc) → Structure (bắt buộc) → Identity (optional) → Audience (optional) → Emotion (optional)
 
-| Style                   | File                         | Voice                                 |
-| ----------------------- | ---------------------------- | ------------------------------------- |
-| Professional            | `professional.md`            | Formal, data-driven, 3rd person       |
-| Explanatory             | `explanatory.md`             | Teaching, "we" together               |
-| Mindful Educator        | `mindful-educator.md`        | Depth + practice + mindfulness        |
-| Introspective Narrative | `introspective-narrative.md` | Personal journey, "I"                 |
-| Mindful Dialogue        | `mindful-dialogue.md`        | Master-student dialogue               |
-| Mindful Storytelling    | `mindful-storytelling.md`    | First person storytelling             |
-| Deep Dive               | `deep-dive.md`               | Investigative, assumption-challenging |
+Mỗi chiều có default mapping. User có thể skip optional dimensions.
 
+### Step 2a: Select Voice
 
-Style files: `{STYLES_DIR}/{style}.md`
+Hỏi user để confirm voice (giọng văn, tone, persona).
 
-## Step 2b: Select Structure
+| Voice | File | Mô tả |
+| --- | --- | --- |
+| Teacher | `teacher.md` | "Chúng ta" đồng hành, teaching, ấm áp |
+| Personal | `personal.md` | "Tôi" personal journey, vulnerable |
+| Objective | `objective.md` | Neutral, data-driven, formal |
+| Guide | `guide.md` | Đồng hành mindful, Đông-Tây |
+| Investigator | `investigator.md` | Tìm hiểu, đặt câu hỏi, challenge |
+| Dialogue | `dialogue.md` | Thầy-trò đối thoại, Zen |
+| Storyteller | `storyteller.md` | Kể chuyện ngôi thứ nhất, chánh niệm |
 
-Hỏi user để confirm output structure (article organization).
+Voice files: `voices/{voice}.md`
 
-Mỗi style có `default_structure` trong frontmatter. Suggest default, user có thể override.
+Xem `voices/_voice-comparison.md` để so sánh.
 
+### Step 2b: Select Structure
 
-| Structure       | File                 | Organization                                       | Default for           |
-| --------------- | -------------------- |--------------------------------------------------- | --------------------- |
-| BLUF-Evidence   | `bluf-evidence.md`   | Executive Summary → Evidence → Action              | Professional          |
-| Building Blocks | `building-blocks.md` | Hook → Intuition → Concept → Example → Apply       | Explanatory           |
-| Five Layers     | `five-layers.md`     | Surface → Structure → Tension → Connection → Synth | Deep Dive             |
-| Spiral Return   | `spiral-return.md`   | Moment → Spiral deeper → Open ending               | Introspective Narr.   |
-| Master-Student  | `master-student.md`  | Experience → Dialogue → Silence                    | Mindful Dialogue      |
-| Story Arc       | `story-arc.md`       | Scene → Encounter → Deepening → Transformation     | Mindful Storytelling  |
-| Depth-Practice  | `depth-practice.md`  | Present moment → Layers → Practice invitation      | Mindful Educator      |
+Hỏi user để confirm structure (tổ chức bài viết).
 
+Mỗi voice có `default_structure` trong frontmatter. Suggest default, user có thể override.
 
-Structure files: `{STRUCTURES_DIR}/{structure}.md`
+| Structure | File | Organization | Default cho |
+| --- | --- | --- | --- |
+| BLUF-Evidence | `bluf-evidence.md` | Executive Summary → Evidence → Action | Objective |
+| Building Blocks | `building-blocks.md` | Hook → Intuition → Concept → Example → Apply | Teacher |
+| Five Layers | `five-layers.md` | Surface → Structure → Tension → Connection → Synth | Investigator |
+| Spiral Return | `spiral-return.md` | Moment → Spiral deeper → Open ending | Personal |
+| Master-Student | `master-student.md` | Experience → Dialogue → Silence | Dialogue |
+| Story Arc | `story-arc.md` | Scene → Encounter → Deepening → Transformation | Storyteller |
+| Depth-Practice | `depth-practice.md` | Present moment → Layers → Practice invitation | Guide |
 
-Xem `{STRUCTURES_DIR}/_structure-comparison.md` để so sánh và mix-match.
+Structure files: `structures/{structure}.md`
 
-**Flow:** Chọn style → Hệ thống suggest default structure → User confirm hoặc chọn khác
+Xem `structures/_structure-comparison.md` để so sánh và mix-match.
+
+### Step 2c: Select Writer Identity (Optional)
+
+Hỏi user có muốn chọn writer identity không. Suggest default dựa trên voice.
+
+| Identity | File | Mô tả | Default cho |
+| --- | --- | --- | --- |
+| Tech Builder | `tech-builder.md` | Practitioner, pragmatic builder | Teacher, Objective |
+| Contemplative Thinker | `contemplative-thinker.md` | Hành giả, tìm ý nghĩa | Personal, Guide, Dialogue, Storyteller |
+| Knowledge Curator | `knowledge-curator.md` | Cross-domain connector | Objective, Investigator |
+
+Identity files: `identities/{identity}.md`
+
+### Step 2d: Select Audience Profile (Optional)
+
+Hỏi user viết cho ai. Suggest default dựa trên voice.
+
+| Audience | File | Mô tả | Default cho |
+| --- | --- | --- | --- |
+| Busy Professionals | `busy-professionals.md` | Bận, cần actionable | Objective |
+| Curious Beginners | `curious-beginners.md` | Mới, cần clarity | Teacher, Guide |
+| Deep Seekers | `deep-seekers.md` | Muốn chiều sâu | Personal, Investigator, Dialogue, Storyteller |
+
+Audience files: `audiences/{audience}.md`
+
+### Step 2e: Select Emotional Map (Optional)
+
+Hỏi user muốn người đọc cảm thấy gì. Suggest default dựa trên voice.
+
+| Emotion | File | Mô tả | Default cho |
+| --- | --- | --- | --- |
+| Empower & Challenge | `empower-challenge.md` | Growth qua discomfort | Teacher, Objective |
+| Reflect & Discover | `reflect-discover.md` | Stillness, wonder | Personal, Guide, Dialogue, Storyteller |
+| Provoke & Transform | `provoke-transform.md` | Challenge assumptions | Investigator |
+
+Emotion files: `emotional_maps/{emotion}.md`
+
+**Flow:** Chọn voice → Hệ thống suggest defaults cho tất cả → User confirm hoặc chọn khác từng cái
 
 ## Step 2.5: Select Detail Level
 
@@ -203,19 +251,7 @@ article_target = (article_source_words / source_words) × total_target
   - Standard level: 60% of examples
   - This percentage applies only to example sections
 
-**Worked example (Standard level, 35% target ratio, 60% examples):**
-
-- Source section: 5,000 words total
-  - Main explanatory content: 4,000 words
-  - Examples (10 examples): 1,000 words
-- Target article length: 5,000 × 0.35 = 1,750 words
-- Keep 60% of examples: 6 examples ≈ 600 words
-- Remaining budget for main content: 1,750 - 600 = 1,150 words
-- Main content compression: 1,150 / 4,000 = 28.75% (summarized)
-
-**Key insight:** Higher `example_percentage` (60%) than overall `target_ratio` (35%) means examples are preserved more than prose, reflecting their teaching value.
-
-See [detail-levels.md](references/detail-levels.md) for full specification.
+> See [detail-levels.md](references/detail-levels.md) for worked examples and full specification.
 
 ## Step 2.6: Tier Reference Table
 
@@ -379,7 +415,7 @@ Khi tạo `_plan.md`, xác định `content_type` cho mỗi article:
 | `conceptual` | Question → Exploration → Framework → Implications | Lý thuyết, triết học |
 | `narrative`  | Scene → Conflict → Journey → Resolution           | Câu chuyện, memoir   |
 | `analysis`   | Finding → Evidence → Discussion → Application     | Nghiên cứu, report   |
-| `mixed`      | Follow output style's default Structure           | Nội dung hỗn hợp     |
+| `mixed`      | Follow voice's default Structure                  | Nội dung hỗn hợp     |
 
 
 Detection signals:
@@ -687,7 +723,7 @@ Main agent enriches with "Assigned To" and "Used In" columns → aggregates into
 **⭐ sections MUST be faithfully rewritten** (không tóm tắt, không bỏ ý):
 
 - Giữ 100% ý nghĩa và thông tin gốc, KHÔNG được tóm tắt hay lược bỏ
-- PHẢI viết lại bằng tiếng Việt theo voice của output style đã chọn
+- PHẢI viết lại bằng tiếng Việt theo voice đã chọn
 - KHÔNG copy nguyên văn từ source
 - If unable to include fully → flag for review
 
@@ -837,21 +873,11 @@ Coverage results:
 
 - [ ] _coverage.md reported (>=95% target, >=90% acceptable)
 
-- [ ] Critical ⭐ sections included (faithful rewrite, 100% meaning, Vietnamese, style voice)
+- [ ] Critical ⭐ sections included (faithful rewrite, 100% meaning, Vietnamese, selected voice)
 
 - [ ] Warnings logged for any skipped sections
 
-- [ ] **No mechanical openings** ("Trong bài này...", "Bài viết sẽ trình bày...")
-
-- [ ] **No mechanical closings** ("Tóm lại, bài viết đã...", "Trong phần tiếp theo...")
-
-- [ ] **No em dash (—)** trong toàn bộ output
-
-- [ ] **No AI vocabulary** ("bức tranh toàn cảnh", "hệ sinh thái", "đa chiều", "delve", "tapestry", "landscape")
-
-- [ ] **Sentence length variation** (xen kẽ ngắn 3-8 từ và dài 20-35 từ, không đều tăm tắp)
-
-- [ ] **Natural Vietnamese** (ưu tiên từ thuần Việt, cấu trúc câu Việt, không dịch từ English)
+- [ ] **Anti-AI writing rules passed** (xem [article-writer-prompt.md#anti-ai-writing](references/article-writer-prompt.md) cho chi tiết đầy đủ)
 
 ### 6.3 Error Recovery (User-Driven)
 
@@ -864,11 +890,11 @@ Coverage results:
 ### Source Fidelity
 
 - Use ONLY source material, no fabrication
-- **REWRITE ALL content in output style voice**: Source defines WHAT to say, Style defines HOW to say it
+- **REWRITE ALL content in selected voice**: Source defines WHAT to say, Voice defines HOW to say it
 - DO NOT copy-paste sentences from source (bao gồm cả ⭐ critical sections)
 - Maintain original terminology (thuật ngữ giữ nguyên, nhưng câu văn phải được viết lại)
-- ⭐ Critical sections: faithful rewrite, giữ 100% ý nghĩa, KHÔNG tóm tắt, viết lại bằng tiếng Việt + style voice
-- Non-critical sections: MUST be rewritten in the selected output style's voice, structure, and language patterns
+- ⭐ Critical sections: faithful rewrite, giữ 100% ý nghĩa, KHÔNG tóm tắt, viết lại bằng tiếng Việt + voice đã chọn
+- Non-critical sections: MUST be rewritten in the selected voice's persona, structure, and language patterns
 - VERIFY quotes prove source origin, but article content must be rewritten (not copied)
 
 ### Writing Quality
@@ -898,16 +924,7 @@ Coverage results:
 - Tạo tension/curiosity trước khi giải đáp
 - Vary sentence length: xen kẽ câu ngắn và dài
 
-**Anti-AI Writing (output phải tự nhiên, giống người viết):**
-
-- TUYỆT ĐỐI KHÔNG dùng em dash (—). Thay bằng dấu phẩy, dấu hai chấm, hoặc tách câu
-- KHÔNG dùng vocabulary AI: "bức tranh toàn cảnh", "hệ sinh thái", "đa chiều", "toàn diện và sâu sắc", "delve", "tapestry", "landscape", "leverage", "nuanced", "multifaceted"
-- KHÔNG viết câu đều tăm tắp. Xen kẽ câu rất ngắn (3-8 từ) và dài (20-35 từ)
-- KHÔNG liệt kê 3 items mọi lúc. Dùng 2, 4, 5 items tự nhiên
-- Ưu tiên từ thuần Việt hơn Hán-Việt khi nghĩa tương đương
-- Có ý kiến rõ ràng, không hedge quá mức, không enthusiasm giả tạo
-- Cấu trúc câu Việt tự nhiên, không dịch từ English
-- Chi tiết đầy đủ: xem [article-writer-prompt.md#anti-ai-writing-block](references/article-writer-prompt.md#anti-ai-writing-block)
+**Anti-AI Writing:** Canonical rules trong [article-writer-prompt.md#anti-ai-writing](references/article-writer-prompt.md). Tóm tắt: không em dash (—), không AI vocabulary, xen kẽ câu ngắn/dài, từ thuần Việt, cấu trúc câu Việt tự nhiên.
 
 ### Formatting
 

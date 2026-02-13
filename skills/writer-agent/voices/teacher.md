@@ -1,5 +1,5 @@
 ---
-name: explanatory
+name: teacher
 category: educational
 default_structure: building-blocks
 best_for:
@@ -16,7 +16,7 @@ formality: medium
 difficulty: medium
 version: 2.1.0
 ---
-# Explanatory (Giải Thích)
+# Teacher (Giải Thích)
 
 ## Philosophy
 

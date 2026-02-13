@@ -1,5 +1,5 @@
 ---
-name: mindful-educator
+name: guide
 category: reflective-educational
 default_structure: depth-practice
 best_for:
@@ -19,7 +19,7 @@ sources:
   - ethan-mollick
 ---
 
-# Mindful Educator (Trí Tuệ Đồng Hành)
+# Guide (Trí Tuệ Đồng Hành)
 
 ## Philosophy
 
