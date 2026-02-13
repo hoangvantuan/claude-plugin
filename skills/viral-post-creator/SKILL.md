@@ -72,13 +72,7 @@ Apply across all posts:
 
 ### Phase 3: Recommend Best Performer
 
-End with:
-
-```
-RECOMMENDED BEST PERFORMER
-Selected Post: [Archetype - Variation #]
-Why This Works: [2-3 sentences on why this resonates most with the stated audience]
-```
+After all 9 posts, select the one most likely to resonate with the stated audience and explain why in 2-3 sentences.
 
 ## Constraints
 
@@ -89,6 +83,47 @@ Why This Works: [2-3 sentences on why this resonates most with the stated audien
 - Each variation must feel distinct
 - Inspire without manipulating
 
+## Output Format
+
+```
+THE PATIENT OBSERVER VARIATIONS
+
+Variation 1: [Title/Theme]
+[Post text with proper spacing]
+
+Variation 2: [Title/Theme]
+[Post text with proper spacing]
+
+Variation 3: [Title/Theme]
+[Post text with proper spacing]
+
+THE DRAMATIC PROPHET VARIATIONS
+
+Variation 1: [Title/Theme]
+[Post text with proper spacing]
+
+Variation 2: [Title/Theme]
+[Post text with proper spacing]
+
+Variation 3: [Title/Theme]
+[Post text with proper spacing]
+
+THE QUIET DEVASTATOR VARIATIONS
+
+Variation 1: [Title/Theme]
+[Post text with proper spacing]
+
+Variation 2: [Title/Theme]
+[Post text with proper spacing]
+
+Variation 3: [Title/Theme]
+[Post text with proper spacing]
+
+RECOMMENDED BEST PERFORMER
+Selected Post: [Archetype - Variation #]
+Why This Works: [2-3 sentences]
+```
+
 ## Reference Examples
 
-See [references/example-phrasing.md](references/example-phrasing.md) for example phrasing styles and the three archetype patterns in action.
+See [references/example-phrasing.md](references/example-phrasing.md) for example phrasing styles. Includes the three main archetypes plus supplementary styles (Paradox, Isolation/Vision) that can be blended into any archetype.
