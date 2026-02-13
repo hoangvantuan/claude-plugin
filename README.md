@@ -18,6 +18,11 @@ claude plugin install gh:hoangvantuan/shun-claude-plugin
 | `ghost-blog` | Ghost CMS blog management |
 | `proslide` | Professional slide/presentation creation |
 | `writer-agent` | Document transformation and article writing |
+| `prompt-generator` | Meta-prompting — tạo prompt chất lượng cao, giảm hallucination |
+| `viral-post-creator` | Tạo bài đăng viral trên social media (3 archetype) |
+| `youtube-title-generator` | Tạo tiêu đề YouTube hấp dẫn từ ý tưởng nội dung |
+| `creative-thought-partner` | Đối tác tư duy sáng tạo — brainstorming & insight discovery |
+| `deep-post-ideas` | Trích xuất outline bài đăng từ tài liệu tham khảo |
 
 ### Agents
 

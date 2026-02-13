@@ -15,6 +15,11 @@ skills/                      # Các skill plugins
   ghost-blog/                # Ghost CMS blog management
   proslide/                  # Professional slide/presentation creation
   writer-agent/              # Document transformation and article writing
+  prompt-generator/          # Meta-prompting — tạo prompt chất lượng cao
+  viral-post-creator/        # Tạo bài đăng viral trên social media
+  youtube-title-generator/   # Tạo tiêu đề YouTube hấp dẫn
+  creative-thought-partner/  # Đối tác tư duy sáng tạo — brainstorming
+  deep-post-ideas/           # Trích xuất outline bài đăng từ tài liệu
 agents/                      # Các agent definitions (planned)
 hooks/                       # Các hook scripts (planned)
 mcp/                         # Các MCP server configs (planned)
