@@ -88,6 +88,8 @@ EMOTIONS_DIR   = SKILL_DIR/emotional_maps (ví dụ: /Users/x/.claude/skills/wri
 
 Detect input type and convert to markdown.
 
+**Output language**: Luôn là tiếng Việt, bất kể source language.
+
 
 | Input Type               | Detection                        | Action                    |
 | ------------------------ | -------------------------------- | ------------------------- |
@@ -149,10 +151,13 @@ Hỏi user để confirm voice (giọng văn, tone, persona).
 | Investigator | `investigator.md` | Tìm hiểu, đặt câu hỏi, challenge |
 | Dialogue | `dialogue.md` | Thầy-trò đối thoại, Zen |
 | Storyteller | `storyteller.md` | Kể chuyện ngôi thứ nhất, chánh niệm |
+| **Custom** | User tạo mới | Theo `templates/_voice-template.md` |
 
 Voice files: `voices/{voice}.md`
 
 Xem `voices/_voice-comparison.md` để so sánh.
+
+**Custom voice**: Nếu user muốn tạo voice riêng, copy `templates/_voice-template.md` → `voices/{custom-name}.md`, điền theo template. Tương tự cho custom structure: `templates/_structure-template.md` → `structures/{custom-name}.md`.
 
 ### Step 2b: Select Structure
 
@@ -625,6 +630,15 @@ Write `00-overview.md` in **main context**:
 
 **Direct Path** (<20K words): Main agent writes all articles directly.
 
+Direct Path guidelines — main agent follows cùng shared rules như subagent:
+- Đọc voice file + structure file
+- Đọc source content.md trực tiếp (full hoặc theo line ranges từ structure.json)
+- Apply tất cả shared rules: LANGUAGE, FORMATTING, REWRITE RULE, ANTI-AI WRITING
+- KHÔNG cần return format (vì không có subagent)
+- Viết từng article theo `_plan.md`, save vào `articles/XX-{slug}.md`
+- Mỗi article MUST end with "## Các bài viết trong series"
+- Coverage tracking: main agent tự tạo `_coverage.md` sau khi viết xong tất cả
+
 **Standard/Fast Path**: Spawn subagents for articles 01+:
 
 ```
@@ -670,7 +684,7 @@ Validates all required template variables are present. Exit code 0 = PASS, 1 = m
 - On any completion → spawn next immediately (no batch waiting)
 - **Benefits**: 25-35% faster than static batching
 
-See [large-doc-processing.md#continuous-batching-vs-static](references/large-doc-processing.md#continuous-batching-vs-static) for full algorithm and [performance-benchmarks.md](references/performance-benchmarks.md) for benchmarks.
+See [large-doc-processing.md#continuous-batching-vs-static](references/large-doc-processing.md#continuous-batching-vs-static) for full algorithm.
 
 **Progress Reporting**:
 
@@ -688,7 +702,7 @@ After each article completes, update TaskUpdate:
 
 **Workflow**: Phase 1 (skeleton) → Phase 2 (expand ALL sections parallel) → Phase 3 (merge + transitions)
 
-**Benefits**: 45-50% faster for long articles. See [article-writer-prompt.md#sot-pattern](references/article-writer-prompt.md#sot-pattern-long-articles-2000-words) for template and [performance-benchmarks.md#test-case-5](references/performance-benchmarks.md#test-case-5-sot-pattern-long-article) for benchmarks.
+**Benefits**: 45-50% faster for long articles. See [article-writer-prompt.md#sot-pattern](references/article-writer-prompt.md#sot-pattern-long-articles-2000-words) for template.
 
 **Limitations**: Priority 3 (paragraph breaks) not implemented. Ambiguous structure → default to standard write.
 
@@ -733,9 +747,6 @@ Before proceeding to Step 5, verify:
 
 - [ ] All articles written (check pending list)
 
-- [ ] **Each article has "## Các bài viết trong series" at end** (check `SERIES_LIST: YES` in subagent return)
-  - If `SERIES_LIST: NO` → Append series list to article file before continuing
-
 - [ ] Coverage reports collected from all subagents
 
 - [ ] No placeholder text in articles
@@ -770,7 +781,7 @@ Update `00-overview.md` with actual content for placeholder sections:
 3. [Article 2 Title](./02-slug.md) - Brief description
 ```
 
-**Final overview target**: 400-600 words
+**Final overview target**: 400-600 words (overview đặc biệt, dùng word target thay vì section coverage)
 
 ### 5.2 Coverage Aggregation
 
@@ -867,78 +878,27 @@ Coverage results:
 
 - [ ] Overview updated with Key Takeaways and Series List
 
-- [ ] **All articles have "## Các bài viết trong series" at the end** (MANDATORY)
+- [ ] All articles have "## Các bài viết trong series" at end (check `SERIES_LIST: YES` in subagent return, append if missing)
 
 - [ ] All links in series lists verified
 
 - [ ] _coverage.md reported (>=95% target, >=90% acceptable)
 
-- [ ] Critical ⭐ sections included (faithful rewrite, 100% meaning, Vietnamese, selected voice)
+- [ ] Critical ⭐ sections included (faithful rewrite, Vietnamese, selected voice)
 
 - [ ] Warnings logged for any skipped sections
 
-- [ ] **Anti-AI writing rules passed** (xem [article-writer-prompt.md#anti-ai-writing](references/article-writer-prompt.md) cho chi tiết đầy đủ)
+- [ ] Anti-AI writing rules passed (xem [article-writer-prompt.md#anti-ai-writing](references/article-writer-prompt.md))
 
 ### 6.3 Error Recovery (User-Driven)
 
-**Nguyên tắc**: Không tự động retry. Mọi lỗi (đều report cho user và chờ quyết định: timeout, missing output, style mismatch, fabrication, coverage <90%.
-
-> See [retry-workflow.md](references/retry-workflow.md) for full error→action table and user decision flow.
+> **Policy**: Không tự động retry. Mọi lỗi đều report cho user và chờ quyết định. See [retry-workflow.md](references/retry-workflow.md).
 
 ## Content Guidelines
 
-### Source Fidelity
+> Full details: [content-guidelines.md](references/content-guidelines.md)
 
-- Use ONLY source material, no fabrication
-- **REWRITE ALL content in selected voice**: Source defines WHAT to say, Voice defines HOW to say it
-- DO NOT copy-paste sentences from source (bao gồm cả ⭐ critical sections)
-- Maintain original terminology (thuật ngữ giữ nguyên, nhưng câu văn phải được viết lại)
-- ⭐ Critical sections: faithful rewrite, giữ 100% ý nghĩa, KHÔNG tóm tắt, viết lại bằng tiếng Việt + voice đã chọn
-- Non-critical sections: MUST be rewritten in the selected voice's persona, structure, and language patterns
-- VERIFY quotes prove source origin, but article content must be rewritten (not copied)
-
-### Writing Quality
-
-**Narrative Coherence:**
-
-- Mỗi bài viết phải có mạch logic riêng, KHÔNG phải tóm tắt tuần tự từng section
-- Sections phải nối với nhau bằng bridges (logical hoặc emotional), không phải "Tiếp theo..."
-- Draw connections giữa các ý trong bài VÀ với thông điệp cốt lõi của series
-
-**Opening & Closing (quyết định ấn tượng):**
-
-- Opening: Hook compelling (câu hỏi, hình ảnh, khoảnh khắc). TRÁNH: "Trong bài này chúng ta sẽ..."
-- Closing: Kết resonant (câu hỏi mở, hình ảnh, lời mời). TRÁNH: "Tóm lại, bài viết đã trình bày..."
-- Mechanical phrases BLACKLIST: "Trong phần tiếp theo", "Như đã đề cập ở trên", "Bài viết này sẽ", "Tóm lại"
-
-**Depth vs Breadth:**
-
-- Khi một ý quan trọng: đi SÂU (ví dụ, implications, câu hỏi) thay vì liệt kê
-- Khi nhiều ý nhỏ: nhóm lại thành pattern/theme, không liệt kê từng ý riêng lẻ
-- Priority: 2-3 key insights explored deeply > 10 points listed superficially
-
-**Reader Engagement:**
-
-- Đặt câu hỏi cho người đọc (rhetorical hoặc reflective)
-- Dùng ví dụ cụ thể, relatable thay vì abstract
-- Tạo tension/curiosity trước khi giải đáp
-- Vary sentence length: xen kẽ câu ngắn và dài
-
-**Anti-AI Writing:** Canonical rules trong [article-writer-prompt.md#anti-ai-writing](references/article-writer-prompt.md). Tóm tắt: không em dash (—), không AI vocabulary, xen kẽ câu ngắn/dài, từ thuần Việt, cấu trúc câu Việt tự nhiên.
-
-### Formatting
-
-- Link between articles with relative paths
-- Track all sections with [Sxx] IDs
-- NO markdown tables in article output - use bullet points instead
-- NO diagrams (mermaid, ASCII, flowcharts) - describe in prose or bullets
-
-### Series List (MANDATORY)
-
-- **MỖI bài viết PHẢI có "## Các bài viết trong series" ở cuối** - Thiếu = FAIL
-- Mark current article with *(đang xem)*
-- Validation: Subagent return format includes `SERIES_LIST: YES/NO`
-- Main agent MUST check `SERIES_LIST: YES` trước khi accept article
+**Key rules summary**: Source fidelity (rewrite, don't copy), ⭐ critical sections = faithful rewrite 100%, Anti-AI writing (no em dash, no AI vocabulary), NO tables/diagrams in output, MỖI article PHẢI có "## Các bài viết trong series" ở cuối.
 
 ## Cài đặt thư viện mới
 

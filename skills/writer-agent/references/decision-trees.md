@@ -27,9 +27,10 @@ Check structure.json → direct_path + tier_recommendation (pre-computed by wa-c
 
 # STEP 1: Check Direct Path first (uses pre-computed fields)
 direct_path.eligible?
+# Note: eligible = (<20K words) OR (<50K AND ≤3 estimated articles). Pre-computed by wa-convert.
 ├─ YES AND direct_path.capacity_ok?
 │   └─ DIRECT PATH
-│       └─ Main agent writes all articles
+│       └─ Main agent writes all articles (follow shared rules: LANGUAGE, FORMATTING, REWRITE, ANTI-AI)
 │       └─ Skip to Step 4 (Write Articles)
 │
 ├─ YES BUT NOT direct_path.capacity_ok?
@@ -185,105 +186,52 @@ SEQUENTIAL (only when required):
 └─ Spawn 1 at a time
 ```
 
-## 6. Skip Validation (Relaxed - v1.13.0)
+## 6. Skip Validation (Relaxed)
+
+> **Policy**: User-driven retry only. See [retry-workflow.md](retry-workflow.md).
 
 ```
 Subagent reports skipped section [Sxx]
 
-QUAN TRỌNG: Không tự động retry. Chỉ ghi nhận và tiếp tục.
-
 Check skip reason (for logging only):
 ├─ "Redundant" with specific [Syy] reference?
 │   └─ VALID → Log và tiếp tục
-│
 ├─ "Off-topic" for this article?
 │   └─ VALID → Log và tiếp tục
-│
 ├─ "User instruction" to skip?
 │   └─ VALID → Log và tiếp tục
-│
-├─ "Too long"?
-│   └─ WARNING → Log "consider summarizing"
-│   └─ KHÔNG retry tự động
-│
-├─ "Already covered" without [Sxx] reference?
-│   └─ WARNING → Log "missing reference"
-│   └─ KHÔNG retry tự động
-│
-└─ No reason provided?
-    └─ WARNING → Log "no reason"
-    └─ KHÔNG retry tự động
+├─ "Too long" / "Already covered" without ref / No reason?
+│   └─ WARNING → Log
 
 Tổng hợp tất cả warnings → Báo cáo cuối cùng cho user
-User quyết định có cần retry hay không
 ```
 
-## 7. Coverage Resolution (Relaxed - v1.13.0)
+## 7. Coverage Resolution (Relaxed)
 
 ```
-Step 6: Verify coverage
-
-QUAN TRỌNG: Không tự động retry. Báo cáo kết quả và để user quyết định.
-
 coverage >= 95%?
 ├─ YES → PASS → Hoàn thành
-│
 ├─ 90-94%?
-│   └─ WARNING → Báo cáo cho user
-│   └─ KHÔNG tự động retry
-│   └─ Tiếp tục hoàn thành workflow
-│
+│   └─ WARNING → Báo cáo cho user → Tiếp tục hoàn thành workflow
 └─ < 90%?
-    └─ ASK USER (chỉ khi thực sự thấp)
+    └─ ASK USER:
         ├─ Option 1: Accept as-is (recommended nếu >85%)
         ├─ Option 2: Retry specific articles (user chọn)
         └─ Option 3: Create supplementary article
-
-LƯU Ý:
-- KHÔNG có retry tự động
-- KHÔNG có retry_count tracking
-- User có toàn quyền quyết định
-- Mục tiêu: tiết kiệm token và thời gian
 ```
 
-## 8. Error Recovery (User-Driven - v1.13.0)
+## 8. Error Recovery (User-Driven)
 
 ```
-Error occurred during subagent execution
-
-QUAN TRỌNG: Không tự động retry. Log và report cho user.
-
 Error type?
-├─ Subagent timeout
-│   └─ Log: "Article {X} timeout"
-│   └─ Save partial output (nếu có)
-│   └─ Continue với các articles khác
-│   └─ Report cho user ở cuối
-│
-├─ Missing output file
-│   └─ Log: "Article {X} no output"
-│   └─ Continue với các articles khác
-│   └─ Report cho user ở cuối
-│
-├─ Voice mismatch
-│   └─ Log: "Article {X} voice mismatch"
-│   └─ Accept as-is (voice không critical)
-│   └─ Note trong report
-│
-├─ Content fabrication detected
-│   └─ Log: "Article {X} possible fabrication"
-│   └─ Flag cho user review
-│   └─ KHÔNG tự động retry
-│
-└─ Context overflow
-    └─ Log: "Context overflow, switching to higher tier"
-    └─ Tự động switch (không cần user confirm)
-    └─ Re-chunk và continue
+├─ Subagent timeout → Log, save partial, continue, report cuối
+├─ Missing output file → Log, continue, report cuối
+├─ Voice mismatch → Accept as-is, note trong report
+├─ Content fabrication → Flag cho user review
+└─ Context overflow → Tự động switch tier + re-chunk
 
 Sau khi tất cả articles xong:
-└─ Tổng hợp errors và warnings
-└─ Report cho user
-└─ User quyết định actions (nếu cần)
+└─ Tổng hợp errors → Report cho user → User quyết định
 ```
 
 ## 9. Inline Glossary Strategy

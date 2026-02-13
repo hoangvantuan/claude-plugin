@@ -105,6 +105,29 @@ Rules:
   - Voice and Structure are always separate sections, never merged into WRITER PROFILE
 ```
 
+**Ví dụ compose** (Teacher + Building Blocks + Tech Builder + Curious Beginners + Empower & Challenge):
+
+```
+VOICE: [paste nội dung voices/teacher.md]
+
+STRUCTURE: [paste nội dung structures/building-blocks.md]
+
+WRITER_PROFILE:
+  IDENTITY: Tech Builder - practitioner, pragmatic builder. Credibility: hands-on experience. Unique angle: real-world application
+  AUDIENCE: Curious Beginners - mới bắt đầu, cần clarity, muốn hiểu cơ bản, sợ chủ đề quá khó
+  EMOTIONAL_MAP: Primary: Empower & Challenge - growth qua discomfort. Avoid: condescending tone. Arc: curiosity → confidence → motivation
+```
+
+
+Khi chỉ chọn 3 dimensions (Voice + Structure + Identity, không có Audience/Emotion):
+```
+VOICE: [paste teacher.md]
+STRUCTURE: [paste building-blocks.md]
+
+WRITER_PROFILE:
+  IDENTITY: Tech Builder - practitioner, pragmatic builder. Unique angle: real-world application
+```
+
 ### WRITING QUALITY Block
 
 ```

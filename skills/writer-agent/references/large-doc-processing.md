@@ -370,7 +370,7 @@ wa-convert completes
 Result: ~15-20% faster than sequential
 ```
 
-## Chunking Algorithm
+## Chunking Algorithm (Legacy — Fallback khi không có structure.json)
 
 ### Chunk Parameters
 
@@ -406,7 +406,7 @@ Result: ~15-20% faster than sequential
 6. TAG: Add section path as metadata
 ```
 
-## Format-Specific Handling
+## Format-Specific Handling (Legacy — wa-convert đã handle)
 
 ### Text/Markdown Large Files
 

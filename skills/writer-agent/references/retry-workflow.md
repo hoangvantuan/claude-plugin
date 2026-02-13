@@ -1,17 +1,12 @@
-# Retry Workflow (v1.13.0 - Relaxed)
+# Retry Workflow
 
 Quy trình retry được đơn giản hóa để tiết kiệm token và thời gian.
 
-## Nguyên tắc mới (v1.13.0)
+## Nguyên tắc
 
 **QUAN TRỌNG**: Không tự động retry. Mọi retry đều do user yêu cầu.
 
-```
-Lý do thay đổi:
-- Retry tự động tốn nhiều token (mỗi lần = 1 subagent spawn)
-- Coverage 90-95% thường đủ tốt, không cần đạt 98%
-- User có quyền quyết định trade-off giữa quality và cost
-```
+Lý do: retry tự động tốn token, coverage 90-95% thường đủ tốt, user quyết định trade-off quality/cost.
 
 ## State Tracking (Đơn giản hóa)
 
@@ -26,7 +21,6 @@ Lý do thay đổi:
 }
 ```
 
-**Lưu ý**: Không còn `retries` tracking vì không retry tự động.
 
 ## Retry Policy (User-Driven)
 
@@ -57,7 +51,7 @@ Warnings:
 Result: WARNING (90-95% range)
 ```
 
-### Step 2: Report to User (Không tự động retry)
+### Step 2: Report to User
 
 ```
 Báo cáo cho user:
@@ -110,27 +104,19 @@ IF user requested supplementary:
 
 ## Supplementary Article Creation
 
-When retries exhausted but content important:
+Khi user chọn tạo supplementary cho sections bị skip:
 
 ```markdown
 # Bổ sung: {Topic}
 
-Bài viết này bao gồm nội dung bổ sung từ tài liệu gốc.
-
-## Các sections được bao phủ
-- [S06] {Section Title}
-- [S12] {Section Title}
-
 ## Nội dung
+{Trích nội dung từ source}
 
-{Trích nội dung từ context files}
+## Các bài viết trong series
+[Standard series list]
 ```
 
-Add to overview's Article Index (Mục lục):
-
-```markdown
-| S | [Supplementary: {Topic}](./supplementary-{slug}.md) | Additional coverage |
-```
+Thêm vào overview's Series List: `| S | [Bổ sung: {Topic}](./supplementary-{slug}.md) | Additional coverage |`
 
 ## Timeout Recovery (User-Driven)
 
