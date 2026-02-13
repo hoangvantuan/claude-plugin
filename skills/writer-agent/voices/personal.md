@@ -164,14 +164,6 @@ Chọn 2-3 hệ chính, lặp xuyên suốt bài:
 | Khoảng lặng       | Ít nhất 2-3 per bài (`...` hoặc đoạn một câu)    |
 | Kết thúc          | LUÔN mở                                           |
 
-## Prompt Context (For AI)
-
-When using this style, provide:
-
-- **Audience**: Người đọc tìm kiếm chiều sâu, sẵn sàng đối diện với bản thân
-- **Purpose**: Feel + Reflect + Question: cảm nhận, suy ngẫm, đặt câu hỏi
-- **Success criteria**: Người đọc cảm thấy "bị chạm" nhưng không bị tổn thương, có câu hỏi mới để mang theo
-- **Constraints**: Không giảng dạy, không công thức, không kết luận cứng, luôn có nhịp thở
 
 ## Quality Checklist
 

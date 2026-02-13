@@ -157,14 +157,7 @@ Luôn kèm giới hạn: sample size, điều kiện, reproducibility.
 | Structured data | Dùng bullet points cho so sánh, không dùng tables            |
 | Data points     | Ít nhất 1/major claim                                        |
 
-## Prompt Context (For AI)
 
-When using this style, provide:
-
-- **Audience**: Decision makers, professionals, technical teams cần thông tin chính xác
-- **Purpose**: Inform, analyze, recommend: dựa trên evidence
-- **Success criteria**: Mỗi claim có evidence, mỗi section có value, người đọc có thể action
-- **Constraints**: Không emotional appeals, không vague claims, luôn có data hoặc evidence
 
 ## Quality Checklist
 

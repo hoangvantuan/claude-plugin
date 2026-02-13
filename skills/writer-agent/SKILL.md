@@ -136,7 +136,7 @@ Hệ thống 5 chiều độc lập. User chọn từng chiều, mix-match tự 
 
 **Flow:** Voice → Structure → Identity → Audience → Emotion (tất cả bắt buộc)
 
-Mỗi chiều có default mapping dựa trên voice. User PHẢI confirm hoặc chọn khác cho mỗi chiều.
+Mỗi chiều có default mapping dựa trên voice. Hệ thống suggest defaults, user PHẢI confirm hoặc chọn khác cho mỗi chiều.
 
 ### Step 2a: Select Voice
 
@@ -157,7 +157,7 @@ Voice files: `voices/{voice}.md`
 
 Xem `voices/_voice-comparison.md` để so sánh.
 
-**Custom voice**: Nếu user muốn tạo voice riêng, copy `templates/_voice-template.md` → `voices/{custom-name}.md`, điền theo template. Tương tự cho custom structure: `templates/_structure-template.md` → `structures/{custom-name}.md`.
+**Custom voice**: Nếu user muốn tạo voice riêng, copy `templates/_voice-template.md` → `voices/{custom-name}.md`, điền theo template. Tương tự cho custom structure: `structures/_structure-template.md` → `structures/{custom-name}.md`.
 
 ### Step 2b: Select Structure
 
@@ -217,6 +217,20 @@ Emotion files: `emotional_maps/{emotion}.md`
 
 **Flow:** Chọn voice → Hệ thống suggest defaults cho tất cả → User confirm hoặc chọn khác từng cái
 
+### Default Mapping Table (Consolidated)
+
+| Voice | Structure | Identity | Audience | Emotion |
+| --- | --- | --- | --- | --- |
+| Teacher | Building Blocks | Tech Builder | Curious Beginners | Empower & Challenge |
+| Personal | Spiral Return | Contemplative Thinker | Deep Seekers | Reflect & Discover |
+| Objective | BLUF-Evidence | Tech Builder | Busy Professionals | Empower & Challenge |
+| Guide | Depth-Practice | Contemplative Thinker | Curious Beginners | Reflect & Discover |
+| Investigator | Five Layers | Knowledge Curator | Deep Seekers | Provoke & Transform |
+| Dialogue | Master-Student | Contemplative Thinker | Deep Seekers | Reflect & Discover |
+| Storyteller | Story Arc | Contemplative Thinker | Deep Seekers | Reflect & Discover |
+
+**Conflict Resolution**: Khi dimensions tạo tension (vd: Provoke & Transform + Teacher voice), ưu tiên: Voice > Emotion > Audience > Identity. Voice quyết định HOW, các dimensions khác bổ sung nhưng KHÔNG override voice.
+
 ## Step 2.5: Select Detail Level
 
 Hỏi user để confirm output detail level.
@@ -266,7 +280,7 @@ article_target = (article_source_words / source_words) × total_target
 | Tier            | Word Count                     | Strategy                       | Context Approach   | Glossary                   | max_concurrent |
 | --------------- | ------------------------------ | ------------------------------ | ------------------ | -------------------------- | -------------- |
 | **Direct Path** | <20K OR (<50K AND ≤3 articles) | Main agent writes all          | N/A (no subagents) | Inline (~200 words)        | N/A            |
-| **Tier 1**      | 20K-50K                        | Subagents read source directly | No context files   | Inline (~200 words)        | 3              |
+| **Tier 1**      | 20K-50K (fails Direct Path)    | Subagents read source directly | No context files   | Inline (~200 words)        | 3              |
 | **Tier 2**      | 50K-100K                       | Smart compression              | Context extractors | Separate file (~600 words) | 3              |
 | **Tier 3**      | >=100K                         | Fast Path, minimal overhead    | No context files   | Inline (~300 words)        | 2              |
 
@@ -406,7 +420,8 @@ Group sections into articles (default 3-7, or user-specified count):
 **Rules**:
 
 - All sections must be mapped. Coverage check at end.
-- Target ~13-15 phút đọc/bài (2000-3000 từ)
+- Target reading time phụ thuộc detail level: Concise ~5min, Standard ~10min, Comprehensive ~13min, Faithful ~15min
+- Target words/bài: 2000-3000 từ (tham khảo, không bắt buộc)
 - Nếu user chỉ định số bài → tuân theo, không auto-split thêm
 
 **Content-Type Detection (tạo cùng lúc với plan):**
@@ -708,7 +723,7 @@ After each article completes, update TaskUpdate:
 
 ### 4.4 Coverage Tracking
 
-Subagent reports coverage in **return message** (not in article file) using **table format**. See [Step 5.2](#52-coverage-aggregation) for aggregation details.
+**Coverage Format Pipeline**: Subagent returns 2-column (`Section | Status`) → Main agent enriches to 4-column (`Section | Assigned To | Used In | Status`) → Aggregate into `_coverage.md`. See [§5.2](#52-coverage-aggregation) for aggregation.
 
 **IMPORTANT**: PASS/FAIL chỉ dựa trên section coverage, không phải word count. Word count chỉ mang tính thống kê.
 

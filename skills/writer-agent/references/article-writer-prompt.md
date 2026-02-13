@@ -72,10 +72,10 @@ REWRITE RULE (CRITICAL):
 - If a paragraph matches source word-for-word → FAIL (no exceptions)
 ```
 
-### WRITER PROFILE Block (Optional, chỉ include khi user đã chọn)
+### WRITER PROFILE Block (Bắt buộc, luôn include)
 
 ```
-WRITER_PROFILE (nếu có):
+WRITER_PROFILE:
   IDENTITY: {role} với chuyên môn {expertise}. Credibility: {credibility}. Unique angle: {unique_angle}
   PHILOSOPHY: Worldview: {worldview}. Core beliefs: {core_beliefs}
   AUDIENCE: Người đọc {knows}, cảm thấy {feels}, muốn {wants}, sợ {fears}. Objections: {objections}
@@ -92,17 +92,17 @@ WRITER_PROFILE (nếu có):
 ### How to Compose 5 Dimensions into Subagent Prompt
 
 ```
-Dimension mapping:
-  Voice (mandatory)      → VOICE section: paste full voice file content
-  Structure (mandatory)  → STRUCTURE section: paste full structure file content
-  Identity (optional)    → WRITER_PROFILE.IDENTITY field
-  Audience (optional)    → WRITER_PROFILE.AUDIENCE field  
-  Emotion (optional)     → WRITER_PROFILE.EMOTIONAL_MAP field
+Dimension mapping (tất cả mandatory):
+  Voice      → VOICE section: paste full voice file content
+  Structure  → STRUCTURE section: paste full structure file content
+  Identity   → WRITER_PROFILE.IDENTITY field
+  Audience   → WRITER_PROFILE.AUDIENCE field  
+  Emotion    → WRITER_PROFILE.EMOTIONAL_MAP field
 
 Rules:
-  - If no Identity/Audience/Emotion selected → OMIT entire WRITER PROFILE block
-  - If only some selected → include block with available fields, omit empty ones
+  - Tất cả 5 dimensions BẮT BUỘC, luôn include đầy đủ
   - Voice and Structure are always separate sections, never merged into WRITER PROFILE
+  - WRITER PROFILE luôn có đủ 3 fields: IDENTITY, AUDIENCE, EMOTIONAL_MAP
 ```
 
 **Ví dụ compose** (Teacher + Building Blocks + Tech Builder + Curious Beginners + Empower & Challenge):
@@ -116,16 +116,6 @@ WRITER_PROFILE:
   IDENTITY: Tech Builder - practitioner, pragmatic builder. Credibility: hands-on experience. Unique angle: real-world application
   AUDIENCE: Curious Beginners - mới bắt đầu, cần clarity, muốn hiểu cơ bản, sợ chủ đề quá khó
   EMOTIONAL_MAP: Primary: Empower & Challenge - growth qua discomfort. Avoid: condescending tone. Arc: curiosity → confidence → motivation
-```
-
-
-Khi chỉ chọn 3 dimensions (Voice + Structure + Identity, không có Audience/Emotion):
-```
-VOICE: [paste teacher.md]
-STRUCTURE: [paste building-blocks.md]
-
-WRITER_PROFILE:
-  IDENTITY: Tech Builder - practitioner, pragmatic builder. Unique angle: real-world application
 ```
 
 ### WRITING QUALITY Block

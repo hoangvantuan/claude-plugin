@@ -126,15 +126,6 @@ Frame chủ đề phức tạp thành accessible cho mọi người:
 | "Cần chuyên môn sâu"       | "Bạn có thể bắt đầu ngay hôm nay"        |
 | "Chỉ chuyên gia hiểu"      | "[Chủ đề] cho mọi người, mọi nền tảng"   |
 
-## Framework Selection
-
-| Loại khái niệm         | Framework                                    |
-| ----------------------- | -------------------------------------------- |
-| Ý tưởng trừu tượng      | Intuition-First + Ẩn dụ + CRA               |
-| Hệ thống nhiều phần     | Building Blocks + BLUF                       |
-| Kỹ năng/quy trình       | Worked Examples + CRA                        |
-| So sánh lý thuyết       | Bullet so sánh + Bridge Concepts             |
-| Lập luận phức tạp       | Minto Pyramid + Progressive Disclosure       |
 
 ## Transition Phrases
 
@@ -168,14 +159,6 @@ Frame chủ đề phức tạp thành accessible cho mọi người:
 | Bullets   | 3-5 items per list                   |
 | Questions | 2-3/bài, trả lời ngay sau đó        |
 
-## Prompt Context (For AI)
-
-When using this style, provide:
-
-- **Audience**: Beginners to intermediate learners, diverse backgrounds
-- **Purpose**: Understand + Apply: hiểu và có thể áp dụng ngay
-- **Success criteria**: Người đọc hiểu concept VÀ cảm thấy có thể tiếp tục học
-- **Constraints**: Không jargon không giải thích, không tạo cảm giác chủ đề quá khó
 
 ## Quality Checklist
 

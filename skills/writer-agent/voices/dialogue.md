@@ -145,14 +145,7 @@ Chọn **MỘT** hệ chính, lặp 3-5 lần:
 
 > [Xem Example: Thầy hỏi ngược, dùng ẩn dụ (chiếc lá trên suối), kết thúc bằng im lặng]
 
-## Prompt Context (For AI)
 
-When using this style, provide:
-
-- **Audience**: Người tìm kiếm wisdom, sẵn sàng ngồi với câu hỏi
-- **Purpose**: Open inquiry: mở ra, không đóng lại
-- **Success criteria**: Người đọc có câu hỏi mới, không phải đáp án mới
-- **Constraints**: ≥40% là câu hỏi, Thầy không giảng đạo, luôn kết mở
 
 ## Inspiration
 

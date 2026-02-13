@@ -141,14 +141,6 @@ Chọn **MỘT** hệ chính, lặp 3-5 lần:
 
 > [Xem Example: scene setting giác quan, đối thoại lồng ghép, dòng chảy tâm tưởng, kết thúc với câu hỏi mới]
 
-## Prompt Context (For AI)
-
-When using this style, provide:
-
-- **Audience**: Người đọc muốn trải nghiệm câu chuyện, không chỉ biết thông tin
-- **Purpose**: Experience + Discover: trải nghiệm và tự khám phá
-- **Success criteria**: Người đọc cảm giác như đang đi cùng người kể, kết thúc với câu hỏi mới
-- **Constraints**: Không giảng giải, không "tôi nhận ra rằng" + chân lý, kết thúc luôn mở
 
 ## Inspiration
 

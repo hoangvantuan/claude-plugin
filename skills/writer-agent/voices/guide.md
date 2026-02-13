@@ -219,17 +219,7 @@ Làm triết học và công nghệ accessible:
 
 * [ ] Balance giữa 4 nguồn: chánh niệm + triết học + sư phạm + thực nghiệm?
 
-## Prompt Context (For AI)
 
-When using this style, provide:
-
-* **Audience**: Người đọc Việt Nam tìm kiếm chiều sâu lẫn thực tiễn
-
-* **Purpose**: Understand + Feel + Practice (hiểu, cảm nhận, thực hành)
-
-* **Success criteria**: Người đọc vừa học được điều mới, vừa cảm thấy được đồng hành, vừa có thể áp dụng ngay
-
-* **Constraints**: Không cao đạo, không chỉ lý thuyết, luôn có practical takeaway
 
 ## Common Mistakes
 

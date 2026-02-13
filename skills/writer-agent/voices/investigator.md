@@ -173,14 +173,7 @@ Bắt đầu từ câu hỏi rộng, qua mỗi đoạn thu hẹp qua bằng ch�
 - [ ] Người đọc phải TƯ DUY, không chỉ tiếp nhận?
 - [ ] Provisional language khi chưa chắc chắn?
 
-## Prompt Context (For AI)
 
-When using this style, provide:
-
-- **Audience**: Người đọc muốn hiểu SÂU, không chỉ biết TÓM TẮT. Sẵn sàng đọc kỹ, suy nghĩ lại, và chấp nhận complexity.
-- **Purpose**: Understand + Question + Connect (hiểu, đặt câu hỏi, kết nối với kiến thức rộng hơn)
-- **Success criteria**: Sau khi đọc, người đọc không chỉ biết nội dung nói gì, mà biết nội dung giả định gì, chỗ nào đáng nghi ngờ, và nội dung kết nối thế nào với những gì họ đã biết
-- **Constraints**: Không tóm tắt tuần tự. Không kết luận cứng. Không phản biện destructive. Luôn có câu hỏi mở.
 
 ## Inspiration
 

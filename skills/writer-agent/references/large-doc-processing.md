@@ -370,66 +370,7 @@ wa-convert completes
 Result: ~15-20% faster than sequential
 ```
 
-## Chunking Algorithm (Legacy — Fallback khi không có structure.json)
 
-### Chunk Parameters
-
-| Parameter   | Value         | Notes                       |
-| ----------- | ------------- | --------------------------- |
-| Target size | 11.5K words   | Safe margin for subagent    |
-| Overlap     | 10 lines      | ~100-150 words continuity   |
-| Minimum     | 3K words      | Merge smaller chunks        |
-
-### Boundary Detection (priority high → low)
-
-1. H1 headings (`#`) → Chapter-level
-2. H2 headings (`##`) → Section chunks
-3. Horizontal rules (`---`) → Topic breaks
-4. H3 headings (`###`) → If section > 10K words
-5. Empty lines + paragraph → Fallback
-
-### Semantic Boundary Rules
-
-- Never split inside code blocks (```)
-- Never split inside tables
-- Prefer splitting at blank lines (paragraph boundaries)
-- Keep bulleted/numbered lists together
-
-### Algorithm
-
-```
-1. SCAN: grep -n "^#" file.md → [(line, level, title), ...]
-2. BUILD: H1 contains H2 contains H3
-3. CALCULATE: words = actual word count per section
-4. SPLIT: If section > 11.5K words → split at next heading level
-5. OVERLAP: Include last 10 lines of prev chunk
-6. TAG: Add section path as metadata
-```
-
-## Format-Specific Handling (Legacy — wa-convert đã handle)
-
-### Text/Markdown Large Files
-
-```bash
-# Read in chunks (~1500 lines, ~13K words safe)
-Read(file_path, offset=1, limit=1500)     # Chunk 1
-Read(file_path, offset=1501, limit=1500)  # Chunk 2
-```
-
-### PDF Large Documents
-
-**Text-based PDF:**
-
-```bash
-pdftotext -layout input.pdf output.txt
-```
-
-**Scanned PDFs (OCR):**
-
-```bash
-pdftoppm -png -r 150 -f 1 -l 10 input.pdf /tmp/pages/page
-# Process with ai-multimodal skill
-```
 
 ## Word Budget Distribution
 

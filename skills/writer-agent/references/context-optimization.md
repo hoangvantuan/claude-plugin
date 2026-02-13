@@ -177,46 +177,15 @@ Step 3: Analyze
 
 **Timing rule**: Steps 3.1-3.3 use structure.json exclusively. Step 3.4 (post-planning) is when first content.md read occurs for glossary extraction.
 
-## Tier-Specific Context Rules
-
-> See [SKILL.md §2.6](../SKILL.md#step-26-tier-reference-table) for canonical tier definitions and [SKILL.md §3.5](../SKILL.md#35-context-files) for tier-specific context file strategy. This document focuses on **context optimization** (when to read content.md), not tier definitions.
-
 ## Validation Checklist
 
 Before spawning subagents, verify:
 
 - [ ] `structure.json` was read
-- [ ] `content.md` was NOT read during planning phase
+- [ ] `content.md` was NOT read during Steps 3.1-3.3 (trust `structure.json`)
 - [ ] `_plan.md` created using outline from JSON
 - [ ] Line ranges in plan match `structure.json` outline
 - [ ] Subagent prompts include correct line ranges
+- [ ] `content.md` first read at Step 3.4 (glossary) or Step 4 (subagents)
 
-## Anti-patterns
-
-**ONE RULE: Do NOT read `content.md` during Steps 3.1-3.3.** Trust `structure.json` — nó đã chứa đủ outline, stats, và tier recommendation. `content.md` chỉ được đọc ở Step 3.4 (glossary) và Step 4 (subagents via line ranges).
-
-## Monitoring Context Usage
-
-Track actual vs expected:
-
-```markdown
-## Context Budget (Tier 1, 34K words)
-
-Expected:
-- structure.json: 2K
-- planning: 1K
-- glossary extraction: 1K
-Total main agent: ~4K
-
-Actual:
-- [x] structure.json: 2.1K
-- [x] planning: 0.8K
-- [x] glossary: 1.2K
-Total: 4.1K ✅
-
-Subagents (6 articles):
-- Each: ~5K (source section + prompt)
-- Total: ~30K
-```
-
-If main agent exceeds 6K, investigate unnecessary content.md reads.
+> **📖** Tier-specific context strategies: See [SKILL.md §2.6](../SKILL.md#step-26-tier-reference-table) and [§3.5](../SKILL.md#35-context-files).
