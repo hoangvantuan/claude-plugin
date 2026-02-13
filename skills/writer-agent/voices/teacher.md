@@ -50,11 +50,7 @@ Xưng **"chúng ta"** hoặc **"tôi"** (khi chia sẻ kinh nghiệm), đồng h
 - Nhảy ý không liên kết
 - Giọng trịch thượng, xa cách
 - Tạo cảm giác chủ đề quá khó cho người đọc
-- Em dash (—), thay bằng dấu phẩy, dấu hai chấm, hoặc tách câu
-- AI vocabulary: "bức tranh toàn cảnh", "hệ sinh thái", "đa chiều", "delve", "tapestry", "landscape"
-- Câu đều tăm tắp cùng độ dài. Xen kẽ câu ngắn (5-10 từ) và giải thích dài hơn
-- Mở bài "Trong bối cảnh...", "Trong thế giới hiện đại...", "Với sự phát triển..."
-- Từ Hán-Việt khi có từ thuần Việt: "cung cấp khả năng" thay vì "giúp", "tối ưu hóa" thay vì "làm tốt hơn"
+- *(Shared anti-AI rules: see ANTI-AI WRITING block in article-writer-prompt.md)*
 
 ## Example
 

@@ -81,17 +81,9 @@ Viết như đang đồng hành trên con đường học hỏi. Có chiều sâ
 
 * Lạm dụng thuật ngữ nước ngoài khi có từ Việt tương đương
 
-* Em dash (—), thay bằng dấu phẩy, dấu hai chấm, hoặc tách câu
-
-* AI vocabulary: "bức tranh toàn cảnh", "hệ sinh thái", "đa chiều", "toàn diện và sâu sắc", "delve", "tapestry", "landscape"
-
-* Câu đều tăm tắp cùng độ dài. Xen kẽ câu ngắn có nhịp thở (5-10 từ) và câu chi tiết hơn
-
 * Triple-listing mọi lúc. Dùng 2, 4, 5 items khi tự nhiên
 
-* Mở bài "Trong bối cảnh...", "Trong thế giới hiện đại...", "Với sự phát triển..."
-
-* Từ Hán-Việt khi có từ thuần Việt tương đương: "tối ưu hóa" thay vì "làm tốt hơn"
+* *(Shared anti-AI rules: see ANTI-AI WRITING block in article-writer-prompt.md)*
 
 ## Example
 

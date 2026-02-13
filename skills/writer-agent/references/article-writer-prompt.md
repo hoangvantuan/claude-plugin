@@ -215,6 +215,7 @@ RETURN FORMAT (CRITICAL - Table format):
 - Return ONLY this summary:
 
 DONE: {filename} | {N} words (stats)
+MODE: {detail_level}
 COVERAGE (determines PASS/FAIL):
 | Section | Status |
 |---------|--------|
@@ -240,7 +241,7 @@ Task tool:
 
     SOURCE: {sourcePath} L{start}-{end}
     STYLE: {VOICES_DIR}/{voice}.md
-    STRUCTURE: {STRUCTURES_DIR}/{structure}.md
+    STRUCTURE_FILE: {STRUCTURES_DIR}/{structure}.md
     OUTPUT: {outputPath}
 
     [Include WRITER PROFILE block from Shared Rules above]
@@ -264,8 +265,8 @@ Task tool:
     [Include LANGUAGE block from Shared Rules above]
     [Include FORMATTING block from Shared Rules above]
 
-    STRUCTURE:
-    - Follow the structure file ({STRUCTURES_DIR}/{structure}.md) for article organization
+    ARTICLE_STRUCTURE:
+    - Follow the structure file (STRUCTURE_FILE above) for article organization
     - The structure file defines phases (Opening/Development/Closing or equivalent)
     - MANDATORY constraints (override structure):
       1. Title (H1) - descriptive, evocative
@@ -313,7 +314,7 @@ Task tool:
 
     SOURCE: {sourcePath} L{start}-{end}
     STYLE: {VOICES_DIR}/{voice}.md
-    STRUCTURE: {STRUCTURES_DIR}/{structure}.md
+    STRUCTURE_FILE: {STRUCTURES_DIR}/{structure}.md
     OUTPUT: {outputPath}
 
     TARGET: ~{target_words} words (reference only, source: {source_words} words)
@@ -342,8 +343,8 @@ Task tool:
     [Include LANGUAGE block from Shared Rules above]
     [Include FORMATTING block from Shared Rules above]
 
-    STRUCTURE:
-    - Follow the structure file ({STRUCTURES_DIR}/{structure}.md) for article organization
+    ARTICLE_STRUCTURE:
+    - Follow the structure file (STRUCTURE_FILE above) for article organization
     - The structure file defines phases (Opening/Development/Closing or equivalent)
     - MANDATORY constraints (override structure):
       1. Title (H1) - descriptive, evocative
@@ -395,7 +396,7 @@ Task tool:
     1. Context: {contextFilePath}
     2. Glossary: {glossaryFilePath}
     3. Style: {VOICES_DIR}/{voice}.md
-    4. Structure: {STRUCTURES_DIR}/{structure}.md
+    4. Structure file: {STRUCTURES_DIR}/{structure}.md
 
     OUTPUT: {outputPath}
 
@@ -422,8 +423,8 @@ Task tool:
     [Include LANGUAGE block from Shared Rules above]
     [Include FORMATTING block from Shared Rules above]
 
-    STRUCTURE:
-    - Follow the structure file ({STRUCTURES_DIR}/{structure}.md) for article organization
+    ARTICLE_STRUCTURE:
+    - Follow the structure file (see READ #4 above) for article organization
     - The structure file defines phases (Opening/Development/Closing or equivalent)
     - MANDATORY constraints (override structure):
       1. Title (H1) - descriptive, evocative
@@ -583,25 +584,7 @@ Task[1]:
 - Save to {outputPath}
 ```
 
-**SoT Error Handling (User-Driven - v1.13.0)**:
-
-```
-Phase 2 section fails (timeout or error)?
-├─ Log which section failed
-├─ Continue with successful sections
-├─ Report to user at end:
-│   "Section {X} failed. Options:
-│    1. Accept partial article (recommended)
-│    2. Retry failed section
-│    3. Fallback to monolithic write"
-│
-└─ Phase 3 merge fails?
-    └─ Save sections as separate files
-    └─ Report: "Merge failed. Sections saved separately."
-    └─ User can manually merge or request retry
-
-QUAN TRỌNG: Không tự động retry. User quyết định.
-```
+**SoT Error Handling**: Section fails → log it, continue with successful sections → report to user at end with options: accept partial (recommended), retry failed section, or fallback to monolithic write. Phase 3 merge fails → save sections separately. **Không tự động retry — user quyết định.**
 
 **Benefits**: ~45-50% faster for long articles via parallel expansion
 
@@ -743,20 +726,21 @@ Task tool:
 
 ### Coverage Tracking for Split Articles
 
-Each part reports coverage for its assigned sections only.
+Each part reports coverage for its assigned sections only (same status label format as standard coverage).
 Main agent aggregates into `_coverage.md`:
 
 ```markdown
-| Section | Part 1 | Part 2 | Part 3 | Total |
-|---------|--------|--------|--------|-------|
-| S03 | 100% | - | - | 100% ✅ |
-| S04 | 60% | 40% | - | 100% ✅ |
-| S05 | - | 100% | - | 100% ✅ |
-| S06 | - | 50% | 50% | 100% ✅ |
+| Section | Assigned To | Status |
+|---------|-------------|--------|
+| S03 | 02-core-part1 | ✅ summarized |
+| S04 | 02-core-part1, 02-core-part2 | ✅ faithful (split across parts) |
+| S05 | 02-core-part2 | ✅ summarized |
+| S06 ⭐ | 02-core-part3 | ✅ faithful |
 ```
 
 **Validation rules:**
 
-- Each section MUST have Total = 100%
+- Each section MUST be covered by at least one part
 - No line can appear in multiple parts (no overlap)
 - All source lines must be covered (no miss)
+- Critical sections ⭐ MUST be 100% in single part

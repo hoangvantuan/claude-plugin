@@ -47,11 +47,8 @@ Xưng **"tác giả"** hoặc **không xưng** (passive voice khi cần). Giọn
 - Anecdotes cá nhân làm bằng chứng chính
 - Câu mơ hồ, không kiểm chứng được
 - Chỉ lạc quan hoặc chỉ bi quan, cần balance
-- Em dash (—), thay bằng dấu phẩy, dấu hai chấm, hoặc tách câu
-- AI vocabulary: "bức tranh toàn cảnh", "hệ sinh thái", "đa chiều", "toàn diện và sâu sắc", "delve", "tapestry", "landscape", "leverage"
-- Câu đều tăm tắp cùng độ dài. Xen kẽ câu ngắn mạnh (5-10 từ) và câu phân tích dài (15-25 từ)
 - Triple-listing mọi lúc. Dùng 2, 4, 5 items khi tự nhiên
-- Từ Hán-Việt khi có từ thuần Việt tương đương: "tối ưu hóa" thay vì "chạy tốt hơn", "cung cấp khả năng" thay vì "giúp"
+- *(Shared anti-AI rules: see ANTI-AI WRITING block in article-writer-prompt.md)*
 
 ## Example
 

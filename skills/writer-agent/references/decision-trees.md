@@ -20,110 +20,47 @@ Input received
 
 ## 2. Context Tier Selection
 
-⚠️ **IMPORTANT**: At this step, ONLY read `structure.json`. Do NOT read `content.md` - it will be read later by subagents via line ranges.
+> **📖 Tier Thresholds**: See [SKILL.md Step 2.6](../SKILL.md#step-26-tier-reference-table) for canonical word count ranges.
+
+⚠️ **IMPORTANT**: At this step, ONLY read `structure.json`. Do NOT read `content.md`.
 
 ```
 Check structure.json → direct_path + tier_recommendation (pre-computed by wa-convert v1.2+)
 
-# STEP 1: Check Direct Path first (uses pre-computed fields)
 direct_path.eligible?
-# Note: eligible = (<20K words) OR (<50K AND ≤3 estimated articles). Pre-computed by wa-convert.
-├─ YES AND direct_path.capacity_ok?
-│   └─ DIRECT PATH
-│       └─ Main agent writes all articles (follow shared rules: LANGUAGE, FORMATTING, REWRITE, ANTI-AI)
-│       └─ Skip to Step 4 (Write Articles)
-│
-├─ YES BUT NOT direct_path.capacity_ok?
-│   └─ WARN: direct_path.warning
-│   └─ RECOMMEND: Proceed to Tier 1 instead
-│
-└─ NO → STEP 2: Use tier_recommendation.tier
-
-tier == 1 (< 50K)?
-├─ YES → Tier 1: Lightweight
-│   └─ Skip context files, skip _glossary.md
-│   └─ Subagents read source directly via line ranges
-│   └─ Embed inline glossary (~200 words) in prompts
-│   └─ ⚠️ Main agent does NOT read content.md during analysis
-│
-├─ tier == 2 (50K-100K)?
-│   └─ Tier 2: Smart Compression
-│       ├─ * Critical sections → Full source in context file (article writer faithful rewrites)
-│       └─ Supporting sections → Summarize
-│       └─ Create context files + _glossary.md
-│       └─ RECOMMEND: Use subagents
-│
-└─ tier == 3 (>= 100K)?
-    └─ Tier 3: Reference-Based → USE FAST PATH
-        ├─ SKIP: _glossary.md, context files
-        ├─ CREATE: minimal _plan.md only
-        ├─ Subagents read source DIRECTLY via line ranges
-        └─ See large-doc-processing.md#tier-3-fast-path
+├─ YES AND capacity_ok? → DIRECT PATH (main agent writes all, skip to Step 4)
+├─ YES BUT NOT capacity_ok? → WARN → Proceed to Tier 1
+└─ NO → Use tier_recommendation.tier
+    ├─ Tier 1 → Skip context files, inline glossary (~200 words), subagents read source via line ranges
+    ├─ Tier 2 → Context files + _glossary.md, smart compression
+    └─ Tier 3 → FAST PATH, skip context files, inline glossary (~300 words), subagents read source via line ranges
 ```
 
 ## 3. Context Extraction Strategy (UPDATED v1.11.0)
 
+> **📖 Direct Path & Tier details**: See [SKILL.md §3.0](../SKILL.md#30-processing-path-selection)
+
 ```
 Starting Step 3.5 (Context Files)
 
-# Use pre-computed direct_path from structure.json (v1.2+)
-direct_path.eligible AND direct_path.capacity_ok?
-├─ YES → DIRECT PATH (skip context extraction)
-│   └─ Main agent writes ALL articles directly
-│   └─ Embed inline glossary in each article prompt
-│   └─ ~30% faster for small documents
-│
-├─ direct_path.eligible BUT NOT capacity_ok?
-│   └─ WARN: direct_path.warning
-│   └─ Proceed to Tier 1 instead
-│
-└─ NO → Check tier_recommendation.tier
-    tier == 1 (< 50K) OR tier == 3 (>= 100K)?
-    ├─ YES → SKIP context files
-    │   └─ Subagents read source directly via line ranges
-    │   └─ Embed inline glossary (~200 words Tier 1, ~300 words Tier 3) in prompts
-    │   └─ Tier 1: ~20% faster than context extraction
-    │   └─ Tier 3: ~40% context savings
-    │
-    └─ NO (Tier 2: 50K-100K) → Spawn context extractor subagents
-        ├─ Create _glossary.md (shared file)
-        ├─ Batch size: min(3, article_count)
-        └─ Use references/context-extractor-prompt.md
+Direct Path eligible + capacity_ok? → SKIP context extraction (main agent writes all)
+Tier 1 or Tier 3? → SKIP context files (subagents read source directly + inline glossary)
+Tier 2? → Spawn context extractors (see references/context-extractor-prompt.md)
+  ├─ Create _glossary.md (shared file)
+  └─ Batch size: min(3, article_count)
 ```
 
-**Examples:** See [SKILL.md §3.0](../SKILL.md#30-processing-path-selection) for detailed examples with word counts and article scenarios.
-
-
-
 ## 3.1 Tier 3 Fast Path Workflow
+
+> **📖 Full details**: See [large-doc-processing.md](large-doc-processing.md#tier-3-fast-path)
 
 ```
 Tier 3 detected (>=100K words)
 
-Step 1: Minimal Analysis
-├─ Read structure.json
-├─ Read first chunk (~300 lines) for key terms
-├─ Create minimal _plan.md (mapping only)
-└─ SKIP: _glossary.md, context files
-
-Step 2: Write Overview
-└─ Main agent writes 00-overview.md
-
-Step 3: Spawn Article Writers (Continuous Batching)
-├─ max_concurrent = 2  # Tier 3: Larger chunks (~10K words) → limit to 2
-├─ Spawn immediately when slot available
-├─ On complete → spawn next (no batch waiting)
-├─ Each subagent receives:
-│   ├─ Source path + line range (from suggested_chunks)
-│   ├─ Style file path
-│   ├─ Key terms inline (~300 words)
-│   └─ Article dependencies (1-2 sentences)
-└─ Subagent: Read source → Write article → Return coverage
-
-Step 4: Synthesize & Verify
-├─ Collect coverage reports
-├─ Update overview (Key Takeaways + Article Index)
-└─ Report coverage (target >=95%, accept >=90%)
+1. Minimal Analysis: structure.json + first ~300 lines → minimal _plan.md
+2. Write Overview: 00-overview.md
+3. Spawn writers: max_concurrent=2, continuous batching, inline glossary
+4. Synthesize & Verify
 ```
 
 ## 4. Article Writing Strategy

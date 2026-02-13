@@ -16,7 +16,7 @@ Transform documents and URLs into styled article series.
 | Reference                                                             | Purpose                            | Load at Step       | DP | T1 | T2 | T3 |
 | --------------------------------------------------------------------- | ---------------------------------- | ------------------ | -- | -- | -- | -- |
 | [directory-structure.md](references/directory-structure.md)           | Output folder layout               | Step 1             | ✓  | ✓  | ✓  | ✓  |
-| [decision-trees.md](references/decision-trees.md)                     | Workflow decision guides           | Step 3.0           | ✓  | ✓  | ✓  | ✓  |
+| [decision-trees.md](references/decision-trees.md)                     | Workflow decision guides           | On confusion only  | ✓  | ✓  | ✓  | ✓  |
 | [retry-workflow.md](references/retry-workflow.md)                     | Error recovery procedures          | On error only      | -  | ✓  | ✓  | ✓  |
 | [large-doc-processing.md](references/large-doc-processing.md)         | Handling documents >50K words      | Step 3 (if >20K)   | -  | -  | ✓  | ✓  |
 | [article-writer-prompt.md](references/article-writer-prompt.md)       | Subagent prompt templates          | Step 4             | -  | ✓  | ✓  | ✓  |
@@ -25,6 +25,8 @@ Transform documents and URLs into styled article series.
 | [detail-levels.md](references/detail-levels.md)                       | Output detail level options        | Step 2.5           | ✓  | ✓  | ✓  | ✓  |
 
 **DP** = Direct Path | **T1-T3** = Tier 1-3 | **✓** = Load | **-** = Skip
+
+**Dimension files** (loaded at Step 2): `voices/{voice}.md`, `structures/{structure}.md`, `identities/{identity}.md`, `audiences/{audience}.md`, `emotional_maps/{emotion}.md`
 
 
 ## Workflow Overview
@@ -190,6 +192,7 @@ Hỏi user chọn writer identity. Suggest default dựa trên voice, user confi
 | Tech Builder | `tech-builder.md` | Practitioner, pragmatic builder | Teacher |
 | Contemplative Thinker | `contemplative-thinker.md` | Hành giả, tìm ý nghĩa | Personal, Guide, Dialogue, Storyteller |
 | Knowledge Curator | `knowledge-curator.md` | Cross-domain connector | Objective, Investigator |
+| **Custom** | User tạo mới | Theo `templates/_identity-template.md` | - |
 
 Identity files: `identities/{identity}.md`
 
@@ -202,6 +205,7 @@ Hỏi user viết cho ai. Suggest default dựa trên voice, user confirm hoặc
 | Busy Professionals | `busy-professionals.md` | Bận, cần actionable | Objective |
 | Curious Beginners | `curious-beginners.md` | Mới, cần clarity | Teacher, Guide |
 | Deep Seekers | `deep-seekers.md` | Muốn chiều sâu | Personal, Investigator, Dialogue, Storyteller |
+| **Custom** | User tạo mới | Theo `templates/_audience-template.md` | - |
 
 Audience files: `audiences/{audience}.md`
 
@@ -214,22 +218,19 @@ Hỏi user muốn người đọc cảm thấy gì. Suggest default dựa trên 
 | Empower & Challenge | `empower-challenge.md` | Growth qua discomfort | Teacher, Objective |
 | Reflect & Discover | `reflect-discover.md` | Stillness, wonder | Personal, Guide, Dialogue, Storyteller |
 | Provoke & Transform | `provoke-transform.md` | Challenge assumptions | Investigator |
+| **Custom** | User tạo mới | Theo `templates/_emotion-template.md` | - |
 
 Emotion files: `emotional_maps/{emotion}.md`
 
 **Flow:** Chọn voice → Hệ thống suggest defaults cho tất cả → User confirm hoặc chọn khác từng cái
 
-### Default Mapping Table (Consolidated)
+### Default Mapping Table
 
-| Voice | Structure | Identity | Audience | Emotion |
-| --- | --- | --- | --- | --- |
-| Teacher | Building Blocks | Tech Builder | Curious Beginners | Empower & Challenge |
-| Personal | Spiral Return | Contemplative Thinker | Deep Seekers | Reflect & Discover |
-| Objective | BLUF-Evidence | Knowledge Curator | Busy Professionals | Empower & Challenge |
-| Guide | Depth-Practice | Contemplative Thinker | Curious Beginners | Reflect & Discover |
-| Investigator | Five Layers | Knowledge Curator | Deep Seekers | Provoke & Transform |
-| Dialogue | Master-Student | Contemplative Thinker | Deep Seekers | Reflect & Discover |
-| Storyteller | Story Arc | Contemplative Thinker | Deep Seekers | Reflect & Discover |
+> **📖 See**: [`references/_dimension-comparison.md`](references/_dimension-comparison.md) for full default mapping table, compatibility matrix, and mixing guidelines.
+
+Mỗi dimension table ở trên đã ghi "Default cho" column. Dùng bảng so sánh chi tiết khi cần xác nhận compatibility.
+
+**Low Compatibility Warning**: Khi user chọn combo có compatibility ★ (thấp) theo bảng ở `_dimension-comparison.md`, thông báo user: "Combination này ít phổ biến, có thể tạo tension trong giọng văn. Bạn muốn tiếp tục hay chọn khác?". Nếu user confirm → proceed.
 
 **Conflict Resolution**: Khi dimensions tạo tension (vd: Provoke & Transform + Teacher voice), Voice luôn quyết định HOW (giọng văn, tone, persona). Profile (Identity/Audience/Emotion) bổ sung WHAT (authority, đối tượng, cảm xúc). Nếu conflict: Voice wins về style/tone, Profile wins về content framing.
 

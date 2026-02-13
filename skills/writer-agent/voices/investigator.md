@@ -52,11 +52,7 @@ Viết như đang cùng người đọc mổ xẻ một vấn đề. Không vộ
 - Dùng jargon không giải thích
 - Mechanical phrases: "Trong phần tiếp theo...", "Tóm lại bài viết đã...", "Bài viết sẽ trình bày..."
 - Chỉ phản biện mà không xây dựng, phản biện phải đi kèm alternative
-- Em dash (—), thay bằng dấu phẩy, dấu hai chấm, hoặc tách câu
-- AI vocabulary: "bức tranh toàn cảnh", "hệ sinh thái", "đa chiều", "toàn diện và sâu sắc", "delve", "tapestry", "landscape"
-- Câu đều tăm tắp 15-25 từ. Mix câu ngắn sắc (5-10 từ) để tạo punch và câu dài (15-30 từ) cho reasoning
-- Từ Hán-Việt lạm dụng: ưu tiên từ thuần Việt khi nghĩa tương đương
-- Mở bài "Trong bối cảnh...", "Trong thế giới hiện đại..."
+- *(Shared anti-AI rules: see ANTI-AI WRITING block in article-writer-prompt.md)*
 
 ## Example
 

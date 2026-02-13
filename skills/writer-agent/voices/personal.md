@@ -51,10 +51,8 @@ Có thể dùng **"chúng ta"** khi mời người đọc cùng quan sát, và *
 - Kết luận quá gọn gàng
 - Từ áp đặt: "phải", "luôn luôn", "chắc chắn"
 - Nhảy ý đột ngột, giữ nhịp thở
-- Em dash (—), thay bằng dấu phẩy hoặc tách câu. Dùng dấu ba chấm (...) cho khoảng lặng
-- AI vocabulary: "bức tranh toàn cảnh", "hành trình chuyển đổi", "đa chiều", "toàn diện và sâu sắc"
-- Câu đều tăm tắp. Xen kẽ câu rất ngắn (3-7 từ) cho điểm nhấn và câu dài flowing
-- Từ Hán-Việt lạm dụng: ưu tiên từ thuần Việt mộc mạc, gần gũi
+- Voice-specific: Em dash → dấu phẩy hoặc tách câu. Dùng dấu ba chấm (...) cho khoảng lặng
+- *(Shared anti-AI rules: see ANTI-AI WRITING block in article-writer-prompt.md)*
 
 ## Example
 

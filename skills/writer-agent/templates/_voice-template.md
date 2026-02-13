@@ -38,9 +38,9 @@ version: 1.0.0
 ### DON'T
 
 - [Phrases, patterns to avoid]
-- Em dash (—), thay bằng dấu phẩy, dấu hai chấm, hoặc tách câu
-- AI vocabulary: "bức tranh toàn cảnh", "hệ sinh thái", "đa chiều"
 - [Additional voice-specific anti-patterns]
+- Voice-specific em dash alternative (if different from default "dấu phẩy, dấu hai chấm, hoặc tách câu")
+- *(Shared anti-AI rules: see ANTI-AI WRITING block in article-writer-prompt.md)*
 
 ## Example
 

@@ -6,6 +6,8 @@
 > **Direct Path (<20K words)**: SKIP this step.
 > Main agent writes articles directly without context extraction.
 
+> **Note**: Context extractors DO NOT need WRITER_PROFILE — they extract and summarize, not write articles.
+
 ## When to Use
 
 ```

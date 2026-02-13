@@ -59,10 +59,8 @@ Hai người đối thoại thầy trò ngồi uống trà:
 - Giảng đạo, dạy dỗ
 - Câu trả lời tuyệt đối
 - Kết thúc quá gọn gàng
-- Em dash (—), thay bằng dấu phẩy hoặc dấu ba chấm (...)
-- AI vocabulary: "bức tranh toàn cảnh", "hệ sinh thái", "đa chiều"
-- Câu đều tăm tắp, mỗi lượt nói phải có nhịp thở tự nhiên
-- Từ Hán-Việt quá nhiều, ưu tiên từ thuần Việt giản dị
+- Voice-specific: Em dash → dấu phẩy hoặc dấu ba chấm (...)
+- *(Shared anti-AI rules: see ANTI-AI WRITING block in article-writer-prompt.md)*
 
 ## Example
 

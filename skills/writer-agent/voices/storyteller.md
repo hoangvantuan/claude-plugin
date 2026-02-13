@@ -56,10 +56,8 @@ Kể lại hành trình khám phá như một câu chuyện. Người đọc đ�
 - Giảng giải, phân tích
 - "Tôi nhận ra rằng..." + chân lý
 - Kết thúc gọn gàng với bài học
-- Em dash (—), thay bằng dấu phẩy hoặc dấu ba chấm (...)
-- AI vocabulary: "bức tranh toàn cảnh", "hành trình chuyển đổi", "đa chiều"
-- Câu đều tăm tắp, xen kẽ câu rất ngắn (3-7 từ) cho tension và câu dài flowing
-- Từ Hán-Việt quá nhiều, ưu tiên từ thuần Việt mộc mạc
+- Voice-specific: Em dash → dấu phẩy hoặc dấu ba chấm (...)
+- *(Shared anti-AI rules: see ANTI-AI WRITING block in article-writer-prompt.md)*
 
 ## Example
 

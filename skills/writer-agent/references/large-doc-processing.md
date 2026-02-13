@@ -332,21 +332,21 @@ def extract_context_bridge(completed_part):
 
 ### Coverage Tracking
 
-Each part reports its sections. Main agent aggregates:
+Each part reports its sections. Main agent aggregates (same status label format as standard coverage):
 
 ```markdown
 ## Multi-Part Coverage: 02-core (3 parts)
 
-| Section | Part 1 | Part 2 | Part 3 | Total |
-|---------|--------|--------|--------|-------|
-| S03 | 100% | - | - | 100% ✅ |
-| S04 | 60% | 40% | - | 100% ✅ |
-| S05 | - | 100% | - | 100% ✅ |
-| S06 ⭐ | - | - | 100% | 100% ✅ |
+| Section | Assigned To | Status |
+|---------|-------------|--------|
+| S03 | 02-core-part1 | ✅ summarized |
+| S04 | 02-core-part1, 02-core-part2 | ✅ faithful (split across parts) |
+| S05 | 02-core-part2 | ✅ summarized |
+| S06 ⭐ | 02-core-part3 | ✅ faithful |
 ```
 
 **Rules:**
-- Each row MUST sum to 100%
+- Each section MUST be covered by at least one part
 - Critical sections [Sxx]* MUST be 100% in single part
 - No line overlap between parts
 
@@ -374,13 +374,13 @@ Result: ~15-20% faster than sequential
 
 ## Word Budget Distribution
 
-| Component          | Main Agent | Sub-agent  |
-| ------------------ | ---------- | ---------- |
-| structure.json     | ~350 words | -          |
-| Inline glossary    | -          | ~300 words |
-| \_plan.md          | ~1000 words| -          |
-| Source content     | 0          | 10-13K words|
-| **Total**          | **~1.5K**  | **10-13K** |
+| Component          | Main Agent | Sub-agent (Tier 1) | Sub-agent (Tier 3) |
+| ------------------ | ---------- | ------------------ | ------------------ |
+| structure.json     | ~350 words | -                  | -                  |
+| Inline glossary    | -          | ~200 words         | ~300 words         |
+| \_plan.md          | ~1000 words| -                  | -                  |
+| Source content     | 0          | 3-5K words         | 10-13K words       |
+| **Total**          | **~1.5K**  | **~3-5K**          | **~10-13K**        |
 
 ## Continuous Batching vs Static
 
