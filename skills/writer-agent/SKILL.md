@@ -134,9 +134,9 @@ echo "{rewritten_content}" | {SCRIPTS_DIR}/wa-paste-text - --title "{title}"
 
 Hệ thống 5 chiều độc lập. User chọn từng chiều, mix-match tự do.
 
-**Flow:** Voice (bắt buộc) → Structure (bắt buộc) → Identity (optional) → Audience (optional) → Emotion (optional)
+**Flow:** Voice → Structure → Identity → Audience → Emotion (tất cả bắt buộc)
 
-Mỗi chiều có default mapping. User có thể skip optional dimensions.
+Mỗi chiều có default mapping dựa trên voice. User PHẢI confirm hoặc chọn khác cho mỗi chiều.
 
 ### Step 2a: Select Voice
 
@@ -179,9 +179,9 @@ Structure files: `structures/{structure}.md`
 
 Xem `structures/_structure-comparison.md` để so sánh và mix-match.
 
-### Step 2c: Select Writer Identity (Optional)
+### Step 2c: Select Writer Identity
 
-Hỏi user có muốn chọn writer identity không. Suggest default dựa trên voice.
+Hỏi user chọn writer identity. Suggest default dựa trên voice, user confirm hoặc chọn khác.
 
 | Identity | File | Mô tả | Default cho |
 | --- | --- | --- | --- |
@@ -191,9 +191,9 @@ Hỏi user có muốn chọn writer identity không. Suggest default dựa trên
 
 Identity files: `identities/{identity}.md`
 
-### Step 2d: Select Audience Profile (Optional)
+### Step 2d: Select Audience Profile
 
-Hỏi user viết cho ai. Suggest default dựa trên voice.
+Hỏi user viết cho ai. Suggest default dựa trên voice, user confirm hoặc chọn khác.
 
 | Audience | File | Mô tả | Default cho |
 | --- | --- | --- | --- |
@@ -203,9 +203,9 @@ Hỏi user viết cho ai. Suggest default dựa trên voice.
 
 Audience files: `audiences/{audience}.md`
 
-### Step 2e: Select Emotional Map (Optional)
+### Step 2e: Select Emotional Map
 
-Hỏi user muốn người đọc cảm thấy gì. Suggest default dựa trên voice.
+Hỏi user muốn người đọc cảm thấy gì. Suggest default dựa trên voice, user confirm hoặc chọn khác.
 
 | Emotion | File | Mô tả | Default cho |
 | --- | --- | --- | --- |
