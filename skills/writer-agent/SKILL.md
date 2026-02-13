@@ -138,6 +138,8 @@ Hệ thống 5 chiều độc lập. User chọn từng chiều, mix-match tự 
 
 Mỗi chiều có default mapping dựa trên voice. Hệ thống suggest defaults, user PHẢI confirm hoặc chọn khác cho mỗi chiều.
 
+**Skip dimension**: Nếu user nói "không biết" hoặc skip → dùng default mapping → ghi nhận → tiếp tục. Không hỏi lại.
+
 ### Step 2a: Select Voice
 
 Hỏi user để confirm voice (giọng văn, tone, persona).
@@ -155,7 +157,7 @@ Hỏi user để confirm voice (giọng văn, tone, persona).
 
 Voice files: `voices/{voice}.md`
 
-Xem `voices/_voice-comparison.md` để so sánh.
+Xem `references/_dimension-comparison.md` để so sánh tất cả dimensions.
 
 **Custom voice**: Nếu user muốn tạo voice riêng, copy `templates/_voice-template.md` → `voices/{custom-name}.md`, điền theo template. Tương tự cho custom structure: `structures/_structure-template.md` → `structures/{custom-name}.md`.
 
@@ -177,7 +179,7 @@ Mỗi voice có `default_structure` trong frontmatter. Suggest default, user có
 
 Structure files: `structures/{structure}.md`
 
-Xem `structures/_structure-comparison.md` để so sánh và mix-match.
+Xem `references/_dimension-comparison.md` để so sánh và mix-match.
 
 ### Step 2c: Select Writer Identity
 
@@ -185,7 +187,7 @@ Hỏi user chọn writer identity. Suggest default dựa trên voice, user confi
 
 | Identity | File | Mô tả | Default cho |
 | --- | --- | --- | --- |
-| Tech Builder | `tech-builder.md` | Practitioner, pragmatic builder | Teacher, Objective |
+| Tech Builder | `tech-builder.md` | Practitioner, pragmatic builder | Teacher |
 | Contemplative Thinker | `contemplative-thinker.md` | Hành giả, tìm ý nghĩa | Personal, Guide, Dialogue, Storyteller |
 | Knowledge Curator | `knowledge-curator.md` | Cross-domain connector | Objective, Investigator |
 
@@ -223,13 +225,13 @@ Emotion files: `emotional_maps/{emotion}.md`
 | --- | --- | --- | --- | --- |
 | Teacher | Building Blocks | Tech Builder | Curious Beginners | Empower & Challenge |
 | Personal | Spiral Return | Contemplative Thinker | Deep Seekers | Reflect & Discover |
-| Objective | BLUF-Evidence | Tech Builder | Busy Professionals | Empower & Challenge |
+| Objective | BLUF-Evidence | Knowledge Curator | Busy Professionals | Empower & Challenge |
 | Guide | Depth-Practice | Contemplative Thinker | Curious Beginners | Reflect & Discover |
 | Investigator | Five Layers | Knowledge Curator | Deep Seekers | Provoke & Transform |
 | Dialogue | Master-Student | Contemplative Thinker | Deep Seekers | Reflect & Discover |
 | Storyteller | Story Arc | Contemplative Thinker | Deep Seekers | Reflect & Discover |
 
-**Conflict Resolution**: Khi dimensions tạo tension (vd: Provoke & Transform + Teacher voice), ưu tiên: Voice > Emotion > Audience > Identity. Voice quyết định HOW, các dimensions khác bổ sung nhưng KHÔNG override voice.
+**Conflict Resolution**: Khi dimensions tạo tension (vd: Provoke & Transform + Teacher voice), Voice luôn quyết định HOW (giọng văn, tone, persona). Profile (Identity/Audience/Emotion) bổ sung WHAT (authority, đối tượng, cảm xúc). Nếu conflict: Voice wins về style/tone, Profile wins về content framing.
 
 ## Step 2.5: Select Detail Level
 
@@ -424,45 +426,7 @@ Group sections into articles (default 3-7, or user-specified count):
 - Target words/bài: 2000-3000 từ (tham khảo, không bắt buộc)
 - Nếu user chỉ định số bài → tuân theo, không auto-split thêm
 
-**Content-Type Detection (tạo cùng lúc với plan):**
-
-Khi tạo `_plan.md`, xác định `content_type` cho mỗi article:
-
-
-| Content Type | Suggested Structure                               | Khi nào              |
-| ------------ | ------------------------------------------------- | -------------------- |
-| `tutorial`   | Problem → Solution → Steps → Practice             | Hướng dẫn, how-to    |
-| `conceptual` | Question → Exploration → Framework → Implications | Lý thuyết, triết học |
-| `narrative`  | Scene → Conflict → Journey → Resolution           | Câu chuyện, memoir   |
-| `analysis`   | Finding → Evidence → Discussion → Application     | Nghiên cứu, report   |
-| `mixed`      | Follow voice's default Structure                  | Nội dung hỗn hợp     |
-
-
-Detection signals:
-
-
-| Signal                                              | Content Type           |
-| --------------------------------------------------- | ---------------------- |
-| Step-by-step headings, numbered lists, "how to"     | `tutorial`             |
-| Questions as headings, thesis statements, arguments | `conceptual`           |
-| Narrative structure, characters, timeline           | `narrative`            |
-| Data tables, methodology, findings                  | `analysis`             |
-| Mix of above                                        | `mixed` (use dominant) |
-
-
-Ghi vào plan table:
-
-```markdown
-| #   | Slug  | Title         | Sections      | Est. Words | Content Type |
-| --- | ----- | ------------- | ------------- | ---------- | ------------ |
-| 1   | intro | Introduction  | S01, S02      | 2000       | conceptual   |
-| 2   | core  | Core Concepts | S03, S04, S05 | 2500       | tutorial     |
-```
-
-Subagent sử dụng: Embed `CONTENT_TYPE: {type}` vào prompt. Subagent ưu tiên:
-
-1. Output structure file (primary)
-2. Content-type hint (secondary, nếu structure không có pattern cụ thể cho loại này)
+**Content-Type Detection**: Khi tạo plan, xác định `content_type` cho mỗi article (`tutorial`, `conceptual`, `narrative`, `analysis`, `mixed`). Embed `CONTENT_TYPE: {type}` vào subagent prompt. Subagent ưu tiên structure file (primary), content-type hint (secondary).
 
 **Series Context (QUAN TRỌNG - tạo cùng lúc với plan):**
 
@@ -518,56 +482,9 @@ Thông tin này sẽ được embed vào `SERIES_CONTEXT` block trong mỗi suba
 
 ### 3.4 Shared Context (Inline Glossary)
 
-⚠️ **TIMING**: Execute AFTER Steps 3.1-3.3 complete, BEFORE Step 3.5.
+⚠️ **TIMING**: Execute AFTER Steps 3.1-3.3, BEFORE Step 3.5.
 
-**Strategy by tier:**
-
-```
-word_count < 50,000 (Tier 1)?
-├─ YES → Extract inline glossary (~200 words) from first ~300 lines
-│   └─ Embed in each subagent prompt
-│   └─ Skip separate _glossary.md
-│   └─ Saves 1 Read call per subagent (~400 words saved)
-│
-├─ 50,000 <= word_count < 100,000 (Tier 2)?
-│   └─ Extract seed glossary (~200 words) from first ~300 lines
-│       └─ Feed to context extractors in Step 3.5 as {inline_glossary} input
-│       └─ Context extractors produce comprehensive _glossary.md (~600 words)
-│       └─ Article writers (Step 4) read shared _glossary.md file
-│
-└─ word_count >= 100,000 (Tier 3)?
-    └─ Extract inline glossary (~300 words) from first ~500 lines
-        └─ Embed in each subagent prompt
-        └─ Skip separate _glossary.md
-        └─ Larger than Tier 1 due to more technical terminology
-```
-
-**Extraction algorithm**: See [context-optimization.md#glossary-extraction-algorithm](references/context-optimization.md#glossary-extraction-algorithm-step-34) for detailed process.
-
-**Quick process**:
-
-1. Read content.md first 300-500 lines (tier-dependent)
-2. Extract terms using definition patterns
-3. Score by importance (frequency + position)
-4. Take top N terms until hitting word budget
-5. Format: `Term: definition (~20 words each)`
-
-**Tier 3 inline rationale:**
-
-- Avoids 1 Read call per subagent (saves ~400 words/subagent)
-- Trade-off: More selective terms (300 vs 1000) but faster execution
-- Larger than Tier 1 (300 vs 200 words) because large documents have more technical terminology
-- Combined with reading source directly via line ranges = maximum efficiency
-
-**Inline glossary format**:
-
-```markdown
-## Terms
-
-Term1: definition (~20 words)
-Term2: definition
-Term3: definition
-```
+**Strategy**: Tier 1/3 → inline glossary (~200-300 words) embed trong prompt. Tier 2 → seed glossary → context extractors produce `_glossary.md`. Chi tiết: [context-optimization.md#glossary-extraction-algorithm](references/context-optimization.md#glossary-extraction-algorithm-step-34).
 
 Article dependencies: Embed 1-2 sentences in prompt, not separate file.
 
@@ -802,19 +719,9 @@ Update `00-overview.md` with actual content for placeholder sections:
 
 Collect subagent coverage tables → aggregate into `analysis/_coverage.md`
 
-**Process**:
+**Process**: Subagent returns 2-column (`Section | Status`) → Main agent enriches to 4-column (`Section | Assigned To | Used In | Status`) → Concatenate into `_coverage.md` → Add summary stats.
 
-1. Each subagent returns a 2-column COVERAGE TABLE (`| Section | Status |`) in their return message
-2. Main agent enriches each row with "Assigned To" and "Used In" columns (from `_plan.md`)
-3. Concatenate all enriched tables into single `_coverage.md` file (4-column format)
-4. Add summary statistics at bottom
-
-**Column enrichment**: Main agent knows which article each subagent wrote, so it adds:
-
-- `Assigned To`: article filename (from `_plan.md`)
-- `Used In`: same as Assigned To (or different if reassigned during writing)
-
-**Coverage file format** (required by `validate_coverage.py`):
+**Coverage file format**:
 
 ```markdown
 ## Section Coverage Matrix
@@ -827,40 +734,7 @@ Collect subagent coverage tables → aggregate into `analysis/_coverage.md`
 - Total: {N} | Used: {N} | Missing: {N}
 ```
 
-**Format rules**:
-
-- Column 1: `S{NN}` with optional `⭐` for critical sections
-- Column 4:
-  - For used sections: `✅` followed by one of: `used`, `faithful`, `quoted`, `summarized`
-  - For skipped sections: `⚠️ skipped` (requires Notes column with reason)
-- Summary line at bottom: `- Total: {N} | Used: {N} | Missing: {N}`
-
-**Edge case examples**:
-
-```markdown
-| Section | Assigned To | Used In               | Status        | Notes                      |
-| ------- | ----------- | --------------------- | ------------- | -------------------------- |
-| S05     | 01-intro.md | 02-core.md            | ✅ summarized | Reassigned during planning |
-| S08     | 02-core.md  | 02-core.md, 03-adv.md | ✅ quoted     | Shared across articles     |
-| S12     | 03-adv.md   | -                     | ⚠️ skipped    | Redundant with S08         |
-```
-
-**Multi-Part Article Coverage:** For split articles, track by part in `_coverage.md`. Each section row should sum to ~100%. See [large-doc-processing.md#coverage-tracking](references/large-doc-processing.md#coverage-tracking) for format and validation rules.
-
-**Edge case rules:**
-
-1. **Reassignment**: Section moved to different article (common when planning adjusts)
-  - "Assigned To" shows original plan
-  - "Used In" shows actual article that included it
-  - Validate coverage in "Used In" article
-2. **Shared sections** (one section used in multiple articles):
-  - Format: `Used In` = comma-separated list (e.g., `02-core.md, 03-adv.md`)
-  - Validation: Each article in the list MUST contain [Sxx] reference
-  - Check both articles include the section (quoted, summarized, or paraphrased)
-  - Status reflects how primary article used it
-3. **Skipped**: Must document reason (redundant, off-topic, user instruction)
-  - Status: `⚠️ skipped` (not `✅`)
-  - Notes column required with explicit reason
+**Edge cases** (reassignment, shared sections, skipped): See [large-doc-processing.md#coverage-tracking](references/large-doc-processing.md#coverage-tracking).
 
 Run validation:
 
@@ -911,9 +785,7 @@ Coverage results:
 
 ## Content Guidelines
 
-> Full details: [content-guidelines.md](references/content-guidelines.md)
-
-**Key rules summary**: Source fidelity (rewrite, don't copy), ⭐ critical sections = faithful rewrite 100%, Anti-AI writing (no em dash, no AI vocabulary), NO tables/diagrams in output, MỖI article PHẢI có "## Các bài viết trong series" ở cuối.
+**Key rules**: Source fidelity (rewrite, don't copy), ⭐ critical sections = faithful rewrite 100%, Anti-AI writing (no em dash, no AI vocabulary), NO tables/diagrams in output, MỖI article PHẢI có "## Các bài viết trong series" ở cuối. Full details: [article-writer-prompt.md](references/article-writer-prompt.md).
 
 ## Cài đặt thư viện mới
 

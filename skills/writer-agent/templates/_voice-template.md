@@ -92,15 +92,6 @@ version: 1.0.0
 | Headings | H2 cho..., H3 cho... |
 | Examples | Ít nhất X/concept |
 
-## Prompt Context (For AI)
-
-When using this voice, provide:
-
-- **Audience**: [Who will read this - expertise level, expectations]
-- **Purpose**: [Why they read - learn, decide, reflect]
-- **Success criteria**: [What good output looks like]
-- **Constraints**: [Format requirements, topics to avoid]
-
 ## Quality Checklist
 
 - [ ] [Checkpoint 1]

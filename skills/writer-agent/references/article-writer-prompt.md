@@ -81,12 +81,24 @@ WRITER_PROFILE:
   AUDIENCE: Người đọc {knows}, cảm thấy {feels}, muốn {wants}, sợ {fears}. Objections: {objections}
   EMOTIONAL_MAP: Primary: {primary}. Avoid: {avoid}. Arc: {emotional_arc}
 
-  PROFILE RULES:
-  - Profile BỔ SUNG voice, KHÔNG thay thế
-  - Nếu conflict giữa voice và profile → profile wins (vì user-specific)
-  - Identity shapes WHAT authority you write from
-  - Audience shapes HOW you address the reader
-  - Emotional map shapes WHAT emotions you aim to evoke and avoid
+  DIMENSION BOUNDARIES:
+  Voice controls (KHÔNG bị override):
+  - Persona, ngôi xưng, giọng điệu cơ bản
+  - Language DO/DON'T list
+  - Core techniques và sentence-level pacing
+  
+  Profile controls:
+  - Identity → authority, expertise, evidence type
+  - Audience → addressing level, complexity, examples
+  - Emotion → emotional arc, guardrails, intensity
+
+  CONFLICT RESOLUTION:
+  - TONE: Voice sets BASE tone, Emotion ADJUSTS intensity within voice's range
+  - CLOSING: Voice sets FORMAT (summary/question/open), Emotion sets FEELING (empower/reflect/provoke)
+  - If conflict: Adapt emotion's GOAL using voice's TOOLS
+    Example: Teacher + Provoke → dùng analogy (Teacher tool) để challenge assumption (Provoke goal)
+    Example: Objective + Reflect → dùng data (Objective tool) để mở câu hỏi (Reflect goal)
+    Example: Dialogue + Empower → dùng câu hỏi Zen (Dialogue tool) để trao sức (Empower goal)
 ```
 
 ### How to Compose 5 Dimensions into Subagent Prompt
@@ -230,6 +242,8 @@ Task tool:
     STYLE: {VOICES_DIR}/{voice}.md
     STRUCTURE: {STRUCTURES_DIR}/{structure}.md
     OUTPUT: {outputPath}
+
+    [Include WRITER PROFILE block from Shared Rules above]
 
     TARGET: ~{target_words} words (reference only) | MODE: {detail_level}
 
