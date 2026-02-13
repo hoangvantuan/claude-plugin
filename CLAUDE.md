@@ -20,6 +20,7 @@ skills/                      # Các skill plugins
   youtube-title-generator/   # Tạo tiêu đề YouTube hấp dẫn
   creative-thought-partner/  # Đối tác tư duy sáng tạo — brainstorming
   deep-post-ideas/           # Trích xuất outline bài đăng từ tài liệu
+  deep-learner/              # Học hiểu sâu nội dung — tài liệu học có cấu trúc
 agents/                      # Các agent definitions (planned)
 hooks/                       # Các hook scripts (planned)
 mcp/                         # Các MCP server configs (planned)

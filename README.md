@@ -23,6 +23,7 @@ claude plugin install gh:hoangvantuan/shun-claude-plugin
 | `youtube-title-generator` | Tạo tiêu đề YouTube hấp dẫn từ ý tưởng nội dung |
 | `creative-thought-partner` | Đối tác tư duy sáng tạo — brainstorming & insight discovery |
 | `deep-post-ideas` | Trích xuất outline bài đăng từ tài liệu tham khảo |
+| `deep-learner` | Học hiểu sâu nội dung — tạo tài liệu học có cấu trúc 6 phase |
 
 ### Agents
 
