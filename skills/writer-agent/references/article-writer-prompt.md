@@ -206,26 +206,38 @@ CONTENT PRIORITY:
 - Quality content coverage + voice compliance > arbitrary word targets
 ```
 
+### CONTEXT RULES Block
+
+```
+CONTEXT RULES (CRITICAL - minimize subagent context usage):
+- Voice and Structure content are EMBEDDED in this prompt. DO NOT read them from files.
+- DO NOT glob or search for other article files
+- DO NOT read existing articles for format reference
+- DO NOT explore the directory structure
+- ONLY read the SOURCE file at specified line range
+- Workflow: Read SOURCE → Write article to OUTPUT → Return summary. Nothing else.
+```
+
 ### RETURN FORMAT Block
 
 ```
-RETURN FORMAT (CRITICAL - Table format):
-- Article content ALREADY saved to {outputPath}
+RETURN FORMAT (CRITICAL):
+- Save article to {outputPath} using Write tool
+- Your FINAL response MUST contain ONLY the summary below
+- DO NOT include explanations, thinking process, or commentary in final message
 - DO NOT return article content in message
-- Return ONLY this summary:
 
-DONE: {filename} | {N} words (stats)
-MODE: {detail_level}
-COVERAGE (determines PASS/FAIL):
+DONE: {filename} | {N} words
+KEY_TAKEAWAY: {1-2 câu tóm tắt insight/ý chính quan trọng nhất của bài viết}
+COVERAGE:
 | Section | Status |
 |---------|--------|
 | S01 | ✅ {how_used} |
 | S02 ⭐ | ✅ faithful |
-RESULT: {PASS if all sections covered, FAIL if missing}
+RESULT: {PASS/FAIL}
 SERIES_LIST: {YES/NO}
-VERIFY: "quote..." (L45), "quote..." (L128)
-[Max 3 quotes, each ≤30 chars]
-[Mark critical with ⭐, skipped with ⚠️]
+VERIFY: "quote..." (L45)
+[Max 2 quotes, each ≤25 chars, critical ⭐, skipped ⚠️]
 ```
 
 ## Tier 3 Compact Template (>=100K words)
@@ -236,13 +248,18 @@ Streamlined prompt for large documents (~40% context reduction):
 Task tool:
 - subagent_type: "general-purpose"
 - description: "Write: {title}"
+
 - prompt: |
     TASK: Write "{title}" for {seriesTitle}
 
     SOURCE: {sourcePath} L{start}-{end}
-    STYLE: {VOICES_DIR}/{voice}.md
-    STRUCTURE_FILE: {STRUCTURES_DIR}/{structure}.md
     OUTPUT: {outputPath}
+
+    VOICE:
+    {voiceContent}
+
+    STRUCTURE:
+    {structureContent}
 
     [Include WRITER PROFILE block from Shared Rules above]
 
@@ -262,12 +279,13 @@ Task tool:
     SERIES_LIST:
     {seriesList}
 
+    [Include CONTEXT RULES block from Shared Rules above]
     [Include LANGUAGE block from Shared Rules above]
     [Include FORMATTING block from Shared Rules above]
 
     ARTICLE_STRUCTURE:
-    - Follow the structure file (STRUCTURE_FILE above) for article organization
-    - The structure file defines phases (Opening/Development/Closing or equivalent)
+    - Follow the STRUCTURE section above for article organization
+    - The structure defines phases (Opening/Development/Closing or equivalent)
     - MANDATORY constraints (override structure):
       1. Title (H1) - descriptive, evocative
       2. Before "## Các bài viết trong series", add a brief narrative bridge (1-2 sentences)
@@ -275,15 +293,10 @@ Task tool:
          Format: A question, image, or thought connecting this article's conclusion to the next.
          DO NOT use: "Trong phần tiếp theo...", "Bài tiếp theo sẽ..."
       3. Must end with "## Các bài viết trong series" (mark current with _(đang xem)_)
-    - The structure file defines HOW to organize content
+    - The structure defines HOW to organize content
     - The source sections [Sxx] define WHAT content to include
 
     CONTENT_TYPE: {contentType}
-    # Hint: Use this to adapt the structure file's patterns for the specific content type.
-    # tutorial → include practical steps/examples
-    # conceptual → include thought experiments/frameworks
-    # narrative → include scenes/character development
-    # analysis → include evidence hierarchy/methodology
 
     [Include REWRITE RULE block from Shared Rules above]
     [Include WRITING QUALITY block from Shared Rules above]
@@ -309,13 +322,18 @@ For Tier 1 documents (<50K words) - subagents read source directly with inline g
 Task tool:
 - subagent_type: "general-purpose"
 - description: "Write: {title}"
+
 - prompt: |
     TASK: Write article #{articleNumber} "{title}"
 
     SOURCE: {sourcePath} L{start}-{end}
-    STYLE: {VOICES_DIR}/{voice}.md
-    STRUCTURE_FILE: {STRUCTURES_DIR}/{structure}.md
     OUTPUT: {outputPath}
+
+    VOICE:
+    {voiceContent}
+
+    STRUCTURE:
+    {structureContent}
 
     TARGET: ~{target_words} words (reference only, source: {source_words} words)
     MODE: {detail_level}
@@ -340,12 +358,13 @@ Task tool:
     SERIES_LIST:
     {seriesList}
 
+    [Include CONTEXT RULES block from Shared Rules above]
     [Include LANGUAGE block from Shared Rules above]
     [Include FORMATTING block from Shared Rules above]
 
     ARTICLE_STRUCTURE:
-    - Follow the structure file (STRUCTURE_FILE above) for article organization
-    - The structure file defines phases (Opening/Development/Closing or equivalent)
+    - Follow the STRUCTURE section above for article organization
+    - The structure defines phases (Opening/Development/Closing or equivalent)
     - MANDATORY constraints (override structure):
       1. Title (H1) - descriptive, evocative
       2. Before "## Các bài viết trong series", add a brief narrative bridge (1-2 sentences)
@@ -353,15 +372,10 @@ Task tool:
          Format: A question, image, or thought connecting this article's conclusion to the next.
          DO NOT use: "Trong phần tiếp theo...", "Bài tiếp theo sẽ..."
       3. Must end with "## Các bài viết trong series" (mark current with _(đang xem)_)
-    - The structure file defines HOW to organize content
+    - The structure defines HOW to organize content
     - The source sections [Sxx] define WHAT content to include
 
     CONTENT_TYPE: {contentType}
-    # Hint: Use this to adapt the structure file's patterns for the specific content type.
-    # tutorial → include practical steps/examples
-    # conceptual → include thought experiments/frameworks
-    # narrative → include scenes/character development
-    # analysis → include evidence hierarchy/methodology
 
     [Include REWRITE RULE block from Shared Rules above]
     [Include WRITER PROFILE block from Shared Rules above]
@@ -389,16 +403,21 @@ For Tier 2 documents (50K-100K words) - subagents read compressed context files.
 Task tool:
 - subagent_type: "general-purpose"
 - description: "Write: {title}"
+
 - prompt: |
     TASK: Write article #{articleNumber} "{title}"
 
     READ:
     1. Context: {contextFilePath}
     2. Glossary: {glossaryFilePath}
-    3. Style: {VOICES_DIR}/{voice}.md
-    4. Structure file: {STRUCTURES_DIR}/{structure}.md
 
     OUTPUT: {outputPath}
+
+    VOICE:
+    {voiceContent}
+
+    STRUCTURE:
+    {structureContent}
 
     TARGET: ~{target_words} words (reference only, source: {source_words} words)
     MODE: {detail_level}
@@ -420,12 +439,13 @@ Task tool:
     SERIES_LIST:
     {seriesList}
 
+    [Include CONTEXT RULES block from Shared Rules above]
     [Include LANGUAGE block from Shared Rules above]
     [Include FORMATTING block from Shared Rules above]
 
     ARTICLE_STRUCTURE:
-    - Follow the structure file (see READ #4 above) for article organization
-    - The structure file defines phases (Opening/Development/Closing or equivalent)
+    - Follow the STRUCTURE section above for article organization
+    - The structure defines phases (Opening/Development/Closing or equivalent)
     - MANDATORY constraints (override structure):
       1. Title (H1) - descriptive, evocative
       2. Before "## Các bài viết trong series", add a brief narrative bridge (1-2 sentences)
@@ -433,15 +453,10 @@ Task tool:
          Format: A question, image, or thought connecting this article's conclusion to the next.
          DO NOT use: "Trong phần tiếp theo...", "Bài tiếp theo sẽ..."
       3. Must end with "## Các bài viết trong series" (mark current with _(đang xem)_)
-    - The structure file defines HOW to organize content
+    - The structure defines HOW to organize content
     - The source sections [Sxx] define WHAT content to include
 
     CONTENT_TYPE: {contentType}
-    # Hint: Use this to adapt the structure file's patterns for the specific content type.
-    # tutorial → include practical steps/examples
-    # conceptual → include thought experiments/frameworks
-    # narrative → include scenes/character development
-    # analysis → include evidence hierarchy/methodology
 
     [Include REWRITE RULE block from Shared Rules above]
     [Include WRITER PROFILE block from Shared Rules above]
@@ -528,28 +543,35 @@ Task:
 # Phase 2: Expand sections (spawn ALL in parallel)
 Task[0]:
 - description: "Write section: Introduction"
+
 - prompt: |
     Write Introduction (~300 words) for "{title}"
     Context: {intro_content}
-    Voice: {voice}.md
+
+    VOICE:
+    {voiceContent}
 
     LANGUAGE: Write in Vietnamese. Keep technical terms in English with Vietnamese explanation.
+    DO NOT read any files. All context is provided above.
 
     Return: markdown content only
 
 Task[1]:
 - description: "Write section: {H2_title}"
+
 - prompt: |
     Write "{H2_title}" (~{word_target} words)
     Context: {section_content}
-    Voice: {voice}.md
+
+    VOICE:
+    {voiceContent}
 
     REWRITE RULE: Rewrite content in voice persona. DO NOT copy-paste from source. Source = WHAT, Voice = HOW.
     FORMATTING: NO markdown tables, NO diagrams (mermaid, ASCII art, flowcharts) - use bullet points instead.
     QUALITY: Write with narrative flow, not as summary. Go deep on key ideas. End section with bridge to next.
     ANTI-AI: NO em dash (—). Vary sentence length. No AI vocabulary. Natural Vietnamese structure.
-
     LANGUAGE: Write in Vietnamese. Keep technical terms in English with Vietnamese explanation.
+    DO NOT read any files. All context is provided above.
 
     Return: markdown content only
 
@@ -597,12 +619,14 @@ Task[1]:
 | `{sourcePath}`       | `input-handling/content.md`     | N/A                             | `input-handling/content.md`            |
 | `{start}`, `{end}`   | From `structure.json` outline   | N/A                             | From `structure.json` suggested_chunks |
 | `{inlineGlossary}`   | ~200 words (embedded in prompt) | N/A                             | ~300 words (embedded in prompt)        |
-| `{voice}`            | User selection                  | User selection                  | User selection                         |
+| `{voiceContent}`     | Pre-read by main agent          | Pre-read by main agent          | Pre-read by main agent                 |
+| `{structureContent}` | Pre-read by main agent          | Pre-read by main agent          | Pre-read by main agent                 |
 | `{seriesList}`       | From `_plan.md`                 | From `_plan.md`                 | From `_plan.md`                        |
 | `{contentType}`      | From `_plan.md` content type    | From `_plan.md` content type    | From `_plan.md` content type           |
 | `{readerEnters}`     | From `_plan.md` Series Context  | From `_plan.md` Series Context  | From `_plan.md` Series Context         |
 | `{readerExits}`      | From `_plan.md` Series Context  | From `_plan.md` Series Context  | From `_plan.md` Series Context         |
 
+**Note**: `{voiceContent}` and `{structureContent}` are pre-read by the main agent and embedded directly in the prompt. Subagents do NOT read these files themselves - this saves 2+ tool calls per subagent, significantly reducing conversation transcript size.
 
 **Note**: Tier 1 and Tier 3 both read source directly via line ranges, but Tier 3 uses larger inline glossary (~300 words) because larger documents have more technical terminology and subagents need more context without access to the full document.
 
@@ -639,13 +663,18 @@ For articles that have been split due to length (see SKILL.md Step 3.3.1).
 Task tool:
 - subagent_type: "general-purpose"
 - description: "Write: {title} (Part {N}/{total})"
+
 - prompt: |
     TASK: Write "{title} (Phần {partNumber}/{totalParts})"
 
     SOURCE: {sourcePath} L{start}-{end}
-    STYLE: {VOICES_DIR}/{voice}.md
-    STRUCTURE: {STRUCTURES_DIR}/{structure}.md
     OUTPUT: {outputPath}
+
+    VOICE:
+    {voiceContent}
+
+    STRUCTURE:
+    {structureContent}
 
     TARGET: ~{target_words} words (reference only)
 
@@ -704,20 +733,21 @@ Task tool:
     - Focus on content coverage, word count is reference only
     - MUST end with "## Các bài viết trong series" (MANDATORY)
 
-    RETURN FORMAT (CRITICAL - Table format):
+    RETURN FORMAT (CRITICAL):
     - Article content ALREADY saved to {outputPath}
     - DO NOT return article content in message
 
-    DONE: {filename} | {N} words (stats)
+    DONE: {filename} | {N} words
     PART: {partNumber}/{totalParts}
-    COVERAGE (determines PASS/FAIL):
+    KEY_TAKEAWAY: {1-2 câu tóm tắt insight chính của phần này}
+    COVERAGE:
     | Section | Status |
     |---------|--------|
     | S01 | ✅ {how_used} |
     | S02 ⭐ | ✅ faithful |
-    RESULT: {PASS if all sections covered, FAIL if missing}
+    RESULT: {PASS/FAIL}
     SERIES_LIST: {YES/NO}
-    VERIFY: "quote..." (L45), "quote..." (L128)
+    VERIFY: "quote..." (L45)
 ```
 
 ### Part Naming & Context Bridge

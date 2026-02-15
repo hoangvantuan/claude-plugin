@@ -528,7 +528,47 @@ Before proceeding to Step 4, verify:
 
 ## Step 4: Write Articles
 
-### 4.0 State Tracking (Recommended)
+### 4.0a Pre-read Voice & Structure (BẮT BUỘC)
+
+**PHẢI thực hiện TRƯỚC khi spawn subagents.** Main agent đọc sẵn voice và structure files, embed nội dung vào subagent prompt. Subagent KHÔNG tự đọc các file này.
+
+```python
+# Main agent đọc 1 lần, dùng cho tất cả subagents
+voice_content = Read(f"{VOICES_DIR}/{voice}.md")
+structure_content = Read(f"{STRUCTURES_DIR}/{structure}.md")
+
+# Embed vào prompt thay vì truyền file path
+# ĐÚNG: VOICE:\n{voice_content}
+# SAI:  STYLE: {VOICES_DIR}/{voice}.md  (subagent phải tự đọc → lãng phí context)
+```
+
+**Lý do**: Mỗi file read trong subagent tạo ~4-6 JSON messages trong conversation transcript. Với 2 file reads (voice + structure), mỗi subagent tiết kiệm ~8-12 messages + ~300 lines content trong transcript trả về cho main agent.
+
+### 4.0b Subagent Context Budget Rules
+
+**Giảm output trả về main agent:**
+
+1. **CONTEXT RULES** - Đã embed trong prompt template, cấm subagent glob/read files thừa
+3. **run_in_background: true** - Dùng cho parallel article writing (≥3 articles). Main agent không nhận full transcript vào context, chỉ check output file khi cần.
+
+```python
+# Parallel writing với run_in_background
+tasks = []
+for article in articles:
+    task = Task(
+        subagent_type="general-purpose",
+        description=f"Write: {article.title}",
+
+        run_in_background=True,  # QUAN TRỌNG: tránh prompt too long
+        prompt=compose_prompt(article, voice_content, structure_content)
+    )
+    tasks.append(task)
+
+# Check completion bằng Read tool trên output file
+# KHÔNG dùng TaskOutput với block=true cho nhiều tasks
+```
+
+### 4.0c State Tracking (Recommended)
 
 For resume and retry support, create/update `analysis/_state.json`. Required if retry-workflow is needed (see [retry-workflow.md](references/retry-workflow.md)):
 
@@ -578,7 +618,10 @@ Direct Path guidelines — main agent follows cùng shared rules như subagent:
 Task tool:
 - subagent_type: "general-purpose"
 - description: "Write: {title}"
+- run_in_background: true  # Dùng cho ≥3 articles
 - prompt: [Use references/article-writer-prompt.md]
+# QUAN TRỌNG: Dùng {voiceContent} và {structureContent} đã pre-read ở Step 4.0a
+# KHÔNG truyền file paths cho subagent tự đọc
 ```
 
 **Multi-Part Articles** (from Step 3.3.1):
@@ -645,16 +688,19 @@ After each article completes, update TaskUpdate:
 
 **IMPORTANT**: PASS/FAIL chỉ dựa trên section coverage, không phải word count. Word count chỉ mang tính thống kê.
 
-**Subagent return format** (2-column, see article-writer-prompt.md):
+**Subagent return format** (see article-writer-prompt.md):
 
 ```markdown
-DONE: {filename} | {N} words (stats)
-COVERAGE (determines PASS/FAIL):
+DONE: {filename} | {N} words
+KEY_TAKEAWAY: Sinh lực bùng lên khi có mục đích rõ ràng và hành động mỗi ngày
+COVERAGE:
 | Section | Status |
 |---------|--------|
 | S01 | ✅ quoted |
 | S02 ⭐ | ✅ faithful |
-RESULT: PASS # PASS nếu all sections covered
+RESULT: PASS
+SERIES_LIST: YES
+VERIFY: "Vita Nova" (L21)
 ```
 
 **Tiêu chí PASS/FAIL:**
@@ -676,35 +722,42 @@ Main agent enriches with "Assigned To" and "Used In" columns → aggregates into
 
 ### 4.6 Quality Gate: Articles Complete
 
-Before proceeding to Step 5, verify:
+Before proceeding to Step 5, verify từ subagent returns (KHÔNG cần đọc article files):
 
-- [ ] All articles written (check pending list)
-
-- [ ] Coverage reports collected from all subagents
-
-- [ ] No placeholder text in articles
-
-- [ ] Source verification quotes provided
-
-- [ ] Opening of each article is NOT mechanical ("Trong bài này...")
+- [ ] All articles written (check pending list vs DONE returns)
+- [ ] All RESULT: PASS (coverage đầy đủ)
+- [ ] All SERIES_LIST: YES
+- [ ] KEY_TAKEAWAY collected từ mỗi subagent (dùng cho Step 5.1)
+- [ ] VERIFY quotes provided (spot-check source fidelity)
 
 ## Step 5: Synthesize
 
 ### 5.1 Update Overview (Phase 2)
 
-Update `00-overview.md` with actual content for placeholder sections:
+Update `00-overview.md` with actual content for placeholder sections.
 
-**Điểm chính** (Key Takeaways):
+**KHÔNG đọc lại articles.** Dùng dữ liệu đã có:
+
+```python
+# Nguồn dữ liệu cho overview (KHÔNG cần đọc article files):
+key_takeaways = []  # Từ KEY_TAKEAWAY trong return format của mỗi subagent
+series_list = []    # Từ _plan.md (đã có titles + descriptions từ Step 3)
+core_message = ""   # Từ _plan.md Series Context
+```
+
+**Multi-part articles**: Gom KEY_TAKEAWAYs của các parts thành 1 takeaway cho bài đó. Ví dụ: article 02 có 3 parts → chọn takeaway đại diện nhất hoặc tổng hợp thành 1 câu.
+
+**Điểm chính** (Key Takeaways) - compose từ KEY_TAKEAWAYs:
 
 ```markdown
 ## Điểm chính
 
-1. **[Concept 1]**: [Brief explanation from series]
-2. **[Concept 2]**: [Brief explanation from series]
-3. **[Concept 3]**: [Brief explanation from series]
+1. **[Concept từ article 1 KEY_TAKEAWAY]**: [Expand từ takeaway]
+2. **[Concept từ article 2 KEY_TAKEAWAY]**: [Expand từ takeaway]
+3. **[Concept từ article 3 KEY_TAKEAWAY]**: [Expand từ takeaway]
 ```
 
-**Các bài viết trong series** (Series List):
+**Các bài viết trong series** (Series List) - compose từ `_plan.md`:
 
 ```markdown
 ## Các bài viết trong series
@@ -715,6 +768,8 @@ Update `00-overview.md` with actual content for placeholder sections:
 ```
 
 **Final overview target**: 400-600 words (overview đặc biệt, dùng word target thay vì section coverage)
+
+**Fallback nếu KEY_TAKEAWAY kém**: Nếu takeaway quá generic hoặc trống, dùng article title + plan description từ `_plan.md` thay thế. KHÔNG đọc article file chỉ để cải thiện takeaway.
 
 ### 5.2 Coverage Aggregation
 
@@ -764,17 +819,19 @@ Coverage results:
 
 ### 6.2 Quality Checklist
 
-- [ ] All articles written, reader-ready (no metadata)
+Verify từ subagent returns + overview file (KHÔNG cần đọc article files):
 
-- [ ] Overview updated with Key Takeaways and Series List
+- [ ] All RESULT: PASS (từ subagent returns)
 
-- [ ] All articles have "## Các bài viết trong series" at end (check `SERIES_LIST: YES` in subagent return, append if missing)
+- [ ] Overview updated with Key Takeaways and Series List (đọc `00-overview.md` ~600 words)
 
-- [ ] All links in series lists verified
+- [ ] All SERIES_LIST: YES (từ returns, append nếu NO)
+
+- [ ] All links in series lists verified (trong overview file)
 
 - [ ] _coverage.md reported (>=95% target, >=90% acceptable)
 
-- [ ] Critical ⭐ sections included (faithful rewrite, Vietnamese, selected voice)
+- [ ] Critical ⭐ sections: VERIFY quotes match source (spot-check từ returns)
 
 - [ ] Warnings logged for any skipped sections
 
