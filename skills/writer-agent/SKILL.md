@@ -549,7 +549,8 @@ structure_content = Read(f"{STRUCTURES_DIR}/{structure}.md")
 **Giảm output trả về main agent:**
 
 1. **CONTEXT RULES** - Đã embed trong prompt template, cấm subagent glob/read files thừa
-3. **run_in_background: true** - Dùng cho parallel article writing (≥3 articles). Main agent không nhận full transcript vào context, chỉ check output file khi cần.
+2. **run_in_background: true** - Dùng cho parallel article writing (≥3 articles). Main agent không nhận full transcript vào context.
+3. **Summary files (.done)** - Subagent ghi summary ra `{outputPath}.done` bên cạnh article file. Main agent đọc `.done` files thay vì transcript.
 
 ```python
 # Parallel writing với run_in_background
@@ -558,15 +559,45 @@ for article in articles:
     task = Task(
         subagent_type="general-purpose",
         description=f"Write: {article.title}",
-
         run_in_background=True,  # QUAN TRỌNG: tránh prompt too long
         prompt=compose_prompt(article, voice_content, structure_content)
     )
     tasks.append(task)
-
-# Check completion bằng Read tool trên output file
-# KHÔNG dùng TaskOutput với block=true cho nhiều tasks
 ```
+
+### 4.0b.1 Result Collection Protocol (BẮT BUỘC)
+
+**Subagent ghi 2 files:**
+- `articles/{slug}.md` — bài viết (article content)
+- `articles/{slug}.md.done` — summary (~200 bytes: DONE, KEY_TAKEAWAY, COVERAGE, RESULT, VERIFY)
+
+**Main agent thu thập kết quả:**
+
+```python
+# 1. Check completion: list .done files
+Bash("ls articles/*.done")  # Biết bài nào đã xong
+
+# 2. Read summary: đọc từng .done file (~200 bytes mỗi file)
+Read("articles/01-intro.md.done")  # DONE, KEY_TAKEAWAY, COVERAGE, RESULT, VERIFY
+
+# 3. Validate word count (nếu cần)
+Bash("wc -w articles/01-intro.md")
+```
+
+**KHÔNG BAO GIỜ dùng các cách sau (gây bloat context):**
+
+```python
+# ❌ SAI: TaskOutput trả full transcript (50-100KB mỗi subagent)
+TaskOutput(task_id="xxx")
+
+# ❌ SAI: tail trên .output file trả raw JSONL (mỗi dòng hàng nghìn ký tự)
+Bash("tail -5 /tmp/.../tasks/xxx.output")
+
+# ❌ SAI: đọc article file chỉ để lấy summary
+Read("articles/01-intro.md")  # 3000+ words vào context không cần thiết
+```
+
+**Lý do**: File `.output` là JSONL event stream, chứa toàn bộ Read/Write tool results (source content + article content). Dù chỉ `tail -5`, mỗi dòng JSONL có thể chứa hàng nghìn ký tự. TaskOutput cũng trả full transcript tương tự.
 
 ### 4.0c State Tracking (Recommended)
 
@@ -722,12 +753,19 @@ Main agent enriches with "Assigned To" and "Used In" columns → aggregates into
 
 ### 4.6 Quality Gate: Articles Complete
 
-Before proceeding to Step 5, verify từ subagent returns (KHÔNG cần đọc article files):
+Before proceeding to Step 5, verify từ `.done` files (KHÔNG cần đọc article files hay transcript):
 
-- [ ] All articles written (check pending list vs DONE returns)
+```python
+# Đọc tất cả .done files để verify
+for done_file in Glob("articles/*.done"):
+    summary = Read(done_file)  # ~200 bytes mỗi file
+    # Parse: DONE, KEY_TAKEAWAY, COVERAGE, RESULT, SERIES_LIST, VERIFY
+```
+
+- [ ] All articles written (check `.done` files vs pending list)
 - [ ] All RESULT: PASS (coverage đầy đủ)
 - [ ] All SERIES_LIST: YES
-- [ ] KEY_TAKEAWAY collected từ mỗi subagent (dùng cho Step 5.1)
+- [ ] KEY_TAKEAWAY collected từ `.done` files (dùng cho Step 5.1)
 - [ ] VERIFY quotes provided (spot-check source fidelity)
 
 ## Step 5: Synthesize
@@ -736,11 +774,11 @@ Before proceeding to Step 5, verify từ subagent returns (KHÔNG cần đọc a
 
 Update `00-overview.md` with actual content for placeholder sections.
 
-**KHÔNG đọc lại articles.** Dùng dữ liệu đã có:
+**KHÔNG đọc lại articles.** Dùng dữ liệu từ `.done` files:
 
 ```python
-# Nguồn dữ liệu cho overview (KHÔNG cần đọc article files):
-key_takeaways = []  # Từ KEY_TAKEAWAY trong return format của mỗi subagent
+# Nguồn dữ liệu cho overview (KHÔNG cần đọc article files hay transcript):
+key_takeaways = []  # Từ KEY_TAKEAWAY trong .done files (Step 4.6)
 series_list = []    # Từ _plan.md (đã có titles + descriptions từ Step 3)
 core_message = ""   # Từ _plan.md Series Context
 ```

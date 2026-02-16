@@ -215,7 +215,7 @@ CONTEXT RULES (CRITICAL - minimize subagent context usage):
 - DO NOT read existing articles for format reference
 - DO NOT explore the directory structure
 - ONLY read the SOURCE file at specified line range
-- Workflow: Read SOURCE → Write article to OUTPUT → Return summary. Nothing else.
+- Workflow: Read SOURCE → Write article to OUTPUT → Write .done summary → Return summary. Nothing else.
 ```
 
 ### RETURN FORMAT Block
@@ -223,9 +223,12 @@ CONTEXT RULES (CRITICAL - minimize subagent context usage):
 ```
 RETURN FORMAT (CRITICAL):
 - Save article to {outputPath} using Write tool
+- Save summary to {outputPath}.done using Write tool (same path + ".done" extension)
 - Your FINAL response MUST contain ONLY the summary below
 - DO NOT include explanations, thinking process, or commentary in final message
 - DO NOT return article content in message
+
+Summary content (write to BOTH .done file AND final message):
 
 DONE: {filename} | {N} words
 KEY_TAKEAWAY: {1-2 câu tóm tắt insight/ý chính quan trọng nhất của bài viết}
@@ -735,7 +738,10 @@ Task tool:
 
     RETURN FORMAT (CRITICAL):
     - Article content ALREADY saved to {outputPath}
+    - Save summary to {outputPath}.done using Write tool
     - DO NOT return article content in message
+
+    Summary content (write to BOTH .done file AND final message):
 
     DONE: {filename} | {N} words
     PART: {partNumber}/{totalParts}
