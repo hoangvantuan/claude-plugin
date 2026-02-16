@@ -67,13 +67,14 @@ Glob("**/writer-agent/scripts/wa-convert")
 **Bước 2**: Từ kết quả, xác định 4 đường dẫn:
 
 ```
-SCRIPTS_DIR = directory chứa wa-convert  (ví dụ: /Users/x/.claude/skills/writer-agent/scripts)
-SKILL_DIR   = parent của SCRIPTS_DIR     (ví dụ: /Users/x/.claude/skills/writer-agent)
-VOICES_DIR  = SKILL_DIR/voices           (ví dụ: /Users/x/.claude/skills/writer-agent/voices)
-STRUCTURES_DIR = SKILL_DIR/structures    (ví dụ: /Users/x/.claude/skills/writer-agent/structures)
-IDENTITIES_DIR = SKILL_DIR/identities    (ví dụ: /Users/x/.claude/skills/writer-agent/identities)
-AUDIENCES_DIR  = SKILL_DIR/audiences     (ví dụ: /Users/x/.claude/skills/writer-agent/audiences)
-EMOTIONS_DIR   = SKILL_DIR/emotional_maps (ví dụ: /Users/x/.claude/skills/writer-agent/emotional_maps)
+SCRIPTS_DIR    = directory chứa wa-convert  (ví dụ: /Users/x/.claude/skills/writer-agent/scripts)
+SKILL_DIR      = parent của SCRIPTS_DIR     (ví dụ: /Users/x/.claude/skills/writer-agent)
+VOICES_DIR     = SKILL_DIR/voices           (ví dụ: /Users/x/.claude/skills/writer-agent/voices)
+STRUCTURES_DIR = SKILL_DIR/structures       (ví dụ: /Users/x/.claude/skills/writer-agent/structures)
+IDENTITIES_DIR = SKILL_DIR/identities       (ví dụ: /Users/x/.claude/skills/writer-agent/identities)
+AUDIENCES_DIR  = SKILL_DIR/audiences        (ví dụ: /Users/x/.claude/skills/writer-agent/audiences)
+EMOTIONS_DIR   = SKILL_DIR/emotional_maps   (ví dụ: /Users/x/.claude/skills/writer-agent/emotional_maps)
+TEMPLATES_DIR  = SKILL_DIR/templates        (ví dụ: /Users/x/.claude/skills/writer-agent/templates)
 ```
 
 **Bước 3**: Ghi nhớ các đường dẫn này. Tất cả commands trong các bước sau PHẢI dùng đường dẫn đã resolve, KHÔNG dùng relative path.
@@ -83,10 +84,26 @@ EMOTIONS_DIR   = SKILL_DIR/emotional_maps (ví dụ: /Users/x/.claude/skills/wri
 - Đọc voice: `/Users/x/.claude/skills/writer-agent/voices/teacher.md`
 - Đọc structure: `/Users/x/.claude/skills/writer-agent/structures/building-blocks.md`
 - Đọc identity: `/Users/x/.claude/skills/writer-agent/identities/tech-builder.md`
+- Đọc template: `/Users/x/.claude/skills/writer-agent/templates/_overview-template.md`
 
 > **QUAN TRỌNG**: KHÔNG BAO GIỜ hardcode `.claude/skills/writer-agent/...`, luôn dùng đường dẫn tuyệt đối từ Glob.
 
+**Bước 4 (Validation)**: Verify các paths đã resolve bằng cách kiểm tra file tồn tại:
+
+```python
+# PHẢI verify trước khi tiếp tục Step 1
+assert Glob(f"{SCRIPTS_DIR}/wa-convert")   # Script chính
+assert Glob(f"{VOICES_DIR}/*.md")          # Voice files
+assert Glob(f"{STRUCTURES_DIR}/*.md")      # Structure files
+assert Glob(f"{TEMPLATES_DIR}/*.md")  # Templates
+# Nếu BẤT KỲ assert nào fail → STOP, kiểm tra lại Bước 1-2
+```
+
+> **FAIL CONDITION**: Nếu không tìm thấy `wa-convert` → STOP workflow hoàn toàn. KHÔNG tự suy đoán paths.
+
 ## Step 1: Input Handling
+
+> **GUARD**: `SCRIPTS_DIR` đã resolve từ Step 0. Nếu chưa → **STOP, quay lại Step 0**.
 
 Detect input type and convert to markdown.
 
@@ -230,7 +247,29 @@ Emotion files: `emotional_maps/{emotion}.md`
 
 Mỗi dimension table ở trên đã ghi "Default cho" column. Dùng bảng so sánh chi tiết khi cần xác nhận compatibility.
 
-**Low Compatibility Warning**: Khi user chọn combo có compatibility ★ (thấp) theo bảng ở `_dimension-comparison.md`, thông báo user: "Combination này ít phổ biến, có thể tạo tension trong giọng văn. Bạn muốn tiếp tục hay chọn khác?". Nếu user confirm → proceed.
+### Step 2f: Compatibility Check (BẮT BUỘC sau khi chọn xong 5 dimensions)
+
+Sau khi user confirm tất cả 5 dimensions, **PHẢI kiểm tra compatibility** trước khi tiếp tục:
+
+```python
+# Đọc _dimension-comparison.md section 7 (Cross-dimension Compatibility)
+# Kiểm tra 3 cặp: Identity×Voice, Audience×Voice, Emotion×Voice
+pairs_to_check = [
+    (identity, voice),   # Identity × Voice table
+    (audience, voice),   # Audience × Voice table
+    (emotion, voice),    # Emotion × Voice table
+]
+low_compat = [pair for pair in pairs_to_check if compatibility(pair) == "★"]
+
+if low_compat:
+    # PHẢI thông báo user trước khi tiếp tục
+    warn(f"Combo {low_compat} có compatibility thấp (★), có thể tạo tension trong giọng văn.")
+    # Hỏi: "Bạn muốn tiếp tục hay chọn khác?"
+    # Nếu user confirm → proceed
+    # Nếu user chọn khác → quay lại step tương ứng
+```
+
+> **FAIL CONDITION**: Nếu có combo ★ mà KHÔNG cảnh báo user → vi phạm workflow.
 
 **Conflict Resolution**: Khi dimensions tạo tension (vd: Provoke & Transform + Teacher voice), Voice luôn quyết định HOW (giọng văn, tone, persona). Profile (Identity/Audience/Emotion) bổ sung WHAT (authority, đối tượng, cảm xúc). Nếu conflict: Voice wins về style/tone, Profile wins về content framing.
 
@@ -304,6 +343,8 @@ article_target = (article_source_words / source_words) × total_target
 - Tier 3: Like Tier 1 but larger chunks, more selective glossary, lower concurrency
 
 ## Step 3: Analyze
+
+> **GUARD**: Step 1 hoàn thành (`content.md` + `structure.json` tồn tại). Nếu thiếu → **STOP, quay lại Step 1**.
 
 **Goal**: Create analysis artifacts for article generation.
 
@@ -527,6 +568,11 @@ Before proceeding to Step 4, verify:
 - [ ] For Tier 3: _plan.md created with line ranges
 
 ## Step 4: Write Articles
+
+> **GUARD**: Verify trước khi bắt đầu:
+> 1. `_plan.md` đã tạo (Step 3.3) → Nếu chưa → **STOP, quay lại Step 3**
+> 2. Tier đã xác định (Direct Path / Tier 1-3) → Nếu chưa → **STOP, đọc structure.json**
+> 3. `voice_content` + `structure_content` đã pre-read (Step 4.0a) → Nếu chưa → đọc ngay bên dưới
 
 ### 4.0a Pre-read Voice & Structure (BẮT BUỘC)
 
