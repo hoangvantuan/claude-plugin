@@ -71,7 +71,7 @@ Starting Step 4 (Write Articles)
 Overview article (00-overview.md)?
 ├─ YES → Write in MAIN context
 │   └─ Needs full series knowledge
-│   └─ Template: templates/_overview-template.md
+│   └─ Template: templates/overview-template.md
 │
 └─ NO → Estimate article length
     estimated_words = (source_words × detail_ratio) / article_count

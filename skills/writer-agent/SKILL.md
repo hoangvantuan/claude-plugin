@@ -84,7 +84,7 @@ TEMPLATES_DIR  = SKILL_DIR/templates        (ví dụ: /Users/x/.claude/skills/w
 - Đọc voice: `/Users/x/.claude/skills/writer-agent/voices/teacher.md`
 - Đọc structure: `/Users/x/.claude/skills/writer-agent/structures/building-blocks.md`
 - Đọc identity: `/Users/x/.claude/skills/writer-agent/identities/tech-builder.md`
-- Đọc template: `/Users/x/.claude/skills/writer-agent/templates/_overview-template.md`
+- Đọc template: `/Users/x/.claude/skills/writer-agent/templates/overview-template.md`
 
 > **QUAN TRỌNG**: KHÔNG BAO GIỜ hardcode `.claude/skills/writer-agent/...`, luôn dùng đường dẫn tuyệt đối từ Glob.
 
@@ -172,13 +172,13 @@ Hỏi user để confirm voice (giọng văn, tone, persona).
 | Investigator | `investigator.md` | Tìm hiểu, đặt câu hỏi, challenge |
 | Dialogue | `dialogue.md` | Thầy-trò đối thoại, Zen |
 | Storyteller | `storyteller.md` | Kể chuyện ngôi thứ nhất, chánh niệm |
-| **Custom** | User tạo mới | Theo `templates/_voice-template.md` |
+| **Custom** | User tạo mới | Theo `templates/voice-template.md` |
 
 Voice files: `voices/{voice}.md`
 
-Xem `references/_dimension-comparison.md` để so sánh tất cả dimensions.
+Xem `references/dimension-comparison.md` để so sánh tất cả dimensions.
 
-**Custom voice**: Nếu user muốn tạo voice riêng, copy `templates/_voice-template.md` → `voices/{custom-name}.md`, điền theo template. Tương tự cho custom structure: `structures/_structure-template.md` → `structures/{custom-name}.md`.
+**Custom voice**: Nếu user muốn tạo voice riêng, copy `templates/voice-template.md` → `voices/{custom-name}.md`, điền theo template. Tương tự cho custom structure: `structures/structure-template.md` → `structures/{custom-name}.md`.
 
 ### Step 2b: Select Structure
 
@@ -198,7 +198,7 @@ Mỗi voice có `default_structure` trong frontmatter. Suggest default, user có
 
 Structure files: `structures/{structure}.md`
 
-Xem `references/_dimension-comparison.md` để so sánh và mix-match.
+Xem `references/dimension-comparison.md` để so sánh và mix-match.
 
 ### Step 2c: Select Writer Identity
 
@@ -209,7 +209,7 @@ Hỏi user chọn writer identity. Suggest default dựa trên voice, user confi
 | Tech Builder | `tech-builder.md` | Practitioner, pragmatic builder | Teacher |
 | Contemplative Thinker | `contemplative-thinker.md` | Hành giả, tìm ý nghĩa | Personal, Guide, Dialogue, Storyteller |
 | Knowledge Curator | `knowledge-curator.md` | Cross-domain connector | Objective, Investigator |
-| **Custom** | User tạo mới | Theo `templates/_identity-template.md` | - |
+| **Custom** | User tạo mới | Theo `templates/identity-template.md` | - |
 
 Identity files: `identities/{identity}.md`
 
@@ -222,7 +222,7 @@ Hỏi user viết cho ai. Suggest default dựa trên voice, user confirm hoặc
 | Busy Professionals | `busy-professionals.md` | Bận, cần actionable | Objective |
 | Curious Beginners | `curious-beginners.md` | Mới, cần clarity | Teacher, Guide |
 | Deep Seekers | `deep-seekers.md` | Muốn chiều sâu | Personal, Investigator, Dialogue, Storyteller |
-| **Custom** | User tạo mới | Theo `templates/_audience-template.md` | - |
+| **Custom** | User tạo mới | Theo `templates/audience-template.md` | - |
 
 Audience files: `audiences/{audience}.md`
 
@@ -235,7 +235,7 @@ Hỏi user muốn người đọc cảm thấy gì. Suggest default dựa trên 
 | Empower & Challenge | `empower-challenge.md` | Growth qua discomfort | Teacher, Objective |
 | Reflect & Discover | `reflect-discover.md` | Stillness, wonder | Personal, Guide, Dialogue, Storyteller |
 | Provoke & Transform | `provoke-transform.md` | Challenge assumptions | Investigator |
-| **Custom** | User tạo mới | Theo `templates/_emotion-template.md` | - |
+| **Custom** | User tạo mới | Theo `templates/emotion-template.md` | - |
 
 Emotion files: `emotional_maps/{emotion}.md`
 
@@ -243,7 +243,7 @@ Emotion files: `emotional_maps/{emotion}.md`
 
 ### Default Mapping Table
 
-> **📖 See**: [`references/_dimension-comparison.md`](references/_dimension-comparison.md) for full default mapping table, compatibility matrix, and mixing guidelines.
+> **📖 See**: [`references/dimension-comparison.md`](references/dimension-comparison.md) for full default mapping table, compatibility matrix, and mixing guidelines.
 
 Mỗi dimension table ở trên đã ghi "Default cho" column. Dùng bảng so sánh chi tiết khi cần xác nhận compatibility.
 
@@ -252,7 +252,7 @@ Mỗi dimension table ở trên đã ghi "Default cho" column. Dùng bảng so s
 Sau khi user confirm tất cả 5 dimensions, **PHẢI kiểm tra compatibility** trước khi tiếp tục:
 
 ```python
-# Đọc _dimension-comparison.md section 7 (Cross-dimension Compatibility)
+# Đọc dimension-comparison.md section 7 (Cross-dimension Compatibility)
 # Kiểm tra 3 cặp: Identity×Voice, Audience×Voice, Emotion×Voice
 pairs_to_check = [
     (identity, voice),   # Identity × Voice table
@@ -667,7 +667,7 @@ For selective re-runs (style change or single article rewrite), see [retry-workf
 Write `00-overview.md` in **main context**:
 
 - Requires full series knowledge
-- Template: `templates/_overview-template.md`
+- Template: `templates/overview-template.md`
 - Target: 300-400 words (initial)
 - Include placeholders for Key Takeaways and Article Index
 
