@@ -25,6 +25,14 @@ Cấu trúc đối thoại giữa hai người: người hỏi (từ trải nghi
 - Người Hỏi mở bằng trải nghiệm cụ thể, khoảnh khắc đời thường
 - Grounding qua chi tiết giác quan
 
+**Opening Palette** (chọn 1 per bài, KHÔNG lặp technique giữa 2 bài liên tiếp trong series):
+
+- `scene-setting`: Khoảnh khắc trước cuộc đối thoại — "Hiên nhà thầy phủ sương. Tách trà còn bốc khói."
+- `in-medias-res`: Nhảy vào giữa đối thoại — "**C:** Thầy ơi, con không hiểu tại sao mình cứ lặp sai lầm cũ."
+- `question-first`: Câu hỏi mở — "Có bao giờ bạn hỏi một câu, và câu trả lời là im lặng?"
+- `memory-flash`: Hồi ức về Thầy — "Tôi nhớ thầy hay xoay tách trà. Xoay chậm, như đang nghĩ. Rồi hỏi ngược."
+- `contrast`: Nghịch lý — "Con đến để hỏi. Nhưng thầy lại là người đặt nhiều câu hỏi hơn."
+
 ### 2. Development
 
 - Đối thoại 2-4 câu/lượt

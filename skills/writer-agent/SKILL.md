@@ -479,10 +479,10 @@ Khi tạo `_plan.md`, đồng thời xác định:
 
 Core message: "{1-2 câu thông điệp cốt lõi}"
 
-| # | Title | Role | Reader Enters | Reader Exits | Bridge to Next |
-| 1 | Intro | foundation | Chưa biết X | Hiểu X cơ bản | "Nhưng X trong thực tế...?" |
-| 2 | Core | development | Hiểu X cơ bản | Nắm vững Y | "Y mở ra câu hỏi về Z..." |
-| 3 | Adv | climax | Nắm vững Y | Kết nối Y với Z | N/A (last) |
+| # | Title | Role | Opening | Reader Enters | Reader Exits | Bridge to Next |
+| 1 | Intro | foundation | scene-setting | Chưa biết X | Hiểu X cơ bản | "Nhưng X trong thực tế...?" |
+| 2 | Core | development | in-medias-res | Hiểu X cơ bản | Nắm vững Y | "Y mở ra câu hỏi về Z..." |
+| 3 | Adv | climax | question-first | Nắm vững Y | Kết nối Y với Z | N/A (last) |
 ```
 
 **Cách tạo Reader Enters/Exits/Bridge:**
@@ -490,6 +490,13 @@ Core message: "{1-2 câu thông điệp cốt lõi}"
 - `Reader Enters`: Kiến thức người đọc có khi bắt đầu bài (từ bài trước hoặc kiến thức nền)
 - `Reader Exits`: Kiến thức người đọc đạt được sau bài (dẫn tới bài sau)
 - `Bridge to Next`: 1 câu gợi tò mò kết nối bài này với bài tiếp (KHÔNG dùng "Trong phần tiếp theo...")
+
+**Opening Diversity Rule:**
+
+- `Opening`: Chọn opening technique từ Opening Palette trong structure file đã chọn
+- KHÔNG 2 bài liên tiếp dùng cùng opening technique
+- Trong series N bài, dùng ít nhất ceil(N/2) techniques khác nhau
+- Chọn technique phù hợp với `article_role` và `content_type` của bài
 
 Thông tin này sẽ được embed vào `SERIES_CONTEXT` block trong mỗi subagent prompt (xem [article-writer-prompt.md](references/article-writer-prompt.md#series-context-block)).
 

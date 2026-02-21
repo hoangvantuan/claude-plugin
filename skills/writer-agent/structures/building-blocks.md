@@ -26,6 +26,14 @@ Cấu trúc xây dựng kiến thức từ đơn giản đến phức tạp, m�
 - BLUF: kết luận ngay câu đầu khi phù hợp
 - Context ngắn gọn, tạo motivation cho người đọc
 
+**Opening Palette** (chọn 1 per bài, KHÔNG lặp technique giữa 2 bài liên tiếp trong series):
+
+- `question-first`: Câu hỏi người đọc đang thắc mắc — "Tại sao có người học 10 năm vẫn chưa giỏi bằng người mới 2 năm?"
+- `scenario`: Tình huống thực tế — "Bạn vừa nhận dự án mới. Deadline 2 tuần. Không ai hướng dẫn."
+- `provocation`: Nhận định phản trực giác — "Hầu hết tutorial bạn đọc đều dạy sai thứ tự."
+- `contrast`: So sánh bất ngờ — "Học lập trình giống học nấu ăn hơn bạn nghĩ."
+- `scene-setting`: Tình huống cụ thể — "3 giờ sáng. Build fail lần thứ năm. Stack Overflow hết câu trả lời."
+
 ### 2. Development (Building Blocks)
 
 **Pattern:** Intuition trước → Concept đơn giản → Ví dụ trực quan → Chi tiết khi cần → Ứng dụng thực tế

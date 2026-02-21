@@ -24,6 +24,8 @@ SERIES_CONTEXT:
   reader_journey: "{Đến bài này, người đọc đã hiểu X, bài này sẽ đưa họ đến Y}"
   reader_enters: "{Người đọc biết X nhưng chưa hiểu Y}"
   reader_exits: "{Người đọc hiểu Y và muốn biết Z}"
+  opening_technique: "{technique từ Opening Palette, e.g. in-medias-res}"
+  prev_opening_used: "{technique bài trước dùng, e.g. scene-setting | N/A nếu bài đầu}"
 ```
 
 **Cách main agent tạo Series Context:**
@@ -34,6 +36,8 @@ SERIES_CONTEXT:
 4. reader_journey: mô tả progression logic
 5. reader_enters: mô tả kiến thức người đọc có khi bắt đầu bài (từ bài trước)
 6. reader_exits: mô tả kiến thức người đọc đạt được sau bài (dẫn tới bài sau)
+7. opening_technique: lấy từ cột `Opening` trong `_plan.md` Series Context table
+8. prev_opening_used: technique bài trước dùng (N/A nếu bài đầu tiên)
 
 ## Shared Rules (Referenced by All Tier Templates)
 
@@ -134,7 +138,10 @@ WRITER_PROFILE:
 
 ```
 WRITING QUALITY (CRITICAL):
-- Opening/Closing: Follow the structure file's Opening and Closing guidelines
+- Opening: MUST use SERIES_CONTEXT.opening_technique (see Opening Palette in structure file)
+  - DO NOT default to scene-setting if a different technique is assigned
+  - DO NOT use the same opening pattern as prev_opening_used
+- Closing: Follow the structure file's Closing guidelines
 - Narrative flow: Each section leads naturally to the next
 - Depth over breadth: Go deep on 2-3 key ideas
 - Draw connections: Link ideas to SERIES_CONTEXT.core_message
@@ -278,6 +285,8 @@ Task tool:
       reader_journey: "{readerJourney}"
       reader_enters: "{readerEnters}"
       reader_exits: "{readerExits}"
+      opening_technique: "{openingTechnique}"
+      prev_opening_used: "{prevOpeningUsed}"
 
     SERIES_LIST:
     {seriesList}
@@ -291,11 +300,13 @@ Task tool:
     - The structure defines phases (Opening/Development/Closing or equivalent)
     - MANDATORY constraints (override structure):
       1. Title (H1) - descriptive, evocative
-      2. Before "## Các bài viết trong series", add a brief narrative bridge (1-2 sentences)
+      2. Opening: MUST use opening_technique from SERIES_CONTEXT (see Opening Palette in STRUCTURE)
+         DO NOT default to scene-setting. DO NOT repeat prev_opening_used pattern.
+      3. Before "## Các bài viết trong series", add a brief narrative bridge (1-2 sentences)
          that creates natural curiosity for the next article.
          Format: A question, image, or thought connecting this article's conclusion to the next.
          DO NOT use: "Trong phần tiếp theo...", "Bài tiếp theo sẽ..."
-      3. Must end with "## Các bài viết trong series" (mark current with _(đang xem)_)
+      4. Must end with "## Các bài viết trong series" (mark current with _(đang xem)_)
     - The structure defines HOW to organize content
     - The source sections [Sxx] define WHAT content to include
 
@@ -357,6 +368,8 @@ Task tool:
       reader_journey: "{readerJourney}"
       reader_enters: "{readerEnters}"
       reader_exits: "{readerExits}"
+      opening_technique: "{openingTechnique}"
+      prev_opening_used: "{prevOpeningUsed}"
 
     SERIES_LIST:
     {seriesList}
@@ -370,11 +383,13 @@ Task tool:
     - The structure defines phases (Opening/Development/Closing or equivalent)
     - MANDATORY constraints (override structure):
       1. Title (H1) - descriptive, evocative
-      2. Before "## Các bài viết trong series", add a brief narrative bridge (1-2 sentences)
+      2. Opening: MUST use opening_technique from SERIES_CONTEXT (see Opening Palette in STRUCTURE)
+         DO NOT default to scene-setting. DO NOT repeat prev_opening_used pattern.
+      3. Before "## Các bài viết trong series", add a brief narrative bridge (1-2 sentences)
          that creates natural curiosity for the next article.
          Format: A question, image, or thought connecting this article's conclusion to the next.
          DO NOT use: "Trong phần tiếp theo...", "Bài tiếp theo sẽ..."
-      3. Must end with "## Các bài viết trong series" (mark current with _(đang xem)_)
+      4. Must end with "## Các bài viết trong series" (mark current with _(đang xem)_)
     - The structure defines HOW to organize content
     - The source sections [Sxx] define WHAT content to include
 
@@ -438,6 +453,8 @@ Task tool:
       reader_journey: "{readerJourney}"
       reader_enters: "{readerEnters}"
       reader_exits: "{readerExits}"
+      opening_technique: "{openingTechnique}"
+      prev_opening_used: "{prevOpeningUsed}"
 
     SERIES_LIST:
     {seriesList}
@@ -451,11 +468,13 @@ Task tool:
     - The structure defines phases (Opening/Development/Closing or equivalent)
     - MANDATORY constraints (override structure):
       1. Title (H1) - descriptive, evocative
-      2. Before "## Các bài viết trong series", add a brief narrative bridge (1-2 sentences)
+      2. Opening: MUST use opening_technique from SERIES_CONTEXT (see Opening Palette in STRUCTURE)
+         DO NOT default to scene-setting. DO NOT repeat prev_opening_used pattern.
+      3. Before "## Các bài viết trong series", add a brief narrative bridge (1-2 sentences)
          that creates natural curiosity for the next article.
          Format: A question, image, or thought connecting this article's conclusion to the next.
          DO NOT use: "Trong phần tiếp theo...", "Bài tiếp theo sẽ..."
-      3. Must end with "## Các bài viết trong series" (mark current with _(đang xem)_)
+      4. Must end with "## Các bài viết trong series" (mark current with _(đang xem)_)
     - The structure defines HOW to organize content
     - The source sections [Sxx] define WHAT content to include
 
@@ -628,6 +647,8 @@ Task[1]:
 | `{contentType}`      | From `_plan.md` content type    | From `_plan.md` content type    | From `_plan.md` content type           |
 | `{readerEnters}`     | From `_plan.md` Series Context  | From `_plan.md` Series Context  | From `_plan.md` Series Context         |
 | `{readerExits}`      | From `_plan.md` Series Context  | From `_plan.md` Series Context  | From `_plan.md` Series Context         |
+| `{openingTechnique}` | From `_plan.md` Opening column  | From `_plan.md` Opening column  | From `_plan.md` Opening column         |
+| `{prevOpeningUsed}`  | Technique of prev article (N/A if first) | Same | Same                            |
 
 **Note**: `{voiceContent}` and `{structureContent}` are pre-read by the main agent and embedded directly in the prompt. Subagents do NOT read these files themselves - this saves 2+ tool calls per subagent, significantly reducing conversation transcript size.
 

@@ -30,6 +30,14 @@ Nội dung nói gì? Bức tranh toàn cảnh.
 
 > "Hầu hết chúng ta tin rằng [giả định phổ biến]. Nhưng [tác giả] đặt ra một câu hỏi khác: [câu hỏi cốt lõi]. Và câu trả lời không đơn giản như ta nghĩ."
 
+**Opening Palette** (chọn 1 per bài, KHÔNG lặp technique giữa 2 bài liên tiếp trong series):
+
+- `assumption-challenge`: Giả định phổ biến bị thách thức — "Ai cũng nghĩ [X] là đúng. Nhưng nếu ngược lại thì sao?"
+- `question-first`: Câu hỏi đào sâu — "Tại sao điều hiển nhiên nhất lại thường sai nhất?"
+- `contrast`: Tương phản phản trực giác — "Hai nghiên cứu, cùng dữ liệu, kết luận ngược nhau."
+- `scene-setting`: Quan sát bất ngờ — "Trong một phòng lab ở MIT, một thí nghiệm cho kết quả không ai dự đoán."
+- `provocation`: Nhận định gây tranh cãi — "Tác giả sai. Nhưng cái sai đó dạy ta nhiều hơn cái đúng."
+
 ### 2. STRUCTURE: Cấu trúc (Development Layer 1)
 
 Logic được xây dựng thế nào? Giả định nào đang ẩn giấu?

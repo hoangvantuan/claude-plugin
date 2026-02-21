@@ -27,6 +27,14 @@ Cấu trúc xoáy ốc: quay lại chủ đề nhiều lần, mỗi lần sâu h
 - Hoặc câu hỏi bất ngờ khiến người đọc dừng lại
 - Grounding qua chi tiết giác quan: thấy, nghe, chạm
 
+**Opening Palette** (chọn 1 per bài, KHÔNG lặp technique giữa 2 bài liên tiếp trong series):
+
+- `scene-setting`: Khoảnh khắc đời thường qua giác quan — "Sáng nay, nước chảy qua tay khi rửa bát. Lạnh. Trong."
+- `question-first`: Câu hỏi tự vấn — "Có khi nào bạn đang sống, mà không thực sự ở đây?"
+- `memory-flash`: Hồi ức mảnh ghép — "Tôi nhớ ánh nắng chiều hôm đó. Nhớ mùi đất ẩm. Nhưng quên mất mình đang buồn hay vui."
+- `provocation`: Nhận định bất ngờ — "Đôi khi, không làm gì là điều khó nhất."
+- `contrast`: Nghịch lý — "Người tự do nhất tôi biết là người chấp nhận mình không tự do."
+
 ### 2. Development
 
 - **Xoáy ốc**: quay lại chủ đề, mỗi lần sâu hơn

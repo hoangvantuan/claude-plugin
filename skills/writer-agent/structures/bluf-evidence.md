@@ -27,6 +27,14 @@ Cấu trúc đặt kết luận quan trọng nhất ngay đầu (Bottom Line Up 
 - Bối cảnh ngắn gọn nếu cần
 - Roadmap: người đọc sẽ thu được gì?
 
+**Opening Palette** (chọn 1 per bài, KHÔNG lặp technique giữa 2 bài liên tiếp trong series):
+
+- `bold-claim`: Kết luận mạnh ngay đầu — "80% dự án AI thất bại không phải vì công nghệ, mà vì hiểu sai bài toán."
+- `question-first`: Câu hỏi thách thức — "Nếu chỉ giữ được một metric, bạn chọn metric nào?"
+- `contrast`: Data bất ngờ — "Công ty A đầu tư $10M vào AI. Công ty B đầu tư $500K. Công ty B thắng."
+- `scene-setting`: Case study mở đầu — "Tháng 3 năm ngoái, một startup 12 người ở Đà Nẵng làm được điều Google chưa làm."
+- `provocation`: Đảo kỳ vọng — "Best practice phổ biến nhất trong ngành này thực ra đã lỗi thời 5 năm."
+
 ### 2. Development (Evidence-Based)
 
 - **Evidence**: Dữ liệu, nghiên cứu, case study, kết quả thử nghiệm
