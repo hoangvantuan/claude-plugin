@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import re
 import subprocess
+import sys
 from typing import Optional
 from urllib.parse import urlparse, parse_qs
 
@@ -90,10 +91,10 @@ def fetch_video_metadata(video_id: str) -> dict:
     import json as _json
 
     try:
-        # Use yt-dlp --dump-json for single-request metadata fetch
+        # Use yt_dlp module via sys.executable to ensure correct venv
         result = subprocess.run(
             [
-                "yt-dlp",
+                sys.executable, "-m", "yt_dlp",
                 "--skip-download",
                 "--dump-json",
                 "--no-warnings",
