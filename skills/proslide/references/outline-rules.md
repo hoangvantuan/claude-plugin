@@ -7,9 +7,12 @@ Quy tắc tạo outline cho ProSlide. Tuân thủ nghiêm ngặt khi tạo outli
 | Content Type       | Primary Framework              | Opening Pattern                                   | Body Pattern                                                                   | Closing Pattern                                  |
 | ------------------ | ------------------------------ | ------------------------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------ |
 | Hướng dẫn/Giáo dục | Gagné's 9 Events + Scaffolding | Mục tiêu học → Recall kiến thức cũ → Hook câu hỏi | Concept scaffolding: simple→complex, Def→Example→Non-example, Knowledge checks | Tóm tắt + Bài tập thực hành + Tài liệu tham khảo |
-| Business/Báo cáo   | Pyramid Principle              | Kết luận/Đề xuất trước → Context                  | Top-down: Recommendation → 3 supporting args → Data evidence                   | Key takeaways + Next steps + Decision needed     |
+| Business/Báo cáo   | Pyramid Principle (default)    | Kết luận/Đề xuất trước → Context                  | Top-down: Recommendation → 3 supporting args → Data evidence                   | Key takeaways + Next steps + Decision needed     |
+| Business/Báo cáo   | SCQA (alternative)             | Situation → Complication → Question               | Answer trước → Supporting evidence → Data drill-down                           | Key takeaways + Next steps + Decision needed     |
 | Thuyết phục/Pitch  | PAS + Sparkline (Duarte)       | Problem hook → Agitate (amplify pain)             | What IS vs What COULD BE oscillation, social proof, benefits                   | Strong CTA + Urgency + Contact                   |
 | Technical/Process  | SCR + Step-by-step             | Situation → Complication → Why solve now          | Sequential steps, comparison tables, architecture flow, cause-effect           | Summary + Implementation roadmap + Resources     |
+
+**Lưu ý Business/Báo cáo:** User chọn framework ở Step 1.1. Pyramid = answer-first (audience đã biết vấn đề), SCQA = frame vấn đề trước (audience cần được convince về severity). Recommend SCQA cho Executive audience, Pyramid cho Mixed/General.
 
 ### Gagné's 9 Events (Hướng dẫn/Giáo dục)
 
@@ -22,6 +25,26 @@ Quy tắc tạo outline cho ProSlide. Tuân thủ nghiêm ngặt khi tạo outli
 7. Provide feedback (đáp án/giải thích)
 8. Assess performance (quiz tổng hợp)
 9. Enhance retention (tóm tắt + tài liệu + call to practice)
+
+### SCQA Framework (Business/Báo cáo — Alternative)
+
+Dùng khi audience cần được "framed" vấn đề trước khi nghe answer. Đặc biệt hiệu quả cho executive briefings.
+
+1. **Situation** — Bối cảnh không thể tranh luận, facts mọi người đều biết
+2. **Complication** — Tension/vấn đề phát sinh từ situation, tạo urgency
+3. **Question** — Câu hỏi cốt lõi mà presentation sẽ trả lời (explicit hóa vấn đề)
+4. **Answer** — Recommendation/solution, đặt ngay sau Question (top-down like Pyramid)
+
+**SCQA Slide Pattern:**
+
+* Slide 1 `[title]`: Title + tagline framing the question
+* Slide 2 `[content]`: Situation — 2-3 bullets facts/context
+* Slide 3 `[content]`: Complication — tension, data showing problem severity
+* Slide 4 `[statement]`: Question — 1 câu hỏi lớn, centered (VD: "Làm sao recover margin trong 12 tháng?")
+* Slide 5+ `[content]`: Answer — recommendations rồi supporting evidence (top-down)
+* Closing: Key takeaways + Decision needed
+
+**Khác biệt với Pyramid:** Pyramid bỏ qua Situation/Complication, nhảy thẳng vào Answer. SCQA dành 2-3 slides đầu để frame vấn đề → hiệu quả hơn khi audience chưa fully aware severity.
 
 ### Educational Slide Patterns
 
@@ -98,6 +121,24 @@ Quy tắc tạo outline cho ProSlide. Tuân thủ nghiêm ngặt khi tạo outli
 * **Use specific data**: "Revenue up 45%" not "Significant growth"
 
 * **Cognitive load**: max 3-4 new concepts per slide. Words target: 15-25 (L1), 30-60 (L2), 60-100 (L3). Split slide nếu cần >90 giây để giải thích
+
+## Audience-Aware Adjustments
+
+Dựa trên audience type đã chọn ở Step 1.1, điều chỉnh outline:
+
+| Audience | Framework Override | Content Adjustments | Slide Type Emphasis |
+| --- | --- | --- | --- |
+| Executive | SCQA recommended cho Business | Bottom-line upfront, metric-heavy, bỏ technical details, max 12-15 slides | metric (30%+), statement, summary |
+| Technical | Giữ nguyên framework | Jargon OK, code examples ưu tiên, sequential IA, deep dive OK | content, code, comparison |
+| Mixed | Giữ nguyên framework | Define thuật ngữ inline, ví dụ concrete bắt buộc mỗi concept chính, bridge giữa levels | content, comparison, statement |
+| Workshop | Force Gagné bất kể content type | Thêm knowledge check slides (Event 6), practice exercises, interactive prompts | content, comparison + knowledge checks |
+
+**Audience + Detail Level interaction:**
+
+* Executive + L3: Warning — L3 quá chi tiết cho executives, suggest L1-L2
+* Technical + L1: OK — technical audience quen đọc dense slides
+* Workshop + L1: Warning — Workshop cần chi tiết hơn, suggest L2-L3
+* Mixed + L1: Thêm speaker notes giải thích context (slides ngắn, notes chi tiết)
 
 ## Slide Types
 
@@ -195,6 +236,49 @@ Khi tạo outline L3, tuân thủ quy tắc sau để đảm bảo chi tiết nh
 
 * **Transitions**: Thêm transition slide giữa major sections only (không giữa sub-sections, tránh loãng nội dung)
 
+## Cognitive Sequencing Rules
+
+Áp dụng khi sắp xếp thứ tự slides trong Body. Mục tiêu: giảm cognitive load cho audience.
+
+### Nguyên tắc chính
+
+1. **Simple → Complex**: Mở mỗi section bằng concept familiar/đơn giản nhất, kết section bằng advanced/edge cases
+2. **Prior Knowledge Activation**: Mỗi section mới PHẢI có 1 câu/bullet kết nối với kiến thức audience đã có hoặc section trước đó. VD: "Đã hiểu X, giờ áp dụng cho Y"
+3. **Concrete → Abstract**: Ví dụ cụ thể trước, rồi mới generalize thành pattern/principle
+4. **Part-Whole Sequencing**:
+   * Business/Báo cáo (Pyramid/SCQA): Whole → Parts (conclusion trước, evidence sau)
+   * Technical/Process: Parts → Whole (components trước, system overview sau)
+   * Giáo dục: Depends on complexity — simple topics parts→whole, complex topics whole→parts
+5. **Worked Example Effect** (Giáo dục/Workshop): Show solved example TRƯỚC khi yêu cầu audience apply. Slide pattern: Example → Practice question
+
+### Sequencing Checklist (áp dụng khi review outline)
+
+* [ ] Section đầu tiên trong Body là section familiar nhất với audience?
+* [ ] Mỗi section có câu kết nối với section trước?
+* [ ] Không có concept phức tạp xuất hiện trước khi prerequisite được giải thích?
+* [ ] Ví dụ xuất hiện trước hoặc ngay sau concept, không phải cuối section?
+
+## Narrative Arc per Framework
+
+Mỗi framework có narrative arc ngầm định. Áp dụng khi tạo outline để đảm bảo flow tự nhiên.
+
+| Framework | Narrative Arc | Tension Source | Release Source |
+| --- | --- | --- | --- |
+| Pyramid Principle | Inverted pyramid (answer-first, justify after) | Supporting arguments challenge assumptions | Recommendations confirmed by data |
+| SCQA | Problem framing → Answer | Complication escalates severity | Question được answer rõ ràng |
+| PAS + Sparkline | "What IS" ↔ "What COULD BE" oscillation | Current pain (What IS slides) | Vision/possibility (What COULD BE slides) |
+| Gagné | Progressive disclosure (build up) | Knowledge gap/question chưa answer | Worked example/answer/feedback |
+| SCR | Problem → Solution linear | Complication tạo urgency | Resolution steps giải quyết |
+
+### Áp dụng trong outline
+
+* **Pyramid/SCQA**: Body slides alternate giữa recommendation (release) và evidence/challenge (tension). Audience liên tục được confirm rồi challenge
+* **PAS + Sparkline**: Cứ 2-3 slides "What IS" (pain) → 1-2 slides "What COULD BE" (vision). Kết thúc bằng "New Bliss" (CTA)
+* **Gagné**: Build từ simple → complex, xen knowledge checks giữa sections. Tension = câu hỏi chưa answer, Release = worked example
+* **SCR**: Complication chiếm 20-30% body, Resolution chiếm 70-80%. Không kéo dài complication quá lâu
+
+Narrative arc được auto-assign theo framework — KHÔNG cần hỏi user.
+
 ## Content Map Rules
 
 Trước khi tạo outline, BẮT BUỘC tạo Content Map từ source material. Content Map là danh sách topics được extract và xếp hạng, giúp đảm bảo outline không bỏ sót ý quan trọng.
@@ -209,8 +293,9 @@ Trước khi tạo outline, BẮT BUỘC tạo Content Map từ source material.
    * Key concepts (khái niệm chính)
 
    * Key data (số liệu, metrics, examples đáng chú ý)
-3. **Rank priority** theo detail level đã chọn (xem bảng dưới)
-4. **Giữ Content Map trong context** (KHÔNG show cho user), dùng làm checklist khi tạo outline
+3. **Silent Clustering**: Tự động nhóm topics tương đồng thành "section buckets" — topics nào naturally discuss together được gộp cùng section. Mục tiêu: tránh overlap, tránh topics liên quan nằm xa nhau trong outline. Nếu source đã có heading structure rõ ràng → dùng thẳng headings làm section buckets, không cần re-cluster
+4. **Rank priority** theo detail level đã chọn (xem bảng dưới)
+5. **Giữ Content Map trong context** (KHÔNG show cho user), dùng làm checklist khi tạo outline
 
 ### Priority Assignment Rules
 
@@ -316,6 +401,8 @@ Khi lưu outline ra file, BẮT BUỘC có metadata header ở đầu file. Meta
 title: "Tên presentation"
 slug: "ten-presentation"
 content_type: "Hướng dẫn/Giáo dục" | "Business/Báo cáo" | "Thuyết phục/Pitch" | "Technical/Process"
+framework: "Gagné" | "Pyramid" | "SCQA" | "PAS+Sparkline" | "SCR"
+audience: "Executive" | "Technical" | "Mixed" | "Workshop"
 detail_level: "L1" | "L2" | "L3"
 language: "vi" | "en" | "bilingual"
 source: "mô tả ngắn source input (VD: file.md, user input text)"
@@ -333,6 +420,10 @@ total_slides: N
 * `slug`: kebab-case dùng cho file naming
 
 * `content_type`: Loại nội dung đã chọn ở Step 1
+
+* `framework`: Framework đã chọn/áp dụng (auto-determined hoặc user-selected ở Step 1.1)
+
+* `audience`: Audience type đã chọn ở Step 1.1
 
 * `detail_level`: Mức chi tiết (L1/L2/L3) — outline gắn cố định với level này
 

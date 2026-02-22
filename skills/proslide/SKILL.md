@@ -98,6 +98,36 @@ output/
 
 * Nếu source >= 500 words VÀ có đầy đủ data/context → đánh dấu "Chỉ dùng source" là (Recommended)
 
+## Step 1.1: Audience & Framework Selection
+
+Chạy ngay sau Step 1. Hỏi user bằng AskUserQuestion (1-2 câu hỏi tùy content type):
+
+**Câu hỏi 1 — Audience** (header: "Audience", luôn hỏi):
+
+* "Executive/Decision maker" - C-level, board — cần bottom-line upfront, metrics, ngắn gọn
+* "Technical team" - Engineers, developers — jargon OK, code OK, chi tiết kỹ thuật
+* "Mixed/General" - Đa dạng trình độ — cần giải thích thuật ngữ, ví dụ cụ thể
+* "Workshop/Hands-on" - Đào tạo thực hành — interactive, knowledge checks, bài tập
+
+**Câu hỏi 2 — Framework** (header: "Framework", chỉ hỏi khi content type = "Business/Báo cáo"):
+
+* "Pyramid Principle" - Kết luận/đề xuất trước, rồi supporting arguments (Recommended khi audience = Mixed/General)
+* "SCQA" - Situation → Complication → Question → Answer — framing vấn đề trước khi answer (Recommended khi audience = Executive)
+
+**Logic đánh dấu Recommended cho câu hỏi 2:**
+
+* Nếu audience = Executive/Decision maker → recommend SCQA
+* Nếu audience = Technical/Mixed/Workshop → recommend Pyramid Principle
+
+**Audience ảnh hưởng đến Step 2:**
+
+| Audience | Ảnh hưởng |
+| --- | --- |
+| Executive | Ưu tiên metric slides, bottom-line upfront, force L1-L2 nếu user chọn L3 thì warning |
+| Technical | Sequential IA, jargon OK, code examples ưu tiên, L2-L3 phù hợp |
+| Mixed | Thêm definition cho thuật ngữ, ví dụ concrete bắt buộc mỗi concept |
+| Workshop | Force Gagné framework bất kể content type, thêm knowledge check slides (Gagné Event 6) |
+
 ## Step 1.5: Research bổ sung (Optional)
 
 Chạy sau Step 1, trước Step 2. Quyết định dựa trên câu hỏi 4 ở Step 1.
@@ -229,19 +259,21 @@ User cũng có thể nhập tên bất kỳ Slidev theme từ npm.
 
 2. Đọc `references/outline-rules.md` (relative to this skill folder) để nắm quy tắc outline
 
-3. Áp dụng framework tương ứng với content type đã chọn ở Step 1 (xem Content Type → Framework Mapping trong outline-rules.md)
+3. Áp dụng framework tương ứng với content type đã chọn ở Step 1. Nếu content type = "Business/Báo cáo", dùng framework user chọn ở Step 1.1 (Pyramid hoặc SCQA). Nếu audience = "Workshop", override sang Gagné bất kể content type. (Xem Content Type → Framework Mapping + SCQA Framework + Audience-Aware Adjustments trong outline-rules.md)
 
 4. **Content Map** (xem "Content Map Rules" trong outline-rules.md):
 
-   * Parse source → extract topics → assign priority (`must`/`should`/`nice`) theo detail level
+   * Parse source → **silent clustering** (nhóm topics tương đồng thành section buckets) → extract topics → assign priority (`must`/`should`/`nice`) theo detail level
+
+   * Clustering tự động: nhóm topics "naturally discuss together" thành sections, tránh overlap và topics liên quan nằm xa nhau trong outline
 
    * Nếu Step 1.5 đã chạy → append research items vào Content Map với prefix `[R]` (xem outline-rules.md)
 
    * Lưu Content Map ra file `{output_folder}/content-map.md`
 
-5. Phân tích nội dung theo detail level đã chọn (xem Detail Level Mapping + Content Selection Criteria trong outline-rules.md)
+5. Phân tích nội dung theo detail level đã chọn + **audience-aware adjustments** (xem Detail Level Mapping + Content Selection Criteria + Audience-Aware Adjustments trong outline-rules.md)
 
-6. Tạo outline theo cấu trúc bắt buộc: Opening > Body > Closing. **Cross-check** với Content Map: mọi `must` topics phải xuất hiện, `should`/`nice` theo threshold
+6. Tạo outline theo cấu trúc bắt buộc: Opening > Body > Closing. Áp dụng **Cognitive Sequencing** (simple→complex, activate prior knowledge) và **Narrative Arc** tương ứng framework đã chọn (xem Cognitive Sequencing Rules + Narrative Arc per Framework trong outline-rules.md). **Cross-check** với Content Map: mọi `must` topics phải xuất hiện, `should`/`nice` theo threshold
 
 7. **Lưu outline** ra file `{output_folder}/outline.md` với metadata header (xem Outline File Format trong outline-rules.md)
 
