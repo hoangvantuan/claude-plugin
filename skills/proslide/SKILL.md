@@ -211,12 +211,12 @@ Items below sẽ được đưa vào Content Map với tag [R]:
 
 Khi tạo slides, áp dụng visual patterns phù hợp với content type đã chọn:
 
-| Content Type       | Visual Patterns                                                     | Recommended Slide Types                           |
-| ------------------ | ------------------------------------------------------------------- | ------------------------------------------------- |
-| Hướng dẫn/Giáo dục | Numbered step indicators, before/after comparison, warm decorations | content, comparison, statement (cho key concepts) |
-| Business/Báo cáo   | Accent bars, data callout slides, conservative decorations          | content, metric (cho KPIs), comparison, summary   |
-| Thuyết phục/Pitch  | Bold statement slides, high contrast, CTA emphasis                  | statement (30%+), metric, content, cta            |
-| Technical/Process  | Code blocks, process flow indicators, comparison tables             | content, comparison, code, transition             |
+| Content Type       | Visual Patterns                                                     | Recommended Slide Types                                       |
+| ------------------ | ------------------------------------------------------------------- | ------------------------------------------------------------- |
+| Hướng dẫn/Giáo dục | Numbered step indicators, before/after comparison, warm decorations | content, comparison, statement, quote (expert quotes)         |
+| Business/Báo cáo   | Accent bars, data callout slides, conservative decorations          | content, metric, comparison, table, summary                   |
+| Thuyết phục/Pitch  | Bold statement slides, high contrast, CTA emphasis                  | statement (30%+), metric, quote (social proof), content, cta  |
+| Technical/Process  | Code blocks, process flow indicators, Mermaid diagrams              | content, comparison, code, diagram, table, transition         |
 
 ## Auto Theme Recommendation
 
@@ -332,18 +332,22 @@ User cũng có thể nhập tên bất kỳ Slidev theme từ npm.
 
    * **Layout mapping table** cho mỗi slide type:
 
-     | Slide Type | Slidev Layout   |
-     | ---------- | --------------- |
-     | title      | cover           |
-     | agenda     | default         |
-     | content    | default         |
-     | comparison | two-cols-header |
-     | summary    | default         |
-     | cta        | end             |
-     | transition | section         |
-     | statement  | statement       |
-     | metric     | fact            |
-     | code       | default         |
+     | Slide Type         | Slidev Layout   |
+     | ------------------ | --------------- |
+     | title              | cover           |
+     | agenda             | default         |
+     | content            | default         |
+     | comparison         | two-cols-header |
+     | comparison-simple  | two-cols        |
+     | summary            | default         |
+     | cta                | end             |
+     | transition         | section         |
+     | statement          | statement       |
+     | metric             | fact            |
+     | quote              | quote           |
+     | table              | default         |
+     | diagram            | default         |
+     | code               | default         |
 
    * **Nội dung từng slide** theo outline (title, body content, slide type → layout)
 
@@ -419,6 +423,16 @@ Khi activate slidev skill, PHẢI tuân thủ các constraints sau:
 * **Layout front matter**: Mỗi slide PHẢI có layout specification trong front matter block
 
 * **Projector contrast**: Đảm bảo text/background contrast ratio >= 4.5:1 (WCAG AA). Theme đã chọn sẽ handle phần lớn, nhưng vẫn cần verify
+
+* **v-click progressive disclosure**: Dùng `<v-clicks>` wrapper cho L2/L3 bullet lists để reveal từng point. L1 KHÔNG dùng v-click. Xem patterns chi tiết trong `references/slide-templates.md` → "Advanced Features"
+
+* **Mermaid diagrams**: Built-in, dùng cho Technical/Process slides. Cú pháp: `` ```mermaid `` code block. Max 8-10 nodes per diagram. Text-based → phù hợp text-only constraint
+
+* **Slide transitions**: Dùng `transition: fade` hoặc `slide-left` trong frontmatter. Đặt global transition trong headmatter, override per-slide chỉ khi cần nhấn mạnh
+
+* **v-mark text emphasis**: Dùng `<span v-mark.highlight>` cho key terms. Max 1-2 per slide. Click-triggered với `v-mark="N"`
+
+* **Shiki Magic Move**: Code morphing animation cho L2/L3 technical. Cú pháp: ```` ````magic-move ````. Max 3-4 steps per block
 
 ## Important Notes
 

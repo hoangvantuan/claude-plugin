@@ -153,6 +153,9 @@ Dựa trên audience type đã chọn ở Step 1.1, điều chỉnh outline:
 | `transition` | Section divider, title + progress indicator            | Center aligned, light bg         |
 | `statement`  | 1 assertion/quote lớn, centered, full slide            | Center aligned, large text       |
 | `metric`     | 1 số liệu lớn + label + context, centered              | Center aligned, oversized number |
+| `quote`      | Trích dẫn expert/source, centered, attribution          | Center aligned, italic styling   |
+| `table`      | Bảng so sánh dữ liệu có cấu trúc (max 5-6 rows)       | Left aligned, markdown table     |
+| `diagram`    | Mermaid flowchart/sequence diagram, text-based           | Left aligned, auto-rendered      |
 
 ## Detail Level Mapping
 
