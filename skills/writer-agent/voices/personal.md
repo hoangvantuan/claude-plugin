@@ -13,6 +13,7 @@ best_for:
   - Spiritual exploration
 reading_level: intermediate
 formality: medium
+register: casual
 difficulty: hard
 version: 2.1.0
 ---

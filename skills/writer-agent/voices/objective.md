@@ -12,6 +12,7 @@ best_for:
   - Experiment reports
 reading_level: intermediate
 formality: high
+register: formal
 difficulty: medium
 version: 2.1.0
 ---

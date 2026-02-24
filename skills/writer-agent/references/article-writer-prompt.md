@@ -43,37 +43,18 @@ SERIES_CONTEXT:
 
 All tier templates include these identical blocks. Defined once here to avoid duplication.
 
-### LANGUAGE Block
+### WRITING_RULES Block
 
 ```
-LANGUAGE:
-- Write ENTIRE article in Vietnamese, NO exceptions, including ⭐ critical sections
-- Keep technical terms in English with Vietnamese explanation when first introduced
-- Example: "user role modeling (mô hình hóa vai trò người dùng)"
-- ALL prose, explanations, transitions MUST be in Vietnamese
-- DO NOT keep any section in source's original language, everything must be rewritten in Vietnamese
-```
-
-### FORMATTING Block
-
-```
-FORMATTING (CRITICAL):
-- NO markdown tables - convert to bullet lists
-- NO diagrams (mermaid, ASCII art, flowcharts) - describe in prose or bullets
-- Use bullet points for comparisons, lists, and structured data
-```
-
-### REWRITE RULE Block
-
-```
-REWRITE RULE (CRITICAL):
-- MUST rewrite ALL content in YOUR voice following the selected voice, INCLUDING ⭐ critical sections
-- DO NOT copy-paste sentences or paragraphs from source (no exceptions)
-- Source = WHAT ideas to express, Voice = HOW to express them
-- Transform source ideas into the voice's persona, structure, and language patterns
-- ⭐ critical sections: faithful rewrite, giữ 100% ý nghĩa, KHÔNG tóm tắt, viết lại bằng tiếng Việt + voice persona
-- Non-critical sections: rewrite freely (có thể tóm tắt theo detail level)
-- If a paragraph matches source word-for-word → FAIL (no exceptions)
+WRITING_RULES (CRITICAL):
+- Write ENTIRE article in Vietnamese. Technical terms in English + Vietnamese explanation on first use.
+- NO markdown tables (use bullet lists). NO diagrams (mermaid/ASCII/flowcharts, describe in prose).
+- MUST rewrite ALL content in selected voice. Source = WHAT, Voice = HOW.
+- DO NOT copy-paste from source. If paragraph matches source word-for-word → FAIL.
+- Critical [Sxx]*: faithful rewrite (100% meaning, Vietnamese, voice persona, NO summary).
+- Non-critical: rewrite freely per detail level.
+- FIRST cover ALL source ideas → THEN rewrite in voice → THEN write naturally.
+- Quality coverage + voice compliance > word count targets.
 ```
 
 ### WRITER PROFILE Block (Bắt buộc, luôn include)
@@ -109,16 +90,18 @@ WRITER_PROFILE:
 
 ```
 Dimension mapping (tất cả mandatory):
-  Voice      → VOICE section: paste full voice file content
-  Structure  → STRUCTURE section: paste full structure file content
+  Voice      → VOICE section: paste compact voice file content ({voice}-compact.md)
+  Structure  → STRUCTURE section: paste compact structure file content ({structure}-compact.md)
   Identity   → WRITER_PROFILE.IDENTITY field
-  Audience   → WRITER_PROFILE.AUDIENCE field  
+  Audience   → WRITER_PROFILE.AUDIENCE field
   Emotion    → WRITER_PROFILE.EMOTIONAL_MAP field
 
 Rules:
   - Tất cả 5 dimensions BẮT BUỘC, luôn include đầy đủ
   - Voice and Structure are always separate sections, never merged into WRITER PROFILE
   - WRITER PROFILE luôn có đủ 3 fields: IDENTITY, AUDIENCE, EMOTIONAL_MAP
+  - Use compact versions for subagent injection (75% smaller, retains all essential sections)
+  - Full voice/structure files available for main agent reference during Step 2
 ```
 
 **Ví dụ compose** (Teacher + Building Blocks + Tech Builder + Curious Beginners + Empower & Challenge):
@@ -146,6 +129,14 @@ WRITING QUALITY (CRITICAL):
 - Depth over breadth: Go deep on 2-3 key ideas
 - Draw connections: Link ideas to SERIES_CONTEXT.core_message
 - BLACKLIST phrases: "Trong phần tiếp theo...", "Tóm lại,...", "Bài viết đã trình bày..."
+- Micro-story: MUST include >=1 concrete scenario (3-5 sentences, specific person/situation/event). NOT abstract analogy.
+
+INSIGHT_TECHNIQUES (minimum 2 per article):
+- Contrast: "Source says X. But consider: Y"
+- Connection: "This relates to [different domain] because..."
+- Implication: "If this is true, then... (source doesn't mention this)"
+- Reframe: "The real question isn't X, it's Y"
+Use any 2+ techniques. Each insight must feel earned (build up context first), not dropped in.
 ```
 
 ### ANTI-AI WRITING Block
@@ -199,18 +190,38 @@ STRUCTURAL:
 - KHÔNG tóm tắt lại điều vừa nói (summary redundancy)
 - KHÔNG dùng transition words lặp: "Hơn nữa", "Ngoài ra", "Bên cạnh đó" liên tiếp
 - Thay transition bằng logic tự nhiên hoặc bỏ hẳn khi ý đã rõ
+
+PATTERN BLACKLIST (AI tells — phát hiện ngay bởi người đọc):
+- Opening: NEVER "Trong bối cảnh...", "Với sự phát triển...", "Bạn đã bao giờ tự hỏi..." dạng rhetorical
+- Transitions: NEVER dùng "Hơn nữa", "Ngoài ra", "Bên cạnh đó" trong 2 đoạn liên tiếp. Max 1/500 từ
+- Hedging: "có thể", "có lẽ", "dường như" max 2-3 lần/bài. Thay bằng nhận định trực tiếp
+- Uniformity: Vary paragraph length (2-7 câu). KHÔNG để mọi đoạn cùng độ dài
+- Mirror: KHÔNG kết đoạn cùng cấu trúc với câu mở đoạn sau
+- Triple-list: KHÔNG dùng pattern "X, Y, và Z" liên tiếp >2 lần/bài
 ```
 
-### CONTENT PRIORITY Block
+
+### READER_TRANSFORMATION Block
 
 ```
-CONTENT PRIORITY:
-- FIRST: Cover ALL ideas from source sections completely
-- SECOND: Rewrite in selected voice (NOT copy source text)
-- THIRD: Write naturally, word count is for statistics only
-- If all sections covered AND rewritten in voice → PASS
-- DO NOT rewrite to hit word count targets
-- Quality content coverage + voice compliance > arbitrary word targets
+READER_TRANSFORMATION:
+  reader_before: "{what reader believes/knows before this article}"
+  reader_after: "{what reader understands/can do after}"
+  transformation_moment: "{the key 'aha' moment in this article}"
+  common_misconception: "{what reader likely gets wrong about this topic}"
+```
+
+Main agent populates from SERIES_CONTEXT.reader_enters/exits + plan analysis. Subagent uses this to: give transformation_moment most depth, address common_misconception explicitly.
+
+### SELF_CRITIQUE Block
+
+```
+SELF_CRITIQUE (after writing article, before .done):
+Re-read your article. Fix these 3 things:
+1. Find the most AI-sounding sentence -> rewrite with shorter words, specific detail
+2. Find a paragraph that just summarizes source -> add insight using INSIGHT_TECHNIQUES
+3. Check: does opening hook reader in 2 sentences? If not, sharpen it
+Save revised article to {outputPath} (overwrite). Then proceed to .done.
 ```
 
 ### CONTEXT RULES Block
@@ -239,15 +250,8 @@ Summary content (write to BOTH .done file AND final message):
 
 DONE: {filename} | {N} words
 KEY_TAKEAWAY: {1-2 câu tóm tắt insight/ý chính quan trọng nhất của bài viết}
-COVERAGE:
-| Section | Status |
-|---------|--------|
-| S01 | ✅ {how_used} |
-| S02 ⭐ | ✅ faithful |
+COVERAGE: S01:ok S02*:faithful S03:ok
 RESULT: {PASS/FAIL}
-SERIES_LIST: {YES/NO}
-VERIFY: "quote..." (L45)
-[Max 2 quotes, each ≤25 chars, critical ⭐, skipped ⚠️]
 ```
 
 ## Tier 3 Compact Template (>=100K words)
@@ -271,8 +275,6 @@ Task tool:
     STRUCTURE:
     {structureContent}
 
-    [Include WRITER PROFILE block from Shared Rules above]
-
     TARGET: ~{target_words} words (reference only) | MODE: {detail_level}
 
     TERMS: {inlineGlossary}
@@ -291,16 +293,16 @@ Task tool:
     SERIES_LIST:
     {seriesList}
 
+    [Include READER_TRANSFORMATION block from Shared Rules above]
     [Include CONTEXT RULES block from Shared Rules above]
-    [Include LANGUAGE block from Shared Rules above]
-    [Include FORMATTING block from Shared Rules above]
+    [Include WRITING_RULES block from Shared Rules above]
 
     ARTICLE_STRUCTURE:
     - Follow the STRUCTURE section above for article organization
     - The structure defines phases (Opening/Development/Closing or equivalent)
     - MANDATORY constraints (override structure):
       1. Title (H1) - descriptive, evocative
-      2. Opening: MUST use opening_technique from SERIES_CONTEXT (see Opening Palette in STRUCTURE)
+      2. Opening: MUST use opening_technique "{openingTechnique}" from SERIES_CONTEXT.
          DO NOT default to scene-setting. DO NOT repeat prev_opening_used pattern.
       3. Before "## Các bài viết trong series", add a brief narrative bridge (1-2 sentences)
          that creates natural curiosity for the next article.
@@ -312,7 +314,7 @@ Task tool:
 
     CONTENT_TYPE: {contentType}
 
-    [Include REWRITE RULE block from Shared Rules above]
+    [Include WRITER PROFILE block from Shared Rules above]
     [Include WRITING QUALITY block from Shared Rules above]
     [Include ANTI-AI WRITING block from Shared Rules above]
 
@@ -324,7 +326,7 @@ Task tool:
     - Mark current article with _(đang xem)_
     - Focus on content coverage, word count is reference only
 
-    [Include CONTENT PRIORITY block from Shared Rules above]
+    [Include SELF_CRITIQUE block from Shared Rules above]
     [Include RETURN FORMAT block from Shared Rules above]
 ```
 
@@ -374,16 +376,16 @@ Task tool:
     SERIES_LIST:
     {seriesList}
 
+    [Include READER_TRANSFORMATION block from Shared Rules above]
     [Include CONTEXT RULES block from Shared Rules above]
-    [Include LANGUAGE block from Shared Rules above]
-    [Include FORMATTING block from Shared Rules above]
+    [Include WRITING_RULES block from Shared Rules above]
 
     ARTICLE_STRUCTURE:
     - Follow the STRUCTURE section above for article organization
     - The structure defines phases (Opening/Development/Closing or equivalent)
     - MANDATORY constraints (override structure):
       1. Title (H1) - descriptive, evocative
-      2. Opening: MUST use opening_technique from SERIES_CONTEXT (see Opening Palette in STRUCTURE)
+      2. Opening: MUST use opening_technique "{openingTechnique}" from SERIES_CONTEXT.
          DO NOT default to scene-setting. DO NOT repeat prev_opening_used pattern.
       3. Before "## Các bài viết trong series", add a brief narrative bridge (1-2 sentences)
          that creates natural curiosity for the next article.
@@ -395,7 +397,6 @@ Task tool:
 
     CONTENT_TYPE: {contentType}
 
-    [Include REWRITE RULE block from Shared Rules above]
     [Include WRITER PROFILE block from Shared Rules above]
     [Include WRITING QUALITY block from Shared Rules above]
     [Include ANTI-AI WRITING block from Shared Rules above]
@@ -409,7 +410,7 @@ Task tool:
     - Focus on content coverage, word count is reference only
     - MUST end with "## Các bài viết trong series" (MANDATORY - article FAILS without this)
 
-    [Include CONTENT PRIORITY block from Shared Rules above]
+    [Include SELF_CRITIQUE block from Shared Rules above]
     [Include RETURN FORMAT block from Shared Rules above]
 ```
 
@@ -459,16 +460,16 @@ Task tool:
     SERIES_LIST:
     {seriesList}
 
+    [Include READER_TRANSFORMATION block from Shared Rules above]
     [Include CONTEXT RULES block from Shared Rules above]
-    [Include LANGUAGE block from Shared Rules above]
-    [Include FORMATTING block from Shared Rules above]
+    [Include WRITING_RULES block from Shared Rules above]
 
     ARTICLE_STRUCTURE:
     - Follow the STRUCTURE section above for article organization
     - The structure defines phases (Opening/Development/Closing or equivalent)
     - MANDATORY constraints (override structure):
       1. Title (H1) - descriptive, evocative
-      2. Opening: MUST use opening_technique from SERIES_CONTEXT (see Opening Palette in STRUCTURE)
+      2. Opening: MUST use opening_technique "{openingTechnique}" from SERIES_CONTEXT.
          DO NOT default to scene-setting. DO NOT repeat prev_opening_used pattern.
       3. Before "## Các bài viết trong series", add a brief narrative bridge (1-2 sentences)
          that creates natural curiosity for the next article.
@@ -480,7 +481,6 @@ Task tool:
 
     CONTENT_TYPE: {contentType}
 
-    [Include REWRITE RULE block from Shared Rules above]
     [Include WRITER PROFILE block from Shared Rules above]
     [Include WRITING QUALITY block from Shared Rules above]
     [Include ANTI-AI WRITING block from Shared Rules above]
@@ -494,7 +494,7 @@ Task tool:
     - Focus on content coverage, word count is reference only
     - MUST end with "## Các bài viết trong series" (MANDATORY - article FAILS without this)
 
-    [Include CONTENT PRIORITY block from Shared Rules above]
+    [Include SELF_CRITIQUE block from Shared Rules above]
     [Include RETURN FORMAT block from Shared Rules above]
 ```
 
@@ -723,14 +723,7 @@ Task tool:
     - Not last part: End with: "Xem tiếp Phần {N+1}..."
     - Last part: End with conclusion
 
-    LANGUAGE:
-    - Write ENTIRE article in Vietnamese
-    - Keep technical terms in English with Vietnamese explanation
-
-    FORMATTING (CRITICAL):
-    - NO markdown tables - convert to bullet lists
-    - NO diagrams (mermaid, ASCII art, flowcharts) - describe in prose or bullets
-    - Use bullet points for comparisons, lists, and structured data
+    [Include WRITING_RULES block from Shared Rules above]
 
     SERIES_LIST (Multi-Part Format):
     1. [Tổng quan](./00-overview.md) - Giới thiệu series
@@ -738,8 +731,6 @@ Task tool:
     2b. **Core Concepts - Phần 2** _(đang xem)_
     2c. [Core Concepts - Phần 3](./02-core-part3.md)
     3. [Next Topic](./03-next.md)
-
-    [Include REWRITE RULE block from Shared Rules above]
 
     [Include WRITING QUALITY block from Shared Rules above]
     - Opening (Part 2+): Brief recap then dive in, NOT mechanical "Ở phần trước..."
@@ -757,8 +748,10 @@ Task tool:
     - Focus on content coverage, word count is reference only
     - MUST end with "## Các bài viết trong series" (MANDATORY)
 
+    SELF_CRITIQUE: Re-read. Fix most AI-sounding sentence. Add >=1 insight per INSIGHT_TECHNIQUES. Check: Part 1 opening hooks in 2 sentences? Part 2+ recap is brief then dives in?
+
     RETURN FORMAT (CRITICAL):
-    - Article content ALREADY saved to {outputPath}
+    - Save article to {outputPath} using Write tool
     - Save summary to {outputPath}.done using Write tool
     - DO NOT return article content in message
 
@@ -767,14 +760,8 @@ Task tool:
     DONE: {filename} | {N} words
     PART: {partNumber}/{totalParts}
     KEY_TAKEAWAY: {1-2 câu tóm tắt insight chính của phần này}
-    COVERAGE:
-    | Section | Status |
-    |---------|--------|
-    | S01 | ✅ {how_used} |
-    | S02 ⭐ | ✅ faithful |
+    COVERAGE: S01:ok S02*:faithful S03:ok
     RESULT: {PASS/FAIL}
-    SERIES_LIST: {YES/NO}
-    VERIFY: "quote..." (L45)
 ```
 
 ### Part Naming & Context Bridge

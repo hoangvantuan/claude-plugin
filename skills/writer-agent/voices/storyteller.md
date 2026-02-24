@@ -10,6 +10,7 @@ best_for:
   - Reflective memoirs
 reading_level: intermediate
 formality: medium
+register: casual
 difficulty: hard
 version: 1.2.0
 ---

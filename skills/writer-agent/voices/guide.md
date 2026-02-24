@@ -10,6 +10,7 @@ best_for:
   - Thought leadership có chiều sâu tâm linh
 reading_level: intermediate
 formality: medium
+register: neutral-formal
 difficulty: medium
 version: 1.1.0
 sources:
