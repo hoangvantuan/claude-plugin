@@ -93,7 +93,6 @@ Mỗi bài lưu file riêng:
 - Research data phải cite nguồn
 - Tối đa 10 bài/plan — nếu topic rộng, ưu tiên quality over quantity
 - Default output dir: `./content-output/[topic-slug]/` nếu user không chỉ định
-- Không overlap scope: skill này plan + write full content; khác với writer-agent (transform doc), viral-post-creator (archetype posts), deep-post-ideas (outlines only)
 
 ## Output Format
 
