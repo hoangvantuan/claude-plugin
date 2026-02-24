@@ -48,6 +48,7 @@ Luôn sử dụng `/skill-creator` để bắt đầu tạo skill mới. Skill c
 ### Auto-update Documentation
 
 Khi thêm, xóa, hoặc đổi tên bất kỳ tính năng nào (skill, agent, mcp, hook), **tự động cập nhật** lại:
+
 - **CLAUDE.md** — cập nhật phần `## Structure` cho đúng cấu trúc hiện tại
 - **README.md** — cập nhật danh sách tính năng và mô tả tương ứng
 
@@ -58,6 +59,7 @@ Khi thêm, xóa, hoặc đổi tên bất kỳ tính năng nào (skill, agent, m
 - Khi cần hướng dẫn phân nhánh (chi tiết, ví dụ cụ thể, API specs), **tách thành file riêng** và reference bằng đường dẫn. Claude Code sẽ load file khi cần thay vì load hết vào context.
 
 Ví dụ cấu trúc reference:
+
 ```
 skills/openproject/
   SKILL.md              # Prompt chính — load khi skill được gọi
