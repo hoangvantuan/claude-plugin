@@ -30,6 +30,29 @@ Speaker notes here
 -->
 ```
 
+Cover slide chứa inline code (backtick):
+
+```md
+---
+layout: cover
+---
+
+# Giới thiệu `React` Hooks
+
+Hiểu cách dùng `useState` và `useEffect`
+
+<style>
+code {
+  color: #e2e8f0 !important;
+  background: rgba(255,255,255,0.15) !important;
+}
+</style>
+
+<!--
+Speaker notes here
+-->
+```
+
 ## agenda → default
 
 ```md
@@ -142,6 +165,29 @@ layout: end
 # {CTA Message}
 
 {Supporting detail / contact info}
+
+<!--
+Speaker notes here
+-->
+```
+
+End slide chứa inline code:
+
+```md
+---
+layout: end
+---
+
+# Bắt đầu với `pnpm create slidev`
+
+Tham khảo docs tại `sli.dev`
+
+<style>
+code {
+  color: #e2e8f0 !important;
+  background: rgba(255,255,255,0.15) !important;
+}
+</style>
 
 <!--
 Speaker notes here

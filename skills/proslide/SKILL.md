@@ -434,6 +434,19 @@ Khi activate slidev skill, PHẢI tuân thủ các constraints sau:
 
 * **Shiki Magic Move**: Code morphing animation cho L2/L3 technical. Cú pháp: ```` ````magic-move ````. Max 3-4 steps per block
 
+* **Inline code trên dark slides**: Slides có nền tối (`layout: cover`, `layout: end`, hoặc dark theme) thường render inline code (backtick) với màu tối trên nền tối → không đọc được. **Rule**: Sau khi generate `slides.md`, scan tất cả slides có `layout: cover`, `layout: end`, hoặc `layout: section`. Nếu slide chứa inline code (backtick `` ` ``), thêm scoped `<style>` block cuối slide (trước speaker notes nếu có):
+
+  ```html
+  <style>
+  code {
+    color: #e2e8f0 !important;
+    background: rgba(255,255,255,0.15) !important;
+  }
+  </style>
+  ```
+
+  Scoped style chỉ áp dụng cho slide hiện tại (Slidev convention). Không thêm nếu slide không chứa inline code.
+
 ## Important Notes
 
 * Chỉ tạo text-only slides, không hình ảnh
