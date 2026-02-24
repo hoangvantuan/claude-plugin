@@ -119,6 +119,16 @@ class TestCreateWorkPackage:
         assert call_data["startDate"] == "2024-01-15"
         assert call_data["estimatedTime"] == "PT8.0H"
 
+    def test_create_with_version(self, mock_client):
+        """Create work package with version/sprint."""
+        mock_client.post.return_value = {"id": 1}
+
+        with patch("openproject_work_packages.work_packages.get_client", return_value=mock_client):
+            create_work_package(project_id=5, subject="Sprint Task", version_id=42)
+
+        call_data = mock_client.post.call_args[0][1]
+        assert call_data["_links"]["version"]["href"] == "/api/v3/versions/42"
+
 
 class TestUpdateWorkPackage:
     """Tests for update_work_package function."""
@@ -152,6 +162,26 @@ class TestUpdateWorkPackage:
 
         call_data = mock_client.patch.call_args[0][1]
         assert call_data["_links"]["assignee"]["href"] is None
+
+    def test_update_version(self, mock_client):
+        """Update work package version/sprint."""
+        mock_client.patch.return_value = {"id": 1}
+
+        with patch("openproject_work_packages.work_packages.get_client", return_value=mock_client):
+            update_work_package(1, version_id=42)
+
+        call_data = mock_client.patch.call_args[0][1]
+        assert call_data["_links"]["version"]["href"] == "/api/v3/versions/42"
+
+    def test_unset_version(self, mock_client):
+        """Unset work package version."""
+        mock_client.patch.return_value = {"id": 1}
+
+        with patch("openproject_work_packages.work_packages.get_client", return_value=mock_client):
+            update_work_package(1, version_id=None)
+
+        call_data = mock_client.patch.call_args[0][1]
+        assert call_data["_links"]["version"]["href"] is None
 
 
 class TestDeleteWorkPackage:

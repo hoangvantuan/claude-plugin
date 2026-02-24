@@ -15,8 +15,8 @@ Manage work packages (tasks, issues, features) in OpenProject.
 ### Work Packages
 - `list_work_packages(filters, sort_by)` - List with filters
 - `get_work_package(id)` - Get single WP
-- `create_work_package(project_id, subject, **kwargs)` - Create WP
-- `update_work_package(id, **kwargs)` - Update WP
+- `create_work_package(project_id, subject, type_id, description, assignee_id, status_id, priority_id, parent_id, version_id, start_date, due_date, estimated_hours, **custom_fields)` - Create WP
+- `update_work_package(id, **kwargs)` - Update WP (supports: subject, description, start_date, due_date, done_ratio, status_id, assignee_id, type_id, priority_id, parent_id, version_id, estimated_hours, customFieldN)
 - `delete_work_package(id)` - Delete WP
 - `get_schema(project_id, type_id)` - Get form schema (BOTH params required!)
 
