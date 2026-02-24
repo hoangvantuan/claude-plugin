@@ -93,7 +93,7 @@ class TestCreateWorkPackage:
         assert wp["subject"] == "New Task"
         call_data = mock_client.post.call_args[0][1]
         assert call_data["subject"] == "New Task"
-        assert call_data["_links"]["project"]["href"] == "/projects/5"
+        assert call_data["_links"]["project"]["href"] == "/api/v3/projects/5"
 
     def test_create_full(self, mock_client):
         """Create work package with all options."""
@@ -113,8 +113,8 @@ class TestCreateWorkPackage:
             )
 
         call_data = mock_client.post.call_args[0][1]
-        assert call_data["_links"]["type"]["href"] == "/types/1"
-        assert call_data["_links"]["assignee"]["href"] == "/users/10"
+        assert call_data["_links"]["type"]["href"] == "/api/v3/types/1"
+        assert call_data["_links"]["assignee"]["href"] == "/api/v3/users/10"
         assert call_data["description"] == {"raw": "Description"}
         assert call_data["startDate"] == "2024-01-15"
         assert call_data["estimatedTime"] == "PT8.0H"
@@ -141,7 +141,7 @@ class TestUpdateWorkPackage:
             update_work_package(1, status_id=3)
 
         call_data = mock_client.patch.call_args[0][1]
-        assert call_data["_links"]["status"]["href"] == "/statuses/3"
+        assert call_data["_links"]["status"]["href"] == "/api/v3/statuses/3"
 
     def test_unassign(self, mock_client):
         """Unassign work package."""
@@ -227,7 +227,7 @@ class TestRelations:
             create_relation(1, 2, "precedes", delay=5)
 
         call_data = mock_client.post.call_args[0][1]
-        assert call_data["delay"] == 5
+        assert call_data["lag"] == 5
 
     def test_invalid_relation_type(self, mock_client):
         """Invalid relation type raises error."""

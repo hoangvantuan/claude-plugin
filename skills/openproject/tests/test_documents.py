@@ -2,7 +2,7 @@
 
 import pytest
 from unittest.mock import MagicMock, patch, mock_open
-from openproject_documents import list_documents, get_document, create_document, delete_document
+from openproject_documents import list_documents, get_document
 from openproject_documents import (
     get_attachment, list_attachments, download_attachment,
     upload_attachment, delete_attachment
@@ -29,7 +29,7 @@ class TestDocuments:
         }
 
         with patch("openproject_documents.documents.get_client", return_value=mock_client):
-            docs = list(list_documents(project_id=5))
+            docs = list(list_documents())
 
         assert len(docs) == 1
         assert docs[0]["title"] == "Doc 1"
@@ -43,27 +43,6 @@ class TestDocuments:
 
         assert doc["id"] == 1
         mock_client.get.assert_called_with("/documents/1")
-
-    def test_create_document(self, mock_client):
-        """Create document."""
-        mock_client.post.return_value = {"id": 1}
-
-        with patch("openproject_documents.documents.get_client", return_value=mock_client):
-            create_document(project_id=5, title="New Doc", description="Description")
-
-        call_data = mock_client.post.call_args[0][1]
-        assert call_data["title"] == "New Doc"
-        assert call_data["description"]["raw"] == "Description"
-        assert call_data["_links"]["project"]["href"] == "/projects/5"
-
-    def test_delete_document(self, mock_client):
-        """Delete document."""
-        mock_client.delete.return_value = {}
-
-        with patch("openproject_documents.documents.get_client", return_value=mock_client):
-            delete_document(1)
-
-        mock_client.delete.assert_called_with("/documents/1")
 
 
 class TestAttachments:
