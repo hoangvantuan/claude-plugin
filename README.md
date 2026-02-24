@@ -24,6 +24,7 @@ claude plugin install gh:hoangvantuan/shun-claude-plugin
 | `creative-thought-partner` | Đối tác tư duy sáng tạo — brainstorming & insight discovery |
 | `deep-post-ideas` | Trích xuất outline bài đăng từ tài liệu tham khảo |
 | `deep-learner` | Học hiểu sâu nội dung — tạo tài liệu học có cấu trúc 6 phase |
+| `content-planner` | Lên kế hoạch và viết bài Facebook + Blog — 2-phase workflow (Plan → Write) |
 
 ### Agents
 

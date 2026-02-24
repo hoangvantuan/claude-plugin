@@ -21,6 +21,7 @@ skills/                      # Các skill plugins
   creative-thought-partner/  # Đối tác tư duy sáng tạo — brainstorming
   deep-post-ideas/           # Trích xuất outline bài đăng từ tài liệu
   deep-learner/              # Học hiểu sâu nội dung — tài liệu học có cấu trúc
+  content-planner/           # Content planning & writing cho Facebook + Blog
 agents/                      # Các agent definitions (planned)
 hooks/                       # Các hook scripts (planned)
 mcp/                         # Các MCP server configs (planned)
