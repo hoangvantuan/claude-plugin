@@ -13,7 +13,8 @@ Dự án phát triển các plugin cho Claude Code, bao gồm: **skills**, **age
 skills/                      # Các skill plugins
   openproject/               # OpenProject API v3 integration
   ghost-blog/                # Ghost CMS blog management
-  proslide/                  # Professional slide/presentation creation
+  outline-writer/            # Content analysis & outline creation (presentation/blog/doc)
+  slidev-builder/            # Slidev presentation builder from outline
   writer-agent/              # Document transformation and article writing
   prompt-generator/          # Meta-prompting — tạo prompt chất lượng cao
   viral-post-creator/        # Tạo bài đăng viral trên social media

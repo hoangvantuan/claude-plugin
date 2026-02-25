@@ -1,6 +1,6 @@
 # Outline Rules
 
-Quy tắc tạo outline cho ProSlide. Tuân thủ nghiêm ngặt khi tạo outline ở Step 2.
+Quy tắc tạo outline. Tuân thủ nghiêm ngặt khi tạo outline ở Step 2.
 
 ## Content Type → Framework Mapping
 
@@ -11,6 +11,7 @@ Quy tắc tạo outline cho ProSlide. Tuân thủ nghiêm ngặt khi tạo outli
 | Business/Báo cáo   | SCQA (alternative)             | Situation → Complication → Question               | Answer trước → Supporting evidence → Data drill-down                           | Key takeaways + Next steps + Decision needed     |
 | Thuyết phục/Pitch  | PAS + Sparkline (Duarte)       | Problem hook → Agitate (amplify pain)             | What IS vs What COULD BE oscillation, social proof, benefits                   | Strong CTA + Urgency + Contact                   |
 | Technical/Process  | SCR + Step-by-step             | Situation → Complication → Why solve now          | Sequential steps, comparison tables, architecture flow, cause-effect           | Summary + Implementation roadmap + Resources     |
+
 
 **Lưu ý Business/Báo cáo:** User chọn framework ở Step 1.1. Pyramid = answer-first (audience đã biết vấn đề), SCQA = frame vấn đề trước (audience cần được convince về severity). Recommend SCQA cho Executive audience, Pyramid cho Mixed/General.
 
@@ -37,108 +38,82 @@ Dùng khi audience cần được "framed" vấn đề trước khi nghe answer.
 
 **SCQA Slide Pattern:**
 
-* Slide 1 `[title]`: Title + tagline framing the question
-* Slide 2 `[content]`: Situation — 2-3 bullets facts/context
-* Slide 3 `[content]`: Complication — tension, data showing problem severity
-* Slide 4 `[statement]`: Question — 1 câu hỏi lớn, centered (VD: "Làm sao recover margin trong 12 tháng?")
-* Slide 5+ `[content]`: Answer — recommendations rồi supporting evidence (top-down)
-* Closing: Key takeaways + Decision needed
+- Slide 1 `[title]`: Title + tagline framing the question
+- Slide 2 `[content]`: Situation — 2-3 bullets facts/context
+- Slide 3 `[content]`: Complication — tension, data showing problem severity
+- Slide 4 `[statement]`: Question — 1 câu hỏi lớn, centered (VD: "Làm sao recover margin trong 12 tháng?")
+- Slide 5+ `[content]`: Answer — recommendations rồi supporting evidence (top-down)
+- Closing: Key takeaways + Decision needed
 
 **Khác biệt với Pyramid:** Pyramid bỏ qua Situation/Complication, nhảy thẳng vào Answer. SCQA dành 2-3 slides đầu để frame vấn đề → hiệu quả hơn khi audience chưa fully aware severity.
 
 ### Educational Slide Patterns
 
-* Definition → Example → Non-example
-
-* Analogy/Metaphor: giải thích phức tạp bằng so sánh quen thuộc
-
-* Before/After comparison
-
-* Misconception: "Nhiều người nghĩ X, thực tế là Y"
-
-* Knowledge check: câu hỏi reflection giữa sections
-
-* Vietnamese pattern: Mục tiêu → Nội dung → Ví dụ → Bài tập → Tóm tắt
+- Definition → Example → Non-example
+- Analogy/Metaphor: giải thích phức tạp bằng so sánh quen thuộc
+- Before/After comparison
+- Misconception: "Nhiều người nghĩ X, thực tế là Y"
+- Knowledge check: câu hỏi reflection giữa sections
+- Vietnamese pattern: Mục tiêu → Nội dung → Ví dụ → Bài tập → Tóm tắt
 
 ## Cấu trúc bắt buộc: Opening > Body > Closing
 
 ### Opening (2-3 slides)
 
-* **Slide 1** `[title]`: Main title (assertion, not topic) + subtitle/tagline + presenter info (optional)
-
-* **Slide 2** `[content]`: Hook/Problem - dùng 1 pattern: Statistic hook, Problem statement, Provocative question, Personal story opener. Mục đích: establish WHY audience should care (SCR: Situation > Complication)
-
-* **Slide 3** `[agenda]` (optional, L2/L3 only): Numbered list of sections (max 5 items), giúp audience track progress
+- **Slide 1** `[title]`: Main title (assertion, not topic) + subtitle/tagline + presenter info (optional)
+- **Slide 2** `[content]`: Hook/Problem - dùng 1 pattern: Statistic hook, Problem statement, Provocative question, Personal story opener. Mục đích: establish WHY audience should care (SCR: Situation > Complication)
+- **Slide 3** `[agenda]` (optional, L2/L3 only): Numbered list of sections (max 5 items), giúp audience track progress
 
 ### Body (N slides, depends on level)
 
-* Mỗi slide = 1 key point (KHÔNG BAO GIỜ 2+ concepts/slide)
-
-* Slide title = full sentence assertion (Assertion-Evidence), KHÔNG phải topic label
-
-  * SAI: "Phân Tích Thị Trường"
-
-  * ĐÚNG: "Thị trường Gen Z tăng trưởng 25%/năm, cơ hội lớn nhất trong 5 năm"
-
-* Logic flow: Pyramid Principle - conclusion/recommendation first > 3 supporting arguments > data/evidence
-
-* Rule of Three: nhóm content theo cụm 3 (3 sections, 3 points/section, 3 examples max)
-
-* Transition slides giữa major sections (simple section title + progress indicator "Part X of Y")
-
-* **Statement slides**: Dùng cho key insights, bold assertions, memorable quotes. 1 câu assertion lớn (40-48pt), centered. Xen kẽ trong body để tạo visual rhythm
-
-* **Metric slides**: Dùng cho key data points, KPIs, statistics. 1 số liệu lớn (60-72pt) + label + brief context
-
-* **Visual Rhythm Rule**: Max 4 content slides liên tiếp. Sau mỗi 3-4 content slides, PHẢI xen 1 slide khác loại (transition, statement, metric, hoặc comparison). Áp dụng cho tất cả levels
-
-* Content per level:
-
-  * **L1**: 2-3 bullets, <8 words/bullet, font 22-24pt, action verbs, no sub-bullets. 30-40% body slides PHẢI là statement hoặc metric type
-
-  * **L2**: 3-5 bullets + 1-2 sub-bullets bắt buộc, moderate detail, examples inline, code snippets
-
-  * **L3**: 3-5 main bullets + 2-3 sub-bullets, detailed explanations, data points, full examples, max 60-100 words/slide
+- Mỗi slide = 1 key point (KHÔNG BAO GIỜ 2+ concepts/slide)
+- Slide title = full sentence assertion (Assertion-Evidence), KHÔNG phải topic label
+  - SAI: "Phân Tích Thị Trường"
+  - ĐÚNG: "Thị trường Gen Z tăng trưởng 25%/năm, cơ hội lớn nhất trong 5 năm"
+- Logic flow: Pyramid Principle - conclusion/recommendation first > 3 supporting arguments > data/evidence
+- Rule of Three: nhóm content theo cụm 3 (3 sections, 3 points/section, 3 examples max)
+- Transition slides giữa major sections (simple section title + progress indicator "Part X of Y")
+- **Statement slides**: Dùng cho key insights, bold assertions, memorable quotes. 1 câu assertion lớn (40-48pt), centered. Xen kẽ trong body để tạo visual rhythm
+- **Metric slides**: Dùng cho key data points, KPIs, statistics. 1 số liệu lớn (60-72pt) + label + brief context
+- **Visual Rhythm Rule**: Max 4 content slides liên tiếp. Sau mỗi 3-4 content slides, PHẢI xen 1 slide khác loại (transition, statement, metric, hoặc comparison). Áp dụng cho tất cả levels
+- Content per level:
+  - **L1**: 2-3 bullets, <8 words/bullet, font 22-24pt, action verbs, no sub-bullets. 30-40% body slides PHẢI là statement hoặc metric type
+  - **L2**: 3-5 bullets + 1-2 sub-bullets bắt buộc, moderate detail, examples inline, code snippets
+  - **L3**: 3-5 main bullets + 2-3 sub-bullets, detailed explanations, data points, full examples, max 60-100 words/slide
 
 ### Closing (1-2 slides)
 
-* **Slide N-1** `[summary]`: Key Takeaways - max 3 points (Rule of Three), use checkmarks, summarize actionable insights
-
-* **Slide N** `[cta]`: Call to Action - CTA mở (encourage exploration/practice). Patterns: "Let's discuss", next steps, contact info. Hoặc Circular Callback (tie back to opening hook)
+- **Slide N-1** `[summary]`: Key Takeaways - max 3 points (Rule of Three), use checkmarks, summarize actionable insights
+- **Slide N** `[cta]`: Call to Action - CTA mở (encourage exploration/practice). Patterns: "Let's discuss", next steps, contact info. Hoặc Circular Callback (tie back to opening hook)
 
 ## Quy tắc nội dung
 
-* **Bullet points**: 3-5 max/slide, parallel grammatical structure, start with action verbs, <8 words each (L1) or <12 words (L2/L3)
-
-* **6-second rule**: audience phải hiểu slide trong <6 giây scan (L1/L2), <15 giây (L3)
-
-* **Information hierarchy**: Primary (title, 36-44pt) > Secondary (bullets, 24-32pt) > Tertiary (notes, 14-16pt)
-
-* **Content compression**: target 10:1 ratio (L1), 3:1 (L2), 2:1 (L3)
-
-* **Remove filler**: no "As you can see", "It's important to note", qualifiers ("very", "quite")
-
-* **Use specific data**: "Revenue up 45%" not "Significant growth"
-
-* **Cognitive load**: max 3-4 new concepts per slide. Words target: 15-25 (L1), 30-60 (L2), 60-100 (L3). Split slide nếu cần >90 giây để giải thích
+- **Bullet points**: 3-5 max/slide, parallel grammatical structure, start with action verbs, <8 words each (L1) or <12 words (L2/L3)
+- **6-second rule**: audience phải hiểu slide trong <6 giây scan (L1/L2), <15 giây (L3)
+- **Information hierarchy**: Primary (title, 36-44pt) > Secondary (bullets, 24-32pt) > Tertiary (notes, 14-16pt)
+- **Content compression**: target 10:1 ratio (L1), 3:1 (L2), 2:1 (L3)
+- **Remove filler**: no "As you can see", "It's important to note", qualifiers ("very", "quite")
+- **Use specific data**: "Revenue up 45%" not "Significant growth"
+- **Cognitive load**: max 3-4 new concepts per slide. Words target: 15-25 (L1), 30-60 (L2), 60-100 (L3). Split slide nếu cần >90 giây để giải thích
 
 ## Audience-Aware Adjustments
 
 Dựa trên audience type đã chọn ở Step 1.1, điều chỉnh outline:
 
-| Audience | Framework Override | Content Adjustments | Slide Type Emphasis |
-| --- | --- | --- | --- |
-| Executive | SCQA recommended cho Business | Bottom-line upfront, metric-heavy, bỏ technical details, max 12-15 slides | metric (30%+), statement, summary |
-| Technical | Giữ nguyên framework | Jargon OK, code examples ưu tiên, sequential IA, deep dive OK | content, code, comparison |
-| Mixed | Giữ nguyên framework | Define thuật ngữ inline, ví dụ concrete bắt buộc mỗi concept chính, bridge giữa levels | content, comparison, statement |
-| Workshop | Force Gagné bất kể content type | Thêm knowledge check slides (Event 6), practice exercises, interactive prompts | content, comparison + knowledge checks |
+| Audience  | Framework Override              | Content Adjustments                                                                    | Slide Type Emphasis                    |
+| --------- | ------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------- |
+| Executive | SCQA recommended cho Business   | Bottom-line upfront, metric-heavy, bỏ technical details, max 12-15 slides              | metric (30%+), statement, summary      |
+| Technical | Giữ nguyên framework            | Jargon OK, code examples ưu tiên, sequential IA, deep dive OK                          | content, code, comparison              |
+| Mixed     | Giữ nguyên framework            | Define thuật ngữ inline, ví dụ concrete bắt buộc mỗi concept chính, bridge giữa levels | content, comparison, statement         |
+| Workshop  | Force Gagné bất kể content type | Thêm knowledge check slides (Event 6), practice exercises, interactive prompts         | content, comparison + knowledge checks |
+
 
 **Audience + Detail Level interaction:**
 
-* Executive + L3: Warning — L3 quá chi tiết cho executives, suggest L1-L2
-* Technical + L1: OK — technical audience quen đọc dense slides
-* Workshop + L1: Warning — Workshop cần chi tiết hơn, suggest L2-L3
-* Mixed + L1: Thêm speaker notes giải thích context (slides ngắn, notes chi tiết)
+- Executive + L3: Warning — L3 quá chi tiết cho executives, suggest L1-L2
+- Technical + L1: OK — technical audience quen đọc dense slides
+- Workshop + L1: Warning — Workshop cần chi tiết hơn, suggest L2-L3
+- Mixed + L1: Thêm speaker notes giải thích context (slides ngắn, notes chi tiết)
 
 ## Slide Types
 
@@ -153,9 +128,10 @@ Dựa trên audience type đã chọn ở Step 1.1, điều chỉnh outline:
 | `transition` | Section divider, title + progress indicator            | Center aligned, light bg         |
 | `statement`  | 1 assertion/quote lớn, centered, full slide            | Center aligned, large text       |
 | `metric`     | 1 số liệu lớn + label + context, centered              | Center aligned, oversized number |
-| `quote`      | Trích dẫn expert/source, centered, attribution          | Center aligned, italic styling   |
-| `table`      | Bảng so sánh dữ liệu có cấu trúc (max 5-6 rows)       | Left aligned, markdown table     |
-| `diagram`    | Mermaid flowchart/sequence diagram, text-based           | Left aligned, auto-rendered      |
+| `quote`      | Trích dẫn expert/source, centered, attribution         | Center aligned, italic styling   |
+| `table`      | Bảng so sánh dữ liệu có cấu trúc (max 5-6 rows)        | Left aligned, markdown table     |
+| `diagram`    | Mermaid flowchart/sequence diagram, text-based         | Left aligned, auto-rendered      |
+
 
 ## Detail Level Mapping
 
@@ -173,71 +149,48 @@ Dựa trên audience type đã chọn ở Step 1.1, điều chỉnh outline:
 | Closing       | Takeaways (max 2 points) (1)          | Takeaways + CTA (2)                          | Takeaways + CTA (2)                        |
 | Transitions   | None (dùng statement/metric thay thế) | Between major sections                       | Between major sections only                |
 
+
 ### L1 Content Selection Criteria
 
 Khi tạo outline L1, tuân thủ quy tắc sau. L1 = **executive presentation**, cần visual impact cao, ít text, nhiều white space:
 
-* **Max 2-3 bullets per slide** (không phải 3-5), font size 22-24pt (lớn hơn body thông thường)
-
-* **30-40% slides trong body = statement hoặc metric type** (không phải toàn bullet list). Dùng statement cho key insights, metric cho data points quan trọng
-
-* **Chỉ giữ**: Thesis statement / kết luận chính của mỗi section (1 bullet = 1 section)
-
-* **Chỉ giữ**: Số liệu/metric quan trọng nhất → ưu tiên tạo metric slide thay vì bullet
-
-* **Bỏ tất cả**: Giải thích, ví dụ, edge cases, chi tiết cấu hình, code
-
-* **Ngoại lệ ví dụ**: Nếu content type = Giáo dục, cho phép 1 ví dụ đại diện per section
-
-* **Gộp section nhỏ**: Nếu sections liên quan và ngắn, có thể gộp vào 1 slide
-
-* **Bullet style**: Mỗi bullet là 1 assertion ngắn, bắt đầu bằng action verb, <8 words
-
-* **Title slide**: font size lớn hơn body, tạo ấn tượng mạnh
-
-* **Takeaway slide**: Max 2 points (không phải 3), text lớn hơn để dễ đọc từ xa
+- **Max 2-3 bullets per slide** (không phải 3-5), font size 22-24pt (lớn hơn body thông thường)
+- **30-40% slides trong body = statement hoặc metric type** (không phải toàn bullet list). Dùng statement cho key insights, metric cho data points quan trọng
+- **Chỉ giữ**: Thesis statement / kết luận chính của mỗi section (1 bullet = 1 section)
+- **Chỉ giữ**: Số liệu/metric quan trọng nhất → ưu tiên tạo metric slide thay vì bullet
+- **Bỏ tất cả**: Giải thích, ví dụ, edge cases, chi tiết cấu hình, code
+- **Ngoại lệ ví dụ**: Nếu content type = Giáo dục, cho phép 1 ví dụ đại diện per section
+- **Gộp section nhỏ**: Nếu sections liên quan và ngắn, có thể gộp vào 1 slide
+- **Bullet style**: Mỗi bullet là 1 assertion ngắn, bắt đầu bằng action verb, <8 words
+- **Title slide**: font size lớn hơn body, tạo ấn tượng mạnh
+- **Takeaway slide**: Max 2 points (không phải 3), text lớn hơn để dễ đọc từ xa
 
 ### L2 Content Selection Criteria
 
 Khi tạo outline L2, tuân thủ quy tắc sau để đảm bảo đủ chi tiết:
 
-* **Giữ lại**: Mỗi concept chính PHẢI có ít nhất 1 ví dụ cụ thể hoặc code snippet minh họa
-
-* **Giữ lại**: Thông tin cấu hình, parameters, options - liệt kê với giải thích ngắn
-
-* **Giữ lại**: So sánh/phân biệt giữa các options (VD: foreground vs background, scope levels)
-
-* **Giữ lại**: Workflow steps với chi tiết đủ để follow (không chỉ tên bước)
-
-* **Bỏ qua**: Lời giải thích dài dòng, lặp lại
-
-* **Bỏ qua**: Edge cases hiếm gặp, caveats nhỏ
-
-* **Tách slide**: Nếu 1 topic có >5 sub-items, tách thành 2 slides thay vì nén vào 1
-
-* **Sub-bullets bắt buộc**: Mỗi main bullet PHẢI có ít nhất 1 sub-bullet giải thích hoặc ví dụ
+- **Giữ lại**: Mỗi concept chính PHẢI có ít nhất 1 ví dụ cụ thể hoặc code snippet minh họa
+- **Giữ lại**: Thông tin cấu hình, parameters, options - liệt kê với giải thích ngắn
+- **Giữ lại**: So sánh/phân biệt giữa các options (VD: foreground vs background, scope levels)
+- **Giữ lại**: Workflow steps với chi tiết đủ để follow (không chỉ tên bước)
+- **Bỏ qua**: Lời giải thích dài dòng, lặp lại
+- **Bỏ qua**: Edge cases hiếm gặp, caveats nhỏ
+- **Tách slide**: Nếu 1 topic có >5 sub-items, tách thành 2 slides thay vì nén vào 1
+- **Sub-bullets bắt buộc**: Mỗi main bullet PHẢI có ít nhất 1 sub-bullet giải thích hoặc ví dụ
 
 ### L3 Content Selection Criteria
 
 Khi tạo outline L3, tuân thủ quy tắc sau để đảm bảo chi tiết nhưng vẫn là presentation (không phải document dump):
 
-* **Giữ tất cả**: Concepts, ví dụ, code snippets, parameters, options, comparisons, workflows
-
-* **Format cho slide**: Code examples max 10-15 dòng/slide, nếu dài hơn thì tách thành nhiều slides
-
-* **Số slides theo nội dung**: Tạo đủ slides để cover tất cả concepts, không giới hạn trần
-
-* **Words/slide cap**: Tối đa 100 words/slide. Nếu vượt, tách thành 2 slides
-
-* **Sub-bullets bắt buộc**: Mỗi main bullet PHẢI có 2-3 sub-bullets với giải thích chi tiết
-
-* **Data/metrics**: Dùng bảng so sánh hoặc structured list, KHÔNG dump raw data
-
-* **Tách section lớn**: Nếu 1 section source có >10 sub-topics, tách thành 2-3 slides với transition
-
-* **Mỗi slide vẫn = 1 concept**: Dù chi tiết, vẫn giữ nguyên tắc 1 slide = 1 key point
-
-* **Transitions**: Thêm transition slide giữa major sections only (không giữa sub-sections, tránh loãng nội dung)
+- **Giữ tất cả**: Concepts, ví dụ, code snippets, parameters, options, comparisons, workflows
+- **Format cho slide**: Code examples max 10-15 dòng/slide, nếu dài hơn thì tách thành nhiều slides
+- **Số slides theo nội dung**: Tạo đủ slides để cover tất cả concepts, không giới hạn trần
+- **Words/slide cap**: Tối đa 100 words/slide. Nếu vượt, tách thành 2 slides
+- **Sub-bullets bắt buộc**: Mỗi main bullet PHẢI có 2-3 sub-bullets với giải thích chi tiết
+- **Data/metrics**: Dùng bảng so sánh hoặc structured list, KHÔNG dump raw data
+- **Tách section lớn**: Nếu 1 section source có >10 sub-topics, tách thành 2-3 slides với transition
+- **Mỗi slide vẫn = 1 concept**: Dù chi tiết, vẫn giữ nguyên tắc 1 slide = 1 key point
+- **Transitions**: Thêm transition slide giữa major sections only (không giữa sub-sections, tránh loãng nội dung)
 
 ## Cognitive Sequencing Rules
 
@@ -249,36 +202,37 @@ Khi tạo outline L3, tuân thủ quy tắc sau để đảm bảo chi tiết nh
 2. **Prior Knowledge Activation**: Mỗi section mới PHẢI có 1 câu/bullet kết nối với kiến thức audience đã có hoặc section trước đó. VD: "Đã hiểu X, giờ áp dụng cho Y"
 3. **Concrete → Abstract**: Ví dụ cụ thể trước, rồi mới generalize thành pattern/principle
 4. **Part-Whole Sequencing**:
-   * Business/Báo cáo (Pyramid/SCQA): Whole → Parts (conclusion trước, evidence sau)
-   * Technical/Process: Parts → Whole (components trước, system overview sau)
-   * Giáo dục: Depends on complexity — simple topics parts→whole, complex topics whole→parts
+  - Business/Báo cáo (Pyramid/SCQA): Whole → Parts (conclusion trước, evidence sau)
+  - Technical/Process: Parts → Whole (components trước, system overview sau)
+  - Giáo dục: Depends on complexity — simple topics parts→whole, complex topics whole→parts
 5. **Worked Example Effect** (Giáo dục/Workshop): Show solved example TRƯỚC khi yêu cầu audience apply. Slide pattern: Example → Practice question
 
 ### Sequencing Checklist (áp dụng khi review outline)
 
-* [ ] Section đầu tiên trong Body là section familiar nhất với audience?
-* [ ] Mỗi section có câu kết nối với section trước?
-* [ ] Không có concept phức tạp xuất hiện trước khi prerequisite được giải thích?
-* [ ] Ví dụ xuất hiện trước hoặc ngay sau concept, không phải cuối section?
+- [ ] Section đầu tiên trong Body là section familiar nhất với audience?
+- [ ] Mỗi section có câu kết nối với section trước?
+- [ ] Không có concept phức tạp xuất hiện trước khi prerequisite được giải thích?
+- [ ] Ví dụ xuất hiện trước hoặc ngay sau concept, không phải cuối section?
 
 ## Narrative Arc per Framework
 
 Mỗi framework có narrative arc ngầm định. Áp dụng khi tạo outline để đảm bảo flow tự nhiên.
 
-| Framework | Narrative Arc | Tension Source | Release Source |
-| --- | --- | --- | --- |
-| Pyramid Principle | Inverted pyramid (answer-first, justify after) | Supporting arguments challenge assumptions | Recommendations confirmed by data |
-| SCQA | Problem framing → Answer | Complication escalates severity | Question được answer rõ ràng |
-| PAS + Sparkline | "What IS" ↔ "What COULD BE" oscillation | Current pain (What IS slides) | Vision/possibility (What COULD BE slides) |
-| Gagné | Progressive disclosure (build up) | Knowledge gap/question chưa answer | Worked example/answer/feedback |
-| SCR | Problem → Solution linear | Complication tạo urgency | Resolution steps giải quyết |
+| Framework         | Narrative Arc                                  | Tension Source                             | Release Source                            |
+| ----------------- | ---------------------------------------------- | ------------------------------------------ | ----------------------------------------- |
+| Pyramid Principle | Inverted pyramid (answer-first, justify after) | Supporting arguments challenge assumptions | Recommendations confirmed by data         |
+| SCQA              | Problem framing → Answer                       | Complication escalates severity            | Question được answer rõ ràng              |
+| PAS + Sparkline   | "What IS" ↔ "What COULD BE" oscillation        | Current pain (What IS slides)              | Vision/possibility (What COULD BE slides) |
+| Gagné             | Progressive disclosure (build up)              | Knowledge gap/question chưa answer         | Worked example/answer/feedback            |
+| SCR               | Problem → Solution linear                      | Complication tạo urgency                   | Resolution steps giải quyết               |
+
 
 ### Áp dụng trong outline
 
-* **Pyramid/SCQA**: Body slides alternate giữa recommendation (release) và evidence/challenge (tension). Audience liên tục được confirm rồi challenge
-* **PAS + Sparkline**: Cứ 2-3 slides "What IS" (pain) → 1-2 slides "What COULD BE" (vision). Kết thúc bằng "New Bliss" (CTA)
-* **Gagné**: Build từ simple → complex, xen knowledge checks giữa sections. Tension = câu hỏi chưa answer, Release = worked example
-* **SCR**: Complication chiếm 20-30% body, Resolution chiếm 70-80%. Không kéo dài complication quá lâu
+- **Pyramid/SCQA**: Body slides alternate giữa recommendation (release) và evidence/challenge (tension). Audience liên tục được confirm rồi challenge
+- **PAS + Sparkline**: Cứ 2-3 slides "What IS" (pain) → 1-2 slides "What COULD BE" (vision). Kết thúc bằng "New Bliss" (CTA)
+- **Gagné**: Build từ simple → complex, xen knowledge checks giữa sections. Tension = câu hỏi chưa answer, Release = worked example
+- **SCR**: Complication chiếm 20-30% body, Resolution chiếm 70-80%. Không kéo dài complication quá lâu
 
 Narrative arc được auto-assign theo framework — KHÔNG cần hỏi user.
 
@@ -290,12 +244,9 @@ Trước khi tạo outline, BẮT BUỘC tạo Content Map từ source material.
 
 1. **Parse source**: Chia source thành sections dựa trên headings, paragraph breaks, topic shifts
 2. **Extract**: Với mỗi section, ghi nhận:
-
-   * Topic name (tên ngắn gọn)
-
-   * Key concepts (khái niệm chính)
-
-   * Key data (số liệu, metrics, examples đáng chú ý)
+  - Topic name (tên ngắn gọn)
+  - Key concepts (khái niệm chính)
+  - Key data (số liệu, metrics, examples đáng chú ý)
 3. **Silent Clustering**: Tự động nhóm topics tương đồng thành "section buckets" — topics nào naturally discuss together được gộp cùng section. Mục tiêu: tránh overlap, tránh topics liên quan nằm xa nhau trong outline. Nếu source đã có heading structure rõ ràng → dùng thẳng headings làm section buckets, không cần re-cluster
 4. **Rank priority** theo detail level đã chọn (xem bảng dưới)
 5. **Giữ Content Map trong context** (KHÔNG show cho user), dùng làm checklist khi tạo outline
@@ -308,13 +259,12 @@ Trước khi tạo outline, BẮT BUỘC tạo Content Map từ source material.
 | `should` | Supporting arguments, secondary metrics       | Additional examples, comparisons, config details | Edge cases, advanced details           |
 | `nice`   | Examples, explanations, details               | Edge cases, caveats nhỏ                          | References, footnotes, tangential info |
 
+
 ### Coverage Thresholds
 
-* **L1**: ≥ 100% `must` topics phải xuất hiện trong outline
-
-* **L2**: ≥ 100% `must` + ≥ 70% `should` topics
-
-* **L3**: ≥ 100% `must` + ≥ 90% `should` + best-effort `nice` topics
+- **L1**: ≥ 100% `must` topics phải xuất hiện trong outline
+- **L2**: ≥ 100% `must` + ≥ 70% `should` topics
+- **L3**: ≥ 100% `must` + ≥ 90% `should` + best-effort `nice` topics
 
 ### Content Map Format (internal)
 
@@ -330,17 +280,13 @@ Trước khi tạo outline, BẮT BUỘC tạo Content Map từ source material.
 === END CONTENT MAP ===
 ```
 
-**Tag** **`[R]`** **(Researched):** Items có prefix `[R]` là thông tin bổ sung từ web research (Step 1.5), không có trong source gốc. Quy tắc:
+**Tag** `**[R]**` **(Researched):** Items có prefix `[R]` là thông tin bổ sung từ web research (Step 1.5), không có trong source gốc. Quy tắc:
 
-* `[R]` items vẫn phải gán priority (`must`/`should`/`nice`) theo tiêu chí bình thường
-
-* `[R]` items KHÔNG được gán `must` trừ khi source gốc thiếu data critical cho topic chính
-
-* Thông thường `[R]` items là `should` hoặc `nice`
-
-* Max 10 `[R]` items trong 1 Content Map (tránh overwhelming source gốc)
-
-* Coverage Report phải phân biệt source gốc vs researched items
+- `[R]` items vẫn phải gán priority (`must`/`should`/`nice`) theo tiêu chí bình thường
+- `[R]` items KHÔNG được gán `must` trừ khi source gốc thiếu data critical cho topic chính
+- Thông thường `[R]` items là `should` hoặc `nice`
+- Max 10 `[R]` items trong 1 Content Map (tránh overwhelming source gốc)
+- Coverage Report phải phân biệt source gốc vs researched items
 
 ## Coverage Report Rules
 
@@ -385,15 +331,11 @@ Sau khi tạo outline, BẮT BUỘC generate Coverage Report dạng file .md tá
 
 ### Report Rules
 
-* Mọi topic trong Content Map PHẢI xuất hiện trong report (covered hoặc omitted)
-
-* Mọi topic omitted PHẢI có justification (lý do cụ thể, không generic)
-
-* Justification hợp lệ: "trùng lặp với Topic X", "vượt scope L\[n]", "gộp vào slide \[N]", "quá chi tiết/edge case cho level này"
-
-* Justification KHÔNG hợp lệ: "không quan trọng", "bỏ qua", "không cần thiết" (quá chung chung)
-
-* Nếu coverage < threshold (xem Coverage Thresholds), PHẢI thêm topics vào outline cho đến khi đạt threshold
+- Mọi topic trong Content Map PHẢI xuất hiện trong report (covered hoặc omitted)
+- Mọi topic omitted PHẢI có justification (lý do cụ thể, không generic)
+- Justification hợp lệ: "trùng lặp với Topic X", "vượt scope L[n]", "gộp vào slide [N]", "quá chi tiết/edge case cho level này"
+- Justification KHÔNG hợp lệ: "không quan trọng", "bỏ qua", "không cần thiết" (quá chung chung)
+- Nếu coverage < threshold (xem Coverage Thresholds), PHẢI thêm topics vào outline cho đến khi đạt threshold
 
 ## Outline File Format (outline.md)
 
@@ -418,25 +360,16 @@ total_slides: N
 
 **Metadata fields:**
 
-* `title`: Tên chính của presentation
-
-* `slug`: kebab-case dùng cho file naming
-
-* `content_type`: Loại nội dung đã chọn ở Step 1
-
-* `framework`: Framework đã chọn/áp dụng (auto-determined hoặc user-selected ở Step 1.1)
-
-* `audience`: Audience type đã chọn ở Step 1.1
-
-* `detail_level`: Mức chi tiết (L1/L2/L3) — outline gắn cố định với level này
-
-* `language`: Ngôn ngữ: `vi` (Tiếng Việt), `en` (English), `bilingual` (Song ngữ)
-
-* `source`: Mô tả source input gốc
-
-* `created`: Timestamp tạo outline
-
-* `total_slides`: Tổng số slides trong outline
+- `title`: Tên chính của presentation
+- `slug`: kebab-case dùng cho file naming
+- `content_type`: Loại nội dung đã chọn ở Step 1
+- `framework`: Framework đã chọn/áp dụng (auto-determined hoặc user-selected ở Step 1.1)
+- `audience`: Audience type đã chọn ở Step 1.1
+- `detail_level`: Mức chi tiết (L1/L2/L3) — outline gắn cố định với level này
+- `language`: Ngôn ngữ: `vi` (Tiếng Việt), `en` (English), `bilingual` (Song ngữ)
+- `source`: Mô tả source input gốc
+- `created`: Timestamp tạo outline
+- `total_slides`: Tổng số slides trong outline
 
 ## Outline Display Format
 
@@ -515,20 +448,3 @@ N+1. [cta] Call to Action
 
 === END OUTLINE ===
 ```
-
-## Code Slide Guidelines (L2/L3)
-
-Khi outline chứa code snippets (L2/L3), tuân thủ:
-
-* **Font**: Dùng monospace font từ Slidev theme (Fira Code mặc định)
-
-* **Size**: Code font nhỏ hơn body text để fit nhiều dòng hơn
-
-* **Max lines**: 10-15 dòng code/slide. Nếu dài hơn → tách thành nhiều slides
-
-* **Background**: Slidev tự động render code blocks với background phân biệt (do theme quy định)
-
-* **Slide structure**: Title (giải thích code làm gì) + code block + optional 1-2 bullet giải thích key points
-
-* **Không mix**: Không trộn code block với bullet list dài trong cùng 1 slide. Chọn 1: code hoặc bullets
-

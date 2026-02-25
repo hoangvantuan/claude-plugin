@@ -16,7 +16,8 @@ claude plugin install gh:hoangvantuan/shun-claude-plugin
 | --- | --- |
 | `openproject` | OpenProject API v3 integration |
 | `ghost-blog` | Ghost CMS blog management |
-| `proslide` | Professional slide/presentation creation |
+| `outline-writer` | Content analysis & outline creation (presentation/blog/doc) |
+| `slidev-builder` | Slidev presentation builder from outline — theme selection, PDF export |
 | `writer-agent` | Document transformation and article writing (v2.0.0 — tier workflows, preset presets, enhanced insights) |
 | `prompt-generator` | Meta-prompting — tạo prompt chất lượng cao, giảm hallucination |
 | `viral-post-creator` | Tạo bài đăng viral trên social media (3 archetype) |
