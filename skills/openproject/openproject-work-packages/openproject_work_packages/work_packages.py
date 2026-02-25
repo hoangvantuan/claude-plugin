@@ -70,6 +70,7 @@ def create_work_package(
     priority_id: Optional[Union[int, str]] = None,
     parent_id: Optional[Union[int, str]] = None,
     version_id: Optional[Union[int, str]] = None,
+    responsible_id: Optional[Union[int, str]] = None,
     start_date: Optional[str] = None,
     due_date: Optional[str] = None,
     estimated_hours: Optional[float] = None,
@@ -87,6 +88,7 @@ def create_work_package(
         priority_id: Priority ID
         parent_id: Parent work package ID
         version_id: Version/sprint ID
+        responsible_id: Accountable user ID
         start_date: Start date (YYYY-MM-DD)
         due_date: Due date (YYYY-MM-DD)
         estimated_hours: Estimated hours
@@ -113,6 +115,8 @@ def create_work_package(
         links["parent"] = {"href": _to_href("work_packages", parent_id)}
     if version_id:
         links["version"] = {"href": _to_href("versions", version_id)}
+    if responsible_id:
+        links["responsible"] = {"href": _to_href("users", responsible_id)}
 
     data["_links"] = links
 
@@ -201,7 +205,8 @@ def update_work_package(wp_id: int, **updates) -> dict:
         "status_id": ("status", "statuses"),
         "priority_id": ("priority", "priorities"),
         "parent_id": ("parent", "work_packages"),
-        "version_id": ("version", "versions")
+        "version_id": ("version", "versions"),
+        "responsible_id": ("responsible", "users")
     }
 
     for arg_name, (link_name, resource) in link_mapping.items():

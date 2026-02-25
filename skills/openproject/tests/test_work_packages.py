@@ -129,6 +129,16 @@ class TestCreateWorkPackage:
         call_data = mock_client.post.call_args[0][1]
         assert call_data["_links"]["version"]["href"] == "/api/v3/versions/42"
 
+    def test_create_with_responsible(self, mock_client):
+        """Create work package with accountable (responsible)."""
+        mock_client.post.return_value = {"id": 1}
+
+        with patch("openproject_work_packages.work_packages.get_client", return_value=mock_client):
+            create_work_package(project_id=5, subject="Accountable Task", responsible_id=7)
+
+        call_data = mock_client.post.call_args[0][1]
+        assert call_data["_links"]["responsible"]["href"] == "/api/v3/users/7"
+
 
 class TestUpdateWorkPackage:
     """Tests for update_work_package function."""
@@ -182,6 +192,26 @@ class TestUpdateWorkPackage:
 
         call_data = mock_client.patch.call_args[0][1]
         assert call_data["_links"]["version"]["href"] is None
+
+    def test_update_responsible(self, mock_client):
+        """Update work package accountable (responsible)."""
+        mock_client.patch.return_value = {"id": 1}
+
+        with patch("openproject_work_packages.work_packages.get_client", return_value=mock_client):
+            update_work_package(1, responsible_id=7)
+
+        call_data = mock_client.patch.call_args[0][1]
+        assert call_data["_links"]["responsible"]["href"] == "/api/v3/users/7"
+
+    def test_unset_responsible(self, mock_client):
+        """Unset work package accountable."""
+        mock_client.patch.return_value = {"id": 1}
+
+        with patch("openproject_work_packages.work_packages.get_client", return_value=mock_client):
+            update_work_package(1, responsible_id=None)
+
+        call_data = mock_client.patch.call_args[0][1]
+        assert call_data["_links"]["responsible"]["href"] is None
 
 
 class TestDeleteWorkPackage:
