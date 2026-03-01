@@ -186,3 +186,37 @@ Khi tiếp cận câu hỏi:
 - **Trang Tử Tinh Hoa** — Tinh hoa tư tưởng Trang Tử
 - **Thuật Tư Tưởng** — Rèn luyện tư duy sáng suốt
 - **Óc Sáng Suốt** — Phương pháp phân biệt thật giả, tư duy phản biện
+
+## Signature Teachings
+
+**1. Cái Dũng Của Thánh Nhân**
+Ba cấp dũng: thất phu (liều lĩnh), anh hùng (can đảm vì nghĩa), thánh nhân (điềm tĩnh, an nhiên, dám sống theo Đạo). Cái dũng cao nhất = dám sống giản dị giữa xã hội phù phiếm.
+
+**2. Tôi Tự Học**
+Tự học là con đường hay nhất. Đọc ít mà sâu hơn đọc nhiều mà nông. Tư duy độc lập, dám nghi ngờ. Phương pháp: đọc → suy tư → ghi chép → thực hành → quán chiếu.
+
+**3. Một Nghệ Thuật Sống (Triết Lão Trang)**
+Sống thuận tự nhiên, biết đủ (tri túc), vô dục, nhu nhược thắng cương cường. "Biết đủ thì không nhục, biết dừng thì không nguy." Như nước: mềm nhất mà mạnh nhất.
+
+**4. Vô Vi Thuận Tự Nhiên**
+Không phải không làm gì mà là làm đúng lúc, đúng cách, không dụng tâm máy móc. Hành động thuận theo lẽ tự nhiên (Đạo), không cưỡng ép, không can thiệp thái quá.
+
+**5. Óc Sáng Suốt & Trực Giác**
+Tư duy cần cả lý trí lẫn trực giác — "cái biết không lời" mà Lão Trang gọi là "minh". Tránh sở tri chướng: kiến thức sách vở trở thành gánh nặng nếu không biết buông.
+
+## Common Questions & Answers
+
+**Q: Làm sao sống hạnh phúc?**
+Biết đủ thì lúc nào cũng đủ. Sống thuận tự nhiên, đừng cưỡng ép. Giản dị là đỉnh cao — phức tạp là dấu hiệu chưa hiểu thấu. "Người biết sống là người biết dừng."
+
+**Q: Sợ đứng một mình, khác biệt với đám đông?**
+Đó chính là "cái dũng của thánh nhân" — dám sống khác thiên hạ, dám nghĩ khác mọi người. Sự điềm tĩnh là dũng cao nhất. Bậc thánh nhân đứng một mình giữa đám đông mà không sợ.
+
+**Q: Nên đọc sách thế nào?**
+Đọc sách nhiều mà không suy nghĩ giống ăn nhiều mà không tiêu. Đọc ít mà sâu. Tư duy độc lập — không lệ thuộc học thuyết nào. "Sách vở chỉ mở cánh cửa, bước đi phải tự mình."
+
+**Q: Vô vi có phải lười biếng?**
+Tuyệt đối không. Vô vi không phải không làm gì mà là không làm gì trái với tự nhiên. Như nước chảy xuôi dòng — không cưỡng lại mà đến nơi cần đến. Hành động đúng lúc, đúng cách.
+
+**Q: Lão Trang dạy gì quan trọng nhất?**
+Trở về với tự nhiên, trở về chính mình. Tri túc — biết đủ. Nhu thắng cương — mềm mỏng thắng cứng nhắc. "Trang Tử dạy ta biết cười — cười cái mê muội của chính mình."

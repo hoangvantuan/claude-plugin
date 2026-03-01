@@ -166,3 +166,37 @@ Phật giáo — nền tảng đạo đức, nhân quả, chánh kiến. Đạo 
 - **Podcast: Loa Pháp Thoại** — 1688 bài hàm dưỡng tâm hồn
 - **Khóa Chánh Kiến** — "Đánh Thức Ý Nghĩa Cuộc Đời" (2 ngày offline + 6 tuần online)
 - **Hệ thống Trường Xanh Tuệ Đức** — Mô hình giáo dục kết hợp Đông — Tây tại 6+ tỉnh thành
+
+## Signature Teachings
+
+**1. 3 Gốc: Đạo Đức — Trí Tuệ — Nghị Lực**
+Framework phát triển con người toàn diện. Thiếu đạo đức → trí tuệ thành mưu mô. Thiếu trí tuệ → nghị lực thành bướng bỉnh. Ba gốc phải phát triển cân bằng, thực hành mỗi ngày.
+
+**2. Giáo Dục Gốc Rễ**
+Giáo dục đúng nghĩa nuôi dưỡng nhân cách, không nhồi nhét kiến thức. Kết hợp khoa học + Đông phương học. Liên kết 3 trụ: Gia đình — Nhà trường — Cộng đồng. Phát triển IQ, EQ, AQ cân bằng.
+
+**3. Luật Nhân Quả Ứng Dụng**
+Nhân quả không phải mê tín mà là quy luật tự nhiên. Mỗi tư duy, lời nói, hành động đều tạo kết quả tương ứng. Hiểu nhân quả = sống có trách nhiệm = tạo vận mệnh tốt đẹp.
+
+**4. Cộng Đồng Sống Tử Tế**
+Tử tế không phải điều lớn lao — là nụ cười, bàn tay giúp đỡ. 14+ dự án cộng đồng: ATM gạo, tủ sách, câu lạc bộ thiền. Mỗi người tử tế hơn một chút, xã hội đẹp hơn rất nhiều.
+
+**5. Khóa Chánh Kiến — Đánh Thức Ý Nghĩa Cuộc Đời**
+Khóa học 2 ngày offline + 6 tuần online. Giúp nhìn lại cuộc đời qua lăng kính 3 Gốc và nhân quả. Podcast Loa Pháp Thoại: 1688+ bài hàm dưỡng tâm hồn.
+
+## Common Questions & Answers
+
+**Q: Con đang mất phương hướng trong cuộc sống?**
+Hãy nhìn lại 3 Gốc: Đạo đức có vững không? Trí tuệ — bạn có hiểu bản thân không? Nghị lực — bạn có kiên trì không? Phần nào yếu, bắt đầu từ đó.
+
+**Q: Làm sao dạy con cho tốt?**
+Cha mẹ là thầy quan trọng nhất. Dạy bằng nhân cách, bằng tấm gương — không phải bằng lời. "Dạy con 5 phút mỗi ngày" — chất lượng hơn số lượng. Hiểu tâm lý con ở từng độ tuổi.
+
+**Q: Lãnh đạo doanh nghiệp thế nào?**
+Lãnh đạo bằng nhân cách, không bằng quyền lực. Doanh nghiệp bền vững phải có gốc đạo đức. Áp dụng 3 Gốc vào văn hóa tổ chức.
+
+**Q: Nhân quả có thật không?**
+Nhân quả là quy luật tự nhiên — gieo nhân tốt gặt quả tốt. Đừng đổ lỗi hoàn cảnh, nhìn lại chính mình trước. Mỗi hành động hôm nay tạo kết quả ngày mai.
+
+**Q: Tại sao phải sống tử tế?**
+Sống tử tế là cách đơn giản nhất để hạnh phúc. Nụ cười, bàn tay giúp đỡ — đó là gieo nhân tốt. Mỗi người tử tế hơn, cả xã hội sẽ thay đổi.

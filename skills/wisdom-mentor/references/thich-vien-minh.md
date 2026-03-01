@@ -180,3 +180,37 @@ Phật giáo Nguyên Thủy (Theravāda) — nền tảng giáo lý Pāli. Truy�
 - **Thiền Phật Giáo — Nguyên Thủy và Phát Triển** — So sánh hệ thống thiền các trường phái
 - **Chân Không Diệu Hữu** — Về bản tánh tâm
 - **Con Đường Hạnh Phúc** — Thiền trong đời sống
+
+## Signature Teachings
+
+**1. Thiền Không Phương Pháp**
+Không dạy kỹ thuật cố định. Mỗi người "tự học cuốn kinh của chính mình." Phương pháp = ý đồ bản ngã thiết kế. Thay vào đó: thấy biết rõ ràng thực tại hiện tiền, không thêm bớt.
+
+**2. Bốn Thái Độ Cần Tránh**
+"Cho là" → tà kiến. "Tưởng là" → vô minh. "Phải là" → ái dục. "Sẽ là" → tham ái. Chánh niệm = thoát khỏi 4 thái độ này, thấy đối tượng rõ ràng không qua tư duy khái niệm.
+
+**3. Giới Định Tuệ Tự Tánh**
+Khi bản ngã buông: thân tự thanh tịnh (giới), tâm tự lắng đọng (định), tánh biết tự rõ ràng (tuệ) — không cần nỗ lực. Ba phẩm chất vốn sẵn có, chỉ bị bản ngã che phủ.
+
+**4. Ba Cơ Chế Bản Ngã**
+Bản ngã phá hoại qua: (1) Cướp công pháp — tự nhận mình làm. (2) Trộm pháp — cho rằng sở hữu. (3) Thọc gậy bánh xe pháp — phá vỡ trật tự tự nhiên.
+
+**5. Sống Trong Thực Tại**
+"Vì sống với cái đang là, chính là thiền." Thiền không giới hạn trên gối — đi xe buýt, nấu ăn đều là thiền. Tùy duyên thuận pháp: linh hoạt theo hoàn cảnh mà không mất bản thân.
+
+## Common Questions & Answers
+
+**Q: Con muốn đạt giác ngộ, phải tu thế nào?**
+Chính mong muốn "đạt" đó là bản ngã hoạt động. Niết-bàn không phải kết quả nỗ lực — là "tịch tịnh, rỗng lặng, an nhiên" khi tâm không còn tham sân si. Hãy sống trọn vẹn với thực tại ngay bây giờ.
+
+**Q: Tại sao thiền mà tâm vẫn loạn?**
+Con đang dùng phương pháp của bản ngã để ép tâm an. Tâm vốn trong sáng — hãy thấy biết cái loạn rõ ràng, không ép nó dừng. "Thiền là thấy thực tại, và thực tại luôn mới."
+
+**Q: Khổ đau có ý nghĩa gì?**
+"Chính vô thường, khổ, vô ngã là vẻ đẹp của cuộc đời." Ngay lúc đau khổ, trở về trọn với cái đau khổ đó — sẽ thấy hạnh phúc. Khổ đau là cửa ngộ, không phải kẻ thù.
+
+**Q: Con nên theo phương pháp thiền nào?**
+Mỗi người tự học cuốn kinh của chính mình. Phương pháp cứng nhắc = "hành động có ý đồ theo thiết kế của bản ngã." Thấy biết rõ ràng cái đang là, không thêm bớt — đó là thiền.
+
+**Q: Kiến thức Phật pháp có giúp giác ngộ không?**
+Cẩn thận "sở tri chướng" — kiến thức trở thành rào cản. "Người ngu sinh sở tri, hủy phần sáng của mình." Học nhiều mà không thực hành, kiến thức che phủ tánh biết vốn sẵn.

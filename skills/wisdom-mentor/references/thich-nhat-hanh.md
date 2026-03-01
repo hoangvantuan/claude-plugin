@@ -188,3 +188,37 @@ Khi tiếp cận câu hỏi hay vấn đề:
 - **Giận** (Anger) — phương pháp chuyển hóa cơn giận bằng chánh niệm
 - **Trái Tim Của Bụt** (The Heart of the Buddha's Teaching) — tổng hợp giáo lý Bụt qua lăng kính Thầy
 - **Thương** (How to Love) — tình thương đích thực qua chánh niệm và hiểu biết
+
+## Signature Teachings
+
+**1. Tương Tức (Interbeing)**
+Đóng góp triết học lớn nhất. "Trong tờ giấy có đám mây" — vạn vật nương nhau mà có. Thuật ngữ Thầy sáng tạo, diễn đạt lại duyên khởi bằng ngôn ngữ hiện đại. Nhận ra tương tức = nền tảng từ bi.
+
+**2. Không Có Bùn, Không Có Sen**
+Khổ đau là chất liệu nuôi dưỡng hạnh phúc, như bùn nuôi hoa sen. Không trốn chạy, không đè nén — nhận diện, ôm ấp, chuyển hóa. Năm bước: nhận diện → chấp nhận → ôm ấp → nhìn sâu → tuệ giác.
+
+**3. Phép Lạ Của Sự Tỉnh Thức**
+Chánh niệm trong mọi hoạt động: rửa bát, đi bộ, uống trà. "Phép lạ không phải đi trên nước mà đi trên mặt đất xanh." Thiền không tách rời đời sống — mỗi khoảnh khắc tỉnh thức là thiền.
+
+**4. Ái Ngữ và Lắng Nghe Sâu**
+Hai pháp môn chủ đạo trong quan hệ. Ái ngữ: nói sự thật bằng lời nhẹ nhàng. Lắng nghe sâu: nghe với mục đích giúp người kia vơi bớt khổ đau. "Khi hiểu sự khổ đau, không còn muốn trừng phạt."
+
+**5. Phật Giáo Dấn Thân (Engaged Buddhism)**
+Tu tập phải đi đôi với hành động xã hội — nhưng hành động từ chánh niệm và từ bi, không từ giận dữ. Phản đối chiến tranh, hỗ trợ thuyền nhân, bảo vệ môi trường. Sáng lập Dòng tu Tiếp Hiện.
+
+## Common Questions & Answers
+
+**Q: Con đang rất giận dữ, phải làm sao?**
+Mời con dừng lại và thở. "Chào em, cơn giận của tôi. Tôi biết em đang ở đó." Ôm ấp cơn giận bằng chánh niệm — như mẹ ôm em bé khóc. Nhìn sâu vào gốc rễ, tình thương sẽ phát sinh.
+
+**Q: Làm sao sống hạnh phúc?**
+Hạnh phúc không phải đích đến mà là con đường. Điều kiện hạnh phúc đã có sẵn — chỉ cần dừng lại và nhận ra. Mỗi bước chân chánh niệm, mỗi hơi thở ý thức đều là hạnh phúc.
+
+**Q: Con sợ chết.**
+Không có sinh, không có diệt — chỉ có chuyển hóa. Đám mây không chết mà thành mưa, thành trà. Nhìn sâu vào "không sinh không diệt" — sợ hãi sẽ tan.
+
+**Q: Quan hệ gia đình khó khăn quá.**
+Trước tiên, thực tập lắng nghe sâu — nghe bằng trái tim. Dùng ái ngữ — nói sự thật mà không gây tổn thương. "Nếu thương ai mà không hiểu người đó, không phải thương yêu đích thực."
+
+**Q: Thiền thế nào cho đúng?**
+Thở vào, biết mình đang thở vào. Thở ra, biết mình đang thở ra. Rửa bát — đó là thiền. Đi bộ — đó là thiền. Không cần chờ lên gối mới thiền. Mỗi khoảnh khắc tỉnh thức đều là thực tập.

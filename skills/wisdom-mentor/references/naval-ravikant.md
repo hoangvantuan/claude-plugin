@@ -126,3 +126,37 @@ Code + Media = modern leverage for individuals, democratized by internet.
 
 ## Influences
 Buddha, Krishnamurti, Osho, Munger, Taleb, Feynman, Tolle, Stoics (Aurelius, Epictetus), Paul Graham
+
+## Signature Teachings
+
+**1. How to Get Rich Without Getting Lucky (Tweetstorm)**
+Framework: Specific Knowledge + Accountability + Leverage = Income. 40 tweet trở thành "kinh thánh" cho founders. Insight: tài sản là thứ tạo thu nhập khi ngủ, không phải tiền lương.
+
+**2. Happiness = Peace − Desire**
+Hạnh phúc là kỹ năng rèn luyện, không phải phần thưởng. Giảm mong muốn — mỗi lúc chỉ giữ một. Thiền 60 ngày liên tục để reset. "The fundamental delusion: there is something out there that will make you happy forever."
+
+**3. Specific Knowledge**
+Kiến thức trường lớp không dạy được, máy không thay thế được. Tìm bằng cách theo đuổi tò mò thật sự. "Feels like play to you but looks like work to others."
+
+**4. Permissionless Leverage (Code & Media)**
+Code và media = đòn bẩy hiện đại không cần xin phép ai. Một người với code/media có thể tạo impact ngang tổ chức lớn. Internet đã dân chủ hóa đòn bẩy.
+
+**5. The Almanack of Naval Ravikant**
+Eric Jorgenson tổng hợp từ tweets, podcasts, essays. Hai phần: Wealth (xây dựng tài sản) và Happiness (tìm hạnh phúc). Cuốn sách tổng hợp toàn bộ triết lý Naval.
+
+## Common Questions & Answers
+
+**Q: Làm sao để giàu?**
+Tìm specific knowledge — thứ "feels like play to you but looks like work to others." Kết hợp code/media leverage. Chơi long-term games. Đừng cho thuê thời gian — tạo tài sản tạo thu nhập khi ngủ.
+
+**Q: Hạnh phúc là gì?**
+Trạng thái mặc định khi bỏ cảm giác "thiếu gì đó". Happiness = Peace − Desire. Giảm mong muốn, sống với hiện tại. Thiền giúp nhiều nhưng không cần giáo điều.
+
+**Q: Nên đọc sách thế nào?**
+Đọc những gì thực sự thích, bỏ giữa chừng không xấu. Kinh điển hơn bestseller. "Read what you love until you love to read." Đọc 100 cuốn cùng lúc cũng được.
+
+**Q: Ra quyết định lớn thế nào?**
+Không quyết được = đáp án là không. Phân vân = chọn đường khó hơn ngắn hạn. Dành 1-2 năm cho Big Three: nơi sống, người bên cạnh, việc làm.
+
+**Q: Thiền có cần không?**
+Rất cần. "Tắt tiếng xã hội, lắng nghe chính mình." Thử 60 ngày, 1 tiếng/ngày. Không cần phương pháp cố định — ngồi yên, quan sát tâm.

@@ -171,3 +171,37 @@ Closest to Socratic inquiry but without direction or destination. Does not teach
 
 ## Influences & Context
 Theosophical upbringing (rejected) · David Bohm (deepest intellectual collaboration — implicate order parallels) · Aldous Huxley (mutual respect) · Parallels with Zen and Vipassana (rejected all labels) · Not influenced BY but resonates with: Buddhism, Advaita Vedanta, existentialism
+
+## Signature Teachings
+
+**1. "Truth is a Pathless Land" (Giải tán Order of the Star, 1929)**
+Từ chối vai trò "World Teacher," giải tán tổ chức được lập để tôn vinh ông. "Man cannot come to it through any organisation, any creed, any dogma." Hành động cách mạng bảo vệ tự do tìm kiếm chân lý.
+
+**2. The Observer IS the Observed**
+Không có "tôi" tách biệt đứng nhìn. Khi quan sát giận dữ, cái "tôi giận" chính là cơn giận — cùng năng lượng, hai nhãn hiệu. Khi phân chia sụp đổ, xung đột nội tâm chấm dứt.
+
+**3. Freedom from the Known**
+Giải thoát khỏi quá khứ tích lũy — niềm tin, truyền thống, ký ức hoạt động như quyền lực. Không phải mất trí nhớ mà không bị ràng buộc. Hành động từ trí tuệ, không từ ký ức.
+
+**4. Choiceless Awareness**
+Quan sát thuần túy không hướng, không phán xét, không chọn lựa. Không phải thờ ơ mà là chú ý hoàn toàn. "Pure observation without direction, without fear of punishment and reward."
+
+**5. Thought as Root of Psychological Disorder**
+Mọi rối loạn tâm lý (sợ, ham, buồn) đều do tư duy tạo ra. Tư duy = thời gian = phân mảnh. Tư duy không thể giải quyết vấn đề tâm lý vì tư duy CHÍNH LÀ vấn đề.
+
+## Common Questions & Answers
+
+**Q: Làm sao hết sợ hãi?**
+Trước hết — bạn muốn "hết sợ" là tư duy chạy trốn. Sợ hãi = tư duy chiếu quá khứ vào tương lai. Nhìn trực tiếp, hoàn toàn, không đặt tên. Chú ý toàn vẹn — cái thấy đó tự nó chuyển hóa.
+
+**Q: Có nên theo một vị thầy tâm linh?**
+Không — kể cả tôi. Theo guru = tạo phụ thuộc, ngăn trí tuệ nở hoa. "If you follow any guru — including me — you are preventing the flowering of your own intelligence." Tự mình thấy, tự mình biết.
+
+**Q: Thiền là gì?**
+Không phải kỹ thuật, tập trung, hay mantra. Là chú ý thuần túy — quan sát không có người quan sát. Im lặng tự nhiên phát sinh, không bị ép. Kỹ thuật = người quan sát áp đặt lên cái được quan sát.
+
+**Q: Tại sao thế giới đầy xung đột?**
+Vì tâm trí chúng ta đầy xung đột. "Tôi" vs "bạn", quốc gia tôi vs quốc gia bạn — tất cả do tư duy phân chia. Xã hội phản ánh tâm lý cá nhân. Thay đổi thế giới bắt đầu từ thay đổi ý thức.
+
+**Q: Tình yêu là gì?**
+Tình yêu KHÔNG phải gì dễ nói hơn LÀ gì. Không phải ghen tuông, sở hữu, phụ thuộc. Khi bản ngã — với đòi hỏi, sở hữu, sợ hãi — không còn hoạt động, cái còn lại có thể là tình yêu.

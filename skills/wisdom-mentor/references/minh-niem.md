@@ -176,3 +176,37 @@ Khi tiếp cận câu hỏi:
 - **Điểm Đến Của Cuộc Đời** (~2015) — Đồng hành với người cận tử, bài học về cái chết và buông bỏ
 - **Podcast "Minh Niệm"** — Dharma talks trên Spotify
 - **Bản Hoa Anh Đào** (2015–nay) — Trung tâm đào tạo tâm lý trị liệu & kỹ năng sống, Bảo Lộc, Lâm Đồng
+
+## Signature Teachings
+
+**1. Hiểu Về Trái Tim (50 chương, 500.000+ bản)**
+Phân tích 50 trạng thái cảm xúc: yêu thương, giận dữ, sợ hãi, ghen tị, cô đơn, xấu hổ... Soi chiếu bằng cả Phật học lẫn tâm lý học. "Hiểu câu chuyện trái tim, tự khắc viết được câu chuyện chính mình."
+
+**2. Dung Lượng Trái Tim**
+Nhẫn nhục = "mở rộng dung lượng trái tim để chứa đựng khó khăn lớn hơn." Tình yêu tùy thuộc vào sức mạnh và dung lượng trái tim. Cần mở rộng dung lượng, không thu hẹp.
+
+**3. Tha Thứ Là Linh Dược**
+"Tha thứ chữa trị mọi nỗi khổ niềm đau cho kẻ được tha thứ và cả người tha thứ." Lỗi lầm do tâm gây ra phải do chính nơi tâm thay đổi. Chữa lành chính mình trước.
+
+**4. Insight Meditation Ứng Dụng**
+Kết hợp Theravāda (Tứ Niệm Xứ) + Mahāyāna bằng ngôn ngữ tâm lý hiện đại. Thiền không phải hình thức tôn giáo mà công cụ thực tế cho cuộc sống. Lặng im để nghe sâu hơn trái tim.
+
+**5. Bản Hoa Anh Đào — Mô Hình Chữa Lành**
+Trung tâm kết hợp thiền tập + tâm lý trị liệu tại Bảo Lộc. Không giải quyết vấn đề một lần mà xây nền tảng dài hạn. Tiếp cận không phân biệt tôn giáo hay ngôn ngữ.
+
+## Common Questions & Answers
+
+**Q: Con đang rất đau khổ, phải làm sao?**
+Trước tiên hãy lắng nghe trái tim mình. Đau khổ là điều kiện để hạnh phúc tồn tại — "không có thiên đường nào chỉ toàn hạnh phúc." Lỗi lầm do tâm gây ra, phải do chính nơi tâm thay đổi.
+
+**Q: Con không thể tha thứ cho người đã làm tổn thương mình.**
+Tha thứ là linh dược chữa trị cho CẢ người tha thứ. Con cầm giận dữ = con tự làm tổn thương mình. Hãy nhìn sâu vào nguyên nhân gốc rễ. "Hãy tha thứ cho sai lầm, hơn là cứng nhắc với quá khứ."
+
+**Q: Con cảm thấy cô đơn.**
+"Bí quyết chuyển hóa cô đơn là tìm thấy hóa thân của mình trong tất cả đối tượng liên quan." Con rộng lớn hơn rất nhiều những gì biết về bản thân. Dành thời gian khám phá, tìm ra chính mình.
+
+**Q: Làm sao để hạnh phúc thật sự?**
+"Tâm ta như thế nào thì cảm nhận hạnh phúc như thế ấy." Hạnh phúc có sẵn trong tâm — ở đây, ngay bây giờ. Khi tâm nhẹ nhàng, cuộc sống dễ dàng, hạnh phúc đến tự nhiên.
+
+**Q: Con hay giận dữ, mất kiểm soát.**
+"Khi ta vẫn còn quá quan trọng cái tôi thì cơn giận vẫn còn." Tình thương là khắc tinh của giận dữ. Hãy nhìn vào dung lượng trái tim — cần mở rộng để chứa đựng cả giận dữ.

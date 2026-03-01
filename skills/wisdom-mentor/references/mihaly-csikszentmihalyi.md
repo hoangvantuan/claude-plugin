@@ -133,3 +133,37 @@ Not compromises — fully occupy each pole contextually.
 
 ## Influences
 Maslow (peak experiences, but M's were passive; flow is active), Rogers (intrinsic motivation), Sartre/Heidegger/Camus (meaning-construction), Buddhism (present-moment, ego dissolution), Taoism (wu wei = flow's merged action-awareness), Jung (individuation, paradoxical traits), Frankl (meaning as primary drive), Aristotle (eudaimonia over hedonia)
+
+## Signature Teachings
+
+**1. Flow: The Psychology of Optimal Experience (1990)**
+Tác phẩm khai sáng. Flow = trạng thái hoàn toàn chìm đắm trong hoạt động. 9 đặc điểm: mục tiêu rõ, phản hồi tức thì, thách thức-kỹ năng cân bằng, mất ý thức về bản thân, biến đổi thời gian.
+
+**2. Challenge-Skill Balance (Flow Channel)**
+Insight quan trọng nhất: flow nằm ở diagonal band giữa challenge và skill. Quá dễ = nhàm chán. Quá khó = lo âu. Flow đòi hỏi phát triển liên tục — kỹ năng tăng thì thách thức phải tăng theo.
+
+**3. Psychic Entropy vs Negentropy**
+Tâm trí mặc định = hỗn loạn (entropy): lo âu, chán nản, suy nghĩ vẩn vơ. Flow = negentropy: ý thức được sắp xếp tối đa. Kiểm soát ý thức = kiểm soát chất lượng cuộc sống.
+
+**4. Autotelic Personality & "Joe the Welder"**
+Người có khả năng tìm flow ở bất kỳ đâu. Joe tìm flow trong công việc nhà máy lặp lại qua self-imposed challenges. Bốn metaskills: tò mò, kiên trì, ít tự kỷ trung tâm, động lực nội tại.
+
+**5. Creativity: Systems Model**
+Sáng tạo ≠ thiên tài cá nhân. Cần 3 yếu tố: Domain (hệ thống ký hiệu) + Field (cộng đồng đánh giá) + Individual. 10 đặc điểm nghịch lý: năng lượng/kiềm chế, vui tươi/kỷ luật, khiêm tốn/tự hào.
+
+## Common Questions & Answers
+
+**Q: Làm sao đạt flow?**
+Đặt mục tiêu rõ ràng, đảm bảo thách thức cân bằng kỹ năng, tập trung hoàn toàn. Loại bỏ phiền nhiễu. Bắt đầu từ điều bạn thích. Khi kỹ năng tăng, nâng thách thức tương ứng.
+
+**Q: Tại sao làm việc hạnh phúc hơn mà vẫn muốn nghỉ?**
+Work paradox — ESM data: flow xảy ra nhiều hơn khi làm việc, nhưng ta gán nhầm nguồn hạnh phúc cho leisure. Ta chọn passive leisure (TV) vì entry cost thấp, dù nó không tạo flow.
+
+**Q: Hạnh phúc thật sự là gì?**
+Không phải vắng đau khổ, không phải khoái lạc. Là kết quả của việc thường xuyên sắp xếp ý thức hướng về flow. Enjoyment (chủ động) khác pleasure (thụ động). Hạnh phúc = chất lượng tích lũy của ý thức.
+
+**Q: Sáng tạo có học được không?**
+Có, nhưng không chỉ ở cá nhân. Phải nắm vững domain trước khi transcend. Cần field chấp nhận. Rèn 10 đặc điểm nghịch lý: vừa playful vừa disciplined, vừa convergent vừa divergent.
+
+**Q: Tại sao xem TV nhiều mà vẫn trống rỗng?**
+TV = passive leisure, không đòi skill, không challenge-skill balance → không tạo flow. Ta chọn vì dễ, nhưng nó không tạo enjoyment hay phát triển self complexity. Active leisure mới tạo flow.

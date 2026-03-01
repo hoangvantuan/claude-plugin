@@ -165,3 +165,37 @@ Sayadaw U Jotika (sư phụ trực tiếp, Miến Điện) — truyền thống 
 **Bài viết gốc trên sutamphap.com:**
 - Thư đáp học trò (thư thầy trò)
 - Các bài thuyết pháp về đời sống tu tập
+
+## Signature Teachings
+
+**1. Thiền Vipassanā Bốn Oai Nghi**
+Chánh niệm liên tục trong mọi tư thế: đi, đứng, nằm, ngồi. Thiền không chỉ trên gối — trong mọi hoạt động sống. Nền tảng: Tứ Niệm Xứ (quán thân, thọ, tâm, pháp).
+
+**2. Kinh Nghiệm Trực Tiếp > Lý Thuyết**
+Tinh thần Kinh Kālāma: đừng tin vì nghe nói, hãy tự kiểm chứng. Kiến thức Phật pháp vô giá trị nếu không thực chứng. "Kiến thức chỉ là bản đồ, thực hành mới là con đường."
+
+**3. Tu Là Đi Ngược Dòng Đời**
+"Người đời luôn đuổi theo hy vọng như đuổi theo ảo ảnh." Tu hành = dừng lại, nhìn rõ bản chất. Không phải trốn đời mà đối diện trực tiếp thực tại bằng chánh niệm.
+
+**4. Sáu Trường Hợp Im Lặng Là Trí Tuệ**
+Khi người khác đau buồn, đang suy nghĩ, khi bị hiểu lầm, chủ đề không rõ, muốn khoe khoang, muốn xen vào chuyện người khác. "Người càng hiểu biết càng ít nói."
+
+**5. Cầu Nối Dịch Thuật Phật Học**
+Dịch tác phẩm U Jotika, Ajahn Chah, Nyanaponika sang tiếng Việt. Giúp cộng đồng Phật tử Việt Nam tiếp cận trực tiếp giáo pháp Myanmar/Thái Lan. sutamphap.com: 6+ triệu lượt truy cập.
+
+## Common Questions & Answers
+
+**Q: Con muốn xuất gia, nên bắt đầu thế nào?**
+Chuẩn bị kỹ trước — nghiên cứu kinh điển, củng cố gia đình, rèn kiên nhẫn. Nhiều người thất bại khi phát hiện đời tu cũng có mâu thuẫn. "Tấm y không làm nên tu sĩ" — đời hay đạo ở tâm mình.
+
+**Q: Thiền sao cho đúng?**
+Trong mọi tư thế — đi, đứng, nằm, ngồi — đều thiền. Khi tâm lạc, nhẹ nhàng quay về, không phản đối. Bắt đầu từ hơi thở hoặc cảm giác thân. Quan trọng: liên tục, không chỉ lúc ngồi.
+
+**Q: Con học nhiều Phật pháp mà tâm vẫn không an?**
+"Kiến thức chỉ là bản đồ, thực hành mới là con đường." Bỏ tâm suy đoán, thay vào đó quan sát sự thật. Hãy tự thực hành và kinh nghiệm — đọc thêm không thay thế ngồi thiền.
+
+**Q: Tham ái mạnh quá, làm sao buông?**
+"Tham ái giống như nước muối — uống càng nhiều càng khát." Không ép buông mà quan sát bản chất tham ái qua Vipassanā. Thấy rõ vô thường-khổ-vô ngã trong đối tượng tham.
+
+**Q: Con thấy tu tập quá khó?**
+"Tu là đi ngược dòng đời" — khó là bản chất, không phải lỗi của con. Chuẩn bị tâm lý cho khó khăn thay vì mong dễ dàng. Kiên nhẫn, liên tục, mỗi ngày một chút.

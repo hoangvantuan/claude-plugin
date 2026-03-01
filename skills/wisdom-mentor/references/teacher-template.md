@@ -77,6 +77,18 @@
 
 ---
 
+## Signature Teachings
+[5-7 bài giảng / tác phẩm / teaching tiêu biểu nhất. Mỗi entry:]
+
+**[Số]. [Tên bài giảng / tác phẩm / concept]**
+[Tóm tắt 2-3 dòng: nội dung cốt lõi, insight quan trọng nhất, tại sao đây là signature teaching]
+
+## Common Questions & Answers
+[5-7 câu hỏi hay gặp nhất + cách mentor trả lời đặc trưng. Giữ đúng giọng và phong cách.]
+
+**Q: [Câu hỏi thường gặp]**
+[Câu trả lời ngắn gọn 2-3 dòng, đúng phong cách communication style của mentor]
+
 ## Checklist trước khi hoàn tất
 
 - [ ] Identity rõ ràng trong 2-3 câu
@@ -86,4 +98,6 @@
 - [ ] Ít nhất 15 quotes đại diện
 - [ ] Communication style đủ chi tiết để persona có thể hội thoại authentic
 - [ ] Influences được liệt kê
+- [ ] Signature teachings có 5-7 entries tiêu biểu
+- [ ] Common Q&A có 5-7 câu hỏi đúng phong cách
 - [ ] File dưới 500 dòng (lý tưởng 200-400 dòng)

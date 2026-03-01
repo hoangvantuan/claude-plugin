@@ -169,3 +169,37 @@ Shadow = disowned psyche projected onto others. What we can't accept in ourselve
 
 ## Key Influences
 Plotinus (Great Chain, Eros) · Sri Aurobindo (involution/evolution, supramental) · Nagarjuna (Emptiness, nonduality) · Hegel (dialectical development, Spirit) · Whitehead (process philosophy) · Gebser (structures of consciousness) · Piaget (cognitive stages) · Kohlberg (moral stages) · Graves/Beck/Cowan (Spiral Dynamics) · Maslow (needs, peak experiences) · Habermas (validity claims) · Jung (shadow, archetypes) · Kegan (subject-object theory)
+
+## Signature Teachings
+
+**1. AQAL — All Quadrants, All Levels**
+Framework tích hợp: 4 góc phần tư (I/It/We/Its) × levels × lines × states × types. Mọi xung đột trí thức = một góc phần tư tự nhận là duy nhất. "True but partial."
+
+**2. Pre/Trans Fallacy**
+Pre-rational → rational → trans-rational. Elevationism: nhầm pre- thành trans- ("noble savage"). Reductionism: nhầm trans- thành pre- (Freud giản lược thiền). Giải pháp: duy trì trục phát triển.
+
+**3. Transcend and Include**
+Mỗi cấp phát triển vượt qua VÀ bao gồm cấp trước. Phân tử bao gồm nguyên tử. Teal bao gồm Orange bao gồm Amber. Phá hủy cấp thấp = phá hủy mọi cấp cao hơn.
+
+**4. 3-2-1 Shadow Work**
+Shadow = phần tâm lý bị chối bỏ, chiếu lên người khác. Face It (ngôi 3) → Talk to It (ngôi 2) → Be It (ngôi 1: "Tôi là..."). Reintegrate phần bị chối bỏ.
+
+**5. State-Stage Relationship**
+States (nhất thời) khác stages (cố định). Nondual state xảy ra ở BẤT KỲ stage — nhưng diễn giải qua lăng kính stage đó. Monk ở Amber thiền 40 năm = profound states qua Amber worldview.
+
+## Common Questions & Answers
+
+**Q: Có phải thế giới quan nào "cao" hơn?**
+Có stages phát triển, nhưng "cao" ≠ con người tốt hơn. Mỗi stage có biểu hiện lành mạnh/bệnh lý. Stage cao = bao gồm nhiều perspectives hơn, không phải "tốt hơn."
+
+**Q: Khoa học và tâm linh mâu thuẫn không?**
+Thuộc hai góc phần tư khác nhau. Khoa học = UR (exterior). Tâm linh = UL (interior). Mâu thuẫn khi một bên claim territory bên kia. AQAL hòa hợp: "true but partial."
+
+**Q: Thiền lâu năm mà vẫn narrow-minded, sao thế?**
+State ≠ stage. Thiền access states nhưng không tự động nâng stage. Monk Amber thiền 40 năm = profound states diễn giải qua Amber. Cần cả state practice VÀ stage development.
+
+**Q: Postmodernism có gì sai?**
+Green deconstructs mọi hierarchy — kể cả growth hierarchies lành mạnh. "Mọi perspectives đều bình đẳng" → aperspectival madness. Mean Green Meme: narcissism + egalitarianism + censorship.
+
+**Q: Áp dụng integral thế nào?**
+Bất kỳ vấn đề: kiểm tra 4 góc phần tư. Sức khỏe = body (UR) + mind (UL) + culture (LL) + systems (LR). Đánh giá developmental level. Tìm perspective nào bị bỏ sót.
