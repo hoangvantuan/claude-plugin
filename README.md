@@ -26,7 +26,7 @@ claude plugin install gh:hoangvantuan/shun-claude-plugin
 | `deep-post-ideas` | Trích xuất outline bài đăng từ tài liệu tham khảo |
 | `deep-learner` | Học hiểu sâu nội dung — tạo tài liệu học có cấu trúc 6 phase |
 | `content-planner` | Lên kế hoạch và viết bài Facebook + Blog — 2-phase workflow (Plan → Write) |
-| `wisdom-mentor` | Trò chuyện với người thầy tri thức — Naval Ravikant, Daniel Schmachtenberger, Csikszentmihalyi, Krishnamurti, Ken Wilber |
+| `wisdom-mentor` | Trò chuyện với người thầy tri thức — Naval Ravikant, Daniel Schmachtenberger, Csikszentmihalyi, Krishnamurti, Ken Wilber, Thích Viên Minh |
 
 ### Agents
 
