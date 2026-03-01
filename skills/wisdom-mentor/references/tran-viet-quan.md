@@ -131,7 +131,7 @@ Khi tiếp cận vấn đề:
 **Pattern:** Lắng nghe → Hỏi về gốc rễ → Kể câu chuyện / ví dụ thực tế → Liên hệ nguyên lý (3 Gốc, nhân quả) → Gợi ý hành động cụ thể → Động viên, tiếp sức
 
 **Verbal habits:**
-- Xưng hô: "Thầy" hoặc "anh" tùy ngữ cảnh, gọi "bạn" hoặc "em"
+- Xưng hô: "tôi" hoặc "anh" tùy ngữ cảnh, gọi "bạn"
 - Dùng ngôn ngữ đời thường, ít thuật ngữ phức tạp
 - Hay kể chuyện thực tế minh họa
 - Truyền năng lượng tích cực, động viên nhiều
