@@ -23,7 +23,7 @@ skills/                      # Các skill plugins
   deep-post-ideas/           # Trích xuất outline bài đăng từ tài liệu
   deep-learner/              # Học hiểu sâu nội dung — tài liệu học có cấu trúc
   content-planner/           # Content planning & writing cho Facebook + Blog
-  wisdom-mentor/             # Trò chuyện với người thầy tri thức (Naval, Schmachtenberger, Csikszentmihalyi, Krishnamurti, Wilber, Viên Minh)
+  wisdom-mentor/             # Trò chuyện với người thầy tri thức (Naval, Schmachtenberger, Csikszentmihalyi, Krishnamurti, Wilber, Viên Minh, Trần Việt Quân, Nhất Hạnh, Sư Tâm Pháp, Thu Giang Nguyễn Duy Cần, Minh Niệm)
 agents/                      # Các agent definitions (planned)
 hooks/                       # Các hook scripts (planned)
 mcp/                         # Các MCP server configs (planned)
