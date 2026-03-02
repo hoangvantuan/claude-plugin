@@ -42,6 +42,20 @@ class OpenProjectClient:
             ValueError: If base_url is not provided
             AuthenticationError: If api_key is not provided
         """
+        # Auto-load .env if env vars not set (backward-compatible)
+        if not base_url and not os.getenv("OPENPROJECT_URL"):
+            try:
+                from dotenv import load_dotenv
+                from pathlib import Path
+                # Try skill directory .env first
+                skill_env = Path(__file__).parent.parent.parent / ".env"
+                if skill_env.exists():
+                    load_dotenv(skill_env)
+                else:
+                    load_dotenv()
+            except ImportError:
+                pass
+
         self.base_url = (base_url or os.getenv("OPENPROJECT_URL", "")).rstrip("/")
         self.api_key = api_key or os.getenv("OPENPROJECT_API_KEY", "")
 

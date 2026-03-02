@@ -1,6 +1,7 @@
 """Tests for OpenProject client."""
 
 import pytest
+from unittest.mock import patch
 from pytest_httpx import HTTPXMock
 
 from openproject_core import OpenProjectClient, check_connection
@@ -14,8 +15,10 @@ class TestClientInit:
         """Client raises ValueError when URL is missing."""
         monkeypatch.delenv("OPENPROJECT_URL", raising=False)
         monkeypatch.delenv("OPENPROJECT_API_KEY", raising=False)
-        with pytest.raises(ValueError, match="OPENPROJECT_URL required"):
-            OpenProjectClient(base_url="", api_key="test")
+        # Prevent auto load_dotenv from finding real .env
+        with patch("dotenv.load_dotenv", return_value=None):
+            with pytest.raises(ValueError, match="OPENPROJECT_URL required"):
+                OpenProjectClient(base_url="", api_key="test")
 
     def test_client_requires_api_key(self, monkeypatch):
         """Client raises AuthenticationError when API key is missing."""
@@ -247,7 +250,9 @@ class TestCheckConnectionStandalone:
         """Standalone check_connection handles missing URL."""
         monkeypatch.delenv("OPENPROJECT_URL", raising=False)
         monkeypatch.delenv("OPENPROJECT_API_KEY", raising=False)
-        result = check_connection(base_url="", api_key="testkey")
+        # Prevent auto load_dotenv from finding real .env
+        with patch("dotenv.load_dotenv", return_value=None):
+            result = check_connection(base_url="", api_key="testkey")
         assert result["ok"] is False
         assert "OPENPROJECT_URL" in result["error"]
 
