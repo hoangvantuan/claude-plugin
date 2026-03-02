@@ -1,0 +1,32 @@
+# npm ignore - prevents npm from falling back to .gitignore
+# which can cause __init__.py files to be excluded during npx skills install
+
+# Python artifacts (but NOT __init__.py)
+*.pyc
+__pycache__/
+
+# Virtual environments
+.venv/
+
+# Test caches
+.pytest_cache/
+
+# Environment and config files
+.env
+.openproject-config.yml
+
+# OS files
+.DS_Store
+
+# IDE / Editor
+.claude/
+.gemini/
+plans/
+
+# Build artifacts
+*.egg-info/
+dist/
+build/
+
+# Node
+node_modules/
