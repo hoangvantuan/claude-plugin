@@ -14,7 +14,6 @@ claude plugin install gh:hoangvantuan/shun-claude-plugin
 
 | Skill | Description |
 | --- | --- |
-| `openproject` | OpenProject API v3 integration |
 | `ghost-blog` | Ghost CMS blog management |
 | `outline-writer` | Content analysis & outline creation (presentation/blog/doc) |
 | `slidev-builder` | Slidev presentation builder from outline — theme selection, PDF export |

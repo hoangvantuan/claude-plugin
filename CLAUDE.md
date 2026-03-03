@@ -11,7 +11,6 @@ Dự án phát triển các plugin cho Claude Code, bao gồm: **skills**, **age
 ```
 .claude-plugin/plugin.json   # Plugin manifest
 skills/                      # Các skill plugins
-  openproject/               # OpenProject API v3 integration
   ghost-blog/                # Ghost CMS blog management
   outline-writer/            # Content analysis & outline creation (presentation/blog/doc)
   slidev-builder/            # Slidev presentation builder from outline
@@ -64,7 +63,7 @@ Khi thêm, xóa, hoặc đổi tên bất kỳ tính năng nào (skill, agent, m
 Ví dụ cấu trúc reference:
 
 ```
-skills/openproject/
+skills/ghost-blog/
   SKILL.md              # Prompt chính — load khi skill được gọi
   docs/api-reference.md # Chi tiết API — load khi cần tra cứu
   docs/examples.md      # Ví dụ — load khi cần tham khảo
