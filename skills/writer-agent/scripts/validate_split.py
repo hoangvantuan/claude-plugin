@@ -21,7 +21,7 @@ import json
 import re
 import sys
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Set, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 
 
 def parse_plan_file(filepath: str) -> Dict[str, Any]:
@@ -131,6 +131,9 @@ def parse_plan_file(filepath: str) -> Dict[str, Any]:
 def validate_no_overlap(splits: List[Dict[str, Any]]) -> Tuple[bool, List[str]]:
     """Check that no line appears in multiple parts.
 
+    Uses sorted interval comparison: O(k log k) where k = number of splits,
+    instead of O(n) where n = total lines across all splits.
+
     Args:
         splits: List of split info dicts with line_start and line_end
 
@@ -138,21 +141,25 @@ def validate_no_overlap(splits: List[Dict[str, Any]]) -> Tuple[bool, List[str]]:
         Tuple of (is_valid, list of issues)
     """
     issues = []
-    covered_lines: Dict[int, str] = {}  # line -> part_id
 
-    for split in splits:
-        part_id = split.get("part", "unknown")
-        line_start = split.get("line_start", 0)
-        line_end = split.get("line_end", 0)
+    # Build sorted intervals: (start, end, part_id)
+    intervals = sorted(
+        (s.get("line_start", 0), s.get("line_end", 0), s.get("part", "unknown"))
+        for s in splits
+    )
 
-        for line in range(line_start, line_end + 1):
-            if line in covered_lines:
-                issues.append(
-                    f"OVERLAP: Line {line} appears in both "
-                    f"{covered_lines[line]} and {part_id}"
-                )
-            else:
-                covered_lines[line] = part_id
+    # Check adjacent intervals for overlap
+    for i in range(1, len(intervals)):
+        prev_start, prev_end, prev_id = intervals[i - 1]
+        curr_start, curr_end, curr_id = intervals[i]
+
+        if curr_start <= prev_end:
+            overlap_start = curr_start
+            overlap_end = min(prev_end, curr_end)
+            issues.append(
+                f"OVERLAP: Lines {overlap_start}-{overlap_end} appear in both "
+                f"{prev_id} and {curr_id}"
+            )
 
     return len(issues) == 0, issues
 
@@ -163,6 +170,8 @@ def validate_no_miss(
 ) -> Tuple[bool, List[str]]:
     """Check that all expected lines are covered.
 
+    Uses sorted interval gap detection: O(k log k) where k = number of splits.
+
     Args:
         splits: List of split info dicts with line_start and line_end
         expected_range: Optional (start, end) tuple for expected line range
@@ -170,55 +179,48 @@ def validate_no_miss(
     Returns:
         Tuple of (is_valid, list of issues)
     """
-    issues = []
-
     if not splits:
         return True, []
 
-    # Collect all covered lines
-    covered_lines: Set[int] = set()
-    for split in splits:
-        line_start = split.get("line_start", 0)
-        line_end = split.get("line_end", 0)
-        covered_lines.update(range(line_start, line_end + 1))
+    # Build sorted intervals
+    intervals = sorted(
+        (s.get("line_start", 0), s.get("line_end", 0))
+        for s in splits
+    )
 
     # Determine expected range
     if expected_range:
         expected_start, expected_end = expected_range
     else:
-        # Infer from splits
-        all_starts = [s.get("line_start", 0) for s in splits]
-        all_ends = [s.get("line_end", 0) for s in splits]
-        expected_start = min(all_starts) if all_starts else 0
-        expected_end = max(all_ends) if all_ends else 0
+        expected_start = min(s for s, _ in intervals)
+        expected_end = max(e for _, e in intervals)
 
-    expected_lines = set(range(expected_start, expected_end + 1))
-    missing_lines = expected_lines - covered_lines
+    # Find gaps between sorted intervals
+    missing_ranges = []
 
-    if missing_lines:
-        # Group consecutive missing lines for cleaner output
-        sorted_missing = sorted(missing_lines)
-        ranges = []
-        start = sorted_missing[0]
-        prev = start
+    # Check gap before first interval
+    if intervals[0][0] > expected_start:
+        missing_ranges.append(f"{expected_start}-{intervals[0][0] - 1}")
 
-        for line in sorted_missing[1:]:
-            if line == prev + 1:
-                prev = line
+    # Check gaps between consecutive intervals
+    for i in range(1, len(intervals)):
+        prev_end = intervals[i - 1][1]
+        curr_start = intervals[i][0]
+        if curr_start > prev_end + 1:
+            gap_start = prev_end + 1
+            gap_end = curr_start - 1
+            if gap_start == gap_end:
+                missing_ranges.append(str(gap_start))
             else:
-                if start == prev:
-                    ranges.append(str(start))
-                else:
-                    ranges.append(f"{start}-{prev}")
-                start = line
-                prev = line
+                missing_ranges.append(f"{gap_start}-{gap_end}")
 
-        if start == prev:
-            ranges.append(str(start))
-        else:
-            ranges.append(f"{start}-{prev}")
+    # Check gap after last interval
+    if intervals[-1][1] < expected_end:
+        missing_ranges.append(f"{intervals[-1][1] + 1}-{expected_end}")
 
-        issues.append(f"MISS: Lines not covered: {', '.join(ranges)}")
+    issues = []
+    if missing_ranges:
+        issues.append(f"MISS: Lines not covered: {', '.join(missing_ranges)}")
 
     return len(issues) == 0, issues
 
@@ -257,24 +259,6 @@ def validate_section_coverage(articles: List[Dict[str, Any]]) -> Tuple[bool, Lis
     return len(issues) == 0, issues
 
 
-def validate_min_part_size(
-    splits: List[Dict[str, Any]],
-    min_words: int = 0,  # No minimum - content coverage > word count
-) -> Tuple[bool, List[str]]:
-    """Check part word counts (informational only, no minimum enforced).
-
-    Args:
-        splits: List of split info dicts
-        min_words: Deprecated, kept for compatibility (default 0 = no check)
-
-    Returns:
-        Tuple of (is_valid, list of info messages)
-    """
-    # No minimum word count validation - prioritize content coverage
-    # This function now only provides informational output
-    return True, []
-
-
 def validate_split(filepath: str, content_path: Optional[str] = None) -> Dict[str, Any]:
     """Validate article splitting from _plan.md.
 
@@ -302,11 +286,7 @@ def validate_split(filepath: str, content_path: Optional[str] = None) -> Dict[st
         miss_valid, miss_issues = validate_no_miss(result["splits"])
         all_issues.extend(miss_issues)
 
-        # 3. Validate minimum part size
-        _, size_warnings = validate_min_part_size(result["splits"])
-        all_warnings.extend(size_warnings)
-
-    # 4. Validate section coverage across articles
+    # 3. Validate section coverage across articles
     section_valid, section_issues = validate_section_coverage(result["articles"])
     all_issues.extend(section_issues)
 

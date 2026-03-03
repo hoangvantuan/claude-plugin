@@ -51,14 +51,21 @@ except ImportError:
             return False
         return "youtube.com/watch" in url or "youtu.be/" in url
 
-# Check Docling availability
-try:
-    from docling.document_converter import DocumentConverter, PdfFormatOption
-    from docling.datamodel.pipeline_options import PdfPipelineOptions
-    from docling.datamodel.base_models import InputFormat, ConversionStatus
-    DOCLING_AVAILABLE = True
-except ImportError:
-    DOCLING_AVAILABLE = False
+# Docling: lazy-imported inside convert_with_docling() to avoid 3-8s startup penalty
+# when processing EPUB/YouTube (which don't need Docling)
+DOCLING_AVAILABLE = None  # None = not yet checked, True/False after check
+
+
+def _check_docling() -> bool:
+    """Check Docling availability (lazy, cached)."""
+    global DOCLING_AVAILABLE
+    if DOCLING_AVAILABLE is None:
+        try:
+            import docling.document_converter  # noqa: F401
+            DOCLING_AVAILABLE = True
+        except ImportError:
+            DOCLING_AVAILABLE = False
+    return DOCLING_AVAILABLE
 
 
 def get_default_output_dir(input_path: str) -> Path:
@@ -205,10 +212,14 @@ def convert_with_docling(
             doc = None  # No Docling doc for EPUB
 
         else:
-            # Docling handling for other formats
-            if not DOCLING_AVAILABLE:
+            # Docling handling for other formats (lazy import)
+            if not _check_docling():
                 result["error"] = "Docling not installed. Run: pip install docling"
                 return result
+
+            from docling.document_converter import DocumentConverter, PdfFormatOption
+            from docling.datamodel.pipeline_options import PdfPipelineOptions
+            from docling.datamodel.base_models import InputFormat, ConversionStatus
 
             # Configure PDF pipeline options
             pipeline_options = PdfPipelineOptions(
@@ -240,30 +251,21 @@ def convert_with_docling(
             youtube_title = None  # Not YouTube
 
         # Generate output path (unified: always content.md)
+        # Cache URL title to avoid duplicate HTTP fetch
+        cached_title = None
         if source.startswith(("http://", "https://")):
-            # For URLs, fetch page title for better folder naming
-            url_title = fetch_url_title(source)
-            if url_title:
-                slug = generate_slug(url_title)
-            else:
-                # Fallback to URL path stem
-                from urllib.parse import urlparse
-                parsed = urlparse(source)
-                slug = generate_slug(Path(parsed.path).stem or "document")
+            cached_title = extract_title_from_path(source)
+            slug = generate_slug(cached_title)
 
             if output_dir:
                 out_dir = Path(output_dir)
             else:
-                # Default: docs/generated/{slug}-{timestamp}/input-handling/
                 timestamp = datetime.now().strftime("%y%m%d-%H%M")
                 out_dir = get_output_base() / f"{slug}-{timestamp}" / "input-handling"
             out_dir.mkdir(parents=True, exist_ok=True)
             output_path = out_dir / "content.md"
         else:
             output_path = get_output_path(source, output_dir)
-
-        # Ensure output directory exists
-        output_path.parent.mkdir(parents=True, exist_ok=True)
 
         # Write markdown file
         output_path.write_text(markdown_content, encoding="utf-8")
@@ -273,6 +275,8 @@ def convert_with_docling(
             title = youtube_title
         elif is_epub and epub_title:
             title = epub_title
+        elif cached_title:
+            title = cached_title
         else:
             title = extract_title_from_path(source)
 
@@ -340,10 +344,11 @@ def main():
     source = sys.argv[1]
     output_dir = sys.argv[2] if len(sys.argv) > 2 else None
 
-    # Check EPUB first (doesn't require Docling)
+    # Check EPUB/YouTube first (doesn't require Docling)
     is_epub = source.lower().endswith('.epub')
+    is_yt = is_youtube_url(source)
 
-    if not is_epub and not DOCLING_AVAILABLE:
+    if not is_epub and not is_yt and not _check_docling():
         print(json.dumps({
             "success": False,
             "error": "Docling not installed. Run: pip install docling"

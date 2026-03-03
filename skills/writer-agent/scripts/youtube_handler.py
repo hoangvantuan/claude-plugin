@@ -225,15 +225,6 @@ def _scrape_youtube_metadata(video_id: str) -> tuple[Optional[str], Optional[str
     return None, None
 
 
-def _scrape_youtube_title(video_id: str) -> Optional[str]:
-    """Fallback: scrape only title from YouTube page HTML.
-
-    Kept for backward compatibility.
-    """
-    title, _ = _scrape_youtube_metadata(video_id)
-    return title
-
-
 def parse_chapters_from_description(description: str) -> list[tuple[int, str]]:
     """Parse timestamp chapters from video description.
 
