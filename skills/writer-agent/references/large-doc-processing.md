@@ -57,7 +57,7 @@ direct_path.eligible AND direct_path.capacity_ok?
 └─ NOT eligible → Use tier_recommendation.tier
 ```
 
-**Examples:** See [SKILL.md §3.0](../SKILL.md#30-processing-path-selection) for detailed examples.
+**Examples:** See [tier-direct-path.md](tier-direct-path.md#step-3-analyze) for Direct Path and tier workflow files for detailed examples.
 
 ### Tier 1: Direct Source Read (20K-50K words)
 
@@ -352,7 +352,7 @@ Each part reports its sections. Main agent aggregates (same status label format 
 
 ## Prefetch Strategy
 
-> **📖 Referenced from**: [SKILL.md Step 3.1.1](../SKILL.md#311-tier-3-fast-path-100k-words) - Tier 3 Fast Path uses prefetch to parallelize analysis.
+> **📖 Referenced from**: [tier-3-workflow.md](tier-3-workflow.md) - Tier 3 Fast Path uses prefetch to parallelize analysis.
 
 Parallelize analysis to reduce wait time:
 
@@ -389,4 +389,4 @@ Result: ~15-20% faster than sequential
 | Static (old) | Wait for batch N to complete → spawn batch N+1 | Baseline |
 | Continuous | Spawn next immediately when any slot frees | +25-40% |
 
-> See [SKILL.md §4.2](../SKILL.md#42-content-articles) for continuous batching pseudocode with dynamic concurrency adjustment.
+> See [shared-article-writing.md](shared-article-writing.md) and tier workflow files for continuous batching pseudocode with dynamic concurrency adjustment.

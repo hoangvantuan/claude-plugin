@@ -60,34 +60,7 @@ Tier 3: inline glossary ~300 words (larger than T1 due to bigger documents). Emb
 
 ## Step 4: Write Articles
 
-### 4.0a Pre-read Voice & Structure (BẮT BUỘC)
-
-```python
-voice_content = Read(f"{VOICES_DIR}/{voice}-compact.md")
-structure_content = Read(f"{STRUCTURES_DIR}/{structure}-compact.md")
-```
-
-### 4.0b Subagent Context Budget Rules
-
-1. **CONTEXT RULES** — embed in prompt
-2. **run_in_background: true** — dùng cho parallel writing
-3. **Summary files (.done)** — subagent ghi `{outputPath}.done`
-
-### 4.0b.1 Result Collection Protocol (BẮT BUỘC)
-
-```python
-Bash("ls articles/*.done")
-Read("articles/01-intro.md.done")
-# KHÔNG dùng TaskOutput hay tail .output files
-```
-
-### 4.0c State Tracking
-
-Create/update `analysis/_state.json`. See [retry-workflow.md](retry-workflow.md).
-
-### 4.1 Overview Article (Phase 1)
-
-Write `00-overview.md` in main context. Template: `templates/overview-template.md`. Target: 300-400 words.
+> **📖 Shared steps 4.0a-4.0c, 4.1, 4.3-4.6**: See [shared-article-writing.md](shared-article-writing.md). Below is Tier 3-specific content only.
 
 ### 4.2 Content Articles (Tier 3 — Fast Path)
 
@@ -101,26 +74,4 @@ Task tool:
 - prompt: [Use Tier 3 Compact template with {voiceContent}, {structureContent}, inlineGlossary ~300 words]
 ```
 
-### 4.3 SoT Pattern (Long Articles)
-
-When output >2000 words AND >=5 subsections. See [article-writer-prompt.md#sot-pattern](article-writer-prompt.md#sot-pattern-long-articles-2000-words).
-
-### 4.4 Coverage Tracking
-
-Subagent returns inline: `COVERAGE: S01:ok S02*:faithful S03:ok`
-Main agent enriches to 4-column.
-
-### 4.5 Critical Sections
-
-⭐ sections: faithful rewrite 100% meaning. Source read trực tiếp via line ranges.
-
-### 4.6 Quality Gate: Articles Complete
-
-Verify từ `.done` files:
-- [ ] All articles written
-- [ ] All RESULT: PASS
-- [ ] KEY_TAKEAWAY collected for Step 5.1
-
 **Continuous Batching**: max_concurrent = 2 (larger chunks ~10K words). Dynamic: >8K → 2, <2K → 5.
-
-**Load [steps-5-6-synthesize-verify.md](steps-5-6-synthesize-verify.md) for Steps 5-6.**

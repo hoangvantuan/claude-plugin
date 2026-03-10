@@ -188,4 +188,4 @@ Before spawning subagents, verify:
 - [ ] Subagent prompts include correct line ranges
 - [ ] `content.md` first read at Step 3.4 (glossary) or Step 4 (subagents)
 
-> **📖** Tier-specific context strategies: See [SKILL.md §2.6](../SKILL.md#step-26-tier-reference-table) and [§3.5](../SKILL.md#35-context-files).
+> **📖** Tier-specific context strategies: See [SKILL.md §2.6](../SKILL.md#step-26-tier-reference-table) and [tier-2-workflow.md §3.5](tier-2-workflow.md#35-context-files-tier-2-only).

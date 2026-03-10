@@ -160,7 +160,7 @@ Partial output saved to: {output_path}
 
 ## State Persistence
 
-> **Note**: `_state.json` is **recommended**. Without it, recovery from failures requires re-running from the beginning. See [SKILL.md Step 4.0](../SKILL.md#40-state-tracking-recommended).
+> **Note**: `_state.json` is **recommended**. Without it, recovery from failures requires re-running from the beginning. See [shared-article-writing.md Step 4.0c](shared-article-writing.md#40c-state-tracking-recommended).
 
 ### Save State After Each Step
 

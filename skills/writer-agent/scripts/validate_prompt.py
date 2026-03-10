@@ -24,23 +24,35 @@ from typing import Any, Dict, List
 # Required variables for ALL tiers
 REQUIRED_ALL = [
     "{title}",
-    "{style}",
     "{outputPath}",
     "{seriesList}",
     "{target_words}",
     "{detail_level}",
 ]
 
+# Required content blocks for ALL tiers
+REQUIRED_BLOCKS = [
+    "VOICE:",
+    "STRUCTURE:",
+    "SERIES_CONTEXT:",
+    "WRITING_RULES",
+    "ANTI-AI WRITING",
+    "RETURN FORMAT",
+]
+
 # Additional required variables per tier
 REQUIRED_TIER = {
     1: {
-        "all": ["{sourcePath}", "{start}", "{end}", "{inlineGlossary}"],
+        "all": ["{sourcePath}", "{start}", "{end}"],
+        "blocks": ["TERMS"],
     },
     2: {
         "one_of": ["{contextFilePath}", "{sourcePath}"],
+        "blocks": ["DEPTH RULES"],
     },
     3: {
-        "all": ["{sourcePath}", "{start}", "{end}", "{inlineGlossary}"],
+        "all": ["{sourcePath}", "{start}", "{end}"],
+        "blocks": ["TERMS"],
     },
 }
 
@@ -67,6 +79,11 @@ def validate_prompt(prompt_text: str, tier: int) -> Dict[str, Any]:
         if var not in prompt_text:
             result["missing"].append(var)
 
+    # Check common required blocks
+    for block in REQUIRED_BLOCKS:
+        if block not in prompt_text:
+            result["missing"].append(f"block:{block}")
+
     # Check tier-specific variables
     tier_reqs = REQUIRED_TIER.get(tier, {})
 
@@ -81,6 +98,12 @@ def validate_prompt(prompt_text: str, tier: int) -> Dict[str, Any]:
             result["missing"].append(
                 f"one of {tier_reqs['one_of']}"
             )
+
+    # Check tier-specific blocks
+    if "blocks" in tier_reqs:
+        for block in tier_reqs["blocks"]:
+            if block not in prompt_text:
+                result["warnings"].append(f"missing block:{block}")
 
     result["passed"] = len(result["missing"]) == 0
     return result

@@ -38,7 +38,7 @@ direct_path.eligible?
 
 ## 3. Context Extraction Strategy (UPDATED v1.11.0)
 
-> **📖 Direct Path & Tier details**: See [SKILL.md §3.0](../SKILL.md#30-processing-path-selection)
+> **📖 Direct Path & Tier details**: See [tier-direct-path.md](tier-direct-path.md#step-3-analyze) and tier workflow files
 
 ```
 Starting Step 3.5 (Context Files)
@@ -173,4 +173,4 @@ Sau khi tất cả articles xong:
 
 ## 9. Inline Glossary Strategy
 
-> See [SKILL.md §3.4](../SKILL.md#34-shared-context-inline-glossary) for full glossary strategy by tier and [context-optimization.md](context-optimization.md#glossary-extraction-algorithm-step-34) for extraction algorithm.
+> See tier workflow files for glossary strategy by tier (Tier 1: inline ~200 words, Tier 2: `_glossary.md` ~600 words, Tier 3: inline ~300 words) and [context-optimization.md](context-optimization.md#glossary-extraction-algorithm-step-34) for extraction algorithm.

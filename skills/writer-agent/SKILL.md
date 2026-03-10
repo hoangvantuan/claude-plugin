@@ -1,6 +1,6 @@
 ---
 name: writer-agent
-description: Transform documents into styled article series. Analyze input (md, txt, pdf, docx, pptx, xlsx, html, epub, images, url), extract core ideas, decompose into logical sections, write articles with user-selectable styles (professional, casual, custom), synthesize into organized output. Uses Docling for high-quality document conversion. Handles large documents with hierarchical summarization. Output to docs/generated/.
+description: Viết bài từ tài liệu - chuyển PDF, DOCX, EPUB, URL, YouTube, hoặc text thành series bài viết tiếng Việt theo style tùy chọn (7 presets hoặc custom 5 dimensions). Hỗ trợ tài liệu từ vài trang đến 100K+ words với tier-based processing. Output tại docs/generated/.
 disable-model-invocation: true
 version: 2.0.0
 license: MIT
@@ -23,6 +23,7 @@ Transform documents and URLs into styled article series.
 | [context-extractor-prompt.md](references/context-extractor-prompt.md) | Context extraction template        | Step 3 (Tier 2)    | -  | -  | ✓  | -  |
 | [context-optimization.md](references/context-optimization.md)         | Context optimization anti-patterns | Step 3.1           | -  | ✓  | ✓  | ✓  |
 | [detail-levels.md](references/detail-levels.md)                       | Output detail level options        | Step 2.5           | ✓  | ✓  | ✓  | ✓  |
+| [shared-article-writing.md](references/shared-article-writing.md)     | Shared Steps 4.0-4.6              | Step 4             | -  | ✓  | ✓  | ✓  |
 
 **DP** = Direct Path | **T1-T3** = Tier 1-3 | **✓** = Load | **-** = Skip
 
@@ -65,59 +66,39 @@ Input → Convert → Style/Structure → Plan → Write(parallel) → Synthesiz
 
 ## Step 0: Resolve Skill Paths (BẮT BUỘC)
 
-**PHẢI thực hiện TRƯỚC mọi bước khác.** Skill có thể nằm ở thư mục thường hoặc thư mục ẩn (dotdir).
+**PHẢI thực hiện TRƯỚC mọi bước khác.**
 
-> **LƯU Ý**: Glob mặc định **bỏ qua thư mục ẩn** (bắt đầu bằng `.`). Khi skill được cài qua plugin, nó nằm trong `.agents/skills/` — Glob với `**/` sẽ KHÔNG tìm được.
-
-**Bước 1**: Tìm `wa-convert` theo thứ tự ưu tiên (dừng ngay khi tìm thấy):
+**Bước 1**: Tìm và chạy `wa-env` script:
 
 ```
 # 1a. Glob thư mục thường (nhanh nhất)
-Glob("**/writer-agent/scripts/wa-convert")
+Glob("**/writer-agent/scripts/wa-env")
 
-# 1b. Nếu 1a không có kết quả → tìm trong các dotdir phổ biến
-Glob(".agent/**/wa-convert")
-Glob(".agents/**/wa-convert")
-Glob(".claude/**/wa-convert")
+# 1b. Nếu 1a không có → tìm trong dotdirs (plugin install vào .agents/)
+Glob(".agent*/**/wa-env")
+Glob(".claude/**/wa-env")
 
-# 1c. Nếu 1b vẫn không có → dùng find (tìm cả dotdir)
-Bash: find . -path "*/writer-agent/scripts/wa-convert" -not -path "*/.venv/*" 2>/dev/null | head -1
+# 1c. Fallback: find (tìm cả dotdir)
+Bash: find . -path "*/writer-agent/scripts/wa-env" -not -path "*/.venv/*" 2>/dev/null | head -1
 ```
 
-**Bước 2**: Từ kết quả, xác định các đường dẫn:
+**Bước 2**: Chạy `wa-env` để lấy tất cả paths:
 
-```
-SCRIPTS_DIR    = directory chứa wa-convert  (ví dụ: /Users/x/.agents/skills/writer-agent/scripts)
-SKILL_DIR      = parent của SCRIPTS_DIR     (ví dụ: /Users/x/.agents/skills/writer-agent)
-VOICES_DIR     = SKILL_DIR/voices
-STRUCTURES_DIR = SKILL_DIR/structures
-IDENTITIES_DIR = SKILL_DIR/identities
-AUDIENCES_DIR  = SKILL_DIR/audiences
-EMOTIONS_DIR   = SKILL_DIR/emotional_maps
-TEMPLATES_DIR  = SKILL_DIR/templates
+```bash
+source {path_to_wa-env}
+# Output: SCRIPTS_DIR, SKILL_DIR, VOICES_DIR, STRUCTURES_DIR,
+#         IDENTITIES_DIR, AUDIENCES_DIR, EMOTIONS_DIR, TEMPLATES_DIR, REFERENCES_DIR
 ```
 
-**Bước 3**: Ghi nhớ các đường dẫn này. Tất cả commands trong các bước sau PHẢI dùng đường dẫn đã resolve, KHÔNG dùng relative path.
-
-**Ví dụ**: Nếu tìm thấy `/Users/x/.agents/skills/writer-agent/scripts/wa-convert`:
-- Gọi convert: `/Users/x/.agents/skills/writer-agent/scripts/wa-convert file.pdf`
-- Đọc voice: `/Users/x/.agents/skills/writer-agent/voices/teacher.md`
-- Đọc structure: `/Users/x/.agents/skills/writer-agent/structures/building-blocks.md`
-
-> **QUAN TRỌNG**: KHÔNG BAO GIỜ hardcode path cố định, luôn dùng đường dẫn tuyệt đối từ Bước 1.
-
-**Bước 4 (Validation)**: Verify paths đã resolve:
+**Bước 3**: Verify nhanh — nếu bất kỳ check nào fail → STOP:
 
 ```python
-# PHẢI verify trước khi tiếp tục Step 1
 assert Glob(f"{SCRIPTS_DIR}/wa-convert")   # Script chính
 assert Glob(f"{VOICES_DIR}/*.md")          # Voice files
-assert Glob(f"{STRUCTURES_DIR}/*.md")      # Structure files
-assert Glob(f"{TEMPLATES_DIR}/*.md")       # Templates
-# Nếu BẤT KỲ assert nào fail → STOP, kiểm tra lại Bước 1-2
 ```
 
-> **FAIL CONDITION**: Nếu cả 3 cách tìm (1a, 1b, 1c) đều không tìm thấy `wa-convert` → STOP workflow hoàn toàn. KHÔNG tự suy đoán paths.
+> **FAIL CONDITION**: Nếu không tìm thấy `wa-env` → STOP workflow. KHÔNG tự suy đoán paths.
+> **QUAN TRỌNG**: Tất cả commands sau PHẢI dùng đường dẫn tuyệt đối từ wa-env.
 
 ## Step 1: Input Handling
 
