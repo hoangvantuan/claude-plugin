@@ -19,6 +19,7 @@ claude plugin install gh:hoangvantuan/shun-claude-plugin
 | `slidev-builder` | Slidev presentation builder from outline — theme selection, PDF export |
 | `writer-agent` | Document transformation and article writing (v2.0.0 — tier workflows, preset presets, enhanced insights) |
 | `prompt-generator` | Meta-prompting — tạo prompt chất lượng cao, giảm hallucination |
+| `prompt-generator-v2` | KERNEL framework — prompt engineering nâng cao (94% first-try success, prompt chaining, verification criteria) |
 | `viral-post-creator` | Tạo bài đăng viral trên social media (3 archetype) |
 | `youtube-title-generator` | Tạo tiêu đề YouTube hấp dẫn từ ý tưởng nội dung |
 | `creative-thought-partner` | Đối tác tư duy sáng tạo — brainstorming & insight discovery |

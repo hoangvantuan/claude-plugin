@@ -16,6 +16,7 @@ skills/                      # Các skill plugins
   slidev-builder/            # Slidev presentation builder from outline
   writer-agent/              # Document transformation and article writing
   prompt-generator/          # Meta-prompting — tạo prompt chất lượng cao
+  prompt-generator-v2/       # KERNEL framework — prompt engineering nâng cao (Keep simple, Easy to verify, Reproducible, Narrow, Explicit, Logical)
   viral-post-creator/        # Tạo bài đăng viral trên social media
   youtube-title-generator/   # Tạo tiêu đề YouTube hấp dẫn
   creative-thought-partner/  # Đối tác tư duy sáng tạo — brainstorming
