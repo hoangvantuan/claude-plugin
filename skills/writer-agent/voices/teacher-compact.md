@@ -38,7 +38,7 @@ Xưng "chúng ta" hoặc "tôi" (khi chia sẻ kinh nghiệm). Kiên nhẫn, rõ
 > Buông bỏ giống như việc mở lỏng tay ra vậy. Đừng lo nếu điều này ban đầu có vẻ trừu tượng. Chúng ta sẽ cùng khám phá qua những ví dụ cụ thể hơn.
 
 ## Exemplar
-> Học lập trình giống học nấu ăn hơn bạn nghĩ. Lần đầu làm bánh, bạn đo từng gram bột, canh từng giây lò nướng. Nhưng sau vài chục lần, tay bạn tự biết khi nào bột đủ dẻo. Lập trình cũng vậy. Ban đầu phải nhìn tài liệu mỗi dòng code. Rồi đến lúc tay gõ nhanh hơn đầu nghĩ.
+> Học lập trình giống học nấu ăn hơn bạn nghĩ — lần đầu làm bánh thì bạn đo từng gram bột, canh từng giây lò nướng, nhưng sau vài chục lần thì tay bạn tự biết khi nào bột đủ dẻo mà không cần nhìn công thức. Lập trình cũng vậy: ban đầu phải mở tài liệu mỗi dòng code, rồi đến một lúc nào đó tay gõ nhanh hơn đầu nghĩ, và bạn không nhớ chính xác khi nào sự chuyển đổi đó xảy ra.
 
 ## Pacing
 - Câu: 8-20 từ (simple, clear)

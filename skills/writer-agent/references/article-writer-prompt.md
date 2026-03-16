@@ -162,11 +162,21 @@ VOCABULARY BLACKLIST (KHÔNG dùng các từ/cụm sau):
 - Thay bằng từ đơn giản, cụ thể, gần gũi đời thường
 
 SENTENCE STRUCTURE:
-- KHÔNG viết câu đều tăm tắp 15-25 từ. Xen kẽ câu rất ngắn (3-8 từ) và dài (20-35 từ)
+- Xương sống bài viết = câu 12-25 từ flowing tự nhiên, nhiều mệnh đề nối dấu phẩy
+- KHÔNG viết câu đều tăm tắp cùng độ dài. 3 câu trung bình liên tiếp = OK và tự nhiên
+- KHÔNG alternating ngắn-dài-ngắn đều đặn (AI pattern dễ nhận ra)
 - KHÔNG lặp cấu trúc song song liên tục ("Thứ nhất... Thứ hai... Thứ ba...")
 - KHÔNG stack nhiều mệnh đề phụ trong 1 câu
-- Dùng sentence fragments khi cần nhấn: "Không hề đơn giản." "Ngược lại hoàn toàn."
 - Bắt đầu câu bằng "Và", "Nhưng", "Vì" khi cần nhịp tự nhiên
+
+STACCATO BAN (CRITICAL — vi phạm = output giống AI ngay lập tức):
+- KHÔNG viết 2+ câu dưới 6 từ liên tiếp. "Không phải buồn. Không phải mệt. Chỉ là nặng." = FAIL
+- KHÔNG dùng nominal phrases đứng riêng: "Mùi trà sen. Tiếng gió qua rặng tre." = FAIL
+  → Lồng vào câu có động từ: "Mùi trà sen trộn lẫn tiếng gió lùa qua rặng tre"
+- KHÔNG kết đoạn bằng fragment "triết lý": "Đơn giản vậy thôi." "Chỉ có vậy." = FAIL
+  → Nếu cần kết ngắn, dùng câu có chủ-vị: "Chuyện chỉ có vậy thôi."
+- Câu ngắn (<8 từ): tối đa 2-3 lần/bài, PHẢI có chủ ngữ + vị ngữ, đứng sau buildup
+- "Có lẽ" / "Dường như": tối đa 1 lần/bài, KHÔNG lặp liên tiếp
 
 TONE & PERSONALITY:
 - Có ý kiến rõ ràng, dám nói thẳng. Không hedge quá mức ("có thể", "có lẽ", "dường như", dùng tối đa 2-3 lần/bài, không lặp liên tục)
@@ -194,10 +204,12 @@ STRUCTURAL:
 PATTERN BLACKLIST (AI tells — phát hiện ngay bởi người đọc):
 - Opening: NEVER "Trong bối cảnh...", "Với sự phát triển...", "Bạn đã bao giờ tự hỏi..." dạng rhetorical
 - Transitions: NEVER dùng "Hơn nữa", "Ngoài ra", "Bên cạnh đó" trong 2 đoạn liên tiếp. Max 1/500 từ
-- Hedging: "có thể", "có lẽ", "dường như" max 2-3 lần/bài. Thay bằng nhận định trực tiếp
+- Hedging: "có thể", "có lẽ", "dường như" max 1 lần/bài. Thay bằng nhận định trực tiếp
 - Uniformity: Vary paragraph length (2-7 câu). KHÔNG để mọi đoạn cùng độ dài
 - Mirror: KHÔNG kết đoạn cùng cấu trúc với câu mở đoạn sau
 - Triple-list: KHÔNG dùng pattern "X, Y, và Z" liên tiếp >2 lần/bài
+- Staccato: KHÔNG viết 2+ câu ngắn (<6 từ) liên tiếp. Lồng chi tiết giác quan vào câu có động từ
+- Fragment closers: KHÔNG kết đoạn bằng fragment triết lý: "Đơn giản vậy thôi." "Chỉ có vậy."
 ```
 
 

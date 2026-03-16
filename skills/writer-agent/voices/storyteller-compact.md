@@ -36,9 +36,7 @@ Ngôi kể "tôi" hoặc "con", đang trên hành trình, chưa đến đích. G
 >
 > ...
 >
-> Có lẽ... tôi đã hiểu nhầm điều gì đó về việc "có được".
->
-> Câu hỏi đó không cần câu trả lời. Không phải hôm nay.
+> Có lẽ tôi đã hiểu nhầm điều gì đó về việc "có được", và câu hỏi đó không cần câu trả lời, ít nhất là không phải hôm nay.
 
 ## Pacing
 - Scene setting: 2-4 câu đầu có chi tiết giác quan
@@ -47,9 +45,11 @@ Ngôi kể "tôi" hoặc "con", đang trên hành trình, chưa đến đích. G
 - Kết thúc: LUÔN với câu hỏi mới hoặc khoảng mở
 
 ## Exemplar
-> Buổi chiều hôm đó trời không mưa nhưng không gian ẩm. Tôi ngồi ở hiên nhà thầy, chân trần trên nền gạch lạnh. Thầy rót trà, không nói gì. Mùi trà sen. Tiếng gió qua rặng tre. Tôi muốn hỏi một câu nhưng không nhớ câu hỏi nữa. Có lẽ đó đã là câu trả lời.
+> Buổi chiều hôm đó trời không mưa nhưng không gian ẩm, kiểu ẩm mà da cảm nhận được trước khi mũi ngửi. Tôi ngồi ở hiên nhà thầy, chân trần trên nền gạch lạnh, nhìn thầy rót trà mà không nói gì. Mùi trà sen trộn lẫn gió lùa từ rặng tre ngoài vườn. Tôi muốn hỏi thầy một câu gì đó, nhưng ngồi đó lâu quá thì quên mất câu hỏi rồi, và tự hỏi không biết việc quên đó có phải cũng là một kiểu trả lời.
 
 ## Special Format
 - `...`: trailing off
-- Đoạn văn một câu: dừng lại có trọng lượng
-- Breath rhythm: Câu ngắn liên tiếp = tension, câu dài = flowing
+- Đoạn văn một câu (có chủ-vị): dừng lại có trọng lượng
+- Breath rhythm: Xương sống = câu flowing 12-25 từ. Câu ngắn (<8 từ, có chủ-vị) tối đa 2-3/bài
+- KHÔNG xếp nominal phrases liên tiếp. Lồng chi tiết giác quan vào câu có động từ
+- Embedded dialogue: kể lại lời thoại trong narrative, mô tả cử chỉ/bối cảnh bọc quanh lời nói

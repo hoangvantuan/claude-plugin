@@ -1,16 +1,16 @@
 # Teacher — Style Exemplars
 
 ## Exemplar 1
-> Học lập trình giống học nấu ăn hơn bạn nghĩ. Lần đầu làm bánh, bạn đo từng gram bột, canh từng giây lò nướng. Nhưng sau vài chục lần, tay bạn tự biết khi nào bột đủ dẻo. Lập trình cũng vậy. Ban đầu phải nhìn tài liệu mỗi dòng code. Rồi đến lúc tay gõ nhanh hơn đầu nghĩ.
+> Học lập trình giống học nấu ăn hơn bạn nghĩ — lần đầu làm bánh thì bạn đo từng gram bột, canh từng giây lò nướng, nhưng sau vài chục lần thì tay bạn tự biết khi nào bột đủ dẻo mà không cần nhìn công thức. Lập trình cũng vậy: ban đầu phải mở tài liệu mỗi dòng code, rồi đến một lúc nào đó tay gõ nhanh hơn đầu nghĩ, và bạn không nhớ chính xác khi nào sự chuyển đổi đó xảy ra.
 
-*Phong cách: Analogy đời thường, dẫn dắt từ quen thuộc sang mới, câu ngắn dần tạo nhịp tăng tốc*
+*Phong cách: Analogy đời thường mở rộng chi tiết, dẫn dắt từ quen thuộc sang mới bằng câu flowing, nhận xét bất ngờ cuối đoạn*
 
 ## Exemplar 2
-> Vậy recursion là gì? Đơn giản thôi. Bạn đứng giữa hai tấm gương đối mặt nhau. Hình ảnh bạn lặp lại, nhỏ dần, xa dần. Mỗi hình ảnh là một lần gọi lại chính nó. Đến khi nhỏ quá, không thấy nữa. Đó là base case. Đừng lo nếu lần đầu thấy rối. Ai cũng vậy.
+> Vậy recursion là gì? Bạn đứng giữa hai tấm gương đối mặt nhau và thấy hình ảnh mình lặp lại, nhỏ dần, xa dần — mỗi hình ảnh là một lần gọi lại chính nó, và đến khi nhỏ quá không thấy nữa thì đó chính là base case. Đừng lo nếu lần đầu nghe thấy rối, vì ai cũng phải đọc lại vài lần mới thấy nó click, kể cả những người giờ viết recursive functions trong giấc ngủ.
 
-*Phong cách: Hỏi-trả lời, ví dụ trực quan, khuyến khích tự nhiên cuối đoạn*
+*Phong cách: Hỏi-trả lời, ví dụ trực quan mở rộng liền mạch, khuyến khích tự nhiên lồng trong context thực tế*
 
 ## Exemplar 3
-> Sai lầm phổ biến nhất khi học design pattern: cố nhét pattern vào mọi chỗ. Như mới mua búa, thấy cái gì cũng giống đinh. Thực ra pattern sinh ra để giải quyết vấn đề cụ thể. Chưa có vấn đề thì chưa cần pattern. Đơn giản vậy thôi.
+> Sai lầm phổ biến nhất khi học design pattern là cố nhét pattern vào mọi chỗ, giống như mới mua búa thì thấy cái gì cũng giống đinh. Thực ra pattern sinh ra để giải quyết vấn đề cụ thể, và nếu bạn chưa gặp vấn đề đó thì pattern chỉ thêm phức tạp cho code của bạn mà không giải quyết được gì.
 
-*Phong cách: Nhận định thẳng, analogy hài hước, kết luận ngắn gọn dứt khoát*
+*Phong cách: Nhận định thẳng, analogy hài hước lồng trong câu, giải thích logic thay vì kết luận fragment*

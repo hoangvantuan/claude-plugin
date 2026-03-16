@@ -92,10 +92,12 @@ Hai người đối thoại thầy trò ngồi uống trà:
 
 ## Breath Rhythm
 
-- Câu ngắn = hít vào (tension)
-- Câu dài = thở ra (flowing)
+- Xương sống = câu flowing 12-25 từ, nhiều mệnh đề nối dấu phẩy
+- Câu ngắn (<8 từ, có chủ-vị) dùng hiếm, tối đa 2-3/bài, sau buildup
+- KHÔNG viết 2+ câu ngắn liên tiếp trong cùng lượt nói
 - Lặp cấu trúc = mantra ("Để..., Để..., Để...")
 - Đọc to được = đúng nhịp
+- Lượt nói của Thầy: câu flowing tự nhiên, dùng ẩn dụ lồng trong narrative thay vì fragment
 
 ## Metaphor Bank
 

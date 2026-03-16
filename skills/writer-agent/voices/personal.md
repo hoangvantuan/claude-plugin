@@ -41,8 +41,9 @@ Có thể dùng **"chúng ta"** khi mời người đọc cùng quan sát, và *
 - Lặp cấu trúc có nhịp: "Không phải vì... mà vì...", "Để..., Để..., Để..."
 - Trích dẫn triết học Đông-Tây khi phù hợp
 - Chi tiết giác quan: "nước chảy qua tay", "sương tan trên ngọn cỏ"
-- Câu ngắn vừa nhịp thở xen kẽ câu dài flowing
-- "Có lẽ", "dường như": provisional, không áp đặt
+- Câu flowing nhiều mệnh đề nối dấu phẩy — nhịp tự nhiên tiếng Việt
+- Câu ngắn (<8 từ) phải có chủ-vị, tối đa 2-3/bài, đứng sau buildup — KHÔNG liên tiếp
+- "Có lẽ": tối đa 1 lần/bài, dùng đúng chỗ cần provisional
 
 ### DON'T
 
@@ -98,11 +99,11 @@ Quay lại chủ đề, mỗi lần sâu hơn:
 
 ### 3. Observation Without Judgment
 
-Mô tả như thật, không bình luận. Để người đọc tự rút ra ý nghĩa:
+Mô tả như thật, không bình luận. Để người đọc tự rút ra ý nghĩa. Lồng chi tiết giác quan vào câu có động từ, không xếp nominal phrases liên tiếp:
 
-> **Pattern:** "[Quan sát cụ thể]. [Im lặng/khoảng dừng]. [Liên hệ nhẹ nhàng]."
+> **Pattern:** "[Quan sát cụ thể lồng trong câu flowing]. [Liên hệ nhẹ nhàng]."
 
-> Lá rụng từ cành. Rơi nhẹ xuống đất. Không vội, không chậm. Chỉ là rơi. Người ta cũng thế. Có lúc cần buông mà không cần lý do.
+> Chiếc lá rụng từ cành, rơi nhẹ xuống mặt đất ẩm mà không vội cũng không chậm, chỉ rơi theo cách duy nhất nó biết. Người ta có lẽ cũng thế — có lúc cần buông mà không cần biết lý do.
 
 ### 4. Present Moment Anchoring
 
@@ -110,7 +111,7 @@ Neo vào khoảnh khắc hiện tại, đặc biệt khi chuyển sang ý mới:
 
 > **Pattern:** "[Chi tiết giác quan hiện tại]. [Từ đó dẫn đến suy nghĩ/liên tưởng]."
 
-> Sáng nay, nước chảy qua tay tôi khi rửa bát. Lạnh. Trong. Và tôi chợt nghĩ: mình đã bao lâu không thực sự ở đây?
+> Sáng nay nước chảy qua tay tôi khi rửa bát, lạnh và trong đến mức tôi dừng lại một nhịp, và chợt nghĩ: mình đã bao lâu không thực sự ở đây?
 
 ### 5. East-West Bridge
 
@@ -155,7 +156,7 @@ Chọn 2-3 hệ chính, lặp xuyên suốt bài:
 | Yếu tố          | Quy tắc                                           |
 | ---------------- | -------------------------------------------------- |
 | Đoạn văn         | 2-5 câu, có nhịp thở                              |
-| Câu              | Mix: ngắn (3-7 từ) cho điểm nhấn, dài (10-20 từ) cho flowing |
+| Câu              | Xương sống 12-25 từ flowing. Câu ngắn (<8 từ, có chủ-vị) tối đa 2-3/bài, sau buildup |
 | Câu hỏi          | 15-25% tổng số câu                                |
 | Trải nghiệm      | Ít nhất 3-4 lần: "Tôi đã từng..."                 |
 | Ẩn dụ            | 2-3 hệ, lặp xuyên suốt                           |
@@ -182,4 +183,4 @@ Chọn 2-3 hệ chính, lặp xuyên suốt bài:
 
 **Tinh thần:**
 
-> Viết như đang ngồi bên bờ suối lúc hoàng hôn. Nhìn nước chảy, nhìn lại mình, và chia sẻ với người bên cạnh những gì đã thấy. Không phải để dạy. Chỉ để cùng nhau im lặng và hiểu.
+> Viết như đang ngồi bên bờ suối lúc hoàng hôn, nhìn nước chảy, nhìn lại mình, và chia sẻ với người bên cạnh những gì đã thấy — không phải để dạy, chỉ để cùng nhau im lặng và hiểu.

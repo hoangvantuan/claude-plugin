@@ -50,7 +50,7 @@ Viết như đang đồng hành trên con đường học hỏi. Có chiều sâ
 
 ### DO
 
-* **Câu ngắn có nhịp thở** (TNH): "Đó là điều tôi học được. Không phải ngay lập tức. Mà dần dần."
+* **Câu flowing nhiều mệnh đề** (TNH): "Đó là điều tôi học được, không phải ngay lập tức mà dần dần, qua từng lần thử và sai."
 
 * **Analogies gần gũi** (Ng): "Như cách chúng ta học đi xe đạp..."
 
@@ -58,7 +58,7 @@ Viết như đang đồng hành trên con đường học hỏi. Có chiều sâ
 
 * **Từ Hán-Việt chọn lọc** (NDC): Khi cần chiều sâu, không lạm dụng
 
-* **Mix punchy + detailed** (Mollick): "Nó hoạt động. Và đây là lý do..."
+* **Nhận định thẳng rồi giải thích** (Mollick): "Nó hoạt động, và lý do thì đơn giản hơn bạn nghĩ."
 
 * **Questions để engage**: "Bạn nghĩ sao về điều này?"
 
@@ -89,14 +89,14 @@ Viết như đang đồng hành trên con đường học hỏi. Có chiều sâ
 ## Example
 
 > **Opening:**
-> Tuần trước, tôi dành một buổi sáng để thử làm việc với AI theo cách khác. Thay vì vội vã gõ lệnh, tôi dừng lại. Thở. Và hỏi: thực sự tôi đang muốn gì?
+> Tuần trước, tôi dành một buổi sáng để thử làm việc với AI theo cách khác — thay vì vội vã gõ lệnh, tôi dừng lại, thở một nhịp, và tự hỏi: thực sự mình đang muốn gì?
 >
 > **Development:**
 > Cổ nhân có nói: "Dục tốc bất đạt", muốn nhanh thì không đến. Điều này đúng với cả cách chúng ta học công nghệ mới.
 >
 > AI không phải là công cụ để chúng ta chạy nhanh hơn. Nó là một người đồng hành. Và như mọi mối quan hệ tốt, nó cần sự kiên nhẫn, sự lắng nghe.
 >
-> Tôi đã thử một experiment đơn giản: thay vì prompt dài, tôi hỏi một câu ngắn. Đợi. Đọc kỹ câu trả lời. Rồi mới hỏi tiếp. Kết quả? Chất lượng output tốt hơn hẳn. Và tôi cũng hiểu hơn điều mình thực sự cần.
+> Tôi đã thử một experiment đơn giản: thay vì prompt dài, tôi hỏi một câu ngắn rồi đợi, đọc kỹ câu trả lời, rồi mới hỏi tiếp. Kết quả là chất lượng output tốt hơn hẳn, và tôi cũng hiểu rõ hơn điều mình thực sự cần.
 >
 > **Closing:**
 > Bạn có thể thử điều này. Lần tới khi làm việc với AI, hay bất kỳ công nghệ nào, hãy thử dừng lại một nhịp thở trước khi bắt đầu. Và xem điều gì xảy ra.
@@ -111,7 +111,7 @@ Mở đầu từ trải nghiệm cụ thể, có chánh niệm:
 
 > **Pattern:** "Tôi vừa \[trải nghiệm cụ thể]. \[Moment of pause/observation]. \[Điều này dẫn đến suy nghĩ/câu hỏi]."
 
-> Tôi vừa đóng laptop sau một buổi làm việc dài. Nhìn ra cửa sổ, trời đã tối từ lúc nào. Điều này khiến tôi nghĩ: chúng ta đang đổi gì để lấy productivity?
+> Tôi vừa đóng laptop sau một buổi làm việc dài và nhìn ra cửa sổ thì trời đã tối từ lúc nào, khiến tôi tự hỏi: chúng ta đang đổi gì để lấy productivity?
 
 ### 2. East-West Intuition Bridge (NDC + Ng)
 
@@ -135,13 +135,9 @@ Xây dựng từng bước, có nhịp thở:
 
 > **Pattern:** "\[Concept cơ bản] → \[Thêm layer] → \[Pause/nhịp thở] → \[Application]."
 
-> Prompt engineering bắt đầu từ một điều đơn giản: nói rõ bạn muốn gì.
+> Prompt engineering bắt đầu từ một điều đơn giản: nói rõ bạn muốn gì. Sau đó bạn học cách cho context, rồi examples, rồi constraints, và mỗi bước cần thời gian để thấm trước khi bước tiếp.
 >
-> Sau đó, bạn học cách cho context. Rồi examples. Rồi constraints.
->
-> Nhưng đừng vội. Mỗi bước cần thời gian để thấm.
->
-> Khi sẵn sàng, bạn sẽ thấy mình viết prompt như đang trò chuyện. Tự nhiên, rõ ràng, hiệu quả.
+> Khi sẵn sàng, bạn sẽ thấy mình viết prompt như đang trò chuyện với ai đó — tự nhiên, rõ ràng, và hiệu quả hơn những lúc bạn cố viết prompt "hoàn hảo".
 
 ### 5. Wisdom Democratization (Ng + NDC)
 
@@ -182,7 +178,7 @@ Làm triết học và công nghệ accessible:
 | Yếu tố                | Quy tắc                          |
 | --------------------- | -------------------------------- |
 | Paragraphs            | 2-4 câu                          |
-| Sentences             | 8-20 từ                          |
+| Sentences             | Xương sống 12-25 từ flowing. Câu ngắn (<8 từ, có chủ-vị) tối đa 2-3/bài |
 | Pause/nhịp thở        | Ít nhất 1 per section            |
 | Practical example     | Ít nhất 1 per article            |
 | Reflection question   | Ít nhất 1 per article            |
@@ -240,5 +236,5 @@ Làm triết học và công nghệ accessible:
 
 **Tinh thần:**
 
-> Viết như đang đi cùng ai đó trên con đường học hỏi. Không vội, không chậm, đúng nhịp. Có lúc dừng lại ngắm cảnh. Có lúc chia sẻ điều vừa học. Có lúc im lặng cùng nhau.
+> Viết như đang đi cùng ai đó trên con đường học hỏi, không vội cũng không chậm, đúng nhịp. Có lúc dừng lại ngắm cảnh, có lúc chia sẻ điều vừa học, và có lúc chỉ cần im lặng cùng nhau.
 

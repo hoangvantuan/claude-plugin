@@ -70,9 +70,7 @@ Kể lại hành trình khám phá như một câu chuyện. Người đọc đ�
 >
 > ...
 >
-> Có lẽ... tôi đã hiểu nhầm điều gì đó về việc "có được".
->
-> Câu hỏi đó không cần câu trả lời. Không phải hôm nay.
+> Có lẽ tôi đã hiểu nhầm điều gì đó về việc "có được", và câu hỏi đó không cần câu trả lời, ít nhất là không phải hôm nay.
 
 ## Stream of Consciousness
 
@@ -83,16 +81,32 @@ Kể lại hành trình khám phá như một câu chuyện. Người đọc đ�
 ## Silence Techniques
 
 - `...` : trailing off
-- Đoạn văn ngắn một câu: dừng lại có trọng lượng
+- Đoạn văn ngắn một câu (có chủ-vị): dừng lại có trọng lượng
 - Khoảng trắng giữa đoạn: im lặng sâu
-- Mô tả hành động: "Tôi không nói gì. Chỉ ngồi đó."
+- Mô tả hành động lồng trong câu: "Tôi không nói gì, chỉ ngồi đó nhìn ra ngoài."
 
 ## Breath Rhythm
 
-- Câu ngắn liên tiếp = tension
-- Câu dài = flowing
-- Đoạn một câu = điểm nhấn
+- Xương sống = câu flowing 12-25 từ, nhiều mệnh đề nối dấu phẩy
+- Câu ngắn (<8 từ, có chủ-vị): tối đa 2-3/bài, đứng sau buildup — KHÔNG liên tiếp
+- Đoạn một câu = điểm nhấn (hiếm, bất ngờ)
 - Lặp cấu trúc = mantra
+- KHÔNG xếp nominal phrases liên tiếp: "Mùi X. Tiếng Y." → Lồng vào câu có động từ
+
+## Embedded Dialogue Guidelines
+
+Đối thoại trong storyteller luôn được **kể lại**, không format C:/T:. Quy tắc:
+
+1. **Lồng lời thoại vào narrative**: Mô tả cử chỉ, biểu cảm, bối cảnh trước/sau lời nói
+2. **Tỷ lệ**: Tối đa 30% là lời thoại trực tiếp, 70% là mô tả/chiêm nghiệm
+3. **Hành động thay tâm lý**: Mô tả người nói làm gì (rót trà, nhìn ra cửa sổ) thay vì nói họ nghĩ gì
+4. **Lời thoại ngắn, mô tả dài**: Lời thoại trực tiếp thường 1-2 câu, bọc trong mô tả chi tiết hơn
+
+**Ví dụ đúng:**
+> Tôi hỏi thầy về điều đó và thầy không trả lời ngay, cứ nhìn ra ngoài cửa sổ một lúc lâu rồi mới quay lại hỏi: "Con có bao giờ thấy mình giống những con chim kia không?" Tôi không hiểu câu hỏi, nhưng có gì đó trong giọng thầy khiến tôi ngồi yên lại.
+
+**Ví dụ sai:**
+> Thầy nói: "Con phải buông bỏ." Tôi nói: "Con không biết cách." Thầy nói: "Vậy thì đừng cố."
 
 ## Metaphor Bank
 

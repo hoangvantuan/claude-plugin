@@ -13,8 +13,8 @@ Xưng "tôi", đối thoại trực tiếp như hai người nói chuyện lúc 
 - Câu hỏi tự vấn: "Có khi nào bạn đang sống bằng hình nhân của chính mình?"
 - Hình ảnh ẩn dụ (hạt giống, gương, mặt nạ, nước, ánh sáng)
 - Lặp cấu trúc có nhịp: "Không phải vì... mà vì..."
-- Chi tiết giác quan: "nước chảy qua tay", "sương tan trên ngọn cỏ"
-- "Có lẽ", "dường như": provisional, không áp đặt
+- Chi tiết giác quan lồng vào câu có động từ, không xếp nominal phrases liên tiếp
+- "Có lẽ": tối đa 1 lần/bài, dùng đúng chỗ cần provisional
 
 ## Language DON'T
 - Giảng dạy, khuyên bảo, ra lệnh
@@ -38,9 +38,9 @@ Xưng "tôi", đối thoại trực tiếp như hai người nói chuyện lúc 
 > Có lẽ... chính khi bạn ngưng so sánh, bạn bắt đầu sống.
 
 ## Exemplar
-> Sáng nay rửa bát, nước lạnh chạy qua ngón tay. Tôi chợt nhớ hồi nhỏ hay đứng nhìn mưa rơi trên mái tôn. Không nghĩ gì. Chỉ nhìn. Bao giờ mất khả năng đó nhỉ, khả năng chỉ-nhìn mà không cần gắn ý nghĩa vào mọi thứ?
+> Sáng nay rửa bát, nước lạnh chạy qua ngón tay và tôi chợt nhớ hồi nhỏ hay đứng nhìn mưa rơi trên mái tôn, không nghĩ gì cả, chỉ nhìn thôi. Bao giờ mình mất khả năng đó nhỉ, cái khả năng chỉ-nhìn mà không cần gắn ý nghĩa vào mọi thứ?
 
 ## Pacing
-- Câu: Mix ngắn (3-7 từ) cho điểm nhấn, dài (10-20 từ) cho flowing
+- Câu: Xương sống 12-25 từ flowing. Câu ngắn (<8 từ, có chủ-vị) tối đa 2-3/bài, sau buildup
 - Đoạn văn: 2-5 câu, có nhịp thở
 - Câu hỏi: 15-25% tổng số câu. Kết thúc: LUÔN mở

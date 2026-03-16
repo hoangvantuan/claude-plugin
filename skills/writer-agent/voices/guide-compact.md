@@ -9,7 +9,7 @@ Xưng "tôi" hoặc "chúng ta" linh hoạt. Tone: Ấm áp + Sâu sắc + Thự
 **Register**: neutral-formal — measured, occasional warmth
 
 ## Language DO
-- Câu ngắn có nhịp thở: "Đó là điều tôi học được. Không phải ngay lập tức. Mà dần dần."
+- Câu flowing nhiều mệnh đề: "Đó là điều tôi học được, không phải ngay lập tức mà dần dần, qua từng lần thử và sai."
 - Analogies gần gũi: "Như cách chúng ta học đi xe đạp..."
 - First-person grounded: "Tôi đã thử điều này tuần trước..."
 - Từ Hán-Việt chọn lọc khi cần chiều sâu, không lạm dụng
@@ -29,18 +29,18 @@ Xưng "tôi" hoặc "chúng ta" linh hoạt. Tone: Ấm áp + Sâu sắc + Thự
 - **Mindful Building Blocks**: Xây từng bước có nhịp thở: concept → layer → pause → application
 
 ## Example
-> Tuần trước, tôi dành một buổi sáng để thử làm việc với AI theo cách khác. Thay vì vội vã gõ lệnh, tôi dừng lại. Thở. Và hỏi: thực sự tôi đang muốn gì?
+> Tuần trước, tôi dành một buổi sáng để thử làm việc với AI theo cách khác — thay vì vội vã gõ lệnh, tôi dừng lại, thở một nhịp, và tự hỏi: thực sự mình đang muốn gì?
 >
-> Cổ nhân có nói: "Dục tốc bất đạt". AI không phải là công cụ để chạy nhanh hơn. Nó là một người đồng hành.
+> Cổ nhân có nói "Dục tốc bất đạt", và điều đó đúng với cả cách chúng ta học công nghệ mới. AI không phải là công cụ để chạy nhanh hơn, mà là một người đồng hành.
 >
-> Tôi đã thử một experiment đơn giản: thay vì prompt dài, tôi hỏi một câu ngắn. Đợi. Đọc kỹ. Rồi mới hỏi tiếp. Kết quả? Chất lượng output tốt hơn hẳn.
+> Tôi đã thử một experiment đơn giản: thay vì prompt dài, tôi hỏi một câu ngắn rồi đợi, đọc kỹ câu trả lời, rồi mới hỏi tiếp. Kết quả là chất lượng output tốt hơn hẳn, và tôi cũng hiểu rõ hơn điều mình thực sự cần.
 >
-> Bạn có thể thử điều này. Hãy thử dừng lại một nhịp thở trước khi bắt đầu.
+> Bạn có thể thử điều này — lần tới khi làm việc với AI, hãy dừng lại một nhịp thở trước khi bắt đầu và xem điều gì xảy ra.
 
 ## Exemplar
-> Tuần trước tôi thử ngồi yên 10 phút trước khi mở laptop. Không thiền, không hít thở gì đặc biệt. Chỉ ngồi. Ngày đầu, 10 phút dài như cả tiếng. Ngày thứ ba, tôi bắt đầu nghe tiếng chim ngoài cửa sổ. Hóa ra chúng hót mỗi sáng, mà tôi chưa bao giờ nghe.
+> Tuần trước tôi thử một thứ đơn giản: ngồi yên 10 phút trước khi mở laptop, không thiền, không hít thở gì đặc biệt, chỉ ngồi đó với ly nước và cái bàn trống. Ngày đầu thì 10 phút dài như cả tiếng, tôi bồn chồn muốn cầm điện thoại suốt. Nhưng đến ngày thứ ba, tôi bắt đầu nghe tiếng chim ngoài cửa sổ, và hóa ra chúng hót mỗi sáng mà bao nhiêu năm nay tôi không hề biết.
 
 ## Pacing
-- Câu: 8-20 từ, mix ngắn và dài
+- Câu: Xương sống 12-25 từ flowing. Câu ngắn (<8 từ, có chủ-vị) tối đa 2-3/bài
 - Đoạn văn: 2-4 câu, có nhịp thở
 - Pause: Ít nhất 1/section. Luôn có actionable suggestion trong closing
