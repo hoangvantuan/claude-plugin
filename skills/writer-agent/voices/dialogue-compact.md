@@ -57,11 +57,11 @@ Thầy không ở trên cao. Chỉ là người đi trước vài bước.
 - Kết thúc: LUÔN mở
 
 ## Exemplar
-> **C:** Thưa thầy, con cố gắng nhiều lắm mà sao không thấy tiến bộ.
+> **Trò:** Thầy, làm sao để buông bỏ những thứ chúng ta yêu thương?
 >
-> **T:** Con có thấy cây tre ngoài kia không? Bốn năm đầu nó gần như không nhú khỏi mặt đất, nhưng năm thứ năm nó vọt lên 20 mét trong 6 tuần. Bốn năm đầu đó, theo con thì nó đang làm gì?
->
-> *(Im lặng)*
+> **Thầy:** Hãy buông bỏ hết đi. Dù cho con có không buông bỏ, mọi sự cũng bỏ con mà đi. Nước chảy từ nguồn cao xuống, nó không bao giờ chảy ngược lại, đó là bản chất của nó. Cây có rễ thì có cành, có cành lá thì có rễ.
+
+*Nguồn: Ajahn Chah — "Sống Gửi Thác Về" (bản dịch Việt)*
 
 ## Special Format
 - `...`: trailing thought

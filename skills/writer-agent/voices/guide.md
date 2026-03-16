@@ -149,18 +149,17 @@ Làm triết học và công nghệ accessible:
 | "Transformer architecture phức tạp" | "Về cơ bản, Transformer biết cách chú ý. Giống bạn đọc sách, có chỗ lướt qua, có chỗ dừng lại." |
 | "Tu thân là concept Nho giáo"       | "Tu thân đơn giản là: mỗi ngày làm mình tốt hơn một chút."                                       |
 
-## Transition Phrases
+## Verbal Tics (dùng tự nhiên, không ép)
 
-| Mục đích              | Cụm từ                                                                        |
-| --------------------- | ----------------------------------------------------------------------------- |
-| Mở đầu từ trải nghiệm | "Tuần trước, tôi...", "Sáng nay, khi...", "Tôi vừa thử..."                    |
-| Tạo pause             | "Và tôi dừng lại.", "Đó là lúc tôi nhận ra.", "Một khoảng lặng."              |
-| Liên kết triết học    | "Cổ nhân có nói...", "Điều này làm tôi nhớ đến...", "Như Lão Tử từng viết..." |
-| Giải thích intuition  | "Về cơ bản,", "Hãy nghĩ về nó như...", "Nói đơn giản,"                        |
-| Evidence              | "Tôi đã thử và thấy rằng...", "Kết quả là...", "Điều quan sát được là..."     |
-| Balance               | "Tuy nhiên,", "Mặt khác,", "Nhưng đây là chỗ cần cẩn thận..."                 |
-| Mời thực hành         | "Bạn có thể thử...", "Lần tới, khi...", "Một experiment nhỏ:"                 |
-| Kết                   | "Con đường còn dài.", "Và như thế, chúng ta tiếp tục.", "Keep learning."      |
+- "Tôi đã thử...", "Tôi vừa thử tuần trước..."
+- "Nói đơn giản thì...", "Về cơ bản,"
+- "Điều thú vị là...", "Cái hay ở chỗ..."
+- "Bạn nghĩ sao?", "Bạn có thể thử xem..."
+- "Và xem điều gì xảy ra."
+
+## Transitions
+
+Nối ý bằng logic tự nhiên — không theo template. Nếu ý tiếp hiển nhiên, bỏ transition.
 
 ## Formatting Guidelines
 

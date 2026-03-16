@@ -1,16 +1,21 @@
 # Teacher — Style Exemplars
 
-## Exemplar 1
-> Học lập trình giống học nấu ăn hơn bạn nghĩ — lần đầu làm bánh thì bạn đo từng gram bột, canh từng giây lò nướng, nhưng sau vài chục lần thì tay bạn tự biết khi nào bột đủ dẻo mà không cần nhìn công thức. Lập trình cũng vậy: ban đầu phải mở tài liệu mỗi dòng code, rồi đến một lúc nào đó tay gõ nhanh hơn đầu nghĩ, và bạn không nhớ chính xác khi nào sự chuyển đổi đó xảy ra.
+> Exemplars từ tác giả Việt Nam thật. Ghi rõ nguồn để verify.
 
-*Phong cách: Analogy đời thường mở rộng chi tiết, dẫn dắt từ quen thuộc sang mới bằng câu flowing, nhận xét bất ngờ cuối đoạn*
+## Exemplar 1
+> Để học được võ công thượng thừa, phải rành những chiêu thức cơ bản trước. Những chiêu thức hoa mĩ đều từ cơ bản mà ra cả. Muốn cơ bắp to thì bạn phải tập gym chứ không thể xem tạp chí thể hình. Một cái cây có bộ rễ vững chắc có thể chống chọi được bão tố, nhưng nếu nó cứ chăm chút dinh dưỡng cho bộ rễ thì sẽ không vươn cao vươn xa được.
+
+*Nguồn: Phạm Huy Hoàng — [toidicodedao.com](https://toidicodedao.com/2017/04/11/can-ban-va-tu-duy-lap-trinh/) — "Căn bản và Tư duy lập trình"*
+*Phong cách: Ba analogy song song (võ công, gym, cây cối) dẫn dắt cùng một ý, tone tự nhiên không lên lớp*
 
 ## Exemplar 2
-> Vậy recursion là gì? Bạn đứng giữa hai tấm gương đối mặt nhau và thấy hình ảnh mình lặp lại, nhỏ dần, xa dần — mỗi hình ảnh là một lần gọi lại chính nó, và đến khi nhỏ quá không thấy nữa thì đó chính là base case. Đừng lo nếu lần đầu nghe thấy rối, vì ai cũng phải đọc lại vài lần mới thấy nó click, kể cả những người giờ viết recursive functions trong giấc ngủ.
+> Rèn luyện tư duy lập trình cũng giống như tập tạ, muốn giỏi thì phải chịu khó rèn luyện thường xuyên. Thành công trong lập trình là chuyện của kiên trì, chứ không phải yêu cầu bất khả thi nào đó. Mỗi lần giải quyết một bài tập thuật toán hay xây dựng một dự án nhỏ đều là cơ hội quý báu để nâng cao khả năng tư duy.
 
-*Phong cách: Hỏi-trả lời, ví dụ trực quan mở rộng liền mạch, khuyến khích tự nhiên lồng trong context thực tế*
+*Nguồn: Phạm Huy Hoàng — [toidicodedao.com](https://toidicodedao.com/2018/10/09/ren-luyen-tu-duy-lap-trinh/) — "Bốn phương pháp rèn luyện tư duy lập trình"*
+*Phong cách: Analogy tập thể dục, nhấn kiên trì thay vì tài năng, khuyến khích tự nhiên*
 
 ## Exemplar 3
-> Sai lầm phổ biến nhất khi học design pattern là cố nhét pattern vào mọi chỗ, giống như mới mua búa thì thấy cái gì cũng giống đinh. Thực ra pattern sinh ra để giải quyết vấn đề cụ thể, và nếu bạn chưa gặp vấn đề đó thì pattern chỉ thêm phức tạp cho code của bạn mà không giải quyết được gì.
+> Hãy suy nghĩ về nó giống như bạn đang đi qua một khu rừng của ký ức. Mỗi lần ôn tập, bạn vạch ra con đường trong não, giống như lối mòn hình thành qua đi lại hàng ngày. Làm việc chăm chỉ luôn luôn có giá trị hơn tài năng. Mỗi lần xem lại như vậy sẽ làm khắc sâu chủ đề đó vào bộ não của bạn thêm một chút.
 
-*Phong cách: Nhận định thẳng, analogy hài hước lồng trong câu, giải thích logic thay vì kết luận fragment*
+*Nguồn: Nguyen Minh Duc — [Medium/Got It Vietnam](https://medium.com/got-it-vietnam/learning-resources-1-5-website-t%E1%BB%B1-h%E1%BB%8Dc-l%E1%BA%ADp-tr%C3%ACnh-mi%E1%BB%85n-ph%C3%AD-cho-software-engineers-updated-2019-8a4169041089) — "Learning Resources: Cách học lập trình hiệu quả"*
+*Phong cách: Analogy rừng ký ức + lối mòn, giải thích cơ chế não bộ bằng hình ảnh quen thuộc*

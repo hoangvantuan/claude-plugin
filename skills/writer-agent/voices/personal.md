@@ -126,30 +126,28 @@ Nguồn tham chiếu:
 - **Stoicism**: Acceptance, nội tâm bất động
 - Dùng nhẹ nhàng: "Người xưa từng nói..." hoặc "Cổ nhân dạy rằng...", không giảng đạo
 
+## Verbal Tics (dùng tự nhiên, không ép)
+
+- "Tôi không biết nữa...", "Lạ lắm..."
+- "Kiểu như...", "Cái cảm giác ấy..."
+- "Mà thôi.", "Cũng được."
+- "Tôi đoán vậy.", "Ai biết được."
+- "Hồi đó tôi...", "Bây giờ nghĩ lại..."
+
 ## Metaphor Bank
 
-Chọn 2-3 hệ chính, lặp xuyên suốt bài:
+Chọn 2-3 hệ chính, lặp xuyên suốt bài. **KHÁC với Storyteller/Dialogue** — Personal dùng **cơ thể + đồ vật cũ**:
 
 | Hệ                     | Biểu tượng                          | Khi nào                  |
 | ----------------------- | ------------------------------------ | ------------------------ |
-| **Hạt giống/Cây**      | hạt, mầm, cây đa, cây cỏ, lá rụng  | Bản thể, phát triển      |
+| **Cơ thể**             | tay, vai, ngực, hơi thở, mệt        | Cảm xúc hiện thân        |
+| **Đồ vật cũ**          | hộp, ảnh, chìa khóa, ba lô, gương   | Ký ức, bám víu           |
 | **Mặt nạ/Gương**       | mặt nạ, gương, vai diễn             | Phi ngã, sống giả        |
-| **Nước**               | dòng ngầm, mạch suối, sương, mưa    | Buông bỏ, tĩnh lặng     |
-| **Ánh sáng/Bóng tối**  | bóng ma, bình minh, ánh trăng       | Thức tỉnh                |
-| **Hành trình**         | con đường, ngã rẽ, bước chân        | Tìm kiếm, lựa chọn      |
-| **Hơi thở**            | hít vào, thở ra, gió                | Hiện tại, đơn giản       |
+| **Nước**               | nước rửa bát, mưa mái tôn, sương    | Buông bỏ, nhớ nhung      |
 
-## Transition Phrases
+## Transitions
 
-| Mục đích           | Cụm từ                                                          |
-| ------------------ | ---------------------------------------------------------------- |
-| Mở đầu            | "Tôi đã từng...", "Sáng nay, khi...", "Có lẽ bạn cũng từng..." |
-| Quan sát           | "Dường như...", "Người viết nhận thấy...", "Nhìn kỹ hơn..."     |
-| Tự vấn             | "Có khi nào...?", "Tại sao ta...?", "Rốt cuộc..."              |
-| Trích dẫn          | "Cổ nhân dạy rằng...", "Người xưa từng nói..."                  |
-| Chuyển ý           | "Và rồi...", "Nhưng có lẽ...", "Tôi chợt nghĩ..."              |
-| Tạo khoảng lặng    | "...", "Và tôi dừng lại.", "Một khoảng im."                     |
-| Mời gọi            | "Bạn có thể thử...", "Có lẽ, bạn đọc cũng..."                  |
+Nối ý bằng dòng chảy cảm xúc/liên tưởng. Dùng "..." cho khoảng lặng. Không dùng cùng transition 2 lần.
 
 ## Pacing Rules
 

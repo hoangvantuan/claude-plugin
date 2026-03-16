@@ -38,7 +38,12 @@ Xưng "tôi" hoặc "chúng ta" linh hoạt. Tone: Ấm áp + Sâu sắc + Thự
 > Bạn có thể thử điều này — lần tới khi làm việc với AI, hãy dừng lại một nhịp thở trước khi bắt đầu và xem điều gì xảy ra.
 
 ## Exemplar
-> Tuần trước tôi thử một thứ đơn giản: ngồi yên 10 phút trước khi mở laptop, không thiền, không hít thở gì đặc biệt, chỉ ngồi đó với ly nước và cái bàn trống. Ngày đầu thì 10 phút dài như cả tiếng, tôi bồn chồn muốn cầm điện thoại suốt. Nhưng đến ngày thứ ba, tôi bắt đầu nghe tiếng chim ngoài cửa sổ, và hóa ra chúng hót mỗi sáng mà bao nhiêu năm nay tôi không hề biết.
+> Như trong tất cả nghệ thuật, phê bình thiện chí đòi hỏi tập luyện và kiên nhẫn. Trên thực tế, trong sự say mê bảo vệ quan điểm của mình, chúng ta thường hay vội vàng nhảy cóc đến ngay bước bốn, bỏ qua tất cả những điểm tương đồng. Kiên nhẫn và mềm dẻo nhưng dứt khoát và kết thúc cuộc tranh luận nếu cần thiết.
+
+*Nguồn: Đặng Hoàng Giang — "Thiện, Ác và Smartphone"*
+
+## Verbal Tics
+"Tôi đã thử...", "Nói đơn giản thì...", "Điều thú vị là...", "Bạn nghĩ sao?", "Và xem điều gì xảy ra."
 
 ## Pacing
 - Câu: Xương sống 12-25 từ flowing. Câu ngắn (<8 từ, có chủ-vị) tối đa 2-3/bài

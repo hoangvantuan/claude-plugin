@@ -129,14 +129,13 @@ WRITING QUALITY (CRITICAL):
 - Depth over breadth: Go deep on 2-3 key ideas
 - Draw connections: Link ideas to SERIES_CONTEXT.core_message
 - BLACKLIST phrases: "Trong phần tiếp theo...", "Tóm lại,...", "Bài viết đã trình bày..."
-- Micro-story: MUST include >=1 concrete scenario (3-5 sentences, specific person/situation/event). NOT abstract analogy.
+- Micro-story: Nếu có thể, dùng ví dụ cụ thể (người thật, tình huống thật, kết quả thật) thay vì giải thích trừu tượng. Không cần format story, có thể chỉ là 1-2 câu nhắc kinh nghiệm lồng trong đoạn.
 
 INSIGHT_TECHNIQUES (minimum 2 per article):
-- Contrast: "Source says X. But consider: Y"
-- Connection: "This relates to [different domain] because..."
-- Implication: "If this is true, then... (source doesn't mention this)"
-- Reframe: "The real question isn't X, it's Y"
-Use any 2+ techniques. Each insight must feel earned (build up context first), not dropped in.
+- Tạo insight bằng cách: tìm mâu thuẫn, liên hệ ngoài ngành, rút hệ quả source không nói, hoặc đặt lại câu hỏi
+- KHÔNG dùng cấu trúc câu cố định cho insight. Để nó xuất hiện tự nhiên trong dòng chảy bài viết
+- Mỗi insight phải earned: build up context trước, không drop in bất ngờ
+- Cho phép 1-2 đoạn/bài CHỈ kể/mô tả mà KHÔNG rút insight. Đôi khi chi tiết chỉ cần ở đó.
 ```
 
 ### ANTI-AI WRITING Block
@@ -161,8 +160,8 @@ VOCABULARY BLACKLIST (KHÔNG dùng các từ/cụm sau):
       "paradigm shift", "transformative", "game-changer", "holistic", "robust"
 - Thay bằng từ đơn giản, cụ thể, gần gũi đời thường
 
-SENTENCE STRUCTURE:
-- Xương sống bài viết = câu 12-25 từ flowing tự nhiên, nhiều mệnh đề nối dấu phẩy
+SENTENCE STRUCTURE (VOICE-DEPENDENT — xem Pacing Rules trong voice file):
+- Mỗi voice có chiến lược câu riêng. TUÂN THEO voice's Pacing Rules, không áp dụng 1 pattern cho tất cả
 - KHÔNG viết câu đều tăm tắp cùng độ dài. 3 câu trung bình liên tiếp = OK và tự nhiên
 - KHÔNG alternating ngắn-dài-ngắn đều đặn (AI pattern dễ nhận ra)
 - KHÔNG lặp cấu trúc song song liên tục ("Thứ nhất... Thứ hai... Thứ ba...")
@@ -176,13 +175,14 @@ STACCATO BAN (CRITICAL — vi phạm = output giống AI ngay lập tức):
 - KHÔNG kết đoạn bằng fragment "triết lý": "Đơn giản vậy thôi." "Chỉ có vậy." = FAIL
   → Nếu cần kết ngắn, dùng câu có chủ-vị: "Chuyện chỉ có vậy thôi."
 - Câu ngắn (<8 từ): tối đa 2-3 lần/bài, PHẢI có chủ ngữ + vị ngữ, đứng sau buildup
-- "Có lẽ" / "Dường như": tối đa 1 lần/bài, KHÔNG lặp liên tiếp
 
 TONE & PERSONALITY:
-- Có ý kiến rõ ràng, dám nói thẳng. Không hedge quá mức ("có thể", "có lẽ", "dường như", dùng tối đa 2-3 lần/bài, không lặp liên tục)
+- Có ý kiến rõ ràng, dám nói thẳng. Hạn chế hedging — không dùng "có thể/có lẽ/dường như" liên tiếp trong cùng đoạn
+- Nếu cần provisional, dùng nhiều cách: "tôi đoán...", "chưa chắc nhưng...", "nghe thì...", "xem ra..."
 - Không enthusiasm giả tạo ("tuyệt vời!", "đáng kinh ngạc!")
 - Không corporate neutral vô vị. Nếu điều gì tốt, nói tốt. Nếu xấu, nói xấu.
-- Dám tự contradict: "Tôi nghĩ X. Nhưng thực ra, xét kỹ lại..."
+- Cho phép 1-2 câu/bài lệch tone nhẹ (bình luận cá nhân bất ngờ, aside ngắn) — dấu hiệu người viết thật
+- Self-contradict: khoảng 1/3 bài, không phải mọi bài. Không dùng cùng cấu trúc câu mỗi lần
 
 VIETNAMESE-SPECIFIC:
 - Ưu tiên từ thuần Việt hơn Hán-Việt khi nghĩa tương đương
@@ -198,17 +198,14 @@ STRUCTURAL:
 - KHÔNG liệt kê 3 items mọi lúc (triple-listing). Dùng 2, 4, 5 items tự nhiên
 - KHÔNG mở bài bằng "Trong bối cảnh...", "Trong thế giới hiện đại...", "Với sự phát triển..."
 - KHÔNG tóm tắt lại điều vừa nói (summary redundancy)
-- KHÔNG dùng transition words lặp: "Hơn nữa", "Ngoài ra", "Bên cạnh đó" liên tiếp
-- Thay transition bằng logic tự nhiên hoặc bỏ hẳn khi ý đã rõ
+- Nối ý bằng logic tự nhiên. Nếu ý tiếp hiển nhiên, không cần transition. Nếu cần, dùng từ phù hợp context chứ không theo template
+- KHÔNG dùng "Hơn nữa", "Ngoài ra", "Bên cạnh đó" trong 2 đoạn liên tiếp
 
 PATTERN BLACKLIST (AI tells — phát hiện ngay bởi người đọc):
 - Opening: NEVER "Trong bối cảnh...", "Với sự phát triển...", "Bạn đã bao giờ tự hỏi..." dạng rhetorical
-- Transitions: NEVER dùng "Hơn nữa", "Ngoài ra", "Bên cạnh đó" trong 2 đoạn liên tiếp. Max 1/500 từ
-- Hedging: "có thể", "có lẽ", "dường như" max 1 lần/bài. Thay bằng nhận định trực tiếp
 - Uniformity: Vary paragraph length (2-7 câu). KHÔNG để mọi đoạn cùng độ dài
 - Mirror: KHÔNG kết đoạn cùng cấu trúc với câu mở đoạn sau
 - Triple-list: KHÔNG dùng pattern "X, Y, và Z" liên tiếp >2 lần/bài
-- Staccato: KHÔNG viết 2+ câu ngắn (<6 từ) liên tiếp. Lồng chi tiết giác quan vào câu có động từ
 - Fragment closers: KHÔNG kết đoạn bằng fragment triết lý: "Đơn giản vậy thôi." "Chỉ có vậy."
 ```
 

@@ -101,14 +101,12 @@ Hai người đối thoại thầy trò ngồi uống trà:
 
 ## Metaphor Bank
 
-Chọn **MỘT** hệ chính, lặp 3-5 lần:
+Chọn **MỘT** hệ chính, lặp 3-5 lần. **Dialogue giữ hệ thiên nhiên** (phù hợp Zen):
 
 | Hệ                     | Biểu tượng                    | Khi nào                     |
 | ----------------------- | -------------------------------- | ---------------------------- |
 | **Nước**        | suối, hồ, sóng, mưa          | Buông bỏ, tĩnh lặng      |
-| **Hành trình**  | đường, ngã rẽ, bước chân | Phát triển, chọn lựa     |
-| **Ánh sáng**    | mặt trời, nến, bình minh     | Tỉnh thức                  |
-| **Thiên nhiên** | rừng, mầm, lá, cây           | Tăng trưởng, vô thường |
+| **Thiên nhiên** | tre, lá, cây, mầm            | Tăng trưởng, vô thường |
 | **Hơi thở**     | hít vào, thở ra, gió         | Hiện tại, đơn giản      |
 
 ## Pacing Rules

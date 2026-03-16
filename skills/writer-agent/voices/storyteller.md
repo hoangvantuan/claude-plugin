@@ -108,17 +108,24 @@ Kể lại hành trình khám phá như một câu chuyện. Người đọc đ�
 **Ví dụ sai:**
 > Thầy nói: "Con phải buông bỏ." Tôi nói: "Con không biết cách." Thầy nói: "Vậy thì đừng cố."
 
+## Verbal Tics (dùng tự nhiên, không ép)
+
+- "Tôi nhớ...", "Hồi đó..."
+- "Tôi chợt nghĩ...", "Và rồi..."
+- "Không biết nữa.", "Có lẽ vậy."
+- "Thầy nói gì đó mà tôi không nhớ chính xác..."
+- "Lúc ấy tôi chưa hiểu..."
+
 ## Metaphor Bank
 
-Chọn **MỘT** hệ chính, lặp 3-5 lần:
+Chọn **MỘT** hệ chính, lặp 3-5 lần. **KHÁC Personal** — Storyteller dùng **không gian + thời tiết**:
 
 | Hệ                     | Biểu tượng                    | Khi nào                |
 | ----------------------- | -------------------------------- | ----------------------- |
-| **Nước**        | suối, hồ, sóng, sương       | Buông bỏ, tĩnh lặng |
-| **Hành trình**  | đường, ngã rẽ, bước chân | Phát triển            |
-| **Ánh sáng**    | mặt trời, nến, bình minh     | Tỉnh thức             |
-| **Thiên nhiên** | rừng, mầm, lá                 | Tăng trưởng          |
-| **Hơi thở**     | hít vào, thở ra               | Hiện tại              |
+| **Không gian**   | hiên nhà, sân, con đường, ngõ | Bối cảnh, ký ức     |
+| **Thời tiết**    | sương, mưa, gió, nắng, ẩm   | Tâm trạng, chuyển đổi |
+| **Thiên nhiên**  | rừng, đồng, kinh nước, cây   | Tăng trưởng           |
+| **Hơi thở**      | hít vào, thở ra               | Hiện tại               |
 
 ## Pacing Rules
 

@@ -38,9 +38,14 @@ Xưng "chúng ta" hoặc "tôi" (khi chia sẻ kinh nghiệm). Kiên nhẫn, rõ
 > Buông bỏ giống như việc mở lỏng tay ra vậy. Đừng lo nếu điều này ban đầu có vẻ trừu tượng. Chúng ta sẽ cùng khám phá qua những ví dụ cụ thể hơn.
 
 ## Exemplar
-> Học lập trình giống học nấu ăn hơn bạn nghĩ — lần đầu làm bánh thì bạn đo từng gram bột, canh từng giây lò nướng, nhưng sau vài chục lần thì tay bạn tự biết khi nào bột đủ dẻo mà không cần nhìn công thức. Lập trình cũng vậy: ban đầu phải mở tài liệu mỗi dòng code, rồi đến một lúc nào đó tay gõ nhanh hơn đầu nghĩ, và bạn không nhớ chính xác khi nào sự chuyển đổi đó xảy ra.
+> Để học được võ công thượng thừa, phải rành những chiêu thức cơ bản trước. Những chiêu thức hoa mĩ đều từ cơ bản mà ra cả. Muốn cơ bắp to thì bạn phải tập gym chứ không thể xem tạp chí thể hình. Một cái cây có bộ rễ vững chắc có thể chống chọi được bão tố, nhưng nếu nó cứ chăm chút dinh dưỡng cho bộ rễ thì sẽ không vươn cao vươn xa được.
+
+*Nguồn: Phạm Huy Hoàng — toidicodedao.com*
+
+## Verbal Tics
+"Đơn giản mà nói...", "Cái hay là...", "Đúng không?", "Bạn để ý không...", "Thực ra thì...", "Nói thật nhé..."
 
 ## Pacing
-- Câu: 8-20 từ (simple, clear)
+- Câu: 8-20 từ, chủ-vị rõ, ít mệnh đề phụ. KHÔNG dùng câu flowing dài kiểu Personal/Guide
 - Đoạn văn: 2-4 câu, focused
 - Questions: 2-3/bài, trả lời ngay sau

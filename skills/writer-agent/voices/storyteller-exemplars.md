@@ -1,16 +1,21 @@
 # Storyteller — Style Exemplars
 
-## Exemplar 1
-> Buổi chiều hôm đó trời không mưa nhưng không gian ẩm, kiểu ẩm mà da cảm nhận được trước khi mũi ngửi. Tôi ngồi ở hiên nhà thầy, chân trần trên nền gạch lạnh, nhìn thầy rót trà mà không nói gì. Mùi trà sen trộn lẫn gió lùa từ rặng tre ngoài vườn. Tôi muốn hỏi thầy một câu gì đó, nhưng ngồi đó lâu quá thì quên mất câu hỏi rồi, và tự hỏi không biết việc quên đó có phải cũng là một kiểu trả lời.
+> Exemplars từ tác giả Việt Nam thật. Ghi rõ nguồn để verify.
 
-*Phong cách: Chi tiết giác quan lồng trong câu flowing có động từ, mô tả bối cảnh bằng hành động, kết mở bằng tự vấn*
+## Exemplar 1
+> Con kinh nhỏ nằm vắt qua một cánh đồng rộng. Và khi chúng tôi quyết định dừng lại, mùa hạn hung hãn dường như cũng gom hết nắng đổ xuống nơi này. Những cây lúa chết non trên đồng, thân đã khô cong như tàn nhang chưa rụng, nắm vào bàn tay là nát vụn.
+
+*Nguồn: Nguyễn Ngọc Tư — "Cánh đồng bất tận" (2005)*
+*Phong cách: Chi tiết giác quan sống động (nắng, chạm tay), cảm xúc lồng qua thiên nhiên, "nắm vào bàn tay là nát vụn" chuyển từ mô tả sang xúc giác*
 
 ## Exemplar 2
-> "Con sợ," tôi nói trước khi kịp nghĩ, và thầy nhìn tôi một lúc rồi quay ra nhìn vườn, lâu đến mức tôi tưởng thầy không nghe. Rồi thầy nói, nhẹ như đang nói với cây chứ không phải với tôi: "Sợ cũng được." Ba chữ đó tôi mang theo suốt mười năm mà vẫn chưa hiểu hết, và mỗi lần tưởng hiểu thì nó lại mở ra thêm một lớp nghĩa mà tôi chưa từng thấy.
+> Nhiều lần dọn cơm tôi hay lấy chén đũa cho cả bốn người. Cha tôi rất khó chịu, ông ngán ngẩm đứng dậy. Tôi ngồi một mình, chan nước vào chén cơm như chan nỗi trống trải khủng khiếp.
 
-*Phong cách: Embedded dialogue lồng trong mô tả cử chỉ, kể lại chứ không format C/T, chi tiết hành động thay tâm lý, thời gian kéo dài tạo chiều sâu*
+*Nguồn: Nguyễn Nhật Ánh — "Cho tôi xin một vé đi tuổi thơ"*
+*Phong cách: Hành động đơn giản (dọn cơm, chan nước) chứa xúc cảm sâu, không giải thích cảm xúc mà để hành động nói thay, "chan nỗi trống trải" lồng ẩn dụ vào động tác cụ thể*
 
 ## Exemplar 3
-> Tôi nhớ mùi đất sau mưa hồi ở quê ngoại, nhớ tiếng bà gọi cơm vọng qua sân, nhớ con đường đất đỏ dính gót chân khi chạy về nhà lúc chiều tối. Những thứ nhỏ xíu mà hồi đó tôi không biết quý, giờ ngồi giữa Sài Gòn mới nhận ra mình không phải hiểu chúng mà phải cảm — và "cảm" thì đúng hơn "hiểu" rất nhiều, dù tôi không giải thích được tại sao.
+> Trong bóng me im mát vị khất sĩ Svastika đang thực tập phép quán niệm hơi thở. Chú ngồi trong tư thế hoa sen. Từ hơn một tiếng đồng hồ, chú đã ngồi thực tập như thế một cách chăm chú.
 
-*Phong cách: Hồi ức lồng qua giác quan trong câu flowing, tự sửa lại từ ("hiểu" → "cảm") tự nhiên, thừa nhận giới hạn ngôn ngữ*
+*Nguồn: Thích Nhất Hạnh — "Đường xưa mây trắng" (Chương 1) — [langmai.org](https://langmai.org/tang-kinh-cac/vien-sach/thien-tap/duong-xua-may-trang/)*
+*Phong cách: Scene setting chánh niệm, "bóng me im mát" thiết lập không gian bằng 4 từ, mô tả hành động đơn giản tạo nhịp yên tĩnh*

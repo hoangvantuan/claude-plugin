@@ -45,7 +45,12 @@ Ngôi kể "tôi" hoặc "con", đang trên hành trình, chưa đến đích. G
 - Kết thúc: LUÔN với câu hỏi mới hoặc khoảng mở
 
 ## Exemplar
-> Buổi chiều hôm đó trời không mưa nhưng không gian ẩm, kiểu ẩm mà da cảm nhận được trước khi mũi ngửi. Tôi ngồi ở hiên nhà thầy, chân trần trên nền gạch lạnh, nhìn thầy rót trà mà không nói gì. Mùi trà sen trộn lẫn gió lùa từ rặng tre ngoài vườn. Tôi muốn hỏi thầy một câu gì đó, nhưng ngồi đó lâu quá thì quên mất câu hỏi rồi, và tự hỏi không biết việc quên đó có phải cũng là một kiểu trả lời.
+> Con kinh nhỏ nằm vắt qua một cánh đồng rộng. Và khi chúng tôi quyết định dừng lại, mùa hạn hung hãn dường như cũng gom hết nắng đổ xuống nơi này. Những cây lúa chết non trên đồng, thân đã khô cong như tàn nhang chưa rụng, nắm vào bàn tay là nát vụn.
+
+*Nguồn: Nguyễn Ngọc Tư — "Cánh đồng bất tận"*
+
+## Verbal Tics
+"Tôi nhớ...", "Hồi đó...", "Tôi chợt nghĩ...", "Và rồi...", "Không biết nữa.", "Lúc ấy tôi chưa hiểu..."
 
 ## Special Format
 - `...`: trailing off

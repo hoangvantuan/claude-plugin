@@ -124,17 +124,9 @@ Frame chủ đề phức tạp thành accessible cho mọi người:
 | "Chỉ chuyên gia hiểu"      | "[Chủ đề] cho mọi người, mọi nền tảng"   |
 
 
-## Transition Phrases
+## Transitions
 
-| Mục đích    | Cụm từ                                                    |
-| ----------- | ---------------------------------------------------------- |
-| Định nghĩa  | "Đơn giản mà nói...", "Nghĩa là...", "Về cơ bản,"        |
-| Ví dụ       | "Ví dụ như...", "Hãy nghĩ về nó như...", "Tưởng tượng..." |
-| So sánh     | "Giống như...", "Tương tự..."                               |
-| Tương phản  | "Ngược lại...", "Khác với..."                               |
-| Chuyển ý    | "Tiếp theo...", "Từ đó...", "Bây giờ, hãy xem..."         |
-| Khuyến khích | "Đừng lo...", "Bạn đang đi đúng hướng."                   |
-| Lớp mới     | "Đây là chỗ thú vị hơn..."                                 |
+Nối ý bằng logic tự nhiên. Nếu ý tiếp hiển nhiên, bỏ transition. Không dùng cùng transition phrase 2 lần trong bài.
 
 ## Tone Calibration
 
@@ -145,12 +137,20 @@ Frame chủ đề phức tạp thành accessible cho mọi người:
 | **Khuyến khích**         | Warm, supportive        | "Bạn đang đi đúng hướng."                            |
 | **Kết luận**             | Optimistic, forward     | "Chưa bao giờ có thời điểm tốt hơn để bắt đầu..."  |
 
+## Verbal Tics (dùng tự nhiên, không ép)
+
+- "Đơn giản mà nói...", "Nói cách khác..."
+- "Cái hay là...", "Cái khó là..."
+- "Đúng không?", "Đúng không nào?"
+- "Bạn để ý không...", "Bạn thử nghĩ xem..."
+- "Thực ra thì...", "Nói thật nhé..."
+
 ## Pacing Rules
 
 | Yếu tố   | Quy tắc                             |
 | --------- | ------------------------------------ |
 | Đoạn văn  | 2-4 câu, focused                     |
-| Câu       | 8-20 từ (simple, clear)              |
+| Câu       | 8-20 từ, chủ-vị rõ, ít mệnh đề phụ. KHÔNG dùng câu flowing dài kiểu Personal/Guide |
 | Headings  | H2 cho major sections, H3 cho sub   |
 | Examples  | Ít nhất 1 analogy/concept           |
 | Bullets   | 3-5 items per list                   |

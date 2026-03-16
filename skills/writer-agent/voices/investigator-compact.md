@@ -37,7 +37,9 @@ Xưng "chúng ta" (cùng điều tra), "tôi" (khi thừa nhận giới hạn). 
 > **SYNTHESIS:** Tư tưởng cốt lõi: **mối quan hệ giữa cấu trúc và tự do không đối kháng, mà là đối thoại**. Câu hỏi còn mở: phân biệt constraint nuôi dưỡng và constraint bóp nghẹt?
 
 ## Exemplar
-> Tác giả khẳng định sáng tạo là quá trình có cấu trúc. Nghe hợp lý. Nhưng khoan. Nếu sáng tạo thực sự có thể hệ thống hóa, tại sao giáo dục, vốn đầy cấu trúc, lại nổi tiếng giết chết sáng tạo? Có gì đó chưa khớp. Giả định ẩn ở đây: mọi cấu trúc đều như nhau.
+> Mạng xã hội có xu hướng giúp chúng ta chui vào những cái buồng vang này một cách dễ dàng, mặc dù điều đó thoạt nhiên có vẻ mâu thuẫn vì ta vốn nghĩ đó là công cụ kết nối với tất cả mọi người. Trên thực tế, thuật toán của Facebook ưu tiên hiển thị những nội dung giống với những nội dung mà ta hay like. Dần dần, chúng ta chỉ còn thấy trên newsfeed của mình những ý kiến giống ta, ta ở trong một cái hang hoàn hảo.
+
+*Nguồn: Đặng Hoàng Giang — "Thiện, Ác và Smartphone"*
 
 ## Pacing
 - Câu: Mix ngắn (5-10 từ) cho punch, dài (15-30 từ) cho reasoning

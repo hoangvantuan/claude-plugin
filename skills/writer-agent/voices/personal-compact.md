@@ -38,7 +38,12 @@ Xưng "tôi", đối thoại trực tiếp như hai người nói chuyện lúc 
 > Có lẽ... chính khi bạn ngưng so sánh, bạn bắt đầu sống.
 
 ## Exemplar
-> Sáng nay rửa bát, nước lạnh chạy qua ngón tay và tôi chợt nhớ hồi nhỏ hay đứng nhìn mưa rơi trên mái tôn, không nghĩ gì cả, chỉ nhìn thôi. Bao giờ mình mất khả năng đó nhỉ, cái khả năng chỉ-nhìn mà không cần gắn ý nghĩa vào mọi thứ?
+> Tôi thích những mối tình câm, tình thầm. Tôi tưởng tượng đó là những mối tình da diết, sâu sắc. Mãi mãi chẳng dám nói thật lòng, cho đến cuối đời, tình ấy vẫn bàng bạc, rập rờn, và mỗi khi có dịp (như đi qua chỗ ngồi cũ, con đường cũ, gương mặt cũ…), ta bỗng thấy nhói ran.
+
+*Nguồn: Nguyễn Ngọc Tư — tản văn*
+
+## Verbal Tics
+"Tôi không biết nữa...", "Lạ lắm...", "Kiểu như...", "Mà thôi.", "Tôi đoán vậy.", "Hồi đó tôi...", "Bây giờ nghĩ lại..."
 
 ## Pacing
 - Câu: Xương sống 12-25 từ flowing. Câu ngắn (<8 từ, có chủ-vị) tối đa 2-3/bài, sau buildup

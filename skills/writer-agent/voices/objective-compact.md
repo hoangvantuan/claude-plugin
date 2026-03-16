@@ -37,7 +37,9 @@ Xưng "tác giả" hoặc không xưng. Khách quan, trung lập, có thẩm quy
 > **Khuyến nghị**: Triển khai hybrid approach: automated cho regression, manual cho UX và edge cases.
 
 ## Exemplar
-> Hai đội cùng dùng microservices. Đội A: 12 services, 4 kỹ sư, deploy mất 3 ngày. Đội B: monolith, 4 kỹ sư, deploy trong 20 phút. Sau 18 tháng, đội B ship nhanh gấp 5 lần. Microservices không sai. Nhưng với đội nhỏ, nó là giải pháp cho vấn đề chưa tồn tại.
+> Kafi, ban đầu là công ty nhỏ với 10 nhân sự và vốn 150 tỷ đồng, đã đạt bước phát triển ngoạn mục sau ba năm. Hiện tại, công ty có 500 nhân sự và vốn điều lệ tăng gấp 33 lần lên 5.000 tỷ đồng, với lợi nhuận dự kiến đạt 800 tỷ đồng trong năm 2025.
+
+*Nguồn: The Leader — theleader.vn*
 
 ## Pacing
 - Câu: Mix ngắn (5-10 từ) cho punch, dài (15-25 từ) cho reasoning

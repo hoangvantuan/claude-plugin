@@ -1,16 +1,21 @@
 # Guide — Style Exemplars
 
-## Exemplar 1
-> Tuần trước tôi thử một thứ đơn giản: ngồi yên 10 phút trước khi mở laptop, không thiền, không hít thở gì đặc biệt, chỉ ngồi đó với ly nước và cái bàn trống. Ngày đầu thì 10 phút dài như cả tiếng, tôi bồn chồn muốn cầm điện thoại suốt. Nhưng đến ngày thứ ba, tôi bắt đầu nghe tiếng chim ngoài cửa sổ, và hóa ra chúng hót mỗi sáng mà bao nhiêu năm nay tôi không hề biết.
+> Exemplars từ tác giả Việt Nam thật. Ghi rõ nguồn để verify.
 
-*Phong cách: Thử nghiệm cá nhân, chi tiết cụ thể theo ngày với cảm xúc đi kèm, insight nhẹ nhàng từ quan sát, câu flowing tự nhiên*
+## Exemplar 1
+> Như trong tất cả nghệ thuật, phê bình thiện chí đòi hỏi tập luyện và kiên nhẫn. Trên thực tế, trong sự say mê bảo vệ quan điểm của mình, chúng ta thường hay vội vàng nhảy cóc đến ngay bước bốn, bỏ qua tất cả những điểm tương đồng. Kiên nhẫn và mềm dẻo nhưng dứt khoát và kết thúc cuộc tranh luận nếu cần thiết.
+
+*Nguồn: Đặng Hoàng Giang — "Thiện, Ác và Smartphone" — trích từ [YBOX](https://admin.ybox.vn/vien-sach-bookademy/trich-sach-thien-ac-va-smartphone-lam-the-nao-de-phe-binh-nguoi-khac-mot-cach-day-thien-y-5ec912fbad2db2445d340017)*
+*Phong cách: Trải nghiệm chung (vội vàng tranh luận) + triết lý cân bằng (kiên nhẫn/dứt khoát) + hướng dẫn hành động, tone thấu hiểu*
 
 ## Exemplar 2
-> Người Nhật có khái niệm "ikigai", người Đan Mạch có "hygge", và cả hai đều chỉ về một điều giản dị: sống chậm đủ để cảm nhận rằng mình đang sống. Bạn không cần bay sang Tokyo hay Copenhagen để thử — bắt đầu bằng tách cà phê sáng nay, uống mà không lướt điện thoại, và để ý xem mùi cà phê thật ra có vị gì khi mình thật sự chú ý.
+> Làm sao có thể làm đúng việc khi chưa biết đâu là cái đúng? Làm sao "làm ra chính mình", làm sao "hãy là chính mình" khi chưa biết "đâu là mình"... Hành trình "tôi đi tìm tôi" đó cũng là câu chuyện khai minh của mỗi con người, mỗi nhà và mỗi xứ sở.
 
-*Phong cách: Cầu nối Đông-Tây, từ khái niệm sang thực hành cụ thể có chi tiết giác quan, lời mời nhẹ nhàng lồng trong hành động*
+*Nguồn: Giản Tư Trung — "Đúng Việc — Một góc nhìn về câu chuyện khai minh" — trích từ [YBOX Review](https://ybox.vn/gia-vi/review-sach-dung-viec-gian-tu-trung-qqnxkqcazu)*
+*Phong cách: Chuỗi câu hỏi dẫn dắt mở rộng dần, từ cá nhân ra cộng đồng, không áp đáp án*
 
 ## Exemplar 3
-> AI không thay thế bạn, nhưng nó đang thay đổi cách bạn làm việc nhanh hơn bạn nghĩ. Câu hỏi đáng hỏi không phải "AI có lấy mất việc không?" mà là "mình muốn dùng công cụ mới này để làm gì?" — và sự khác biệt giữa hai câu hỏi đó lớn hơn bạn tưởng. Thay vì ngồi lo lắng, thử mở một project nhỏ tuần này, làm sai vài lần, quan sát xem mình học được gì từ những lần sai đó.
+> Tha thứ luôn là linh dược có thể chữa trị mọi nỗi khổ niềm đau cho kẻ được tha thứ và cả người tha thứ. Khi ta chưa thấu hiểu cơn giận, dù có điều khiển được nó thì cũng chỉ là giải pháp tạm thời mà thôi. Tâm ta như thế nào thì ta sẽ cảm nhận hạnh phúc như thế ấy. Hạnh phúc vốn luôn có sẵn trong tâm ta, ở đây và ngay bây giờ.
 
-*Phong cách: Nhận định thẳng, reframe câu hỏi bằng so sánh trực tiếp, kết bằng hành động cụ thể có timeline*
+*Nguồn: Minh Niệm — "Hiểu về Trái Tim" — trích từ [Bạch Hóa Xanh](https://www.bachhoaxanh.com/kinh-nghiem-hay/tong-hop-nhung-trich-dan-hay-trong-sach-hieu-ve-trai-tim-cua-thay-minh-niem-1540785)*
+*Phong cách: Triết lý Phật giáo + trải nghiệm cảm xúc + gợi ý thực hành (tha thứ, thấu hiểu tâm), tone ấm áp sâu lắng*
