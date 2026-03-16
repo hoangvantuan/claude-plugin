@@ -85,7 +85,8 @@ Bash: find . -path "*/writer-agent/scripts/wa-env" -not -path "*/.venv/*" 2>/dev
 **Bước 2**: Chạy `wa-env` để lấy tất cả paths:
 
 ```bash
-source {path_to_wa-env}
+# QUAN TRỌNG: Dùng `bash` thay vì `source` để BASH_SOURCE resolve đúng
+bash {path_to_wa-env}
 # Output: SCRIPTS_DIR, SKILL_DIR, VOICES_DIR, STRUCTURES_DIR,
 #         IDENTITIES_DIR, AUDIENCES_DIR, EMOTIONS_DIR, TEMPLATES_DIR, REFERENCES_DIR
 ```
