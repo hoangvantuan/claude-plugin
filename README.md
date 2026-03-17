@@ -26,6 +26,7 @@ claude plugin install gh:hoangvantuan/shun-claude-plugin
 | `deep-post-ideas` | Trích xuất outline bài đăng từ tài liệu tham khảo |
 | `deep-learner` | Học hiểu sâu nội dung — tạo tài liệu học có cấu trúc 6 phase |
 | `content-planner` | Lên kế hoạch và viết bài Facebook + Blog — 2-phase workflow (Plan → Write) |
+| `things-manager` | Quản lý Things 3 tasks, projects, areas, tags qua things-cli (Go CLI) |
 | `wisdom-mentor` | Trò chuyện với người thầy tri thức — Naval Ravikant, Daniel Schmachtenberger, Csikszentmihalyi, Krishnamurti, Ken Wilber, Thích Viên Minh, Trần Việt Quân, Thích Nhất Hạnh, Sư Tâm Pháp |
 
 ### Agents
