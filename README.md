@@ -27,6 +27,7 @@ claude plugin install gh:hoangvantuan/shun-claude-plugin
 | `deep-learner` | Học hiểu sâu nội dung — tạo tài liệu học có cấu trúc 6 phase |
 | `content-planner` | Lên kế hoạch và viết bài Facebook + Blog — 2-phase workflow (Plan → Write) |
 | `things-manager` | Quản lý Things 3 tasks, projects, areas, tags qua things-cli (Go CLI) |
+| `pinchtab` | Browser automation cho AI agents — điều khiển Chrome qua PinchTab HTTP API (navigate, click, fill form, scrape, multi-tab) |
 | `wisdom-mentor` | Trò chuyện với người thầy tri thức — Naval Ravikant, Daniel Schmachtenberger, Csikszentmihalyi, Krishnamurti, Ken Wilber, Thích Viên Minh, Trần Việt Quân, Thích Nhất Hạnh, Sư Tâm Pháp |
 
 ### Agents
