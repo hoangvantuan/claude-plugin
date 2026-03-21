@@ -96,6 +96,31 @@ if [[ "$DRY_RUN" == "true" ]]; then
   [[ -n "$TAG_NAME" ]] && log_info "[DRY-RUN] Tag: $TAG_NAME (ID: ${TAG_ID:-none})"
   [[ -n "$GROUP" ]] && log_info "[DRY-RUN] Group: ${GROUP_URL:-$GROUP}"
   log_info "[DRY-RUN] Publish: $PUBLISH"
+
+  # Validate profile exists in PinchTab (requires server running)
+  PROFILE_CHECK=$(curl -s "$BASE/profiles" -H "$AUTH" 2>/dev/null \
+    | SNAP_PROFILE="$PROFILE" python3 -c "
+import sys, json, os
+profile = os.environ['SNAP_PROFILE']
+try:
+    profiles = json.load(sys.stdin)
+    # Support both list format and {data: [...]} format
+    if isinstance(profiles, dict):
+        profiles = profiles.get('data', [])
+    found = any(p.get('name') == profile for p in profiles)
+    print('found' if found else 'missing')
+except: print('unknown')
+" 2>/dev/null) || true
+
+  if [[ "$PROFILE_CHECK" == "missing" ]]; then
+    log_error "[DRY-RUN] Profile '$PROFILE' not found in PinchTab!"
+    exit $EXIT_INSTANCE
+  elif [[ "$PROFILE_CHECK" == "found" ]]; then
+    log_info "[DRY-RUN] Profile '$PROFILE' verified OK"
+  else
+    log_warn "[DRY-RUN] Cannot verify profile (server not running?)"
+  fi
+
   exit $EXIT_OK
 fi
 

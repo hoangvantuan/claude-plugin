@@ -34,14 +34,17 @@ def main():
     tag_name = norm(os.environ.get("TAG_NAME", ""))
     friend_keywords = os.environ.get("FRIEND_KW", "bạn bè|friend").split("|")
 
-    # Mode 1: match by Facebook ID
+    # Mode 1: match by Facebook ID — search ALL string fields of each node
+    # Facebook accessibility tree may embed IDs in ref, url, name, description, or other fields
     if tag_id:
         for n in nodes:
-            if tag_id in n.get("name", "") or tag_id in n.get("description", ""):
-                print(n.get("ref", ""))
-                return
-        # ID not found — fall through to empty output
-        return
+            for val in n.values():
+                if isinstance(val, str) and tag_id in val:
+                    print(n.get("ref", ""))
+                    return
+        # ID not found — fall through to name-based matching instead of giving up
+        if not tag_name:
+            return
 
     # Mode 2: match by name, prioritize friends
     friend_ref = None
