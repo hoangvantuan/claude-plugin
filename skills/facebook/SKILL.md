@@ -43,7 +43,7 @@ bash "$(dirname "$0")/scripts/fb-post.sh" \
 | Param       | Required | Default   | Description                                          |
 | ----------- | -------- | --------- | ---------------------------------------------------- |
 | `--profile` | No       | `default` | PinchTab profile name (must have Facebook session)   |
-| `--user-id` | Yes      | —         | Facebook numeric user ID (e.g., `100003782705460`)   |
+| `--user-id` | No       | auto      | Facebook user ID. Omit to auto-detect from session   |
 | `--content` | Yes      | —         | Post text content (supports multi-line)              |
 | `--tag`     | No       | —         | Friend's display name to tag                         |
 | `--tag-id`  | No       | —         | Friend's Facebook ID for precise tag matching        |
@@ -55,25 +55,25 @@ bash "$(dirname "$0")/scripts/fb-post.sh" \
 **Examples:**
 
 ```bash
-# Post + tag, preview before publishing
+# Post to own wall (auto-detect profile), preview before publishing
 bash scripts/fb-post.sh \
-  --profile default \
-  --user-id 100003782705460 \
+  --content "Hello world!" \
+  --publish false
+
+# Post + tag friend, auto-detect profile
+bash scripts/fb-post.sh \
   --tag "Hoang Van Tuan" \
   --content "Hello world!" \
   --publish false
 
-# Post without tag, publish immediately
+# Post to specific user's wall
 bash scripts/fb-post.sh \
-  --profile default \
   --user-id 100003782705460 \
   --content "Quick update from CLI" \
   --publish true
 
 # Headless mode (no browser window)
 bash scripts/fb-post.sh \
-  --profile default \
-  --user-id 100003782705460 \
   --content "Background post" \
   --mode headless \
   --publish true
@@ -84,7 +84,7 @@ bash scripts/fb-post.sh \
 The script uses PinchTab's accessibility snapshot to find UI elements by role and Vietnamese text labels:
 
 1. **Start/reuse browser** — checks for running instance, health-checks before reuse (restarts stale instances)
-2. **Navigate to wall** — opens `facebook.com/profile.php?id=<user-id>`, verifies by page title (handles FB redirects)
+2. **Navigate to wall** — if `--user-id` given, opens that profile; otherwise navigates to `facebook.com/me` to auto-detect logged-in user's wall
 3. **Open post dialog** — poll-waits for "Bạn đang nghĩ gì?" button (accent-insensitive matching)
 4. **Type content** — uses `inserttext` to preserve line breaks
 5. **Tag friend** (optional) — opens tag dialog, searches by name, prioritizes "Bạn bè" results; uses `--tag-id` for precise match; falls back to keyboard if element is not clickable

@@ -4,7 +4,6 @@
 # =============================================================
 # Usage:
 #   ./fb-post.sh --profile default \
-#                --user-id 100003782705460 \
 #                --content "Noi dung bai viet" \
 #                --tag "Hoang Van Tuan" \
 #                --publish false \
@@ -39,8 +38,8 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-if [[ -z "$USER_ID" || -z "$CONTENT" ]]; then
-  echo "Required: --user-id <facebook_user_id> --content <content>"
+if [[ -z "$CONTENT" ]]; then
+  echo "Required: --content <content>"
   exit 1
 fi
 
@@ -49,7 +48,6 @@ TOKEN=$(python3 -c "import json; print(json.load(open('$HOME/.pinchtab/config.js
 BASE="http://localhost:9867"
 AUTH="Authorization: Bearer $TOKEN"
 
-# Debug screenshot helper — captures screenshot at key steps when --debug true
 debug_screenshot() {
   if [[ "$DEBUG" == "true" ]]; then
     mkdir -p "$DEBUG_DIR"
@@ -59,8 +57,7 @@ debug_screenshot() {
   fi
 }
 
-# Accent-insensitive search: normalize Vietnamese diacritics before matching
-# This handles both accented ("nghĩ gì") and non-accented ("nghi gi") keywords
+# Accent-insensitive search via Unicode NFD normalization
 snap_find() {
   local role="$1" keyword="$2"
   pinchtab snap 2>/dev/null | python3 -c "
@@ -79,7 +76,6 @@ snap_find_button() { snap_find "button" "$1"; }
 snap_find_textbox() { snap_find "textbox" "$1"; }
 
 # Poll-based wait: retry snap_find until element appears or timeout
-# Usage: wait_for_element <role> <keyword> [timeout_seconds=10]
 wait_for_element() {
   local role="$1" keyword="$2" timeout="${3:-10}" elapsed=0
   while [[ $elapsed -lt $timeout ]]; do
@@ -95,32 +91,43 @@ wait_for_element() {
   return 1
 }
 
-# Health check: verify instance is responsive by attempting a snap
-# Returns 0 if healthy, 1 if stale/unresponsive
 instance_health_check() {
   local inst_id="$1"
-  # Try snap with 5s timeout — if it hangs, instance is stale
   timeout 5 pinchtab snap >/dev/null 2>&1
   return $?
 }
 
-# Safe click with keyboard fallback for non-focusable elements
 safe_click() {
   local ref="$1"
   if ! pinchtab click "$ref" 2>&1 | grep -qi "not focusable"; then
     return 0
   fi
-  # Fallback: use keyboard navigation
   echo "   [fallback] Element not focusable, using keyboard"
   pinchtab press ArrowDown >/dev/null 2>&1
   sleep 0.5
   pinchtab press Enter >/dev/null 2>&1
 }
 
+# Auto-detect logged-in user's profile page URL from Facebook
+detect_user_profile() {
+  # Navigate to facebook.com/me which redirects to the logged-in user's profile
+  pinchtab nav "https://www.facebook.com/me" >/dev/null 2>&1
+  sleep 3
+
+  # Extract the redirected URL — this is the user's actual profile URL
+  local current_url
+  current_url=$(pinchtab snap 2>/dev/null | python3 -c "
+import sys, json
+data = json.load(sys.stdin)
+print(data.get('url',''))
+" 2>/dev/null || true)
+
+  echo "$current_url"
+}
+
 # Track whether we created the instance (to auto-stop on exit)
 CREATED_INSTANCE="false"
 
-# Cleanup: auto-stop instance if we created it
 cleanup() {
   if [[ "$CREATED_INSTANCE" == "true" && -n "${INST:-}" ]]; then
     echo ""
@@ -168,11 +175,23 @@ fi
 # =============================================================
 # STEP 2: Navigate to personal wall
 # =============================================================
-echo "[2/6] Opening profile page: $USER_ID"
+echo "[2/6] Opening profile page"
 
-pinchtab nav "https://www.facebook.com/profile.php?id=$USER_ID" >/dev/null 2>&1
+if [[ -n "$USER_ID" ]]; then
+  # Explicit user ID provided — navigate directly
+  pinchtab nav "https://www.facebook.com/profile.php?id=$USER_ID" >/dev/null 2>&1
+else
+  # Auto-detect: use /me redirect to find logged-in user's profile
+  echo "   -> No --user-id provided, detecting from logged-in session..."
+  PROFILE_URL=$(detect_user_profile)
+  if [[ -z "$PROFILE_URL" ]]; then
+    echo "ERROR: Cannot detect profile. Provide --user-id or ensure Facebook is logged in."
+    exit 1
+  fi
+  echo "   -> Detected profile: $PROFILE_URL"
+fi
 
-# Wait for page load by checking for title in snap (not URL — FB redirects)
+# Wait for page load by checking title in snap (handles FB URL redirects)
 TITLE=""
 for i in $(seq 1 10); do
   TITLE=$(pinchtab snap 2>/dev/null | python3 -c "
@@ -228,7 +247,6 @@ if [[ -n "$TAG_NAME" ]]; then
 
   BTN_TAG=$(snap_find_button "gắn thẻ người khác")
   if [[ -z "$BTN_TAG" ]]; then
-    # Fallback: try finding tag button by partial match
     BTN_TAG=$(snap_find_button "gắn thẻ")
   fi
 
@@ -243,12 +261,10 @@ if [[ -n "$TAG_NAME" ]]; then
       sleep 0.5
       pinchtab keyboard type "$TAG_NAME" >/dev/null 2>&1
 
-      # Wait for search results to appear
       sleep 2
       debug_screenshot "05-tag-search-results"
 
       if [[ -n "$TAG_ID" ]]; then
-        # Precise selection by user ID — find the exact match in results
         TAG_REF=$(pinchtab snap 2>/dev/null | python3 -c "
 import sys, json
 for n in json.load(sys.stdin)['nodes']:
@@ -269,7 +285,6 @@ for n in json.load(sys.stdin)['nodes']:
 import sys, json, unicodedata
 def norm(s): return unicodedata.normalize('NFD', s.lower())
 nodes = json.load(sys.stdin)['nodes']
-# Prefer friend results over pages
 friend_ref = None
 first_ref = None
 for n in nodes:
@@ -286,7 +301,6 @@ print(friend_ref or first_ref or '')
         if [[ -n "$TAG_REF" ]]; then
           safe_click "$TAG_REF"
         else
-          # Fallback: keyboard selection
           pinchtab press ArrowDown >/dev/null 2>&1
           sleep 0.3
           pinchtab press Enter >/dev/null 2>&1
@@ -295,7 +309,6 @@ print(friend_ref or first_ref or '')
 
       sleep 2
 
-      # Click "Xong" (Done)
       BTN_DONE=$(snap_find_button "xong")
       if [[ -n "$BTN_DONE" ]]; then
         pinchtab click "$BTN_DONE" >/dev/null 2>&1
