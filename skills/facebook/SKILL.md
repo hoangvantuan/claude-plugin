@@ -25,81 +25,63 @@ Both workflows use the same script with different parameters. The script handles
 **Script:** `scripts/fb-post.sh`
 
 ```bash
-bash "$(dirname "$0")/scripts/fb-post.sh" \
-  --profile <profile_name> \
-  --user-id <facebook_user_id> \
-  --group <group_slug_or_url> \
-  --content "<post content>" \
-  --tag "<friend name>" \
-  --tag-id "<friend facebook id>" \
-  --publish <true|false> \
-  --mode <headed|headless> \
-  --debug <true|false>
+# Positional syntax (content as first argument)
+bash "$(dirname "$0")/scripts/fb-post.sh" "<content>" [options]
+
+# Named syntax
+bash "$(dirname "$0")/scripts/fb-post.sh" --content "<content>" [options]
 ```
 
 **Parameters:**
 
-| Param       | Required | Default   | Description                                                   |
-| ----------- | -------- | --------- | ------------------------------------------------------------- |
-| `--profile` | No       | `default` | PinchTab profile name (must have Facebook session)            |
-| `--user-id` | No       | auto      | Facebook user ID (wall mode). Omit to auto-detect             |
-| `--group`   | No       | —         | Group slug or full URL. When set, posts to group instead of wall |
-| `--content` | Yes      | —         | Post text content (supports multi-line)                       |
-| `--tag`     | No       | —         | Friend's display name to tag                                  |
-| `--tag-id`  | No       | —         | Friend's Facebook ID for precise tag matching                 |
-| `--publish` | No       | `false`   | `true` = publish immediately, `false` = prepare only          |
-| `--mode`    | No       | `headed`  | `headed` = visible browser, `headless` = background           |
-| `--debug`   | No       | `false`   | Save screenshots at each step to `/tmp/` for review           |
+| Param              | Required | Default   | Description                                                      |
+| ------------------ | -------- | --------- | ---------------------------------------------------------------- |
+| `<content>`        | Yes      | —         | First positional arg = post content (alternative to `--content`) |
+| `--content`        | Yes*     | —         | Post text content (supports multi-line). *Not needed if positional arg used |
+| `--profile`        | No       | `default` | PinchTab profile name (must have Facebook session)               |
+| `--user-id`        | No       | auto      | Facebook user ID (wall mode). Omit to auto-detect                |
+| `--group`          | No       | —         | Group slug or full URL. When set, posts to group instead of wall |
+| `--tag`            | No       | —         | Friend's display name to tag                                     |
+| `--tag-id`         | No       | —         | Friend's Facebook ID for precise tag matching                    |
+| `--publish`        | No       | `false`   | `true` = publish immediately, `false` = prepare only             |
+| `--mode`           | No       | `headed`  | `headed` = visible browser, `headless` = background              |
+| `--debug`          | No       | `false`   | Save screenshots at each step to `/tmp/` for review              |
+| `--dry-run`        | No       | —         | Log all actions without browser interaction (for testing)        |
+| `--keep-instance`  | No       | —         | Don't stop browser instance on exit (for reuse across runs)      |
 
 ### 1. Post to Personal Wall
 
 ```bash
-# Post to own wall, preview before publishing
-bash scripts/fb-post.sh \
-  --content "Hello world!" \
-  --publish false
+# Positional arg — simplest form
+bash scripts/fb-post.sh "Hello world!"
 
 # Post + tag friend
-bash scripts/fb-post.sh \
-  --tag "Hoang Van Tuan" \
-  --content "Hello world!" \
-  --publish false
+bash scripts/fb-post.sh "Hello world!" --tag "Hoang Van Tuan" --publish false
 
 # Post to specific user's wall
-bash scripts/fb-post.sh \
-  --user-id 100003782705460 \
-  --content "Quick update from CLI" \
-  --publish true
+bash scripts/fb-post.sh "Quick update" --user-id 100003782705460 --publish true
+
+# Dry run — verify params without opening browser
+bash scripts/fb-post.sh "Test content" --tag "Ngoc" --dry-run
 ```
 
 ### 2. Post to Group
 
 ```bash
 # Post to group by slug
-bash scripts/fb-post.sh \
-  --group tuhoccungai \
-  --content "Hello group!" \
-  --publish false
+bash scripts/fb-post.sh "Hello group!" --group tuhoccungai --publish false
 
 # Post to group by full URL
-bash scripts/fb-post.sh \
-  --group "https://www.facebook.com/groups/tuhoccungai" \
-  --content "Nội dung bài viết cho group" \
-  --publish true
+bash scripts/fb-post.sh "Nội dung bài viết" \
+  --group "https://www.facebook.com/groups/tuhoccungai" --publish true
 
 # Post to group + tag someone
-bash scripts/fb-post.sh \
-  --group tuhoccungai \
-  --content "Check this out!" \
-  --tag "Ngoc" \
-  --publish true
+bash scripts/fb-post.sh "Check this out!" \
+  --group tuhoccungai --tag "Ngoc" --publish true
 
-# Headless mode
-bash scripts/fb-post.sh \
-  --group tuhoccungai \
-  --content "Automated post" \
-  --mode headless \
-  --publish true
+# Headless + keep instance for next run
+bash scripts/fb-post.sh "Automated post" \
+  --group tuhoccungai --mode headless --keep-instance --publish true
 ```
 
 ## How It Works
@@ -108,10 +90,11 @@ The script uses PinchTab's accessibility snapshot to find UI elements by role an
 
 1. **Start/reuse browser** — checks for running instance, health-checks before reuse (restarts stale instances)
 2. **Navigate** — wall mode: opens user profile (auto-detect or `--user-id`); group mode: opens group URL
-3. **Open post dialog** — wall uses "nghĩ gì" button, group uses "viết gì" button (auto-selected based on mode)
-4. **Type content** — uses `inserttext` to preserve line breaks
-5. **Tag friend** (optional) — opens tag dialog, searches by name, selects via keyboard (ArrowDown + Enter) because search results aren't directly clickable; uses `--tag-id` for precise match
-6. **Publish or hold** — uses **exact match** for "Đăng"/"Post" button to avoid clicking "Đăng ẩn danh" (anonymous post)
+3. **Validate page** — in group mode, verifies the create-post button exists before continuing (early error for wrong URL or no access)
+4. **Open post dialog** — clicks button with retry logic: verifies textbox appeared, retries up to 3 times if click didn't open dialog
+5. **Type content** — uses `inserttext` to preserve line breaks
+6. **Tag friend** (optional) — opens tag dialog, searches by name, selects via keyboard (ArrowDown + Enter); uses `--tag-id` for precise match, prioritizes "Bạn bè" (friends) when matching by name
+7. **Publish or hold** — uses **exact match** for "Đăng"/"Post" button to avoid clicking "Đăng ẩn danh" (anonymous post)
 
 ### Wall vs Group Differences
 
@@ -119,9 +102,20 @@ The script uses PinchTab's accessibility snapshot to find UI elements by role an
 | ------------------ | ---------------------- | ------------------------------- |
 | Navigation         | `facebook.com/me` or profile ID | Group URL (slug or full) |
 | Create post button | "nghĩ gì" / "what's on your mind" | "viết gì" / "write something" |
+| Page validation    | —                      | Checks create-post button exists |
 | Post textbox       | Same keyword set       | Same keyword set                |
 | Tagging            | Identical workflow     | Identical workflow              |
 | Publish button     | Exact match "Đăng"    | Exact match "Đăng"             |
+
+## Exit Codes
+
+| Code | Meaning                                              |
+| ---- | ---------------------------------------------------- |
+| `0`  | Success                                              |
+| `1`  | Missing or invalid arguments                         |
+| `2`  | Instance failure (can't start browser, bad profile)  |
+| `3`  | Element not found (button, textbox, or page invalid) |
+| `4`  | Publish failed (publish button not found)            |
 
 ## Important Notes
 
@@ -130,13 +124,15 @@ The script uses PinchTab's accessibility snapshot to find UI elements by role an
 - Use `--mode headed` (default) when debugging or when the user wants to see the browser. Use `headless` for automated/scheduled posts.
 - The `--user-id` is the numeric Facebook ID, not the vanity URL. Find it via facebook.com profile URL or page source.
 - Use `--debug true` to capture screenshots at each step (saved to `/tmp/fb-post-debug-<timestamp>/`).
+- Use `--dry-run` to validate parameters and see what the script would do without opening a browser.
+- Use `--keep-instance` to avoid stopping the browser after the script finishes — useful for chaining multiple posts.
 - When tagging, use `--tag-id` to avoid selecting the wrong person when multiple results share the same name.
 - The **publish button uses exact match** to avoid clicking "Đăng ẩn danh" (post anonymously) in groups.
 - Tag search results in Facebook are **not directly clickable** — the script uses keyboard navigation (ArrowDown + Enter) as a workaround.
 
 ## Instance Lifecycle
 
-Scripts reuse running instances by default but do **not** auto-close them — the user may want to continue browsing or run another workflow on the same session.
+Scripts reuse running instances by default. Use `--keep-instance` to prevent auto-cleanup after the script finishes — useful when chaining multiple posts or continuing manual work in the same browser session.
 
 **Start instance manually** (if no script has started one yet):
 
@@ -148,7 +144,7 @@ pinchtab instance start --profile default --mode headed
 pinchtab instance start --profile default --mode headless
 ```
 
-**Stop instance after a session** — always stop when done to free resources and avoid stale instances:
+**Stop instance after a session** — stop when done to free resources and avoid stale instances:
 
 ```bash
 # List running instances
@@ -156,15 +152,6 @@ pinchtab instance list
 
 # Stop a specific instance
 pinchtab instance stop <instance_id>
-
-# Stop all instances for a profile
-curl -s http://localhost:9867/instances -H "Authorization: Bearer $TOKEN" \
-  | python3 -c "
-import sys, json
-for i in json.load(sys.stdin):
-    if i.get('status') == 'running':
-        print(i['id'])
-" | xargs -I{} pinchtab instance stop {}
 ```
 
 If an instance becomes stale (commands timeout), the scripts auto-detect and restart it. To force-restart manually: stop then start again.
@@ -178,5 +165,6 @@ If an instance becomes stale (commands timeout), the scripts auto-detect and res
 | Browser won't start    | Ensure `pinchtab server` is running and no conflicting instance exists.                    |
 | Stale instance         | Script auto-detects and restarts. Manual fix: `pinchtab instance stop <id>`.               |
 | Wrong person tagged    | Use `--tag-id <facebook_id>` for precise matching instead of name-only search.             |
-| Element not clickable  | Script auto-falls back to keyboard navigation (ArrowDown + Enter).                         |
-
+| Bad profile name       | Script shows clear error with exit code 2. Verify profile exists in PinchTab.              |
+| Group not accessible   | Script validates group page early (exit code 3). Check URL and membership.                 |
+| Dialog didn't open     | Script retries click up to 3 times automatically. Check `--debug true` screenshots.        |
