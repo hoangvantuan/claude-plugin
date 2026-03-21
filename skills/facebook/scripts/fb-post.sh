@@ -392,13 +392,12 @@ debug_screenshot "04-content-entered"
 if [[ -n "$TAG_NAME" ]]; then
   log_info "[5/6] Tagging: $TAG_NAME"
 
-  BTN_TAG=$(snap_find_button_multi "$KW_TAG_OTHERS") || true
+  BTN_TAG=$(wait_for_element_multi "button" "$KW_TAG_OTHERS" 10) || true
   if [[ -z "$BTN_TAG" ]]; then
-    log_warn "Tag button not found, skipping."
+    log_warn "Tag button not found after 10s, skipping."
   else
-    pinchtab click "$BTN_TAG" >/dev/null 2>&1
-
-    TXT_SEARCH=$(wait_for_element_multi "textbox" "$KW_SEARCH" 5) || true
+    # Click tag button and verify search textbox appeared (retry up to 3 times)
+    TXT_SEARCH=$(click_and_verify "$BTN_TAG" "textbox" "$KW_SEARCH" 3 8) || true
     if [[ -n "$TXT_SEARCH" ]]; then
       pinchtab click "$TXT_SEARCH" >/dev/null 2>&1
       sleep 0.5
