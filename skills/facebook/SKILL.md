@@ -99,6 +99,41 @@ The script uses PinchTab's accessibility snapshot to find UI elements by role an
 - Use `--debug true` to capture screenshots at each step (saved to `/tmp/fb-post-debug-<timestamp>/`).
 - When tagging, use `--tag-id` to avoid selecting the wrong person when multiple results share the same name.
 
+## Instance Lifecycle
+
+Scripts reuse running instances by default but do **not** auto-close them — the user may want to continue browsing or run another workflow on the same session.
+
+**Start instance manually** (if no script has started one yet):
+
+```bash
+# Headed — visible browser for debugging or manual login
+pinchtab instance start --profile default --mode headed
+
+# Headless — background automation
+pinchtab instance start --profile default --mode headless
+```
+
+**Stop instance after a session** — always stop when done to free resources and avoid stale instances:
+
+```bash
+# List running instances
+pinchtab instance list
+
+# Stop a specific instance
+pinchtab instance stop <instance_id>
+
+# Stop all instances for a profile
+curl -s http://localhost:9867/instances -H "Authorization: Bearer $TOKEN" \
+  | python3 -c "
+import sys, json
+for i in json.load(sys.stdin):
+    if i.get('status') == 'running':
+        print(i['id'])
+" | xargs -I{} pinchtab instance stop {}
+```
+
+If an instance becomes stale (commands timeout), the scripts auto-detect and restart it. To force-restart manually: stop then start again.
+
 ## Troubleshooting
 
 | Issue                  | Solution                                                                                   |
