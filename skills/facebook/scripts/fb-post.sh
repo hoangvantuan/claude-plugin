@@ -1,13 +1,15 @@
 #!/bin/bash
 # =============================================================
-# Facebook Personal Wall Post + Tag User via PinchTab
+# Facebook Post (Wall / Group) + Tag User via PinchTab
 # =============================================================
 # Usage:
-#   ./fb-post.sh --profile default \
-#                --content "Noi dung bai viet" \
-#                --tag "Hoang Van Tuan" \
-#                --publish false \
-#                --debug true
+#   # Post to personal wall
+#   ./fb-post.sh --content "Noi dung bai viet" --publish false
+#
+#   # Post to group (by slug or full URL)
+#   ./fb-post.sh --group tuhoccungai --content "Hello group!" --publish false
+#   ./fb-post.sh --group https://www.facebook.com/groups/tuhoccungai \
+#                --content "Hello group!" --tag "Ngoc" --publish true
 # =============================================================
 
 set -euo pipefail
@@ -15,6 +17,7 @@ set -euo pipefail
 # ---- Default config ----
 PROFILE="default"
 USER_ID=""
+GROUP=""
 CONTENT=""
 TAG_NAME=""
 TAG_ID=""
@@ -28,6 +31,7 @@ while [[ $# -gt 0 ]]; do
   case $1 in
     --profile)  PROFILE="$2";  shift 2 ;;
     --user-id)  USER_ID="$2";  shift 2 ;;
+    --group)    GROUP="$2";    shift 2 ;;
     --content)  CONTENT="$2";  shift 2 ;;
     --tag)      TAG_NAME="$2"; shift 2 ;;
     --tag-id)   TAG_ID="$2";   shift 2 ;;
@@ -43,14 +47,37 @@ if [[ -z "$CONTENT" ]]; then
   exit 1
 fi
 
+# Determine posting mode: group or wall
+if [[ -n "$GROUP" ]]; then
+  POST_MODE="group"
+  # Support both slug and full URL
+  if [[ "$GROUP" == http* ]]; then
+    GROUP_URL="$GROUP"
+  else
+    GROUP_URL="https://www.facebook.com/groups/$GROUP"
+  fi
+else
+  POST_MODE="wall"
+fi
+
 # ---- Multi-language keywords for Facebook UI elements ----
-# Pipe-separated: tries Vietnamese first, then English fallback
-KW_CREATE_POST="nghĩ gì|what's on your mind"
+# Pipe-separated: tries each keyword until match found
+# Wall button: "Bạn đang nghĩ gì?" / Group button: "Bạn viết gì đi..."
+KW_CREATE_POST_WALL="nghĩ gì|what's on your mind"
+KW_CREATE_POST_GROUP="viết gì|write something"
+KW_POST_TEXTBOX="bài viết|create a post|what's on your mind|nghĩ gì|viết gì"
 KW_TAG_OTHERS="gắn thẻ người khác|gắn thẻ|tag people|tag others"
 KW_SEARCH="tìm kiếm|search"
 KW_DONE="xong|done"
 KW_PUBLISH="đăng|post"
 KW_FRIEND="bạn bè|friend"
+
+# Select keywords based on posting mode
+if [[ "$POST_MODE" == "group" ]]; then
+  KW_CREATE_POST="$KW_CREATE_POST_GROUP"
+else
+  KW_CREATE_POST="$KW_CREATE_POST_WALL"
+fi
 
 # ---- Helpers ----
 TOKEN=$(python3 -c "import json; print(json.load(open('$HOME/.pinchtab/config.json'))['server']['token'])")
@@ -88,12 +115,47 @@ for kw in keywords:
 snap_find_button_multi() { snap_find_multi "button" "$1"; }
 snap_find_textbox_multi() { snap_find_multi "textbox" "$1"; }
 
+# Exact-match element search: name must be exactly the keyword (case-insensitive)
+# Used for buttons like "Đăng" where we must avoid matching "Đăng ẩn danh"
+snap_find_exact() {
+  local role="$1" keywords="$2"
+  pinchtab snap 2>/dev/null | python3 -c "
+import sys, json, unicodedata
+def norm(s):
+    return unicodedata.normalize('NFD', s.lower()).strip()
+role = '$role'
+keywords = '$keywords'.split('|')
+nodes = json.load(sys.stdin)['nodes']
+for kw in keywords:
+    kw_n = norm(kw.strip())
+    for n in nodes:
+        if n['role'] == role and norm(n.get('name','')) == kw_n:
+            print(n['ref']); sys.exit(0)
+" 2>/dev/null
+}
+
 # Poll-based wait with multi-keyword support
 wait_for_element_multi() {
   local role="$1" keywords="$2" timeout="${3:-10}" elapsed=0
   while [[ $elapsed -lt $timeout ]]; do
     local ref
     ref=$(snap_find_multi "$role" "$keywords")
+    if [[ -n "$ref" ]]; then
+      echo "$ref"
+      return 0
+    fi
+    sleep 1
+    elapsed=$((elapsed + 1))
+  done
+  return 1
+}
+
+# Poll-based wait with exact-match (for publish button disambiguation)
+wait_for_element_exact() {
+  local role="$1" keywords="$2" timeout="${3:-10}" elapsed=0
+  while [[ $elapsed -lt $timeout ]]; do
+    local ref
+    ref=$(snap_find_exact "$role" "$keywords")
     if [[ -n "$ref" ]]; then
       echo "$ref"
       return 0
@@ -181,20 +243,24 @@ else
 fi
 
 # =============================================================
-# STEP 2: Navigate to personal wall
+# STEP 2: Navigate to target (wall or group)
 # =============================================================
-echo "[2/6] Opening profile page"
-
-if [[ -n "$USER_ID" ]]; then
-  pinchtab nav "https://www.facebook.com/profile.php?id=$USER_ID" >/dev/null 2>&1
+if [[ "$POST_MODE" == "group" ]]; then
+  echo "[2/6] Opening group: $GROUP_URL"
+  pinchtab nav "$GROUP_URL" >/dev/null 2>&1
 else
-  echo "   -> No --user-id provided, detecting from logged-in session..."
-  PROFILE_URL=$(detect_user_profile)
-  if [[ -z "$PROFILE_URL" ]]; then
-    echo "ERROR: Cannot detect profile. Provide --user-id or ensure Facebook is logged in."
-    exit 1
+  echo "[2/6] Opening profile page"
+  if [[ -n "$USER_ID" ]]; then
+    pinchtab nav "https://www.facebook.com/profile.php?id=$USER_ID" >/dev/null 2>&1
+  else
+    echo "   -> No --user-id provided, detecting from logged-in session..."
+    PROFILE_URL=$(detect_user_profile)
+    if [[ -z "$PROFILE_URL" ]]; then
+      echo "ERROR: Cannot detect profile. Provide --user-id or ensure Facebook is logged in."
+      exit 1
+    fi
+    echo "   -> Detected profile: $PROFILE_URL"
   fi
-  echo "   -> Detected profile: $PROFILE_URL"
 fi
 
 TITLE=""
@@ -230,7 +296,7 @@ debug_screenshot "03-post-dialog"
 # =============================================================
 echo "[4/6] Typing post content"
 
-TXT_POST=$(wait_for_element_multi "textbox" "$KW_CREATE_POST" 5)
+TXT_POST=$(wait_for_element_multi "textbox" "$KW_POST_TEXTBOX" 5)
 if [[ -z "$TXT_POST" ]]; then
   echo "ERROR: Cannot find post textbox."
   debug_screenshot "04-error-no-textbox"
@@ -330,7 +396,8 @@ fi
 # =============================================================
 if [[ "$PUBLISH" == "true" ]]; then
   echo "[6/6] Publishing..."
-  BTN_POST=$(wait_for_element_multi "button" "$KW_PUBLISH" 5)
+  # Use exact match for publish button to avoid "Đăng ẩn danh" / "Post anonymously"
+  BTN_POST=$(wait_for_element_exact "button" "$KW_PUBLISH" 5)
   if [[ -n "$BTN_POST" ]]; then
     pinchtab click "$BTN_POST" >/dev/null 2>&1
     sleep 3

@@ -40,7 +40,7 @@ All responses follow this format:
 | Method | Endpoint                 | Body                                                | Purpose                       |
 | ------ | ------------------------ | --------------------------------------------------- | ----------------------------- |
 | GET    | `/instances`             | —                                                   | List running instances        |
-| POST   | `/instances/start`       | `{"mode":"headless"|"headed","profile":"prof_XXX"}` | Launch Chrome instance        |
+| POST   | `/instances/start`       | `{"mode":"headless"|"headed","profileId":"prof_XXX"}` | Launch Chrome instance        |
 | GET    | `/instances/{inst}`      | —                                                   | Get instance details          |
 | POST   | `/instances/{inst}/stop` | —                                                   | Stop instance (closes Chrome) |
 | GET    | `/instances/{inst}/port` | —                                                   | Get bridge port number        |
@@ -53,6 +53,25 @@ All responses follow this format:
 - Max 1 active instance per profile
 - `headless` = no visible browser window (default for automation)
 - `headed` = visible browser window (for debugging)
+- Start response returns `id` and `port` — the port is the **bridge** port for direct access
+
+### Bridge (Direct Instance Access)
+
+Each running instance exposes a bridge on `http://localhost:<port>` (port from start response). The bridge provides **direct** snapshot/action access without needing instance/tab IDs:
+
+| Method | Endpoint    | Body                              | Purpose              |
+| ------ | ----------- | --------------------------------- | -------------------- |
+| POST   | `/navigate` | `{"url":"https://..."}` | Navigate to URL      |
+| GET    | `/snapshot`  | —                                | Accessibility tree   |
+| POST   | `/action`    | `{"kind":"click","ref":"e5"}`   | Execute action       |
+
+**Bridge action fields use `kind` (not `type`):**
+
+| Action  | Bridge payload                                    |
+| ------- | ------------------------------------------------- |
+| click   | `{"kind":"click","ref":"e5"}`                    |
+| type    | `{"kind":"type","ref":"e3","text":"hello"}`      |
+| press   | `{"kind":"press","key":"Enter"}`                 |
 
 ---
 
@@ -193,3 +212,17 @@ Common errors:
 - `Profile already has active instance` — stop existing instance first
 - `Element ref not found` — re-fetch snapshot, refs may have changed
 - `Tab not found` — tab was closed or doesn't exist
+
+---
+
+## API Corrections (Verified via Testing)
+
+These differ from older documentation and have been confirmed correct:
+
+| Area             | Incorrect (old docs)            | Correct (verified)              |
+| ---------------- | ------------------------------- | ------------------------------- |
+| Start instance   | `"profile":"prof_xxx"`          | `"profileId":"prof_xxx"`        |
+| Action field     | `"type":"click"`                | `"kind":"click"` (bridge)       |
+| Keyboard action  | `"type":"key"`                  | `"kind":"press"` (bridge)       |
+| Snapshot/Action  | Via server `$BASE/instances/...`| Via bridge `http://localhost:<port>/` |
+| Tab management   | Required when using bridge      | Not needed — bridge auto-targets active tab |
