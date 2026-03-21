@@ -123,6 +123,18 @@ print(json.load(open(os.environ['PINCHTAB_CONFIG']))['server']['token'])
 BASE="http://localhost:9867"
 AUTH="Authorization: Bearer $TOKEN"
 
+# ---- Human-like random delay to avoid bot detection ----
+# Usage: human_delay <min_ms> <max_ms>
+# Sleeps for a random duration between min and max milliseconds
+human_delay() {
+  local min_ms="${1:-500}" max_ms="${2:-1500}"
+  local range=$((max_ms - min_ms))
+  local delay_ms=$((min_ms + RANDOM % (range + 1)))
+  local delay_s
+  delay_s=$(python3 -c "print($delay_ms / 1000.0)")
+  sleep "$delay_s"
+}
+
 debug_screenshot() {
   if [[ "$DEBUG" == "true" ]]; then
     mkdir -p "$DEBUG_DIR"
@@ -195,7 +207,7 @@ safe_click() {
   fi
   log_warn "Element not focusable, using keyboard fallback"
   pinchtab press ArrowDown >/dev/null 2>&1
-  sleep 0.5
+  human_delay 300 700
   pinchtab press Enter >/dev/null 2>&1
 }
 
@@ -216,7 +228,7 @@ click_and_verify() {
     fi
 
     log_warn "Click attempt $attempt/$max_retries: expected element not found, retrying..."
-    sleep 1
+    human_delay 800 1500
     attempt=$((attempt + 1))
   done
 
@@ -380,9 +392,10 @@ debug_screenshot "03-post-dialog"
 log_info "[4/6] Typing post content"
 
 pinchtab click "$TXT_POST" >/dev/null 2>&1
-sleep 0.5
+human_delay 400 900
+# Use inserttext (clipboard paste) — natural for long content; add human pause after
 pinchtab keyboard inserttext "$CONTENT" >/dev/null 2>&1
-sleep 1
+human_delay 800 2000
 log_info "Content entered (${#CONTENT} chars)"
 debug_screenshot "04-content-entered"
 
@@ -400,10 +413,11 @@ if [[ -n "$TAG_NAME" ]]; then
     TXT_SEARCH=$(click_and_verify "$BTN_TAG" "textbox" "$KW_SEARCH" 3 8) || true
     if [[ -n "$TXT_SEARCH" ]]; then
       pinchtab click "$TXT_SEARCH" >/dev/null 2>&1
-      sleep 0.5
+      human_delay 300 800
       pinchtab keyboard type "$TAG_NAME" >/dev/null 2>&1
 
-      sleep 2
+      # Wait for search results to populate (Facebook AJAX)
+      human_delay 1500 3000
       debug_screenshot "05-tag-search-results"
 
       # Fix #5 + #11: use external Python helper, pipe snap data via stdin
@@ -418,16 +432,16 @@ if [[ -n "$TAG_NAME" ]]; then
           log_warn "Tag ID $TAG_ID not found in results, selecting first result"
         fi
         pinchtab press ArrowDown >/dev/null 2>&1
-        sleep 0.3
+        human_delay 200 600
         pinchtab press Enter >/dev/null 2>&1
       fi
 
-      sleep 2
+      human_delay 1500 2500
 
       BTN_DONE=$(snap_find_button_multi "$KW_DONE") || true
       if [[ -n "$BTN_DONE" ]]; then
         pinchtab click "$BTN_DONE" >/dev/null 2>&1
-        sleep 1
+        human_delay 800 1500
         log_info "Tagged successfully"
       fi
     fi
@@ -444,7 +458,7 @@ if [[ "$PUBLISH" == "true" ]]; then
   BTN_POST=$(wait_for_element_exact "button" "$KW_PUBLISH" 5) || true
   if [[ -n "$BTN_POST" ]]; then
     pinchtab click "$BTN_POST" >/dev/null 2>&1
-    sleep 3
+    human_delay 2000 4000
     log_info "Post published!"
     debug_screenshot "06-published"
   else
