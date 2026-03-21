@@ -32,20 +32,25 @@ bash "$(dirname "$0")/scripts/fb-post.sh" \
   --user-id <facebook_user_id> \
   --content "<post content>" \
   --tag "<friend name>" \
+  --tag-id "<friend facebook id>" \
   --publish <true|false> \
-  --mode <headed|headless>
+  --mode <headed|headless> \
+  --debug <true|false>
 ```
 
 **Parameters:**
 
-| Param | Required | Default | Description |
-|-------|----------|---------|-------------|
-| `--profile` | No | `default` | PinchTab profile name (must have Facebook session) |
-| `--user-id` | Yes | — | Facebook numeric user ID (e.g., `100003782705460`) |
-| `--content` | Yes | — | Post text content (supports multi-line) |
-| `--tag` | No | — | Friend's display name to tag |
-| `--publish` | No | `false` | `true` = publish immediately, `false` = prepare only |
-| `--mode` | No | `headed` | `headed` = visible browser, `headless` = background |
+| Param       | Required | Default   | Description                                          |
+| ----------- | -------- | --------- | ---------------------------------------------------- |
+| `--profile` | No       | `default` | PinchTab profile name (must have Facebook session)   |
+| `--user-id` | Yes      | —         | Facebook numeric user ID (e.g., `100003782705460`)   |
+| `--content` | Yes      | —         | Post text content (supports multi-line)              |
+| `--tag`     | No       | —         | Friend's display name to tag                         |
+| `--tag-id`  | No       | —         | Friend's Facebook ID for precise tag matching        |
+| `--publish` | No       | `false`   | `true` = publish immediately, `false` = prepare only |
+| `--mode`    | No       | `headed`  | `headed` = visible browser, `headless` = background  |
+| `--debug`   | No       | `false`   | Save screenshots at each step to `/tmp/` for review  |
+
 
 **Examples:**
 
@@ -78,25 +83,30 @@ bash scripts/fb-post.sh \
 
 The script uses PinchTab's accessibility snapshot to find UI elements by role and Vietnamese text labels:
 
-1. **Start/reuse browser** — checks for running instance with the profile, starts one if needed
-2. **Navigate to wall** — opens `facebook.com/profile.php?id=<user-id>`
-3. **Open post dialog** — finds and clicks the "Ban dang nghi gi?" button
+1. **Start/reuse browser** — checks for running instance, health-checks before reuse (restarts stale instances)
+2. **Navigate to wall** — opens `facebook.com/profile.php?id=<user-id>`, verifies by page title (handles FB redirects)
+3. **Open post dialog** — poll-waits for "Bạn đang nghĩ gì?" button (accent-insensitive matching)
 4. **Type content** — uses `inserttext` to preserve line breaks
-5. **Tag friend** (optional) — opens tag dialog, searches by name, selects first match
-6. **Publish or hold** — clicks "Dang" button or leaves dialog open for manual review
+5. **Tag friend** (optional) — opens tag dialog, searches by name, prioritizes "Bạn bè" results; uses `--tag-id` for precise match; falls back to keyboard if element is not clickable
+6. **Publish or hold** — clicks "Đăng" button or leaves dialog open for manual review
 
 ## Important Notes
 
-- The script finds Facebook UI elements by Vietnamese labels (`nghi gi`, `gan the nguoi khac`, `tim kiem`, `xong`, `dang`). If the user's Facebook language is not Vietnamese, the element search will fail — adjust keywords accordingly.
+- Element matching uses **accent-insensitive Unicode normalization** — works with both Vietnamese diacritics and plain ASCII keywords.
 - Default `--publish false` is a safety net: the post dialog stays open so the user can review before publishing.
 - Use `--mode headed` (default) when debugging or when the user wants to see the browser. Use `headless` for automated/scheduled posts.
 - The `--user-id` is the numeric Facebook ID, not the vanity URL. Find it via facebook.com profile URL or page source.
+- Use `--debug true` to capture screenshots at each step (saved to `/tmp/fb-post-debug-<timestamp>/`).
+- When tagging, use `--tag-id` to avoid selecting the wrong person when multiple results share the same name.
 
 ## Troubleshooting
 
-| Issue | Solution |
-|-------|----------|
-| "Cannot find button" | Facebook UI may have changed, or language is not Vietnamese. Check `pinchtab snap` output. |
-| Session expired | Re-login manually in headed mode to refresh cookies in the profile. |
-| Browser won't start | Ensure `pinchtab server` is running and no conflicting instance exists. |
-| Content not typed | Try `--mode headed` to visually debug. Ensure dialog is fully loaded (increase sleep). |
+| Issue                  | Solution                                                                                   |
+| ---------------------- | ------------------------------------------------------------------------------------------ |
+| "Cannot find button"   | Facebook UI may have changed. Use `--debug true` and check screenshots + `pinchtab snap`.  |
+| Session expired        | Re-login manually in headed mode to refresh cookies in the profile.                        |
+| Browser won't start    | Ensure `pinchtab server` is running and no conflicting instance exists.                    |
+| Stale instance         | Script auto-detects and restarts. Manual fix: `pinchtab instance stop <id>`.               |
+| Wrong person tagged    | Use `--tag-id <facebook_id>` for precise matching instead of name-only search.             |
+| Element not clickable  | Script auto-falls back to keyboard navigation (ArrowDown + Enter).                         |
+
