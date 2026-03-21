@@ -81,7 +81,7 @@ bash scripts/fb-post.sh \
 
 ## How It Works
 
-The script uses PinchTab's accessibility snapshot to find UI elements by role and **multi-language keywords** (Vietnamese, English, French, Spanish, German). Each element lookup tries all supported language variants until a match is found — no locale configuration needed.
+The script uses PinchTab's accessibility snapshot to find UI elements by role and **multi-language keywords** (Vietnamese, English). Each element lookup tries all supported language variants until a match is found — no locale configuration needed.
 
 1. **Start/reuse browser** — checks for running instance, health-checks before reuse (restarts stale instances)
 2. **Navigate to wall** — if `--user-id` given, opens that profile; otherwise navigates to `facebook.com/me` to auto-detect logged-in user's wall

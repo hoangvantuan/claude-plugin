@@ -44,14 +44,13 @@ if [[ -z "$CONTENT" ]]; then
 fi
 
 # ---- Multi-language keywords for Facebook UI elements ----
-# Pipe-separated: tries each keyword until one matches.
-# Covers: Vietnamese, English, French, Spanish, German, Japanese, Korean, Chinese
-KW_CREATE_POST="nghĩ gì|what's on your mind|what are you thinking|quoi pensez|was denkst|qué estás pensando"
-KW_TAG_OTHERS="gắn thẻ người khác|gắn thẻ|tag people|tag others|marquer des personnes|personen markieren|etiquetar personas"
-KW_SEARCH="tìm kiếm|search|rechercher|suchen|buscar"
-KW_DONE="xong|done|terminé|fertig|listo|完了"
-KW_PUBLISH="đăng|post|publier|posten|publicar"
-KW_FRIEND="bạn bè|friend|ami|freund|amigo"
+# Pipe-separated: tries Vietnamese first, then English fallback
+KW_CREATE_POST="nghĩ gì|what's on your mind"
+KW_TAG_OTHERS="gắn thẻ người khác|gắn thẻ|tag people|tag others"
+KW_SEARCH="tìm kiếm|search"
+KW_DONE="xong|done"
+KW_PUBLISH="đăng|post"
+KW_FRIEND="bạn bè|friend"
 
 # ---- Helpers ----
 TOKEN=$(python3 -c "import json; print(json.load(open('$HOME/.pinchtab/config.json'))['server']['token'])")
