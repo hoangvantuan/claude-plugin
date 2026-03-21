@@ -117,6 +117,28 @@ safe_click() {
   pinchtab press Enter >/dev/null 2>&1
 }
 
+# Track whether we created the instance (to auto-stop on exit)
+CREATED_INSTANCE="false"
+
+# Cleanup: auto-stop instance if we created it
+cleanup() {
+  if [[ "$CREATED_INSTANCE" == "true" && -n "${INST:-}" ]]; then
+    echo ""
+    echo "Stopping instance $INST..."
+    pinchtab instance stop "$INST" 2>/dev/null || true
+    echo "   -> Instance stopped."
+  fi
+}
+trap cleanup EXIT
+
+start_new_instance() {
+  INST=$(pinchtab instance start --profile "$PROFILE" --mode "$MODE" 2>/dev/null \
+    | python3 -c "import sys,json; print(json.load(sys.stdin)['id'])")
+  CREATED_INSTANCE="true"
+  echo "   -> Created instance: $INST"
+  sleep 3
+}
+
 # =============================================================
 # STEP 1: Start browser instance with health check
 # =============================================================
@@ -130,7 +152,6 @@ for i in json.load(sys.stdin):
 " 2>/dev/null || true)
 
 if [[ -n "$EXISTING" ]]; then
-  # Health check: verify instance is responsive before reusing
   if instance_health_check "$EXISTING"; then
     INST="$EXISTING"
     echo "   -> Reusing healthy instance: $INST"
@@ -138,16 +159,10 @@ if [[ -n "$EXISTING" ]]; then
     echo "   -> Instance $EXISTING is stale, restarting..."
     pinchtab instance stop "$EXISTING" 2>/dev/null || true
     sleep 1
-    INST=$(pinchtab instance start --profile "$PROFILE" --mode "$MODE" 2>/dev/null \
-      | python3 -c "import sys,json; print(json.load(sys.stdin)['id'])")
-    echo "   -> Created new instance: $INST"
-    sleep 3
+    start_new_instance
   fi
 else
-  INST=$(pinchtab instance start --profile "$PROFILE" --mode "$MODE" 2>/dev/null \
-    | python3 -c "import sys,json; print(json.load(sys.stdin)['id'])")
-  echo "   -> Created instance: $INST"
-  sleep 3
+  start_new_instance
 fi
 
 # =============================================================
