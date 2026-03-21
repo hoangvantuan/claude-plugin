@@ -43,6 +43,16 @@ if [[ -z "$CONTENT" ]]; then
   exit 1
 fi
 
+# ---- Multi-language keywords for Facebook UI elements ----
+# Pipe-separated: tries each keyword until one matches.
+# Covers: Vietnamese, English, French, Spanish, German, Japanese, Korean, Chinese
+KW_CREATE_POST="nghĩ gì|what's on your mind|what are you thinking|quoi pensez|was denkst|qué estás pensando"
+KW_TAG_OTHERS="gắn thẻ người khác|gắn thẻ|tag people|tag others|marquer des personnes|personen markieren|etiquetar personas"
+KW_SEARCH="tìm kiếm|search|rechercher|suchen|buscar"
+KW_DONE="xong|done|terminé|fertig|listo|完了"
+KW_PUBLISH="đăng|post|publier|posten|publicar"
+KW_FRIEND="bạn bè|friend|ami|freund|amigo"
+
 # ---- Helpers ----
 TOKEN=$(python3 -c "import json; print(json.load(open('$HOME/.pinchtab/config.json'))['server']['token'])")
 BASE="http://localhost:9867"
@@ -57,30 +67,34 @@ debug_screenshot() {
   fi
 }
 
-# Accent-insensitive search via Unicode NFD normalization
-snap_find() {
-  local role="$1" keyword="$2"
+# Multi-keyword element search: tries each pipe-separated keyword until match found
+# Usage: snap_find_multi <role> "keyword1|keyword2|keyword3"
+snap_find_multi() {
+  local role="$1" keywords="$2"
   pinchtab snap 2>/dev/null | python3 -c "
 import sys, json, unicodedata
-def normalize(s):
+def norm(s):
     return unicodedata.normalize('NFD', s.lower())
 role = '$role'
-kw = normalize('$keyword')
-for n in json.load(sys.stdin)['nodes']:
-    if n['role'] == role and kw in normalize(n.get('name','')):
-        print(n['ref']); break
+keywords = '$keywords'.split('|')
+nodes = json.load(sys.stdin)['nodes']
+for kw in keywords:
+    kw_n = norm(kw.strip())
+    for n in nodes:
+        if n['role'] == role and kw_n in norm(n.get('name','')):
+            print(n['ref']); sys.exit(0)
 " 2>/dev/null
 }
 
-snap_find_button() { snap_find "button" "$1"; }
-snap_find_textbox() { snap_find "textbox" "$1"; }
+snap_find_button_multi() { snap_find_multi "button" "$1"; }
+snap_find_textbox_multi() { snap_find_multi "textbox" "$1"; }
 
-# Poll-based wait: retry snap_find until element appears or timeout
-wait_for_element() {
-  local role="$1" keyword="$2" timeout="${3:-10}" elapsed=0
+# Poll-based wait with multi-keyword support
+wait_for_element_multi() {
+  local role="$1" keywords="$2" timeout="${3:-10}" elapsed=0
   while [[ $elapsed -lt $timeout ]]; do
     local ref
-    ref=$(snap_find "$role" "$keyword")
+    ref=$(snap_find_multi "$role" "$keywords")
     if [[ -n "$ref" ]]; then
       echo "$ref"
       return 0
@@ -108,24 +122,19 @@ safe_click() {
   pinchtab press Enter >/dev/null 2>&1
 }
 
-# Auto-detect logged-in user's profile page URL from Facebook
 detect_user_profile() {
-  # Navigate to facebook.com/me which redirects to the logged-in user's profile
   pinchtab nav "https://www.facebook.com/me" >/dev/null 2>&1
   sleep 3
-
-  # Extract the redirected URL — this is the user's actual profile URL
   local current_url
   current_url=$(pinchtab snap 2>/dev/null | python3 -c "
 import sys, json
 data = json.load(sys.stdin)
 print(data.get('url',''))
 " 2>/dev/null || true)
-
   echo "$current_url"
 }
 
-# Track whether we created the instance (to auto-stop on exit)
+# ---- Instance lifecycle ----
 CREATED_INSTANCE="false"
 
 cleanup() {
@@ -178,10 +187,8 @@ fi
 echo "[2/6] Opening profile page"
 
 if [[ -n "$USER_ID" ]]; then
-  # Explicit user ID provided — navigate directly
   pinchtab nav "https://www.facebook.com/profile.php?id=$USER_ID" >/dev/null 2>&1
 else
-  # Auto-detect: use /me redirect to find logged-in user's profile
   echo "   -> No --user-id provided, detecting from logged-in session..."
   PROFILE_URL=$(detect_user_profile)
   if [[ -z "$PROFILE_URL" ]]; then
@@ -191,7 +198,6 @@ else
   echo "   -> Detected profile: $PROFILE_URL"
 fi
 
-# Wait for page load by checking title in snap (handles FB URL redirects)
 TITLE=""
 for i in $(seq 1 10); do
   TITLE=$(pinchtab snap 2>/dev/null | python3 -c "
@@ -210,9 +216,9 @@ debug_screenshot "02-profile-page"
 # =============================================================
 echo "[3/6] Opening create post dialog"
 
-BTN_CREATE=$(wait_for_element "button" "nghĩ gì" 10)
+BTN_CREATE=$(wait_for_element_multi "button" "$KW_CREATE_POST" 10)
 if [[ -z "$BTN_CREATE" ]]; then
-  echo "ERROR: Cannot find 'Bạn đang nghĩ gì?' button."
+  echo "ERROR: Cannot find create post button in any supported language."
   debug_screenshot "03-error-no-button"
   exit 1
 fi
@@ -225,7 +231,7 @@ debug_screenshot "03-post-dialog"
 # =============================================================
 echo "[4/6] Typing post content"
 
-TXT_POST=$(wait_for_element "textbox" "nghĩ gì" 5)
+TXT_POST=$(wait_for_element_multi "textbox" "$KW_CREATE_POST" 5)
 if [[ -z "$TXT_POST" ]]; then
   echo "ERROR: Cannot find post textbox."
   debug_screenshot "04-error-no-textbox"
@@ -245,17 +251,13 @@ debug_screenshot "04-content-entered"
 if [[ -n "$TAG_NAME" ]]; then
   echo "[5/6] Tagging: $TAG_NAME"
 
-  BTN_TAG=$(snap_find_button "gắn thẻ người khác")
-  if [[ -z "$BTN_TAG" ]]; then
-    BTN_TAG=$(snap_find_button "gắn thẻ")
-  fi
-
+  BTN_TAG=$(snap_find_button_multi "$KW_TAG_OTHERS")
   if [[ -z "$BTN_TAG" ]]; then
     echo "   WARN: Tag button not found, skipping."
   else
     pinchtab click "$BTN_TAG" >/dev/null 2>&1
 
-    TXT_SEARCH=$(wait_for_element "textbox" "tìm kiếm" 5)
+    TXT_SEARCH=$(wait_for_element_multi "textbox" "$KW_SEARCH" 5)
     if [[ -n "$TXT_SEARCH" ]]; then
       pinchtab click "$TXT_SEARCH" >/dev/null 2>&1
       sleep 0.5
@@ -274,26 +276,29 @@ for n in json.load(sys.stdin)['nodes']:
         if [[ -n "$TAG_REF" ]]; then
           safe_click "$TAG_REF"
         else
-          echo "   WARN: Tag ID $TAG_ID not found in results, selecting first friend"
+          echo "   WARN: Tag ID $TAG_ID not found, selecting first friend"
           pinchtab press ArrowDown >/dev/null 2>&1
           sleep 0.3
           pinchtab press Enter >/dev/null 2>&1
         fi
       else
-        # Prioritize results labeled "Bạn bè" (Friends) over pages/other
+        # Prioritize friend results using multi-language friend label
         TAG_REF=$(pinchtab snap 2>/dev/null | python3 -c "
 import sys, json, unicodedata
 def norm(s): return unicodedata.normalize('NFD', s.lower())
+friend_keywords = '$KW_FRIEND'.split('|')
 nodes = json.load(sys.stdin)['nodes']
 friend_ref = None
 first_ref = None
 for n in nodes:
     name = n.get('name','')
     desc = n.get('description','')
-    if norm('$TAG_NAME') in norm(name) or norm('$TAG_NAME') in norm(desc):
+    tag = norm('$TAG_NAME')
+    if tag in norm(name) or tag in norm(desc):
         if first_ref is None:
             first_ref = n['ref']
-        if 'bạn bè' in desc.lower() or 'friend' in desc.lower():
+        desc_l = desc.lower()
+        if any(fk.strip() in desc_l for fk in friend_keywords):
             friend_ref = n['ref']; break
 print(friend_ref or first_ref or '')
 " 2>/dev/null || true)
@@ -309,7 +314,7 @@ print(friend_ref or first_ref or '')
 
       sleep 2
 
-      BTN_DONE=$(snap_find_button "xong")
+      BTN_DONE=$(snap_find_button_multi "$KW_DONE")
       if [[ -n "$BTN_DONE" ]]; then
         pinchtab click "$BTN_DONE" >/dev/null 2>&1
         sleep 1
@@ -326,7 +331,7 @@ fi
 # =============================================================
 if [[ "$PUBLISH" == "true" ]]; then
   echo "[6/6] Publishing..."
-  BTN_POST=$(wait_for_element "button" "đăng" 5)
+  BTN_POST=$(wait_for_element_multi "button" "$KW_PUBLISH" 5)
   if [[ -n "$BTN_POST" ]]; then
     pinchtab click "$BTN_POST" >/dev/null 2>&1
     sleep 3

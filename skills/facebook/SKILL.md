@@ -81,18 +81,18 @@ bash scripts/fb-post.sh \
 
 ## How It Works
 
-The script uses PinchTab's accessibility snapshot to find UI elements by role and Vietnamese text labels:
+The script uses PinchTab's accessibility snapshot to find UI elements by role and **multi-language keywords** (Vietnamese, English, French, Spanish, German). Each element lookup tries all supported language variants until a match is found — no locale configuration needed.
 
 1. **Start/reuse browser** — checks for running instance, health-checks before reuse (restarts stale instances)
 2. **Navigate to wall** — if `--user-id` given, opens that profile; otherwise navigates to `facebook.com/me` to auto-detect logged-in user's wall
-3. **Open post dialog** — poll-waits for "Bạn đang nghĩ gì?" button (accent-insensitive matching)
+3. **Open post dialog** — poll-waits for create post button across languages ("nghĩ gì", "what's on your mind", etc.)
 4. **Type content** — uses `inserttext` to preserve line breaks
-5. **Tag friend** (optional) — opens tag dialog, searches by name, prioritizes "Bạn bè" results; uses `--tag-id` for precise match; falls back to keyboard if element is not clickable
-6. **Publish or hold** — clicks "Đăng" button or leaves dialog open for manual review
+5. **Tag friend** (optional) — opens tag dialog, searches by name, prioritizes friend results across languages; uses `--tag-id` for precise match; falls back to keyboard if element is not clickable
+6. **Publish or hold** — clicks publish button or leaves dialog open for manual review
 
 ## Important Notes
 
-- Element matching uses **accent-insensitive Unicode normalization** — works with both Vietnamese diacritics and plain ASCII keywords.
+- Element matching uses **multi-language keywords with accent-insensitive Unicode normalization** — works regardless of Facebook's display language.
 - Default `--publish false` is a safety net: the post dialog stays open so the user can review before publishing.
 - Use `--mode headed` (default) when debugging or when the user wants to see the browser. Use `headless` for automated/scheduled posts.
 - The `--user-id` is the numeric Facebook ID, not the vanity URL. Find it via facebook.com profile URL or page source.
