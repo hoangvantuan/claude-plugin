@@ -25,6 +25,7 @@ skills/                      # Các skill plugins
   content-planner/           # Content planning & writing cho Facebook + Blog
   things-manager/            # Things 3 task management via things-cli (Go CLI)
   pinchtab/                  # Browser automation for AI agents via PinchTab HTTP API
+  facebook/                  # Facebook automation via PinchTab (wall post, tag friends)
   wisdom-mentor/             # Trò chuyện với người thầy tri thức (Naval, Schmachtenberger, Csikszentmihalyi, Krishnamurti, Wilber, Viên Minh, Trần Việt Quân, Nhất Hạnh, Sư Tâm Pháp, Thu Giang Nguyễn Duy Cần, Minh Niệm, Tony Robbins, Peter Drucker, John Doerr, Stephen R. Covey, Ikujiro Nonaka, Simon Sinek, Ajahn Chah, Osho, Kazuo Inamori, Donella Meadows, Socrates, Plato, Aristotle, Giản Tư Trung, Hồ Chí Minh)
 agents/                      # Các agent definitions (planned)
 hooks/                       # Các hook scripts (planned)
