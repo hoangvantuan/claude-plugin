@@ -1,5 +1,18 @@
 # Blog Types
 
+## Writing System
+
+> **Full writing system (archetypes, anti-AI, self-critique, power techniques) nằm trong [writing-system.md](writing-system.md).**
+> Load file đó khi viết bất kỳ bài nào.
+
+**Lưu ý riêng Blog:**
+- Bài dài (type 1, 4, 5): áp dụng full writing system (archetypes + self-critique + tất cả rules)
+- Bài ngắn (type 2, 3, 6): áp dụng Anti-AI Writing + Tone + Power Techniques. Self-critique vẫn khuyến khích nhưng không bắt buộc
+- Headings viết như insight, không như mục lục (SAI: "Phần 1: Giới thiệu", ĐÚNG: "Tại sao phần lớn lời khuyên về X đều sai")
+- Subheadings đóng vai trò hook nhỏ, reader scan headings phải muốn đọc tiếp
+
+---
+
 ## 1. Deep Analysis
 
 - **Mô tả:** Phân tích sâu một chủ đề, đưa ra góc nhìn mới từ data + reasoning
@@ -144,7 +157,7 @@
 ## Tại sao điều này nghiêm trọng hơn bạn nghĩ
 [Agitate — consequences, examples, data]
 
-## Cách tôi nhìn nhận / Giải pháp
+## Một góc nhìn khác / Giải pháp
 [Solution — your unique perspective + actionable advice]
 
 ## Kết

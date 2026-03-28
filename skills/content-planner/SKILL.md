@@ -37,7 +37,16 @@ Ask one at a time, conversational:
 
 ### Step 4: Generate Content Plan
 
-Đề xuất số lượng bài linh hoạt theo input depth. Mỗi bài có brief:
+Đề xuất số lượng bài **không giới hạn**, tỷ lệ thuận với độ sâu/rộng của input:
+
+- **Topic thuần** → 3-10 bài (tùy scope)
+- **Notes/outline** → theo số ý tưởng có sẵn
+- **URL/article** → 5-15 bài (tùy độ dài + density)
+- **Sách/tài liệu dài** → **bao phủ toàn bộ giá trị cốt lõi** — có thể 20, 30, 50+ bài. Chia thành **batches** (mỗi batch ~10 bài) để quản lý. Đảm bảo không bỏ sót chapter/concept quan trọng nào.
+
+**Nguyên tắc:** Số lượng bài phục vụ mục tiêu truyền tải đầy đủ nội dung gốc. Quality không đánh đổi quantity — mỗi bài vẫn phải self-contained và có giá trị độc lập.
+
+Mỗi bài có brief:
 
 ```
 ### Bài [N]: [Tiêu đề đề xuất]
@@ -56,8 +65,13 @@ Gợi ý thứ tự đăng (thường: blog trước → derive Facebook posts t
 
 ### Step 5: Save Output
 
-- `{CWD}/{output-dir}/plan.md` — overview + tất cả briefs
+- `{CWD}/{output-dir}/plan.md` — overview + tất cả briefs (nếu nhiều batch thì ghi rõ batch nào)
 - `{CWD}/{output-dir}/research.md` — data đã research với sources
+
+**Với input dài (sách, tài liệu lớn):**
+- Trước tiên, tạo **content map** tổng quan: liệt kê tất cả chapters/concepts cốt lõi cần cover
+- Chia thành batches, mỗi batch ~10 bài, plan batch đầu tiên chi tiết
+- Hỏi user confirm trước khi plan batch tiếp theo
 
 Hỏi user: "Plan đã xong. Bạn muốn viết bài nào? (VD: 'viết bài 1, 3, 5' hoặc 'viết tất cả')"
 
@@ -74,10 +88,11 @@ Trigger: User chỉ định bài cần viết (VD: "viết bài 1, 3" hoặc "wr
 Với mỗi bài được chọn:
 
 1. Load type guidelines từ [references/blog-types.md](references/blog-types.md) hoặc [references/facebook-types.md](references/facebook-types.md)
-2. Load framework từ [references/content-frameworks.md](references/content-frameworks.md)
-3. Viết full content theo brief + type structure + framework
-4. **Blog** → markdown format, đúng structure template của type
-5. **Facebook** → plain text, áp dụng writing system trong facebook-types.md (archetypes, anti-AI writing, self-critique)
+2. Load [references/writing-system.md](references/writing-system.md) — áp dụng cho TẤT CẢ bài viết (cả Blog lẫn Facebook)
+3. Load framework từ [references/content-frameworks.md](references/content-frameworks.md)
+4. Viết full content theo brief + type structure + framework + writing system
+5. **Blog** → markdown format, đúng structure template của type, headings viết như insight
+6. **Facebook** → plain text, xuống dòng nhiều, hook 3 dòng đầu phải mạnh
 
 ### Step 3: Save Articles
 
@@ -93,7 +108,7 @@ Mỗi bài lưu file riêng:
 - Facebook post không dùng outbound links (giảm reach)
 - Mỗi bài viết self-contained, đọc độc lập được
 - Research data phải cite nguồn
-- Tối đa 10 bài/plan — nếu topic rộng, ưu tiên quality over quantity
+- Không giới hạn số bài/plan — số lượng tỷ lệ với độ sâu input. Với input dài (sách, khóa học), chia thành batches ~10 bài, plan từng batch tuần tự để đảm bảo bao phủ toàn bộ giá trị cốt lõi
 - Default output dir: `{CWD}/content-planner/[topic-slug]/` nếu user không chỉ định
 
 ## Output Format
@@ -120,6 +135,7 @@ Phase 2 output: Mỗi bài theo structure template của type tương ứng tron
 
 ## References
 
+- [references/writing-system.md](references/writing-system.md) — Writing system dùng chung (archetypes, anti-AI writing, self-critique, power techniques)
 - [references/blog-types.md](references/blog-types.md) — 6 blog type guidelines
-- [references/facebook-types.md](references/facebook-types.md) — 4 Facebook post types + writing system (archetypes, anti-AI writing, self-critique)
+- [references/facebook-types.md](references/facebook-types.md) — 4 Facebook post types
 - [references/content-frameworks.md](references/content-frameworks.md) — Writing frameworks (PAS, Inverted Pyramid, etc.)
