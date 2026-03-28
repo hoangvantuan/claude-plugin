@@ -24,7 +24,7 @@ fi
 echo "SCRIPTS_DIR=$SCRIPT_DIR"
 echo "SKILL_DIR=$SKILL_DIR"
 echo "PROJECT_ROOT=$PROJECT_ROOT"
-echo "OUTPUT_DIR=$PROJECT_ROOT/docs/generated"
+echo "OUTPUT_DIR=$PROJECT_ROOT/writer-agent"
 echo "VOICES_DIR=$SKILL_DIR/voices"
 echo "STRUCTURES_DIR=$SKILL_DIR/structures"
 echo "IDENTITIES_DIR=$SKILL_DIR/identities"

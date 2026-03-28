@@ -1,6 +1,6 @@
 ---
 name: writer-agent
-description: Viết bài từ tài liệu - chuyển PDF, DOCX, EPUB, URL, YouTube, hoặc text thành series bài viết tiếng Việt theo style tùy chọn (7 presets hoặc custom 5 dimensions). Hỗ trợ tài liệu từ vài trang đến 100K+ words với tier-based processing. Output tại docs/generated/.
+description: Viết bài từ tài liệu - chuyển PDF, DOCX, EPUB, URL, YouTube, hoặc text thành series bài viết tiếng Việt theo style tùy chọn (7 presets hoặc custom 5 dimensions). Hỗ trợ tài liệu từ vài trang đến 100K+ words với tier-based processing. Output tại CWD/writer-agent/.
 disable-model-invocation: true
 version: 2.0.0
 license: MIT
@@ -124,7 +124,7 @@ Detect input type and convert to markdown.
 {SCRIPTS_DIR}/wa-convert [/path/to/file.pdf or url]
 ```
 
-**Output**: `docs/generated/{slug}-{timestamp}/input-handling/content.md`
+**Output**: `writer-agent/{slug}-{timestamp}/input-handling/content.md`
 
 ### Plain Text Processing
 

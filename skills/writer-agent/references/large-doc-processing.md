@@ -10,7 +10,7 @@ Load this reference when document word count > 20K.
 If `structure.json` exists (from wa-convert):
 
 ```python
-structure = read("docs/generated/book/input-handling/structure.json")
+structure = read("{book}/input-handling/structure.json")
 tier = structure["tier_recommendation"]["tier"]
 
 for chunk in structure["suggested_chunks"]:

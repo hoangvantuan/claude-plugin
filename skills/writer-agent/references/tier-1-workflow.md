@@ -53,7 +53,7 @@ Core message: "{1-2 câu thông điệp cốt lõi}"
 
 - `MAX_OUTPUT_WORDS = 3000`, `TARGET_PART_WORDS = 2000`
 - Atomic unit = H2 block. NEVER split within paragraph/H3/critical section.
-- Validate: `{SCRIPTS_DIR}/wa-validate-split docs/generated/{book}/analysis/_plan.md`
+- Validate: `{SCRIPTS_DIR}/wa-validate-split {book}/analysis/_plan.md`
 
 ### 3.4 Shared Context (Inline Glossary)
 

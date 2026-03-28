@@ -79,8 +79,8 @@ def get_project_root() -> Path:
 
 
 def get_output_base() -> Path:
-    """Return absolute path to docs/generated/ under project root."""
-    return get_project_root() / "docs" / "generated"
+    """Return absolute path to output base directory (= CWD/writer-agent/)."""
+    return get_project_root() / "writer-agent"
 
 
 def detect_language(text: str, sample_size: int = 5000) -> str:

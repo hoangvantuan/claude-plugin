@@ -11,7 +11,7 @@ Tạo professional outline từ content input. Hỗ trợ nhiều output types: 
 ## Output Folder Structure
 
 ```
-output/
+{CWD}/outline-writer/
 └── {slug}-{YYMMDD-HHmm}/
     ├── outline.md
     ├── content-map.md
@@ -23,12 +23,6 @@ output/
 
 - `{slug}`: kebab-case từ topic chính (max 30 chars)
 - `{YYMMDD-HHmm}`: timestamp lúc tạo folder
-
-## Step 0: Detect Mode
-
-1. Kiểm tra input từ user:
-  - Nếu user chỉ vào **folder output đã có** (chứa `outline.md`) → Hướng dẫn: "Outline đã có. Dùng `/slidev-builder {folder}/` để tạo slides, hoặc cung cấp nội dung mới để tạo outline mới."
-  - Nếu user cung cấp **nội dung mới** (text, file path) → Tiếp tục Step 1
 
 ## Step 1: Tiếp nhận nội dung & Cấu hình
 
@@ -111,7 +105,7 @@ Chạy sau Step 1, trước Step 2. Quyết định dựa trên câu hỏi Resea
 2. Tạo 2-3 search queries: `"{topic}" statistics data {năm}`, `"{topic}" trends insights`, `"{topic}" examples best practices`
 3. Chạy WebSearch cho mỗi query
 4. Extract findings relevant: statistics, data points, examples, quotes
-5. Lưu kết quả vào `{output_folder}/research-notes.md`
+5. Lưu kết quả vào `{CWD}/{output_folder}/research-notes.md`
 6. Append selected items vào Content Map với prefix `[R]`
 7. Thông báo user: "Research xong: X data points, Y insights. Đã lưu tại research-notes.md"
 
@@ -129,15 +123,15 @@ Chạy sau Step 1, trước Step 2. Quyết định dựa trên câu hỏi Resea
 
 ## Step 2: Phân tích nội dung & Tạo outline
 
-1. Tạo output folder: `output/{slug}-{YYMMDD-HHmm}/`
+1. Tạo output folder: `{CWD}/outline-writer/{slug}-{YYMMDD-HHmm}/`
 2. Đọc `references/outline-rules.md` (relative to this skill folder) để nắm quy tắc outline
 3. **Framework selection:**
   - Presentation: áp dụng framework tương ứng content type (xem Content Type → Framework Mapping trong outline-rules.md). Nếu audience = "Workshop", override sang Gagné
   - Blog/Doc: sắp xếp logic — Introduction → Body sections (clustered) → Conclusion
-4. **Content Map**: Parse source → silent clustering → extract topics → assign priority (`must`/`should`/`nice`) theo detail level. Nếu Step 1.5 đã chạy → append items `[R]`. Lưu `{output_folder}/content-map.md`
+4. **Content Map**: Parse source → silent clustering → extract topics → assign priority (`must`/`should`/`nice`) theo detail level. Nếu Step 1.5 đã chạy → append items `[R]`. Lưu `{CWD}/{output_folder}/content-map.md`
 5. Phân tích nội dung theo detail level + audience-aware adjustments (nếu presentation). Xem Detail Level Mapping + Audience-Aware Adjustments trong outline-rules.md
 6. Tạo outline: Opening > Body > Closing (presentation) hoặc Introduction > Body > Conclusion (blog/doc). Áp dụng Cognitive Sequencing + Narrative Arc (xem outline-rules.md). Cross-check Content Map: mọi `must` topics phải xuất hiện
-7. **Lưu outline** ra `{output_folder}/outline.md` với YAML frontmatter:
+7. **Lưu outline** ra `{CWD}/{output_folder}/outline.md` với YAML frontmatter:
   ```yaml
    ---
    title: "Tên outline"
@@ -154,13 +148,12 @@ Chạy sau Step 1, trước Step 2. Quyết định dựa trên câu hỏi Resea
    ---
   ```
 8. Hiển thị outline cho user review
-9. **Coverage Report**: Generate `{output_folder}/coverage-report.md` (xem Coverage Report Rules trong outline-rules.md)
+9. **Coverage Report**: Generate `{CWD}/{output_folder}/coverage-report.md` (xem Coverage Report Rules trong outline-rules.md)
 10. **Feedback loop**: Hỏi "Outline OK?" (AskUserQuestion, header: "Outline review"):
   - "OK, tiếp tục" - Chấp nhận outline
     - "Chỉnh sửa" - User mô tả thay đổi → cập nhật → hỏi lại
 11. Khi approved, thông báo tùy output_type:
-  - Presentation: "Outline xong. Chạy `/slidev-builder {output_folder}/` để tạo slides."
-    - Blog/Doc: "Outline xong tại `{output_folder}/outline.md`."
+  - Blog/Doc: "Outline xong tại `{CWD}/{output_folder}/outline.md`."
 
 ## Important Notes
 

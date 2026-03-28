@@ -5,7 +5,7 @@ Standard directory structure for writer-agent output.
 ## Project Layout
 
 ```
-docs/generated/{book-name}/
+writer-agent/{book-name}/
 ├── input-handling/              # Step 1: Input processing
 │   ├── content.md               # Converted markdown source
 │   └── structure.json           # Document structure analysis
@@ -52,7 +52,7 @@ docs/generated/{book-name}/
 ## Path Resolution
 
 ```
-Base: docs/generated/{book-name}/
+Base: writer-agent/{book-name}/
 
 Input:      {base}/input-handling/content.md
 Structure:  {base}/input-handling/structure.json

@@ -3,14 +3,14 @@
 
 Usage:
     # From file containing pasted text
-    python paste_text_handler.py /tmp/pasted_content.txt [--title "My Title"] [--output docs/generated/my-doc/input-handling]
+    python paste_text_handler.py /tmp/pasted_content.txt [--title "My Title"] [--output my-doc/input-handling]
 
     # From stdin
     echo "My content here" | python paste_text_handler.py - [--title "My Title"]
 
 Output: content.md + structure.json in output directory
     - If output specified: uses that folder
-    - If not specified: creates docs/generated/{slug}-{YYMMDD-HHMM}/input-handling/
+    - If not specified: creates writer-agent/{slug}-{YYMMDD-HHMM}/input-handling/ in CWD
 """
 from __future__ import annotations
 

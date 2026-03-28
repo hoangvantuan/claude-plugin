@@ -3,9 +3,9 @@
 
 Usage:
     python validate_coverage.py <coverage_file> [threshold]
-    python validate_coverage.py docs/generated/my-book/analysis/_coverage.md
-    python validate_coverage.py docs/generated/my-book/analysis/_coverage.md 95 --target-words 3000
-    python validate_coverage.py docs/generated/my-book/analysis/_coverage.md --structure docs/generated/my-book/analysis/structure.json
+    python validate_coverage.py my-book/analysis/_coverage.md
+    python validate_coverage.py my-book/analysis/_coverage.md 95 --target-words 3000
+    python validate_coverage.py my-book/analysis/_coverage.md --structure my-book/analysis/structure.json
 
 Output: JSON with validation result
 

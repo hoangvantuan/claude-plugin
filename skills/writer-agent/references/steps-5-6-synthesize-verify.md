@@ -67,7 +67,7 @@ Collect subagent coverage tables → aggregate into `analysis/_coverage.md`
 Run validation:
 
 ```bash
-{SCRIPTS_DIR}/wa-validate docs/generated/{book}/analysis/_coverage.md
+{SCRIPTS_DIR}/wa-validate {book}/analysis/_coverage.md
 ```
 
 ## Step 6: Verify

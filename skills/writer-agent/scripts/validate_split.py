@@ -5,8 +5,8 @@ Ensures no overlap (same content in multiple parts) and no miss (content not cov
 
 Usage:
     python validate_split.py <plan_file>
-    python validate_split.py docs/generated/my-book/analysis/_plan.md
-    python validate_split.py docs/generated/my-book/analysis/_plan.md --content path/to/content.md
+    python validate_split.py my-book/analysis/_plan.md
+    python validate_split.py my-book/analysis/_plan.md --content path/to/content.md
 
 Output: JSON with validation result
 

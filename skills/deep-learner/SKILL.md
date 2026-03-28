@@ -28,7 +28,7 @@ Bạn muốn học ở mức độ nào?
 
 ### Step 3: Choose Save Location
 
-Use `AskUserQuestion` to ask save directory (default: `./learning-notes/`).
+Use `AskUserQuestion` to ask save directory (default: `{CWD}/deep-learner/`).
 
 ### Step 4: Analyze & Generate
 
@@ -40,7 +40,7 @@ Mỗi khái niệm trọng tâm (Phase 2.1) dùng format What/Why/How/Example �
 
 Tạo directory nếu chưa tồn tại. Save output markdown với naming: `{topic-slug}-{YYMMDD}-{HHMM}.md`
 
-Ví dụ: `learning-notes/atomic-habits-chapter-1-260213-1430.md`
+Ví dụ: `{CWD}/deep-learner/atomic-habits-chapter-1-260213-1430.md`
 
 ## Level → Phase Mapping
 
@@ -109,7 +109,6 @@ Mỗi reflection prompt gồm:
 - **Nội dung >10000 từ**: Recommend chia nhỏ theo chapter/section
 - **Nội dung <500 từ**: Auto-suggest level quick
 - **URL không fetch được**: Fallback yêu cầu paste text
-- **Nội dung không phải text** (video/image): Suggest dùng transcript hoặc `ai-multimodal` trước
 
 ## Constraints
 

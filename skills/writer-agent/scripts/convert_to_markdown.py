@@ -3,15 +3,15 @@
 
 Usage:
     python convert_to_markdown.py /path/to/file.pdf [output_dir]
-    python convert_to_markdown.py /path/to/file.docx docs/generated/lao-tu-tinh-hoa/input-handling
-    python convert_to_markdown.py https://example.com/doc.pdf docs/generated/my-book/input-handling
+    python convert_to_markdown.py /path/to/file.docx lao-tu-tinh-hoa/input-handling
+    python convert_to_markdown.py https://example.com/doc.pdf my-book/input-handling
 
 Output: Markdown file in output_dir
     - If output_dir specified: uses that folder
-    - If not specified: creates docs/generated/{slug}-{YYMMDD-HHMM}/input-handling/
+    - If not specified: creates writer-agent/{slug}-{YYMMDD-HHMM}/input-handling/ in CWD
 
 Note: Writer-agent workflow expects output folders:
-    docs/generated/{title}/input-handling/
+    writer-agent/{title}/input-handling/
 
 Supported formats:
     - PDF (text-based and scanned with OCR)
@@ -71,7 +71,7 @@ def _check_docling() -> bool:
 def get_default_output_dir(input_path: str) -> Path:
     """Generate default output directory following writer-agent convention.
 
-    Pattern: docs/generated/{slug}-{YYMMDD-HHMM}/input-handling/
+    Pattern: {CWD}/writer-agent/{slug}-{YYMMDD-HHMM}/input-handling/
     """
     input_p = Path(input_path)
     slug = generate_slug(input_p.stem)
@@ -300,7 +300,7 @@ def convert_with_docling(
         result["success"] = True
         result["output_path"] = str(output_path)
         result["output_dir"] = str(output_path.parent)
-        result["project_dir"] = str(output_path.parent.parent)  # docs/generated/{doc-name}-{timestamp}/
+        result["project_dir"] = str(output_path.parent.parent)  # {CWD}/{doc-name}-{timestamp}/
         result["markdown_preview"] = markdown_content[:1000] + "..." if len(markdown_content) > 1000 else markdown_content
 
         # Use structure stats if available, otherwise calculate

@@ -1,6 +1,6 @@
 ---
 name: content-planner
-description: Plan and write full content for Facebook posts and blog articles from any input (topic, notes, URL, documents). Two-phase workflow - Phase 1 creates content plan with briefs, Phase 2 writes full articles. Auto-researches via web search. Use when user wants to "plan content", "write blog post", "create Facebook posts", "content calendar", "lên kế hoạch viết bài", "viết bài cho Facebook/blog", or "lập content plan".
+description: Plan and write full content for Facebook posts and blog articles from any input (topic, notes, URL, documents). Two-phase workflow - Phase 1 creates content plan with briefs, Phase 2 writes full articles with advanced writing style (3-archetype system, anti-AI writing, self-critique process). Auto-researches via web search. Use when user wants to "plan content", "write blog post", "create Facebook posts", "content calendar", "lên kế hoạch viết bài", "viết bài cho Facebook/blog", or "lập content plan".
 ---
 
 # Content Planner
@@ -12,6 +12,7 @@ Lên kế hoạch và viết bài đầy đủ cho Facebook + Blog từ bất k�
 ### Step 1: Detect Input
 
 Xác định loại input từ user:
+
 - **Topic thuần** — chỉ có chủ đề, cần research từ đầu
 - **Notes/outline** — có sẵn ý tưởng, cần structure lại
 - **URL** — bài viết/tài liệu online, cần phân tích + mở rộng
@@ -55,8 +56,8 @@ Gợi ý thứ tự đăng (thường: blog trước → derive Facebook posts t
 
 ### Step 5: Save Output
 
-- `{output-dir}/plan.md` — overview + tất cả briefs
-- `{output-dir}/research.md` — data đã research với sources
+- `{CWD}/{output-dir}/plan.md` — overview + tất cả briefs
+- `{CWD}/{output-dir}/research.md` — data đã research với sources
 
 Hỏi user: "Plan đã xong. Bạn muốn viết bài nào? (VD: 'viết bài 1, 3, 5' hoặc 'viết tất cả')"
 
@@ -76,13 +77,14 @@ Với mỗi bài được chọn:
 2. Load framework từ [references/content-frameworks.md](references/content-frameworks.md)
 3. Viết full content theo brief + type structure + framework
 4. **Blog** → markdown format, đúng structure template của type
-5. **Facebook** → plain text, đúng pattern + hook style của type
+5. **Facebook** → plain text, áp dụng writing system trong facebook-types.md (archetypes, anti-AI writing, self-critique)
 
 ### Step 3: Save Articles
 
 Mỗi bài lưu file riêng:
-- Blog: `{output-dir}/blog-[NN]-[type]-[slug].md`
-- Facebook: `{output-dir}/fb-[NN]-[type]-[slug].md`
+
+- Blog: `{CWD}/{output-dir}/blog-[NN]-[type]-[slug].md`
+- Facebook: `{CWD}/{output-dir}/fb-[NN]-[type]-[slug].md`
 
 ## Constraints
 
@@ -92,11 +94,12 @@ Mỗi bài lưu file riêng:
 - Mỗi bài viết self-contained, đọc độc lập được
 - Research data phải cite nguồn
 - Tối đa 10 bài/plan — nếu topic rộng, ưu tiên quality over quantity
-- Default output dir: `./content-output/[topic-slug]/` nếu user không chỉ định
+- Default output dir: `{CWD}/content-planner/[topic-slug]/` nếu user không chỉ định
 
 ## Output Format
 
 Phase 1 output `plan.md`:
+
 ```
 # Content Plan: [Topic]
 
@@ -118,5 +121,5 @@ Phase 2 output: Mỗi bài theo structure template của type tương ứng tron
 ## References
 
 - [references/blog-types.md](references/blog-types.md) — 6 blog type guidelines
-- [references/facebook-types.md](references/facebook-types.md) — 4 Facebook post type patterns
+- [references/facebook-types.md](references/facebook-types.md) — 4 Facebook post types + writing system (archetypes, anti-AI writing, self-critique)
 - [references/content-frameworks.md](references/content-frameworks.md) — Writing frameworks (PAS, Inverted Pyramid, etc.)
