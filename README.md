@@ -25,7 +25,7 @@ claude plugin install gh:hoangvantuan/shun-claude-plugin
 | `creative-thought-partner` | Đối tác tư duy sáng tạo — brainstorming & insight discovery |
 | `deep-post-ideas` | Trích xuất outline bài đăng từ tài liệu tham khảo |
 | `deep-insight` | Quan sát đa chiều → Phân tích tách lớp → Đúc kết cốt lõi — hiểu sâu bất kỳ vấn đề nào qua chu trình 3 bước tư duy |
-| `deep-learner` | Học hiểu sâu nội dung — tạo tài liệu học có cấu trúc 6 phase |
+| `deep-learner` | Dẫn dắt từng bước hiểu sâu bản chất nội dung — 4 lớp hiểu + áp dụng đời sống |
 | `content-planner` | Lên kế hoạch và viết bài Facebook + Blog — 2-phase workflow (Plan → Write) |
 | `things-manager` | Quản lý Things 3 tasks, projects, areas, tags qua things-cli (Go CLI) |
 | `pinchtab` | Browser automation cho AI agents — điều khiển Chrome qua PinchTab HTTP API (navigate, click, fill form, scrape, multi-tab) |

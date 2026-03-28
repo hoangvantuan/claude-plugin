@@ -2,137 +2,95 @@
 
 > **Source:** {nguồn gốc — URL hoặc mô tả}
 > **Date:** {ngày tạo}
-> **Level:** {quick | medium | deep}
 > **Topic tags:** #{tag1} #{tag2} #{tag3}
 
-## 0. Chuẩn bị
+---
 
-*Trước khi đọc, hãy suy nghĩ:*
+## Bản chất
 
-*AI gợi ý: Bạn đã biết gì về chủ đề này?*
+**Một câu cốt lõi:** {toàn bộ nội dung gói trong 1 câu}
 
-> [Ghi câu trả lời của bạn ở đây]
+**Ẩn dụ:** {so sánh với thứ ai cũng hiểu}
 
-*AI gợi ý: Bạn kỳ vọng học được gì từ nội dung này?*
+**Bản đồ ý tưởng:**
 
-> [Ghi câu trả lời của bạn ở đây]
+1. {Ý chính 1 — 1 câu}
+2. {Ý chính 2 — 1 câu}
+3. {Ý chính 3 — 1 câu}
 
-*AI gợi ý: {Câu hỏi contextual dựa trên nội dung}*
+---
 
-> [Ghi câu trả lời của bạn ở đây]
+## Cơ chế
 
-## 1. Tổng quan
+### {Khái niệm 1}
 
-### Mục đích & Bài toán
+- **Là gì:** {ẩn dụ + 1-2 câu đơn giản}
+- **Tại sao:** {logic + evidence}
+- **Hoạt động thế nào:** {cơ chế hoặc steps}
+- **Ví dụ:** {tình huống cụ thể}
 
-{Nội dung này giải quyết vấn đề gì? Tại sao nó tồn tại?}
+### {Khái niệm 2}
 
-### Cấu trúc nội dung
+- **Là gì:** ...
+- **Tại sao:** ...
+- **Hoạt động thế nào:** ...
+- **Ví dụ:** ...
 
-{Content map — liệt kê các phần chính và mối liên hệ}
+**Kết nối giữa các khái niệm:**
 
-### Luồng logic
+{Chúng liên quan nhau thế nào? Cái nào nền tảng, cái nào hệ quả?}
 
-{Tác giả xây dựng lập luận theo trình tự nào?}
+---
 
-### Bản đồ vị trí
+## Kết nối
 
-> **Lĩnh vực:** {nội dung thuộc lĩnh vực nào}
-> **Hệ thống:** {nằm trong hệ thống kiến thức nào}
-> **Mảnh ghép:** {là mảnh ghép nào trong bức tranh lớn hơn}
-> **Liên quan đến:** {các chủ đề/tài liệu liên quan}
+**Bổ sung kiến thức:** {Liên hệ với những gì đã biết}
 
-## 2. Đào sâu
+**Phản biện:** {Điểm yếu, thiên kiến, giới hạn}
 
-### 2.1 Khái niệm trọng tâm
+**Góc nhìn khác:** {Quan điểm đối lập đáng xem xét}
 
-#### {Concept 1}
+---
 
-- **What:** {Ý chính — 1-2 câu đơn giản}
-- **Why:** {Vì sao quan trọng — logic, evidence}
-- **How:** {Áp dụng thế nào — steps cụ thể}
-- **Example:** {Ví dụ thực tế}
+## Áp dụng vào đời sống
 
-#### {Concept 2}
+**Tình huống gặp lại:** {Khi nào trong ngày/tuần}
 
-- **What:** ...
-- **Why:** ...
-- **How:** ...
-- **Example:** ...
+**Hành động nhỏ nhất:** {1 việc làm ngay hôm nay}
 
-### 2.2 Kết nối kiến thức
+**Kế hoạch 7 ngày:**
 
-{AI phân tích mối liên hệ giữa các concepts}
+1. Ngày 1-2: {bước khởi đầu}
+2. Ngày 3-5: {bước phát triển}
+3. Ngày 6-7: {bước củng cố + đánh giá}
 
-*AI gợi ý: Kiến thức này liên hệ thế nào với những gì bạn đã biết?*
+**Dấu hiệu thành công:** {Biết đang đúng hướng khi...}
 
-> [Ghi câu trả lời của bạn ở đây]
+**Bẫy cần tránh:**
 
-### 2.3 Ứng dụng thực tế
+- {Sai lầm 1 + cách tránh}
+- {Sai lầm 2 + cách tránh}
 
-{AI đề xuất cách áp dụng vào thực tế}
+---
 
-*AI gợi ý: Bạn có thể áp dụng điều này vào công việc/cuộc sống thế nào?*
+## Sơ đồ tổng hợp
 
-> [Ghi câu trả lời của bạn ở đây]
-
-## 3. Kiểm chứng
-
-### Bằng chứng & Nguồn trích dẫn
-
-{Đánh giá chất lượng bằng chứng}
-
-### Độ tin cậy
-
-{Phân tích mức độ tin cậy của thông tin}
-
-### Cần fact-check
-
-- [ ] {Thông tin 1 cần kiểm chứng}
-- [ ] {Thông tin 2 cần kiểm chứng}
-
-### Tính thời sự
-
-{Thông tin còn cập nhật không? Có gì đã thay đổi?}
-
-## 4. Góc nhìn đa chiều
-
-### 4.1 Phản biện
-
-{Điểm yếu trong lập luận, thiên kiến của tác giả}
-
-### 4.2 Góc nhìn khác
-
-{Chuyên gia nào phản biện? So sánh quan điểm đối lập}
-
-### 4.3 Giới hạn áp dụng
-
-- **Khi nào KHÔNG phù hợp:** {trường hợp ngoại lệ}
-- **Điều kiện tiên quyết:** {cần gì để áp dụng được}
-- **Rủi ro:** {rủi ro khi áp dụng sai}
-
-## 5. Đúc kết
-
-### 5.1 Tổng hợp
-
-**Tư tưởng cốt lõi:** {1-2 câu tóm tắt toàn bộ nội dung}
-
-**3 Keywords:** `{keyword1}` · `{keyword2}` · `{keyword3}`
-
-**Giải thích cho người chưa biết:** {2-3 câu đơn giản nhất}
-
-### 5.2 Sơ đồ
-
-```
-{Mermaid diagram visualize cấu trúc ý chính — tối đa 10-15 nodes}
+```mermaid
+{diagram visualize cấu trúc ý chính — tối đa 12 nodes}
 ```
 
-### 5.3 Cam kết hành động `[medium, deep]`
+---
 
-*AI gợi ý: Sau khi học xong, bạn sẽ làm gì khác đi?*
+## Reflection
 
-> [Ghi câu trả lời của bạn ở đây]
+*Điều thú vị nhất tôi học được:*
+> [...]
 
-*AI gợi ý: Bước đầu tiên bạn sẽ thực hiện trong 24h tới là gì?*
+*Điều gì thay đổi cách tôi nghĩ về vấn đề này:*
+> [...]
 
-> [Ghi câu trả lời của bạn ở đây]
+*Tôi sẽ bắt đầu áp dụng bằng cách:*
+> [...]
+
+*Sau 7 ngày, tôi sẽ kiểm tra lại bằng cách:*
+> [...]

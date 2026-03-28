@@ -13,7 +13,7 @@ Dự án phát triển các plugin cho Claude Code, bao gồm: **skills**, **age
 skills/                      # Các skill plugins (chi tiết xem ## Skill Structure)
   content-planner/           # Content planning & writing cho Facebook + Blog
   creative-thought-partner/  # Đối tác tư duy sáng tạo — brainstorming
-  deep-learner/              # Học hiểu sâu nội dung — tài liệu học có cấu trúc
+  deep-learner/              # Dẫn dắt từng bước hiểu sâu bản chất nội dung — 4 lớp hiểu + áp dụng đời sống
   deep-post-ideas/           # Trích xuất outline bài đăng từ tài liệu
   facebook/                  # Facebook automation via PinchTab (wall post, tag friends)
   ghost-blog/                # Ghost CMS blog management
@@ -63,7 +63,7 @@ skills/<skill-name>/
 |-------|---------------|---------|
 | `content-planner` | `references/` | blog-types, content-frameworks, facebook-types |
 | `creative-thought-partner` | — | Chỉ có SKILL.md |
-| `deep-learner` | `templates/` | note-structure, output-template |
+| `deep-learner` | `references/` `templates/` | easy-explain-guide, long-content-strategy, note-structure, output-template |
 | `deep-insight` | `references/` | framework-foundation, observation-guide, analysis-patterns, synthesis-methods |
 | `deep-post-ideas` | `references/` | example-phrasing |
 | `facebook` | `scripts/` | fb-post.sh, snap-helpers.py, tag-search.py |
