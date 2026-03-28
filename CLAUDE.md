@@ -25,6 +25,7 @@ skills/                      # Các skill plugins (chi tiết xem ## Skill Struc
   things-manager/            # Things 3 task management via things-cli (Go CLI)
   viral-post-creator/        # Tạo bài đăng viral trên social media
   wisdom-mentor/             # Trò chuyện với người thầy tri thức (28 mentors)
+  work-explainer/            # Personal teacher — giải thích công việc đã làm (9-step framework)
   writer-agent/              # Document transformation and article writing
   youtube-title-generator/   # Tạo tiêu đề YouTube hấp dẫn
 agents/                      # Các agent definitions (planned)
@@ -70,6 +71,7 @@ skills/<skill-name>/
 | `things-manager` | — | Chỉ có SKILL.md |
 | `viral-post-creator` | `references/` | example-phrasing |
 | `wisdom-mentor` | `references/` | 28 mentor profiles (mỗi mentor 1 file .md) |
+| `work-explainer` | — | Chỉ có SKILL.md |
 | `writer-agent` | `audiences/` `emotional_maps/` `identities/` `meta/` `references/` `scripts/` `structures/` `templates/` `voices/` | Skill phức tạp nhất — có 9 subdirectories |
 | `youtube-title-generator` | `references/` | title-examples |
 
