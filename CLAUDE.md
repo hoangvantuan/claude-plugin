@@ -23,6 +23,8 @@ skills/                      # Các skill plugins (chi tiết xem ## Skill Struc
   prompt-generator-v2/       # KERNEL framework — prompt engineering nâng cao
   slidev-builder/            # Slidev presentation builder from outline
   things-manager/            # Things 3 task management via things-cli (Go CLI)
+  deep-insight/              # Quan sát đa chiều → Phân tích tách lớp → Đúc kết cốt lõi để hiểu sâu vấn đề
+  systems-thinking/          # Phân tích tư duy hệ thống theo framework Donella Meadows (Thinking in Systems)
   van-tu-tu-training/        # Xây dựng tài liệu training theo mô hình Văn-Tư-Tu (Tam Tuệ Học)
   viral-post-creator/        # Tạo bài đăng viral trên social media
   wisdom-mentor/             # Trò chuyện với người thầy tri thức (28 mentors)
@@ -62,6 +64,7 @@ skills/<skill-name>/
 | `content-planner` | `references/` | blog-types, content-frameworks, facebook-types |
 | `creative-thought-partner` | — | Chỉ có SKILL.md |
 | `deep-learner` | `templates/` | note-structure, output-template |
+| `deep-insight` | `references/` | framework-foundation, observation-guide, analysis-patterns, synthesis-methods |
 | `deep-post-ideas` | `references/` | example-phrasing |
 | `facebook` | `scripts/` | fb-post.sh, snap-helpers.py, tag-search.py |
 | `ghost-blog` | `scripts/` | Python scripts + tests cho Ghost CMS API |
@@ -70,6 +73,7 @@ skills/<skill-name>/
 | `prompt-generator` | — | Chỉ có SKILL.md |
 | `prompt-generator-v2` | — | Chỉ có SKILL.md |
 | `slidev-builder` | `references/` | slide-templates |
+| `systems-thinking` | `references/` `templates/` | system-traps, leverage-points, systems-wisdom, analysis-output |
 | `things-manager` | — | Chỉ có SKILL.md |
 | `van-tu-tu-training` | `references/` | philosophy-foundation, modular-architecture, ratio-adjustment, template-van, template-tu-suy-tu, template-tu-thuc-hanh, template-danh-gia |
 | `viral-post-creator` | `references/` | example-phrasing |

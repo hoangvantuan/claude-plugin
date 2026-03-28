@@ -24,6 +24,7 @@ claude plugin install gh:hoangvantuan/shun-claude-plugin
 | `youtube-title-generator` | Tạo tiêu đề YouTube hấp dẫn từ ý tưởng nội dung |
 | `creative-thought-partner` | Đối tác tư duy sáng tạo — brainstorming & insight discovery |
 | `deep-post-ideas` | Trích xuất outline bài đăng từ tài liệu tham khảo |
+| `deep-insight` | Quan sát đa chiều → Phân tích tách lớp → Đúc kết cốt lõi — hiểu sâu bất kỳ vấn đề nào qua chu trình 3 bước tư duy |
 | `deep-learner` | Học hiểu sâu nội dung — tạo tài liệu học có cấu trúc 6 phase |
 | `content-planner` | Lên kế hoạch và viết bài Facebook + Blog — 2-phase workflow (Plan → Write) |
 | `things-manager` | Quản lý Things 3 tasks, projects, areas, tags qua things-cli (Go CLI) |
@@ -32,6 +33,7 @@ claude plugin install gh:hoangvantuan/shun-claude-plugin
 | `wisdom-mentor` | Trò chuyện với người thầy tri thức — Naval Ravikant, Daniel Schmachtenberger, Csikszentmihalyi, Krishnamurti, Ken Wilber, Thích Viên Minh, Trần Việt Quân, Thích Nhất Hạnh, Sư Tâm Pháp |
 | `work-explainer` | Personal teacher — giải thích công việc đã làm qua 9-step framework (approach, tradeoffs, mistakes, transferable lessons) |
 | `van-tu-tu-training` | Xây dựng bộ tài liệu training theo mô hình Văn-Tư-Tu (Tam Tuệ Học) — kiến trúc modular, tỷ lệ 10-20-70, templates đầy đủ cho VĂN/TƯ/TU |
+| `systems-thinking` | Phân tích tư duy hệ thống theo framework Donella Meadows — nhận diện feedback loops, stocks & flows, system traps, leverage points cho bất kỳ chủ đề nào |
 | `workshop-builder` | Thiết kế workshop hoàn chỉnh theo Backwards Design + 4Cs + Kirkpatrick — 5 giai đoạn (Vision → Design → Prepare → Deliver → Follow-up) |
 
 ### Agents
