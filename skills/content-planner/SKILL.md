@@ -1,11 +1,17 @@
 ---
 name: content-planner
-description: Plan and write full content for Facebook posts and blog articles from any input (topic, notes, URL, documents). Two-phase workflow - Phase 1 creates content plan with briefs, Phase 2 writes full articles with advanced writing style (3-archetype system, anti-AI writing, self-critique process). Auto-researches via web search. Use when user wants to "plan content", "write blog post", "create Facebook posts", "content calendar", "lên kế hoạch viết bài", "viết bài cho Facebook/blog", or "lập content plan".
+description: Plan and write full content from any input (topic, notes, URL, documents). Blog-first workflow - always writes 100% blog articles covering all content first, then derives 1 social post per blog (1:1 mapping). Advanced writing style (3-archetype system, anti-AI writing, self-critique). Auto-researches via web search. Use when user wants to "plan content", "write blog post", "create Facebook posts", "content calendar", "lên kế hoạch viết bài", "viết bài cho Facebook/blog", "lập content plan", or needs to produce both blog and social content from source material.
 ---
 
 # Content Planner
 
-Lên kế hoạch và viết bài đầy đủ cho Facebook + Blog từ bất kỳ input nào. 2-phase workflow: Plan trước, Write sau.
+Blog-first content workflow: Plan → Write ALL blogs → Derive social posts (1 blog = 1 social).
+
+**Nguyên tắc cốt lõi:**
+
+- Blog là bản gốc chứa 100% nội dung — luôn viết trước, cover toàn bộ input
+- Mỗi blog tự động có 1 bài social tương ứng — derive từ content blog đó
+- VD: 30 blog topics → 30 blog articles + 30 social posts = 60 bài
 
 ## Phase 1: Plan
 
@@ -20,13 +26,12 @@ Xác định loại input từ user:
 
 ### Step 2: Interview
 
-Ask one at a time, conversational:
+Hỏi tất cả câu hỏi trong 1 lượt để tiết kiệm thời gian:
 
-1. **Audience**: "Ai là người đọc chính? (VD: startup founders, marketer, developer...)"
-2. **Tone**: "Tone bạn muốn? (chuyên gia / thân thiện / provocative / storytelling)"
-3. **Goals**: "Mục tiêu chính? (educate / engage / convert / thought leadership)"
-4. **Platform priority**: "Ưu tiên platform nào trước? (blog trước rồi derive FB, hay FB trước?)"
-5. *(Optional)* **Constraints**: "Có yêu cầu đặc biệt nào không? (deadline, brand guidelines, topics to avoid)"
+1. **Audience**: Ai là người đọc chính? (VD: startup founders, marketer, developer...)
+2. **Tone**: Tone bạn muốn? (chuyên gia / thân thiện / provocative / storytelling)
+3. **Goals**: Mục tiêu chính? (educate / engage / convert / thought leadership)
+4. *(Optional)* **Constraints**: Có yêu cầu đặc biệt nào không? (deadline, brand guidelines, topics to avoid)
 
 ### Step 3: Research
 
@@ -37,31 +42,35 @@ Ask one at a time, conversational:
 
 ### Step 4: Generate Content Plan
 
-Đề xuất số lượng bài **không giới hạn**, tỷ lệ thuận với độ sâu/rộng của input:
+Đề xuất số lượng **blog articles** cover toàn bộ nội dung input:
 
 - **Topic thuần** → 3-10 bài (tùy scope)
 - **Notes/outline** → theo số ý tưởng có sẵn
 - **URL/article** → 5-15 bài (tùy độ dài + density)
 - **Sách/tài liệu dài** → **bao phủ toàn bộ giá trị cốt lõi** — có thể 20, 30, 50+ bài. Chia thành **batches** (mỗi batch ~10 bài) để quản lý. Đảm bảo không bỏ sót chapter/concept quan trọng nào.
 
-**Nguyên tắc:** Số lượng bài phục vụ mục tiêu truyền tải đầy đủ nội dung gốc. Quality không đánh đổi quantity — mỗi bài vẫn phải self-contained và có giá trị độc lập.
+**Nguyên tắc:**
 
-Mỗi bài có brief:
+- Số lượng bài phục vụ mục tiêu truyền tải đầy đủ nội dung gốc. Quality không đánh đổi quantity — mỗi bài vẫn phải self-contained và có giá trị độc lập.
+- **1 bài = 1 chủ đề duy nhất.** Mỗi blog tập trung vào đúng 1 ý chính (concept, framework, câu chuyện, bài học). Nếu 1 chapter/section chứa nhiều ý độc lập → tách thành nhiều bài. Không nhồi 2-3 chủ đề vào 1 bài — reader chỉ nhớ được 1 takeaway.
+
+Mỗi bài có brief (blog + social paired):
 
 ```
 ### Bài [N]: [Tiêu đề đề xuất]
-- **Platform:** Blog / Facebook
-- **Type:** [Load từ references/blog-types.md hoặc references/facebook-types.md]
+
+**Blog:**
+- **Type:** [Load từ references/blog-types.md]
 - **Framework:** [Chọn theo type — xem mapping trong references/blog-types.md]
 - **Angle:** [Góc tiếp cận cụ thể]
-- **Hook idea:** [1-2 câu hook]
 - **Key points:** [3-5 bullet points]
-- **CTA:** [Call to action]
-- **Target reader:** [Ai sẽ đọc bài này]
 - **Word count:** [Ước tính]
-```
 
-Gợi ý thứ tự đăng (thường: blog trước → derive Facebook posts từ content blog).
+**Social (derive từ blog):**
+- **Type:** [Load từ references/facebook-types.md]
+- **Hook idea:** [1-2 câu hook — extract từ insight mạnh nhất của blog]
+- **CTA:** [Call to action]
+```
 
 ### Step 5: Save Output
 
@@ -69,43 +78,73 @@ Gợi ý thứ tự đăng (thường: blog trước → derive Facebook posts t
 - `{CWD}/{output-dir}/research.md` — data đã research với sources
 
 **Với input dài (sách, tài liệu lớn):**
+
 - Trước tiên, tạo **content map** tổng quan: liệt kê tất cả chapters/concepts cốt lõi cần cover
 - Chia thành batches, mỗi batch ~10 bài, plan batch đầu tiên chi tiết
 - Hỏi user confirm trước khi plan batch tiếp theo
 
-Hỏi user: "Plan đã xong. Bạn muốn viết bài nào? (VD: 'viết bài 1, 3, 5' hoặc 'viết tất cả')"
+Hỏi user: "Plan đã xong với [N] bài blog + [N] bài social. Bạn muốn bắt đầu viết? (VD: 'viết batch 1' hoặc 'viết tất cả')"
 
-## Phase 2: Write
+## Phase 2: Write Blogs
 
-Trigger: User chỉ định bài cần viết (VD: "viết bài 1, 3" hoặc "write all articles from plan").
+Trigger: User confirm viết (VD: "viết tất cả" hoặc "viết batch 1").
+
+Blog luôn được viết trước 100%. Social posts sẽ derive ở Phase 3 sau khi blog hoàn thành.
 
 ### Step 1: Read Plan
 
 Đọc `plan.md` từ output dir để lấy briefs.
 
-### Step 2: Write Each Article
+### Step 2: Write ALL Blog Articles
 
-Với mỗi bài được chọn:
+Viết toàn bộ blog articles trong batch/plan — không bỏ sót bài nào:
 
-1. Load type guidelines từ [references/blog-types.md](references/blog-types.md) hoặc [references/facebook-types.md](references/facebook-types.md)
-2. Load [references/writing-system.md](references/writing-system.md) — áp dụng cho TẤT CẢ bài viết (cả Blog lẫn Facebook)
+1. Load type guidelines từ [references/blog-types.md](references/blog-types.md)
+2. Load [references/writing-system.md](references/writing-system.md) — áp dụng full writing system
 3. Load framework từ [references/content-frameworks.md](references/content-frameworks.md)
 4. Viết full content theo brief + type structure + framework + writing system
-5. **Blog** → markdown format, đúng structure template của type, headings viết như insight
-6. **Facebook** → plain text, xuống dòng nhiều, hook 3 dòng đầu phải mạnh
+5. Markdown format, đúng structure template của type, headings viết như insight
 
-### Step 3: Save Articles
+### Step 3: Save Blog Articles
 
-Mỗi bài lưu file riêng:
+Mỗi bài lưu file riêng: `{CWD}/{output-dir}/blog-[NN]-[type]-[slug].md`
 
-- Blog: `{CWD}/{output-dir}/blog-[NN]-[type]-[slug].md`
-- Facebook: `{CWD}/{output-dir}/fb-[NN]-[type]-[slug].md`
+Sau khi viết xong toàn bộ blog, tự động chuyển sang Phase 3.
+
+## Phase 3: Derive Social Posts
+
+Trigger: Tự động sau khi Phase 2 hoàn thành (toàn bộ blog đã viết xong).
+
+Mỗi blog article → 1 social post tương ứng. Mapping 1:1 bắt buộc.
+
+### Step 1: Read Blog Article
+
+Đọc blog article vừa viết để extract nội dung cốt lõi.
+
+### Step 2: Derive Social Post
+
+Với mỗi blog article:
+
+1. Load type guidelines từ [references/facebook-types.md](references/facebook-types.md) — chọn type phù hợp theo brief
+2. Load [references/writing-system.md](references/writing-system.md) — áp dụng anti-AI writing + tone
+3. **Extract** insight mạnh nhất, story hấp dẫn nhất, hoặc controversial take từ blog
+4. **Rewrite** cho social format — KHÔNG copy-paste từ blog, mà viết lại cho platform
+5. Plain text, xuống dòng nhiều, hook 3 dòng đầu phải mạnh
+6. Không dùng outbound links (giảm reach) — social post phải self-contained, đọc độc lập được
+
+### Step 3: Save Social Posts
+
+Mỗi bài lưu file riêng: `{CWD}/{output-dir}/fb-[NN]-[type]-[slug].md`
+
+File naming đảm bảo `[NN]` khớp với blog tương ứng (blog-03 → fb-03).
 
 ## Constraints
 
 - Output tiếng Việt (trừ khi user yêu cầu khác)
+- Blog luôn viết trước 100%, social derive sau — không đảo thứ tự
+- Mapping 1:1 bắt buộc: mỗi blog có đúng 1 social post tương ứng
 - Blog phải đúng structure template theo type definition trong references
-- Facebook post không dùng outbound links (giảm reach)
+- Social post KHÔNG copy-paste từ blog — rewrite cho platform, giữ essence
 - Mỗi bài viết self-contained, đọc độc lập được
 - Research data phải cite nguồn
 - Không giới hạn số bài/plan — số lượng tỷ lệ với độ sâu input. Với input dài (sách, khóa học), chia thành batches ~10 bài, plan từng batch tuần tự để đảm bảo bao phủ toàn bộ giá trị cốt lõi
@@ -122,16 +161,19 @@ Phase 1 output `plan.md`:
 - Audience: [...]
 - Tone: [...]
 - Goals: [...]
-- Tổng số bài: [N]
+- Tổng số blog: [N]
+- Tổng số social: [N] (1:1 với blog)
 
 ## Briefs
-[Briefs theo format ở Step 4]
+[Briefs theo format ở Step 4 — mỗi brief gồm cả Blog + Social paired]
 
-## Thứ tự đăng đề xuất
-[Timeline/order]
+## Thứ tự viết
+1. Blog: Viết toàn bộ [N] bài blog trước
+2. Social: Derive [N] bài social từ blog đã viết
 ```
 
-Phase 2 output: Mỗi bài theo structure template của type tương ứng trong references/.
+Phase 2 output: Mỗi blog theo structure template của type tương ứng trong references/.
+Phase 3 output: Mỗi social post theo type guidelines trong references/facebook-types.md.
 
 ## References
 
