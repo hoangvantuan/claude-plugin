@@ -11,7 +11,7 @@ Blog-first content workflow: Plan → Write ALL blogs → Derive social posts (1
 
 - Blog là bản gốc chứa 100% nội dung — luôn viết trước, cover toàn bộ input
 - Mỗi blog tự động có 1 bài social tương ứng — derive từ content blog đó
-- VD: 30 blog topics → 30 blog articles + 30 social posts = 60 bài
+- VD: N blog topics → N blog articles + N social posts (1:1)
 
 ## Phase 1: Plan
 
