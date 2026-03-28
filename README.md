@@ -31,6 +31,8 @@ claude plugin install gh:hoangvantuan/shun-claude-plugin
 | `facebook` | Facebook automation via PinchTab — đăng bài lên wall, tag bạn bè, quản lý nội dung Facebook |
 | `wisdom-mentor` | Trò chuyện với người thầy tri thức — Naval Ravikant, Daniel Schmachtenberger, Csikszentmihalyi, Krishnamurti, Ken Wilber, Thích Viên Minh, Trần Việt Quân, Thích Nhất Hạnh, Sư Tâm Pháp |
 | `work-explainer` | Personal teacher — giải thích công việc đã làm qua 9-step framework (approach, tradeoffs, mistakes, transferable lessons) |
+| `van-tu-tu-training` | Xây dựng bộ tài liệu training theo mô hình Văn-Tư-Tu (Tam Tuệ Học) — kiến trúc modular, tỷ lệ 10-20-70, templates đầy đủ cho VĂN/TƯ/TU |
+| `workshop-builder` | Thiết kế workshop hoàn chỉnh theo Backwards Design + 4Cs + Kirkpatrick — 5 giai đoạn (Vision → Design → Prepare → Deliver → Follow-up) |
 
 ### Agents
 
