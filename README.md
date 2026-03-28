@@ -17,6 +17,7 @@ claude plugin install gh:hoangvantuan/shun-claude-plugin
 | `ghost-blog` | Ghost CMS blog management |
 | `outline-writer` | Content analysis & outline creation (presentation/blog/doc) |
 | `slidev-builder` | Slidev presentation builder from outline — theme selection, PDF export |
+| `pptx-creator` | Tạo PowerPoint đẹp, chuyên nghiệp — hỗ trợ font tiếng Việt, 18 color palettes, 4 style recipes, 5 slide types (PptxGenJS) |
 | `writer-agent` | Document transformation and article writing (v2.0.0 — tier workflows, preset presets, enhanced insights) |
 | `prompt-generator` | Meta-prompting — tạo prompt chất lượng cao, giảm hallucination |
 | `prompt-generator-v2` | KERNEL framework — prompt engineering nâng cao (94% first-try success, prompt chaining, verification criteria) |

@@ -19,6 +19,7 @@ skills/                      # Các skill plugins (chi tiết xem ## Skill Struc
   ghost-blog/                # Ghost CMS blog management
   outline-writer/            # Content analysis & outline creation (presentation/blog/doc)
   pinchtab/                  # Browser automation for AI agents via PinchTab HTTP API
+  pptx-creator/              # Tạo PowerPoint đẹp, chuyên nghiệp — hỗ trợ font tiếng Việt (PptxGenJS)
   prompt-generator/          # Meta-prompting — tạo prompt chất lượng cao
   prompt-generator-v2/       # KERNEL framework — prompt engineering nâng cao
   slidev-builder/            # Slidev presentation builder from outline
@@ -70,6 +71,7 @@ skills/<skill-name>/
 | `ghost-blog` | `scripts/` | Python scripts + tests cho Ghost CMS API |
 | `outline-writer` | `references/` | outline-rules |
 | `pinchtab` | `references/` | api-reference, cli-reference, workflow-patterns |
+| `pptx-creator` | `references/` `scripts/` | design-system, slide-types, pptxgenjs-api, compile.js |
 | `prompt-generator` | — | Chỉ có SKILL.md |
 | `prompt-generator-v2` | — | Chỉ có SKILL.md |
 | `slidev-builder` | `references/` | slide-templates |
