@@ -57,7 +57,7 @@ slide.addText("Title", { x: 0.5, y: 0.3, w: 9, h: 0.6, margin: 0 });
 // Auto-shrink text to fit box (prevents overflow — use for Vietnamese)
 slide.addText("Tiêu đề có thể dài với nhiều dấu tiếng Việt", {
   x: 0.5, y: 0.5, w: 9, h: 1.2,
-  fontSize: 44, fontFace: "Be Vietnam Pro",
+  fontSize: 36, fontFace: "Be Vietnam Pro",
   fit: true  // auto-shrinks font if text overflows the box
 });
 ```
@@ -69,10 +69,10 @@ slide.addText("Tiêu đề có thể dài với nhiều dấu tiếng Việt", {
 ```javascript
 // Bullet list
 slide.addText([
-  { text: "Muc thu nhat", options: { bullet: true, breakLine: true } },
-  { text: "Muc thu hai", options: { bullet: true, breakLine: true } },
-  { text: "Muc thu ba", options: { bullet: true } }
-], { x: 0.5, y: 1, w: 8, h: 3, fontSize: 16, fontFace: "Be Vietnam Pro" });
+  { text: "Mục thứ nhất", options: { bullet: true, breakLine: true } },
+  { text: "Mục thứ hai", options: { bullet: true, breakLine: true } },
+  { text: "Mục thứ ba", options: { bullet: true } }
+], { x: 0.5, y: 1, w: 8, h: 3, fontSize: 18, fontFace: "Be Vietnam Pro" });
 
 // NEVER use unicode bullets like "•" — creates double bullets
 
@@ -363,3 +363,5 @@ Negative values corrupt the file. Use `angle: 270` for upward shadows.
 
 ### 10. createSlide() must be synchronous
 NO async/await in slide creation functions. PptxGenJS operations are blocking.
+
+**Icons caveat:** `iconToBase64Png()` is async — pre-render ALL icons to base64 strings BEFORE calling `createSlide()`. Pass the pre-rendered data strings into the synchronous function.

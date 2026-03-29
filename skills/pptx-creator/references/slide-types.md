@@ -9,8 +9,8 @@ Every slide MUST be classified as exactly one of these 5 types. This prevents "l
 The opening slide sets the tone for the entire presentation.
 
 **Required elements:**
-- Title (36-48pt bold, or larger for dramatic effect up to 72pt)
-- Subtitle or tagline (16-20pt, muted color)
+- Title (36pt bold, hoặc lớn hơn cho dramatic effect lên đến 60pt)
+- Subtitle or tagline (18pt, muted color)
 - Optional: author name, date, logo
 
 **NO page badge on cover slides.**
@@ -103,7 +103,7 @@ Transition slides between major sections. Keep minimal.
 
 **Required elements:**
 - Section number (large, 60-72pt)
-- Section title (24-36pt)
+- Section title (24pt bold)
 - Optional: 1-line description
 - Page badge (required)
 
@@ -204,7 +204,7 @@ Icon in colored circle + bold header + description.
 |                                      [8] |
 +------------------------------------------+
 ```
-Large numbers (60-72pt) with small labels below (12pt).
+Large numbers (60-72pt) with small labels below (14pt).
 
 ### 4e. Comparison / Before-After
 ```
@@ -233,6 +233,47 @@ Large numbers (60-72pt) with small labels below (12pt).
 |                                     [10] |
 +------------------------------------------+
 ```
+
+### 4g. Asymmetric Hero (phá grid)
+```
++------------------------------------------+
+|                                          |
+|  +------------------+                    |
+|  | BIG VISUAL       |  Key insight text  |
+|  | (70% width)      |  nhỏ bên phải      |
+|  | image/shape/     |  với 2-3 dòng      |
+|  | chart            |  context        [7] |
+|  +------------------+                    |
++------------------------------------------+
+```
+Visual chiếm 60-70% slide, text nhỏ bên cạnh. Tạo focal point mạnh.
+
+### 4h. Staggered Cards
+```
++------------------------------------------+
+|  Tiêu Đề                                |
+|                                          |
+|  +--------+                              |
+|  | Card 1 |  +--------+                  |
+|  +--------+  | Card 2 |  +--------+     |
+|              +--------+  | Card 3 |     |
+|                          +--------+ [8] |
++------------------------------------------+
+```
+Cards xếp lệch (stagger y position), phá vỡ sự đều đặn. Mỗi card offset y thêm 0.3-0.5".
+
+### 4i. Full-Width Statement
+```
++------------------------------------------+
+|                                          |
+|                                          |
+|  "Một câu statement mạnh chiếm           |
+|   toàn bộ chiều ngang slide"             |
+|                                          |
+|   — Attribution hoặc context nhỏ     [9] |
++------------------------------------------+
+```
+Quote lớn (28-36pt) + attribution nhỏ. Dùng cho insight quan trọng giữa các content slides. Background dark hoặc accent.
 
 ---
 

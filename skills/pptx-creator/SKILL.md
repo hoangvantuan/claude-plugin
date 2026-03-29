@@ -9,15 +9,16 @@ Tạo presentation đẹp, chuyên nghiệp với hỗ trợ font tiếng Việt
 
 ## Quick Reference
 
-| Item            | Spec                                            |
-| --------------- | ----------------------------------------------- |
-| Library         | PptxGenJS (Node.js)                             |
-| Layout          | LAYOUT_16x9 (10" x 5.625")                      |
-| Colors          | 6-char hex WITHOUT `#`                          |
-| Vietnamese Font | Be Vietnam Pro                                  |
-| English Font    | Inter / Montserrat                              |
-| Theme Keys      | `primary`, `secondary`, `accent`, `light`, `bg` |
-| Page Badge      | x: 9.3", y: 5.1" (all slides except Cover)      |
+| Item            | Spec                                                          |
+| --------------- | ------------------------------------------------------------- |
+| Library         | PptxGenJS (Node.js)                                           |
+| Layout          | LAYOUT_16x9 (10" x 5.625")                                   |
+| Colors          | 6-char hex WITHOUT `#`                                        |
+| Default Font    | Be Vietnam Pro (body) + Montserrat (title)                    |
+| Custom Font     | User có thể chỉ định font riêng qua `titleFont`/`bodyFont`   |
+| Theme Keys      | `primary`, `secondary`, `accent`, `light`, `bg`, `titleFont`, `bodyFont` |
+| Typography      | Title 36 → Heading 24 → Body 18 → Footnote 14                |
+| Page Badge      | x: 9.3", y: 5.1" (all slides except Cover)                   |
 
 
 ## Setup
@@ -42,23 +43,62 @@ pip install "markitdown[pptx]"                     # for QA text extraction
 
 ### Step 2: Select Color Palette + Fonts
 
-**First, check for series mode:** Look for `series-config.json` in the working directory or parent directory. If found, load it and skip Steps 2-3 — the style is already defined.
+**Priority order:**
+
+1. **Series mode** — check `series-config.json` in working/parent directory. If found, load and skip Steps 2-3.
+2. **User custom** — nếu user cung cấp bộ màu hoặc font riêng, dùng trực tiếp (xem bên dưới).
+3. **Catalog** — chọn từ bảng có sẵn trong [references/design-system.md](references/design-system.md).
 
 ```bash
 # Auto-detect series
 ls series-config.json ../series-config.json 2>/dev/null
 ```
 
-If no config found, read [references/design-system.md](references/design-system.md) for the full palette catalog and font pairings. Choose a palette that reflects the topic — don't default to generic blue.
+**Custom palette từ user:** Khi user cung cấp bộ màu (hex codes), map vào 5 theme keys theo brightness (darkest → lightest). Xem chi tiết: [references/design-system.md](references/design-system.md#custom-color-palette).
 
-### Step 3: Select Design Style
+**Custom font từ user:** Khi user chỉ định font, gán vào `titleFont`/`bodyFont` trong theme object. Cảnh báo nếu font không hỗ trợ Vietnamese. Xem chi tiết: [references/design-system.md](references/design-system.md#custom-font).
 
-4 style recipes control corner radius and spacing. Read [references/design-system.md](references/design-system.md#style-recipes):
+### Step 3: Select Design Mood + Style
+
+**3a. Design Mood** — xác định cảm xúc và tính cách. Read [references/design-system.md](references/design-system.md#design-moods):
+
+- **Corporate Authority** — trang trọng, data-driven
+- **Startup Energy** — táo bạo, aspirational
+- **Editorial Elegance** — tinh tế, magazine-like
+- **Playful Creative** — vui tươi, colorful
+- **Minimal Zen** — tối giản cực đoan
+- **Bold Brutalist** — mạnh mẽ, high-contrast
+- **Warm Storytelling** — gần gũi, narrative
+- **Data Dashboard** — analytical, structured
+
+Mood guides every design decision: layout choice, density, visual elements, title style.
+
+**3b. Style Recipe** — corner radius và spacing. Read [references/design-system.md](references/design-system.md#style-recipes):
 
 - **Sharp** (0-0.05") — data-dense reports, corporate
 - **Soft** (0.08-0.12") — balanced, professional (default)
 - **Rounded** (0.15-0.25") — marketing, product
 - **Pill** (0.3-0.5") — premium, brand
+
+### Step 3.5: Generate Visual Assets (Optional but Recommended)
+
+Dùng `ai-multimodal` skill tạo assets nâng cao visual. Read [references/design-system.md](references/design-system.md#background-techniques):
+
+1. **Background images** — gradient, texture, pattern cho Cover/Summary slides
+2. **Hero images** — illustrations, photos cho Content slides
+3. **Custom decorative elements** — shapes, patterns matching the mood
+
+```bash
+# Tạo assets directory
+mkdir -p slides/assets
+```
+
+Prompt template cho `ai-multimodal`:
+```
+"[Description], [color palette hex codes], 1920x1080, no text, no objects, suitable as presentation background"
+```
+
+Save vào `slides/assets/`, reference trong slide code bằng `path: "./assets/filename.jpg"`.
 
 ### Step 4: Plan Slide Outline
 
@@ -67,10 +107,11 @@ Classify EVERY slide as one of 5 types. Read [references/slide-types.md](referen
 1. **Cover** — Opening slide, dramatic title
 2. **Table of Contents** — Navigation, 3-5 sections
 3. **Section Divider** — Transition between sections
-4. **Content** — Main content (6 subtypes)
+4. **Content** — Main content (9 subtypes: 4a-4i)
 5. **Summary** — Closing, takeaways, CTA
 
 **Enforce visual variety** — never repeat the same layout on consecutive slides.
+**Anti-AI Slop** — read [references/design-system.md](references/design-system.md#anti-ai-slop-patterns) before finalizing outline.
 
 ### Step 5: Generate Slide JS Files
 
@@ -94,6 +135,10 @@ function createSlide(pres, theme) {
   slide.background = { color: theme.bg };
 
   // -- YOUR SLIDE CONTENT HERE --
+  // Title: fontSize: 36, fontFace: theme.titleFont, bold: true
+  // Heading: fontSize: 24, fontFace: theme.titleFont, bold: true
+  // Body: fontSize: 18-20, fontFace: theme.bodyFont
+  // Footnote: fontSize: 14, fontFace: theme.bodyFont
 
   // Page badge (required for all except cover)
   slide.addShape(pres.shapes.OVAL, {
@@ -102,7 +147,7 @@ function createSlide(pres, theme) {
   });
   slide.addText(String(slideConfig.index), {
     x: 9.3, y: 5.1, w: 0.4, h: 0.4,
-    fontSize: 12, fontFace: "Be Vietnam Pro",
+    fontSize: 12, fontFace: theme.bodyFont,
     color: "FFFFFF", bold: true,
     align: "center", valign: "middle"
   });
@@ -116,7 +161,8 @@ if (require.main === module) {
   pres.layout = 'LAYOUT_16x9';
   const theme = {
     primary: "264653", secondary: "2a9d8f",
-    accent: "e9c46a", light: "f4a261", bg: "FAFAFA"
+    accent: "e9c46a", light: "f4a261", bg: "FAFAFA",
+    titleFont: "Montserrat", bodyFont: "Be Vietnam Pro"
   };
   createSlide(pres, theme);
   pres.writeFile({ fileName: `slide-${String(slideConfig.index).padStart(2, '0')}-preview.pptx` });
@@ -129,32 +175,7 @@ module.exports = { createSlide, slideConfig };
 
 ### Step 6: Compile into Final PPTX
 
-Use `scripts/compile.js` as the compilation template:
-
-```javascript
-const pptxgen = require('pptxgenjs');
-const pres = new pptxgen();
-pres.layout = 'LAYOUT_16x9';
-pres.author = 'Author Name';
-pres.title = 'Presentation Title';
-
-const theme = {
-  primary: "264653",
-  secondary: "2a9d8f",
-  accent: "e9c46a",
-  light: "f4a261",
-  bg: "FAFAFA"
-};
-
-const slideCount = 10; // adjust to actual count
-for (let i = 1; i <= slideCount; i++) {
-  const num = String(i).padStart(2, '0');
-  const slideModule = require(`./slide-${num}.js`);
-  slideModule.createSlide(pres, theme);
-}
-
-pres.writeFile({ fileName: './output/presentation.pptx' });
-```
+Copy [scripts/compile.js](scripts/compile.js) into your `slides/` directory. Adjust `SLIDE_COUNT`, `pres.author`, `pres.title`, and `theme` object to match your presentation.
 
 Run: `cd slides && node compile.js`
 
@@ -170,9 +191,9 @@ python -m markitdown output/presentation.pptx | grep -iE "xxxx|lorem|ipsum|place
 **Visual QA** (use subagent with fresh eyes):
 
 ```bash
-# Convert to images for visual inspection
-python scripts/office/soffice.py --headless --convert-to pdf output/presentation.pptx
-pdftoppm -jpeg -r 150 output/presentation.pdf slide
+# Convert to images for visual inspection (requires LibreOffice + poppler)
+soffice --headless --convert-to pdf output/presentation.pptx --outdir output/
+pdftoppm -jpeg -r 150 output/presentation.pdf output/slide
 ```
 
 Give the subagent this checklist:
@@ -184,6 +205,28 @@ Give the subagent this checklist:
 - Misaligned columns or cards
 - Leftover placeholder content
 - Font rendering issues with Vietnamese diacritics
+
+**AI Visual QA** (recommended — dùng `ai-multimodal` skill):
+
+Sau khi convert slides thành images, dùng `ai-multimodal` để phân tích:
+
+```
+Prompt cho ai-multimodal:
+"Analyze this presentation slide image. Check for:
+1. Text readability — any low contrast text?
+2. Layout balance — any cramped or empty areas?
+3. Visual hierarchy — is the most important element prominent?
+4. Consistency — does this match a professional design standard?
+5. AI-generated patterns — accent lines under titles, identical card layouts, generic visuals?
+Rate overall quality 1-10 and list specific fixes needed."
+```
+
+**Anti-AI Slop Check** (self-review toàn deck):
+
+1. Scan all slide layouts — có lặp pattern không?
+2. Check titles — generic hay specific?
+3. Verify visual variety — mỗi slide có visual element khác nhau?
+4. Read [references/design-system.md](references/design-system.md#anti-ai-slop-patterns) và đối chiếu
 
 **Verification loop**: Generate -> Inspect -> Fix -> Re-verify. Don't declare success after one pass.
 
@@ -208,24 +251,17 @@ After generating the PPTX, run markitdown to verify — if ANY Vietnamese text a
 
 ### Vietnamese Font Support
 
-- **Primary font**: `Be Vietnam Pro` — excellent Vietnamese diacritics, modern sans-serif
-- **Fallback**: `Arial` — universal but less elegant
-- **Title pairing**: `Montserrat` (header) + `Be Vietnam Pro` (body)
-- **Alternative**: `Inter` (header) + `Be Vietnam Pro` (body)
+- **Default**: `Be Vietnam Pro` (body) + `Montserrat` (title). Fallback: `Arial`.
+- **Custom font**: Gán qua `titleFont`/`bodyFont` trong theme object.
+- Danh sách font an toàn cho tiếng Việt + font pairings: [references/design-system.md](references/design-system.md#font-reference)
 
-### Theme Object Contract (5 Keys Only)
+### Theme Object Contract
 
-```javascript
-const theme = {
-  primary: "264653",    // Darkest — titles, dark backgrounds
-  secondary: "2a9d8f",  // Dark accent — body text, icons
-  accent: "e9c46a",     // Mid-tone — highlights, badges
-  light: "f4a261",      // Light accent — subtle fills
-  bg: "FAFAFA"          // Background — slide base color
-};
-```
+7 keys bắt buộc: 5 colors (`primary`, `secondary`, `accent`, `light`, `bg`) + 2 fonts (`titleFont`, `bodyFont`).
 
-NEVER use other key names. All slides receive this same object.
+- Color: Hex 6 ký tự, KHÔNG có `#`. `titleFont` → title + heading. `bodyFont` → body, bullets, captions, badge.
+- Default: `titleFont: "Montserrat"`, `bodyFont: "Be Vietnam Pro"`.
+- Chi tiết + code example: [references/design-system.md](references/design-system.md#theme-object)
 
 ### File Corruption Prevention
 
@@ -237,19 +273,11 @@ Read [references/pptxgenjs-api.md](references/pptxgenjs-api.md#critical-pitfalls
 
 ### Font Size (Important — Text Must Be Readable)
 
-Slide text must be large enough to read from a distance. These are MINIMUM sizes:
+Typography: **Title 36 → Heading 24 → Body 18 → Footnote 14** (tỷ lệ ~1.5x). Cover slide cho phép title 44-60pt.
 
-| Element | Size | Notes |
-|---------|------|-------|
-| Slide title | 40-48pt bold | Main heading, never smaller than 36pt |
-| Section header | 24-28pt bold | Subsections |
-| Body text | 18-22pt regular | Main content — 18pt minimum, 20pt preferred |
-| Bullet items | 18-20pt | Same as body text |
-| Captions/labels | 13-14pt | Muted color, small annotations only |
-| Big stat numbers | 60-80pt bold | Key metrics, callout numbers |
-| Page badge | 12pt | Bottom-right circle |
+Chi tiết đầy đủ: [references/design-system.md](references/design-system.md#typography-scale)
 
-The most common mistake is body text at 14-16pt — this is too small for presentations. Always use 18pt+ for any text the audience needs to read.
+**Lưu ý:** Body text 14-16pt quá nhỏ cho presentation. Luôn dùng 18pt+ cho text người xem cần đọc.
 
 ### Preventing Text Overflow (Important for Vietnamese)
 
@@ -273,10 +301,10 @@ Vietnamese with diacritics (ă, ệ, ồ, ử, ớ) is taller and wider than ASC
 4. **Text box height guidelines for Vietnamese:**
    | Font Size | 1 line | 2 lines | 3 lines |
    |-----------|--------|---------|---------|
-   | 44pt title | 0.8" | 1.5" | 2.2" |
-   | 28pt header | 0.6" | 1.1" | 1.6" |
+   | 36pt title | 0.7" | 1.3" | 1.9" |
+   | 24pt heading | 0.5" | 0.95" | 1.4" |
    | 20pt body | 0.45" | 0.8" | 1.15" |
-   | 14pt caption | 0.35" | 0.6" | 0.85" |
+   | 14pt footnote | 0.35" | 0.6" | 0.85" |
 
 5. **Keep text concise** — Vietnamese descriptions should be 1-2 sentences max per block. Don't cram long paragraphs into slides.
 
@@ -284,37 +312,9 @@ Vietnamese with diacritics (ă, ệ, ồ, ử, ớ) is taller and wider than ASC
 
 ### Color Contrast (CRITICAL — Text Must Be Readable)
 
-Poor contrast = invisible text. This is a mandatory checklist, not a guideline.
+Dark bg → white text (`"FFFFFF"`). Light bg → dark text (`"222222"` hoặc `theme.primary`). Luôn check contrast của SHAPE fill, không phải slide bg.
 
-**Rule: Every addText() call must pass this check:**
-1. What is the DIRECT background of this text? (slide bg? shape fill? card fill?)
-2. Is that background DARK (luminance < 50%) or LIGHT (luminance > 50%)?
-3. Dark bg → text MUST be `"FFFFFF"` or `"F0F0F0"`. Light bg → text MUST be `"222222"` or `"333333"` or `theme.primary`.
-
-**Safe text colors — memorize these:**
-```javascript
-// ON DARK backgrounds (006d77, 2b2d42, 1B2A4A, 264653, etc.)
-color: "FFFFFF"  // white — always safe on dark
-color: "F0F0F0"  // off-white — always safe on dark
-
-// ON LIGHT backgrounds (FAFAFA, F0F5FB, edf6f9, FFFFFF, ffddd2, etc.)
-color: "222222"  // near-black — always safe on light
-color: "333333"  // dark gray — always safe on light
-color: theme.primary  // darkest theme color — safe on light
-```
-
-**NEVER do these:**
-```
-WRONG: "FFFFFF" text on "FAFAFA" bg (white on white)
-WRONG: "FFFFFF" text on "edf6f9" bg (white on light blue)
-WRONG: "83c5be" text on "edf6f9" bg (light teal on light blue)
-WRONG: "ffddd2" text on "FFFFFF" bg (peach on white)
-WRONG: theme.accent text when accent is a light color
-```
-
-**For shapes/cards:** Check text color against the SHAPE fill color, not the slide background. A white card on a dark slide still needs dark text inside the card.
-
-**Validation step:** After writing each slide, scan every `addText()` call. Ask: "Can I clearly read this text against its direct background?" If no, fix it.
+Safe colors, DO/DON'T examples, validation checklist: [references/design-system.md](references/design-system.md#contrast-rules-critical)
 
 ### Design Principles
 
@@ -324,6 +324,9 @@ WRONG: theme.accent text when accent is a light color
 - **Vary layouts** — don't repeat the same layout consecutively
 - **60-70% primary color dominance** — 1-2 supporting, 1 sharp accent
 - **0.5" minimum margins**, 0.3-0.5" between content blocks
+- **Follow chosen Design Mood** — mỗi quyết định design phải consistent với mood đã chọn
+- **Avoid AI Slop** — read [references/design-system.md](references/design-system.md#anti-ai-slop-patterns) for patterns to avoid
+- **Use background images** cho Cover/Summary slides thay vì solid colors khi có thể
 
 ---
 
@@ -336,18 +339,17 @@ When creating multiple presentations in a series (e.g., training Part 1, 2, 3), 
 ```json
 {
   "series": "Kỹ Năng Mềm Training 2026",
+  "mood": "Warm Storytelling",
   "theme": {
     "primary": "1B2A4A",
     "secondary": "2E4A7A",
     "accent": "6B8FBF",
     "light": "B8D0EB",
-    "bg": "F0F5FB"
+    "bg": "F0F5FB",
+    "titleFont": "Montserrat",
+    "bodyFont": "Be Vietnam Pro"
   },
   "style": "soft",
-  "fonts": {
-    "title": "Montserrat",
-    "body": "Be Vietnam Pro"
-  },
   "rectRadius": 0.1,
   "pageBadge": "circle"
 }

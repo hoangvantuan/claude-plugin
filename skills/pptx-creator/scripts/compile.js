@@ -21,14 +21,27 @@ pres.layout = "LAYOUT_16x9";
 pres.author = "Author Name";
 pres.title = "Presentation Title";
 
-// Theme object — 5 keys only (see design-system.md for palette options)
-const theme = {
+// Theme object — 7 keys: 5 colors + 2 fonts (see design-system.md)
+// Auto-detect series-config.json for consistent style across multiple decks
+const seriesPaths = ["series-config.json", "../series-config.json"];
+const seriesFile = seriesPaths.find((p) => fs.existsSync(path.join(__dirname, p)));
+const seriesConfig = seriesFile
+  ? JSON.parse(fs.readFileSync(path.join(__dirname, seriesFile), "utf-8"))
+  : null;
+
+const theme = seriesConfig?.theme || {
   primary: "264653",   // darkest — titles, dark backgrounds
   secondary: "2a9d8f", // dark accent — body text, icons
   accent: "e9c46a",    // mid-tone — highlights, badges
   light: "f4a261",     // light accent — subtle fills
   bg: "FAFAFA",        // background — slide base color
+  titleFont: "Montserrat",     // title + section headers
+  bodyFont: "Be Vietnam Pro",  // body, bullets, captions, badge
 };
+
+if (seriesConfig) {
+  console.log(`Using series config: ${seriesFile} (${seriesConfig.series || "unnamed"})`);
+}
 
 // --- COMPILE SLIDES ---
 for (let i = 1; i <= SLIDE_COUNT; i++) {
@@ -41,7 +54,12 @@ for (let i = 1; i <= SLIDE_COUNT; i++) {
   }
 
   const slideModule = require(slidePath);
-  slideModule.createSlide(pres, theme);
+  try {
+    slideModule.createSlide(pres, theme);
+  } catch (err) {
+    console.error(`Error in slide-${num}: ${err.message}`);
+    process.exit(1);
+  }
   console.log(`Compiled slide ${num}: ${slideModule.slideConfig?.title || "untitled"}`);
 }
 
