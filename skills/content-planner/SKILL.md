@@ -47,7 +47,7 @@ Hỏi tất cả câu hỏi trong 1 lượt để tiết kiệm thời gian:
 - **Topic thuần** → 3-10 bài (tùy scope)
 - **Notes/outline** → theo số ý tưởng có sẵn
 - **URL/article** → 5-15 bài (tùy độ dài + density)
-- **Sách/tài liệu dài** → **bao phủ toàn bộ giá trị cốt lõi** — có thể 20, 30, 50+ bài. Chia thành **batches** (mỗi batch ~10 bài) để quản lý. Đảm bảo không bỏ sót chapter/concept quan trọng nào.
+- **Sách/tài liệu dài** → **bao phủ toàn bộ giá trị cốt lõi** — số bài tỷ lệ thuận với số concepts/chapters cốt lõi, KHÔNG đặt giới hạn trần. Chia thành **batches** (mỗi batch ~10 bài) để quản lý. Đảm bảo không bỏ sót chapter/concept quan trọng nào.
 
 **Nguyên tắc:**
 
@@ -82,6 +82,7 @@ Mỗi bài có brief (blog + social paired):
 - Trước tiên, tạo **content map** tổng quan: liệt kê tất cả chapters/concepts cốt lõi cần cover
 - Chia thành batches, mỗi batch ~10 bài, plan batch đầu tiên chi tiết
 - Hỏi user confirm trước khi plan batch tiếp theo
+- **Coverage check (BẮT BUỘC):** Sau mỗi batch, đối chiếu content map — liệt kê rõ concepts nào ĐÃ cover, concepts nào CHƯA cover. Tiếp tục plan batch mới cho đến khi 100% content map được cover. KHÔNG dừng sớm chỉ vì đã đạt số bài "tròn"
 
 Hỏi user: "Plan đã xong với [N] bài blog + [N] bài social. Bạn muốn bắt đầu viết? (VD: 'viết batch 1' hoặc 'viết tất cả')"
 
@@ -147,7 +148,7 @@ File naming đảm bảo `[NN]` khớp với blog tương ứng (blog-03 → fb-
 - Social post KHÔNG copy-paste từ blog — rewrite cho platform, giữ essence
 - Mỗi bài viết self-contained, đọc độc lập được
 - Research data phải cite nguồn
-- Không giới hạn số bài/plan — số lượng tỷ lệ với độ sâu input. Với input dài (sách, khóa học), chia thành batches ~10 bài, plan từng batch tuần tự để đảm bảo bao phủ toàn bộ giá trị cốt lõi
+- Không giới hạn số bài/plan — số lượng tỷ lệ với số concepts cốt lõi trong input, KHÔNG neo vào bất kỳ con số cố định nào. Với input dài (sách, khóa học), chia thành batches ~10 bài, plan từng batch tuần tự + coverage check sau mỗi batch cho đến khi bao phủ 100% content map
 - Default output dir: `{CWD}/content-planner/[topic-slug]/` nếu user không chỉ định
 
 ## Output Format
