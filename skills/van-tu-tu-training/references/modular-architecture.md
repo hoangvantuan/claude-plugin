@@ -185,3 +185,60 @@ Quy tắc màu:
 - Core: `fill:#C8E6C9` (xanh lá nhạt)
 - Advanced: `fill:#FFF3E0` (cam nhạt)
 - Specialized: `fill:#F3E5F5` (tím nhạt)
+
+## 7. Template 00_TỔNG_QUAN — Bản Đồ Toàn Khoá
+
+Mỗi khoá đào tạo BẮT BUỘC có file `00_TỔNG_QUAN.md`:
+
+```markdown
+# [Tên Khoá Đào Tạo] — Tổng Quan
+
+## Thông tin khoá
+
+| Thuộc tính | Giá trị |
+|-----------|---------|
+| **Chủ đề** | [Tên chủ đề đào tạo] |
+| **Đối tượng** | [Ai học? Cấp độ?] |
+| **Thời lượng** | [Tổng thời gian] |
+| **Số module** | [N] modules |
+| **Mục tiêu tổng thể** | Sau khoá, người học có thể: |
+|  | 1. [Hành vi đo lường được] |
+|  | 2. [Hành vi đo lường được] |
+| **Chỉ số thành công** | [KPI cụ thể] |
+
+## Danh sách modules
+
+| # | Module | Tier | Thời lượng | Tỷ lệ V-T-T | Prerequisite |
+|---|--------|------|-----------|-------------|-------------|
+| 1 | [Tên] | Foundation | [X ngày] | 20-15-65 | Không |
+| 2 | [Tên] | Core | [X ngày] | 10-20-70 | Module 1 |
+| 3 | [Tên] | Core | [X ngày] | 10-20-70 | Module 1 |
+| 4 | [Tên] | Advanced | [X ngày] | 5-15-80 | Module 2, 3 |
+
+## Prerequisite Map
+
+[Chèn Mermaid flowchart — xem Section 6 cho format]
+
+## Lộ trình gợi ý
+
+### Cá nhân tự học
+| Tuần | Module | Ghi chú |
+|------|--------|---------|
+| 1 | Module 1 | Nền tảng |
+| 2-3 | Module 2 | Kỹ năng chính |
+| ... | ... | ... |
+
+### Team (có facilitator)
+| Tuần | Hoạt động | Module | Ghi chú |
+|------|-----------|--------|---------|
+| 1 | Kick-off + Bắt đầu | Module 1 | Giới thiệu khoá, chia buddy pairs |
+| 2-3 | Học + Thực hành | Module 2 | Check-in giữa tuần |
+| ... | ... | ... | ... |
+| Cuối | Wrap-up | — | Teach-back + Survey cuối khoá |
+
+## Tài nguyên
+
+- **Facilitator Hub:** `_Facilitator_Hub/`
+- **Đánh giá khoá:** `_Danh_Gia_Khoa/`
+- **Liên hệ:** [Facilitator / người phụ trách]
+```

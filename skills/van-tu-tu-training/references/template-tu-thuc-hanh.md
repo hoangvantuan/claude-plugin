@@ -115,3 +115,44 @@ Dùng trong 1-2 tuần thực hành module này. Mỗi ngày 5-10 phút.
 - Áp dụng tốt nhất: ___
 - Cải thiện tuần tới: ___
 ```
+
+## Template `teach_back.md` — Dạy Lại Để Hiểu Sâu
+
+```markdown
+# Teach-back — [Tên Module]
+
+**Mục đích:** Dạy lại người khác là cách đúc kết mạnh nhất. Nếu bạn giải thích được → bạn hiểu thật.
+**Thời gian trình bày:** 5 phút
+**Đối tượng:** Buddy pair, nhóm nhỏ, hoặc facilitator
+
+---
+
+## Chuẩn bị (15-20 phút)
+
+### 1. Chọn 1 bài học cốt lõi từ module
+Điều quan trọng nhất tôi học được: ___
+
+### 2. Cấu trúc trình bày (5 phút)
+
+| Phần | Thời gian | Nội dung |
+|------|-----------|----------|
+| **Hook** | 30 giây | 1 câu hỏi hoặc tình huống gây tò mò |
+| **Kiến thức** | 1 phút | Giải thích bài học bằng ngôn ngữ đơn giản nhất |
+| **Ví dụ** | 2 phút | 1 ví dụ THỰC TẾ tôi đã trải nghiệm trong phần Tu |
+| **Đúc kết** | 1 phút | 1 nguyên tắc người nghe có thể áp dụng ngay |
+| **Hỏi đáp** | 30 giây | 1 câu hỏi mở cho người nghe |
+
+### 3. Tự kiểm tra trước khi trình bày
+- [ ] Tôi giải thích được MÀ KHÔNG CẦN đọc tài liệu?
+- [ ] Ví dụ là từ trải nghiệm THẬT của tôi (không copy tài liệu)?
+- [ ] Người không biết gì về chủ đề cũng hiểu được?
+
+## Sau khi trình bày — Đúc kết
+
+| Câu hỏi | Trả lời |
+|----------|---------|
+| Phần nào tôi giải thích trôi chảy nhất? | ___ |
+| Phần nào tôi còn lúng túng? (= chưa hiểu sâu) | ___ |
+| Câu hỏi nào từ người nghe khiến tôi phải suy nghĩ? | ___ |
+| Tôi cần bổ sung kiến thức gì? | ___ |
+```

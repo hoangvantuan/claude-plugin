@@ -109,6 +109,17 @@ Với mỗi module, xác định:
 | **Mức độ guided**     | Step-by-step / Semi-guided / Independent?      |
 | **Deliverable chính** | Người học nộp/trình bày gì cuối module?        |
 
+**Khi chọn chiều kiến tạo (Tu→Tư→Văn):**
+
+Áp dụng khi người học có nền tảng hoặc chủ đề mang tính trải nghiệm (kỹ năng mềm, leadership, sáng tạo).
+
+| Bước | Hoạt động | Facilitator làm gì |
+|------|-----------|-------------------|
+| **Tu trước** | Đặt người học vào tình huống thực tế / mô phỏng — CHƯA dạy lý thuyết | Tạo môi trường, quan sát, không can thiệp |
+| **Tư giữa** | Người học tự đúc kết: "Mình vừa làm gì? Tại sao kết quả như vậy?" | Hỏi ngược, dẫn dắt phản tư |
+| **Văn cuối** | Cung cấp framework/lý thuyết — người học đối chiếu với trải nghiệm | Bổ sung, hệ thống hoá |
+
+> Lưu ý: Chiều kiến tạo **xuất phát chậm** nhưng **về đích trước** — hành vi thay đổi sâu và bền hơn. Đo sau 30-60-90 ngày, không chỉ quiz ngay sau buổi học.
 
 > Đọc `references/ratio-adjustment.md` để tra cứu tỷ lệ phù hợp theo loại kiến thức và cấp độ.
 
@@ -142,11 +153,47 @@ Với mỗi module, xác định:
 | **Team (5-15)** | Full folder structure, facilitator điều phối, buddy pairs |
 | **Công ty**     | Module Library, facilitator training, rolling deployment  |
 
+**Chi tiết triển khai theo quy mô:**
+
+**Cá nhân:**
+- 1 file/module là đủ (gộp Văn-Tư-Tu vào 1 file)
+- Tự đặt deadline cho mỗi module (1-5 ngày)
+- Dùng checklist hành động để duy trì kỷ luật
+
+**Team (5-15 người):**
+- **Buddy pairs:** Ghép chéo trình độ, trao đổi bài Tư + review deliverable của nhau
+- **Facilitator:** 1 người dẫn dắt, không giảng bài — hỏi ngược + phản biện
+- **Kick-off:** Giới thiệu khoá, chia buddy, gửi pre-work (Văn Module 1)
+- **Check-in:** Giữa tuần (15-30 phút) — tiến độ + rào cản
+- **Wrap-up:** Teach-back (mỗi người 5 phút) + After-Action Review
+
+**Công ty (rolling deployment):**
+- **Pilot:** 1 team đi trước (4-6 tuần) → thu feedback → điều chỉnh tài liệu
+- **Train-the-trainer:** Alumni pilot trở thành facilitator cho đợt sau
+- **Module Library:** Modules đã validate đưa vào thư viện chung — team tự chọn theo tier + prerequisite
+- **Rolling:** Team mới bắt đầu mỗi 2-4 tuần, không cần đợi tất cả cùng lúc
+
+> Đọc `references/template-facilitator-hub.md` để tra cứu chi tiết: hướng dẫn facilitation, module map, lịch trình gợi ý, và cách ghép buddy pairs.
 
 ### Bước 6: Đánh giá & cải tiến
 
-**Cấp module:** Survey ngắn sau mỗi module + check-in 1:1 sau 1 tuần.
-**Cấp khoá:** Survey tổng thể + đo hành vi thay đổi sau 30-60-90 ngày.
+**Cấp module:** After-Action Review sau mỗi module + Rubric đánh giá deliverable.
+**Cấp khoá:** Survey cuối khoá + đo hành vi thay đổi sau 30-60-90 ngày.
+
+| Thời điểm | Công cụ | Đo gì |
+|-----------|---------|-------|
+| Cuối mỗi module | After-Action Review + Rubric | Mức độ nắm kiến thức + chất lượng thực hành |
+| Cuối khoá | Survey cuối khoá | Đánh giá tổng thể + mức độ hài lòng |
+| Sau 30 ngày | Follow-up check-in | Đang thử áp dụng? Rào cản gì? |
+| Sau 60 ngày | Check-in 1:1 | Hành vi đã thay đổi chưa? Kết quả cụ thể? |
+| Sau 90 ngày | Follow-up + Meeting nhóm | Thói quen bền vững? Tác động đo lường được? |
+
+**Phân tích & cải tiến:**
+- Tỷ lệ áp dụng < 30% → Kiểm tra lại phần Tu (thiếu thực hành?)
+- Tỷ lệ áp dụng 30-60% → Kiểm tra rào cản môi trường
+- Tỷ lệ áp dụng > 60% → Khoá hiệu quả — đúc kết best practices
+
+> Templates đánh giá cấp module (rubric, AAR) và cấp khoá (survey, follow-up 30-60-90): đọc `references/template-danh-gia.md`.
 
 ## Micro-cycle xuyên suốt
 
@@ -184,13 +231,14 @@ Tạo bộ tài liệu theo cấu trúc folder chuẩn trong `references/modular
 
 Khi cần tra cứu chi tiết, đọc các file sau:
 
-| File                                     | Khi nào đọc                                                        |
-| ---------------------------------------- | ------------------------------------------------------------------ |
-| `references/philosophy-foundation.md`    | Triết lý Văn-Tư-Tu, facilitation, mô hình Gà-Đại Bàng, hai chiều |
-| `references/modular-architecture.md`     | Phân tách module, tier system, prerequisite map                    |
-| `references/ratio-adjustment.md`         | Tỷ lệ theo loại kiến thức, cấp độ, quy tắc ràng buộc, thời gian  |
-| `references/template-van.md`             | Template phần VĂN (core_reading, knowledge_check)                 |
-| `references/template-tu-suy-tu.md`       | Template phần TƯ (phản chiếu, case study, nhật ký)                |
-| `references/template-tu-thuc-hanh.md`    | Template phần TU (guided practice, dự án, checklist)               |
-| `references/template-danh-gia.md`        | Template ĐÁNH GIÁ (rubric, after-action review)                   |
+| File                                     | Khi nào đọc                                                                    |
+| ---------------------------------------- | ------------------------------------------------------------------------------ |
+| `references/philosophy-foundation.md`    | Triết lý Văn-Tư-Tu, facilitation, mô hình Gà-Đại Bàng, hai chiều             |
+| `references/modular-architecture.md`     | Phân tách module, tier system, prerequisite map, template tổng quan khoá       |
+| `references/ratio-adjustment.md`         | Tỷ lệ theo loại kiến thức, cấp độ, quy tắc ràng buộc, thời gian              |
+| `references/template-van.md`             | Template phần VĂN (core_reading, knowledge_check)                             |
+| `references/template-tu-suy-tu.md`       | Template phần TƯ (phản chiếu, case study, nhật ký)                            |
+| `references/template-tu-thuc-hanh.md`    | Template phần TU (guided practice, dự án, checklist, teach-back)               |
+| `references/template-danh-gia.md`        | Template ĐÁNH GIÁ (rubric, AAR, survey cuối khoá, follow-up 30-60-90)         |
+| `references/template-facilitator-hub.md` | Template Facilitator Hub (hướng dẫn chung, module map, lịch trình, buddy pairs) |
 
