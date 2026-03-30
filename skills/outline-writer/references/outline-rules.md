@@ -96,6 +96,62 @@ Dùng khi audience cần được "framed" vấn đề trước khi nghe answer.
 - **Use specific data**: "Revenue up 45%" not "Significant growth"
 - **Cognitive load**: max 3-4 new concepts per slide. Words target: 15-25 (L1), 30-60 (L2), 60-100 (L3). Split slide nếu cần >90 giây để giải thích
 
+## Content Principles (Nguyên lý nội dung)
+
+Quy tắc nội dung ở trên đảm bảo outline **trông tốt** (hình thức). Content Principles dưới đây đảm bảo outline **nói hay** (nội dung). Cả hai cần tồn tại song song.
+
+### 1. Assertion trước, Evidence sau
+
+- Mỗi section/slide PHẢI bắt đầu bằng 1 ASSERTION (nhận định), KHÔNG phải topic label
+- Evidence/data theo sau để chứng minh assertion
+- SAI: "Giới thiệu về phương pháp Agile"
+- ĐÚNG: "Agile giảm 60% lead time nhưng chỉ khi văn hóa tổ chức sẵn sàng"
+- Áp dụng cho tất cả output types (presentation, blog, doc)
+
+### 2. "So What?" Test
+
+- Mỗi slide/section PHẢI trả lời được: "Vậy thì sao?" (So what?)
+- Nếu audience đọc xong mà hỏi "Rồi sao?" → nội dung chưa đủ sâu
+- Thêm implication (hàm ý) hoặc action (hành động) cho mỗi data point
+- Ví dụ:
+  - THIẾU: "Doanh thu Q3 tăng 25%"
+  - ĐỦ: "Doanh thu Q3 tăng 25% → vượt target, có thể mở rộng team R&D Q4"
+
+### 3. One Outline, One Transformation
+
+- Mỗi outline PHẢI tạo ra ĐÚNG 1 transformation trong đầu audience
+- 3 loại transformation:
+  - **Educate**: "không biết X" → "hiểu X" (kiến thức mới)
+  - **Persuade**: "tin X sai" → "tin X đúng" (thay đổi niềm tin)
+  - **Activate**: "không hành động" → "hành động Y" (thúc đẩy)
+- Transformation được xác định ở Step 1.7 (Thesis Extraction)
+- Mọi section trong outline phải phục vụ transformation này
+
+### 4. Tension-Release Pattern
+
+- Nội dung hay cần **tension** (vấn đề, mâu thuẫn, câu hỏi chưa trả lời)
+- Theo sau bởi **release** (giải đáp, insight, giải pháp)
+- Outline phẳng (list of facts) = không có tension = nhàm chán
+- Mỗi body section nên có ít nhất 1 cặp tension-release
+- Ví dụ tension: "Tại sao 70% dự án Agile thất bại?" → Release: "Vì họ chỉ áp dụng process mà không thay đổi văn hóa"
+
+### 5. Concrete trước, Abstract sau
+
+- Mỗi concept mới cần 1 ví dụ concrete TRƯỚC, rồi mới rút ra nguyên lý
+- KHÔNG: "Định nghĩa" → "Ví dụ"
+- ĐÚNG: "Ví dụ cụ thể" → "Rút ra pattern/nguyên lý"
+- Ví dụ:
+  - KHÔNG: "Agile là phương pháp phát triển linh hoạt" → "Spotify dùng Agile..."
+  - ĐÚNG: "Spotify ship feature mỗi 2 tuần thay vì mỗi 6 tháng" → "Đây là Agile"
+
+### Content Principles Checklist (áp dụng khi review outline)
+
+- [ ] Mọi slide/section title là assertion, không phải topic label?
+- [ ] Mọi data point có implication/action kèm theo? ("So What?" test)
+- [ ] Outline phục vụ đúng 1 transformation rõ ràng?
+- [ ] Có tension-release pattern trong body?
+- [ ] Ví dụ concrete xuất hiện trước khái niệm abstract?
+
 ## Audience-Aware Adjustments
 
 Dựa trên audience type đã chọn ở Step 1.1, điều chỉnh outline:
@@ -236,20 +292,30 @@ Mỗi framework có narrative arc ngầm định. Áp dụng khi tạo outline �
 
 Narrative arc được auto-assign theo framework — KHÔNG cần hỏi user.
 
-## Content Map Rules
+## Content Analysis Map Rules
 
-Trước khi tạo outline, BẮT BUỘC tạo Content Map từ source material. Content Map là danh sách topics được extract và xếp hạng, giúp đảm bảo outline không bỏ sót ý quan trọng.
+Trước khi tạo outline, BẮT BUỘC tạo Content Analysis Map từ source material. Content Analysis Map không chỉ liệt kê topics mà còn **phân tích mối quan hệ** giữa chúng và **liên kết với Thesis**.
 
 ### Process
 
 1. **Parse source**: Chia source thành sections dựa trên headings, paragraph breaks, topic shifts
 2. **Extract**: Với mỗi section, ghi nhận:
-  - Topic name (tên ngắn gọn)
-  - Key concepts (khái niệm chính)
-  - Key data (số liệu, metrics, examples đáng chú ý)
-3. **Silent Clustering**: Tự động nhóm topics tương đồng thành "section buckets" — topics nào naturally discuss together được gộp cùng section. Mục tiêu: tránh overlap, tránh topics liên quan nằm xa nhau trong outline. Nếu source đã có heading structure rõ ràng → dùng thẳng headings làm section buckets, không cần re-cluster
-4. **Rank priority** theo detail level đã chọn (xem bảng dưới)
-5. **Giữ Content Map trong context** (KHÔNG show cho user), dùng làm checklist khi tạo outline
+   - Topic name (tên ngắn gọn)
+   - Key concepts (khái niệm chính)
+   - Key data (số liệu, metrics, examples đáng chú ý)
+3. **Map Relationships**: Xác định mối quan hệ giữa các topics:
+   - **Nhân quả**: Topic A dẫn đến Topic B (→)
+   - **Bổ trợ**: Topic A và Topic B hỗ trợ lẫn nhau (↔)
+   - **Tương phản**: Topic A vs Topic B (tension/contrast)
+   - **Bao hàm**: Topic A là phần của Topic B
+4. **Link to Thesis**: Mỗi topic được gán vai trò với Thesis:
+   - `supports` — hỗ trợ trực tiếp thesis/key argument
+   - `nuances` — bổ sung góc nhìn, làm sâu hơn
+   - `counters` — phản bác, tạo tension
+   - `contextualizes` — cung cấp bối cảnh
+5. **Silent Clustering**: Tự động nhóm topics tương đồng thành "section buckets" — dựa trên relationships đã map, không chỉ topic similarity. Nếu source đã có heading structure rõ ràng → dùng thẳng headings làm section buckets
+6. **Rank priority** theo detail level đã chọn (xem bảng dưới)
+7. **Giữ Content Analysis Map trong context** (KHÔNG show cho user), dùng làm checklist khi tạo outline
 
 ### Priority Assignment Rules
 
@@ -266,18 +332,31 @@ Trước khi tạo outline, BẮT BUỘC tạo Content Map từ source material.
 - **L2**: ≥ 100% `must` + ≥ 70% `should` topics
 - **L3**: ≥ 100% `must` + ≥ 90% `should` + best-effort `nice` topics
 
-### Content Map Format (internal)
+### Content Analysis Map Format (internal)
 
 ```
-=== CONTENT MAP ===
-1. [must] Topic name — key concept A, metric B
-2. [must] Topic name — concept C, example D
-3. [should] Topic name — comparison X vs Y
-4. [should] Topic name — config detail Z
-5. [nice] Topic name — edge case W
-6. [R][should] Researched topic — statistic from web (Source: url)
-7. [R][nice] Researched example — case study (Source: url)
-=== END CONTENT MAP ===
+=== CONTENT ANALYSIS MAP ===
+THESIS: [Core message 1 câu assertion]
+KEY ARGUMENTS:
+  1. [Argument 1]
+  2. [Argument 2]
+  3. [Argument 3]
+INTENDED TRANSFORMATION: [educate/persuade/activate] — [mô tả]
+
+TOPIC RELATIONSHIPS:
+- Topic 1 → Topic 4 (nhân quả)
+- Topic 2 ↔ Topic 5 (bổ trợ)
+- Topic 3 vs Topic 6 (tension/contrast)
+
+TOPICS:
+1. [must] Topic name — key concept A, metric B → supports Argument 1
+2. [must] Topic name — concept C, example D → supports Argument 1
+3. [should] Topic name — comparison X vs Y → nuances Argument 2
+4. [should] Topic name — config detail Z → contextualizes Argument 3
+5. [nice] Topic name — edge case W → counters Argument 1
+6. [R][should] Researched topic — statistic (Source: url) → supports Argument 2
+7. [R][nice] Researched example — case study (Source: url) → contextualizes
+=== END CONTENT ANALYSIS MAP ===
 ```
 
 **Tag** `**[R]**` **(Researched):** Items có prefix `[R]` là thông tin bổ sung từ web research (Step 1.5), không có trong source gốc. Quy tắc:
@@ -285,7 +364,7 @@ Trước khi tạo outline, BẮT BUỘC tạo Content Map từ source material.
 - `[R]` items vẫn phải gán priority (`must`/`should`/`nice`) theo tiêu chí bình thường
 - `[R]` items KHÔNG được gán `must` trừ khi source gốc thiếu data critical cho topic chính
 - Thông thường `[R]` items là `should` hoặc `nice`
-- Max 10 `[R]` items trong 1 Content Map (tránh overwhelming source gốc)
+- Max 10 `[R]` items trong 1 Content Analysis Map (tránh overwhelming source gốc)
 - Coverage Report phải phân biệt source gốc vs researched items
 
 ## Coverage Report Rules
@@ -331,11 +410,68 @@ Sau khi tạo outline, BẮT BUỘC generate Coverage Report dạng file .md tá
 
 ### Report Rules
 
-- Mọi topic trong Content Map PHẢI xuất hiện trong report (covered hoặc omitted)
+- Mọi topic trong Content Analysis Map PHẢI xuất hiện trong report (covered hoặc omitted)
 - Mọi topic omitted PHẢI có justification (lý do cụ thể, không generic)
 - Justification hợp lệ: "trùng lặp với Topic X", "vượt scope L[n]", "gộp vào slide [N]", "quá chi tiết/edge case cho level này"
 - Justification KHÔNG hợp lệ: "không quan trọng", "bỏ qua", "không cần thiết" (quá chung chung)
 - Nếu coverage < threshold (xem Coverage Thresholds), PHẢI thêm topics vào outline cho đến khi đạt threshold
+
+## Quality Report Rules
+
+Sau khi tạo outline, BẮT BUỘC generate Quality Report **cùng file** với Coverage Report (`coverage-report.md`). Quality Report đo chiều **sâu** (depth) và **mạch lạc** (coherence) — bổ sung cho Coverage Report đo chiều **đủ** (breadth).
+
+### Quality Report Format
+
+Append phần dưới đây vào cuối file `coverage-report.md`:
+
+```markdown
+---
+
+# Quality Report
+
+## Thesis Clarity
+- **Core message**: [1 câu thesis]
+- **Xuất hiện rõ ràng trong outline?** ✅/❌
+- **Vị trí**: [Slide/Section X]
+- **Intended transformation**: [educate/persuade/activate] — [mô tả]
+
+## Argument Strength
+| # | Key Argument | Evidence? | Evidence cụ thể? | Counter/Nuance? |
+|---|---|---|---|---|
+| 1 | [Argument 1] | ✅/❌ | ✅/❌ | ✅/❌ |
+| 2 | [Argument 2] | ✅/❌ | ✅/❌ | ✅/❌ |
+| 3 | [Argument 3] | ✅/❌ | ✅/❌ | ✅/❌ |
+
+## Coherence Flow
+- **Mỗi section có liên kết logic với section trước?** ✅/❌
+- **Logic gaps**: [Liệt kê nếu có — VD: "Nhảy từ pricing sang implementation, thiếu section về market validation"]
+- **Narrative arc rõ ràng?** ✅/❌ [mô tả tension → release]
+
+## Depth Score
+| Score | Mô tả | Đạt? |
+|---|---|---|
+| 1 | Chỉ liệt kê facts, không có insight | |
+| 2 | Có giải thích WHY/HOW | |
+| 3 | Có insight/nguyên lý rút ra | |
+| 4 | Có thể thay đổi cách thinking của audience | |
+**Depth Score hiện tại**: [X/4]
+
+## Content Principles Check
+- [ ] Mọi slide/section title là assertion, không phải topic label?
+- [ ] Mọi data point có implication kèm theo? ("So What?" test)
+- [ ] Outline phục vụ đúng 1 transformation?
+- [ ] Có tension-release pattern trong body?
+- [ ] Ví dụ concrete xuất hiện trước khái niệm abstract?
+```
+
+### Quality Report Rules
+
+- Quality Report BẮT BUỘC cho mọi output type (presentation, blog, doc)
+- **Tiêu chí đạt tối thiểu**: Thesis Clarity = ✅, Depth Score ≥ 2, Content Principles ≥ 3/5
+- Nếu Depth Score = 1 → CẢNH BÁO: outline chỉ là danh sách facts, cần bổ sung insight
+- Nếu Thesis Clarity = ❌ → CẢNH BÁO: outline thiếu core message, cần thêm thesis vào Opening
+- Nếu có Logic gaps → CẢNH BÁO: thêm section/transition để lấp gap
+- Nếu Content Principles < 3/5 → xem lại và cải thiện trước khi show user
 
 ## Outline File Format (outline.md)
 
@@ -351,6 +487,8 @@ audience: "Executive" | "Technical" | "Mixed" | "Workshop"
 detail_level: "L1" | "L2" | "L3"
 language: "vi" | "en" | "bilingual"
 source: "mô tả ngắn source input (VD: file.md, user input text)"
+thesis: "core message 1 câu assertion"
+intended_transformation: "educate" | "persuade" | "activate"
 created: "YYYY-MM-DD HH:mm"
 total_slides: N
 ---
@@ -368,6 +506,8 @@ total_slides: N
 - `detail_level`: Mức chi tiết (L1/L2/L3) — outline gắn cố định với level này
 - `language`: Ngôn ngữ: `vi` (Tiếng Việt), `en` (English), `bilingual` (Song ngữ)
 - `source`: Mô tả source input gốc
+- `thesis`: Core message — 1 câu assertion (từ Step 1.7 Thesis Extraction)
+- `intended_transformation`: Loại biến đổi nhận thức mà outline hướng đến
 - `created`: Timestamp tạo outline
 - `total_slides`: Tổng số slides trong outline
 
