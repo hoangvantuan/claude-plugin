@@ -72,21 +72,79 @@ Cần 5 thông tin sau. **Chỉ hỏi những câu mà user chưa cung cấp**, 
 
 Nếu user đã cung cấp đủ 5 thông tin → bỏ qua, chuyển thẳng Bước 2.
 
-### Bước 2: Phân tách thành modules
+### Bước 2: Trích xuất nội dung & Phân tách modules
 
-Đây là bước quyết định chất lượng toàn bộ khoá đào tạo.
+Đây là bước quyết định chất lượng toàn bộ khoá đào tạo. **Phải đảm bảo không sót nội dung quan trọng từ tài liệu gốc.**
+
+#### 2A. Trích xuất nội dung gốc (Content Extraction)
+
+Nếu user cung cấp tài liệu (sách, bài viết, video transcript, notes, slide...), **BẮT BUỘC** trích xuất trước khi phân module:
+
+1. **Đọc/phân tích toàn bộ tài liệu gốc** — không bỏ sót phần nào
+2. **Liệt kê tất cả ý chính** (key ideas) — mỗi ý 1 dòng, giữ nguyên ngữ nghĩa gốc
+3. **Phân loại từng ý** theo bản chất:
+
+| Ký hiệu | Loại | Ví dụ |
+|----------|------|-------|
+| **K** | Kiến thức (khái niệm, định nghĩa, framework) | "SBI gồm 3 bước: Situation-Behavior-Impact" |
+| **N** | Nguyên tắc (quy tắc, mindset, giá trị) | "Feedback phải kịp thời, không để qua 48h" |
+| **T** | Kỹ thuật (cách làm, quy trình, tool) | "Dùng câu hỏi mở thay vì phán xét" |
+| **V** | Ví dụ/Câu chuyện (case, minh hoạ) | Câu chuyện CEO nhận feedback từ intern |
+| **C** | Cảnh báo/Sai lầm (anti-pattern, trap) | "Đừng feedback khi đang tức giận" |
+
+4. **Tạo bảng Content Inventory:**
+
+```markdown
+## Content Inventory — [Tên tài liệu gốc]
+
+| # | Ý chính | Loại | Nguồn (trang/phút/đoạn) | → Module |
+|---|---------|------|-------------------------|----------|
+| 1 | [Ý chính 1] | K | Trang 12 | M1 |
+| 2 | [Ý chính 2] | N | Video 05:30 | M2 |
+| 3 | [Ý chính 3] | T | Chương 3 | M2 |
+| ... | ... | ... | ... | ... |
+```
+
+Cột "→ Module" để trống lúc đầu, điền sau khi phân module ở bước 2B.
+
+#### 2B. Phân tách modules
 
 **Quy trình:**
 
-1. Brainstorm tất cả kiến thức/kỹ năng cần dạy
-2. Nhóm thành clusters (mỗi cluster = 1 module tiềm năng)
-3. Kiểm tra tính độc lập (3 câu hỏi):
+1. Từ Content Inventory, nhóm các ý chính thành clusters (mỗi cluster = 1 module tiềm năng)
+2. Kiểm tra tính độc lập (3 câu hỏi):
   - Học xong cluster này, làm được ít nhất 1 việc cụ thể?
   - Bỏ cluster này, các cluster còn lại vẫn có giá trị?
   - Hoàn thành trong 1-5 ngày (cá nhân) / 1-2 tuần (team)?
-4. Xác định tier: Foundation → Core → Advanced → Specialized
-5. Vẽ prerequisite map (dùng Mermaid)
-6. Tạo bảng tóm tắt module
+3. Xác định tier: Foundation → Core → Advanced → Specialized
+4. Vẽ prerequisite map (dùng Mermaid)
+5. Tạo bảng tóm tắt module
+
+#### 2C. Đối chiếu Content Coverage (BẮT BUỘC)
+
+Sau khi phân module xong, **điền cột "→ Module"** trong Content Inventory và kiểm tra:
+
+```markdown
+## Content Coverage Check
+
+| Kiểm tra | Kết quả |
+|----------|---------|
+| Tổng ý chính trích xuất | ___ ý |
+| Đã gán vào module | ___ ý |
+| CHƯA gán (orphan) | ___ ý |
+| Loại bỏ có lý do | ___ ý |
+
+### Ý chưa được gán (nếu có)
+| # | Ý chính | Lý do chưa gán | Quyết định |
+|---|---------|----------------|-----------|
+| _ | ___ | ___ | Thêm vào Module X / Tạo module mới / Loại bỏ (lý do) |
+```
+
+**Quy tắc:**
+- **0 ý orphan** = đạt — mọi nội dung quan trọng đều có chỗ
+- Nếu có ý orphan → quyết định: gán vào module phù hợp, tạo module mới, hoặc loại bỏ (phải ghi rõ lý do)
+- **Trình bày Content Coverage Check cho user xác nhận** trước khi chuyển Bước 3
+- Nếu user bổ sung tài liệu mới giữa chừng → lặp lại 2A-2C cho phần bổ sung
 
 **5 quy tắc phân tách:**
 
@@ -133,9 +191,12 @@ Với mỗi module, xác định:
 3. Viết TU_SUY_TU — câu hỏi phản chiếu, case study
 4. Viết VAN — chỉ kiến thức CẦN CHO Tư và Tu
 5. Viết DANH_GIA — rubric, After-Action Review template
+6. Đối chiếu với Content Inventory — đảm bảo mọi ý chính gán cho module này đều xuất hiện trong nội dung
 ```
 
 **Quy tắc vàng:** Với mỗi đoạn trong Văn, tự hỏi: "Bỏ đoạn này, người học có làm được bài thực hành không?" Nếu có → bỏ.
+
+**Quy tắc đối chiếu:** Sau khi viết xong module, check lại Content Inventory — mọi ý có ký hiệu K/N/T/V/C gán cho module này phải xuất hiện trong ít nhất 1 thành phần (Văn, Tư, hoặc Tu). Nếu thiếu → bổ sung hoặc ghi lý do loại bỏ.
 
 > Templates chi tiết cho từng thành phần — chỉ load file cần dùng:
 > - `references/template-van.md` — Template cho phần VĂN
