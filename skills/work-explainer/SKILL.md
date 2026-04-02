@@ -19,9 +19,9 @@ Collect all context about the completed work
 
 Write the file following the 9-step framework below. Use the user's name if known, otherwise use "YOU".
 
-**Naming**: `{CWD}/work-explainer/FOR-{name}-{topic-slug}-{YYMMDD}.md`
+**Naming**: `{CWD}/work-explainer/{topic-slug}-{YYMMDD}.md`
 
-Example: `{CWD}/work-explainer/FOR-tuan-ghost-blog-api-integration-260328.md`
+Example: `{CWD}/work-explainer/ghost-blog-api-integration-260328.md`
 
 ## The 9-Step Teaching Framework
 

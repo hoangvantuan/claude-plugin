@@ -15,11 +15,12 @@ description: >
 
 Skill giúp hiểu sâu bất kỳ vấn đề nào thông qua chu trình **ba bước tư duy**:
 
-| Bước | Bản chất | Mục tiêu |
-|------|----------|----------|
-| **Quan sát** | Thu thập đa chiều | Thấy đủ — không bỏ sót |
-| **Phân tích** | Tách lớp, tìm liên kết | Thấy rõ — cơ chế vận hành |
-| **Đúc kết** | Rút cốt lõi, nguyên lý hóa | Thấy sâu — nắm bản chất |
+| Bước          | Bản chất                   | Mục tiêu                  |
+| ------------- | -------------------------- | ------------------------- |
+| **Quan sát**  | Thu thập đa chiều          | Thấy đủ — không bỏ sót    |
+| **Phân tích** | Tách lớp, tìm liên kết     | Thấy rõ — cơ chế vận hành |
+| **Đúc kết**   | Rút cốt lõi, nguyên lý hóa | Thấy sâu — nắm bản chất   |
+
 
 Ba bước này là **chu trình lặp**, không tuyến tính. Mỗi vòng lặp đi sâu hơn vòng trước.
 
@@ -51,21 +52,24 @@ Nếu user đã cung cấp đủ → bỏ qua, vào thẳng Bước 1.
 Mục tiêu: **Thấy đủ** — nhìn vấn đề từ nhiều góc, không bỏ sót chiều quan trọng.
 
 **1.1. Đọc & tiêu hóa tài liệu đầu vào**
+
 - Đọc toàn bộ tài liệu user cung cấp
 - Ghi nhận: ý chính, thuật ngữ, mâu thuẫn, khoảng trống thông tin
 
 **1.2. Quan sát đa chiều** — Nhìn vấn đề từ ≥5 góc:
 
-| Chiều quan sát | Câu hỏi dẫn đường |
-|----------------|-------------------|
-| **Từ trên** (tổng quan) | Vấn đề này nằm trong hệ thống lớn nào? |
-| **Từ dưới** (nền tảng) | Cái gì làm nền, làm gốc cho vấn đề này? |
-| **Từ trong** (cơ chế) | Bên trong nó vận hành như thế nào? |
-| **Từ ngoài** (bối cảnh) | Môi trường, điều kiện xung quanh ảnh hưởng ra sao? |
-| **Theo thời gian** | Nó thay đổi thế nào theo thời gian? Nhân quả gần vs. xa? |
-| **Liên đới** | Những vấn đề tương tự vận hành cùng nguyên lý không? |
+| Chiều quan sát          | Câu hỏi dẫn đường                                        |
+| ----------------------- | -------------------------------------------------------- |
+| **Từ trên** (tổng quan) | Vấn đề này nằm trong hệ thống lớn nào?                   |
+| **Từ dưới** (nền tảng)  | Cái gì làm nền, làm gốc cho vấn đề này?                  |
+| **Từ trong** (cơ chế)   | Bên trong nó vận hành như thế nào?                       |
+| **Từ ngoài** (bối cảnh) | Môi trường, điều kiện xung quanh ảnh hưởng ra sao?       |
+| **Theo thời gian**      | Nó thay đổi thế nào theo thời gian? Nhân quả gần vs. xa? |
+| **Liên đới**            | Những vấn đề tương tự vận hành cùng nguyên lý không?     |
+
 
 **1.3. Research bổ sung** (nếu cần)
+
 - Khi phát hiện khoảng trống thông tin → research thêm từ nguồn uy tín
 - Có thể sử dụng skill `deep-research` nếu cần nghiên cứu chuyên sâu
 - Có thể dùng `WebSearch` / `WebFetch` cho tra cứu nhanh
@@ -82,11 +86,13 @@ Mục tiêu: **Thấy rõ** — hiểu cơ chế vận hành, mối quan hệ nh
 **2.2. Phân tích nhân quả** — Theo chuỗi Nhân + Duyên = Quả. Luôn phân biệt **nhân quả gần** vs. **nhân quả xa**. Chi tiết: đọc `references/analysis-patterns.md` mục "Phân tích Nhân quả" và `references/framework-foundation.md` mục "Nhân - Duyên - Quả".
 
 **2.3. Phân tích tương tác** — Các thành phần ảnh hưởng lẫn nhau thế nào:
+
 - Vẽ sơ đồ tương tác (dùng Mermaid nếu phù hợp)
 - Tìm feedback loops (vòng lặp tự tăng cường hoặc tự triệt tiêu)
 - Nhận diện điểm leverage (can thiệp ít nhưng ảnh hưởng lớn)
 
 **2.4. Quan sát liên đới** — So sánh với vấn đề tương tự:
+
 - Lĩnh vực khác có vấn đề tương tự không?
 - Cùng nguyên lý hay khác?
 - Rút ra pattern chung
@@ -110,6 +116,7 @@ Chi tiết 3 phương pháp tìm lõi ("Bỏ đi thử", "Giao nhau", "Câu hỏ
 **3.3. Sơ đồ hóa** — Sơ đồ phải thể hiện **sự vận hành** (cái gì dẫn đến cái gì), không chỉ liệt kê. Dùng Mermaid flowchart/mindmap. Chi tiết: đọc `references/synthesis-methods.md` mục "Sơ đồ hóa".
 
 **3.4. Kiểm tra chất lượng đúc kết** — 5 tiêu chí (chi tiết: `references/synthesis-methods.md` mục "Kiểm tra chất lượng"):
+
 - **Cốt lõi**: Đã tìm được cái chi phối tất cả?
 - **Giải thích lực**: Nguyên lý giải thích được bao nhiêu hiện tượng? (1-5)
 - **Dự đoán lực**: Dự đoán được điều mới? (1-5)
@@ -184,21 +191,37 @@ Tùy mục đích user, output có thể ở nhiều dạng. Dưới đây là t
 - Câu hỏi mở: ...
 ```
 
+## Lưu report
+
+Sau khi hoàn thành phân tích, **bắt buộc** lưu toàn bộ output vào file:
+
+```
+{CWD}/deep-insight/{topic-slug}-{YYMMDD}.md
+```
+
+- `{CWD}`: thư mục làm việc hiện tại của user (working directory)
+- `{topic-slug}`: tên chủ đề dạng kebab-case, ngắn gọn, mô tả đúng nội dung (ví dụ: `feedback-loop-trong-giao-duc`, `ban-chat-dong-luc-noi-tai`)
+- `{YYMMDD}`: ngày thực hiện phân tích (ví dụ: `260402` cho ngày 2026-04-02)
+
+**Quy trình:**
+1. Tạo thư mục `{CWD}/deep-insight/` nếu chưa tồn tại
+2. Ghi toàn bộ nội dung phân tích (đúng format output ở trên) vào file
+3. Thông báo cho user đường dẫn file đã lưu
+
+**Ví dụ:** Phân tích chủ đề "Bản chất động lực nội tại" ngày 2026-04-02 → lưu tại:
+```
+{CWD}/deep-insight/ban-chat-dong-luc-noi-tai-260402.md
+```
+
 ## Lưu ý quan trọng
 
 1. **Không tóm tắt, phải đúc kết** — Tóm tắt rút gọn thông tin, đúc kết tìm bản chất. Nếu output chỉ là tóm tắt đẹp, đã thất bại.
-
 2. **Quan sát phải đủ rộng trước khi phân tích** — Phân tích sớm trên dữ liệu thiếu → kết luận sai. Nếu thiếu thông tin, research thêm trước.
-
 3. **Đúc kết cần tác ý** — Không thể đúc kết bằng cách liệt kê tất cả rồi chọn cái quan trọng nhất. Phải chủ động hỏi: "Cái gì chi phối tất cả?"
-
 4. **Sơ đồ phải thể hiện vận hành** — Mind map chỉ là mục lục đẹp. Sơ đồ tốt phải cho thấy **cái gì dẫn đến cái gì**, **cái gì tương tác với cái gì**.
-
 5. **Ba câu hỏi kiểm tra nhân quả** — Áp dụng khi đánh giá bất kỳ kết luận nào (chi tiết: `references/framework-foundation.md`):
-   - Điều này có mang lại **an vui** cho mình và mọi người không?
-   - Nếu **nhân bản** (mở rộng) và duy trì lâu dài sẽ thế nào?
-   - Điều này hướng về **ba gốc** (Giác-Từ-Tĩnh) hay **ba độc** (Tham-Sân-Si)?
-
+  - Điều này có mang lại **an vui** cho mình và mọi người không?
+  - Nếu **nhân bản** (mở rộng) và duy trì lâu dài sẽ thế nào?
+  - Điều này hướng về **ba gốc** (Giác-Từ-Tĩnh) hay **ba độc** (Tham-Sân-Si)?
 6. **Output phải có hành động** — Hiểu sâu mà không biết phải làm gì tiếp = chưa đúc kết xong.
-
 7. **Ngôn ngữ output** — Viết bằng tiếng Việt **có dấu đầy đủ**, trừ khi user yêu cầu ngôn ngữ khác. Thuật ngữ chuyên ngành có thể giữ nguyên tiếng Anh nếu phổ biến hơn.
