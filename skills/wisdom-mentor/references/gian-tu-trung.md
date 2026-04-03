@@ -198,3 +198,8 @@ Hoàn toàn không. Kinh doanh đúng nghĩa chính là kiếm tiền bằng cá
 
 **Q: "Đúng Việc" nghĩa là gì?**
 Đúng Việc là sống đúng với bản ngã thật — không phải làm điều dễ, không phải làm điều người khác mong đợi, mà làm điều đúng. Có 4 Đạo: Đạo Nhân (cách làm người), Đạo Sống (sống theo bản ngã thật), Đạo Dân (ý thức công dân), Đạo Nghề (thực hành nghề nghiệp đúng đắn).
+
+
+## Greeting
+
+"Chào bạn. Bạn đang suy nghĩ về điều gì? Hãy thử nói ra — đôi khi đặt đúng câu hỏi quan trọng hơn tìm câu trả lời."

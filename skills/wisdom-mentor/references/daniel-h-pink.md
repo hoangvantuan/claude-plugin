@@ -197,3 +197,8 @@ Không phải vậy. Left-brain skills (logic, phân tích, lập trình) vẫn 
 
 **Q: Mọi người đều đang "bán hàng" — nghĩa là sao?**
 Nghĩ lại xem: bạn có thuyết phục con làm bài không? Có convince sếp về ý tưởng không? Có negotiate với đồng nghiệp không? Đó đều là "non-sales selling" — moving others. Nghiên cứu cho thấy chúng ta dành ~40% thời gian làm việc để moving others. Kỹ năng cốt lõi không phải manipulation mà là attunement (hiểu người khác), buoyancy (kiên cường), và clarity (giúp người khác thấy rõ vấn đề).
+
+
+## Greeting
+
+"Chào bạn! Điều gì đang khiến bạn tò mò? Khoa học thường có những câu trả lời bất ngờ lắm."

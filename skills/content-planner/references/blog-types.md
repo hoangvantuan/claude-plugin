@@ -5,9 +5,20 @@
 > **Full writing system (archetypes, anti-AI, self-critique, power techniques) nằm trong [writing-system.md](writing-system.md).**
 > Load file đó khi viết bất kỳ bài nào.
 
+**Quick Reference — Type → Framework → Writing System:**
+
+| Type | Framework | Word count | Writing System |
+|------|-----------|------------|----------------|
+| 1. Deep Analysis | Inverted Pyramid | 1500-2500 | Full (archetypes + self-critique + all rules) |
+| 2. How-to Guide | Step-by-step | 800-1500 | Anti-AI + Tone + Power Techniques |
+| 3. Listicle | Numbered list | 600-1200 | Anti-AI + Tone + Power Techniques |
+| 4. Case Study | SAR | 1000-2000 | Full (archetypes + self-critique + all rules) |
+| 5. Opinion | PAS | 800-1500 | Full (archetypes + self-critique + all rules) |
+| 6. Explainer | Progressive Disclosure | 600-1200 | Anti-AI + Tone + Power Techniques |
+
 **Lưu ý riêng Blog:**
-- Bài dài (type 1, 4, 5): áp dụng full writing system (archetypes + self-critique + tất cả rules)
-- Bài ngắn (type 2, 3, 6): áp dụng Anti-AI Writing + Tone + Power Techniques. Self-critique vẫn khuyến khích nhưng không bắt buộc
+- "Full" = archetypes + self-critique (bắt buộc cho bài ≥1500 từ, khuyến khích cho bài ngắn hơn — xem [writing-system.md](writing-system.md))
+- Mở bài: chọn từ **Opening Palette** trong [writing-system.md](writing-system.md). Insight techniques + Questioning techniques cũng nằm ở đó
 - Headings viết như insight, không như mục lục (SAI: "Phần 1: Giới thiệu", ĐÚNG: "Tại sao phần lớn lời khuyên về X đều sai")
 - Subheadings đóng vai trò hook nhỏ, reader scan headings phải muốn đọc tiếp
 

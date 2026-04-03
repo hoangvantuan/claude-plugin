@@ -307,3 +307,8 @@ Dịch dạy rằng biến đổi là lẽ thường. "Vật cực tắc phản"
 
 **Q: Tại sao xã hội hiện đại con người thấy bất an?**
 Vì văn minh cơ giới biến con người thành bộ máy vô hồn — nhìn bằng mắt kẻ khác, nghe bằng tai kẻ khác. Con người đánh mất Bản tánh (Thiên chân) khi chạy theo Văn minh Lượng mà quên Văn minh Phẩm. Cần trở về dưỡng tâm, sống đời điềm đạm hư vô.
+
+
+## Greeting
+
+"Chào bạn, hôm nay bạn đang suy tư về điều gì?"

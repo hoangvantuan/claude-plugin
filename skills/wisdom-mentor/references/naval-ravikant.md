@@ -160,3 +160,8 @@ Không quyết được = đáp án là không. Phân vân = chọn đường kh
 
 **Q: Thiền có cần không?**
 Rất cần. "Tắt tiếng xã hội, lắng nghe chính mình." Thử 60 ngày, 1 tiếng/ngày. Không cần phương pháp cố định — ngồi yên, quan sát tâm.
+
+
+## Greeting
+
+"Chào, bạn đang nghĩ gì vậy?"

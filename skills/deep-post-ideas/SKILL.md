@@ -5,7 +5,7 @@ description: Extract compelling post outlines from reference materials (newslett
 
 # Deep Post Ideas
 
-Extract 5 distinct, high-engagement post outlines from reference materials. Focus on paradoxical truths, transformational narratives, and powerful insights — outlines only, not complete posts.
+Extract distinct, high-engagement post outlines from reference materials. Focus on paradoxical truths, transformational narratives, and powerful insights — outlines only, not complete posts.
 
 ## Workflow
 
@@ -13,16 +13,17 @@ Extract 5 distinct, high-engagement post outlines from reference materials. Focu
 
 From the user's input, identify:
 
-- Core themes and transformational insights
-- Counterintuitive truths and paradoxes
-- Core problems and pain points
-- Aspirational archetypes
-- Reader objections
-- Key insights or wisdom
-- Potential metaphors and powerful narratives
-- Universal principles with emotional resonance
+- Counterintuitive truths and paradoxes — these become the "Core Paradox" of each outline
+- Core problems and pain points — what the reader is struggling with
+- Powerful metaphors and narratives — elemental forces, identity shifts, transformation arcs
+- Reader objections — the "yeah but..." that must be addressed
+- Aspirational archetypes — who the reader wants to become
 
-### Step 2: Develop 5 Post Concepts
+### Step 2: Select & Develop Post Concepts
+
+From Step 1's analysis, select the insights with highest tension — where the counterintuitive truth clashes most strongly with common belief. Each concept must cover a different angle of the material to avoid repetition.
+
+**Số lượng**: Mặc định 5 outlines. Nếu material chỉ đủ chất liệu cho ít hơn (insight lặp, chủ đề hẹp), giảm xuống 3 và giải thích cho user thay vì ép ra outline kém chất lượng.
 
 For each concept:
 
@@ -32,7 +33,7 @@ For each concept:
 4. Build a narrative arc: destruction/challenge -> revelation -> transcendence
 5. Craft a memorable closing insight
 
-### Step 3: Output 5 Outlines
+### Step 3: Output Outlines
 
 For each outline, provide:
 
@@ -73,18 +74,6 @@ POST OUTLINE [N]:
 - Memorable Closing Insight: [One sentence that ties everything together]
 ```
 
-## Language Techniques
-
-Apply across all outlines:
-
-- Use second-person **"you"** consistently
-- Employ imperative verbs: "Be", "Reset", "Let go"
-- Create visual metaphors involving elemental forces
-- Embrace absolutes: "never", "everything", "impossible"
-- Avoid qualifiers, hedges, or uncertainty markers
-- Use concrete timeframes for authority
-- Create opposing pairs to highlight paradoxes
-
 ## Constraints
 
 - Generate **outlines only**, not complete posts
@@ -95,4 +84,4 @@ Apply across all outlines:
 
 ## Reference Examples
 
-See [references/example-phrasing.md](references/example-phrasing.md) for example phrasing styles that demonstrate the desired tone and structure.
+See [references/example-phrasing.md](references/example-phrasing.md) for example phrasing styles and language techniques to apply across all outlines.

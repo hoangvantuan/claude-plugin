@@ -1,16 +1,10 @@
 ---
 name: systems-thinking
 description: >
-  Phân tích tư duy hệ thống cho bất kỳ chủ đề, vấn đề, hoặc tình huống nào theo framework của Donella Meadows
-  (Thinking in Systems). Nhận diện cấu trúc hệ thống ẩn sau hiện tượng bề mặt: elements, interconnections,
-  feedback loops, stocks & flows, system traps, và leverage points. Output là tài liệu phân tích có Mermaid diagrams.
-  Use this skill whenever someone asks to analyze a situation systemically, find root causes of persistent problems,
-  understand why well-intentioned interventions fail, identify feedback loops or unintended consequences,
-  map system dynamics, find leverage points for change, or apply systems thinking to any domain
-  (business, education, social issues, personal life, technology, ecology, policy).
-  Also trigger when keywords appear: "hệ thống", "vòng lặp", "nguyên nhân gốc", "tác dụng phụ",
-  "tại sao vấn đề cứ lặp lại", "phân tích sâu", "root cause", "feedback loop", "unintended consequences",
-  "system dynamics", "leverage point", "why does this keep happening".
+  Phân tích tư duy hệ thống theo framework Donella Meadows (Thinking in Systems). Nhận diện cấu trúc ẩn sau
+  hiện tượng bề mặt: feedback loops, stocks & flows, system traps, leverage points. Output có Mermaid diagrams.
+  Trigger: phân tích hệ thống, tìm nguyên nhân gốc, vấn đề dai dẳng, tác dụng phụ, can thiệp thất bại,
+  "hệ thống", "vòng lặp", "root cause", "feedback loop", "leverage point", "why does this keep happening".
 ---
 
 # Systems Thinking Analysis
@@ -27,6 +21,20 @@ nghiện, xung đột leo thang) tồn tại không phải vì thiếu nỗ lự
 
 Thay vì đổ lỗi cho cá nhân hay sự kiện, tư duy hệ thống tìm kiếm cấu trúc -- các vòng feedback,
 stocks & flows, delays, mental models -- đang tạo ra hành vi mà ta quan sát được.
+
+## Lăng kính xuyên suốt
+
+Ba khái niệm dưới đây áp dụng ở MỌI bước phân tích, không chỉ riêng bước nào:
+
+- **Nonlinearity & tipping points**: Quan hệ trong hệ thống hiếm khi tuyến tính. Tìm ngưỡng
+  tới hạn — điểm mà thay đổi nhỏ tạo ra hệ quả lớn bất ngờ (hoặc ngược lại, nỗ lực lớn
+  không tạo thay đổi gì vì chưa đạt ngưỡng).
+- **Bounded rationality**: Mỗi actor trong hệ thống hành động hợp lý trong giới hạn thông tin
+  họ có — nhưng hành động hợp lý của cá nhân có thể tạo ra kết quả tồi tệ cho tổng thể.
+  Đừng đổ lỗi cho cá nhân, hãy tìm cấu trúc thông tin/incentive đang giới hạn họ.
+- **Resilience**: Hệ thống khỏe mạnh không chỉ hiệu quả mà còn resilient — khả năng phục hồi
+  sau cú sốc. Tối ưu hóa quá mức giết chết resilience. Hỏi: "Hệ thống này có chịu được
+  bất ngờ không?"
 
 ## Quy trình phân tích
 
@@ -46,7 +54,7 @@ Trước khi phân tích, đánh giá xem bạn đã đủ hiểu biết về ch
 
 **Cách research:**
 
-- Tìm kiếm thông tin bổ sung (search web, đọc tài liệu liên quan, hoặc kích hoạt `/deep-research` nếu chủ đề phức tạp)
+- Tìm kiếm thông tin bổ sung (search web, đọc tài liệu liên quan, hoặc research chuyên sâu nếu chủ đề phức tạp)
 - Tập trung tìm: data thực tế, lịch sử vấn đề, các can thiệp đã thử và kết quả
 - Ưu tiên nguồn đáng tin cậy, số liệu cụ thể thay vì ý kiến chung chung
 - Ghi chú nguồn tham khảo để trích dẫn trong phân tích
@@ -117,17 +125,6 @@ Xác định:
 Delays đặc biệt nguy hiểm: chúng gây overshoot, oscillation, và khiến ta hành động quá mạnh
 hoặc quá yếu. "Khi có delays dài trong feedback loops, tầm nhìn xa là thiết yếu."
 
-Chú ý thêm:
-- **Nonlinearity & tipping points**: Quan hệ trong hệ thống hiếm khi tuyến tính. Tìm ngưỡng
-  tới hạn — điểm mà thay đổi nhỏ tạo ra hệ quả lớn bất ngờ (hoặc ngược lại, nỗ lực lớn
-  không tạo thay đổi gì vì chưa đạt ngưỡng).
-- **Bounded rationality**: Mỗi actor trong hệ thống hành động hợp lý trong giới hạn thông tin
-  họ có — nhưng hành động hợp lý của cá nhân có thể tạo ra kết quả tồi tệ cho tổng thể.
-  Đừng đổ lỗi cho cá nhân, hãy tìm cấu trúc thông tin/incentive đang giới hạn họ.
-- **Resilience**: Hệ thống khỏe mạnh không chỉ hiệu quả mà còn resilient — khả năng phục hồi
-  sau cú sốc. Tối ưu hóa quá mức giết chết resilience. Hỏi: "Hệ thống này có chịu được
-  bất ngờ không?"
-
 Vẽ **Mermaid diagram** thể hiện feedback loops (dùng flowchart, ghi rõ B/R cho mỗi loop).
 
 ### Bước 5: Phát hiện System Traps
@@ -155,16 +152,8 @@ thay đổi parameters)
 
 ### Bước 7: Đề xuất & Wisdom
 
-Dựa trên phân tích, đề xuất hành động. Đọc đầy đủ `references/systems-wisdom.md` (15 nguyên tắc)
-và chọn những nguyên tắc phù hợp nhất với tình huống. Dưới đây là 5 nguyên tắc hay gặp nhất:
-
-- **Đừng tối ưu bộ phận, hãy phục vụ tổng thể** -- hierarchies tồn tại để phục vụ tầng dưới, không phải tầng trên
-- **Lắng nghe trí tuệ của hệ thống** -- trước khi "cải tiến", hãy hiểu giá trị của những gì đã có
-- **Đặt trách nhiệm vào trong hệ thống** -- người ra quyết định phải chịu hậu quả của quyết định
-- **Tạo feedback policies cho feedback systems** -- policy cần tự điều chỉnh, không phải cố định
-- **Khiêm tốn, tiếp tục học** -- trong thế giới phức tạp, bước nhỏ, quan sát liên tục, sẵn sàng đổi hướng
-
-Xem thêm 10 nguyên tắc khác trong reference file — chọn những gì resonates nhất với vấn đề đang phân tích.
+Dựa trên phân tích, đề xuất hành động. Đọc `references/systems-wisdom.md` (15 nguyên tắc),
+chọn 2-4 nguyên tắc resonates nhất với vấn đề đang phân tích, và giải thích cách áp dụng cụ thể.
 
 ## Xử lý chủ đề mơ hồ hoặc cá nhân
 

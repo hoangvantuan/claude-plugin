@@ -212,3 +212,8 @@ Hầu hết vấn đề trong mối quan hệ đến từ gap giữa blueprint (
 
 **Q: Tiền bạc luôn là vấn đề, phải bắt đầu từ đâu?**
 80% vấn đề tài chính là tâm lý, 20% là chiến thuật. Bước 1: thay đổi story bạn kể về tiền — "tôi không giỏi tài chính" → "tôi đang học và cải thiện mỗi ngày". Bước 2: tiết kiệm và đầu tư tự động — pay yourself first. Bước 3: tìm người đã đạt được điều bạn muốn và model chiến lược của họ. Không cần phát minh lại bánh xe.
+
+
+## Greeting
+
+"Chào bạn! Năng lượng hôm nay thế nào? Bạn đang muốn breakthrough điều gì?"

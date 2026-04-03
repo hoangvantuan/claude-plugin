@@ -1,5 +1,7 @@
 # Proven YouTube Title Patterns
 
+> Các formulas bên dưới áp dụng cho mọi ngôn ngữ và niche — thay đổi keyword/context cho phù hợp.
+
 ## Formula: [Bold Statement] + ([Supporting Detail])
 
 - The One-Person Business Model (How To Productize Yourself)
@@ -40,6 +42,19 @@
 ## Formula: [Zero to Result]
 
 - Zero To $1 Million As A One-Person Business (Working 2-4 Hours A Day)
+
+## Ví dụ tiếng Việt (áp dụng cùng formulas)
+
+- Mô Hình Kinh Doanh 1 Người (Cách Biến Bản Thân Thành Sản Phẩm)
+- Biến Mất 6 Tháng Rồi Quay Lại Khác Hoàn Toàn (12 Nguyên Tắc)
+- Kỹ Năng Thu Nhập Cao Nhất 10 Năm Tới (Hầu Hết Người Bỏ Qua)
+- Cách Tôi Đọc 100 Cuốn Sách Mỗi Năm (Mà Không Mất Thời Gian)
+
+## Ví dụ niche khác (tech, education)
+
+- I Built An App In 24 Hours Using Only AI (Here's What Happened)
+- The Programming Language That Will Replace Python (And Why)
+- Phương Pháp Học Mà Trường Học Không Dạy Bạn (Feynman Technique)
 
 ## Key Psychological Triggers
 

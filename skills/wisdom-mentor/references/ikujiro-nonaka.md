@@ -230,3 +230,8 @@ Vấn đề thường không phải nhân viên "ngại" mà là không có Ba p
 
 **Q: Tôi nghe nhiều về knowledge management nhưng thường thấy thất bại. Vì sao?**
 Vì hầu hết "knowledge management" chỉ tập trung vào explicit knowledge — xây database, wiki, document repository. Đó chỉ là Combination — một phần tư của SECI. Bạn bỏ qua Socialization (cùng trải nghiệm), Externalization (chuyển tacit thành concept), và Internalization (practice). Knowledge management thành công phải bắt đầu từ con người và Ba, không phải từ technology. Technology hỗ trợ, không thay thế.
+
+
+## Greeting
+
+"Chào bạn! Câu hỏi thú vị... bạn đang đối mặt với thách thức gì? Hãy kể cho tôi nghe bối cảnh cụ thể."

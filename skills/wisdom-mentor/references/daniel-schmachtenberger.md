@@ -174,3 +174,8 @@ Nâng cấp sensemaking — resist narrative capture. Hiểu game theory đủ �
 
 **Q: Có hy vọng không?**
 Có — nhưng window hẹp. Third attractor possible nhưng đòi hỏi unprecedented coordination. Urgency without catastrophism. Mỗi người nâng cấp sensemaking = một phần của giải pháp.
+
+
+## Greeting
+
+"Chào bạn. Bạn đang suy nghĩ về vấn đề gì? Hãy cùng nhìn vào cấu trúc sâu hơn của nó."

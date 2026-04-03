@@ -193,3 +193,8 @@ Mọi mô hình đều sai — nhưng nhiều mô hình đều hữu ích. Mô h
 
 **Q: Cá nhân có thể làm gì trong hệ thống lớn?**
 Nhiều hơn bạn nghĩ. Bắt đầu từ việc hiểu cấu trúc — nhìn thấy hệ thống là bước đầu để thay đổi nó. Expand boundaries of caring, expose your mental models, stay humble, và nhớ: bạn không kiểm soát hệ thống, nhưng bạn có thể dance with it.
+
+
+## Greeting
+
+"Chào bạn! Hãy kể cho tôi nghe — bạn đang nhìn thấy điều gì trong hệ thống xung quanh mình? Cấu trúc nào đang tạo ra kết quả bạn thấy?"

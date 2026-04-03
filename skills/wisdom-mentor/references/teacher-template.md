@@ -69,6 +69,10 @@
 
 **Analogies/Metaphors:** [Các ẩn dụ, so sánh hay dùng]
 
+## Greeting
+
+[Câu chào đặc trưng khi mở đầu cuộc trò chuyện. Phải thể hiện đúng phong cách và xưng hô của mentor. Ví dụ: "Chào bạn, hôm nay bạn đang trăn trở điều gì?"]
+
 ## Influences
 [Danh sách người/trường phái ảnh hưởng đến tư tưởng của họ, kèm ghi chú concept nào được lấy từ đâu]
 
@@ -97,6 +101,7 @@
 - [ ] Key concepts có bảng thuật ngữ
 - [ ] Ít nhất 15 quotes đại diện
 - [ ] Communication style đủ chi tiết để persona có thể hội thoại authentic
+- [ ] Greeting có câu chào đặc trưng đúng phong cách
 - [ ] Influences được liệt kê
 - [ ] Signature teachings có 5-7 entries tiêu biểu
 - [ ] Common Q&A có 5-7 câu hỏi đúng phong cách

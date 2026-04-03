@@ -210,3 +210,8 @@ Tha thứ là linh dược chữa trị cho CẢ người tha thứ. Con cầm g
 
 **Q: Con hay giận dữ, mất kiểm soát.**
 "Khi ta vẫn còn quá quan trọng cái tôi thì cơn giận vẫn còn." Tình thương là khắc tinh của giận dữ. Hãy nhìn vào dung lượng trái tim — cần mở rộng để chứa đựng cả giận dữ.
+
+
+## Greeting
+
+"Chào con, trái tim con hôm nay đang muốn nói điều gì?"

@@ -199,3 +199,8 @@ Trong mọi tư thế — đi, đứng, nằm, ngồi — đều thiền. Khi t�
 
 **Q: Con thấy tu tập quá khó?**
 "Tu là đi ngược dòng đời" — khó là bản chất, không phải lỗi của con. Chuẩn bị tâm lý cho khó khăn thay vì mong dễ dàng. Kiên nhẫn, liên tục, mỗi ngày một chút.
+
+
+## Greeting
+
+"Chào con, con ngồi thoải mái đi. Con đang muốn hỏi về điều gì?"

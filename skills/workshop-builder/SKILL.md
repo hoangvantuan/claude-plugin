@@ -12,7 +12,7 @@ description: >
 
 Skill thiết kế workshop theo phương pháp Backwards Design (Wiggins & McTighe) kết hợp 4Cs (Sharon Bowman) và Kirkpatrick Model.
 
-**Nguyên tắc vàng:** Mục tiêu → Bằng chứng đánh giá → Hoạt động (KHÔNG BAO GIỜ ngược lại)
+**Nguyên tắc vàng:** Mục tiêu → Bằng chứng đánh giá → Hoạt động (không bao giờ ngược lại — vì chọn hoạt động trước rồi mới nghĩ mục tiêu sẽ tạo workshop "vui nhưng không học được gì")
 
 ## Quy trình 5 giai đoạn
 
@@ -101,51 +101,40 @@ CONCLUSIONS  (10-15% thời gian)
   What? So what? Now what?
 ```
 
-### Bước 3: Chọn framework phù hợp
+### Bước 3: Điều chỉnh theo hình thức
+
+| Hình thức | Điều chỉnh |
+|---|---|
+| **Offline** | Mặc định — không cần thay đổi |
+| **Online** | Module ngắn hơn 20% (max 55'). Thêm digital icebreaker (Mentimeter, Miro). Break mỗi 60' thay vì 90'. Ưu tiên breakout rooms cho Concrete Practice |
+| **Hybrid** | Xác định rõ ai online/ai offline. Ưu tiên hoạt động nhóm nhỏ (dễ kết hợp hơn plenary). Cần co-facilitator cho phía online. Test tech 30' trước giờ |
+
+### Bước 4: Chọn framework phù hợp
 
 Đọc `references/frameworks.md` để chọn framework phù hợp với mục tiêu và quy mô workshop.
 
-### Bước 4: Lên timeline
+### Bước 5: Lên timeline
 
 **Quy tắc thời gian BẮT BUỘC:**
 
 | Quy tắc | Chi tiết |
 |---|---|
 | Không lecture > 10 phút | Xen kẽ tương tác sau mỗi 10 phút |
-| Nghỉ giải lao mỗi 90 phút | Tối thiểu 10-15 phút. KHÔNG ĐƯỢC CẮT! |
+| Nghỉ giải lao mỗi 90 phút | Tối thiểu 10-15 phút — cắt break = giảm tập trung 40% ở phần sau, luôn giữ nguyên |
 | Buffer +15% | Dự trù cho tình huống bất ngờ |
-| 5 phút đầu = tương tác | KHÔNG BAO GIỜ mở bằng lecture |
+| 5 phút đầu = tương tác | Mở bằng lecture khiến người tham gia "ngồi nghe" thay vì "tham gia" — tạo tâm thế thụ động cho cả buổi |
 | Energizer sau mỗi break | Đặc biệt bắt buộc sau giờ trưa |
 
-#### Agenda mẫu — Workshop nửa ngày (3.5 giờ)
+#### Cấu trúc agenda theo thời lượng
 
-| Thời gian | Hoạt động | Phần |
+| Thời lượng | Modules | Cấu trúc |
 |---|---|---|
-| 0:00-0:15 | Khai mạc + Icebreaker | Mở |
-| 0:15-0:25 | Ground rules + Agenda overview | Mở |
-| 0:25-1:35 | **Module 1** (4Cs) | Nội dung |
-| **1:35-1:50** | **Nghỉ giải lao** | Break |
-| 1:50-1:55 | Energizer | — |
-| 1:55-3:05 | **Module 2** (4Cs) | Nội dung |
-| 3:05-3:20 | Action Plan cá nhân | Đóng |
-| 3:20-3:30 | Celebration + Closing | Đóng |
+| 2-3 giờ | 1-2 | Mở (15') → Module × N → Đóng (15') |
+| Nửa ngày (3.5h) | 2 | Mở (25') → M1 (70') → Break (15') → Energizer (5') → M2 (70') → Action Plan (15') → Đóng (10') |
+| 1 ngày (7h) | 3-4 | Mở (30') → M1 (75') → Break → M2 (75') → Tổng kết sáng → Trưa (60') → Energizer → M3 (75') → Break → M4/Tổng hợp (60') → Action Plan (30') → Đóng (20') |
+| 2 ngày | 5-8 | Ngày 1: Input-heavy (3-4 modules). Ngày 2: Practice-heavy (2-3 modules + dự án tổng hợp) |
 
-#### Agenda mẫu — Workshop 1 ngày (7 giờ)
-
-| Thời gian | Hoạt động |
-|---|---|
-| 08:30-09:00 | Khai mạc + Icebreaker + Ground rules |
-| 09:00-10:15 | **Module 1** (4Cs) |
-| 10:15-10:30 | Nghỉ giải lao |
-| 10:30-11:45 | **Module 2** (4Cs) |
-| 11:45-12:00 | Tổng kết sáng |
-| 12:00-13:00 | Nghỉ trưa |
-| 13:00-13:10 | Energizer (bắt buộc sau trưa!) |
-| 13:10-14:25 | **Module 3** (4Cs) |
-| 14:25-14:40 | Nghỉ giải lao |
-| 14:40-15:40 | **Module 4** (4Cs) hoặc Bài tập tổng hợp |
-| 15:40-16:10 | Action Plan + Accountability Partner |
-| 16:10-16:30 | Retrospective + Celebration + Closing |
+**Quy tắc tính:** Mỗi module 4Cs ≈ 70-75 phút. Break 15 phút mỗi 90 phút. Energizer bắt buộc sau mỗi break (đặc biệt sau trưa — năng lượng thấp nhất trong ngày).
 
 Chọn hoạt động cụ thể cho từng phần từ `references/activity-library.md`.
 
@@ -169,95 +158,9 @@ Tóm tắt nhanh:
 - `references/activity-library.md` — Kho hoạt động: icebreakers, energizers, hoạt động nhóm, Liberating Structures, closers
 - `references/prepare-deliver-followup.md` — Chi tiết giai đoạn ③④⑤, templates email follow-up, Kirkpatrick, 10 anti-patterns
 - `references/templates.md` — Workshop Design Canvas, Module Template, Facilitator Cue Card, Pre-workshop Survey
+- `references/output-template.md` — Cấu trúc output cho workshop plan (module chi tiết, handout, follow-up)
 - `references/example-walkthrough.md` — Ví dụ thực tế: Workshop "Kỹ Năng Giving Feedback Hiệu Quả"
 
 ## Output Format
 
-Khi tạo workshop plan, sử dụng cấu trúc sau. Mỗi module phải có đầy đủ nội dung kiến thức chi tiết — đủ để facilitator có thể trực tiếp xây slide và soạn tài liệu từ output này mà không cần nghiên cứu thêm.
-
-```markdown
-# Workshop: [Tên Workshop]
-
-## Thông tin chung
-- Thời lượng: ...
-- Đối tượng: ...
-- Số lượng: ...
-- Hình thức: Online / Offline / Hybrid
-
-## Mục tiêu học tập
-1. "Sau workshop, người tham gia có thể [ĐỘNG TỪ] + [NỘI DUNG] + [ĐIỀU KIỆN]"
-2. ...
-
-## Bằng chứng đánh giá
-- Formative: ...
-- Summative: ...
-- Transfer: ...
-
-## Agenda chi tiết
-| Thời gian | Hoạt động | Phần | Chi tiết |
-|---|---|---|---|
-| ... | ... | ... | ... |
-
-## Module chi tiết
-
-### Module 1: [Tên]
-**Mục tiêu module:** "Sau module, người tham gia có thể ..."
-
-#### Connections (X phút)
-- **Hoạt động:** [Tên hoạt động, ví dụ: Think-Pair-Share]
-- **Câu hỏi mở:** "[Câu hỏi cụ thể kích hoạt kiến thức hiện có]"
-- **Hướng dẫn:** [Cách thực hiện từng bước]
-
-#### Concepts (X phút) — Nội dung kiến thức
-**Talking points** (nội dung mini-lecture, mỗi ý = 1 slide):
-1. **[Khái niệm/Ý chính 1]** — [Giải thích 2-3 câu, đủ rõ để facilitator trình bày]
-2. **[Khái niệm/Ý chính 2]** — [Giải thích + ví dụ minh họa cụ thể]
-3. **[Khái niệm/Ý chính 3]** — [Giải thích + so sánh/đối chiếu nếu cần]
-...
-
-**Câu hỏi tương tác** (xen kẽ sau mỗi 10 phút lecture):
-- "[Câu hỏi thảo luận cặp]"
-- "[Câu hỏi kiểm tra nhanh]"
-
-**Ví dụ minh họa:**
-- ✅ Ví dụ đúng: [Mô tả cụ thể]
-- ❌ Ví dụ sai: [Mô tả cụ thể + giải thích tại sao sai]
-
-#### Concrete Practice (X phút) — Bài tập thực hành
-- **Tên bài tập:** [Tên]
-- **Hình thức:** Cá nhân / Cặp / Nhóm (X người)
-- **Đề bài chi tiết:**
-  > [Mô tả tình huống/case study cụ thể — dùng ngữ cảnh thực tế
-  > của đối tượng tham gia. Đủ chi tiết để người tham gia hiểu
-  > ngay mà không cần giải thích thêm]
-- **Output kỳ vọng:** [Người tham gia cần tạo ra sản phẩm gì?]
-- **Tiêu chí đánh giá:** [Facilitator/peer đánh giá dựa trên gì?]
-- **Hướng dẫn thực hiện:** [Từng bước, giữ dưới 3 phút giải thích]
-
-#### Conclusions (X phút)
-- **Debrief:** What? → So what? → Now what?
-  - What: "[Câu hỏi cụ thể]"
-  - So what: "[Câu hỏi cụ thể]"
-  - Now what: "[Câu hỏi cụ thể]"
-- **Key takeaway:** [1 câu tóm tắt module]
-- **Kết nối module tiếp:** [Câu chuyển tiếp sang module sau]
-
----
-(Lặp lại cho mỗi module)
-
-## Tài liệu Handout cho người tham gia
-Nội dung tóm tắt để in/gửi cho người tham gia:
-- **Kiến thức cốt lõi:** [Tóm tắt các khái niệm chính dạng bullet points]
-- **Mô hình/Framework:** [Vẽ lại mô hình chính dạng text diagram]
-- **Checklist áp dụng:** [Các bước thực hành sau workshop]
-- **Tài liệu tham khảo:** [Sách, bài viết, video liên quan]
-
-## Chuẩn bị (6P Checklist)
-...
-
-## Plan B
-...
-
-## Follow-up Timeline
-...
-```
+Khi tạo workshop plan, đọc và tuân theo cấu trúc trong `references/output-template.md`. Yêu cầu quan trọng: mỗi module phải có đầy đủ nội dung kiến thức chi tiết — đủ để facilitator xây slide và soạn tài liệu trực tiếp từ output mà không cần nghiên cứu thêm.

@@ -77,7 +77,7 @@ Với mỗi cải tiến đề xuất, ghi rõ:
 
 **Bước 6 — Trình user duyệt**
 
-Hiển thị kế hoạch cho user. Chờ xác nhận trước khi thực hiện.
+Hiển thị kế hoạch cho user theo format Bước 5. User có thể approve toàn bộ, chọn subset, hoặc reject. Chỉ thực hiện các cải tiến được approve — bỏ qua phần bị reject mà không hỏi lại.
 
 ### Pha 3: Thực hiện
 

@@ -70,7 +70,7 @@ Dùng ví dụ cụ thể thay vì giải thích trừu tượng. Có thể ch�
 SAI: "Nhiều người trong chúng ta thường cảm thấy bất lực trước sự thay đổi"
 ĐÚNG: "Một người bạn nghỉ việc hồi tháng trước. Không phải vì ghét công ty, mà vì một sáng thức dậy, anh ấy nhận ra mình không còn nhớ lần cuối mình háo hức đi làm là khi nào."
 
-## Self-Critique (BẮT BUỘC cho bài dài)
+## Self-Critique (BẮT BUỘC cho bài ≥1500 từ, khuyến khích cho bài ngắn hơn)
 
 Sau khi viết xong, sửa 3 điều:
 1. Tìm câu giống AI nhất → viết lại với từ ngắn hơn, chi tiết cụ thể hơn

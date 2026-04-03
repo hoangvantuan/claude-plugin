@@ -45,7 +45,7 @@ Mỗi thông tin chỉ định nghĩa **1 nơi duy nhất**. Trùng lặp giữa
 
 Chấm điểm baseline → sửa → chấm lại → so sánh delta. Không sửa dựa trên cảm tính.
 
-- Dùng quality-checklist (6 tiêu chí, thang 1-5) làm công cụ đo
+- Dùng quality-checklist (8 tiêu chí, thang 1-5) làm công cụ đo
 - Cải tiến phải chứng minh được: điểm tăng hoặc dòng giảm (hoặc cả hai)
 - Nếu điểm không tăng → cải tiến đó không hiệu quả, cân nhắc revert
 

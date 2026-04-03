@@ -20,6 +20,18 @@ These examples demonstrate the desired tone, structure, and language techniques 
 
 **Key elements**: Concrete timeframe ("4-6 weeks"), triple "can't listen", progressive fragmentation, paradox ("confusion is a gift").
 
+## Language Techniques
+
+Apply across all outlines. Each technique serves a specific psychological function:
+
+- **Second-person "you"** — creates direct intimacy, reader feels personally addressed instead of lectured
+- **Imperative verbs** ("Be", "Reset", "Let go") — triggers action-oriented mindset, bypasses passive consumption
+- **Visual metaphors with elemental forces** (fire, water, tightrope) — anchors abstract ideas in visceral imagery
+- **Absolutes** ("never", "everything", "impossible") — creates conviction and shareability; hedged statements don't go viral
+- **No qualifiers or hedges** — "maybe you should consider" kills engagement; bold statements polarize and attract
+- **Concrete timeframes** ("4-6 weeks", "3 years") — adds authority and specificity to otherwise vague promises
+- **Opposing pairs** ("savage and saint", "chaos and simplicity") — highlights paradoxes that make readers stop scrolling
+
 ## The Ultimate Formula
 
 ```

@@ -16,6 +16,7 @@ Transform documents and URLs into styled article series.
 | Reference                                                             | Purpose                            | Load at Step       | DP | T1 | T2 | T3 |
 | --------------------------------------------------------------------- | ---------------------------------- | ------------------ | -- | -- | -- | -- |
 | [directory-structure.md](references/directory-structure.md)           | Output folder layout               | Step 1             | ✓  | ✓  | ✓  | ✓  |
+| [dimension-selection.md](references/dimension-selection.md)           | Custom mode dimension tables       | Step 2 (Custom)    | ✓  | ✓  | ✓  | ✓  |
 | [decision-trees.md](references/decision-trees.md)                     | Workflow decision guides           | On confusion only  | ✓  | ✓  | ✓  | ✓  |
 | [retry-workflow.md](references/retry-workflow.md)                     | Error recovery procedures          | On error only      | -  | ✓  | ✓  | ✓  |
 | [large-doc-processing.md](references/large-doc-processing.md)         | Handling documents >50K words      | Step 3 (if >20K)   | -  | -  | ✓  | ✓  |
@@ -66,40 +67,22 @@ Input → Convert → Style/Structure → Plan → Write(parallel) → Synthesiz
 
 ## Step 0: Resolve Skill Paths (BẮT BUỘC)
 
-**PHẢI thực hiện TRƯỚC mọi bước khác.**
-
-**Bước 1**: Tìm và chạy `wa-env` script:
-
-```
-# 1a. Glob thư mục thường (nhanh nhất)
-Glob("**/writer-agent/scripts/wa-env")
-
-# 1b. Nếu 1a không có → tìm trong dotdirs (plugin install vào .agents/)
-Glob(".agent*/**/wa-env")
-Glob(".claude/**/wa-env")
-
-# 1c. Fallback: find (tìm cả dotdir)
-Bash: find . -path "*/writer-agent/scripts/wa-env" -not -path "*/.venv/*" 2>/dev/null | head -1
-```
-
-**Bước 2**: Chạy `wa-env` để lấy tất cả paths:
+Tìm `wa-env` → chạy → dùng paths tuyệt đối cho toàn bộ workflow.
 
 ```bash
-# QUAN TRỌNG: Dùng `bash` thay vì `source` để BASH_SOURCE resolve đúng
+# Tìm wa-env (thử Glob trước, fallback find nếu plugin installed vào dotdir)
+Glob("**/writer-agent/scripts/wa-env")  # hoặc Glob(".claude/**/wa-env")
+
+# Chạy (dùng bash, không dùng source — để BASH_SOURCE resolve đúng)
 bash {path_to_wa-env}
-# Output: SCRIPTS_DIR, SKILL_DIR, VOICES_DIR, STRUCTURES_DIR,
-#         IDENTITIES_DIR, AUDIENCES_DIR, EMOTIONS_DIR, TEMPLATES_DIR, REFERENCES_DIR
+# → SCRIPTS_DIR, SKILL_DIR, VOICES_DIR, STRUCTURES_DIR, IDENTITIES_DIR,
+#   AUDIENCES_DIR, EMOTIONS_DIR, TEMPLATES_DIR, REFERENCES_DIR
+
+# Verify
+assert Glob(f"{SCRIPTS_DIR}/wa-convert") and Glob(f"{VOICES_DIR}/*.md")
 ```
 
-**Bước 3**: Verify nhanh — nếu bất kỳ check nào fail → STOP:
-
-```python
-assert Glob(f"{SCRIPTS_DIR}/wa-convert")   # Script chính
-assert Glob(f"{VOICES_DIR}/*.md")          # Voice files
-```
-
-> **FAIL CONDITION**: Nếu không tìm thấy `wa-env` → STOP workflow. KHÔNG tự suy đoán paths.
-> **QUAN TRỌNG**: Tất cả commands sau PHẢI dùng đường dẫn tuyệt đối từ wa-env.
+> **FAIL CONDITION**: Không tìm thấy `wa-env` → STOP. KHÔNG tự suy đoán paths.
 
 ## Step 1: Input Handling
 
@@ -173,82 +156,9 @@ Show bảng sau cho user, hỏi chọn preset hoặc "Custom":
 - **Nếu chọn Custom**: Chuyển sang Step 2a-2f bên dưới (chọn từng chiều)
 - **Adaptive structure**: Dùng khi content mixed/không fit structures cố định. Chỉ available qua Custom mode hoặc user yêu cầu trực tiếp.
 
-### Step 2a-2f: Custom Mode (chọn từng chiều)
+### Custom Mode
 
-**Flow:** Voice → Structure → Identity → Audience → Emotion (tất cả bắt buộc)
-
-Mỗi chiều có default mapping dựa trên voice. Suggest defaults, user PHẢI confirm hoặc chọn khác.
-
-**Step 2a: Voice** — Hỏi user confirm voice (giọng văn, tone, persona).
-
-| Voice | File | Mô tả |
-| --- | --- | --- |
-| Teacher | `teacher.md` | "Chúng ta" đồng hành, teaching, ấm áp |
-| Personal | `personal.md` | "Tôi" personal journey, vulnerable |
-| Objective | `objective.md` | Neutral, data-driven, formal |
-| Guide | `guide.md` | Đồng hành mindful, Đông-Tây |
-| Investigator | `investigator.md` | Tìm hiểu, đặt câu hỏi, challenge |
-| Dialogue | `dialogue.md` | Thầy-trò đối thoại, Zen |
-| Storyteller | `storyteller.md` | Kể chuyện ngôi thứ nhất, chánh niệm |
-| **Custom** | User tạo mới | Theo `templates/voice-template.md` |
-
-Voice files: `voices/{voice}.md`. Xem `references/dimension-comparison.md` để so sánh.
-
-**Step 2b: Structure** — Hỏi user confirm structure. Mỗi voice có `default_structure` trong frontmatter.
-
-| Structure | File | Organization | Default cho |
-| --- | --- | --- | --- |
-| BLUF-Evidence | `bluf-evidence.md` | Executive Summary → Evidence → Action | Objective |
-| Building Blocks | `building-blocks.md` | Hook → Intuition → Concept → Example → Apply | Teacher |
-| Five Layers | `five-layers.md` | Surface → Structure → Tension → Connection → Synth | Investigator |
-| Spiral Return | `spiral-return.md` | Moment → Spiral deeper → Open ending | Personal |
-| Master-Student | `master-student.md` | Experience → Dialogue → Silence | Dialogue |
-| Story Arc | `story-arc.md` | Scene → Encounter → Deepening → Transformation | Storyteller |
-| Depth-Practice | `depth-practice.md` | Present moment → Layers → Practice invitation | Guide |
-| Adaptive | `adaptive.md` | Content-driven, flexible | Mixed content |
-
-Structure files: `structures/{structure}.md`
-
-**Step 2c: Identity** — Hỏi user chọn writer identity.
-
-| Identity | File | Mô tả | Default cho |
-| --- | --- | --- | --- |
-| Tech Builder | `tech-builder.md` | Practitioner, pragmatic builder | Teacher |
-| Contemplative Thinker | `contemplative-thinker.md` | Hành giả, tìm ý nghĩa | Personal, Guide, Dialogue, Storyteller |
-| Knowledge Curator | `knowledge-curator.md` | Cross-domain connector | Objective, Investigator |
-| **Custom** | User tạo mới | Theo `templates/identity-template.md` | - |
-
-**Step 2d: Audience** — Hỏi user viết cho ai.
-
-| Audience | File | Mô tả | Default cho |
-| --- | --- | --- | --- |
-| Busy Professionals | `busy-professionals.md` | Bận, cần actionable | Objective |
-| Curious Beginners | `curious-beginners.md` | Mới, cần clarity | Teacher, Guide |
-| Deep Seekers | `deep-seekers.md` | Muốn chiều sâu | Personal, Investigator, Dialogue, Storyteller |
-| **Custom** | User tạo mới | Theo `templates/audience-template.md` | - |
-
-**Step 2e: Emotion** — Hỏi user muốn người đọc cảm thấy gì.
-
-| Emotion | File | Mô tả | Default cho |
-| --- | --- | --- | --- |
-| Empower & Challenge | `empower-challenge.md` | Growth qua discomfort | Teacher, Objective |
-| Reflect & Discover | `reflect-discover.md` | Stillness, wonder | Personal, Guide, Dialogue, Storyteller |
-| Provoke & Transform | `provoke-transform.md` | Challenge assumptions | Investigator |
-| **Custom** | User tạo mới | Theo `templates/emotion-template.md` | - |
-
-### Step 2f: Compatibility Check (Custom mode only)
-
-Sau khi chọn xong 5 dimensions, kiểm tra compatibility:
-
-```python
-pairs_to_check = [(identity, voice), (audience, voice), (emotion, voice)]
-low_compat = [pair for pair in pairs_to_check if compatibility(pair) == "★"]
-if low_compat:
-    warn(f"Combo {low_compat} có compatibility thấp (★)")
-    # Hỏi user: tiếp tục hay chọn khác?
-```
-
-**Conflict Resolution**: Voice quyết định HOW (style/tone), Profile (Identity/Audience/Emotion) bổ sung WHAT (authority, đối tượng, cảm xúc).
+Khi user chọn "Custom" → đọc [dimension-selection.md](references/dimension-selection.md) để chọn từng chiều (Voice → Structure → Identity → Audience → Emotion) kèm compatibility check.
 
 ## Step 2.5: Select Detail Level
 
@@ -263,30 +173,9 @@ Hỏi user để confirm output detail level.
 | Faithful      | 75-90% | Gần như đầy đủ, viết lại theo style |
 
 
-**Default**: Standard (if user skips or unclear)
+**Default**: Standard (if user skips or unclear). PASS/FAIL dựa trên section coverage, không phải word count.
 
-### Calculate Target Words (Tham khảo)
-
-**LƯU Ý**: Target words chỉ mang tính tham khảo. PASS/FAIL dựa trên section coverage, không phải word count.
-
-```
-target_ratio = midpoint of selected level
-total_target = source_words × target_ratio
-
-Per article (reference only):
-article_target = (article_source_words / source_words) × total_target
-```
-
-### Understanding Detail Level Parameters
-
-**Two complementary concepts:**
-
-1. `**target_ratio**`: Controls total article length relative to source
-  - Standard level: 30-40% (midpoint 35%)
-2. `**example_percentage**`: Controls retention of examples within kept content
-  - Standard level: 60% of examples
-
-> See [detail-levels.md](references/detail-levels.md) for worked examples and full specification.
+> Chi tiết calculation (target_ratio, example_percentage) và worked examples → [detail-levels.md](references/detail-levels.md).
 
 ## Step 2.6: Tier Reference Table
 
@@ -337,23 +226,3 @@ elif tier == 3:
 
 > **FAIL CONDITION**: Nếu không load tier workflow file → KHÔNG biết cách xử lý Steps 3-4 cho tier đó. STOP và load file đúng.
 
-## Cài đặt thư viện mới
-
-Skill sử dụng virtual environment tại `{SCRIPTS_DIR}/.venv`. Khi cần cài thêm thư viện, **PHẢI activate venv trước**:
-
-```bash
-# 1. Activate venv (dùng SCRIPTS_DIR từ Step 0)
-source {SCRIPTS_DIR}/.venv/bin/activate
-
-# 2. Cài package
-uv pip install <package>
-
-# 3. Cập nhật requirements.txt
-uv pip freeze > {SCRIPTS_DIR}/requirements.txt
-```
-
-**KHÔNG dùng:**
-
-- `uv pip install <package>` khi chưa activate venv → lỗi "No virtual environment found"
-- `uv pip install <package> --system` → lỗi "externally managed" (Python Homebrew)
-- `uv add <package>` → cần pyproject.toml, skill dùng requirements.txt

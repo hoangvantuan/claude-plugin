@@ -21,10 +21,16 @@ Skill giúp hiểu sâu bất kỳ vấn đề nào thông qua chu trình **ba b
 | **Phân tích** | Tách lớp, tìm liên kết     | Thấy rõ — cơ chế vận hành |
 | **Đúc kết**   | Rút cốt lõi, nguyên lý hóa | Thấy sâu — nắm bản chất   |
 
-
 Ba bước này là **chu trình lặp**, không tuyến tính. Mỗi vòng lặp đi sâu hơn vòng trước.
 
 > **Nguyên tắc vàng**: Đúc kết không phải tóm tắt. Tóm tắt là rút gọn thông tin. Đúc kết là tìm ra **cái lõi chi phối tất cả những cái khác** — thứ mà khi nắm được, mọi thứ còn lại tự sáng tỏ.
+
+**Failure modes cần tránh:**
+- **Tóm tắt giả đúc kết** — Liệt kê ý chính rồi gọi là "cốt lõi". Nếu bỏ 1 ý mà hệ thống không sụp → chưa tìm được lõi.
+- **Phân tích thiếu dữ liệu** — Vào phân tích khi chưa quan sát đủ rộng → kết luận phiến diện.
+- **Sơ đồ mục lục** — Mind map chỉ liệt kê, không thể hiện nhân quả hay tương tác → không giúp hiểu vận hành.
+- **Đúc kết bị động** — Đọc nhiều rồi chờ "ngộ" thay vì chủ động hỏi "cái gì chi phối tất cả?"
+- **Thiếu hành động** — Hiểu sâu mà không biết phải làm gì tiếp = chưa đúc kết xong.
 
 ## Khi nào đọc references
 
@@ -32,6 +38,7 @@ Ba bước này là **chu trình lặp**, không tuyến tính. Mỗi vòng lặ
 - Cần kỹ thuật quan sát đa chiều chi tiết: đọc `references/observation-guide.md`
 - Cần patterns phân tích (tách lớp, nhân quả, tương tác): đọc `references/analysis-patterns.md`
 - Cần phương pháp đúc kết & sơ đồ hóa: đọc `references/synthesis-methods.md`
+- Cần template output: đọc `references/output-template.md`
 
 ## Quy trình thực hiện
 
@@ -66,7 +73,6 @@ Mục tiêu: **Thấy đủ** — nhìn vấn đề từ nhiều góc, không b�
 | **Từ ngoài** (bối cảnh) | Môi trường, điều kiện xung quanh ảnh hưởng ra sao?       |
 | **Theo thời gian**      | Nó thay đổi thế nào theo thời gian? Nhân quả gần vs. xa? |
 | **Liên đới**            | Những vấn đề tương tự vận hành cùng nguyên lý không?     |
-
 
 **1.3. Research bổ sung** (nếu cần)
 
@@ -127,101 +133,20 @@ Chi tiết 3 phương pháp tìm lõi ("Bỏ đi thử", "Giao nhau", "Câu hỏ
 
 ## Format output
 
-Tùy mục đích user, output có thể ở nhiều dạng. Dưới đây là template mặc định:
-
-```markdown
-# [Chủ đề] — Deep Insight
-
-## Tổng quan
-- Chủ đề: ...
-- Mục đích: ...
-- Nguồn tài liệu: ...
-
-## 1. Quan sát — Nhìn từ nhiều chiều
-
-### 1.1 [Chiều quan sát 1]
-- Phát hiện chính: ...
-- Ghi chú: ...
-
-### 1.2 [Chiều quan sát 2]
-...
-
-### Khoảng trống & Mâu thuẫn
-- ...
-
-## 2. Phân tích — Tách lớp & Nhân quả
-
-### Sơ đồ tách lớp
-| Lớp | Nội dung |
-|-----|----------|
-| Hiện tượng | ... |
-| Cơ chế | ... |
-| Nguyên nhân | ... |
-| Gốc rễ | ... |
-
-### Chuỗi nhân quả
-[Mermaid diagram]
-
-### Tương tác & Feedback loops
-[Mermaid diagram hoặc mô tả]
-
-### Quan sát liên đới
-- Lĩnh vực tương tự: ...
-- Pattern chung: ...
-
-## 3. Đúc kết — Cốt lõi & Nguyên lý
-
-### LÕI: [Một câu ngắn gọn]
-
-### Nguyên lý
-1. ...
-2. ...
-3. ...
-
-### Sơ đồ cốt lõi
-[Mermaid diagram thể hiện sự vận hành]
-
-### Kiểm tra chất lượng
-- Giải thích lực: [X/5]
-- Dự đoán lực: [X/5]
-- Truyền đạt: [X/5]
-
-## Hành động tiếp theo
-- Từ đúc kết này, nên: ...
-- Câu hỏi mở: ...
-```
+Dùng template mặc định từ `references/output-template.md`. Tuỳ mục đích user có thể điều chỉnh cấu trúc, nhưng giữ nguyên 3 phần chính: Quan sát → Phân tích → Đúc kết.
 
 ## Lưu report
 
-Sau khi hoàn thành phân tích, **bắt buộc** lưu toàn bộ output vào file:
+Sau khi hoàn thành, lưu output vào:
 
 ```
 {CWD}/deep-insight/{topic-slug}-{YYMMDD}.md
 ```
 
-- `{CWD}`: thư mục làm việc hiện tại của user (working directory)
-- `{topic-slug}`: tên chủ đề dạng kebab-case, ngắn gọn, mô tả đúng nội dung (ví dụ: `feedback-loop-trong-giao-duc`, `ban-chat-dong-luc-noi-tai`)
-- `{YYMMDD}`: ngày thực hiện phân tích (ví dụ: `260402` cho ngày 2026-04-02)
-
-**Quy trình:**
-1. Tạo thư mục `{CWD}/deep-insight/` nếu chưa tồn tại
-2. Ghi toàn bộ nội dung phân tích (đúng format output ở trên) vào file
-3. Thông báo cho user đường dẫn file đã lưu
-
-**Ví dụ:** Phân tích chủ đề "Bản chất động lực nội tại" ngày 2026-04-02 → lưu tại:
-```
-{CWD}/deep-insight/ban-chat-dong-luc-noi-tai-260402.md
-```
+Tạo thư mục `{CWD}/deep-insight/` nếu chưa tồn tại. Thông báo đường dẫn file cho user.
 
 ## Lưu ý quan trọng
 
-1. **Không tóm tắt, phải đúc kết** — Tóm tắt rút gọn thông tin, đúc kết tìm bản chất. Nếu output chỉ là tóm tắt đẹp, đã thất bại.
-2. **Quan sát phải đủ rộng trước khi phân tích** — Phân tích sớm trên dữ liệu thiếu → kết luận sai. Nếu thiếu thông tin, research thêm trước.
-3. **Đúc kết cần tác ý** — Không thể đúc kết bằng cách liệt kê tất cả rồi chọn cái quan trọng nhất. Phải chủ động hỏi: "Cái gì chi phối tất cả?"
-4. **Sơ đồ phải thể hiện vận hành** — Mind map chỉ là mục lục đẹp. Sơ đồ tốt phải cho thấy **cái gì dẫn đến cái gì**, **cái gì tương tác với cái gì**.
-5. **Ba câu hỏi kiểm tra nhân quả** — Áp dụng khi đánh giá bất kỳ kết luận nào (chi tiết: `references/framework-foundation.md`):
-  - Điều này có mang lại **an vui** cho mình và mọi người không?
-  - Nếu **nhân bản** (mở rộng) và duy trì lâu dài sẽ thế nào?
-  - Điều này hướng về **ba gốc** (Giác-Từ-Tĩnh) hay **ba độc** (Tham-Sân-Si)?
-6. **Output phải có hành động** — Hiểu sâu mà không biết phải làm gì tiếp = chưa đúc kết xong.
-7. **Ngôn ngữ output** — Viết bằng tiếng Việt **có dấu đầy đủ**, trừ khi user yêu cầu ngôn ngữ khác. Thuật ngữ chuyên ngành có thể giữ nguyên tiếng Anh nếu phổ biến hơn.
+1. **Quan sát phải đủ rộng trước khi phân tích** — Phân tích sớm trên dữ liệu thiếu → kết luận sai. Nếu thiếu thông tin, research thêm trước.
+2. **Sơ đồ phải thể hiện vận hành** — Mũi tên = "dẫn đến", "tạo ra". Mind map chỉ liệt kê → không đủ.
+3. **Ngôn ngữ output** — Viết bằng tiếng Việt có dấu đầy đủ, trừ khi user yêu cầu khác. Thuật ngữ chuyên ngành giữ tiếng Anh nếu phổ biến hơn.

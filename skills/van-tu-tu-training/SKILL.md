@@ -74,7 +74,9 @@ Nếu user đã cung cấp đủ 5 thông tin → bỏ qua, chuyển thẳng Bư
 
 ### Bước 2: Trích xuất nội dung & Phân tách modules
 
-Đây là bước quyết định chất lượng toàn bộ khoá đào tạo. **Phải đảm bảo không sót nội dung quan trọng từ tài liệu gốc.**
+Đây là bước quyết định chất lượng toàn bộ khoá đào tạo.
+
+**Rẽ nhánh:** Nếu user KHÔNG cung cấp tài liệu gốc (chỉ có topic/mục tiêu) → bỏ qua 2A, chuyển thẳng 2B — xây dựng modules từ mục tiêu Bước 1 và kiến thức chuyên môn. Nếu CÓ tài liệu → thực hiện đầy đủ 2A-2B-2C để không sót nội dung.
 
 #### 2A. Trích xuất nội dung gốc (Content Extraction)
 
@@ -198,6 +200,8 @@ Với mỗi module, xác định:
 
 **Quy tắc đối chiếu:** Sau khi viết xong module, check lại Content Inventory — mọi ý có ký hiệu K/N/T/V/C gán cho module này phải xuất hiện trong ít nhất 1 thành phần (Văn, Tư, hoặc Tu). Nếu thiếu → bổ sung hoặc ghi lý do loại bỏ.
 
+**Micro-cycle trong mỗi hoạt động:** Mỗi bài thực hành và case study phải đi qua 3 bước: Quan sát (nhìn, ghi nhận, không vội đánh giá) → Phân tích (tại sao? cơ chế gì? liên hệ gì với mình?) → Đúc kết (bài học là gì? tôi sẽ làm gì khác?). Thiếu đúc kết = không học.
+
 > Templates chi tiết cho từng thành phần — chỉ load file cần dùng:
 > - `references/template-van.md` — Template cho phần VĂN
 > - `references/template-tu-suy-tu.md` — Template cho phần TƯ
@@ -207,14 +211,6 @@ Với mỗi module, xác định:
 ### Bước 5: Triển khai
 
 Điều chỉnh theo quy mô:
-
-| Quy mô          | Cách làm                                                  |
-| --------------- | --------------------------------------------------------- |
-| **Cá nhân**     | 1 file/module, đơn giản, tự học                           |
-| **Team (5-15)** | Full folder structure, facilitator điều phối, buddy pairs |
-| **Công ty**     | Module Library, facilitator training, rolling deployment  |
-
-**Chi tiết triển khai theo quy mô:**
 
 **Cá nhân:**
 - 1 file/module là đủ (gộp Văn-Tư-Tu vào 1 file)
@@ -256,27 +252,12 @@ Với mỗi module, xác định:
 
 > Templates đánh giá cấp module (rubric, AAR) và cấp khoá (survey, follow-up 30-60-90): đọc `references/template-danh-gia.md`.
 
-## Micro-cycle xuyên suốt
+## Facilitation
 
-Mỗi hoạt động học đều đi qua 3 bước:
+**Nguyên tắc vàng:** Đừng trả lời — hãy hỏi ngược. Facilitator dẫn dắt bằng câu hỏi, không giảng bài.
 
-1. **Quan sát** → Nhìn, nghe, ghi nhận (không vội đánh giá)
-2. **Phân tích** → Tại sao? Cơ chế gì? Liên hệ gì với mình?
-3. **Đúc kết** → Bài học là gì? Tôi sẽ làm gì khác?
-
-Đảm bảo micro-cycle này xuất hiện trong MỖI bài thực hành, MỖI case study.
-
-## Facilitation — Cách dạy/dẫn dắt
-
-**Nguyên tắc vàng:** Đừng trả lời — hãy hỏi ngược.
-
-- Người học hỏi → Đưa tài liệu, cho tự nghiên cứu (Văn)
-- Cho thời gian tự tìm hiểu (Tư)
-- Người học nộp kế hoạch → Facilitator phản biện (Tư sâu hơn)
-- Đạt → Triển khai (Tu)
-
-> Chi tiết về mô hình Gà-Đại Bàng (phương pháp theo cấp độ), hai chiều đi của tam giác, và facilitation nâng cao: đọc `references/philosophy-foundation.md`.
-> Tỷ lệ Văn-Tư-Tu gợi ý theo cấp độ người học: đọc `references/ratio-adjustment.md`.
+> Chi tiết facilitation (mô hình Gà-Đại Bàng, hai chiều đi, phương pháp theo cấp độ): đọc `references/philosophy-foundation.md`.
+> Tỷ lệ Văn-Tư-Tu theo cấp độ người học: đọc `references/ratio-adjustment.md`.
 
 ## Output format
 
@@ -288,18 +269,4 @@ Tạo bộ tài liệu theo cấu trúc folder chuẩn trong `references/modular
 - Team: full structure
 - Công ty: thêm Module Library
 
-## References
-
-Khi cần tra cứu chi tiết, đọc các file sau:
-
-| File                                     | Khi nào đọc                                                                    |
-| ---------------------------------------- | ------------------------------------------------------------------------------ |
-| `references/philosophy-foundation.md`    | Triết lý Văn-Tư-Tu, facilitation, mô hình Gà-Đại Bàng, hai chiều             |
-| `references/modular-architecture.md`     | Phân tách module, tier system, prerequisite map, template tổng quan khoá       |
-| `references/ratio-adjustment.md`         | Tỷ lệ theo loại kiến thức, cấp độ, quy tắc ràng buộc, thời gian              |
-| `references/template-van.md`             | Template phần VĂN (core_reading, knowledge_check)                             |
-| `references/template-tu-suy-tu.md`       | Template phần TƯ (phản chiếu, case study, nhật ký)                            |
-| `references/template-tu-thuc-hanh.md`    | Template phần TU (guided practice, dự án, checklist, teach-back)               |
-| `references/template-danh-gia.md`        | Template ĐÁNH GIÁ (rubric, AAR, survey cuối khoá, follow-up 30-60-90)         |
-| `references/template-facilitator-hub.md` | Template Facilitator Hub (hướng dẫn chung, module map, lịch trình, buddy pairs) |
 

@@ -8,22 +8,7 @@ Mỗi pattern là một giải pháp tổng quát áp dụng được cho nhiề
 
 **Hành động:** Chuyển nội dung chi tiết vào `references/`, giữ lại pointer + 1 dòng mô tả khi nào cần đọc.
 
-**Trước:**
-
-```markdown
-## API Reference
-### Endpoint 1: /users
-... (50 dòng chi tiết)
-### Endpoint 2: /posts  
-... (50 dòng chi tiết)
-```
-
-**Sau:**
-
-```markdown
-## API Reference
-Chi tiết API → [api-reference](references/api-reference.md). Đọc khi cần gọi API cụ thể.
-```
+**Trước:** 100 dòng API specs nằm trong SKILL.md → **Sau:** 1 dòng pointer `Chi tiết API → [api-reference](references/api-reference.md). Đọc khi cần gọi API cụ thể.`
 
 **Hiệu quả:** Giảm cognitive load, SKILL.md chỉ chứa workflow decisions.
 
@@ -215,21 +200,3 @@ description: >
 
 **Hiệu quả:** Tăng trigger accuracy — skill được gọi đúng lúc, không bị bỏ sót hay nhầm lẫn.
 
----
-
-## Cách sử dụng
-
-1. Chạy quality-checklist → xác định tiêu chí điểm thấp
-2. Map tiêu chí thấp → patterns liên quan:
-   - Clarity thấp → P3, P5, P10
-   - Specificity thấp → P5, P7
-   - Coverage thấp → P4, P5
-   - Structure thấp → P1, P6, P8
-   - Cognitive Load cao → P1, P2, P6, P8
-   - Bloat cao → P2, P4, P9
-   - Anti-patterns nhiều → P3, P9, P10
-   - Description yếu → P12
-3. Nếu skill đã deploy, dùng P11 (quan sát hành vi) để bổ sung insights
-4. Đối chiếu với [design-patterns](design-patterns.md) — chọn pattern phù hợp loại skill
-5. Chọn max 5 patterns áp dụng, ưu tiên high-impact + low-effort
-6. Ước tính tác động dòng (+/-) cho mỗi pattern

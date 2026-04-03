@@ -33,6 +33,12 @@ Hỏi tất cả câu hỏi trong 1 lượt để tiết kiệm thời gian:
 3. **Goals**: Mục tiêu chính? (educate / engage / convert / thought leadership)
 4. *(Optional)* **Constraints**: Có yêu cầu đặc biệt nào không? (deadline, brand guidelines, topics to avoid)
 
+### Edge Cases
+
+- **Input quá ngắn (1-2 câu, không có detail):** Hỏi user bổ sung context hoặc dùng web research mở rộng. Giới hạn blog types khả dụng: How-to Guide, Quick Insight, Listicle
+- **Thiếu data cho Deep Analysis / Case Study:** Nếu web research không đủ data/số liệu → chuyển sang type phù hợp hơn (Opinion, Explainer) thay vì viết với data thiếu
+- **Input là chủ đề quá rộng:** Narrow down bằng Interview (Step 2) — yêu cầu user chọn góc cụ thể trước khi plan
+
 ### Step 3: Research
 
 - WebSearch 3-5 queries liên quan topic + audience + trends

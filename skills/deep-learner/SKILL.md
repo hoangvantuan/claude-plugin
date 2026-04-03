@@ -7,12 +7,9 @@ description: Dẫn dắt từng bước hiểu sâu bản chất nội dung (bà
 
 Dẫn dắt user từng bước hiểu sâu bản chất nội dung — từ đơn giản đến phức tạp — rồi đưa vào đời sống thực.
 
-## Triết lý cốt lõi
+## Cách tiếp cận
 
-- **Ẩn dụ trước**: Bắt đầu bằng so sánh đời thường, sau đó mới đi vào chi tiết
-- **Từng lớp một**: Đơn giản → sâu hơn → sâu hơn nữa. KHÔNG dump hết 1 lần
-- **Socratic**: Hỏi để user tự khám phá, không thuyết giảng
-- **Hành động**: Mọi hiểu biết phải dẫn đến hành động cụ thể
+Giải thích như nói chuyện với bạn bè thông minh ngồi cà phê — ẩn dụ đời thường trước, thuật ngữ sau. Hỏi để user tự khám phá (Socratic), không thuyết giảng. Mọi hiểu biết phải dẫn đến hành động cụ thể.
 
 Nguyên tắc viết dễ hiểu: xem [easy-explain-guide.md](references/easy-explain-guide.md)
 
@@ -29,18 +26,14 @@ Nguyên tắc viết dễ hiểu: xem [easy-explain-guide.md](references/easy-ex
 
 Đọc toàn bộ nội dung, xác định:
 
-- 3-5 khái niệm cốt lõi
+- **3-5 khái niệm cốt lõi** — chọn theo: xuất hiện nhiều lần, là nền tảng cho các ý khác, hoặc thách thức hiểu biết phổ biến. Bỏ qua ý phụ/ví dụ minh hoạ.
 - Luận điểm chính của tác giả
 - Chuẩn bị ẩn dụ/analogy cho từng khái niệm
-- Mức độ phức tạp của nội dung
+- **Mức độ phức tạp** — dùng để quyết định: đơn giản (gộp Lớp 1+2, Lớp 3+4 thành 2 lượt) hay phức tạp (4 lượt đầy đủ)
 
 ### Step 3: Dẫn dắt qua 4 Lớp Hiểu
 
-Mỗi lớp là 1 lượt tương tác. Sau mỗi lớp, hỏi user muốn đi sâu hơn không.
-
-**QUAN TRỌNG:**
-- Chỉ trình bày 1 lớp mỗi lần. Đợi user phản hồi trước khi sang lớp tiếp.
-- User có thể quay lại lớp trước, nhảy đến lớp bất kỳ, hoặc yêu cầu đào sâu thêm 1 khái niệm cụ thể — linh hoạt theo nhu cầu.
+Trình bày 1 lớp mỗi lần, đợi user phản hồi trước khi sang lớp tiếp — vì user cần thời gian tiêu hoá và đặt câu hỏi, dump cùng lúc sẽ mất tương tác Socratic. User có thể quay lại, nhảy lớp, hoặc đào sâu 1 khái niệm cụ thể.
 
 ---
 
@@ -134,5 +127,10 @@ Sau khi hoàn thành các lớp (hoặc user dừng ở bất kỳ lớp nào):
 - Output tiếng Việt, giữ thuật ngữ gốc (technical terms)
 - Không thêm thông tin ngoài nội dung gốc (trừ ẩn dụ và context positioning)
 - Mermaid diagram đúng syntax, tối đa 12 nodes
-- Mỗi lớp là 1 lượt tương tác — KHÔNG dump hết 4 lớp cùng lúc
-- Tone: như giải thích cho bạn bè thông minh ngồi cà phê, không academic
+
+## Failure Modes cần tránh
+
+- **Dump 4 lớp cùng lúc** — mất tương tác Socratic, user không kịp phản hồi
+- **Giọng academic** — dùng thuật ngữ chuyên ngành khi chưa có ẩn dụ đi trước
+- **Bịa thông tin** — thêm fact/số liệu không có trong nguồn gốc (ẩn dụ thì OK)
+- **Ẩn dụ sai lệch** — so sánh đơn giản hoá quá mức, dẫn user hiểu sai cơ chế thật

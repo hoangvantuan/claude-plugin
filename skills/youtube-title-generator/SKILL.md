@@ -13,6 +13,14 @@ Generate compelling YouTube titles from content ideas using psychological trigge
 
 From the user's content idea or reference material, identify:
 
+| Input type | Cách xử lý |
+|-----------|-------------|
+| Topic ngắn (1-2 câu) | Suy luận transformation promise từ topic, đề xuất nhiều góc nhìn |
+| Bài viết / newsletter / tài liệu dài | Extract 3-5 big ideas chính, chọn góc hấp dẫn nhất |
+| Video script / outline có sẵn | Bám sát nội dung thực tế, không hứa hẹn ngoài phạm vi |
+
+Từ input đã xử lý, extract:
+
 - Core transformation promise (wealth, skills, productivity, life change)
 - Key value propositions and unique angles
 - Target audience benefits
@@ -27,14 +35,7 @@ Apply these structural formulas (vary across titles):
 - `[How To] + [Desirable Outcome] + ([Mechanism/Approach])`
 - `[Time-Bound Element] + ([What To Focus On])`
 
-Incorporate these psychological triggers:
-
-| Trigger | Examples |
-|---------|----------|
-| **Time-bound promises** | "6-12 months", "365 hours", "2-4 hours" |
-| **Transformation language** | "won't be the same person", "change your life" |
-| **Exclusivity framing** | "what they don't tell you", "most people ignore" |
-| **Status elevation** | "get ahead of 99%", "high-income skill", "millionaire" |
+Incorporate psychological triggers (time-bound promises, transformation language, exclusivity framing, status elevation) — xem chi tiết + ví dụ tại [title-examples.md](references/title-examples.md).
 
 Create contrasting elements:
 - Pair modest inputs with dramatic outputs
@@ -52,10 +53,17 @@ Present all 30 titles numbered, then briefly explain which psychological trigger
 ## Constraints
 
 - Keep titles under 70 characters when possible
-- Be polarizing, high conviction, hyperbolic when applicable
+- Mạnh mẽ, phân cực, hyperbolic — nhưng phải có substance đằng sau (không hứa hẹn rỗng)
 - Each title must be structurally distinct (don't repeat formulas)
 - Never plagiarize existing titles verbatim
 - Maintain the core idea of the provided content
+- Tạo title theo ngôn ngữ mà user yêu cầu hoặc ngôn ngữ của input material
+
+**Failure modes cần tránh:**
+- **Clickbait rỗng**: Title hứa hẹn lớn nhưng không liên quan đến nội dung thực tế
+- **Lặp formula**: 5+ titles dùng cùng cấu trúc chỉ thay keyword → đổi formula mỗi 2-3 titles
+- **Quá generic**: "Cách thay đổi cuộc đời bạn" — thiếu hook cụ thể, ai cũng nói được
+- **Over-promise**: Hứa kết quả phi thực tế so với nội dung gốc
 
 ## Examples
 

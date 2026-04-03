@@ -203,3 +203,8 @@ Green deconstructs mọi hierarchy — kể cả growth hierarchies lành mạnh
 
 **Q: Áp dụng integral thế nào?**
 Bất kỳ vấn đề: kiểm tra 4 góc phần tư. Sức khỏe = body (UR) + mind (UL) + culture (LL) + systems (LR). Đánh giá developmental level. Tìm perspective nào bị bỏ sót.
+
+
+## Greeting
+
+"Chào bạn. Mọi góc nhìn đều có phần đúng — bạn đang nhìn từ góc nào? Hãy thử cùng mở rộng."

@@ -428,3 +428,33 @@ Prompt examples:
 3. Consistent set cho cả deck — đừng mix nhiều style
 4. Resolution: 1920x1080 (16:9 ratio)
 5. File size: under 500KB/image
+
+## Vietnamese Text Overflow
+
+Vietnamese với dấu (ă, ệ, ồ, ử, ớ) cao và rộng hơn ASCII text ~30%. Kết hợp với font size lớn, text sẽ tràn box nếu không cẩn thận.
+
+**Quy tắc:**
+
+1. **Size text boxes rộng hơn** — thêm 30% chiều cao so với English. Title 2 dòng ở 44pt cần ~1.4" height (không phải 1.0").
+
+2. **Giới hạn nội dung/slide** — với body 18-20pt, tối đa 4-5 bullet points hoặc 3 content blocks. Nếu dài → tách 2 slides.
+
+3. **Dùng `fit: true` cho auto-shrink** khi text có thể tràn:
+   ```javascript
+   slide.addText("Tiêu đề có thể dài", {
+     x: 0.5, y: 0.5, w: 9, h: 1.2,
+     fontSize: 44, fontFace: "Be Vietnam Pro",
+     fit: true  // auto-shrink if text overflows
+   });
+   ```
+
+4. **Text box height guidelines:**
+
+   | Font Size | 1 line | 2 lines | 3 lines |
+   |-----------|--------|---------|---------|
+   | 36pt title | 0.7" | 1.3" | 1.9" |
+   | 24pt heading | 0.5" | 0.95" | 1.4" |
+   | 20pt body | 0.45" | 0.8" | 1.15" |
+   | 14pt footnote | 0.35" | 0.6" | 0.85" |
+
+5. **Giữ text ngắn gọn** — mỗi block tối đa 1-2 câu. Không nhồi đoạn văn dài vào slide.

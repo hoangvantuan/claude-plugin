@@ -14,304 +14,94 @@ Control Chrome browsers via PinchTab's CLI and HTTP API. Token-efficient (~800 t
 
 ```bash
 # Install (pick one)
-curl -fsSL https://pinchtab.com/install.sh | bash   # one-liner
-brew install pinchtab/tap/pinchtab                    # Homebrew
-npm install -g pinchtab                               # npm (Node 18+)
+curl -fsSL https://pinchtab.com/install.sh | bash
+brew install pinchtab/tap/pinchtab
+npm install -g pinchtab
 
-# Start server
+# Start server (skip if already running)
 pinchtab server &
 curl -s http://localhost:9867/health
 ```
 
-If the server is already running, skip the start step.
-
 ## Core Concepts
 
-- **Server** — HTTP API + dashboard on port 9867
-- **Profile** (`prof_XXX`) — Persistent browser data (cookies, storage, extensions). The durable object.
-- **Instance** (`inst_XXX`) — Running Chrome process (1 per profile max). The runtime object.
-- **Tab** (`tab_XXX`) — Individual browser tab within an instance
-- **Element Ref** (`e0`, `e1`, `e5`) — Stable IDs for interactive elements from snapshots
-
 ```
-Server → Profile → Instance → Tab → Element Refs
+Server → Profile (prof_XXX) → Instance (inst_XXX) → Tab (tab_XXX) → Element Refs (e0, e1, e5)
 ```
 
-## CLI Workflow (Recommended)
+- **Profile** — Persistent browser data (cookies, storage). Reuse profiles to keep login sessions alive.
+- **Instance** — Running Chrome process (max 1 per profile).
+- **Element Ref** — Stable IDs from snapshots for clicking/filling. Re-snapshot after page changes because refs become stale.
 
-The CLI is the simplest way to automate. No curl, no JSON parsing.
+## Choosing the Right Approach
+
+| Situation | Approach | Why |
+|-----------|----------|-----|
+| Hầu hết tasks | **CLI** | Đơn giản, không cần parse JSON, 1 lệnh = 1 hành động |
+| Cần batch actions hoặc tích hợp script | **HTTP API** | Batch/macro endpoint giảm request overhead |
+| Chỉ cần đọc nội dung trang | `pinchtab text` | Token-efficient nhất (~800 tokens) |
+| Cần tương tác (click, fill) | `pinchtab snap -ic` → action | Compact interactive snapshot cho refs, rồi act |
+| Sau khi thực hiện action | `pinchtab snap -d` | Diff snapshot — chỉ lấy thay đổi, tiết kiệm token |
+| Cần debug visual | `pinchtab screenshot` | Token cost cao — chỉ dùng khi text/snap không đủ |
+| Site có bot detection | Bật stealth trước | `pinchtab config set chrome.stealth light` |
+
+## CLI Workflow (Default)
 
 ```bash
-# Navigate to a page
+# 1. Navigate
 pinchtab nav https://example.com
 
-# Get accessibility snapshot (element refs for interaction)
-pinchtab snap
+# 2. Read content (chọn 1)
+pinchtab text              # plain text — most efficient
+pinchtab snap -ic          # interactive elements only — for interaction
+pinchtab quick <url>       # navigate + snapshot in one command
 
-# Interactive elements only (compact)
-pinchtab snap -ic
+# 3. Interact
+pinchtab fill e3 "value"   # fill field (clears first)
+pinchtab click e5          # click element
+pinchtab press Enter       # keyboard key
 
-# Click an element
-pinchtab click e5
-
-# Fill a form field (clears first)
-pinchtab fill e3 "user@example.com"
-
-# Type text (appends)
-pinchtab type e3 "search query"
-
-# Press keyboard key
-pinchtab press Enter
-
-# Extract plain text (most token-efficient)
-pinchtab text
-
-# Take screenshot
-pinchtab screenshot
-
-# Quick: navigate + snapshot in one command
-pinchtab quick https://example.com
+# 4. Verify result
+sleep 1                    # wait for page update
+pinchtab snap -d           # diff snapshot — only changes
 ```
 
-### CLI Multi-Step Example
+### Multi-Tab
 
 ```bash
-# Login flow
-pinchtab nav https://app.example.com/login
-pinchtab snap -i          # show interactive elements
-pinchtab fill e3 "user@example.com"
-pinchtab fill e5 "password123"
-pinchtab click e8         # submit button
-sleep 2
-pinchtab snap             # verify logged in
+pinchtab tab new https://source.com    # open new tab
+pinchtab tab                           # list tabs with IDs
+pinchtab tab tab_XXX                   # switch to tab
+pinchtab tab close tab_XXX             # close tab
 ```
 
-### Tab Management (CLI)
+## Error Recovery
 
-```bash
-pinchtab tab                    # list all tabs
-pinchtab tab new https://x.com  # open new tab
-pinchtab tab close tab_XXX      # close tab
+Lỗi phổ biến nhất: **stale element refs** (action fail vì trang đã thay đổi).
+
+```
+Action fail → re-snapshot (pinchtab snap -ic) → retry với ref mới
 ```
 
-## HTTP API Workflow
-
-For programmatic control when CLI isn't sufficient:
-
-```bash
-BASE="http://localhost:9867"
-
-# 1. Create profile
-PROF=$(curl -s -X POST "$BASE/profiles" \
-  -H "Content-Type: application/json" \
-  -d '{"name":"my-profile"}' | python3 -c "import sys,json; print(json.load(sys.stdin)['data']['id'])")
-
-# 2. Start instance
-INST=$(curl -s -X POST "$BASE/instances/start" \
-  -H "Content-Type: application/json" \
-  -d "{\"mode\":\"headless\",\"profileId\":\"$PROF\"}" \
-  | python3 -c "import sys,json; print(json.load(sys.stdin)['data']['id'])")
-
-# 3. Open tab
-TAB=$(curl -s -X POST "$BASE/instances/$INST/tabs/open" \
-  -H "Content-Type: application/json" \
-  -d '{"url":"https://example.com"}' \
-  | python3 -c "import sys,json; print(json.load(sys.stdin)['data']['id'])")
-
-# 4. Snapshot (accessibility tree with element refs)
-curl -s "$BASE/instances/$INST/tabs/$TAB/snapshot"
-
-# 5. Interact
-curl -s -X POST "$BASE/instances/$INST/tabs/$TAB/action" \
-  -H "Content-Type: application/json" \
-  -d '{"type":"click","ref":"e5"}'
-
-# 6. Extract text
-curl -s "$BASE/instances/$INST/tabs/$TAB/text"
-```
-
-## Action Types
-
-Use with `POST /instances/{inst}/tabs/{tab}/action` or CLI commands:
-
-| Action | HTTP Payload | CLI |
-|--------|-------------|-----|
-| **click** | `{"type":"click","ref":"e5"}` | `pinchtab click e5` |
-| **dblclick** | `{"type":"dblclick","ref":"e5"}` | `pinchtab dblclick e5` |
-| **type** | `{"type":"type","ref":"e3","text":"hello"}` | `pinchtab type e3 "hello"` |
-| **fill** | `{"type":"fill","ref":"e3","value":"email"}` | `pinchtab fill e3 "email"` |
-| **press** | `{"type":"key","key":"Enter"}` | `pinchtab press Enter` |
-| **scroll** | `{"type":"scroll","direction":"down","amount":3}` | `pinchtab scroll --down` |
-| **hover** | `{"type":"hover","ref":"e5"}` | `pinchtab hover e5` |
-| **select** | `{"type":"select","ref":"e7","value":"opt"}` | `pinchtab select e7 "opt"` |
-| **check** | `{"type":"check","ref":"e4"}` | `pinchtab check e4` |
-| **uncheck** | `{"type":"uncheck","ref":"e4"}` | `pinchtab uncheck e4` |
-
-## Reading Page Content
-
-From most to least token-efficient:
-
-| Method | Tokens | CLI | HTTP |
-|--------|--------|-----|------|
-| **Text** | ~800 | `pinchtab text` | `GET .../tabs/{tab}/text` |
-| **Snapshot** | ~800 + refs | `pinchtab snap` | `GET .../tabs/{tab}/snapshot` |
-| **Snapshot (compact)** | Less | `pinchtab snap -ic` | `GET /snapshot?interactive=true&compact=true` |
-| **Diff snapshot** | Minimal | `pinchtab snap -d` | `GET /snapshot?format=diff` |
-| **Screenshot** | High | `pinchtab screenshot` | `GET .../tabs/{tab}/screenshot` |
-
-Always prefer **text** or **snapshot** over screenshot. Use **diff snapshot** after interactions to get only changed elements.
-
-## Advanced Features
-
-### Batch Actions
-
-Execute multiple actions in sequence with one request:
-
-```bash
-curl -s -X POST "$BASE/actions" \
-  -H "Content-Type: application/json" \
-  -d '{"actions":[
-    {"type":"fill","ref":"e3","value":"user@example.com"},
-    {"type":"fill","ref":"e5","value":"password"},
-    {"type":"click","ref":"e8"}
-  ]}'
-```
-
-### Macro (Multi-Step with Timeouts)
-
-```bash
-curl -s -X POST "$BASE/macro" \
-  -H "Content-Type: application/json" \
-  -d '{"steps":[
-    {"action":{"type":"click","ref":"e8"},"timeout":5000},
-    {"action":{"type":"fill","ref":"e3","value":"data"},"timeout":3000}
-  ]}'
-```
-
-### JavaScript Evaluation
-
-```bash
-# CLI
-pinchtab eval "document.title"
-
-# HTTP
-curl -s -X POST "$BASE/evaluate" \
-  -H "Content-Type: application/json" \
-  -d '{"expression":"document.querySelectorAll(\"a\").length"}'
-```
-
-### Find Elements (Semantic Search)
-
-```bash
-# CLI
-pinchtab find "login button"
-
-# HTTP
-curl -s -X POST "$BASE/find" \
-  -H "Content-Type: application/json" \
-  -d '{"query":"login button","limit":5}'
-```
-
-### Cookies Management
-
-```bash
-# Get cookies
-curl -s "$BASE/cookies?domain=example.com"
-
-# Set cookie
-curl -s -X POST "$BASE/cookies" \
-  -H "Content-Type: application/json" \
-  -d '{"name":"session","value":"abc123","domain":".example.com","secure":true}'
-```
-
-### PDF Export
-
-```bash
-# CLI
-pinchtab pdf
-
-# HTTP
-curl -s "$BASE/pdf" --output page.pdf
-```
-
-### File Download & Upload
-
-```bash
-# Download file via browser
-curl -s "$BASE/download" --output file.pdf
-
-# Upload file to input element
-curl -s -X POST "$BASE/upload" \
-  -H "Content-Type: application/json" \
-  -d '{"selector":"input[type=file]","filePath":"/path/to/file.pdf"}'
-```
-
-### Navigation with Blocking
-
-```bash
-# Block images and ads for faster loading
-pinchtab nav https://example.com --block-images --block-ads
-```
-
-### Stealth Mode (Anti-Detection)
-
-Bypass bot detection (Cloudflare, reCAPTCHA):
-
-```bash
-# Configure stealth level
-pinchtab config set chrome.stealth light   # recommended
-# Options: none (default) | light (UA+webdriver patch) | full (canvas/WebGL spoofing)
-
-# Humanized interactions (natural mouse/keyboard)
-pinchtab click e0 --humanize
-```
-
-### Attach Existing Chrome
-
-```bash
-# Start Chrome with debug port
-google-chrome --remote-debugging-port=9222 &
-
-# Attach to PinchTab
-curl -s -X POST "$BASE/instances/attach" \
-  -H "Content-Type: application/json" \
-  -d '{"name":"my-chrome","cdpUrl":"ws://127.0.0.1:9222/devtools/browser/..."}'
-```
-
-## Cleanup
-
-```bash
-# Stop instance
-curl -s -X POST "$BASE/instances/$INST/stop"
-
-# Or delete profile entirely
-curl -s -X DELETE "$BASE/profiles/$PROF"
-```
+| Lỗi | Xử lý |
+|-----|--------|
+| Element ref not found | Re-snapshot, dùng ref mới |
+| Server not running | `pinchtab server &` |
+| Instance won't start | Kiểm tra `pinchtab instances`, stop instance cũ nếu cần |
+| Bot detection | `pinchtab config set chrome.stealth light` + `--humanize` flag |
 
 ## Environment Variables
 
 | Variable | Purpose | Default |
 |----------|---------|---------|
 | `PINCHTAB_PORT` | Server port | 9867 |
-| `PINCHTAB_TOKEN` | API auth token | (none) |
+| `PINCHTAB_TOKEN` | API auth token (thêm `-H "Authorization: Bearer $TOKEN"` nếu set) | (none) |
 | `PINCHTAB_HEADLESS` | Headless mode | true |
-
-If `PINCHTAB_TOKEN` is set, include: `-H "Authorization: Bearer $PINCHTAB_TOKEN"`
-
-## Troubleshooting
-
-| Issue | Solution |
-|-------|----------|
-| Server not running | `pinchtab server &` |
-| Port conflict | `pinchtab config set server.port 8080` |
-| Instance won't start | Check active: `curl -s $BASE/instances` |
-| Stale element refs | Re-snapshot after page changes |
-| Auth required | Set `PINCHTAB_TOKEN` and include Bearer header |
-| Bot detection | `pinchtab config set chrome.stealth light` |
-| Slow page load | `pinchtab nav URL --block-images --block-ads` |
 
 ## Reference
 
-- Full HTTP API: [references/api-reference.md](references/api-reference.md)
-- CLI commands: [references/cli-reference.md](references/cli-reference.md)
-- Workflow patterns: [references/workflow-patterns.md](references/workflow-patterns.md)
+Chi tiết tra cứu khi cần:
+
+- [HTTP API](references/api-reference.md) — Endpoints, payloads, response formats, error codes. Đọc khi cần gọi HTTP API trực tiếp.
+- [CLI commands](references/cli-reference.md) — Tất cả CLI commands + flags. Đọc khi cần tìm lệnh cụ thể hoặc flags nâng cao.
+- [Workflow patterns](references/workflow-patterns.md) — 12 patterns phổ biến (scraping, login, pagination, stealth, multi-tab...). Đọc khi gặp scenario phức tạp cần tham khảo.

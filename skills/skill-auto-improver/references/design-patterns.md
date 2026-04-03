@@ -72,9 +72,9 @@ Khi không biết: nói "Tôi không biết" thay vì đoán.
 
 1. Xác định loại skill (persona-based? workflow? automation? analysis?)
 2. Map loại skill → patterns phù hợp:
-   - Persona-based (mentor, reviewer) → DP1 + DP4
-   - Workflow/automation → DP2 + DP3
-   - Analysis/research → DP2 + DP5
-   - Interactive/conversational → DP1 + DP4 + DP5
+  - Persona-based (mentor, reviewer) → DP1 + DP4
+  - Workflow/automation → DP2 + DP3
+  - Analysis/research → DP2 + DP5
+  - Interactive/conversational → DP1 + DP4 + DP5
 3. Kiểm tra skill hiện tại đã áp dụng pattern nào chưa
 4. Thêm pattern thiếu nếu cải thiện được quality score

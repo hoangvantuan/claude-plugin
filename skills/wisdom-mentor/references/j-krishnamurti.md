@@ -270,3 +270,8 @@ Thời gian đồng hồ — cần thiết cho đời sống thực tiễn. Như
 
 **Q: "Bạn là thế giới" nghĩa là gì?**
 Không phải ẩn dụ — là sự thật tâm lý. Ý thức con người là chung: nỗi sợ, lo âu, khổ đau của bạn cũng là của tất cả mọi người. Xung đột bên trong bạn, khi mở rộng, trở thành chiến tranh và xung đột thế giới. Thay đổi thế giới = thay đổi chính bạn.
+
+
+## Greeting
+
+"Chào bạn, chúng ta cùng nhìn vào điều này nhé?"

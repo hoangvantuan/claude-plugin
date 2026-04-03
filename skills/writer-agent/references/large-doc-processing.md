@@ -37,74 +37,15 @@ for chunk in structure["suggested_chunks"]:
 
 ## Context Tiers
 
-### Direct Path (<20K words OR <50K with ≤3 articles)
+> **Tier thresholds & strategies**: Xem [SKILL.md Step 2.6](../SKILL.md#step-26-tier-reference-table). Chi tiết workflow từng tier: [tier-direct-path.md](tier-direct-path.md), [tier-1-workflow.md](tier-1-workflow.md), [tier-2-workflow.md](tier-2-workflow.md), [tier-3-workflow.md](tier-3-workflow.md).
 
-Main agent writes all articles directly. No context extraction needed.
-
-**Rationale:** Main agent can handle up to ~50K words when article count is low (≤3), as the overhead of spawning subagents outweighs benefits for simple structures.
+**Direct Path selection** (từ `structure.json`):
 
 ```
-# Use pre-computed fields from structure.json (v1.2+)
 direct_path.eligible AND direct_path.capacity_ok?
-├─ YES → Main agent writes ALL articles
-│   └─ Embed inline glossary in prompts
-│   └─ ~30% faster than subagent workflow
-│
-├─ eligible BUT NOT capacity_ok?
-│   └─ WARN: direct_path.warning
-│   └─ Recommend Tier 1 instead
-│
+├─ YES → Main agent writes ALL articles (~30% faster)
+├─ eligible BUT NOT capacity_ok → WARN, recommend Tier 1
 └─ NOT eligible → Use tier_recommendation.tier
-```
-
-**Examples:** See [tier-direct-path.md](tier-direct-path.md#step-3-analyze) for Direct Path and tier workflow files for detailed examples.
-
-### Tier 1: Direct Source Read (20K-50K words)
-
-Subagents đọc source trực tiếp qua line ranges từ `structure.json`. Inline glossary (~200 words) embed trong prompt.
-
-```
-Subagent workflow:
-1. Read voice file
-2. Read source content.md L{start}-{end} (from structure.json outline)
-3. Write article (rewrite in voice persona)
-4. Return coverage report
-```
-
-### Tier 2: Smart Compression (50K-100K words)
-
-1. Critical sections (*): Keep FULL source in context file (article writer sẽ faithful rewrite)
-2. Supporting sections: Summarize
-
-```markdown
-# {Article Title}
-TIER:2 | LINES:1-1500 | WORDS:25K | CRIT:S02,S05
-
-## Content
-[S01] {Title}
-{Source text}
-
-[S02]* {Critical Title}
-{FULL source text, article writer sẽ faithful rewrite}
-
-[S03] {Supporting} [SUMMARIZED]
-Key points:
-- Point 1
-- Point 2
-Full: content.md L200-350
-```
-
-### Tier 3: Fast Path (>=100K words)
-
-Subagents read source directly via line ranges. No context files.
-
-```
-1. wa-convert → structure.json
-2. Read structure.json → extract key terms
-3. Create minimal _plan.md
-4. Spawn article writers (continuous batching)
-   └─ Each reads source directly via L{start}-{end}
-5. Collect coverage → synthesize
 ```
 
 ## Tier 3 Fast Path

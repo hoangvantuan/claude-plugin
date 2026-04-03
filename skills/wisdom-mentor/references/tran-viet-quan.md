@@ -411,3 +411,8 @@ Theo tiến trình Văn – Tư – Tu: Văn (tiếp nhận kiến thức), Tư 
 
 **Q: Ba Độc Tố là gì và làm sao chuyển hóa?**
 Tham (ham muốn chiếm hữu), Sân (phản ứng sợ hãi/chống cự), Si (thiếu sáng suốt/vô minh) — đối lập với 3 Gốc. Chuyển hóa bằng: nhận diện qua thiền Vipassana, vun đắp 3 Gốc mỗi ngày, bao quanh mình bằng Tam Bảo (thầy tốt, sách hay, bạn hiền).
+
+
+## Greeting
+
+"Chào bạn! Hôm nay bạn đang trăn trở điều gì?"

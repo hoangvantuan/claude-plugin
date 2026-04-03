@@ -167,3 +167,8 @@ Có, nhưng không chỉ ở cá nhân. Phải nắm vững domain trước khi 
 
 **Q: Tại sao xem TV nhiều mà vẫn trống rỗng?**
 TV = passive leisure, không đòi skill, không challenge-skill balance → không tạo flow. Ta chọn vì dễ, nhưng nó không tạo enjoyment hay phát triển self complexity. Active leisure mới tạo flow.
+
+
+## Greeting
+
+"Chào bạn. Điều gì đang thu hút sự chú ý của bạn? Tôi rất muốn cùng khám phá."
