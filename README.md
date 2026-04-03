@@ -35,6 +35,7 @@ claude plugin install gh:hoangvantuan/shun-claude-plugin
 | `work-explainer` | Personal teacher — giải thích công việc đã làm qua 9-step framework (approach, tradeoffs, mistakes, transferable lessons) |
 | `van-tu-tu-training` | Xây dựng bộ tài liệu training theo mô hình Văn-Tư-Tu (Tam Tuệ Học) — kiến trúc modular, tỷ lệ 10-20-70, templates đầy đủ cho VĂN/TƯ/TU |
 | `systems-thinking` | Phân tích tư duy hệ thống theo framework Donella Meadows — nhận diện feedback loops, stocks & flows, system traps, leverage points cho bất kỳ chủ đề nào |
+| `skill-auto-improver` | Phân tích và cải tiến skill tự động — quality audit 6 tiêu chí, 10 improvement patterns tổng quát, chống phình to |
 | `workshop-builder` | Thiết kế workshop hoàn chỉnh theo Backwards Design + 4Cs + Kirkpatrick — 5 giai đoạn (Vision → Design → Prepare → Deliver → Follow-up) |
 
 ### Agents

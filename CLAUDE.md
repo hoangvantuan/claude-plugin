@@ -25,6 +25,7 @@ skills/                      # Các skill plugins (chi tiết xem ## Skill Struc
   slidev-builder/            # Slidev presentation builder from outline
   things-manager/            # Things 3 task management via things-cli (Go CLI)
   deep-insight/              # Quan sát đa chiều → Phân tích tách lớp → Đúc kết cốt lõi để hiểu sâu vấn đề
+  skill-auto-improver/       # Phân tích và cải tiến skill tự động — quality audit + improvement patterns
   systems-thinking/          # Phân tích tư duy hệ thống theo framework Donella Meadows (Thinking in Systems)
   van-tu-tu-training/        # Xây dựng tài liệu training theo mô hình Văn-Tư-Tu (Tam Tuệ Học)
   viral-post-creator/        # Tạo bài đăng viral trên social media
@@ -74,6 +75,7 @@ skills/<skill-name>/
 | `pptx-creator` | `references/` `scripts/` | design-system, slide-types, pptxgenjs-api, compile.js |
 | `prompt-generator` | — | Chỉ có SKILL.md |
 | `prompt-generator-v2` | — | Chỉ có SKILL.md |
+| `skill-auto-improver` | `references/` | quality-checklist, improvement-patterns |
 | `slidev-builder` | `references/` | slide-templates |
 | `systems-thinking` | `references/` `templates/` | system-traps, leverage-points, systems-wisdom, analysis-output |
 | `things-manager` | — | Chỉ có SKILL.md |
