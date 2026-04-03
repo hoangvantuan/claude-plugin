@@ -119,10 +119,71 @@ Create 1 JS file per slide in `slides/` directory. Each exports a synchronous `c
 
 Read [references/pptxgenjs-api.md](references/pptxgenjs-api.md) for the complete API reference and critical pitfalls to avoid.
 
-**Slide file template:**
+#### Layout Helper (BẮT BUỘC dùng cho content slides)
+
+Import [scripts/layout-helpers.js](scripts/layout-helpers.js) để tính toán vị trí tự động, tránh overlap:
+
+```javascript
+const { calcStack, calcColumns, calcGrid, estimateTextHeight, assertBounds,
+        SAFE_AREA, TITLE_AREA, PAGE_BADGE } = require('../scripts/layout-helpers');
+```
+
+**Quy tắc bắt buộc:**
+
+1. **NEVER hardcode y positions** cho multiple stacked elements — dùng `calcStack(count, itemHeight)`
+2. **NEVER hardcode column positions** — dùng `calcColumns(count)` hoặc `calcGrid(cols, rows)`
+3. **ALWAYS verify** tổng chiều cao trước khi code — `calcStack` sẽ throw nếu vượt safe area
+4. **Vietnamese text** — dùng `estimateTextHeight(lineCount, fontSize)` (mặc định đã +30% cho dấu)
+
+**Layout Budget — max items per pattern:**
+
+| Pattern | Max items | Recommended itemH | Gap | Total |
+|---------|-----------|-------------------|-----|-------|
+| Icon rows (4a) | 3-4 | 0.85" | 0.15" | 3×0.85+2×0.15 = 2.85" ✓ |
+| Stat callouts (4d) | 3 | 1.1" | 0.2" | 3×1.1+2×0.2 = 3.7" ✓ |
+| Staggered cards (4h) | 3 | 1.0" | 0.1" | 3×1.0+2×0.1 = 3.2" ✓ |
+| TOC items | 5 | 0.65" | 0.1" | 5×0.65+4×0.1 = 3.65" ✓ |
+| Columns (4b/4e) | 2-3 cols | full height | 0.2" gap | auto |
+
+**Công thức kiểm tra nhanh (PHẢI làm trước khi code):**
+```
+Usable height = 3.8" (SAFE_AREA.h)
+N items × itemH + (N-1) × gap ≤ 3.8"?
+→ Nếu KHÔNG: giảm N hoặc itemH, hoặc tách thành 2 slides
+```
+
+**Ví dụ sử dụng:**
+
+```javascript
+// 3 icon rows — tự tính y positions
+const rows = calcStack(3, 0.85, { gap: 0.15 });
+rows.forEach((pos, i) => {
+  slide.addShape(pres.shapes.ROUNDED_RECT, { ...pos, fill: { color: theme.light } });
+  slide.addText(items[i].title, { ...pos, fontSize: 20, fontFace: theme.bodyFont });
+});
+
+// 3 columns
+const cols = calcColumns(3, { gap: 0.25 });
+cols.forEach((pos, i) => {
+  slide.addText(items[i].text, { ...pos, fontSize: 18, fontFace: theme.bodyFont });
+});
+
+// 2×2 grid
+const cells = calcGrid(2, 2, { colGap: 0.2, rowGap: 0.15 });
+cells.forEach((pos, i) => {
+  slide.addShape(pres.shapes.ROUNDED_RECT, { ...pos, fill: { color: theme.light } });
+});
+
+// Custom start Y (after a tall title)
+const titleH = estimateTextHeight(2, 36); // 2-line Vietnamese title
+const contentRows = calcStack(3, 0.8, { startY: 0.3 + titleH + 0.15 });
+```
+
+#### Slide File Template
 
 ```javascript
 const pptxgen = require("pptxgenjs");
+const { calcStack, calcColumns, SAFE_AREA, TITLE_AREA, PAGE_BADGE } = require('../scripts/layout-helpers');
 
 const slideConfig = {
   type: 'content',  // cover | toc | divider | content | summary
@@ -142,11 +203,10 @@ function createSlide(pres, theme) {
 
   // Page badge (required for all except cover)
   slide.addShape(pres.shapes.OVAL, {
-    x: 9.3, y: 5.1, w: 0.4, h: 0.4,
-    fill: { color: theme.accent }
+    ...PAGE_BADGE, fill: { color: theme.accent }
   });
   slide.addText(String(slideConfig.index), {
-    x: 9.3, y: 5.1, w: 0.4, h: 0.4,
+    ...PAGE_BADGE,
     fontSize: 12, fontFace: theme.bodyFont,
     color: "FFFFFF", bold: true,
     align: "center", valign: "middle"

@@ -163,6 +163,8 @@ The workhorse — 6 subtypes to maintain visual variety.
 ```
 Icon in colored circle + bold header + description.
 
+**Height Budget:** Max 3-4 rows. 3×0.85" + 2×0.15" = 2.85" ✓. Dùng `calcStack(3, 0.85)`.
+
 ### 4b. Two-Column (Text + Image)
 ```
 +------------------------------------------+
@@ -177,6 +179,8 @@ Icon in colored circle + bold header + description.
 |                                      [6] |
 +------------------------------------------+
 ```
+
+**Height Budget:** Dùng `calcColumns(2)` — text 55%, image 45%. Full safe area height.
 
 ### 4c. Data Visualization
 ```
@@ -206,6 +210,8 @@ Icon in colored circle + bold header + description.
 ```
 Large numbers (60-72pt) with small labels below (14pt).
 
+**Height Budget:** Max 3 stat blocks. 3×1.1" + 2×0.2" = 3.7" ✓. Dùng `calcColumns(3)` — mỗi cột chứa number + label.
+
 ### 4e. Comparison / Before-After
 ```
 +------------------------------------------+
@@ -221,6 +227,8 @@ Large numbers (60-72pt) with small labels below (14pt).
 +------------------------------------------+
 ```
 
+**Height Budget:** Dùng `calcColumns(2)` — 2 cột bằng nhau. Full safe area height.
+
 ### 4f. Timeline / Process Flow
 ```
 +------------------------------------------+
@@ -233,6 +241,8 @@ Large numbers (60-72pt) with small labels below (14pt).
 |                                     [10] |
 +------------------------------------------+
 ```
+
+**Height Budget:** Max 3-5 steps. Dùng `calcColumns(count)` — mỗi cột chứa icon + label. 1 row, chiều cao cố định ~2".
 
 ### 4g. Asymmetric Hero (phá grid)
 ```
@@ -261,6 +271,8 @@ Visual chiếm 60-70% slide, text nhỏ bên cạnh. Tạo focal point mạnh.
 +------------------------------------------+
 ```
 Cards xếp lệch (stagger y position), phá vỡ sự đều đặn. Mỗi card offset y thêm 0.3-0.5".
+
+**Height Budget:** Max 3 cards. 3×1.0" + 2×0.1" + stagger offset (0.3") = 3.5" ✓. Dùng `calcColumns(3)` cho x positions, tự thêm stagger y offset. **CẢNH BÁO:** Tổng chiều cao PHẢI tính cả stagger offset.
 
 ### 4i. Full-Width Statement
 ```
@@ -321,7 +333,10 @@ Dark background, centered, minimal.
 1. **Classify every slide** before writing code
 2. **Never repeat the same layout** on consecutive slides — if slide 5 is "Text + Image", slide 6 should be different
 3. **Every content slide (type 4) needs a non-text visual** — icon, chart, image, or decorative shape
-4. **Page badges on all slides EXCEPT cover** — position: x: 9.3", y: 5.1"
+4. **Page badges on all slides EXCEPT cover** — dùng `PAGE_BADGE` constant từ layout-helpers.js
 5. **Dramatic font size contrast** — at least 20% difference between title and body
 6. **0.5" minimum margins** from all edges
 7. **Left-align body text** — center only titles and stat callouts
+8. **Use layout-helpers.js** — NEVER hardcode positions cho multiple elements. Dùng `calcStack`, `calcColumns`, `calcGrid`
+9. **Check height budget** — verify N×itemH + (N-1)×gap ≤ 3.8" TRƯỚC khi code. `calcStack` sẽ throw nếu vượt
+10. **All content elements MUST stay within y: 1.2"–5.0"** — vượt 5.0" sẽ overlap page badge
