@@ -89,6 +89,7 @@ Quy tắc nội dung đảm bảo outline **trông tốt** (hình thức). Conte
 | Mixed     | Giữ nguyên framework            | Define thuật ngữ inline, ví dụ concrete bắt buộc mỗi concept chính, bridge giữa levels | content, comparison, statement         |
 | Workshop  | Force Gagné bất kể content type | Thêm knowledge check slides (Event 6), practice exercises, interactive prompts         | content, comparison + knowledge checks |
 
+
 **Audience + Detail Level interaction:**
 
 - Executive + L3: Warning — L3 quá chi tiết cho executives, suggest L1-L2
@@ -113,6 +114,7 @@ Quy tắc nội dung đảm bảo outline **trông tốt** (hình thức). Conte
 | `table`      | Bảng so sánh dữ liệu có cấu trúc (max 5-6 rows)        | Left aligned, markdown table     |
 | `diagram`    | Mermaid flowchart/sequence diagram, text-based         | Left aligned, auto-rendered      |
 
+
 ## Cognitive Sequencing Rules
 
 Áp dụng khi sắp xếp thứ tự slides trong Body. Mục tiêu: giảm cognitive load cho audience.
@@ -121,9 +123,9 @@ Quy tắc nội dung đảm bảo outline **trông tốt** (hình thức). Conte
 2. **Prior Knowledge Activation**: Mỗi section mới PHẢI có 1 câu/bullet kết nối với kiến thức audience đã có hoặc section trước đó
 3. **Concrete → Abstract**: Ví dụ cụ thể trước, rồi mới generalize thành pattern/principle
 4. **Part-Whole Sequencing**:
-   - Business/Báo cáo (Pyramid/SCQA): Whole → Parts (conclusion trước, evidence sau)
-   - Technical/Process: Parts → Whole (components trước, system overview sau)
-   - Giáo dục: Depends on complexity — simple topics parts→whole, complex topics whole→parts
+  - Business/Báo cáo (Pyramid/SCQA): Whole → Parts (conclusion trước, evidence sau)
+  - Technical/Process: Parts → Whole (components trước, system overview sau)
+  - Giáo dục: Depends on complexity — simple topics parts→whole, complex topics whole→parts
 5. **Worked Example Effect** (Giáo dục/Workshop): Show solved example TRƯỚC khi yêu cầu audience apply
 
 ### Sequencing Checklist
