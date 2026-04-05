@@ -11,6 +11,7 @@ Dự án phát triển các plugin cho Claude Code, bao gồm: **skills**, **age
 ```
 .claude-plugin/plugin.json   # Plugin manifest
 skills/                      # Các skill plugins (chi tiết xem ## Skill Structure)
+  ai-artist/                 # Tạo ảnh qua Nano Banana — 129 curated prompts, validation interview, 3 modes
   content-planner/           # Content planning & writing cho Facebook + Blog
   creative-thought-partner/  # Đối tác tư duy sáng tạo — brainstorming
   deep-learner/              # Dẫn dắt từng bước hiểu sâu bản chất nội dung — 4 lớp hiểu + áp dụng đời sống
@@ -19,9 +20,11 @@ skills/                      # Các skill plugins (chi tiết xem ## Skill Struc
   ghost-blog/                # Ghost CMS blog management
   outline-writer/            # Content analysis & outline creation (presentation/blog/doc)
   pinchtab/                  # Browser automation for AI agents via PinchTab HTTP API
+  problem-solving/           # Kỹ thuật giải quyết vấn đề có hệ thống — inversion, collision-zone, scale-game
   pptx-creator/              # Tạo PowerPoint đẹp, chuyên nghiệp — hỗ trợ font tiếng Việt (PptxGenJS)
   prompt-generator/          # Meta-prompting — tạo prompt chất lượng cao
   prompt-generator-v2/       # KERNEL framework — prompt engineering nâng cao
+  sequential-thinking/       # Phân tích từng bước cho vấn đề phức tạp — revision, branching, hypothesis
   slidev-builder/            # Slidev presentation builder from outline
   things-manager/            # Things 3 task management via things-cli (Go CLI)
   deep-insight/              # Quan sát đa chiều → Phân tích tách lớp → Đúc kết cốt lõi để hiểu sâu vấn đề
@@ -61,31 +64,35 @@ skills/<skill-name>/
 
 ### Chi tiết từng skill
 
-| Skill | Subdirectories | Ghi chú |
-|-------|---------------|---------|
-| `content-planner` | `references/` | blog-types, content-frameworks, facebook-types |
-| `creative-thought-partner` | — | Chỉ có SKILL.md |
-| `deep-learner` | `references/` `templates/` | easy-explain-guide, long-content-strategy, note-structure, output-template |
-| `deep-insight` | `references/` | framework-foundation, observation-guide, analysis-patterns, synthesis-methods |
-| `deep-post-ideas` | `references/` | example-phrasing |
-| `facebook` | `scripts/` | fb-post.sh, snap-helpers.py, tag-search.py |
-| `ghost-blog` | `scripts/` | Python scripts + tests cho Ghost CMS API |
-| `outline-writer` | `references/` | outline-rules |
-| `pinchtab` | `references/` | api-reference, cli-reference, workflow-patterns |
-| `pptx-creator` | `references/` `scripts/` | design-system, slide-types, pptxgenjs-api, compile.js |
-| `prompt-generator` | — | Chỉ có SKILL.md |
-| `prompt-generator-v2` | — | Chỉ có SKILL.md |
-| `skill-auto-improver` | `references/` | quality-checklist, improvement-patterns |
-| `slidev-builder` | `references/` | slide-templates |
-| `systems-thinking` | `references/` `templates/` | system-traps, leverage-points, systems-wisdom, analysis-output |
-| `things-manager` | — | Chỉ có SKILL.md |
-| `van-tu-tu-training` | `references/` | philosophy-foundation, modular-architecture, ratio-adjustment, template-van, template-tu-suy-tu, template-tu-thuc-hanh, template-danh-gia |
-| `viral-post-creator` | `references/` | example-phrasing |
-| `wisdom-mentor` | `references/` | 28 mentor profiles (mỗi mentor 1 file .md) |
-| `work-explainer` | — | Chỉ có SKILL.md |
-| `workshop-builder` | `references/` | frameworks, activity-library, templates, example-walkthrough, prepare-deliver-followup |
-| `writer-agent` | `audiences/` `emotional_maps/` `identities/` `meta/` `references/` `scripts/` `structures/` `templates/` `voices/` | Skill phức tạp nhất — có 9 subdirectories |
-| `youtube-title-generator` | `references/` | title-examples |
+| Skill                      | Subdirectories                                                                                                     | Ghi chú                                                                                                                                   |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `ai-artist`                | `references/` `scripts/` `data/`                                                                                   | nano-banana, image-prompting, validation-workflow, domain guides, awesome-prompts.csv, styles/techniques/lighting CSVs                     |
+| `content-planner`          | `references/`                                                                                                      | blog-types, content-frameworks, facebook-types                                                                                            |
+| `creative-thought-partner` | —                                                                                                                  | Chỉ có SKILL.md                                                                                                                           |
+| `deep-learner`             | `references/` `templates/`                                                                                         | easy-explain-guide, long-content-strategy, note-structure, output-template                                                                |
+| `deep-insight`             | `references/`                                                                                                      | framework-foundation, observation-guide, analysis-patterns, synthesis-methods                                                             |
+| `deep-post-ideas`          | `references/`                                                                                                      | example-phrasing                                                                                                                          |
+| `facebook`                 | `scripts/`                                                                                                         | fb-post.sh, snap-helpers.py, tag-search.py                                                                                                |
+| `ghost-blog`               | `scripts/`                                                                                                         | Python scripts + tests cho Ghost CMS API                                                                                                  |
+| `outline-writer`           | `references/`                                                                                                      | outline-rules                                                                                                                             |
+| `pinchtab`                 | `references/`                                                                                                      | api-reference, cli-reference, workflow-patterns                                                                                           |
+| `problem-solving`          | `references/`                                                                                                      | collision-zone-thinking, inversion-exercise, meta-pattern-recognition, scale-game, simplification-cascades, when-stuck                    |
+| `pptx-creator`             | `references/` `scripts/`                                                                                           | design-system, slide-types, pptxgenjs-api, compile.js                                                                                     |
+| `prompt-generator`         | —                                                                                                                  | Chỉ có SKILL.md                                                                                                                           |
+| `prompt-generator-v2`      | —                                                                                                                  | Chỉ có SKILL.md                                                                                                                           |
+| `sequential-thinking`      | `references/` `scripts/` `tests/`                                                                                  | core-patterns, examples (api/debug/architecture), advanced-techniques, advanced-strategies, process-thought.js, format-thought.js          |
+| `skill-auto-improver`      | `references/`                                                                                                      | quality-checklist, improvement-patterns                                                                                                   |
+| `slidev-builder`           | `references/`                                                                                                      | slide-templates                                                                                                                           |
+| `systems-thinking`         | `references/` `templates/`                                                                                         | system-traps, leverage-points, systems-wisdom, analysis-output                                                                            |
+| `things-manager`           | —                                                                                                                  | Chỉ có SKILL.md                                                                                                                           |
+| `van-tu-tu-training`       | `references/`                                                                                                      | philosophy-foundation, modular-architecture, ratio-adjustment, template-van, template-tu-suy-tu, template-tu-thuc-hanh, template-danh-gia |
+| `viral-post-creator`       | `references/`                                                                                                      | example-phrasing                                                                                                                          |
+| `wisdom-mentor`            | `references/`                                                                                                      | 28 mentor profiles (mỗi mentor 1 file .md)                                                                                                |
+| `work-explainer`           | —                                                                                                                  | Chỉ có SKILL.md                                                                                                                           |
+| `workshop-builder`         | `references/`                                                                                                      | frameworks, activity-library, templates, example-walkthrough, prepare-deliver-followup                                                    |
+| `writer-agent`             | `audiences/` `emotional_maps/` `identities/` `meta/` `references/` `scripts/` `structures/` `templates/` `voices/` | Skill phức tạp nhất — có 9 subdirectories                                                                                                 |
+| `youtube-title-generator`  | `references/`                                                                                                      | title-examples                                                                                                                            |
+
 
 ## Installation
 

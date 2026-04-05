@@ -14,6 +14,7 @@ claude plugin install gh:hoangvantuan/shun-claude-plugin
 
 | Skill | Description |
 | --- | --- |
+| `ai-artist` | Tạo ảnh qua Nano Banana — 129 curated prompts, validation interview, 3 modes (search/creative/wild), styles: Ukiyo-e, cyberpunk, cinematic, vintage patent |
 | `ghost-blog` | Ghost CMS blog management |
 | `outline-writer` | Content analysis & outline creation (presentation/blog/doc) |
 | `slidev-builder` | Slidev presentation builder from outline — theme selection, PDF export |
@@ -36,6 +37,8 @@ claude plugin install gh:hoangvantuan/shun-claude-plugin
 | `van-tu-tu-training` | Xây dựng bộ tài liệu training theo mô hình Văn-Tư-Tu (Tam Tuệ Học) — kiến trúc modular, tỷ lệ 10-20-70, templates đầy đủ cho VĂN/TƯ/TU |
 | `systems-thinking` | Phân tích tư duy hệ thống theo framework Donella Meadows — nhận diện feedback loops, stocks & flows, system traps, leverage points cho bất kỳ chủ đề nào |
 | `skill-auto-improver` | Phân tích và cải tiến skill tự động — quality audit 6 tiêu chí, 10 improvement patterns tổng quát, chống phình to |
+| `problem-solving` | Kỹ thuật giải quyết vấn đề có hệ thống — inversion, collision-zone thinking, scale-game, simplification cascades, meta-pattern recognition |
+| `sequential-thinking` | Phân tích từng bước cho vấn đề phức tạp — revision capability, branching, hypothesis verification, dynamic adjustment |
 | `workshop-builder` | Thiết kế workshop hoàn chỉnh theo Backwards Design + 4Cs + Kirkpatrick — 5 giai đoạn (Vision → Design → Prepare → Deliver → Follow-up) |
 
 ### Agents
