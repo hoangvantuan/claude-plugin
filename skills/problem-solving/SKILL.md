@@ -1,10 +1,7 @@
 ---
-name: ck:problem-solving
+name: problem-solving
 description: Apply systematic problem-solving techniques when stuck. Use for complexity spirals, innovation blocks, recurring patterns, assumption constraints, simplification cascades, scale uncertainty.
 argument-hint: "[problem description]"
-metadata:
-  author: claudekit
-  version: "2.0.0"
 ---
 
 # Problem-Solving Techniques
