@@ -28,6 +28,7 @@ skills/                      # Các skill plugins (chi tiết xem ## Skill Struc
   slidev-builder/            # Slidev presentation builder from outline
   things-manager/            # Things 3 task management via things-cli (Go CLI)
   deep-insight/              # Quan sát đa chiều → Phân tích tách lớp → Đúc kết cốt lõi để hiểu sâu vấn đề
+  game-theory-lens/          # Phân tích chủ đề qua lăng kính Lý thuyết Trò chơi (Game Theory)
   skill-auto-improver/       # Phân tích và cải tiến skill tự động — quality audit + improvement patterns
   systems-thinking/          # Phân tích tư duy hệ thống theo framework Donella Meadows (Thinking in Systems)
   van-tu-tu-training/        # Xây dựng tài liệu training theo mô hình Văn-Tư-Tu (Tam Tuệ Học)
@@ -72,6 +73,7 @@ skills/<skill-name>/
 | `deep-learner`             | `references/` `templates/`                                                                                         | easy-explain-guide, long-content-strategy, note-structure, output-template                                                                |
 | `deep-insight`             | `references/`                                                                                                      | framework-foundation, observation-guide, analysis-patterns, synthesis-methods                                                             |
 | `deep-post-ideas`          | `references/`                                                                                                      | example-phrasing                                                                                                                          |
+| `game-theory-lens`         | `references/` `templates/`                                                                                         | core-concepts, strategic-games, information-signaling, repeated-games-trust, mechanism-design, evolution-cooperation, bargaining-coalitions, paradoxes-fallacies, analysis-output |
 | `facebook`                 | `scripts/`                                                                                                         | fb-post.sh, snap-helpers.py, tag-search.py                                                                                                |
 | `ghost-blog`               | `scripts/`                                                                                                         | Python scripts + tests cho Ghost CMS API                                                                                                  |
 | `outline-writer`           | `references/`                                                                                                      | outline-rules                                                                                                                             |

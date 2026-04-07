@@ -1,11 +1,11 @@
 ---
 name: deep-learner
-description: Dẫn dắt từng bước hiểu sâu bản chất nội dung (bài viết, sách, video) một cách dễ hiểu và áp dụng vào đời sống. Triggers on "learn this", "deep learn", "study this", "tạo tài liệu học", "phân tích nội dung", "hiểu sâu", "deep learner".
+description: Dẫn dắt từng bước hiểu sâu bản chất nội dung (bài viết, sách, video) — từ bề mặt đến nguyên lý gốc, kết nối liên lĩnh vực, và áp dụng vào đời sống. Triggers on "learn this", "deep learn", "study this", "tạo tài liệu học", "phân tích nội dung", "hiểu sâu", "deep learner".
 ---
 
 # Deep Learner
 
-Dẫn dắt user từng bước hiểu sâu bản chất nội dung — từ đơn giản đến phức tạp — rồi đưa vào đời sống thực.
+Dẫn dắt user từng bước hiểu sâu bản chất nội dung — từ bề mặt qua cơ chế, đến nguyên lý gốc, kết nối liên lĩnh vực — rồi đưa vào đời sống thực.
 
 ## Cách tiếp cận
 
@@ -53,42 +53,47 @@ Trình bày 1 lớp mỗi lần, đợi user phản hồi trước khi sang lớ
 
 ---
 
-#### Lớp 2: CƠ CHẾ — "Tại sao nó đúng?"
+#### Lớp 2: CƠ CHẾ & NGUYÊN LÝ — "Tại sao nó đúng? Quy luật gì đang chi phối?"
 
-**Mục tiêu:** User hiểu logic, nhân quả, bằng chứng đằng sau.
+**Mục tiêu:** User hiểu cơ chế hoạt động VÀ nguyên lý gốc đằng sau.
 
-**Trình bày:**
-
-Với mỗi khái niệm cốt lõi, giải thích theo format [note-structure.md](templates/note-structure.md):
+**Phần A — Cơ chế:** Với mỗi khái niệm cốt lõi, giải thích theo format [note-structure.md](templates/note-structure.md):
 
 - **Là gì** — Ẩn dụ + 1-2 câu đơn giản
 - **Tại sao** — Logic + evidence cụ thể
 - **Hoạt động thế nào** — Cơ chế hoặc steps
 - **Ví dụ** — Case study, tình huống thực
 
-Sau đó kết nối các khái niệm: chúng liên quan thế nào? Cái nào nền tảng, cái nào hệ quả?
+Kết nối các khái niệm: chúng liên quan thế nào? Cái nào nền tảng, cái nào hệ quả?
+
+**Phần B — Đào đến nguyên lý gốc:** Áp dụng [depth-framework.md](references/depth-framework.md).
+
+Với mỗi cơ chế vừa giải thích, đào tiếp:
+- **Nguyên lý gốc** — Quy luật nền tảng nào đang chi phối cơ chế này? Diễn đạt bằng 1-2 câu đơn giản.
+- **Ranh giới** — Nguyên lý này đúng khi nào? Sai/không áp dụng khi nào?
+- **Tổng quát hoá** — Nguyên lý này là trường hợp riêng của quy luật lớn hơn nào? (nếu có)
 
 **Kết thúc lớp bằng câu hỏi:**
 
-> "Phần nào bạn thấy thú vị nhất? Có gì bạn không đồng ý hoặc muốn thử thách?"
+> "Phần nào bạn thấy thú vị nhất? Bạn có thấy quy luật này ở đâu khác trong cuộc sống không?"
 
 ---
 
-#### Lớp 3: KẾT NỐI — "Nó liên quan gì với cuộc sống mình?"
+#### Lớp 3: KẾT NỐI — "Nguyên lý này còn đúng ở đâu? Nó mở ra điều gì?"
 
-**Mục tiêu:** User kết nối kiến thức mới với bối cảnh cá nhân.
+**Mục tiêu:** User kết nối nguyên lý sang các lĩnh vực khác và xây mạng lưới kiến thức liên ngành.
 
 **Trình bày:**
 
-1. **Kết nối kiến thức** — Nội dung này bổ sung/mâu thuẫn/mở rộng điều gì user có thể đã biết?
-2. **Kiểm chứng nguồn** — Bằng chứng có vững không? Tác giả có uy tín? Dữ liệu còn cập nhật? Flag thông tin cần fact-check
-3. **Phản biện** — Điểm yếu lập luận? Thiên kiến tác giả? Khi nào KHÔNG đúng?
-4. **Góc nhìn khác** — Quan điểm đối lập đáng xem xét
+1. **Ánh xạ liên lĩnh vực** — Từ nguyên lý gốc ở Lớp 2, ánh xạ sang 2-3 lĩnh vực khác có cùng cấu trúc quan hệ (theo [depth-framework.md](references/depth-framework.md) phần "Ánh xạ cấu trúc"). Giải thích nguyên lý hoạt động thế nào ở mỗi lĩnh vực, không chỉ nêu tên.
+2. **Nghiên cứu bổ sung** — Khi nguyên lý mở ra câu hỏi ngoài nội dung gốc: dùng `WebSearch` tìm nghiên cứu, ứng dụng, hoặc quan điểm bổ sung. Ghi rõ `[Mở rộng]` cho mọi thông tin không từ nguồn gốc.
+3. **Phản biện** — Điểm yếu lập luận? Thiên kiến tác giả? Khi nào nguyên lý KHÔNG đúng? Quan điểm đối lập đáng xem xét?
+4. **Kiểm chứng nguồn** — Bằng chứng có vững không? Tác giả có uy tín? Flag thông tin cần fact-check.
 
 **Kết thúc lớp bằng câu hỏi Socratic:**
 
-> "Bạn thấy điều này giống/khác gì với kinh nghiệm của bạn?"
-> "Nếu áp dụng vào [tình huống cụ thể], bạn nghĩ kết quả sẽ thế nào?"
+> "Bạn thấy quy luật này xuất hiện ở đâu trong công việc/cuộc sống của bạn?"
+> "Nếu nguyên lý này đúng, nó thay đổi cách bạn nhìn nhận [tình huống cụ thể] thế nào?"
 
 ---
 
@@ -129,7 +134,7 @@ Sau khi hoàn thành các lớp (hoặc user dừng ở bất kỳ lớp nào):
 ## Constraints
 
 - Output tiếng Việt, giữ thuật ngữ gốc (technical terms)
-- Không thêm thông tin ngoài nội dung gốc (trừ ẩn dụ và context positioning)
+- Phân biệt rõ thông tin từ nguồn gốc vs mở rộng: ẩn dụ, nguyên lý gốc, kết nối liên lĩnh vực được phép mở rộng ngoài nguồn nhưng phải ghi `[Mở rộng]` và dẫn nguồn khi có. Không bịa số liệu/fact.
 - Mermaid diagram đúng syntax, tối đa 12 nodes
 
 ## Failure Modes cần tránh

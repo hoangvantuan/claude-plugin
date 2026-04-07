@@ -40,6 +40,7 @@ claude plugin install gh:hoangvantuan/shun-claude-plugin
 | `problem-solving` | Kỹ thuật giải quyết vấn đề có hệ thống — inversion, collision-zone thinking, scale-game, simplification cascades, meta-pattern recognition |
 | `sequential-thinking` | Phân tích từng bước cho vấn đề phức tạp — revision capability, branching, hypothesis verification, dynamic adjustment |
 | `workshop-builder` | Thiết kế workshop hoàn chỉnh theo Backwards Design + 4Cs + Kirkpatrick — 5 giai đoạn (Vision → Design → Prepare → Deliver → Follow-up) |
+| `game-theory-lens` | Phân tích sâu bất kỳ chủ đề nào qua lăng kính Lý thuyết Trò chơi — nhận diện players/strategies/payoffs, map sang game archetype, Nash equilibrium, bargaining, mechanism design |
 
 ### Agents
 

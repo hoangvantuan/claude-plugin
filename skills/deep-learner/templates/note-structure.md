@@ -1,6 +1,6 @@
 # Note Structure: Analogy-First Explanation
 
-Format chuẩn cho mỗi khái niệm cốt lõi trong Lớp 2 (Cơ chế).
+Format chuẩn cho mỗi khái niệm cốt lõi trong Lớp 2 (Cơ chế & Nguyên lý).
 
 ## Nguyên tắc
 
@@ -16,6 +16,8 @@ Format chuẩn cho mỗi khái niệm cốt lõi trong Lớp 2 (Cơ chế).
 - **Tại sao:** {logic + evidence — vì sao nó đúng/quan trọng}
 - **Hoạt động thế nào:** {3-5 bước cụ thể hoặc cơ chế}
 - **Ví dụ:** {tình huống thực — càng gần cuộc sống user càng tốt}
+- **Nguyên lý gốc:** {quy luật nền tảng chi phối cơ chế này — 1-2 câu. Đúng khi nào? Sai khi nào?}
+- **Liên hệ liên lĩnh vực:** {2-3 lĩnh vực khác mà nguyên lý này cũng hoạt động — giải thích cách nó biểu hiện, không chỉ nêu tên}
 ```
 
 ## Hướng dẫn viết
@@ -26,6 +28,8 @@ Format chuẩn cho mỗi khái niệm cốt lõi trong Lớp 2 (Cơ chế).
 | **Tại sao** | "Vì..." + dẫn chứng cụ thể | "Nó quan trọng vì nhiều lý do" |
 | **Hoạt động thế nào** | Numbered steps, mỗi step 1 hành động | Paragraph dài mô tả chung chung |
 | **Ví dụ** | Tên người/công ty cụ thể, số liệu | "Ví dụ như trong thực tế..." |
+| **Nguyên lý gốc** | Quy luật nền tảng + ranh giới áp dụng | Chỉ nhắc lại cơ chế, không lên tầng trừu tượng |
+| **Liên hệ liên lĩnh vực** | Giải thích nguyên lý biểu hiện thế nào ở lĩnh vực khác | Chỉ liệt kê tên lĩnh vực không giải thích |
 
 ## Ví dụ mẫu
 
@@ -40,6 +44,8 @@ Format chuẩn cho mỗi khái niệm cốt lõi trong Lớp 2 (Cơ chế).
   4. Không bỏ 2 ngày liên tiếp
   5. Tăng dần sau 30 ngày (5 → 10 trang)
 - **Ví dụ:** Warren Buffett bắt đầu đầu tư từ năm 11 tuổi. 99% tài sản ông có được sau tuổi 50 — không phải vì ông đầu tư giỏi hơn ở tuổi 50, mà vì compound effect cần thời gian.
+- **Nguyên lý gốc:** Tăng trưởng hàm mũ — kết quả tích luỹ theo cấp số nhân khi tỷ lệ tăng trưởng không đổi. Đúng khi hành động nhất quán + thời gian đủ dài. Sai khi bỏ cuộc giữa chừng hoặc tăng trưởng không tái đầu tư.
+- **Liên hệ liên lĩnh vực:** Sinh học (vi khuẩn nhân đôi mỗi 20 phút — 1 con thành 1 triệu trong 7 giờ), Công nghệ (Moore's Law — sức mạnh chip tăng gấp đôi mỗi 2 năm), Mạng xã hội (hiệu ứng mạng — mỗi user mới tăng giá trị cho tất cả user hiện tại theo n²).
 
 ### Feedback Loop (Vòng phản hồi)
 
@@ -52,3 +58,5 @@ Format chuẩn cho mỗi khái niệm cốt lõi trong Lớp 2 (Cơ chế).
   4. Xác định 1 điểm cải thiện
   5. Lặp lại với điều chỉnh
 - **Ví dụ:** Stand-up comedian thử 1 joke mới trước khán giả nhỏ. Nếu không ai cười ở giây thứ 3, họ chỉnh timing hoặc bỏ joke đó — feedback loop rút gọn còn vài giây.
+- **Nguyên lý gốc:** Cybernetics (điều khiển học) — mọi hệ thống tự điều chỉnh đều cần vòng lặp: đo → so sánh với mục tiêu → điều chỉnh. Không có feedback = hệ thống mở, không kiểm soát được output. Sai khi feedback bị delay quá lâu hoặc đo sai metric.
+- **Liên hệ liên lĩnh vực:** Sinh học (thermoregulation — cơ thể đo nhiệt độ và điều chỉnh qua đổ mồ hôi/run rẩy), Kinh tế (thị trường tự do — giá cả là feedback loop giữa cung và cầu), Kỹ thuật (PID controller — robot tự điều chỉnh chuyển động dựa trên sai số).

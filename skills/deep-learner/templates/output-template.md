@@ -20,7 +20,7 @@
 
 ---
 
-## Cơ chế
+## Cơ chế & Nguyên lý
 
 ### {Khái niệm 1}
 
@@ -28,6 +28,8 @@
 - **Tại sao:** {logic + evidence}
 - **Hoạt động thế nào:** {cơ chế hoặc steps}
 - **Ví dụ:** {tình huống cụ thể}
+- **Nguyên lý gốc:** {quy luật nền tảng + ranh giới áp dụng}
+- **Liên hệ liên lĩnh vực:** {2-3 lĩnh vực khác — giải thích nguyên lý biểu hiện thế nào}
 
 ### {Khái niệm 2}
 
@@ -35,18 +37,22 @@
 - **Tại sao:** ...
 - **Hoạt động thế nào:** ...
 - **Ví dụ:** ...
+- **Nguyên lý gốc:** ...
+- **Liên hệ liên lĩnh vực:** ...
 
 **Kết nối giữa các khái niệm:**
 
-{Chúng liên quan nhau thế nào? Cái nào nền tảng, cái nào hệ quả?}
+{Chúng liên quan nhau thế nào? Cái nào nền tảng, cái nào hệ quả? Các nguyên lý gốc có chung tầng trừu tượng nào không?}
 
 ---
 
-## Kết nối
+## Kết nối liên lĩnh vực
 
-**Bổ sung kiến thức:** {Liên hệ với những gì đã biết}
+**Ánh xạ nguyên lý:** {Nguyên lý gốc ở trên hoạt động thế nào ở các lĩnh vực khác — so sánh cấu trúc sâu, không chỉ bề mặt}
 
-**Phản biện:** {Điểm yếu, thiên kiến, giới hạn}
+**Nghiên cứu bổ sung:** {Thông tin mở rộng ngoài nguồn gốc — ghi `[Mở rộng]` và dẫn nguồn}
+
+**Phản biện:** {Điểm yếu, thiên kiến, giới hạn. Khi nào nguyên lý KHÔNG đúng?}
 
 **Góc nhìn khác:** {Quan điểm đối lập đáng xem xét}
 
