@@ -48,6 +48,7 @@ Trình bày 1 lớp mỗi lần, đợi user phản hồi trước khi sang lớ
 3. **Bản đồ ý tưởng** — 3-5 ý chính, mỗi ý 1 câu ngắn
 
 **Kết thúc lớp bằng câu hỏi:**
+
 > "Đến đây bạn thấy rõ chưa? Có gì muốn hỏi thêm? Sẵn sàng đi sâu hơn không?"
 
 ---
@@ -68,6 +69,7 @@ Với mỗi khái niệm cốt lõi, giải thích theo format [note-structure.m
 Sau đó kết nối các khái niệm: chúng liên quan thế nào? Cái nào nền tảng, cái nào hệ quả?
 
 **Kết thúc lớp bằng câu hỏi:**
+
 > "Phần nào bạn thấy thú vị nhất? Có gì bạn không đồng ý hoặc muốn thử thách?"
 
 ---
@@ -84,6 +86,7 @@ Sau đó kết nối các khái niệm: chúng liên quan thế nào? Cái nào 
 4. **Góc nhìn khác** — Quan điểm đối lập đáng xem xét
 
 **Kết thúc lớp bằng câu hỏi Socratic:**
+
 > "Bạn thấy điều này giống/khác gì với kinh nghiệm của bạn?"
 > "Nếu áp dụng vào [tình huống cụ thể], bạn nghĩ kết quả sẽ thế nào?"
 
@@ -102,6 +105,7 @@ Sau đó kết nối các khái niệm: chúng liên quan thế nào? Cái nào 
 5. **Bẫy thường gặp** — Sai lầm phổ biến khi áp dụng + cách tránh
 
 **Kết thúc lớp bằng câu hỏi:**
+
 > "Bạn muốn bắt đầu từ đâu? Có rào cản gì bạn thấy trước?"
 
 ---
