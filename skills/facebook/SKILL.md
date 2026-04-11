@@ -1,9 +1,7 @@
 ---
 name: facebook
-description: >
-  Đăng bài lên Facebook (wall cá nhân hoặc group) và tag bạn bè qua PinchTab browser control.
-  Kích hoạt khi user muốn post Facebook, đăng bài wall/group, tag bạn bè, hoặc tự động hoá Facebook.
-  Không dùng cho Messenger, Instagram, Facebook Ads, hoặc đọc/phân tích nội dung Facebook.
+description: "Đăng bài lên Facebook (wall cá nhân hoặc group) và tag bạn bè qua PinchTab browser control."
+disable-model-invocation: true
 allowed-tools:
   - Bash
   - Read

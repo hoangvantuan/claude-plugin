@@ -1,12 +1,7 @@
 ---
 name: van-tu-tu-training
-description: >
-  Xây dựng bộ tài liệu training theo mô hình Văn-Tư-Tu (Tam Tuệ Học). Sử dụng khi user muốn tạo khoá đào tạo,
-  training materials, learning modules, tài liệu hướng dẫn nội bộ, onboarding, upskill cho cá nhân/team/công ty.
-  Trigger khi user nói: "tạo tài liệu training", "xây dựng khoá học", "thiết kế chương trình đào tạo",
-  "làm training module", "tạo bài tập thực hành", "xây dựng onboarding", hoặc bất kỳ yêu cầu liên quan
-  đến việc tạo nội dung đào tạo có cấu trúc. Ưu tiên skill này khi user đề cập đến "Văn-Tư-Tu",
-  "70% thực hành", "learning by doing", hoặc muốn training thực tế thay vì lý thuyết suông.
+description: "Xây dựng bộ tài liệu training theo mô hình Văn-Tư-Tu (Tam Tuệ Học)."
+disable-model-invocation: true
 ---
 
 # Văn-Tư-Tu Training Builder

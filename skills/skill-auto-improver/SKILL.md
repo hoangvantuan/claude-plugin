@@ -1,11 +1,7 @@
 ---
 name: skill-auto-improver
-description: >
-  Tự động phân tích và cải tiến skill. Kích hoạt khi user muốn cải thiện,
-  tối ưu, refactor, hoặc audit một skill hiện có. Bao gồm cả khi user nói
-  "improve skill", "cải tiến skill", "skill này cần sửa", "optimize prompt",
-  "skill bị phình", "rà soát skill", hoặc bất kỳ yêu cầu nào liên quan đến
-  nâng chất lượng skill/prompt. Không dùng cho việc tạo skill mới (dùng skill-creator).
+description: "Tự động phân tích và cải tiến skill — quality audit, improvement patterns, refactoring."
+disable-model-invocation: true
 ---
 
 # Skill Auto-Improver

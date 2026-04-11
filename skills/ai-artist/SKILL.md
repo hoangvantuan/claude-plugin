@@ -1,6 +1,7 @@
 ---
 name: ai-artist
-description: "Generate images via Nano Banana with 129 curated prompts. Mandatory validation interview refines style/mood/colors (use --skip to bypass). 3 modes: search, creative, wild. Styles: Ukiyo-e, Bento grid, cyberpunk, cinematic, vintage patent."
+description: "Generate images via Nano Banana with 129 curated prompts. 3 modes: search, creative, wild."
+disable-model-invocation: true
 argument-hint: "[concept] [--mode search|creative|wild|all] [--skip]"
 ---
 

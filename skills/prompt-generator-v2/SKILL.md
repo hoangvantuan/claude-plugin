@@ -1,6 +1,7 @@
 ---
 name: prompt-generator-v2
-description: "KERNEL-based prompt engineering skill that transforms vague requests into high-performance, structured prompts. Uses the KERNEL framework (Keep simple, Easy to verify, Reproducible, Narrow scope, Explicit constraints, Logical structure) to generate prompts optimized for first-try success and low token usage. Use when the user wants to create, write, refine, optimize, or improve ANY prompt for AI models — including system prompts, task prompts, coding prompts, writing prompts, or analysis prompts. Triggers on: 'create a prompt', 'write a prompt for', 'improve this prompt', 'optimize my prompt', 'make a better prompt', 'prompt engineer', 'KERNEL prompt', 'refine prompt', or when the user pastes a weak/vague prompt and wants it improved. NOT for executing prompts or multi-turn conversation design — use prompt-generator v1 for simpler, non-KERNEL prompt requests."
+description: "KERNEL-based prompt engineering — transforms vague requests into structured, high-performance prompts optimized for first-try success."
+disable-model-invocation: true
 ---
 
 # Prompt Generator V2 — KERNEL Framework

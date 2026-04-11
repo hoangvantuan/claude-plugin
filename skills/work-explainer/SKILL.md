@@ -1,6 +1,7 @@
 ---
 name: work-explainer
-description: Personal teacher that breaks down completed work into deep learning documents. After any task/project, generates a conversational FOR-file explaining approach, reasoning, tradeoffs, mistakes, and transferable lessons. Use when user says "explain what we did", "giải thích công việc", "work explainer", "dạy tôi", "teach me what happened", "FOR file", or after completing a significant task.
+description: "Personal teacher — breaks down completed work into deep learning documents covering approach, reasoning, tradeoffs, and transferable lessons."
+disable-model-invocation: true
 ---
 
 # Work Explainer

@@ -1,6 +1,6 @@
 ---
 name: outline-writer
-description: "Phân tích nội dung và tạo outline chuyên nghiệp. Sử dụng khi user yêu cầu tạo outline, phân tích content, lập dàn ý cho presentation/blog/document, hoặc gọi /outline-writer. Output: outline.md với YAML frontmatter."
+description: "Phân tích nội dung và tạo outline chuyên nghiệp cho presentation/blog/document. Output: outline.md."
 disable-model-invocation: true
 ---
 

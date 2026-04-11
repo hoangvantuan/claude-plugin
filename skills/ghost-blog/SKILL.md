@@ -1,6 +1,7 @@
 ---
 name: ghost-blog
-description: Manage Ghost blog posts via Admin API. Capabilities include list/filter posts (status, tag, featured, search), CRUD operations (create, read, update, delete, publish), bulk operations (mass publish/unpublish, add/remove tags), and tag management. Use when user mentions ghost blog, manage posts, publish drafts, bulk update, or blog management tasks.
+description: "Manage Ghost blog posts via Admin API — list/filter, CRUD, bulk operations, tag management."
+disable-model-invocation: true
 license: MIT
 allowed-tools:
   - Bash

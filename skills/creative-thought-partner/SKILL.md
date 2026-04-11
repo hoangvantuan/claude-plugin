@@ -1,6 +1,7 @@
 ---
 name: creative-thought-partner
-description: Interactive creative thought partner that discovers hidden brilliance in ideas through pattern spotting, paradox hunting, and naming unnamed concepts. Use when the user wants to brainstorm, explore ideas deeply, develop newsletter content, find unique perspectives, or have a creative thinking session. Triggers on "brainstorm with me", "help me think through...", "explore this idea", "thought partner", "find the insight in...", or "creative session".
+description: "Interactive creative thought partner — discovers hidden brilliance through pattern spotting, paradox hunting, and naming unnamed concepts."
+disable-model-invocation: true
 ---
 
 # Creative Thought Partner

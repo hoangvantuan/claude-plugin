@@ -1,6 +1,7 @@
 ---
 name: deep-learner
-description: Dẫn dắt từng bước hiểu sâu bản chất nội dung (bài viết, sách, video) — từ bề mặt đến nguyên lý gốc, kết nối liên lĩnh vực, và áp dụng vào đời sống. Triggers on "learn this", "deep learn", "study this", "tạo tài liệu học", "phân tích nội dung", "hiểu sâu", "deep learner".
+description: "Dẫn dắt từng bước hiểu sâu bản chất nội dung (bài viết, sách, video) — từ bề mặt đến nguyên lý gốc, kết nối liên lĩnh vực, và áp dụng vào đời sống."
+disable-model-invocation: true
 ---
 
 # Deep Learner

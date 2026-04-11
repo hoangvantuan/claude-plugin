@@ -1,6 +1,7 @@
 ---
 name: pptx-creator
-description: "Create beautiful, professional PowerPoint presentations with Vietnamese font support and modern design. Use this skill any time a .pptx file needs to be created from scratch — slide decks, pitch decks, training materials, business presentations, or any PowerPoint creation task. Triggers on: PPTX, PowerPoint, presentation, slide deck, slides, tao slide, tao bai thuyet trinh, lam PowerPoint. This skill focuses on CREATING new presentations from scratch using PptxGenJS with a built-in design system optimized for Vietnamese content. For editing existing .pptx files, use the standard pptx skill instead."
+description: "Create professional PowerPoint presentations with Vietnamese font support using PptxGenJS. For creating new .pptx from scratch."
+disable-model-invocation: true
 ---
 
 # PPTX Creator

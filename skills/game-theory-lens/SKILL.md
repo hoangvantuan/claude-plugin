@@ -1,15 +1,7 @@
 ---
 name: game-theory-lens
-description: >
-  Phân tích sâu bất kỳ chủ đề nào qua lăng kính Lý thuyết Trò chơi (Game Theory).
-  Sử dụng khi user muốn phân tích chiến lược, tương tác giữa các bên, xung đột-hợp tác,
-  đàm phán, cạnh tranh, hoặc bất kỳ tình huống nào có nhiều bên tham gia với lợi ích
-  khác nhau. Triggers: "phân tích game theory", "lý thuyết trò chơi", "chiến lược",
-  "thế tiến thoái lưỡng nan", "Nash equilibrium", "phân tích tương tác",
-  "ai được ai mất", "game theory lens", "trò chơi chiến lược", "phân tích cạnh tranh",
-  "lợi ích xung đột", "hợp tác hay phản bội", "đàm phán chiến lược".
-  Kể cả khi user không nói rõ "game theory" nhưng mô tả tình huống có nhiều bên đưa ra
-  quyết định ảnh hưởng lẫn nhau — hãy gợi ý dùng skill này.
+description: "Phân tích sâu bất kỳ chủ đề nào qua lăng kính Lý thuyết Trò chơi (Game Theory)."
+disable-model-invocation: true
 ---
 
 # Game Theory Lens — Phân tích qua Lý thuyết Trò chơi

@@ -1,6 +1,7 @@
 ---
 name: pinchtab
-description: Browser automation for AI agents via PinchTab HTTP API and CLI. Use whenever the user wants to control a browser, navigate websites, extract page content, fill forms, click elements, scrape data, automate web workflows, take screenshots, export PDFs, run JavaScript on pages, manage cookies, or do anything involving web browsing. Also trigger when user mentions "pinchtab", "browser automation", "open website", "scrape page", "fill form", "click button", "get page text", "web automation", "headless browser", "web scraping", "page screenshot", "download file from web", or any task requiring interaction with web pages.
+description: "Browser automation for AI agents via PinchTab HTTP API and CLI — navigate, extract, fill forms, click, scrape, screenshot, export PDF."
+disable-model-invocation: true
 allowed-tools:
   - Bash
   - Read

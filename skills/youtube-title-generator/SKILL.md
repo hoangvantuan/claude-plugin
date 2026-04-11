@@ -1,6 +1,7 @@
 ---
 name: youtube-title-generator
-description: Transform content ideas, newsletters, or reference materials into compelling, click-worthy YouTube video titles using proven psychological triggers and structural formulas. Use when the user wants YouTube title ideas, video title suggestions, or needs to brainstorm titles for content. Triggers on "YouTube title", "video title ideas", "title for my video", "generate titles for...", or "clickable title".
+description: "Transform content ideas into compelling YouTube video titles using proven psychological triggers and structural formulas."
+disable-model-invocation: true
 ---
 
 # YouTube Title Generator

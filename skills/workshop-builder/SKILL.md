@@ -1,11 +1,7 @@
 ---
 name: workshop-builder
-description: >
-  Thiết kế và xây dựng bộ khung workshop hoàn chỉnh theo phương pháp Backwards Design + 4Cs.
-  Sử dụng skill này khi người dùng muốn: thiết kế workshop, lên agenda đào tạo, tổ chức buổi
-  training, tạo kế hoạch facilitation, chọn framework workshop, hoặc bất kỳ yêu cầu nào liên
-  quan đến việc thiết kế trải nghiệm học tập nhóm — kể cả khi họ chỉ nói "tổ chức buổi chia sẻ",
-  "lên kế hoạch team building có nội dung", hay "dạy kỹ năng X cho team".
+description: "Thiết kế và xây dựng bộ khung workshop hoàn chỉnh theo phương pháp Backwards Design + 4Cs."
+disable-model-invocation: true
 ---
 
 # Workshop Builder

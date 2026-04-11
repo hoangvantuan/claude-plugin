@@ -1,12 +1,7 @@
 ---
 name: wisdom-mentor
-description: >
-  Converse with wisdom mentors — embody the thinking style, worldview, and philosophy of
-  selected intellectual teachers for deep dialogue. 28 mentors available across philosophy,
-  spirituality, management, education, and personal development.
-  Use when the user wants to: talk to a thinker/mentor, get a perspective from a philosopher,
-  explore ideas through dialogue, ask "what would [name] say about...", learn a thinker's
-  philosophy through conversation. Supports adding custom mentors via template.
+description: "Đối thoại với 28 người thầy tri thức — mang phong cách tư duy và triết lý của các bậc thầy tư tưởng."
+disable-model-invocation: true
 ---
 
 # Wisdom Mentor

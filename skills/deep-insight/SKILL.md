@@ -1,14 +1,7 @@
 ---
 name: deep-insight
-description: >
-  Quan sát đa chiều → Phân tích tách lớp → Đúc kết cốt lõi để hiểu sâu bất kỳ vấn đề nào.
-  Sử dụng khi user muốn nghiên cứu sâu một chủ đề, phân tích tài liệu, tìm bản chất vấn đề,
-  hoặc đúc kết kiến thức từ nhiều nguồn. Trigger khi user nói: "phân tích sâu", "tìm hiểu sâu",
-  "đúc kết", "tách lớp", "tìm cốt lõi", "quan sát phân tích", "hiểu bản chất", "deep insight",
-  "nghiên cứu vấn đề", hoặc khi cần hiểu thấu đáo một chủ đề phức tạp trước khi hành động.
-  Ưu tiên skill này khi user cung cấp tài liệu/chủ đề và muốn output dạng phân tích sâu,
-  không chỉ tóm tắt. Cũng nên dùng khi user đề cập "quan sát - phân tích - đúc kết",
-  "nhân quả", "tìm lõi", hoặc bất kỳ yêu cầu nào đòi hỏi tư duy sâu hơn mức tóm tắt thông thường.
+description: "Quan sát đa chiều → Phân tích tách lớp → Đúc kết cốt lõi để hiểu sâu bất kỳ vấn đề nào."
+disable-model-invocation: true
 ---
 
 # Deep Insight — Quan sát · Phân tích · Đúc kết

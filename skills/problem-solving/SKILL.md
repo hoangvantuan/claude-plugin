@@ -1,6 +1,7 @@
 ---
 name: problem-solving
-description: Apply systematic problem-solving techniques when stuck. Use for complexity spirals, innovation blocks, recurring patterns, assumption constraints, simplification cascades, scale uncertainty.
+description: "Systematic problem-solving techniques — inversion, collision-zone, scale-game, simplification cascades."
+disable-model-invocation: true
 argument-hint: "[problem description]"
 ---
 

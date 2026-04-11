@@ -1,6 +1,7 @@
 ---
 name: content-planner
-description: Plan and write full content from any input (topic, notes, URL, documents). Blog-first workflow - always writes 100% blog articles covering all content first, then derives 1 social post per blog (1:1 mapping). Advanced writing style (3-archetype system, anti-AI writing, self-critique). Auto-researches via web search. Use when user wants to "plan content", "write blog post", "create Facebook posts", "content calendar", "lên kế hoạch viết bài", "viết bài cho Facebook/blog", "lập content plan", or needs to produce both blog and social content from source material.
+description: "Plan and write full content from any input. Blog-first workflow — writes blog articles first, then derives social posts (1:1 mapping). Advanced writing style with auto web research."
+disable-model-invocation: true
 ---
 
 # Content Planner

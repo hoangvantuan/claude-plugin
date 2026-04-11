@@ -1,6 +1,7 @@
 ---
 name: sequential-thinking
-description: Apply step-by-step analysis for complex problems with revision capability. Use for multi-step reasoning, hypothesis verification, adaptive planning, problem decomposition, course correction.
+description: "Step-by-step analysis for complex problems — multi-step reasoning, hypothesis verification, adaptive planning with revision."
+disable-model-invocation: true
 license: MIT
 argument-hint: "[problem to analyze step-by-step]"
 ---
