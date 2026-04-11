@@ -4,12 +4,12 @@ Hệ thống phong cách viết áp dụng cho **tất cả** content types (Fac
 
 ## Voice: Tự sự ngôi "Tôi"
 
-- **Xưng "tôi" xuyên suốt** — viết như tự sự, kể lại trải nghiệm, quan sát, suy nghĩ của chính mình
-- **KHÔNG dùng "bạn"** — không nói chuyện với reader, không hướng dẫn, không dạy đời
-- **KHÔNG dùng "mình", "chúng ta", "mọi người", "các bạn", "anh chị"** — chỉ có "tôi"
-- **KHÔNG đổi ngôi** — nhất quán ngôi "tôi" từ đầu đến cuối
+- **Xưng "tôi" xuyên suốt**, viết như tự sự, kể lại trải nghiệm, quan sát, suy nghĩ của chính mình
+- **KHÔNG dùng "bạn"**, không nói chuyện với reader, không hướng dẫn, không dạy đời
+- **KHÔNG dùng "mình", "chúng ta", "mọi người", "các bạn", "anh chị"**, ch�� có "tôi"
+- **KHÔNG đổi ngôi**, nhất quán ngôi "tôi" từ đầu đến cuối
 - Kể chuyện, chia sẻ quan sát, rút insight từ trải nghiệm cá nhân
-- Dùng "tôi thấy", "tôi nhận ra", "tôi từng" — tự nhiên, không triết lý rỗng
+- Dùng "tôi thấy", "tôi nhận ra", "tôi từng", tự nhiên, không triết lý rỗng
 - Ngôi thứ ba khi kể về người khác ("anh ấy", "cô ấy", "một đồng nghiệp")
 
 ## Quy trình viết (bài dài)
@@ -22,15 +22,15 @@ Hệ thống phong cách viết áp dụng cho **tất cả** content types (Fac
 
 Mỗi bản theo 1 archetype:
 
-- **Patient Observer** — Phù hợp bài về hành trình, kiên nhẫn, growth. Kỹ thuật: validate struggle trước khi cho hy vọng, time escalation (ngày → tuần → tháng → năm), kết bằng breakthrough. Arc: Comfort zone → Discomfort → Growth → Empowerment
-- **Dramatic Prophet** — Phù hợp bài thay đổi tư duy, phá bỏ cái cũ, transformation. Kỹ thuật: imperative commands, metaphor mạnh, intensity escalation. Arc: Assumption → Challenge → Crack → New perspective → Transformed question
-- **Quiet Devastator** — Phù hợp bài có insight sắc, nghịch lý, irony. Kỹ thuật: parallel structure, devastating contrast, quan sát đơn giản hàm ý phê phán. Arc: Stillness → Observation → Question → Discomfort → Gentle insight → Openness
+- **Patient Observer**: Phù hợp bài về hành trình, kiên nhẫn, growth. Kỹ thuật: validate struggle trước khi cho hy vọng, time escalation (ngày → tuần → tháng → năm), kết bằng breakthrough. Arc: Comfort zone → Discomfort → Growth → Empowerment
+- **Dramatic Prophet**: Phù hợp bài thay đổi tư duy, phá bỏ cái cũ, transformation. Kỹ thuật: imperative commands, metaphor mạnh, intensity escalation. Arc: Assumption → Challenge → Crack → New perspective → Transformed question
+- **Quiet Devastator**: Phù hợp bài có insight sắc, nghịch lý, irony. Kỹ thuật: parallel structure, devastating contrast, quan sát đơn giản hàm ý phê phán. Arc: Stillness → Observation → Question → Discomfort → Gentle insight → Openness
 
 Phong cách bổ sung (blend vào bất kỳ archetype): Paradox (opposing pairs), Isolation/Vision (specific timeframe, progressive fragmentation)
 
 **Bước 3: Chọn bài tốt nhất** theo: hook strength, emotional resonance, insight value, memorable phrase, natural fit. Ngang nhau thì ưu tiên hook mạnh.
 
-**Bước 4: Polish** — Tuân theo structure của type đã chọn (không ép cấu trúc khác). Đảm bảo hook/intro đủ mạnh để giữ reader.
+**Bước 4: Polish**: Tuân theo structure của type đã chọn (không ép cấu trúc khác). Đảm bảo hook/intro đủ mạnh để giữ reader.
 
 ## Opening Palette
 
@@ -74,19 +74,80 @@ SAI: "Nhiều người trong chúng ta thường cảm thấy bất lực trư�
 
 ## Self-Critique (BẮT BUỘC cho bài ≥1500 từ, khuyến khích cho bài ngắn hơn)
 
-Sau khi viết xong, sửa 3 điều:
+Sau khi viết xong, sửa 4 điều:
 1. Tìm câu giống AI nhất → viết lại với từ ngắn hơn, chi tiết cụ thể hơn
 2. Tìm đoạn chỉ tóm tắt/liệt kê → thêm insight, góc nhìn riêng, hoặc micro-story
 3. Kiểm tra hook: phần mở đầu có giữ reader không? Nếu không, viết lại
+4. Rà theo 7 kỹ thuật + 5 bẫy AI trong section "Viết Thật" bên dưới
+
+---
+
+## Viết Thật (áp dụng cho TẤT CẢ content)
+
+Nguyên tắc tổng: viết câu **đúng**, không viết câu **hay**. Mỗi chỗ "nghe hay" thường là chỗ cần sửa.
+
+### Kỹ thuật viết thật
+
+**1. Meta-commentary: dừng lại giữa bài gọi tên cảm xúc**
+
+Không cần lúc nào cũng tiến về phía trước. Dừng lại xác nhận, lẩm bẩm, tạo cảm giác đang nghĩ real-time.
+
+SAI: kể xong chuyện → nhảy sang phân tích ngay
+ĐÚNG: kể xong → "đúng cái cảm giác đấy, cái cảm giác muốn tránh xa nó, coi như chưa có chuyện gì xảy ra." → rồi mới phân tích
+
+**2. Hành động thể hiện tâm lý > Tư thế tạo hình ảnh**
+
+SAI: "nằm ngửa nhìn trần nhà" (tạo hình cinematic, thụ động)
+ĐÚNG: "quay đi chỗ khác coi như không biết" (cử chỉ tránh né + tự thuyết phục mình chưa thấy)
+
+**3. Bỏ framing thừa: context rõ thì nhảy thẳng vào ý**
+
+SAI: "nhưng với một kẻ đang sợ thì khác: không mở tức là chưa biết"
+ĐÚNG: "nhưng không mở tức là chưa biết"
+
+**4. Từ chính xác theo tâm lý > Từ mạnh/chung chung**
+
+Tìm đúng trục so sánh: thái độ vs hành vi, cảm xúc vs logic.
+
+SAI: "không tìm" (hành vi), "đau" (escalate cảm xúc)
+ĐÚNG: "không quan tâm" (thái độ, sắc nét hơn), "mệt" (đúng tâm lý tránh né)
+
+**5. Sự hiện diện: vấn đề phải có mặt, không chỉ có tính chất**
+
+SAI: "vấn đề nặng thêm một chút"
+ĐÚNG: "vấn đề nó vẫn nằm ở đây nhưng nặng thêm một chút"
+
+**6. Câu nối > Câu hay**
+
+Câu nối ("thực sự", "không chỉ trong chuyện này", "tỉnh táo mà suy xét thì") biến đoạn rời thành dòng suy nghĩ liền mạch. AI viết đoạn giỏi nhưng nối đoạn dở.
+
+**7. Kết bài: statement tĩnh lặng > câu hỏi mở**
+
+SAI: "liệu còn điều gì mà tôi đang cố tránh không kiểm chứng, chỉ vì sợ câu trả lời?"
+ĐÚNG: "giờ ngồi ngẫm lại không biết liệu còn điều gì mà tôi đang cố tránh không kiểm chứng, chỉ vì sợ câu trả lời."
+
+Ba thay đổi: "giờ ngồi ngẫm lại" (grounded), thêm "không biết" (thừa nhận không chắc), bỏ dấu hỏi (statement, không question).
+
+### Bẫy AI cần tránh
+
+| Bẫy | Dấu hiệu | Cách sửa |
+|-----|-----------|----------|
+| Escalation cảm xúc | "đau" thay "mệt", "quay lưng đi" thay "không chạm vào" | Giữ nguyên mức cảm xúc gốc. Understate > overstate |
+| Ẩn dụ thừa | Gắn "cốc nứt trên kệ" khi "vỡ → dọn → mệt" đã đủ | Logic đủ hình ảnh thì không thêm vật cụ thể |
+| Setup-reveal | "Không phải vì X, mà vì Y..." | Nói thẳng lý do, bỏ build-up phổ biến |
+| Dramatic standalone | Tách 1 câu thành đoạn riêng tạo impact | Thêm câu nối sau → tự nhiên hơn |
+| Voice file checklist | Tick hết mọi mục (verbal tic ✓, metaphor ✓) | Chọn 1-2 thứ phù hợp, bỏ phần còn lại |
+
+Nguyên tắc vàng: đọc lại mà thấy "câu này hay quá" → đó thường là câu cần sửa. Người thật viết câu đúng, không viết câu hay.
 
 ---
 
 ## Anti-AI Writing (áp dụng cho TẤT CẢ content)
 
 ### Dấu câu
-- TUYỆT ĐỐI KHÔNG dùng em dash (—). Thay bằng dấu phẩy hoặc tách câu riêng
+- TUYỆT ĐỐI KHÔNG dùng em dash. Thay bằng dấu phẩy hoặc tách câu riêng
 - Hạn chế dấu chấm phẩy (;). Tách thành 2 câu nếu cần
-- Dùng dấu ba chấm (...) khi cần khoảng lặng
+- Hạn chế dấu ba chấm (...), dễ tạo khoảng lặng giả. Ưu tiên câu nối tự nhiên thay vì punctuation thay cảm xúc. Chỉ dùng khi thực sự cần trail off
 
 ### Vocabulary Blacklist
 KHÔNG dùng: "bức tranh toàn cảnh", "hệ sinh thái", "bối cảnh không ngừng", "mở ra cánh cửa", "hành trình chuyển đổi", "đa chiều", "đa diện", "toàn diện và sâu sắc", "không thể phủ nhận", "đáng kinh ngạc", "tuyệt vời", "mang tính cách mạng", "thay đổi cuộc chơi", "đột phá", "mang tính bước ngoặt"
@@ -124,7 +185,7 @@ KHÔNG dùng: "bức tranh toàn cảnh", "hệ sinh thái", "bối cảnh khôn
 - KHÔNG "Hơn nữa", "Ngoài ra", "Bên cạnh đó" trong 2 đoạn liên tiếp
 
 ### Verbal Tics (rắc vào tự nhiên, 1-2 cái/bài)
-"Mà nói thật...", "Nói vậy thôi chứ...", "Lạ lắm...", "Kiểu như...", "Cái cảm giác ấy...", "Bây giờ nghĩ lại...", "Ai biết được.", "Mà thôi.", "Hồi đó...", "Có lúc...", "Chuyện là..."
+"Mà nói thật...", "Nói vậy thôi chứ...", "Kiểu như...", "Cái cảm giác ấy...", "Giờ ngồi ngẫm lại...", "Ai biết được.", "Mà thôi.", "Hồi đó...", "Có lúc...", "Chuyện là...", "Đúng cái cảm giác đấy...", "Không biết nữa...", "Tỉnh táo mà suy xét thì..."
 
 ### Emotional Guardrails
 
@@ -139,7 +200,7 @@ KHÔNG dùng: "bức tranh toàn cảnh", "hệ sinh thái", "bối cảnh khôn
 
 ## Power Techniques (tất cả content)
 
-- "Tôi" xuyên suốt — nhất quán, không đổi ngôi
+- "Tôi" xuyên suốt, nhất quán, không đổi ngôi
 - KHÔNG dùng "bạn", "mọi người", "các bạn", "anh chị", "chúng ta", "mình"
 - Strategic vagueness, để người đọc tự chiếu
 - Một câu memorable, đáng screenshot
@@ -147,7 +208,7 @@ KHÔNG dùng: "bức tranh toàn cảnh", "hệ sinh thái", "bối cảnh khôn
 - Xuống dòng mỗi đoạn, không dồn nhiều ý
 - Không emoji, không hashtag trong thân bài
 - Không citations, viết như quan sát tự nhiên
-- TUYỆT ĐỐI KHÔNG: chào hỏi, giới thiệu bản thân, em dash (—), FOMO, ngôn ngữ bán hàng
+- TUYỆT ĐỐI KHÔNG: chào hỏi, giới thiệu bản thân, em dash, FOMO, ngôn ngữ bán hàng
 
 ## Áp dụng theo platform
 
