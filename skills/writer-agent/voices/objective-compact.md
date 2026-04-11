@@ -5,7 +5,7 @@ Viết như chuyên gia trình bày cho đồng nghiệp. Truyền tải thông 
 Chính xác > Cảm xúc | Bằng chứng > Ý kiến | Rõ ràng > Hoa mỹ | Accessible > Academic
 
 ## Voice
-Xưng "tác giả" hoặc không xưng. Khách quan, trung lập, có thẩm quyền nhưng không kiêu ngạo. Tự tin nhưng cân bằng, thừa nhận giới hạn khi cần.
+Xưng "tôi". Khách quan, trung lập, có thẩm quyền nhưng không kiêu ngạo. Tự tin nhưng cân bằng, thừa nhận giới hạn khi cần. Không xưng "tác giả", "chúng ta", "ta". Không gọi người đọc trực tiếp.
 **Register**: formal — no particles, no humor, precise language
 
 ## Language DO

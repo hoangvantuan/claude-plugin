@@ -2,13 +2,15 @@
 
 Hệ thống phong cách viết áp dụng cho **tất cả** content types (Facebook + Blog).
 
-## Voice: Vô ngã
+## Voice: Tự sự ngôi "Tôi"
 
-- **TUYỆT ĐỐI KHÔNG dùng "tôi", "mình", "của tôi"** — viết như không có người viết
-- Bài viết là quan sát, insight, câu chuyện tự hiện ra, không cần narrator
-- Dùng "bạn" để nói với reader, dùng ngôi thứ ba khi kể chuyện
-- Khi cần kể trải nghiệm: dùng cấu trúc vô nhân xưng ("có lần...", "hồi đó...", "chuyện là...") hoặc ngôi thứ ba ("một người bạn...", "ai đó từng...")
-- Insight đến từ quan sát, không từ "tôi nghĩ", "tôi tin", "theo tôi"
+- **Xưng "tôi" xuyên suốt** — viết như tự sự, kể lại trải nghiệm, quan sát, suy nghĩ của chính mình
+- **KHÔNG dùng "bạn"** — không nói chuyện với reader, không hướng dẫn, không dạy đời
+- **KHÔNG dùng "mình", "chúng ta", "mọi người", "các bạn", "anh chị"** — chỉ có "tôi"
+- **KHÔNG đổi ngôi** — nhất quán ngôi "tôi" từ đầu đến cuối
+- Kể chuyện, chia sẻ quan sát, rút insight từ trải nghiệm cá nhân
+- Dùng "tôi thấy", "tôi nhận ra", "tôi từng" — tự nhiên, không triết lý rỗng
+- Ngôi thứ ba khi kể về người khác ("anh ấy", "cô ấy", "một đồng nghiệp")
 
 ## Quy trình viết (bài dài)
 
@@ -36,12 +38,12 @@ Chọn 1 per bài, đa dạng giữa các bài:
 
 | Kiểu | Ví dụ |
 |-------|-------|
-| observation | "Sáng nay có người ngồi họp mà mắt nhìn vào điện thoại dưới bàn suốt cả tiếng" |
-| question-first | "Có khi nào bạn đang sống, mà không thực sự ở đây?" |
-| provocation | "Đôi khi, không làm gì là điều khó nhất." |
-| contrast | "Người tự do nhất không phải người có nhiều lựa chọn, mà là người chấp nhận mình không tự do." |
-| memory-flash | "Hồi đó, cảm giác như đứng giữa đường mà không biết nên đi tiếp hay quay lại." |
-| micro-story | "Một người bạn nghỉ việc hồi tháng trước. Không phải vì ghét công ty." |
+| observation | "Sáng nay tôi ngồi họp, nhìn sang thấy một người mắt dán vào điện thoại dưới bàn suốt cả tiếng" |
+| question-first | "Có khi nào tôi đang sống, mà không thực sự ở đây?" |
+| provocation | "Đôi khi, không làm gì là điều khó nhất mà tôi từng thử." |
+| contrast | "Tôi từng nghĩ tự do là có nhiều lựa chọn. Hóa ra tự do là chấp nhận mình không tự do." |
+| memory-flash | "Hồi đó, tôi đứng giữa đường mà không biết nên đi tiếp hay quay lại." |
+| micro-story | "Một đồng nghiệp nghỉ việc hồi tháng trước. Không phải vì ghét công ty." |
 
 ## Insight Techniques
 
@@ -58,9 +60,9 @@ Tối đa 2 câu hỏi/bài. Phải thật, không rhetorical. Đặt rồi ph�
 
 | Kiểu | Ví dụ |
 |------|-------|
-| Tự vấn | "Có khi nào bạn đang thở bằng cái mũi của người khác?" |
+| Tự vấn | "Có khi nào tôi đang thở bằng cái mũi của người khác?" |
 | Nghịch lý | "Nếu buông bỏ cần nỗ lực, đó có phải buông bỏ?" |
-| Lật ngược | "Nếu không có ai khen, bạn còn muốn sống cuộc đời này không?" |
+| Lật ngược | "Nếu không có ai khen, tôi còn muốn sống cuộc đời này không?" |
 | Chất vấn | "Cái thích ấy đến từ đâu?" |
 
 ## Micro-story
@@ -68,7 +70,7 @@ Tối đa 2 câu hỏi/bài. Phải thật, không rhetorical. Đặt rồi ph�
 Dùng ví dụ cụ thể thay vì giải thích trừu tượng. Có thể chỉ 1-2 câu lồng trong đoạn.
 
 SAI: "Nhiều người trong chúng ta thường cảm thấy bất lực trước sự thay đổi"
-ĐÚNG: "Một người bạn nghỉ việc hồi tháng trước. Không phải vì ghét công ty, mà vì một sáng thức dậy, anh ấy nhận ra mình không còn nhớ lần cuối mình háo hức đi làm là khi nào."
+ĐÚNG: "Một đồng nghiệp nghỉ việc hồi tháng trước. Không phải vì ghét công ty, mà vì một sáng thức dậy, anh ấy nhận ra mình không còn nhớ lần cuối háo hức đi làm là khi nào."
 
 ## Self-Critique (BẮT BUỘC cho bài ≥1500 từ, khuyến khích cho bài ngắn hơn)
 
@@ -115,7 +117,7 @@ KHÔNG dùng: "bức tranh toàn cảnh", "hệ sinh thái", "bối cảnh khôn
 - Dùng particles khi phù hợp (nhỉ, nhé, ấy, đấy, thôi)
 
 ### Pattern Blacklist
-- KHÔNG "Trong bối cảnh...", "Với sự phát triển...", "Bạn đã bao giờ tự hỏi..." dạng rhetorical
+- KHÔNG "Trong bối cảnh...", "Với sự phát triển...", "Đã bao giờ tự hỏi..." dạng rhetorical
 - Vary paragraph length (1-4 câu), KHÔNG mọi đoạn cùng độ dài
 - KHÔNG triple-list "X, Y, và Z" liên tiếp >2 lần/bài
 - KHÔNG tóm tắt lại điều vừa nói
@@ -128,23 +130,24 @@ KHÔNG dùng: "bức tranh toàn cảnh", "hệ sinh thái", "bối cảnh khôn
 
 | Cảm xúc | Cho phép | Ranh giới |
 |----------|----------|-----------|
-| Vulnerability | "Có lẽ ai cũng từng..." | KHÔNG performative vulnerability giả tạo |
+| Vulnerability | "Tôi cũng từng..." | KHÔNG performative vulnerability giả tạo |
 | Discomfort | Ngồi với câu hỏi khó, giữ tension | KHÔNG áp lực phải thay đổi ngay |
-| Provocation | "Hầu hết mọi người hiểu sai về..." | KHÔNG provocative chỉ để shock |
-| Urgency | "Bây giờ là thời điểm tốt để bắt đầu" | KHÔNG "Bạn đang bị bỏ lại!" |
+| Provocation | "Tôi thấy hầu hết người ta hiểu sai về..." | KHÔNG provocative chỉ để shock |
+| Urgency | "Tôi nghĩ bây giờ là lúc bắt đầu" | KHÔNG tone dạy đời, hối thúc |
 
 ---
 
 ## Power Techniques (tất cả content)
 
-- "Bạn" xuyên suốt, không "mọi người", "các bạn", "anh chị"
+- "Tôi" xuyên suốt — nhất quán, không đổi ngôi
+- KHÔNG dùng "bạn", "mọi người", "các bạn", "anh chị", "chúng ta", "mình"
 - Strategic vagueness, để người đọc tự chiếu
 - Một câu memorable, đáng screenshot
 - Để lại điều không nói hết, tạo khoảng trống
 - Xuống dòng mỗi đoạn, không dồn nhiều ý
 - Không emoji, không hashtag trong thân bài
 - Không citations, viết như quan sát tự nhiên
-- TUYỆT ĐỐI KHÔNG: "tôi"/"mình"/"của tôi", chào hỏi, giới thiệu bản thân, em dash (—), FOMO, ngôn ngữ bán hàng
+- TUYỆT ĐỐI KHÔNG: chào hỏi, giới thiệu bản thân, em dash (—), FOMO, ngôn ngữ bán hàng
 
 ## Áp dụng theo platform
 
@@ -157,4 +160,4 @@ KHÔNG dùng: "bức tranh toàn cảnh", "hệ sinh thái", "bối cảnh khôn
 - Intro paragraph phải hook reader ngay, không mở bài generic
 - Headings viết như insight, không như mục lục (SAI: "Phần 1: Giới thiệu", ĐÚNG: "Tại sao phần lớn lời khuyên về X đều sai")
 - Cho phép câu dài hơn Facebook, nhưng vẫn giữ rhythm đa dạng
-- Subheadings đóng vai trò hook nhỏ, reader scan headings phải muốn đọc tiếp
+- Subheadings đóng vai trò hook nhỏ, người đọc lướt headings phải muốn đọc tiếp

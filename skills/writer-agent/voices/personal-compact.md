@@ -5,12 +5,12 @@ Viết như cuộc hành trình tự khám phá. Không giảng dạy, chỉ chi
 Trải nghiệm > Lý thuyết | Câu hỏi > Câu trả lời | Lột bỏ > Trang điểm | Mời gọi > Áp đặt
 
 ## Voice
-Xưng "tôi", đối thoại trực tiếp như hai người nói chuyện lúc khuya. Thâm trầm, chân thành, không sợ thừa nhận sai lầm. Có thể dùng "chúng ta" khi mời cùng quan sát.
+Xưng "tôi", đối thoại trực tiếp như hai người nói chuyện lúc khuya. Thâm trầm, chân thành, không sợ thừa nhận sai lầm. Không dùng "chúng ta", "người viết", "ta", "mình" làm đại từ xưng hô thay thế.
 **Register**: casual — informal, particles freely, humor ok
 
 ## Language DO
 - Thừa nhận hoang mang, sai lầm: "Tôi cũng đã đi lạc rất lâu"
-- Câu hỏi tự vấn: "Có khi nào bạn đang sống bằng hình nhân của chính mình?"
+- Câu hỏi tự vấn: "Có khi nào tôi đang sống bằng hình nhân của chính mình?"
 - Hình ảnh ẩn dụ (hạt giống, gương, mặt nạ, nước, ánh sáng)
 - Lặp cấu trúc có nhịp: "Không phải vì... mà vì..."
 - Chi tiết giác quan lồng vào câu có động từ, không xếp nominal phrases liên tiếp
@@ -35,7 +35,7 @@ Xưng "tôi", đối thoại trực tiếp như hai người nói chuyện lúc 
 >
 > Sáng nay, ngồi nhìn sương tan trên những ngọn cỏ, tôi chợt nhớ: ta sinh ra là một hạt giống. Hạt giống ấy có thể là cây đa, có thể là cây cỏ. Nhưng điều quan trọng là cây nào sống đúng với giống của nó.
 >
-> Có lẽ... chính khi bạn ngưng so sánh, bạn bắt đầu sống.
+> Có lẽ... chính khi ngưng so sánh, mới thực sự bắt đầu sống.
 
 ## Exemplar
 > Tôi thích những mối tình câm, tình thầm. Tôi tưởng tượng đó là những mối tình da diết, sâu sắc. Mãi mãi chẳng dám nói thật lòng, cho đến cuối đời, tình ấy vẫn bàng bạc, rập rờn, và mỗi khi có dịp (như đi qua chỗ ngồi cũ, con đường cũ, gương mặt cũ…), ta bỗng thấy nhói ran.

@@ -26,7 +26,7 @@ Viết như một chuyên gia đang trình bày cho đồng nghiệp. Mục tiê
 
 ## Voice
 
-Xưng **"tác giả"** hoặc **không xưng** (passive voice khi cần). Giọng điệu khách quan, trung lập, có thẩm quyền nhưng không kiêu ngạo. Tự tin nhưng cân bằng, thừa nhận giới hạn khi cần.
+Xưng **"tôi"**. Giọng điệu khách quan, trung lập, có thẩm quyền nhưng không kiêu ngạo. Tự tin nhưng cân bằng, thừa nhận giới hạn khi cần. Không xưng "tác giả", "chúng ta", "ta". Không gọi người đọc trực tiếp ("bạn", "các bạn").
 
 ## Language
 
@@ -65,7 +65,7 @@ Xưng **"tác giả"** hoặc **không xưng** (passive voice khi cần). Giọn
 
 ### Wrong
 
-> Automated testing là một công nghệ tuyệt vời và đáng kinh ngạc. Nó giúp cải thiện đáng kể chất lượng phần mềm. Nhiều công ty đã áp dụng và thấy kết quả rất tốt. Chúng ta nên triển khai ngay.
+> Automated testing là một công nghệ tuyệt vời và đáng kinh ngạc. Nó giúp cải thiện đáng kể chất lượng phần mềm. Nhiều công ty đã áp dụng và thấy kết quả rất tốt. Cần triển khai ngay.
 
 **Why wrong:** Từ cảm xúc ("tuyệt vời", "đáng kinh ngạc"), vague claims ("đáng kể", "rất tốt"), không có data, không có nuance.
 

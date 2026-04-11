@@ -29,7 +29,7 @@ Cấu trúc đối thoại giữa hai người: người hỏi (từ trải nghi
 
 - `scene-setting`: Khoảnh khắc trước cuộc đối thoại — "Hiên nhà thầy phủ sương. Tách trà còn bốc khói."
 - `in-medias-res`: Nhảy vào giữa đối thoại — "**C:** Thầy ơi, con không hiểu tại sao mình cứ lặp sai lầm cũ."
-- `question-first`: Câu hỏi mở — "Có bao giờ bạn hỏi một câu, và câu trả lời là im lặng?"
+- `question-first`: Câu hỏi mở — "Có bao giờ hỏi một câu, và câu trả lời là im lặng?"
 - `memory-flash`: Hồi ức về Thầy — "Tôi nhớ thầy hay xoay tách trà. Xoay chậm, như đang nghĩ. Rồi hỏi ngược."
 - `contrast`: Nghịch lý — "Con đến để hỏi. Nhưng thầy lại là người đặt nhiều câu hỏi hơn."
 

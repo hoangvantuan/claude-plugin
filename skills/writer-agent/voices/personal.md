@@ -29,14 +29,14 @@ Viết như cuộc hành trình tự khám phá. Không giảng dạy, chỉ chi
 
 Xưng **"tôi"**, đối thoại trực tiếp như hai người nói chuyện lúc khuya. Thâm trầm, chân thành, không sợ thừa nhận sai lầm. Tác giả cũng đang đi tìm, đang học, đang bị lột.
 
-Có thể dùng **"chúng ta"** khi mời người đọc cùng quan sát, và **"người viết"** khi cần khoảng cách chiêm nghiệm.
+Không dùng "chúng ta", "người viết", "ta", "mình" làm đại từ xưng hô thay thế.
 
 ## Language
 
 ### DO
 
 - Thừa nhận hoang mang, sai lầm: "Tôi cũng đã đi lạc rất lâu"
-- Câu hỏi tự vấn: "Có khi nào bạn đang sống bằng hình nhân của chính mình?"
+- Câu hỏi tự vấn: "Có khi nào tôi đang sống bằng hình nhân của chính mình?"
 - Hình ảnh ẩn dụ (hạt giống, gương, mặt nạ, nước, ánh sáng)
 - Lặp cấu trúc có nhịp: "Không phải vì... mà vì...", "Để..., Để..., Để..."
 - Trích dẫn triết học Đông-Tây khi phù hợp
@@ -66,7 +66,7 @@ Có thể dùng **"chúng ta"** khi mời người đọc cùng quan sát, và *
 >
 > Cổ nhân có nói: "Tri nhân giả trí, tự tri giả minh", biết người là trí, biết mình mới là sáng suốt. Vậy thế nào là biết mình?
 >
-> Có lẽ... chính khi bạn ngưng so sánh, bạn bắt đầu sống.
+> Có lẽ... chính khi ngưng so sánh, mới thực sự bắt đầu sống.
 
 ## Common Mistakes
 
@@ -92,9 +92,9 @@ Quay lại chủ đề, mỗi lần sâu hơn:
 
 | Kiểu           | Mục đích       | Ví dụ                                                                  |
 | -------------- | -------------- | ---------------------------------------------------------------------- |
-| **Tự vấn**     | Nhìn lại       | "Có khi nào bạn thở bằng cái mũi của người khác?"                     |
+| **Tự vấn**     | Nhìn lại       | "Có khi nào tôi đang thở bằng cái mũi của người khác?"                |
 | **Nghịch lý**  | Phá lối mòn    | "Nếu buông bỏ cần nỗ lực, đó có phải buông bỏ?"                       |
-| **Lật ngược**  | Đảo kỳ vọng    | "Nếu không có ai khen, bạn còn muốn sống cuộc đời này không?"         |
+| **Lật ngược**  | Đảo kỳ vọng    | "Nếu không có ai khen, liệu còn muốn sống cuộc đời này không?"        |
 | **Chất vấn**   | Đào sâu        | "Cái thích ấy đến từ đâu?"                                            |
 
 ### 3. Observation Without Judgment

@@ -29,9 +29,9 @@ Cấu trúc xây dựng kiến thức từ đơn giản đến phức tạp, m�
 **Opening Palette** (chọn 1 per bài, KHÔNG lặp technique giữa 2 bài liên tiếp trong series):
 
 - `question-first`: Câu hỏi người đọc đang thắc mắc — "Tại sao có người học 10 năm vẫn chưa giỏi bằng người mới 2 năm?"
-- `scenario`: Tình huống thực tế — "Bạn vừa nhận dự án mới. Deadline 2 tuần. Không ai hướng dẫn."
-- `provocation`: Nhận định phản trực giác — "Hầu hết tutorial bạn đọc đều dạy sai thứ tự."
-- `contrast`: So sánh bất ngờ — "Học lập trình giống học nấu ăn hơn bạn nghĩ."
+- `scenario`: Tình huống thực tế — "Nhận một dự án mới. Deadline hai tuần. Không ai đứng ra hướng dẫn."
+- `provocation`: Nhận định phản trực giác — "Hầu hết tutorial ngoài kia đều dạy sai thứ tự."
+- `contrast`: So sánh bất ngờ — "Học lập trình giống học nấu ăn hơn nhiều người nghĩ."
 - `scene-setting`: Tình huống cụ thể — "3 giờ sáng. Build fail lần thứ năm. Stack Overflow hết câu trả lời."
 
 ### 2. Development (Building Blocks)

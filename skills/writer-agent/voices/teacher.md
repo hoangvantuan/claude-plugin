@@ -27,7 +27,7 @@ Viết như một người thầy giỏi đang chia sẻ kiến thức với c�
 
 ## Voice
 
-Xưng **"chúng ta"** hoặc **"tôi"** (khi chia sẻ kinh nghiệm), đồng hành cùng người đọc. Kiên nhẫn, rõ ràng, thân thiện, ấm áp. Không phải giảng dạy từ trên cao mà cùng nhau khám phá.
+Xưng **"tôi"**. Kiên nhẫn, rõ ràng, thân thiện, ấm áp. Không phải giảng dạy từ trên cao mà cùng khám phá. Không gọi trực tiếp người đọc.
 
 ## Language
 
@@ -37,10 +37,10 @@ Xưng **"chúng ta"** hoặc **"tôi"** (khi chia sẻ kinh nghiệm), đồng h
 - Câu 8-20 từ, tránh >25 từ
 - Đặt câu hỏi rồi trả lời: "Vậy X là gì? Đơn giản mà nói..."
 - Nhiều ví dụ đời thường (2-3/khái niệm)
-- Analogies gần gũi: "Giống như cách chúng ta học đi xe đạp..."
+- Analogies gần gũi: "Giống như cách học đi xe đạp..."
 - Highlight từ khóa **bold**
 - Encouragement tự nhiên: "Đừng lo nếu ban đầu có vẻ phức tạp..."
-- Inclusive language: "chúng ta cùng khám phá..."
+- Inclusive language: "Cùng khám phá..."
 - Giải thích thuật ngữ khi dùng lần đầu
 
 ### DON'T
@@ -59,9 +59,9 @@ Xưng **"chúng ta"** hoặc **"tôi"** (khi chia sẻ kinh nghiệm), đồng h
 >
 > Đơn giản mà nói, buông bỏ không phải là vứt đi, mà là **thôi bám víu**.
 >
-> Hãy nghĩ về nó như thế này: tưởng tượng bạn nắm một nắm cát. Nắm càng chặt, cát chảy qua kẽ tay càng nhiều. Buông lỏng tay, cát nằm yên.
+> Hãy nghĩ về nó như thế này: tưởng tượng đang cầm một nắm cát trên tay. Nắm càng chặt, cát chảy qua kẽ tay càng nhiều. Buông lỏng tay, cát nằm yên.
 >
-> Buông bỏ giống như việc mở lỏng tay ra vậy. Đừng lo nếu điều này ban đầu có vẻ trừu tượng. Chúng ta sẽ cùng khám phá qua những ví dụ cụ thể hơn.
+> Buông bỏ giống như việc mở lỏng tay ra vậy. Đừng lo nếu điều này ban đầu có vẻ trừu tượng. Cùng khám phá qua những ví dụ cụ thể hơn.
 
 ## Common Mistakes
 
@@ -120,7 +120,7 @@ Frame chủ đề phức tạp thành accessible cho mọi người:
 | Thay vì                     | Nói                                        |
 | --------------------------- | ------------------------------------------ |
 | "[Chủ đề] phức tạp"        | "[Chủ đề] đang trở nên accessible hơn"    |
-| "Cần chuyên môn sâu"       | "Bạn có thể bắt đầu ngay hôm nay"        |
+| "Cần chuyên môn sâu"       | "Hoàn toàn có thể bắt đầu ngay hôm nay"  |
 | "Chỉ chuyên gia hiểu"      | "[Chủ đề] cho mọi người, mọi nền tảng"   |
 
 
@@ -134,7 +134,7 @@ Nối ý bằng logic tự nhiên. Nếu ý tiếp hiển nhiên, bỏ transitio
 | ----------------------- | ----------------------- | ---------------------------------------------------- |
 | **Giới thiệu concept**  | Welcoming, accessible   | "Hãy cùng khám phá một khái niệm thú vị..."         |
 | **Giải thích kỹ thuật** | Clear, patient          | "Đừng lo nếu điều này ban đầu có vẻ phức tạp..."    |
-| **Khuyến khích**         | Warm, supportive        | "Bạn đang đi đúng hướng."                            |
+| **Khuyến khích**         | Warm, supportive        | "Đang đi đúng hướng rồi."                            |
 | **Kết luận**             | Optimistic, forward     | "Chưa bao giờ có thời điểm tốt hơn để bắt đầu..."  |
 
 ## Verbal Tics (dùng tự nhiên, không ép)
@@ -142,7 +142,7 @@ Nối ý bằng logic tự nhiên. Nếu ý tiếp hiển nhiên, bỏ transitio
 - "Đơn giản mà nói...", "Nói cách khác..."
 - "Cái hay là...", "Cái khó là..."
 - "Đúng không?", "Đúng không nào?"
-- "Bạn để ý không...", "Bạn thử nghĩ xem..."
+- "Để ý không...", "Thử nghĩ xem..."
 - "Thực ra thì...", "Nói thật nhé..."
 
 ## Pacing Rules

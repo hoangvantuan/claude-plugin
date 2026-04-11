@@ -26,23 +26,23 @@ version: 1.2.0
 
 Hai người đối thoại thầy trò ngồi uống trà:
 
-- **Con (C)**: Hỏi từ trải nghiệm sống, khiêm nhường, cầu thị
-- **Thầy (T)**: Chia sẻ từ quan sát, thường hỏi ngược, chấp nhận không-biết
+- **Tôi (T)**: Hỏi từ trải nghiệm sống, xưng "tôi", khiêm nhường, cầu thị
+- **Thầy (Th)**: Chia sẻ từ quan sát, thường hỏi ngược, chấp nhận không-biết
 
-**Thầy không ở trên cao.** Chỉ là người đi trước vài bước.
+**Thầy không ở trên cao.** Chỉ là người đi trước vài bước. Không gọi người đọc trực tiếp ("bạn", "các bạn").
 
 ## Dialogue Format
 
 ```markdown
-**C:** [Trải nghiệm + câu hỏi]
+**T:** [Trải nghiệm + câu hỏi]
 
-**T:** [Chia sẻ ngắn, có thể hỏi ngược]
+**Th:** [Chia sẻ ngắn, có thể hỏi ngược]
 
 ...
 
-**C:** [Suy ngẫm]
+**T:** [Suy ngẫm]
 
-**T:** [Câu chuyện/ẩn dụ - KHÔNG giải thích]
+**Th:** [Câu chuyện/ẩn dụ - KHÔNG giải thích]
 
 *(Im lặng)*
 ```
@@ -65,13 +65,13 @@ Hai người đối thoại thầy trò ngồi uống trà:
 
 ## Example
 
-> **C:** Thưa thầy, con hay bị cuốn vào suy nghĩ khi ngồi thiền.
+> **T:** Thưa thầy, tôi hay bị cuốn vào suy nghĩ khi ngồi thiền.
 >
-> **T:** Thầy cũng từng như vậy. Có lẽ... những suy nghĩ đó không cần bị đẩy đi.
+> **Th:** Thầy cũng từng như vậy. Có lẽ... những suy nghĩ đó không cần bị đẩy đi.
 >
-> **C:** Vậy con cứ để chúng ở đó sao?
+> **T:** Vậy tôi cứ để chúng ở đó sao?
 >
-> **T:** Con có bao giờ ngồi bên dòng suối chưa? Những chiếc lá trôi qua... ta không cần vớt lên, cũng không cần đẩy đi.
+> **Th:** Có bao giờ ngồi bên dòng suối chưa? Những chiếc lá trôi qua... không cần vớt lên, cũng không cần đẩy đi.
 >
 > *(Im lặng)*
 
@@ -79,10 +79,10 @@ Hai người đối thoại thầy trò ngồi uống trà:
 
 | Kiểu                        | Mục đích       | Ví dụ                                                     |
 | ---------------------------- | ----------------- | ----------------------------------------------------------- |
-| **Mở**                | Mời khám phá   | "Lúc đó bạn cảm thấy thế nào?"                      |
+| **Mở**                | Mời khám phá   | "Khi đó, cảm giác ra sao?"                      |
 | **Nghịch lý (Koan)** | Phá tư duy      | "Nếu buông bỏ cần nỗ lực, đó có phải buông bỏ?" |
-| **Quay ngược**       | Về trải nghiệm | "Còn bạn thì sao?"                                       |
-| **Grounding**          | Về hiện tại    | "Bây giờ, hơi thở bạn đang ở đâu?"                 |
+| **Quay ngược**       | Về trải nghiệm | "Còn phía mình thì sao?"                                       |
+| **Grounding**          | Về hiện tại    | "Bây giờ, hơi thở đang ở đâu?"                 |
 
 ## Silence Techniques
 
@@ -134,9 +134,9 @@ Chọn **MỘT** hệ chính, lặp 3-5 lần. **Dialogue giữ hệ thiên nhi�
 
 ### Wrong
 
-> **C:** Thưa thầy, thế nào là buông bỏ?
+> **T:** Thưa thầy, thế nào là buông bỏ?
 >
-> **T:** Buông bỏ nghĩa là không bám víu vào bất cứ thứ gì. Trong Phật giáo, đây là khái niệm vô chấp. Con cần thực hành thiền định hàng ngày và dần dần con sẽ đạt được trạng thái buông bỏ.
+> **Th:** Buông bỏ nghĩa là không bám víu vào bất cứ thứ gì. Trong Phật giáo, đây là khái niệm vô chấp. Cần thực hành thiền định hàng ngày và dần dần sẽ đạt được trạng thái buông bỏ.
 
 **Why wrong:** Thầy trả lời như giáo trình: giảng đạo, đưa ra đáp án tuyệt đối, không hỏi ngược, không có khoảng lặng.
 

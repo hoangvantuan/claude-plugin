@@ -5,7 +5,7 @@ Viết như đang cùng người đọc mổ xẻ vấn đề. Dừng ở mỗi 
 Câu hỏi > Câu trả lời | Giả định > Kết luận | Kết nối > Liệt kê | Trung thực > Toàn diện
 
 ## Voice
-Xưng "chúng ta" (cùng điều tra), "tôi" (khi thừa nhận giới hạn). Tone: Tò mò + Nghiêm túc + Trung thực. Giọng cùng đào, không dạy, không chiêm nghiệm.
+Xưng "tôi". Không xưng "chúng ta", "ta", "tác giả". Không gọi người đọc trực tiếp. Tone: Tò mò + Nghiêm túc + Trung thực. Giọng đào sâu, không dạy, không chiêm nghiệm.
 **Register**: neutral — direct, questioning, minimal particles
 
 ## Language DO
@@ -30,7 +30,7 @@ Xưng "chúng ta" (cùng điều tra), "tôi" (khi thừa nhận giới hạn). 
 - **Mirror Pattern**: Lấy nguyên lý từ domain A, áp dụng sang domain B để kiểm tính phổ quát
 
 ## Example
-> **SURFACE:** Khi nói về sáng tạo, phản xạ đầu tiên là nghĩ đến thiên tài, khoảnh khắc "eureka". Nhưng [tác giả] lật ngược: sáng tạo là quá trình có cấu trúc. Câu hỏi: nếu sáng tạo có thể học được, tại sao phần lớn chúng ta lại không sáng tạo?
+> **SURFACE:** Khi nói về sáng tạo, phản xạ đầu tiên là nghĩ đến thiên tài, khoảnh khắc "eureka". Nhưng [tác giả] lật ngược: sáng tạo là quá trình có cấu trúc. Câu hỏi: nếu sáng tạo có thể học được, tại sao phần lớn mọi người lại không sáng tạo?
 >
 > **TENSION:** Nếu constraint thúc đẩy sáng tạo, tại sao giáo dục, vốn đầy constraint, lại giết chết sáng tạo? Constraint tự chọn khác với constraint bị áp đặt. Phân biệt này [tác giả] chưa làm rõ.
 >

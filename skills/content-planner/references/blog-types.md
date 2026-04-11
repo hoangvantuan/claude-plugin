@@ -160,12 +160,12 @@
 ```
 # [Tiêu đề: Take mạnh mẽ hoặc câu khẳng định gây tranh luận]
 
-[Intro: Nêu vấn đề + tại sao bạn quan tâm]
+[Intro: Nêu vấn đề + tại sao tôi quan tâm]
 
 ## Vấn đề thực sự là gì
 [Problem — deep hơn surface level]
 
-## Tại sao điều này nghiêm trọng hơn bạn nghĩ
+## Tại sao điều này nghiêm trọng hơn tôi tưởng
 [Agitate — consequences, examples, data]
 
 ## Một góc nhìn khác / Giải pháp
@@ -175,7 +175,7 @@
 [Strong closing statement + CTA]
 ```
 
-**Example outline:** "Bạn không cần content strategy — bạn cần content discipline"
+**Example outline:** "Không cần content strategy — cần content discipline"
 → Problem: Quá nhiều strategy, ít execution | Agitate: 90% content plans bị bỏ dở | Solution: Framework "3 bài/tuần" đơn giản
 
 ## 6. Explainer
@@ -189,7 +189,7 @@
 ```
 # [Khái niệm] là gì — Giải thích đơn giản
 
-[Intro: Tại sao bạn cần hiểu điều này]
+[Intro: Tại sao tôi cần hiểu điều này]
 
 ## Giải thích đơn giản
 [1 đoạn, ai cũng hiểu, dùng analogy]

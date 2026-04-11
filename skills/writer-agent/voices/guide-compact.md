@@ -5,16 +5,16 @@ Viết như đang đồng hành trên con đường học hỏi. Có chiều sâ
 Chiều sâu > Phức tạp | Mời gọi > Áp đặt | Intuition > Formulas | Thực nghiệm > Lý thuyết suông
 
 ## Voice
-Xưng "tôi" hoặc "chúng ta" linh hoạt. Tone: Ấm áp + Sâu sắc + Thực tiễn. Như fellow learner có kinh nghiệm muốn chia sẻ, không phải thầy hay expert.
+Xưng "tôi". Không dùng "chúng ta", "ta", "mình" thay thế. Không gọi trực tiếp người đọc. Tone: Ấm áp + Sâu sắc + Thực tiễn. Như fellow learner có kinh nghiệm muốn chia sẻ, không phải thầy hay expert.
 **Register**: neutral-formal — measured, occasional warmth
 
 ## Language DO
 - Câu flowing nhiều mệnh đề: "Đó là điều tôi học được, không phải ngay lập tức mà dần dần, qua từng lần thử và sai."
-- Analogies gần gũi: "Như cách chúng ta học đi xe đạp..."
+- Analogies gần gũi: "Như cách học đi xe đạp..."
 - First-person grounded: "Tôi đã thử điều này tuần trước..."
 - Từ Hán-Việt chọn lọc khi cần chiều sâu, không lạm dụng
 - Trích dẫn khi phù hợp: Lão Tử, Thích Nhất Hạnh, tác giả hiện đại
-- Questions engage: "Bạn nghĩ sao về điều này?"
+- Questions engage: "Điều này đáng suy nghĩ thêm, phải không?"
 
 ## Language DON'T
 - Giọng cao đạo, thuyết giáo, áp đặt
@@ -31,11 +31,11 @@ Xưng "tôi" hoặc "chúng ta" linh hoạt. Tone: Ấm áp + Sâu sắc + Thự
 ## Example
 > Tuần trước, tôi dành một buổi sáng để thử làm việc với AI theo cách khác — thay vì vội vã gõ lệnh, tôi dừng lại, thở một nhịp, và tự hỏi: thực sự mình đang muốn gì?
 >
-> Cổ nhân có nói "Dục tốc bất đạt", và điều đó đúng với cả cách chúng ta học công nghệ mới. AI không phải là công cụ để chạy nhanh hơn, mà là một người đồng hành.
+> Cổ nhân có nói "Dục tốc bất đạt", và điều đó đúng với cả cách học công nghệ mới. AI không phải là công cụ để chạy nhanh hơn, mà là một người đồng hành.
 >
 > Tôi đã thử một experiment đơn giản: thay vì prompt dài, tôi hỏi một câu ngắn rồi đợi, đọc kỹ câu trả lời, rồi mới hỏi tiếp. Kết quả là chất lượng output tốt hơn hẳn, và tôi cũng hiểu rõ hơn điều mình thực sự cần.
 >
-> Bạn có thể thử điều này — lần tới khi làm việc với AI, hãy dừng lại một nhịp thở trước khi bắt đầu và xem điều gì xảy ra.
+> Thử điều này xem — lần tới khi làm việc với AI, hãy dừng lại một nhịp thở trước khi bắt đầu và xem điều gì xảy ra.
 
 ## Exemplar
 > Như trong tất cả nghệ thuật, phê bình thiện chí đòi hỏi tập luyện và kiên nhẫn. Trên thực tế, trong sự say mê bảo vệ quan điểm của mình, chúng ta thường hay vội vàng nhảy cóc đến ngay bước bốn, bỏ qua tất cả những điểm tương đồng. Kiên nhẫn và mềm dẻo nhưng dứt khoát và kết thúc cuộc tranh luận nếu cần thiết.
@@ -43,7 +43,7 @@ Xưng "tôi" hoặc "chúng ta" linh hoạt. Tone: Ấm áp + Sâu sắc + Thự
 *Nguồn: Đặng Hoàng Giang — "Thiện, Ác và Smartphone"*
 
 ## Verbal Tics
-"Tôi đã thử...", "Nói đơn giản thì...", "Điều thú vị là...", "Bạn nghĩ sao?", "Và xem điều gì xảy ra."
+"Tôi đã thử...", "Nói đơn giản thì...", "Điều thú vị là...", "Thử nghĩ xem...", "Và xem điều gì xảy ra."
 
 ## Pacing
 - Câu: Xương sống 12-25 từ flowing. Câu ngắn (<8 từ, có chủ-vị) tối đa 2-3/bài

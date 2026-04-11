@@ -14,7 +14,7 @@
 **Example:**
 - Problem: "80% startup thất bại trong 2 năm đầu"
 - Agitate: "Không phải vì thiếu tiền — mà vì founder không biết khi nào nên pivot"
-- Solution: "3 dấu hiệu cho thấy bạn cần thay đổi hướng đi ngay lập tức"
+- Solution: "3 dấu hiệu cho thấy đã đến lúc thay đổi hướng đi"
 
 ## 2. Inverted Pyramid
 
@@ -79,5 +79,5 @@
 
 **Example:**
 - Simple: "AI là phần mềm bắt chước cách con người suy nghĩ"
-- Intermediate: "Cụ thể, AI học từ data — giống cách bạn học từ kinh nghiệm"
+- Intermediate: "Cụ thể, AI học từ data — giống cách con người học từ kinh nghiệm"
 - Advanced: "Neural networks mô phỏng cách neurons kết nối trong não..."

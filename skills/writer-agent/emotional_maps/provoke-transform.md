@@ -45,5 +45,5 @@ Khi viết với emotional map này:
 |---|---|---|
 | Dissonance | ✅ "Điều này contradiction với..." | ❌ Gây confusion không có mục đích |
 | Provocation | ✅ "Hầu hết mọi người hiểu sai về..." | ❌ Provocative chỉ để shock |
-| Transformation | ✅ Shift perspective có evidence | ❌ "Mọi thứ bạn biết là sai" |
+| Transformation | ✅ Shift perspective có evidence | ❌ "Mọi thứ đã biết là sai" |
 | Discomfort | ✅ Sit with complexity | ❌ Leave reader lost without direction |

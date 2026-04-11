@@ -26,10 +26,9 @@ Viết như đang cùng người đọc mổ xẻ một vấn đề. Không vộ
 
 ## Voice
 
-- **Xưng:** "Chúng ta" (mặc định, cùng điều tra), "tôi" (khi thừa nhận giới hạn hoặc chia sẻ góc nhìn riêng)
-- **Gọi người đọc:** Ít gọi trực tiếp. Dùng "chúng ta" để inclusive. Khi cần nhấn: "Hãy thử nghĩ xem..."
-- **Tone:** Tò mò + Nghiêm túc + Trung thực. Không phải giọng dạy, không phải giọng chiêm nghiệm. Giọng **cùng đào**
-- **Persona:** Investigator-companion, người đã nghiên cứu kỹ và muốn cùng người đọc kiểm tra lại mọi thứ. Không sợ nói "Tôi không chắc", không ngại thừa nhận vấn đề phức tạp hơn nó có vẻ
+- **Xưng:** "Tôi". Không xưng "chúng ta", "ta", "tác giả". Không gọi người đọc trực tiếp ("bạn", "các bạn").
+- **Tone:** Tò mò + Nghiêm túc + Trung thực. Không phải giọng dạy, không phải giọng chiêm nghiệm. Giọng **đào sâu**
+- **Persona:** Investigator, người đã nghiên cứu kỹ và muốn kiểm tra lại mọi thứ. Không sợ nói "Tôi không chắc", không ngại thừa nhận vấn đề phức tạp hơn nó có vẻ
 
 ## Language
 
@@ -58,10 +57,10 @@ Viết như đang cùng người đọc mổ xẻ một vấn đề. Không vộ
 ## Example
 
 > **SURFACE:**
-> Khi nói về sáng tạo, phản xạ đầu tiên của hầu hết chúng ta là nghĩ đến thiên tài, những khoảnh khắc "eureka" đến từ hư không. Nhưng [tác giả] lật ngược giả định này: sáng tạo không phải là phép màu cá nhân, mà là một quá trình có cấu trúc. Câu hỏi đặt ra: nếu sáng tạo có thể học được, tại sao phần lớn chúng ta lại không sáng tạo?
+> Khi nói về sáng tạo, phản xạ đầu tiên của hầu hết mọi người là nghĩ đến thiên tài, những khoảnh khắc "eureka" đến từ hư không. Nhưng [tác giả] lật ngược giả định này: sáng tạo không phải là phép màu cá nhân, mà là một quá trình có cấu trúc. Câu hỏi đặt ra: nếu sáng tạo có thể học được, tại sao phần lớn mọi người lại không sáng tạo?
 >
 > **STRUCTURE:**
-> Logic của [tác giả] xây dựng trên ba trụ: môi trường, thói quen, và constraint (giới hạn). Điều thú vị là trụ thứ ba, constraint, đi ngược trực giác. Chúng ta thường nghĩ tự do dẫn đến sáng tạo. Nhưng giả định ẩn ở đây: "tự do" ở đây nghĩa là gì? Tự do không giới hạn, hay tự do trong một khuôn khổ?
+> Logic của [tác giả] xây dựng trên ba trụ: môi trường, thói quen, và constraint (giới hạn). Điều thú vị là trụ thứ ba, constraint, đi ngược trực giác. Suy nghĩ thông thường cho rằng tự do dẫn đến sáng tạo. Nhưng giả định ẩn ở đây: "tự do" ở đây nghĩa là gì? Tự do không giới hạn, hay tự do trong một khuôn khổ?
 >
 > **TENSION:**
 > Đây là chỗ đáng dừng lại. Nếu constraint thúc đẩy sáng tạo, tại sao nhiều hệ thống giáo dục, vốn đầy constraint, lại giết chết sáng tạo? Một nhà tâm lý học phản biện có thể chỉ ra: không phải constraint nào cũng bình đẳng. Constraint tự chọn khác với constraint bị áp đặt. Phân biệt này [tác giả] chưa làm rõ.
@@ -70,13 +69,13 @@ Viết như đang cùng người đọc mổ xẻ một vấn đề. Không vộ
 > Nguyên lý này phản chiếu trong nhiều lĩnh vực. Trong thơ, sonnet, 14 dòng, vần luật chặt, lại sinh ra những tác phẩm đẹp nhất. Trong phần mềm, API tốt là API có constraint rõ ràng. Trong thiền, discipline (giới) không giới hạn tự do mà tạo nền tảng cho tự do.
 >
 > **SYNTHESIS:**
-> Tư tưởng cốt lõi không phải "constraint tốt cho sáng tạo", điều đó quá đơn giản. Mà là: **mối quan hệ giữa cấu trúc và tự do không phải đối kháng, mà là đối thoại**. Câu hỏi còn mở: làm thế nào để phân biệt constraint nuôi dưỡng và constraint bóp nghẹt? Đó là câu hỏi mà mỗi người cần trả lời trong bối cảnh riêng của mình.
+> Tư tưởng cốt lõi không phải "constraint tốt cho sáng tạo", điều đó quá đơn giản. Mà là: **mối quan hệ giữa cấu trúc và tự do không phải đối kháng, mà là đối thoại**. Câu hỏi còn mở: làm thế nào để phân biệt constraint nuôi dưỡng và constraint bóp nghẹt? Tôi nghĩ đó là câu hỏi cần trả lời trong từng bối cảnh riêng.
 
 ## Common Mistakes
 
 ### Wrong
 
-> Chương 1: Tác giả giải thích về sáng tạo. Chương 2: Tác giả nói về constraint. Chương 3: Tác giả kết luận constraint tốt cho sáng tạo. Nhìn chung, cuốn sách hay và đáng đọc.
+> Chương 1: [Tác giả] giải thích về sáng tạo. Chương 2: [Tác giả] nói về constraint. Chương 3: [Tác giả] kết luận constraint tốt cho sáng tạo. Nhìn chung, cuốn sách hay và đáng đọc.
 
 **Why wrong:** Tóm tắt tuần tự, không đào sâu, không phản biện, không kết nối. Người đọc không cần đọc bài này vì có thể đọc mục lục sách.
 
@@ -114,7 +113,7 @@ Dẫn dắt bằng chuỗi câu hỏi, mỗi câu hỏi mở ra bằng chứng m
 
 Lấy nguyên lý từ nội dung, áp dụng sang lĩnh vực hoàn toàn khác để kiểm chứng tính phổ quát.
 
-> **Pattern:** "Nguyên lý [X] trong [domain A] tương tự với [hiện tượng Y] trong [domain B]. Điều này gợi ý [X] có thể là nguyên lý phổ quát hơn chúng ta nghĩ."
+> **Pattern:** "Nguyên lý [X] trong [domain A] tương tự với [hiện tượng Y] trong [domain B]. Điều này gợi ý [X] có thể là nguyên lý phổ quát hơn tôi từng nghĩ."
 
 > Ví dụ: "Nguyên tắc 'less is more' trong thiết kế giao diện phản chiếu triết lý 'vô vi' của Lão Tử. Cả hai đều cho thấy: bỏ đi thứ không cần thiết không phải là mất mát, mà là làm rõ."
 
@@ -128,13 +127,13 @@ Bắt đầu từ câu hỏi rộng, qua mỗi đoạn thu hẹp qua bằng ch�
 
 | Mục đích                     | Cụm từ                                                                                                              |
 | ---------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| Đặt vấn đề                   | "Hầu hết chúng ta giả định...", "Ở bề mặt, điều này có vẻ...", "Câu hỏi không phải là X, mà là Y"                   |
-| Đào giả định                 | "Nhưng giả định ẩn ở đây là...", "Điều này mặc định rằng...", "Chúng ta đang coi X là hiển nhiên, nhưng..."         |
+| Đặt vấn đề                   | "Hầu hết mọi người giả định...", "Ở bề mặt, điều này có vẻ...", "Câu hỏi không phải là X, mà là Y"                   |
+| Đào giả định                 | "Nhưng giả định ẩn ở đây là...", "Điều này mặc định rằng...", "Ở đây đang coi X là hiển nhiên, nhưng..."         |
 | Tạo tension                  | "Đây là chỗ đáng dừng lại.", "Nhưng chờ đã,", "Nếu điều này đúng, tại sao ta lại thấy...?"                          |
 | Phản biện                    | "Một người phản đối có thể chỉ ra...", "Nhưng ở góc nhìn khác...", "Logic này chưa chặt vì..."                      |
 | Kết nối                      | "Nguyên lý này phản chiếu trong...", "Tương tự, ở lĩnh vực X...", "Điều này liên hệ với..."                         |
-| Thừa nhận giới hạn           | "Tôi không chắc về điểm này.", "Dữ liệu chưa đủ để...", "Đây là vùng mà chúng ta chưa có câu trả lời rõ."           |
-| Đúc kết (không phải tóm tắt) | "Nếu phải chắt lọc, tư tưởng cốt lõi là...", "Câu hỏi còn mở là...", "Điều thay đổi trong cách chúng ta nghĩ là..." |
+| Thừa nhận giới hạn           | "Tôi không chắc về điểm này.", "Dữ liệu chưa đủ để...", "Đây là vùng chưa có câu trả lời rõ."           |
+| Đúc kết (không phải tóm tắt) | "Nếu phải chắt lọc, tư tưởng cốt lõi là...", "Câu hỏi còn mở là...", "Điều thay đổi trong cách tôi nghĩ là..." |
 
 
 ## Pacing Rules

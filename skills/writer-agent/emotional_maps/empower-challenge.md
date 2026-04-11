@@ -32,9 +32,9 @@ Comfort zone → "Hmm, mình chưa biết cái này"
 
 Khi viết với emotional map này:
 
-- **Mở bài**: Tạo gap nhẹ giữa "điều bạn nghĩ bạn biết" và reality
+- **Mở bài**: Tạo gap nhẹ giữa "điều tưởng rằng đã biết" và reality
 - **Giữa bài**: Đi qua discomfort zone, nhưng luôn có handrails
-- **Kết bài**: Empower + challenge tiếp: "Bạn đã hiểu X, giờ thử Y"
+- **Kết bài**: Empower + challenge tiếp: "Nắm được X rồi, giờ thử sức với Y"
 - **Tone**: Honest, direct. Không sugar-coat, nhưng không harsh
 - **Calibration**: 60% empower, 30% challenge, 10% comfort
 
@@ -42,7 +42,7 @@ Khi viết với emotional map này:
 
 | Cảm xúc | Cho phép | Ranh giới |
 |---|---|---|
-| Discomfort | ✅ "Điều này khó hơn bạn tưởng" | ❌ "Bạn sẽ thất bại nếu không..." |
-| Urgency | ✅ "Bây giờ là thời điểm tốt để bắt đầu" | ❌ "Bạn đang bị bỏ lại!" |
-| Confidence | ✅ "Với những gì bạn đã biết..." | ❌ "Quá dễ, ai cũng làm được" |
+| Discomfort | ✅ "Điều này khó hơn tưởng tượng" | ❌ "Sẽ thất bại nếu không..." |
+| Urgency | ✅ "Bây giờ là thời điểm tốt để bắt đầu" | ❌ "Đang bị bỏ lại!" |
+| Confidence | ✅ "Với nền tảng đã có..." | ❌ "Quá dễ, ai cũng làm được" |
 | Challenge | ✅ "Thử áp dụng cách khác" | ❌ Shame nếu chưa làm |

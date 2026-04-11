@@ -12,30 +12,31 @@ Transform documents and URLs into styled article series.
 
 ## Quick Reference
 
+| Reference                                                             | Purpose                            | Load at Step      | DP  | T1  | T2  | T3  |
+| --------------------------------------------------------------------- | ---------------------------------- | ----------------- | --- | --- | --- | --- |
+| [directory-structure.md](references/directory-structure.md)           | Output folder layout               | Step 1            | ✓   | ✓   | ✓   | ✓   |
+| [dimension-selection.md](references/dimension-selection.md)           | Custom mode dimension tables       | Step 2 (Custom)   | ✓   | ✓   | ✓   | ✓   |
+| [decision-trees.md](references/decision-trees.md)                     | Workflow decision guides           | On confusion only | ✓   | ✓   | ✓   | ✓   |
+| [retry-workflow.md](references/retry-workflow.md)                     | Error recovery procedures          | On error only     | -   | ✓   | ✓   | ✓   |
+| [large-doc-processing.md](references/large-doc-processing.md)         | Handling documents >50K words      | Step 3 (if >20K)  | -   | -   | ✓   | ✓   |
+| [article-writer-prompt.md](references/article-writer-prompt.md)       | Subagent prompt templates          | Step 4            | -   | ✓   | ✓   | ✓   |
+| [context-extractor-prompt.md](references/context-extractor-prompt.md) | Context extraction template        | Step 3 (Tier 2)   | -   | -   | ✓   | -   |
+| [context-optimization.md](references/context-optimization.md)         | Context optimization anti-patterns | Step 3.1          | -   | ✓   | ✓   | ✓   |
+| [detail-levels.md](references/detail-levels.md)                       | Output detail level options        | Step 2.5          | ✓   | ✓   | ✓   | ✓   |
+| [shared-article-writing.md](references/shared-article-writing.md)     | Shared Steps 4.0-4.6               | Step 4            | -   | ✓   | ✓   | ✓   |
 
-| Reference                                                             | Purpose                            | Load at Step       | DP | T1 | T2 | T3 |
-| --------------------------------------------------------------------- | ---------------------------------- | ------------------ | -- | -- | -- | -- |
-| [directory-structure.md](references/directory-structure.md)           | Output folder layout               | Step 1             | ✓  | ✓  | ✓  | ✓  |
-| [dimension-selection.md](references/dimension-selection.md)           | Custom mode dimension tables       | Step 2 (Custom)    | ✓  | ✓  | ✓  | ✓  |
-| [decision-trees.md](references/decision-trees.md)                     | Workflow decision guides           | On confusion only  | ✓  | ✓  | ✓  | ✓  |
-| [retry-workflow.md](references/retry-workflow.md)                     | Error recovery procedures          | On error only      | -  | ✓  | ✓  | ✓  |
-| [large-doc-processing.md](references/large-doc-processing.md)         | Handling documents >50K words      | Step 3 (if >20K)   | -  | -  | ✓  | ✓  |
-| [article-writer-prompt.md](references/article-writer-prompt.md)       | Subagent prompt templates          | Step 4             | -  | ✓  | ✓  | ✓  |
-| [context-extractor-prompt.md](references/context-extractor-prompt.md) | Context extraction template        | Step 3 (Tier 2)    | -  | -  | ✓  | -  |
-| [context-optimization.md](references/context-optimization.md)         | Context optimization anti-patterns | Step 3.1           | -  | ✓  | ✓  | ✓  |
-| [detail-levels.md](references/detail-levels.md)                       | Output detail level options        | Step 2.5           | ✓  | ✓  | ✓  | ✓  |
-| [shared-article-writing.md](references/shared-article-writing.md)     | Shared Steps 4.0-4.6              | Step 4             | -  | ✓  | ✓  | ✓  |
 
 **DP** = Direct Path | **T1-T3** = Tier 1-3 | **✓** = Load | **-** = Skip
 
 **Tier Workflow Files** (loaded at Step 2.7 after tier determination):
 
-| Tier | File | When |
-| --- | --- | --- |
+| Tier        | File                                                  | When                           |
+| ----------- | ----------------------------------------------------- | ------------------------------ |
 | Direct Path | [tier-direct-path.md](references/tier-direct-path.md) | <20K OR (<50K AND ≤3 articles) |
-| Tier 1 | [tier-1-workflow.md](references/tier-1-workflow.md) | 20K-50K (fails Direct Path) |
-| Tier 2 | [tier-2-workflow.md](references/tier-2-workflow.md) | 50K-100K |
-| Tier 3 | [tier-3-workflow.md](references/tier-3-workflow.md) | >=100K |
+| Tier 1      | [tier-1-workflow.md](references/tier-1-workflow.md)   | 20K-50K (fails Direct Path)    |
+| Tier 2      | [tier-2-workflow.md](references/tier-2-workflow.md)   | 50K-100K                       |
+| Tier 3      | [tier-3-workflow.md](references/tier-3-workflow.md)   | >=100K                         |
+
 
 **Dimension files** (loaded at Step 2): `voices/{voice}.md`, `structures/{structure}.md`, `identities/{identity}.md`, `audiences/{audience}.md`, `emotional_maps/{emotion}.md`
 
@@ -93,12 +94,12 @@ Detect input type and convert to markdown.
 **Output language**: Luôn là tiếng Việt, bất kể source language.
 
 
-| Input Type               | Detection                        | Action                    |
-| ------------------------ | -------------------------------- | ------------------------- |
-| File (PDF/DOCX/EPUB/etc) | Path + extension                 | `wa-convert {path}`       |
-| URL (web page)           | `http://` or `https://`          | `wa-convert {url}`        |
-| YouTube URL              | `youtube.com` or `youtu.be`      | `wa-convert {url}`        |
-| Plain text / .txt / .md  | No complex extension             | Rewrite → `wa-paste-text` |
+| Input Type               | Detection                   | Action                    |
+| ------------------------ | --------------------------- | ------------------------- |
+| File (PDF/DOCX/EPUB/etc) | Path + extension            | `wa-convert {path}`       |
+| URL (web page)           | `http://` or `https://`     | `wa-convert {url}`        |
+| YouTube URL              | `youtube.com` or `youtu.be` | `wa-convert {url}`        |
+| Plain text / .txt / .md  | No complex extension        | Rewrite → `wa-paste-text` |
 
 
 ### File/URL Conversion
@@ -122,7 +123,6 @@ echo "{rewritten_content}" | {SCRIPTS_DIR}/wa-paste-text - --title "{title}"
 
 ### Error Handling
 
-
 | Error              | Action                         |
 | ------------------ | ------------------------------ |
 | File not found     | Ask for correct path           |
@@ -140,15 +140,16 @@ Hệ thống 5 chiều độc lập. User chọn preset combo hoặc Custom đ�
 
 Show bảng sau cho user, hỏi chọn preset hoặc "Custom":
 
-| Preset | Voice | Structure | Identity | Audience | Emotion |
-|--------|-------|-----------|----------|----------|---------|
-| Educator | Teacher | Building Blocks | Tech Builder | Curious Beginners | Empower & Challenge |
-| Storyteller | Storyteller | Story Arc | Contemplative Thinker | Deep Seekers | Reflect & Discover |
-| Analyst | Objective | BLUF-Evidence | Knowledge Curator | Busy Professionals | Empower & Challenge |
-| Explorer | Investigator | Five Layers | Knowledge Curator | Deep Seekers | Provoke & Transform |
-| Mentor | Guide | Depth-Practice | Contemplative Thinker | Curious Beginners | Reflect & Discover |
-| Reflector | Personal | Spiral Return | Contemplative Thinker | Deep Seekers | Reflect & Discover |
-| Zen Master | Dialogue | Master-Student | Contemplative Thinker | Deep Seekers | Reflect & Discover |
+| Preset      | Voice        | Structure       | Identity              | Audience           | Emotion             |
+| ----------- | ------------ | --------------- | --------------------- | ------------------ | ------------------- |
+| Educator    | Teacher      | Building Blocks | Tech Builder          | Curious Beginners  | Empower & Challenge |
+| Storyteller | Storyteller  | Story Arc       | Contemplative Thinker | Deep Seekers       | Reflect & Discover  |
+| Analyst     | Objective    | BLUF-Evidence   | Knowledge Curator     | Busy Professionals | Empower & Challenge |
+| Explorer    | Investigator | Five Layers     | Knowledge Curator     | Deep Seekers       | Provoke & Transform |
+| Mentor      | Guide        | Depth-Practice  | Contemplative Thinker | Curious Beginners  | Reflect & Discover  |
+| Reflector   | Personal     | Spiral Return   | Contemplative Thinker | Deep Seekers       | Reflect & Discover  |
+| Zen Master  | Dialogue     | Master-Student  | Contemplative Thinker | Deep Seekers       | Reflect & Discover  |
+
 
 **Cách dùng**: Hiển thị bảng trên → Hỏi user gõ tên preset (e.g. "Educator") hoặc "Custom".
 
@@ -225,4 +226,3 @@ elif tier == 3:
 **Tier workflow file chứa Steps 3-4.** Sau khi hoàn thành Step 4, load `references/steps-5-6-synthesize-verify.md` cho Steps 5-6.
 
 > **FAIL CONDITION**: Nếu không load tier workflow file → KHÔNG biết cách xử lý Steps 3-4 cho tier đó. STOP và load file đúng.
-

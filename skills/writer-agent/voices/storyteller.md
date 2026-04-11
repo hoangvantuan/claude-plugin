@@ -26,7 +26,7 @@ Kể lại hành trình khám phá như một câu chuyện. Người đọc đ�
 
 ## Voice
 
-- **Ngôi kể:** "Tôi" hoặc "Con", đang trên hành trình, chưa đến đích
+- **Ngôi kể:** "Tôi", đang trên hành trình, chưa đến đích. Không xưng "con", "ta", "chúng ta". Không gọi người đọc trực tiếp.
 - **Giọng:** Thân mật, chân thành, như viết nhật ký
 - **Thầy:** Qua hồi tưởng, không phải nhân vật chính
 
@@ -35,13 +35,13 @@ Kể lại hành trình khám phá như một câu chuyện. Người đọc đ�
 **Thay vì:**
 
 ```
-**C:** Con không hiểu...
-**T:** Thầy hỏi con...
+**T:** Tôi không hiểu...
+**Th:** Thầy hỏi...
 ```
 
 **Viết thành:**
 
-> Tôi hỏi thầy về điều đó. Thầy không trả lời ngay. Thầy nhìn ra ngoài cửa sổ, rồi hỏi ngược lại: "Con có bao giờ thấy mình giống những con chim kia không?"
+> Tôi hỏi thầy về điều đó. Thầy không trả lời ngay. Thầy nhìn ra ngoài cửa sổ, rồi hỏi ngược lại: "Có bao giờ thấy mình giống những con chim kia không?"
 
 ## Language
 
@@ -64,9 +64,9 @@ Kể lại hành trình khám phá như một câu chuyện. Người đọc đ�
 
 > Buổi sáng hôm đó, tôi ngồi bên hiên nhà thầy, nhìn sương tan trên những ngọn cỏ.
 >
-> "Thầy ơi," tôi lên tiếng, "con cảm thấy như mình đang đuổi theo cái bóng của chính mình."
+> "Thầy ơi," tôi lên tiếng, "tôi cảm thấy như mình đang đuổi theo cái bóng của chính mình."
 >
-> Thầy nhấp một ngụm trà. "Con có thấy giọt sương trên lá kia không?"
+> Thầy nhấp một ngụm trà. "Có thấy giọt sương trên lá kia không?"
 >
 > ...
 >
@@ -103,10 +103,10 @@ Kể lại hành trình khám phá như một câu chuyện. Người đọc đ�
 4. **Lời thoại ngắn, mô tả dài**: Lời thoại trực tiếp thường 1-2 câu, bọc trong mô tả chi tiết hơn
 
 **Ví dụ đúng:**
-> Tôi hỏi thầy về điều đó và thầy không trả lời ngay, cứ nhìn ra ngoài cửa sổ một lúc lâu rồi mới quay lại hỏi: "Con có bao giờ thấy mình giống những con chim kia không?" Tôi không hiểu câu hỏi, nhưng có gì đó trong giọng thầy khiến tôi ngồi yên lại.
+> Tôi hỏi thầy về điều đó và thầy không trả lời ngay, cứ nhìn ra ngoài cửa sổ một lúc lâu rồi mới quay lại hỏi: "Có bao giờ thấy mình giống những con chim kia không?" Tôi không hiểu câu hỏi, nhưng có gì đó trong giọng thầy khiến tôi ngồi yên lại.
 
 **Ví dụ sai:**
-> Thầy nói: "Con phải buông bỏ." Tôi nói: "Con không biết cách." Thầy nói: "Vậy thì đừng cố."
+> Thầy nói: "Phải buông bỏ." Tôi nói: "Tôi không biết cách." Thầy nói: "Vậy thì đừng cố."
 
 ## Verbal Tics (dùng tự nhiên, không ép)
 

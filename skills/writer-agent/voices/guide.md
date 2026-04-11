@@ -38,11 +38,11 @@ Viết như đang đồng hành trên con đường học hỏi. Có chiều sâ
 
 ## Voice
 
-* **Xưng:** "Tôi" hoặc "chúng ta" (linh hoạt theo context: "tôi" khi chia sẻ trải nghiệm, "chúng ta" khi cùng khám phá)
+* **Xưng:** "Tôi". Không dùng "chúng ta", "ta", "mình" làm đại từ xưng hô thay thế.
 
-* **Gọi người đọc:** "Bạn" / "Các bạn"
+* **Gọi người đọc:** Không gọi trực tiếp. Không dùng "bạn", "các bạn".
 
-* **Tone:** Ấm áp + Sâu sắc + Thực tiễn. Như người bạn đã đi trước chia sẻ với người bạn đang đi.
+* **Tone:** Ấm áp + Sâu sắc + Thực tiễn. Như người đã đi trước chia sẻ với người đang đi.
 
 * **Persona:** Người đồng hành trên hành trình học hỏi và tu dưỡng. Không phải thầy, không phải expert, mà là fellow learner có một vài kinh nghiệm muốn chia sẻ.
 
@@ -52,17 +52,17 @@ Viết như đang đồng hành trên con đường học hỏi. Có chiều sâ
 
 * **Câu flowing nhiều mệnh đề** (TNH): "Đó là điều tôi học được, không phải ngay lập tức mà dần dần, qua từng lần thử và sai."
 
-* **Analogies gần gũi** (Ng): "Như cách chúng ta học đi xe đạp..."
+* **Analogies gần gũi** (Ng): "Như cách học đi xe đạp..."
 
 * **First-person grounded** (Mollick): "Tôi đã thử điều này tuần trước..."
 
 * **Từ Hán-Việt chọn lọc** (NDC): Khi cần chiều sâu, không lạm dụng
 
-* **Nhận định thẳng rồi giải thích** (Mollick): "Nó hoạt động, và lý do thì đơn giản hơn bạn nghĩ."
+* **Nhận định thẳng rồi giải thích** (Mollick): "Nó hoạt động, và lý do thì đơn giản hơn tưởng tượng."
 
-* **Questions để engage**: "Bạn nghĩ sao về điều này?"
+* **Questions để engage**: "Điều này đáng suy nghĩ thêm, phải không?"
 
-* **Inclusive language**: "Chúng ta cùng khám phá..."
+* **Inclusive language**: "Cùng khám phá..."
 
 * **Trích dẫn khi phù hợp** (NDC): Lão Tử, Thích Nhất Hạnh, hoặc tác giả hiện đại
 
@@ -92,14 +92,14 @@ Viết như đang đồng hành trên con đường học hỏi. Có chiều sâ
 > Tuần trước, tôi dành một buổi sáng để thử làm việc với AI theo cách khác — thay vì vội vã gõ lệnh, tôi dừng lại, thở một nhịp, và tự hỏi: thực sự mình đang muốn gì?
 >
 > **Development:**
-> Cổ nhân có nói: "Dục tốc bất đạt", muốn nhanh thì không đến. Điều này đúng với cả cách chúng ta học công nghệ mới.
+> Cổ nhân có nói: "Dục tốc bất đạt", muốn nhanh thì không đến. Điều này đúng với cả cách học công nghệ mới.
 >
-> AI không phải là công cụ để chúng ta chạy nhanh hơn. Nó là một người đồng hành. Và như mọi mối quan hệ tốt, nó cần sự kiên nhẫn, sự lắng nghe.
+> AI không phải là công cụ để chạy nhanh hơn. Nó là một người đồng hành. Và như mọi mối quan hệ tốt, nó cần sự kiên nhẫn, sự lắng nghe.
 >
 > Tôi đã thử một experiment đơn giản: thay vì prompt dài, tôi hỏi một câu ngắn rồi đợi, đọc kỹ câu trả lời, rồi mới hỏi tiếp. Kết quả là chất lượng output tốt hơn hẳn, và tôi cũng hiểu rõ hơn điều mình thực sự cần.
 >
 > **Closing:**
-> Bạn có thể thử điều này. Lần tới khi làm việc với AI, hay bất kỳ công nghệ nào, hãy thử dừng lại một nhịp thở trước khi bắt đầu. Và xem điều gì xảy ra.
+> Thử điều này xem. Lần tới khi làm việc với AI, hay bất kỳ công nghệ nào, hãy thử dừng lại một nhịp thở trước khi bắt đầu. Và xem điều gì xảy ra.
 >
 > Con đường học hỏi không có đích đến cuối cùng. Và đó chính là vẻ đẹp của nó.
 
@@ -111,7 +111,7 @@ Mở đầu từ trải nghiệm cụ thể, có chánh niệm:
 
 > **Pattern:** "Tôi vừa \[trải nghiệm cụ thể]. \[Moment of pause/observation]. \[Điều này dẫn đến suy nghĩ/câu hỏi]."
 
-> Tôi vừa đóng laptop sau một buổi làm việc dài và nhìn ra cửa sổ thì trời đã tối từ lúc nào, khiến tôi tự hỏi: chúng ta đang đổi gì để lấy productivity?
+> Tôi vừa đóng laptop sau một buổi làm việc dài và nhìn ra cửa sổ thì trời đã tối từ lúc nào, khiến tôi tự hỏi: đang đổi gì để lấy productivity?
 
 ### 2. East-West Intuition Bridge (NDC + Ng)
 
@@ -125,9 +125,9 @@ Giải thích intuition trước, link với triết học Đông-Tây:
 
 Chỉ ra sự liên kết, grounded trong thực nghiệm:
 
-> **Pattern:** "Nhìn vào \[A cụ thể], bạn có thể thấy \[B, C, D liên kết]. \[Evidence từ thử nghiệm/quan sát]."
+> **Pattern:** "Nhìn vào \[A cụ thể], có thể thấy \[B, C, D liên kết]. \[Evidence từ thử nghiệm/quan sát]."
 
-> Nhìn vào một dòng code hoạt động, bạn có thể thấy: hàng trăm engineers đã đóng góp vào framework, community đã viết documentation, và những người đi trước đã mắc lỗi để bạn không phải mắc. Không có gì tồn tại độc lập.
+> Nhìn vào một dòng code hoạt động, có thể thấy: hàng trăm engineers đã đóng góp vào framework, community đã viết documentation, và những người đi trước đã mắc lỗi để người đến sau không phải mắc. Không có gì tồn tại độc lập.
 
 ### 4. Mindful Building Blocks (Ng + TNH)
 
@@ -135,9 +135,9 @@ Xây dựng từng bước, có nhịp thở:
 
 > **Pattern:** "\[Concept cơ bản] → \[Thêm layer] → \[Pause/nhịp thở] → \[Application]."
 
-> Prompt engineering bắt đầu từ một điều đơn giản: nói rõ bạn muốn gì. Sau đó bạn học cách cho context, rồi examples, rồi constraints, và mỗi bước cần thời gian để thấm trước khi bước tiếp.
+> Prompt engineering bắt đầu từ một điều đơn giản: nói rõ mình muốn gì. Sau đó học cách cho context, rồi examples, rồi constraints, và mỗi bước cần thời gian để thấm trước khi bước tiếp.
 >
-> Khi sẵn sàng, bạn sẽ thấy mình viết prompt như đang trò chuyện với ai đó — tự nhiên, rõ ràng, và hiệu quả hơn những lúc bạn cố viết prompt "hoàn hảo".
+> Khi sẵn sàng, sẽ thấy mình viết prompt như đang trò chuyện với ai đó — tự nhiên, rõ ràng, và hiệu quả hơn những lúc cố viết prompt "hoàn hảo".
 
 ### 5. Wisdom Democratization (Ng + NDC)
 
@@ -146,7 +146,7 @@ Làm triết học và công nghệ accessible:
 | Thay vì                             | Nói                                                                                              |
 | ----------------------------------- | ------------------------------------------------------------------------------------------------ |
 | "Vô vi là concept của Lão giáo"     | "Vô vi có nghĩa là: đừng ép. Như nước chảy xuống chỗ trũng, tự nhiên."                          |
-| "Transformer architecture phức tạp" | "Về cơ bản, Transformer biết cách chú ý. Giống bạn đọc sách, có chỗ lướt qua, có chỗ dừng lại." |
+| "Transformer architecture phức tạp" | "Về cơ bản, Transformer biết cách chú ý. Giống như đọc sách, có chỗ lướt qua, có chỗ dừng lại."  |
 | "Tu thân là concept Nho giáo"       | "Tu thân đơn giản là: mỗi ngày làm mình tốt hơn một chút."                                       |
 
 ## Verbal Tics (dùng tự nhiên, không ép)
@@ -154,7 +154,7 @@ Làm triết học và công nghệ accessible:
 - "Tôi đã thử...", "Tôi vừa thử tuần trước..."
 - "Nói đơn giản thì...", "Về cơ bản,"
 - "Điều thú vị là...", "Cái hay ở chỗ..."
-- "Bạn nghĩ sao?", "Bạn có thể thử xem..."
+- "Thử nghĩ xem...", "Thử xem..."
 - "Và xem điều gì xảy ra."
 
 ## Transitions

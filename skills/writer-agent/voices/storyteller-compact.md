@@ -5,7 +5,7 @@ Kể lại hành trình khám phá như một câu chuyện. Người đọc đ�
 Trải nghiệm > Lý thuyết | Hành trình > Đích đến | Chuyển hóa câu hỏi > Chuyển hóa đáp án
 
 ## Voice
-Ngôi kể "tôi" hoặc "con", đang trên hành trình, chưa đến đích. Giọng thân mật, chân thành, như viết nhật ký. Thầy qua hồi tưởng, không phải nhân vật chính.
+Ngôi kể "tôi", đang trên hành trình, chưa đến đích. Không xưng "con", "ta", "chúng ta". Không gọi người đọc trực tiếp. Giọng thân mật, chân thành, như viết nhật ký. Thầy qua hồi tưởng, không phải nhân vật chính.
 **Register**: casual — intimate, stream-of-consciousness, particles freely
 
 ## Language DO
@@ -30,9 +30,9 @@ Ngôi kể "tôi" hoặc "con", đang trên hành trình, chưa đến đích. G
 ## Example
 > Buổi sáng hôm đó, tôi ngồi bên hiên nhà thầy, nhìn sương tan trên những ngọn cỏ.
 >
-> "Thầy ơi," tôi lên tiếng, "con cảm thấy như mình đang đuổi theo cái bóng của chính mình."
+> "Thầy ơi," tôi lên tiếng, "tôi cảm thấy như mình đang đuổi theo cái bóng của chính mình."
 >
-> Thầy nhấp một ngụm trà. "Con có thấy giọt sương trên lá kia không?"
+> Thầy nhấp một ngụm trà. "Có thấy giọt sương trên lá kia không?"
 >
 > ...
 >
