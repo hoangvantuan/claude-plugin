@@ -26,7 +26,7 @@ skills/                      # Các skill plugins (chi tiết xem ## Skill Struc
   prompt-generator-v2/       # KERNEL framework — prompt engineering nâng cao
   sequential-thinking/       # Phân tích từng bước cho vấn đề phức tạp — revision, branching, hypothesis
   slidev-builder/            # Slidev presentation builder from outline
-  substack-tools/            # Quản lý bài viết Substack: draft, schedule, publish, list, sections
+  substack-tools/            # Quản lý bài viết Substack: draft, schedule, publish, list, sections + scan/crawl newsletter khác
   things-manager/            # Things 3 task management via things-cli (Go CLI)
   deep-insight/              # Quan sát đa chiều → Phân tích tách lớp → Đúc kết cốt lõi để hiểu sâu vấn đề
   game-theory-lens/          # Phân tích chủ đề qua lăng kính Lý thuyết Trò chơi (Game Theory)
@@ -87,7 +87,7 @@ skills/<skill-name>/
 | `skill-auto-improver`      | `references/`                                                                                                      | quality-checklist, improvement-patterns                                                                                                   |
 | `slidev-builder`           | `references/`                                                                                                      | slide-templates                                                                                                                           |
 | `systems-thinking`         | `references/` `templates/`                                                                                         | system-traps, leverage-points, systems-wisdom, analysis-output                                                                            |
-| `substack-tools`           | `references/` `scripts/`                                                                                           | substack_cli.py, api-quirks, batch-operations                                                                                             |
+| `substack-tools`           | `references/` `scripts/`                                                                                           | substack_cli.py, substack_crawl.py, api-quirks, batch-operations, crawl-guide                                                             |
 | `things-manager`           | —                                                                                                                  | Chỉ có SKILL.md                                                                                                                           |
 | `van-tu-tu-training`       | `references/`                                                                                                      | philosophy-foundation, modular-architecture, ratio-adjustment, template-van, template-tu-suy-tu, template-tu-thuc-hanh, template-danh-gia |
 | `viral-post-creator`       | `references/`                                                                                                      | example-phrasing                                                                                                                          |

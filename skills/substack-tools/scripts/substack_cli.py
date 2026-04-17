@@ -11,10 +11,10 @@ Xem help:
     ~/.venv/claude/bin/python substack_cli.py --help
 """
 
+from __future__ import annotations
+
 import sys
 sys.dont_write_bytecode = True
-
-from __future__ import annotations
 
 import argparse
 import json
@@ -25,6 +25,22 @@ from pathlib import Path
 
 from substack import Api
 from substack.post import Post
+
+try:
+    from substack_crawl import (
+        crawl_archive,
+        crawl_feed,
+        crawl_post,
+        crawl_post_api,
+        fetch_archive,
+        fetch_feed,
+        print_feed_json,
+        print_feed_table,
+        save_post,
+    )
+    _CRAWL_AVAILABLE = True
+except ImportError:
+    _CRAWL_AVAILABLE = False
 
 
 ENV_COOKIE = "SUBSTACK_COOKIE"
@@ -420,6 +436,43 @@ def cmd_set_section(args: argparse.Namespace) -> None:
     print(f"\nTổng: ok={ok} fail={fail}")
 
 
+def _require_crawl() -> None:
+    if not _CRAWL_AVAILABLE:
+        sys.exit(
+            "Thiếu crawl dependencies. Cài: "
+            "uv pip install --python ~/.venv/claude/bin/python feedparser httpx beautifulsoup4 markdownify"
+        )
+
+
+def cmd_scan(args: argparse.Namespace) -> None:
+    _require_crawl()
+    if getattr(args, "all", False):
+        entries = fetch_archive(args.slug)
+    else:
+        entries = fetch_feed(args.slug, limit=args.limit)
+    if args.json:
+        print_feed_json(entries)
+    else:
+        print_feed_table(entries)
+
+
+def cmd_crawl(args: argparse.Namespace) -> None:
+    _require_crawl()
+    post = crawl_post(args.url)
+    out = Path(args.output_dir)
+    save_post(post, out)
+
+
+def cmd_crawl_feed(args: argparse.Namespace) -> None:
+    _require_crawl()
+    out = Path(args.output_dir)
+    if getattr(args, "all", False):
+        saved = crawl_archive(args.slug, output_dir=out)
+    else:
+        saved = crawl_feed(args.slug, limit=args.limit, output_dir=out)
+    print(f"\nTổng: {len(saved)} bài mới đã lưu")
+
+
 def build_parser() -> argparse.ArgumentParser:
     common = argparse.ArgumentParser(add_help=False)
     common.add_argument(
@@ -526,6 +579,33 @@ def build_parser() -> argparse.ArgumentParser:
         help="Một hoặc nhiều draft id",
     )
     p_set.set_defaults(func=cmd_set_section)
+
+    # --- Scan / Crawl (read-only, không cần auth) ---
+
+    p_scan = sub.add_parser(
+        "scan", help="Quét RSS feed của newsletter khác, hiện danh sách bài"
+    )
+    p_scan.add_argument("slug", help="Slug, URL hoặc domain (vd: meaningquiry)")
+    p_scan.add_argument("--limit", type=int, default=10, help="Số bài tối đa (mặc định 10)")
+    p_scan.add_argument("--all", action="store_true", help="Lấy TẤT CẢ bài qua archive API (thay vì RSS 25 bài)")
+    p_scan.add_argument("--json", action="store_true", help="Output JSON thay vì bảng")
+    p_scan.set_defaults(func=cmd_scan)
+
+    p_crawl = sub.add_parser(
+        "crawl", help="Tải 1 bài Substack thành file .md"
+    )
+    p_crawl.add_argument("url", help="URL đầy đủ của bài viết")
+    p_crawl.add_argument("--output-dir", default="./crawled", help="Thư mục lưu (mặc định ./crawled)")
+    p_crawl.set_defaults(func=cmd_crawl)
+
+    p_cf = sub.add_parser(
+        "crawl-feed", help="Batch tải N bài từ RSS feed của newsletter khác"
+    )
+    p_cf.add_argument("slug", help="Slug, URL hoặc domain")
+    p_cf.add_argument("--limit", type=int, default=5, help="Số bài tối đa (mặc định 5)")
+    p_cf.add_argument("--all", action="store_true", help="Tải TẤT CẢ bài qua archive API (bỏ qua --limit)")
+    p_cf.add_argument("--output-dir", default="./crawled", help="Thư mục lưu (mặc định ./crawled)")
+    p_cf.set_defaults(func=cmd_crawl_feed)
 
     return parser
 

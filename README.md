@@ -41,7 +41,7 @@ claude plugin install gh:hoangvantuan/shun-claude-plugin
 | `sequential-thinking` | Phân tích từng bước cho vấn đề phức tạp — revision capability, branching, hypothesis verification, dynamic adjustment |
 | `workshop-builder` | Thiết kế workshop hoàn chỉnh theo Backwards Design + 4Cs + Kirkpatrick — 5 giai đoạn (Vision → Design → Prepare → Deliver → Follow-up) |
 | `game-theory-lens` | Phân tích sâu bất kỳ chủ đề nào qua lăng kính Lý thuyết Trò chơi — nhận diện players/strategies/payoffs, map sang game archetype, Nash equilibrium, bargaining, mechanism design |
-| `substack-tools` | Quản lý bài viết Substack: tạo draft, schedule, publish, list, gán section — CLI tự động kèm ảnh cover, batch operations, rate limit handling |
+| `substack-tools` | Quản lý bài viết Substack: draft, schedule, publish, list, sections + scan/crawl newsletter khác (lấy tất cả bài qua archive API, rate limit handling) |
 
 ### Agents
 

@@ -1,12 +1,12 @@
 ---
 name: substack-tools
-description: "Quản lý bài viết Substack: tạo draft, schedule, publish, list, gán section. Dùng skill này khi user muốn đăng bài lên Substack, lên lịch bài Substack, quản lý draft Substack, liệt kê bài đã đăng/scheduled, hoặc bất kỳ thao tác nào liên quan đến Substack newsletter. Trigger cả khi user nhắc đến 'substack', 'newsletter', 'đăng bài', 'schedule bài', 'publish bài' trong ngữ cảnh Substack."
+description: "Quản lý bài viết Substack: draft, schedule, publish, list, sections + scan/crawl newsletter khác. Trigger khi user nhắc 'substack', 'newsletter', 'đăng bài', 'schedule bài', 'publish bài', 'scan newsletter', 'crawl substack', 'đọc bài substack khác'."
 disable-model-invocation: true
 ---
 
 # Substack Tools
 
-CLI tự động quản lý bài viết Substack: draft, schedule, publish, list, sections, batch operations. Dùng `python-substack` (reverse-engineered) + endpoint nội bộ capture từ DevTools.
+CLI tự động quản lý bài viết Substack: draft, schedule, publish, list, sections, batch operations + scan/crawl newsletter khác (lấy tất cả bài qua archive API). Dùng `python-substack` (reverse-engineered) + public JSON API (`/api/v1/`).
 
 ## Thiết lập ban đầu
 
@@ -14,7 +14,7 @@ CLI tự động quản lý bài viết Substack: draft, schedule, publish, list
 
 ```bash
 test -d ~/.venv/claude || uv venv ~/.venv/claude
-uv pip install --python ~/.venv/claude/bin/python python-substack
+uv pip install --python ~/.venv/claude/bin/python python-substack feedparser httpx beautifulsoup4 markdownify
 ```
 
 ### Cấu hình credentials
@@ -95,6 +95,40 @@ $PY $SCRIPT sections
 $PY $SCRIPT set-section "Tên Section" DRAFT_ID1 DRAFT_ID2 ...
 ```
 
+## Scan / Crawl newsletter khác (read-only, không cần auth)
+
+### scan — Quét danh sách bài
+
+```bash
+$PY $SCRIPT scan <slug> [--limit 10] [--json] [--all]
+```
+
+- `slug`: slug Substack (vd: `platformer`), full URL, hoặc domain
+- Hiển thị bảng: ngày, tác giả, tiêu đề
+- `--json`: output JSON thay vì bảng
+- `--all`: lấy TẤT CẢ bài qua archive API (mặc định dùng RSS, tối đa ~25 bài)
+
+### crawl — Tải 1 bài thành .md
+
+```bash
+$PY $SCRIPT crawl <URL> [--output-dir ./crawled]
+```
+
+- Tải full bài, convert HTML → Markdown, lưu với YAML frontmatter
+- Skip nếu file đã tồn tại (idempotent)
+
+### crawl-feed — Batch tải N bài từ feed
+
+```bash
+$PY $SCRIPT crawl-feed <slug> [--limit 5] [--output-dir ./crawled] [--all]
+```
+
+- Mặc định: tải N bài mới nhất từ RSS
+- `--all`: tải TẤT CẢ bài qua archive API (bỏ qua --limit)
+- Delay tự động 2-5s random giữa mỗi bài (tránh rate limit)
+
+Chi tiết troubleshooting → [crawl-guide](references/crawl-guide.md).
+
 ## Flags chung
 
 - `--dry-run`: in payload, không gọi API. Đặt SAU tên subcommand.
@@ -106,7 +140,8 @@ $PY $SCRIPT set-section "Tên Section" DRAFT_ID1 DRAFT_ID2 ...
 | Tự làm | Phải hỏi user trước |
 |--------|---------------------|
 | draft, schedule, list, sections, set-section, unschedule | publish / publish-existing — gửi email thật, không recall được |
-| `--dry-run` để kiểm tra payload | Xoá bài đã publish |
+| scan, crawl, crawl-feed (read-only) | Xoá bài đã publish |
+| `--dry-run` để kiểm tra payload | |
 
 Không commit `.env` — chứa cookie auth.
 
@@ -115,3 +150,4 @@ Không commit `.env` — chứa cookie auth.
 - `references/setup-guide.md` — chi tiết cấu hình credentials lần đầu
 - `references/api-quirks.md` — endpoint quirks, rate limit, troubleshooting
 - `references/batch-operations.md` — pattern delay + retry cho batch schedule
+- `references/crawl-guide.md` — troubleshooting scan/crawl: selectors, rate limit, paywall
