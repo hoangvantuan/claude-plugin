@@ -10,7 +10,7 @@ Script dùng PinchTab accessibility snapshot để tìm UI elements theo role v�
 2. **Navigate** — wall mode: mở profile (auto-detect hoặc `--user-id`); group mode: mở group URL
 3. **Validate page** — group mode kiểm tra create-post button tồn tại (early error nếu URL sai hoặc không có quyền)
 4. **Open post dialog** — click button với retry logic: verify textbox xuất hiện, retry tối đa 3 lần
-5. **Type content** — dùng `inserttext` để giữ line breaks
+5. **Type content** — dùng HTTP API `/evaluate` + `document.execCommand('insertText')` để giữ line breaks và tránh CLI cắt nội dung chứa ký tự đặc biệt
 6. **Tag friend** (optional) — mở tag dialog, search theo tên, chọn bằng keyboard (ArrowDown + Enter); dùng `--tag-id` cho precise match, ưu tiên "Bạn bè" (friends)
 7. **Publish or hold** — dùng **exact match** cho nút "Đăng"/"Post" để tránh click nhầm "Đăng ẩn danh"
 

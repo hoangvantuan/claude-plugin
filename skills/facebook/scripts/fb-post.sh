@@ -236,6 +236,21 @@ safe_click() {
   pinchtab press Enter >/dev/null 2>&1
 }
 
+# Insert text via HTTP API — avoids shell escaping that truncates long/special content
+# Uses document.execCommand('insertText') which fires proper React input events
+insert_text_via_api() {
+  local text="$1"
+  CONTENT_TEXT="$text" API_BASE="$BASE" API_TOKEN="$TOKEN" python3 << 'PYEOF'
+import os, json, urllib.request
+content = os.environ['CONTENT_TEXT']
+js = 'document.execCommand("insertText", false, ' + json.dumps(content) + ')'
+payload = json.dumps({'expression': js}).encode()
+req = urllib.request.Request(os.environ['API_BASE'] + '/evaluate', data=payload,
+    headers={'Content-Type': 'application/json', 'Authorization': 'Bearer ' + os.environ['API_TOKEN']})
+urllib.request.urlopen(req)
+PYEOF
+}
+
 # Click with retry (fix #7: verify element appeared, retry up to max_retries)
 click_and_verify() {
   local click_ref="$1" verify_role="$2" verify_kw="$3"
@@ -418,8 +433,11 @@ log_info "[4/6] Typing post content"
 
 pinchtab click "$TXT_POST" >/dev/null 2>&1
 human_delay 400 900
-# Use inserttext (clipboard paste) — natural for long content; add human pause after
-pinchtab keyboard inserttext "$CONTENT" >/dev/null 2>&1
+# HTTP API insertText — bypasses CLI argument parsing that truncates on special chars
+if ! insert_text_via_api "$CONTENT" 2>/dev/null; then
+  log_warn "API insertText failed, falling back to CLI type"
+  pinchtab type "$TXT_POST" "$CONTENT" >/dev/null 2>&1
+fi
 human_delay 800 2000
 log_info "Content entered (${#CONTENT} chars)"
 debug_screenshot "04-content-entered"
@@ -439,7 +457,7 @@ if [[ -n "$TAG_NAME" ]]; then
     if [[ -n "$TXT_SEARCH" ]]; then
       pinchtab click "$TXT_SEARCH" >/dev/null 2>&1
       human_delay 300 800
-      pinchtab keyboard type "$TAG_NAME" >/dev/null 2>&1
+      pinchtab type "$TXT_SEARCH" "$TAG_NAME" >/dev/null 2>&1
 
       # Wait for search results to populate (Facebook AJAX)
       human_delay 1500 3000
