@@ -43,6 +43,7 @@ claude plugin install gh:hoangvantuan/shun-claude-plugin
 | `game-theory-lens` | Phân tích sâu bất kỳ chủ đề nào qua lăng kính Lý thuyết Trò chơi — nhận diện players/strategies/payoffs, map sang game archetype, Nash equilibrium, bargaining, mechanism design |
 | `substack-tools` | Quản lý bài viết Substack: draft, schedule, publish, list, sections + scan/crawl newsletter khác (lấy tất cả bài qua archive API, rate limit handling) |
 | `social-post` | Viết bài social đa platform (Facebook, Threads, LinkedIn, Zalo, X) chia sẻ góc nhìn chiều sâu — 3 archetype (Patient Observer, Dramatic Prophet, Quiet Devastator), cấu trúc 5 phần, anti-AI rules, self-critique |
+| `style-dna` | Bóc tách DNA văn phong từ corpus bài viết của một tác giả thành style guide markdown tái sử dụng — phân tích 8 chiều, signature phrases, công thức tái tạo, anti-patterns. Input: file/folder, paste, URL |
 
 ### Agents
 

@@ -27,6 +27,7 @@ skills/                      # Các skill plugins (chi tiết xem ## Skill Struc
   sequential-thinking/       # Phân tích từng bước cho vấn đề phức tạp — revision, branching, hypothesis
   slidev-builder/            # Slidev presentation builder from outline
   social-post/               # Viết bài social đa platform (Facebook, Threads, LinkedIn, Zalo) chia sẻ góc nhìn chiều sâu — 3 archetype, cấu trúc 5 phần, anti-AI rules, self-critique
+  style-dna/                 # Bóc tách DNA văn phong từ corpus bài viết → style guide markdown tái sử dụng (8 chiều, signature phrases, công thức tái tạo)
   substack-tools/            # Quản lý bài viết Substack: draft, schedule, publish, list, sections + scan/crawl newsletter khác
   things-manager/            # Things 3 task management via things-cli (Go CLI)
   deep-insight/              # Quan sát đa chiều → Phân tích tách lớp → Đúc kết cốt lõi để hiểu sâu vấn đề
@@ -88,6 +89,7 @@ skills/<skill-name>/
 | `skill-auto-improver`      | `references/`                                                                                                      | quality-checklist, improvement-patterns                                                                                                   |
 | `slidev-builder`           | `references/`                                                                                                      | slide-templates                                                                                                                           |
 | `social-post`              | `references/`                                                                                                      | archetypes (Patient Observer, Dramatic Prophet, Quiet Devastator), craft-techniques, anti-ai-rules, example-output                        |
+| `style-dna`                | `references/`                                                                                                      | analysis-dimensions (8 chiều chi tiết), output-template (khung markdown chuẩn), anti-patterns (lỗi cần tránh)                             |
 | `systems-thinking`         | `references/` `templates/`                                                                                         | system-traps, leverage-points, systems-wisdom, analysis-output                                                                            |
 | `substack-tools`           | `references/` `scripts/`                                                                                           | substack_cli.py, substack_crawl.py, api-quirks, batch-operations, crawl-guide                                                             |
 | `things-manager`           | —                                                                                                                  | Chỉ có SKILL.md                                                                                                                           |
