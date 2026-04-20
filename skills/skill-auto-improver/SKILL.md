@@ -88,7 +88,7 @@ Thực hiện từng cải tiến đã được duyệt. Sau mỗi thay đổi, 
 
 **Bước 8 — Chấm điểm lại**
 
-Đánh giá lại 8 tiêu chí. So sánh trước/sau:
+Đánh giá lại 8 tiêu chí. Nếu skill chạy đa model, kiểm tra hướng dẫn đủ cụ thể cho model yếu nhất (Haiku) không. So sánh trước/sau:
 
 ```
 | Tiêu chí            | Trước | Sau | Delta |

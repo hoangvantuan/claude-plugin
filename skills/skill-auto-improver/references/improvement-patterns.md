@@ -57,6 +57,15 @@ Viết đầy đủ dấu tiếng Việt — text không dấu gây hiểu sai n
 - Giữ 2-3 ví dụ diverse (thay vì 5+ ví dụ tương tự)
 - Chọn ví dụ cover edge cases khác nhau (ngắn/dài, đơn giản/phức tạp)
 - Thêm 1 dòng giải thích pattern chung mà ví dụ minh hoạ
+- **Ưu tiên format Input/Output pairs** khi output quality phụ thuộc vào style (commit message, tone, code style):
+
+```markdown
+**Ví dụ:**
+Input: [mô tả tình huống]
+Output: [kết quả mong đợi]
+```
+
+Pairs dạy style tốt hơn mô tả dài dòng — model pattern-match từ cặp I/O.
 
 **Hiệu quả:** LLM học pattern thay vì copy ví dụ cụ thể.
 
@@ -100,15 +109,11 @@ Chọn format phù hợp cho nội dung.
 
 ## P7: Chuẩn hóa output (Standardize Output Format)
 
-**Khi nào:** Skill không định nghĩa rõ output format, hoặc output format không nhất quán.
+**Khi nào:** Output không nhất quán giữa các lần chạy.
 
-**Hành động:** Thêm template output với placeholder rõ ràng. Bao gồm:
+**Hành động:** Thêm template với placeholder — đường dẫn file, cấu trúc sections, naming convention. Chọn mức strict (exact template) vs flexible (sensible default, adapt khi cần) tuỳ task.
 
-- Đường dẫn lưu file (nếu tạo file)
-- Cấu trúc sections
-- Naming convention
-
-**Hiệu quả:** Output nhất quán, dễ tìm lại, dễ tự động hoá.
+**Hiệu quả:** Output nhất quán, dễ tự động hoá.
 
 ---
 
@@ -142,17 +147,9 @@ Chọn format phù hợp cho nội dung.
 
 ---
 
-## P10: Thống nhất ngôn ngữ (Unify Language)
+## P10: [Đã gộp vào P3 + tiêu chí 8]
 
-**Khi nào:** Skill trộn lẫn tiếng Anh/Việt không có pattern rõ ràng, hoặc terminology không nhất quán (dùng nhiều từ khác nhau cho cùng concept).
-
-**Hành động:**
-
-- Chọn ngôn ngữ chính dựa trên target audience
-- Technical terms giữ tiếng Anh nếu dịch gây mất nghĩa
-- Tạo glossary ngắn nếu skill dùng thuật ngữ domain-specific
-
-**Hiệu quả:** Giảm confusion, tăng consistency.
+Thuật ngữ nhất quán đã là yêu cầu của P3 (giải thích lý do) và Description Quality (tiêu chí 8). Không cần pattern riêng.
 
 ---
 
@@ -199,4 +196,57 @@ description: >
 ```
 
 **Hiệu quả:** Tăng trigger accuracy — skill được gọi đúng lúc, không bị bỏ sót hay nhầm lẫn.
+
+---
+
+## P13: Reference Depth & TOC (Chiều sâu reference + mục lục)
+
+**Khi nào:** SKILL.md link đến file A, file A lại link đến file B; hoặc reference file >100 dòng không có mục lục.
+
+**Hành động:**
+
+- **Flatten chiều sâu:** Mọi reference link trực tiếp từ SKILL.md, không qua trung gian. Claude hay dùng `head -100` preview file nested → đọc thiếu.
+- **TOC ở đầu file >100 dòng:** Liệt kê tên section để Claude thấy toàn cảnh kể cả khi preview.
+
+**Trước (nested):** `SKILL.md → advanced.md → details.md → nội dung thật`
+**Sau (flat):** `SKILL.md → advanced.md | SKILL.md → details.md` (2 pointer cùng mức)
+
+**Hiệu quả:** Claude đọc đúng nội dung cần thiết, không bị cắt giữa chừng khi navigate sâu.
+
+---
+
+## P14: Workflow Checklist (Danh sách tick cho workflow phức tạp)
+
+**Khi nào:** Skill có workflow ≥5 bước, hoặc các bước có thể chạy sai thứ tự.
+
+**Hành động:** Cung cấp checklist format code block để Claude copy vào response và tick từng bước.
+
+```markdown
+Copy checklist này và tick khi xong:
+```
+```
+Progress:
+- [ ] Bước 1: [hành động cụ thể]
+- [ ] Bước 2: [hành động cụ thể]
+- [ ] Bước 3: [validate output bước 2]
+```
+
+**Hiệu quả:** Giảm skip bước, tăng tính verifiable, user theo dõi progress dễ.
+
+---
+
+## P15: Plan-Validate-Execute (Kế hoạch có thể kiểm chứng)
+
+**Khi nào:** Task high-stakes, batch operation, hoặc destructive change (migrate data, fill 50 form fields, refactor nhiều file).
+
+**Hành động:** Chèn bước trung gian — tạo file plan (JSON/markdown) → chạy validator trên file đó → mới execute.
+
+**Flow:** `Analyze → Create plan file → Validate plan → Execute → Verify output`
+
+**Ví dụ:** Thay vì "fill các field trong form", tách thành:
+1. Extract fields → `fields.json`
+2. Validate `fields.json` (field nào không tồn tại? conflict? thiếu required?)
+3. Chỉ khi validate pass mới apply
+
+**Hiệu quả:** Phát hiện lỗi trước khi chạm production, plan reversible, debug dễ.
 

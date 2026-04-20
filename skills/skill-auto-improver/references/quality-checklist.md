@@ -113,23 +113,30 @@ Dùng 8 tiêu chí dưới đây để chấm điểm skill (thang 1-5 mỗi ti�
 - Có thông tin nhạy cảm thời gian (ngày/tháng cụ thể sẽ lỗi thời)?
 - Có thuật ngữ không nhất quán (dùng nhiều từ cho cùng concept)?
 - Scripts có xử lý lỗi tường minh hay "punt" cho Claude?
+- File path dùng forward slash (`/`), không dùng Windows-style (`\`)?
+- MCP tool references dùng full name `ServerName:tool_name` (tránh "tool not found")?
+- Có assume package/tool đã cài mà không khai báo dependency?
 
-## 8. Description Quality (Chất lượng mô tả)
+## 8. Metadata & Description (Chất lượng mô tả + siêu dữ liệu)
 
 | Điểm | Mô tả |
 |------|-------|
-| 1 | Không có description hoặc quá chung chung ("A helpful skill") |
-| 2 | Mô tả chức năng nhưng thiếu trigger phrases |
+| 1 | Không có description hoặc quá chung chung ("A helpful skill"); frontmatter sai |
+| 2 | Mô tả chức năng nhưng thiếu trigger phrases; name/description vi phạm giới hạn |
 | 3 | Có chức năng + trigger phrases, nhưng thiếu ranh giới "khi nào KHÔNG dùng" |
-| 4 | Trả lời đủ "làm gì" + "khi nào dùng", viết ngôi thứ ba |
-| 5 | Cụ thể, có trigger phrases đa dạng, phân biệt rõ với skill tương tự |
+| 4 | Trả lời đủ "làm gì" + "khi nào dùng", viết ngôi thứ ba, frontmatter hợp lệ |
+| 5 | Cụ thể, trigger phrases đa dạng, phân biệt rõ skill tương tự, name dạng gerund |
 
-**Kiểm tra:**
-- Description trả lời "skill này làm gì" + "khi nào nên dùng"?
-- Viết ngôi thứ ba (không dùng "I can help you...")?
+**Kiểm tra description:**
+- Trả lời "skill này làm gì" + "khi nào nên dùng"?
+- Viết ngôi thứ ba (không "I can help you...", không "Bạn có thể...")?
 - Có trigger phrases cụ thể (các từ/cụm từ user hay nói)?
-- YAML frontmatter hợp lệ (name + description)?
 - Phân biệt rõ với skill tương tự (tránh trigger nhầm)?
+
+**Kiểm tra frontmatter (ràng buộc cứng):**
+- `name` ≤64 ký tự, chỉ `[a-z0-9-]`, không chứa từ cấm "anthropic"/"claude"?
+- `description` ≤1024 ký tự, không rỗng, không chứa XML tags?
+- `name` dùng dạng gerund (`processing-pdfs`, `analyzing-x`) — rõ capability?
 
 ## Cách sử dụng
 

@@ -26,6 +26,7 @@ skills/                      # Các skill plugins (chi tiết xem ## Skill Struc
   prompt-generator-v2/       # KERNEL framework — prompt engineering nâng cao
   sequential-thinking/       # Phân tích từng bước cho vấn đề phức tạp — revision, branching, hypothesis
   slidev-builder/            # Slidev presentation builder from outline
+  social-post/               # Viết bài social đa platform (Facebook, Threads, LinkedIn, Zalo) chia sẻ góc nhìn chiều sâu — 3 archetype, cấu trúc 5 phần, anti-AI rules, self-critique
   substack-tools/            # Quản lý bài viết Substack: draft, schedule, publish, list, sections + scan/crawl newsletter khác
   things-manager/            # Things 3 task management via things-cli (Go CLI)
   deep-insight/              # Quan sát đa chiều → Phân tích tách lớp → Đúc kết cốt lõi để hiểu sâu vấn đề
@@ -86,6 +87,7 @@ skills/<skill-name>/
 | `sequential-thinking`      | `references/` `scripts/` `tests/`                                                                                  | core-patterns, examples (api/debug/architecture), advanced-techniques, advanced-strategies, process-thought.js, format-thought.js          |
 | `skill-auto-improver`      | `references/`                                                                                                      | quality-checklist, improvement-patterns                                                                                                   |
 | `slidev-builder`           | `references/`                                                                                                      | slide-templates                                                                                                                           |
+| `social-post`              | `references/`                                                                                                      | archetypes (Patient Observer, Dramatic Prophet, Quiet Devastator), craft-techniques, anti-ai-rules, example-output                        |
 | `systems-thinking`         | `references/` `templates/`                                                                                         | system-traps, leverage-points, systems-wisdom, analysis-output                                                                            |
 | `substack-tools`           | `references/` `scripts/`                                                                                           | substack_cli.py, substack_crawl.py, api-quirks, batch-operations, crawl-guide                                                             |
 | `things-manager`           | —                                                                                                                  | Chỉ có SKILL.md                                                                                                                           |

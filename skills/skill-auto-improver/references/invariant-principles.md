@@ -41,13 +41,15 @@ Mỗi thông tin chỉ định nghĩa **1 nơi duy nhất**. Trùng lặp giữa
 - Giữ phiên bản rõ nhất ở vị trí hợp lý nhất, xoá các bản trùng
 - SKILL.md chứa pointer, references chứa chi tiết — không ngược lại
 
-## 6. Đo trước, sửa sau
+## 6. Đo trước, sửa sau (Eval-driven)
 
 Chấm điểm baseline → sửa → chấm lại → so sánh delta. Không sửa dựa trên cảm tính.
 
 - Dùng quality-checklist (8 tiêu chí, thang 1-5) làm công cụ đo
 - Cải tiến phải chứng minh được: điểm tăng hoặc dòng giảm (hoặc cả hai)
 - Nếu điểm không tăng → cải tiến đó không hiệu quả, cân nhắc revert
+- **Ưu tiên eval trước writing:** Với skill mới, định nghĩa 3 scenarios thất bại (Claude không skill) trước khi viết — skill chỉ cần giải quyết đúng 3 scenarios đó
+- **Test đa model:** Skill chạy được với Haiku/Sonnet/Opus không? Opus tự suy luận được chỗ mơ hồ — Haiku cần cụ thể hơn. Nếu cross-model, viết cho model yếu nhất
 
 ## 7. Ranh giới quyết định phải rõ ràng
 
