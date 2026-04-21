@@ -48,8 +48,8 @@ Trong tình huống sau, bạn nên áp dụng gì?
 
 [... 5-10 câu tổng cộng ...]
 
----
-**Đáp án:** [Liệt kê + giải thích ngắn]
+## Đáp án
+[Liệt kê + giải thích ngắn]
 ```
 
 ## Checklist chất lượng Module Văn

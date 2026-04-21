@@ -11,8 +11,6 @@
 **Thời gian:** [X] phút
 **Kiến thức liên quan:** [Khái niệm từ phần Văn của module này]
 
----
-
 ## BƯỚC 1: QUAN SÁT (10 phút)
 
 **Nhiệm vụ:** [Mô tả cụ thể điều cần quan sát]
@@ -22,15 +20,11 @@
 | Tôi nhận thấy... | _______________ |
 | Pattern tôi thấy... | _______________ |
 
----
-
 ## BƯỚC 2: PHÂN TÍCH (15 phút)
 
 **Nhiệm vụ:** Áp dụng [framework module này] để phân tích.
 
 [Bảng/ma trận/template phân tích cụ thể cho module này]
-
----
 
 ## BƯỚC 3: THỰC HÀNH (45 phút)
 
@@ -40,8 +34,6 @@
 2. [ ] [Bước cụ thể 2]
 3. [ ] [Bước cụ thể 3]
 4. [ ] Ghi lại kết quả
-
----
 
 ## BƯỚC 4: ĐÚC KẾT (10 phút)
 
@@ -93,8 +85,6 @@
 
 Dùng trong 1-2 tuần thực hành module này. Mỗi ngày 5-10 phút.
 
----
-
 ## Hành động mỗi ngày
 
 - [ ] **Sáng:** [Hành động cụ thể liên quan đến module này]
@@ -124,8 +114,6 @@ Dùng trong 1-2 tuần thực hành module này. Mỗi ngày 5-10 phút.
 **Mục đích:** Dạy lại người khác là cách đúc kết mạnh nhất. Nếu bạn giải thích được → bạn hiểu thật.
 **Thời gian trình bày:** 5 phút
 **Đối tượng:** Buddy pair, nhóm nhỏ, hoặc facilitator
-
----
 
 ## Chuẩn bị (15-20 phút)
 

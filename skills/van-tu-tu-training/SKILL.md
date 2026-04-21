@@ -27,9 +27,50 @@ Skill xây dựng bộ tài liệu training theo mô hình **Văn-Tư-Tu** (Tam 
 4. **Phương pháp theo cấp độ** — Người mới cần yêu thương, người giỏi cần áp lực
 5. **Đúc kết là bắt buộc** — Không đúc kết = không học
 
+## Chuẩn đặt tên & liên kết
+
+**Tuyệt đối tuân thủ** chuẩn trong `references/naming-convention.md` khi tạo bộ tài liệu:
+
+- **Folder/file**: kebab-case, tiếng Việt không dấu, zero-pad 2 chữ số (`01-`, `02-`). Ví dụ: `module-01-nen-tang-feedback/`, `cau-hoi-phan-chieu.md`.
+- **Phase folder cố định**: `01-van/`, `02-tu-suy-tu/`, `03-tu-thuc-hanh/`, `04-danh-gia/`.
+- **Folder meta prefix `_`**: `_facilitator-hub/`, `_danh-gia-khoa/`.
+- **Link**: luôn markdown + relative path — `[Module 2](../module-02-slug/README.md)`. Không đường dẫn tuyệt đối, không text trần.
+- **README mỗi module** bắt buộc link: tổng quan khoá, 4 phase, prerequisite (nếu có), module tiếp theo.
+
+> Đọc `references/naming-convention.md` để biết chi tiết tên chuẩn theo vị trí, cách tạo slug, bản đồ link bắt buộc, và checklist kiểm tra cuối.
+
+## Google Docs Compatibility — BẮT BUỘC
+
+Output của skill này là file `.md`, thường được upload lên Google Drive và **auto-convert sang Google Docs**. Để không vỡ layout:
+
+**6 cấm kỵ tuyệt đối:**
+
+1. **Không ASCII art box** — cấm ký tự `┌ ┐ └ ┘ │ ─ ├ ┤ ┬ ┴ ┼`. Docs đổi font → lệch hàng thê thảm.
+2. **Không multi-column bằng khoảng trắng** — dùng table markdown 2+ cột thay thế.
+3. **Không ASCII tree folder** (`├── └──`) ngoài code block — chuyển nested bullet list.
+4. **Không Mermaid diagram** trong deliverable — export ảnh PNG hoặc thay bằng bảng quan hệ "Từ → Đến".
+5. **Không `---` horizontal rule** trong content — Docs convert thành đường kẻ mảnh phá nhịp. Dùng heading mới hoặc blank line thay thế. (Ngoại lệ: YAML frontmatter ở đầu file giữ nguyên.)
+6. **Không link relative path chéo file** khi upload Drive — thay bằng Docs URL sau convert. Naming-convention relative link chỉ dùng cho Git/local.
+
+**Element OK (đã verify):** heading, bullet, numbered list, **task list `- [ ]` / `- [x]` → render thành checkbox native tick được**, table, bold/italic, blockquote, inline code, code block, link, ảnh URL public.
+
+**Element né:** HTML tags (trừ `<br>` trong cell bảng OK), footnote `[^1]`.
+
+**Khi cần diagram/layout phức tạp:**
+
+| Ý định | Thay bằng |
+|---|---|
+| Hộp so sánh A vs B | Table markdown 2 cột |
+| Folder tree | Nested bullet list (hoặc code block nếu buộc) |
+| Flow chart | Ảnh PNG (export từ mermaid.live) hoặc bảng "Bước → Hành động" |
+| Prerequisite map | Bảng "Module → Prerequisite" |
+| 2x2 matrix | Table markdown 2 cột × 2 row |
+
+> Đọc `references/gdocs-compatibility.md` để biết chi tiết: whitelist/blacklist element, rules bảng, ký tự Unicode an toàn, và checklist test convert cuối cùng.
+
 ## Quick Start — Cá nhân, 1 chủ đề đơn
 
-Nếu chỉ cần tạo **1 module cho cá nhân tự học**, bỏ qua quy trình 6 bước, tạo 1 file duy nhất:
+Nếu chỉ cần tạo **1 module cho cá nhân tự học**, bỏ qua quy trình 6 bước, tạo 1 file duy nhất. Đặt tên file theo chuẩn: `module-01-<slug-chu-de>.md` (kebab-case, VN không dấu). Ví dụ: `module-01-ky-thuat-sbi.md`.
 
 ```markdown
 # [Tên Module] — Training Cá Nhân
@@ -180,14 +221,14 @@ Với mỗi module, xác định:
 
 ### Bước 4: Xây dựng nội dung
 
-**Thứ tự viết tối ưu cho MỖI module:**
+**Thứ tự viết tối ưu cho MỖI module** (tên phase folder theo chuẩn `naming-convention.md`):
 
 ```
 1. Viết README.md (thẻ căn cước module)
-2. Viết TU_THUC_HANH trước — bài thực hành, dự án (70% giá trị)
-3. Viết TU_SUY_TU — câu hỏi phản chiếu, case study
-4. Viết VAN — chỉ kiến thức CẦN CHO Tư và Tu
-5. Viết DANH_GIA — rubric, After-Action Review template
+2. Viết 03-tu-thuc-hanh/ trước — bài thực hành, dự án (70% giá trị)
+3. Viết 02-tu-suy-tu/ — câu hỏi phản chiếu, case study
+4. Viết 01-van/ — chỉ kiến thức CẦN CHO Tư và Tu
+5. Viết 04-danh-gia/ — rubric, After-Action Review template
 6. Đối chiếu với Content Inventory — đảm bảo mọi ý chính gán cho module này đều xuất hiện trong nội dung
 ```
 
@@ -256,12 +297,33 @@ Với mỗi module, xác định:
 
 ## Output format
 
-Tạo bộ tài liệu theo cấu trúc folder chuẩn trong `references/modular-architecture.md` (Section 4 + 5).
+Tạo bộ tài liệu theo cấu trúc folder chuẩn trong `references/modular-architecture.md` (Section 4 + 5). Mọi tên folder, tên file, và link **bắt buộc** tuân thủ `references/naming-convention.md`.
 
-**Lưu ý:**
+**Trước khi bàn giao**, chạy **cả hai** checklist:
 
-- Cá nhân: đơn giản hoá — 1 file/module là đủ
-- Team: full structure
-- Công ty: thêm Module Library
+1. **Naming & liên kết** — cuối file `references/naming-convention.md` (Section 5):
+   - Mọi folder/file kebab-case, VN không dấu, zero-pad số.
+   - Đủ 4 phase folder mỗi module.
+   - Mọi link bắt buộc (tổng quan ↔ module ↔ phase ↔ facilitator) có mặt, không link placeholder.
+
+2. **Google Docs compatibility** — cuối file `references/gdocs-compatibility.md` (Section 8):
+   - Không ASCII box-drawing ngoài code block.
+   - Không multi-column bằng space.
+   - Folder tree đã trong code block hoặc nested bullet.
+   - Mermaid đã thay bằng ảnh/table.
+   - **Không `---` horizontal rule** trong content (YAML frontmatter được miễn).
+   - Không HTML tags (trừ `<br>` trong cell bảng).
+   - Không footnote `[^1]` — chuyển "Ghi chú" cuối file.
+   - Link chéo file đã plan theo mục tiêu (Git giữ relative, Drive thay Docs URL).
+   - Bảng ≤ 6 cột, không merge cell, có blank line trước và sau.
+   - Heading không nhảy cóc, không in đậm.
+   - Không 2+ blank line liên tiếp.
+   - (Khuyến khích) test 1 file đại diện: upload Drive → mở Docs → kiểm tra.
+
+**Lưu ý theo quy mô:**
+
+- Cá nhân: đơn giản hoá — 1 file/module là đủ (tên file vẫn theo chuẩn kebab-case).
+- Team: full structure.
+- Công ty: thêm Module Library.
 
 

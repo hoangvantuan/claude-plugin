@@ -1,13 +1,15 @@
 # Kiến Trúc Modular
 
+> Mọi tên folder và file trong file này tuân thủ chuẩn trong [naming-convention.md](naming-convention.md). Đọc file đó trước khi tạo cấu trúc thực tế.
+
 ## 1. Tại Sao Chia Module?
 
 ```
-📁 Feedback_Training/
-├── Module 1: Nền tảng Feedback    → VĂN-TƯ-TU riêng
-├── Module 2: Kỹ thuật SBI         → VĂN-TƯ-TU riêng
-├── Module 3: Nhận Feedback         → VĂN-TƯ-TU riêng
-└── Module 4: Follow-up & Đo lường → VĂN-TƯ-TU riêng
+khoa-feedback-training/
+├── module-01-nen-tang-feedback/   → VĂN-TƯ-TU riêng
+├── module-02-ky-thuat-sbi/        → VĂN-TƯ-TU riêng
+├── module-03-nhan-feedback/       → VĂN-TƯ-TU riêng
+└── module-04-follow-up-do-luong/  → VĂN-TƯ-TU riêng
 ```
 
 Linh hoạt:  
@@ -85,56 +87,62 @@ TIER 4: CHUYÊN SÂU (Specialized)
 
 ## 4. Cấu Trúc Folder Chuẩn — Multi-Module
 
+> Tên folder/file dưới đây tuân thủ tuyệt đối [naming-convention.md](naming-convention.md): kebab-case, tiếng Việt không dấu, zero-pad 2 chữ số, prefix `_` cho folder meta.
+
 ```
-📁 [TÊN_KHOÁ]_Training/
+<slug-khoa>-training/
 │
-├── 📄 00_TỔNG_QUAN.md
+├── 00-tong-quan.md
 │   (Mục tiêu khoá, danh sách modules, lộ trình, prerequisite map)
 │
-├── 📁 Module_01_[Tên_Module]/
-│   ├── 📄 README.md                  ← Mục tiêu module, prerequisite, thời lượng
-│   ├── 📁 VAN/
-│   │   ├── 📄 core_reading.md        ← Kiến thức chính (≤10 trang)
-│   │   ├── 📄 tom_tat.md             ← Tóm tắt 1 trang
-│   │   └── 📄 knowledge_check.md     ← Quiz 5-10 câu
-│   ├── 📁 TU_SUY_TU/
-│   │   ├── 📄 cau_hoi_phan_chieu.md  ← 5-7 câu hỏi mở
-│   │   ├── 📄 case_study.md          ← Tình huống + phân tích
-│   │   └── 📄 nhat_ky_phan_tu.md     ← Template nhật ký
-│   ├── 📁 TU_THUC_HANH/
-│   │   ├── 📄 guided_practice.md     ← Bài thực hành có hướng dẫn
-│   │   ├── 📄 du_an_thuc_te.md       ← Brief dự án áp dụng
-│   │   └── 📄 checklist_hanh_dong.md ← Checklist hàng ngày
-│   └── 📁 DANH_GIA/
-│       ├── 📄 rubric.md              ← Tiêu chí đánh giá
-│       └── 📄 after_action_review.md ← Template đúc kết
+├── module-01-<slug-chu-de>/
+│   ├── README.md                        ← Thẻ căn cước module
+│   ├── 01-van/
+│   │   ├── tai-lieu-chinh.md            ← Kiến thức chính (≤10 trang)
+│   │   ├── tom-tat.md                   ← Tóm tắt 1 trang
+│   │   └── kiem-tra-kien-thuc.md        ← Quiz 5-10 câu
+│   ├── 02-tu-suy-tu/
+│   │   ├── cau-hoi-phan-chieu.md        ← 5-7 câu hỏi mở
+│   │   ├── tinh-huong.md                ← Case study + phân tích
+│   │   └── nhat-ky-phan-tu.md           ← Template nhật ký
+│   ├── 03-tu-thuc-hanh/
+│   │   ├── bai-thuc-hanh-co-huong-dan.md ← Guided practice
+│   │   ├── du-an-thuc-te.md             ← Brief dự án áp dụng
+│   │   └── checklist-hanh-dong.md       ← Checklist hàng ngày
+│   └── 04-danh-gia/
+│       ├── rubric.md                    ← Tiêu chí đánh giá
+│       └── aar.md                       ← Template After-Action Review
 │
-├── 📁 Module_02_[Tên_Module]/
+├── module-02-<slug-chu-de>/
 │   └── (cùng cấu trúc)
 │
-├── 📁 _Facilitator_Hub/
-│   ├── 📄 huong_dan_chung.md         ← Hướng dẫn facilitation cho khoá
-│   ├── 📄 module_map.md              ← Sơ đồ prerequisite giữa modules
-│   └── 📄 lich_trinh_goi_y.md        ← Gợi ý lịch trình theo quy mô
+├── _facilitator-hub/
+│   ├── huong-dan-chung.md               ← Hướng dẫn facilitation cho khoá
+│   ├── so-do-module.md                  ← Prerequisite map (Mermaid + click link)
+│   └── lich-trinh-goi-y.md              ← Gợi ý lịch trình theo quy mô
 │
-└── 📁 _Danh_Gia_Khoa/
-    ├── 📄 survey_cuoi_khoa.md
-    └── 📄 follow_up_30_60_90.md
+└── _danh-gia-khoa/
+    ├── survey-cuoi-khoa.md
+    └── follow-up-30-60-90.md
 ```
+
+**Lưu ý:** Không đổi tên 4 phase folder (`01-van`, `02-tu-suy-tu`, `03-tu-thuc-hanh`, `04-danh-gia`) dù module chọn chiều kiến tạo (Tu→Tư→Văn). Thứ tự học do README module quy định — folder chỉ phản ánh cấu trúc nội dung.
 
 ## 5. Module README — Tấm Thẻ Căn Cước Của Module
 
-Mỗi module BẮT BUỘC có README.md:
+Mỗi module BẮT BUỘC có `README.md`. Mục **Điều hướng** là bắt buộc theo [naming-convention.md § 3.3](naming-convention.md#33-bản-đồ-link-bắt-buộc) — mọi link là relative path markdown.
 
 ```markdown
 # Module [N]: [Tên Module]
+
+[← Tổng quan khoá](../00-tong-quan.md)
 
 ## Thông tin module
 | Thuộc tính | Giá trị |
 |-----------|---------|
 | **Tier** | [Foundation / Core / Advanced / Specialized] |
 | **Thời lượng** | [X giờ (cá nhân) / Y tuần (team)] |
-| **Prerequisite** | [Không / Module N: tên] |
+| **Prerequisite** | [Không / [Module N: tên](../module-0N-slug/README.md)] |
 | **Mục tiêu** | Sau module này, người học có thể: |
 |  | 1. [Hành vi cụ thể, đo lường được] |
 |  | 2. [Hành vi cụ thể, đo lường được] |
@@ -151,15 +159,21 @@ Mỗi module BẮT BUỘC có README.md:
 | TƯ  | [Y] | [Mô tả ngắn] |
 | TU  | [Z] | [Mô tả ngắn] |
 
+## Điều hướng nội dung module
+- **Văn:** [Tài liệu chính](01-van/tai-lieu-chinh.md) · [Tóm tắt](01-van/tom-tat.md) · [Kiểm tra kiến thức](01-van/kiem-tra-kien-thuc.md)
+- **Tư:** [Câu hỏi phản chiếu](02-tu-suy-tu/cau-hoi-phan-chieu.md) · [Tình huống](02-tu-suy-tu/tinh-huong.md) · [Nhật ký phản tư](02-tu-suy-tu/nhat-ky-phan-tu.md)
+- **Tu:** [Bài thực hành](03-tu-thuc-hanh/bai-thuc-hanh-co-huong-dan.md) · [Dự án thực tế](03-tu-thuc-hanh/du-an-thuc-te.md) · [Checklist](03-tu-thuc-hanh/checklist-hanh-dong.md)
+- **Đánh giá:** [Rubric](04-danh-gia/rubric.md) · [AAR](04-danh-gia/aar.md)
+
 ## Kết nối với module khác
-- **Trước module này:** [Module nào cần học trước, nếu có]
-- **Sau module này:** [Module nào nên học tiếp]
-- **Có thể học song song:** [Module nào không phụ thuộc]
+- **Trước module này:** [Module N: tên](../module-0N-slug/README.md) — hoặc "Không có"
+- **Sau module này:** [Module N+1: tên](../module-0M-slug/README.md)
+- **Có thể học song song:** [Module N: tên](../module-0N-slug/README.md)
 ```
 
 ## 6. Prerequisite Map
 
-Luôn vẽ prerequisite map bằng Mermaid:
+Luôn vẽ prerequisite map bằng Mermaid. Khi đặt trong `_facilitator-hub/so-do-module.md`, **mỗi node bắt buộc có `click` link** tới `README.md` module tương ứng (chuẩn [naming-convention.md § 3.3](naming-convention.md#33-bản-đồ-link-bắt-buộc)):
 
 ```mermaid
 flowchart TD
@@ -172,6 +186,11 @@ flowchart TD
     M1 --> M3
     M2 --> M4
     M3 --> M4
+
+    click M1 "../module-01-slug/README.md" _self
+    click M2 "../module-02-slug/README.md" _self
+    click M3 "../module-03-slug/README.md" _self
+    click M4 "../module-04-slug/README.md" _self
 
     style M1 fill:#E3F2FD,color:#333
     style M2 fill:#C8E6C9,color:#333
@@ -186,9 +205,9 @@ Quy tắc màu:
 - Advanced: `fill:#FFF3E0` (cam nhạt)
 - Specialized: `fill:#F3E5F5` (tím nhạt)
 
-## 7. Template 00_TỔNG_QUAN — Bản Đồ Toàn Khoá
+## 7. Template `00-tong-quan.md` — Bản Đồ Toàn Khoá
 
-Mỗi khoá đào tạo BẮT BUỘC có file `00_TỔNG_QUAN.md`:
+Mỗi khoá đào tạo BẮT BUỘC có file `00-tong-quan.md` tại gốc khoá. Mọi link trong cột "Module" và "Prerequisite" dưới đây là relative path markdown (chuẩn [naming-convention.md § 3.1](naming-convention.md#31-cú-pháp-bắt-buộc)):
 
 ```markdown
 # [Tên Khoá Đào Tạo] — Tổng Quan
@@ -210,35 +229,36 @@ Mỗi khoá đào tạo BẮT BUỘC có file `00_TỔNG_QUAN.md`:
 
 | # | Module | Tier | Thời lượng | Tỷ lệ V-T-T | Prerequisite |
 |---|--------|------|-----------|-------------|-------------|
-| 1 | [Tên] | Foundation | [X ngày] | 20-15-65 | Không |
-| 2 | [Tên] | Core | [X ngày] | 10-20-70 | Module 1 |
-| 3 | [Tên] | Core | [X ngày] | 10-20-70 | Module 1 |
-| 4 | [Tên] | Advanced | [X ngày] | 5-15-80 | Module 2, 3 |
+| 1 | [Module 1: Nền tảng](module-01-nen-tang/README.md) | Foundation | [X ngày] | 20-15-65 | Không |
+| 2 | [Module 2: Kỹ thuật SBI](module-02-ky-thuat-sbi/README.md) | Core | [X ngày] | 10-20-70 | [Module 1](module-01-nen-tang/README.md) |
+| 3 | [Module 3: Nhận feedback](module-03-nhan-feedback/README.md) | Core | [X ngày] | 10-20-70 | [Module 1](module-01-nen-tang/README.md) |
+| 4 | [Module 4: Follow-up](module-04-follow-up-do-luong/README.md) | Advanced | [X ngày] | 5-15-80 | [Module 2](module-02-ky-thuat-sbi/README.md), [Module 3](module-03-nhan-feedback/README.md) |
 
 ## Prerequisite Map
 
-[Chèn Mermaid flowchart — xem Section 6 cho format]
+[Chèn Mermaid flowchart — xem Section 6 cho format. Khi đặt trong `_facilitator-hub/so-do-module.md` phải có `click` link.]
 
 ## Lộ trình gợi ý
 
 ### Cá nhân tự học
 | Tuần | Module | Ghi chú |
 |------|--------|---------|
-| 1 | Module 1 | Nền tảng |
-| 2-3 | Module 2 | Kỹ năng chính |
+| 1 | [Module 1](module-01-nen-tang/README.md) | Nền tảng |
+| 2-3 | [Module 2](module-02-ky-thuat-sbi/README.md) | Kỹ năng chính |
 | ... | ... | ... |
 
 ### Team (có facilitator)
 | Tuần | Hoạt động | Module | Ghi chú |
 |------|-----------|--------|---------|
-| 1 | Kick-off + Bắt đầu | Module 1 | Giới thiệu khoá, chia buddy pairs |
-| 2-3 | Học + Thực hành | Module 2 | Check-in giữa tuần |
+| 1 | Kick-off + Bắt đầu | [Module 1](module-01-nen-tang/README.md) | Giới thiệu khoá, chia buddy pairs |
+| 2-3 | Học + Thực hành | [Module 2](module-02-ky-thuat-sbi/README.md) | Check-in giữa tuần |
 | ... | ... | ... | ... |
-| Cuối | Wrap-up | — | Teach-back + Survey cuối khoá |
+| Cuối | Wrap-up | — | Teach-back + [Survey cuối khoá](_danh-gia-khoa/survey-cuoi-khoa.md) |
 
 ## Tài nguyên
 
-- **Facilitator Hub:** `_Facilitator_Hub/`
-- **Đánh giá khoá:** `_Danh_Gia_Khoa/`
+- **Facilitator Hub:** [_facilitator-hub/huong-dan-chung.md](_facilitator-hub/huong-dan-chung.md)
+- **Prerequisite Map chi tiết:** [_facilitator-hub/so-do-module.md](_facilitator-hub/so-do-module.md)
+- **Đánh giá khoá:** [_danh-gia-khoa/survey-cuoi-khoa.md](_danh-gia-khoa/survey-cuoi-khoa.md) · [_danh-gia-khoa/follow-up-30-60-90.md](_danh-gia-khoa/follow-up-30-60-90.md)
 - **Liên hệ:** [Facilitator / người phụ trách]
 ```

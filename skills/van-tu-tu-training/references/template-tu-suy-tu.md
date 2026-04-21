@@ -10,8 +10,6 @@
 Dành 20-30 phút. Viết tay hoặc gõ đều được.
 Không có đáp án đúng/sai — mục đích là kích hoạt suy nghĩ sâu.
 
----
-
 ## Kết nối với bản thân
 1. Kiến thức nào trong module này khiến bạn bất ngờ hoặc thách thức
    điều bạn vẫn tin là đúng?
@@ -29,8 +27,7 @@ Không có đáp án đúng/sai — mục đích là kích hoạt suy nghĩ sâu
 5. Nếu chỉ được chọn 1 điều từ module này để áp dụng ngay,
    bạn chọn gì? Tại sao?
 
----
-→ Tiếp theo: Chuyển sang phần TU để thực hành.
+> Tiếp theo: Chuyển sang phần TU để thực hành.
 ```
 
 ## Template `case_study.md`
@@ -65,8 +62,6 @@ Không có đáp án đúng/sai — mục đích là kích hoạt suy nghĩ sâu
 
 Sử dụng sau mỗi lần học hoặc thực hành trong module này.
 Mỗi entry 5-10 phút.
-
----
 
 ## Entry #___  |  Ngày: ____/____/____
 
