@@ -12,6 +12,7 @@ Dự án phát triển các plugin cho Claude Code, bao gồm: **skills**, **age
 .claude-plugin/plugin.json   # Plugin manifest
 skills/                      # Các skill plugins (chi tiết xem ## Skill Structure)
   ai-artist/                 # Tạo ảnh qua Nano Banana — 129 curated prompts, validation interview, 3 modes
+  anti-ai-writing/           # Rules viết tiếng Việt không giống AI — blacklist từ/cụm/chấm câu, self-critique, insight techniques (baseline cho mọi skill viết)
   content-planner/           # Content planning & writing cho Facebook + Blog
   creative-thought-partner/  # Đối tác tư duy sáng tạo — brainstorming
   deep-learner/              # Dẫn dắt từng bước hiểu sâu bản chất nội dung — 4 lớp hiểu + áp dụng đời sống
@@ -28,6 +29,9 @@ skills/                      # Các skill plugins (chi tiết xem ## Skill Struc
   slidev-builder/            # Slidev presentation builder from outline
   social-post/               # Viết bài social đa platform (Facebook, Threads, LinkedIn, Zalo) chia sẻ góc nhìn chiều sâu — 3 archetype, cấu trúc 5 phần, anti-AI rules, self-critique
   style-dna/                 # Bóc tách DNA văn phong từ corpus bài viết → style guide markdown tái sử dụng (8 chiều, signature phrases, công thức tái tạo)
+  style-library/             # Thư viện style guide — 3 catalog: personas (Tuấn), archetypes (Patient Observer, Dramatic Prophet, Quiet Devastator), voices (7 voice × 3 variant). Atomic, không load skill khác
+  writing-structures/        # Thư viện khung bài — 9 structures (Story Arc, BLUF-Evidence, Building Blocks, Depth-Practice, Five Layers, Master-Student, Spiral Return, Adaptive, Social 5-Parts) + 5 frameworks (PAS, Inverted Pyramid, Step-by-step, SAR, Progressive Disclosure). Atomic
+  writing-context/           # Thư viện context dimensions — 3 trục: identities (3), audiences (3), emotions (3). Atomic
   substack-tools/            # Quản lý bài viết Substack: draft, schedule, publish, list, sections + scan/crawl newsletter khác
   things-manager/            # Things 3 task management via things-cli (Go CLI)
   deep-insight/              # Quan sát đa chiều → Phân tích tách lớp → Đúc kết cốt lõi để hiểu sâu vấn đề
@@ -71,6 +75,7 @@ skills/<skill-name>/
 | Skill                      | Subdirectories                                                                                                     | Ghi chú                                                                                                                                   |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | `ai-artist`                | `references/` `scripts/` `data/`                                                                                   | nano-banana, image-prompting, validation-workflow, domain guides, awesome-prompts.csv, styles/techniques/lighting CSVs                     |
+| `anti-ai-writing`          | —                                                                                                                  | Chỉ có SKILL.md (rule chung viết tiếng Việt không giống AI)                                                                               |
 | `content-planner`          | `references/`                                                                                                      | blog-types, content-frameworks, facebook-types                                                                                            |
 | `creative-thought-partner` | —                                                                                                                  | Chỉ có SKILL.md                                                                                                                           |
 | `deep-learner`             | `references/` `templates/`                                                                                         | easy-explain-guide, long-content-strategy, note-structure, output-template                                                                |
@@ -90,6 +95,9 @@ skills/<skill-name>/
 | `slidev-builder`           | `references/`                                                                                                      | slide-templates                                                                                                                           |
 | `social-post`              | `references/`                                                                                                      | archetypes (Patient Observer, Dramatic Prophet, Quiet Devastator), craft-techniques, anti-ai-rules, example-output                        |
 | `style-dna`                | `references/`                                                                                                      | analysis-dimensions (8 chiều chi tiết), output-template (khung markdown chuẩn), anti-patterns (lỗi cần tránh)                             |
+| `style-library`            | `references/personas/` `references/archetypes/` `references/voices/`                                              | 3 catalog atomic: personas (tuan), archetypes (patient-observer, dramatic-prophet, quiet-devastator), voices (7 voice × 3 variant main/compact/exemplars = 21 file). Độc lập, không load skill khác |
+| `writing-structures`       | `references/structures/` `references/frameworks.md`                                                                | 9 structures (story-arc, bluf-evidence, building-blocks, depth-practice, five-layers, master-student, spiral-return, adaptive, social-5-parts; mỗi structure có main + compact variant) + 5 frameworks (PAS, Inverted Pyramid, Step-by-step, SAR, Progressive Disclosure). Độc lập |
+| `writing-context`          | `references/identities/` `references/audiences/` `references/emotions/`                                            | 3 trục atomic: identities (contemplative-thinker, knowledge-curator, tech-builder), audiences (busy-professionals, curious-beginners, deep-seekers), emotions (empower-challenge, provoke-transform, reflect-discover). Độc lập |
 | `systems-thinking`         | `references/` `templates/`                                                                                         | system-traps, leverage-points, systems-wisdom, analysis-output                                                                            |
 | `substack-tools`           | `references/` `scripts/`                                                                                           | substack_cli.py, substack_crawl.py, api-quirks, batch-operations, crawl-guide                                                             |
 | `things-manager`           | —                                                                                                                  | Chỉ có SKILL.md                                                                                                                           |

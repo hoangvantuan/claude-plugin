@@ -15,6 +15,7 @@ claude plugin install gh:hoangvantuan/shun-claude-plugin
 | Skill | Description |
 | --- | --- |
 | `ai-artist` | Tạo ảnh qua Nano Banana — 129 curated prompts, validation interview, 3 modes (search/creative/wild), styles: Ukiyo-e, cyberpunk, cinematic, vintage patent |
+| `anti-ai-writing` | Rules viết tiếng Việt không giống AI — blacklist từ/cụm/chấm câu, cấu trúc câu Việt, self-critique bắt buộc, insight techniques. Dùng độc lập hoặc làm baseline cho mọi task viết |
 | `ghost-blog` | Ghost CMS blog management |
 | `outline-writer` | Content analysis & outline creation (presentation/blog/doc) |
 | `slidev-builder` | Slidev presentation builder from outline — theme selection, PDF export |
@@ -44,6 +45,9 @@ claude plugin install gh:hoangvantuan/shun-claude-plugin
 | `substack-tools` | Quản lý bài viết Substack: draft, schedule, publish, list, sections + scan/crawl newsletter khác (lấy tất cả bài qua archive API, rate limit handling) |
 | `social-post` | Viết bài social đa platform (Facebook, Threads, LinkedIn, Zalo, X) chia sẻ góc nhìn chiều sâu — 3 archetype (Patient Observer, Dramatic Prophet, Quiet Devastator), cấu trúc 5 phần, anti-AI rules, self-critique |
 | `style-dna` | Bóc tách DNA văn phong từ corpus bài viết của một tác giả thành style guide markdown tái sử dụng — phân tích 8 chiều, signature phrases, công thức tái tạo, anti-patterns. Input: file/folder, paste, URL |
+| `style-library` | Thư viện style guide viết lách, 3 catalog: `personas/` (tác giả cụ thể — hiện có Tuấn), `archetypes/` (kiểu viết có pattern: Patient Observer, Dramatic Prophet, Quiet Devastator), `voices/` (giọng generic: teacher, storyteller, objective, investigator, guide, personal, dialogue — mỗi voice có main/compact/exemplars). Độc lập, không load skill khác |
+| `writing-structures` | Thư viện khung bài + content framework — 9 structures (Story Arc, BLUF-Evidence, Building Blocks, Depth-Practice, Five Layers, Master-Student, Spiral Return, Adaptive, Social 5-Parts) + 5 frameworks (PAS, Inverted Pyramid, Step-by-step, SAR, Progressive Disclosure). Độc lập, không load skill khác |
+| `writing-context` | Thư viện context dimensions cho viết lách — 3 trục độc lập: identities (Contemplative Thinker, Knowledge Curator, Tech Builder), audiences (Busy Professionals, Curious Beginners, Deep Seekers), emotions (Empower & Challenge, Provoke & Transform, Reflect & Discover). Độc lập, không load skill khác |
 
 ### Agents
 
