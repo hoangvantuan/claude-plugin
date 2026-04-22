@@ -1,6 +1,6 @@
 ---
-name: content-planner
-description: "Phân tích và xây dựng hệ thống dàn ý (frameworks/outlines) chi tiết cho bài viết Blog. Không trực tiếp viết bài hoàn chỉnh."
+name: planning-content
+description: "Lên dàn ý, lập kế hoạch nội dung chi tiết cho bài viết Blog. Kích hoạt khi user muốn lên dàn ý, tạo outline, lập plan viết. KHÔNG dùng để trực tiếp viết bài hoàn chỉnh."
 disable-model-invocation: true
 ---
 
@@ -28,6 +28,8 @@ Hỏi tất cả câu hỏi trong 1 lượt để tiết kiệm thời gian:
 1. **Audience**: Ai là người đọc chính? (VD: startup founders, marketer, developer...).
 2. **Goals**: Mục tiêu chính? (educate / engage / convert / thought leadership).
 3. *(Optional)* **Constraints**: Có yêu cầu đặc biệt nào không? (deadline, brand guidelines, topics to avoid).
+
+*Ngoại lệ (Fast-track): Nếu input ban đầu đã cung cấp đủ ngữ cảnh (Audience, Goal) hoặc user yêu cầu "làm luôn", hãy tự động giả định các sensible defaults và bỏ qua Step 2 để sang thẳng Step 3.*
 
 ### Edge Cases
 - **Input quá ngắn (1-2 câu, không có detail):** Hỏi user bổ sung context hoặc dùng web research mở rộng. Giới hạn blog types khả dụng: How-to Guide, Quick Insight, Listicle.
@@ -75,10 +77,11 @@ Lưu kết quả thành nhiều file để dễ quản lý:
 - Mỗi khung bài viết được lưu thành file riêng: `{CWD}/{output-dir}/framework-[NN]-[slug].md`.
 - Sinh ra file `{CWD}/{output-dir}/research.md` — data đã research với sources.
 
-**Với input dài (sách, tài liệu lớn):**
+**Với input dài (sách, tài liệu lớn) xử lý theo batch:**
 - Trước tiên, tạo **content map** tổng quan: liệt kê tất cả chapters/concepts cốt lõi cần cover.
 - Chia thành batches, mỗi batch ~10 khung bài, tạo framework cho batch đầu tiên.
-- **Coverage check (BẮT bắt buộc):** Sau mỗi batch, đối chiếu content map — liệt kê rõ concepts nào ĐÃ cover, concepts nào CHƯA cover. Tiếp tục tạo khung batch mới cho đến khi 100% content map được cover.
+- **Tạo Checklist Quản lý:** Thêm checklist tiến độ dạng markdown block (vd: `- [x] Batch 1 (Chương 1-3) \n - [ ] Batch 2 (Chương 4-6)`) vào `index.md` hoặc in ra console để tránh lạc bước.
+- **Coverage check (BẮT BUỘC):** Sau mỗi batch, đối chiếu content map — liệt kê rõ concepts nào ĐÃ cover, concepts nào CHƯA cover. Tiếp tục tạo khung batch mới cho đến khi 100% content map được cover.
 - Cập nhật lại file `index.md` sau mỗi batch.
 - Hỏi user confirm trước khi làm batch tiếp theo.
 
