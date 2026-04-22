@@ -41,6 +41,21 @@ _______________________________________________________________
 | Chất lượng phân tích | ○ | ○ | ○ | ○ | ○ |
 | Kết quả thực tế | ○ | ○ | ○ | ○ | ○ |
 | Bài học rút ra | ○ | ○ | ○ | ○ | ○ |
+
+## 7. Câu hỏi mở — Mang đi suy ngẫm tiếp
+
+Module đóng lại, nhưng suy ngẫm không dừng. 2-3 câu hỏi mở giúp chu trình Văn-Tư-Tu tiếp theo khởi động ngay cả khi module đã kết thúc. Ghi lại câu trả lời (có thể vài ngày sau mới có) — đây là nguyên liệu cho module tiếp theo hoặc cho cuộc trò chuyện với buddy/facilitator.
+
+1. **Nếu bạn là chuyên gia đã dùng framework này 10 năm, bạn sẽ nói gì với chính mình hôm nay?**
+   _________________________________________________
+
+2. **Đâu là điều module này CHƯA trả lời được cho bạn — và bạn sẽ tìm câu trả lời ở đâu?**
+   _________________________________________________
+
+3. **Nếu phải dạy lại module này cho một người hoài nghi ("cái này không áp dụng được cho ngành mình đâu"), bạn sẽ bắt đầu thuyết phục như thế nào?**
+   _________________________________________________
+
+> Gợi ý cho facilitator: chọn 1 câu mang ra discussion nhóm tuần sau. Không có đáp án đúng sai — mục đích là giữ lửa tư duy, không đóng vấn đề sớm.
 ```
 
 ## Template `rubric.md`
