@@ -256,6 +256,41 @@ Sau khi phân module xong, **điền cột "→ Module"** trong Content Inventor
 - **Trình bày Content Coverage Check cho user xác nhận** trước khi chuyển Bước 3
 - Nếu user bổ sung tài liệu mới giữa chừng → lặp lại 2A-2C cho phần bổ sung
 
+#### 2D. Đối chiếu Brief Coverage (BẮT BUỘC)
+
+Content Coverage bảo đảm không sót **tài liệu gốc**. Brief Coverage bảo đảm không lệch **mục tiêu khoá**. Hai việc khác nhau, phải chạy cả hai.
+
+Mở lại Training Brief (Bước 1) và điền bảng sau:
+
+```markdown
+## Brief Coverage Map
+
+| Outcome Brief (câu 2) | Metric Brief (câu 5) | Module phục vụ | Deliverable verify |
+|---|---|---|---|
+| [Hành vi 1] | [Chỉ số đo hành vi 1] | M2, M3 | Bài thực hành áp dụng 5 lần + AAR |
+| [Hành vi 2] | [Chỉ số đo hành vi 2] | M4 | Dự án 2 tuần + teach-back |
+| [Hành vi 3] | [Chỉ số đo hành vi 3] | ??? ORPHAN | ??? |
+
+## Brief Coverage Check
+
+| Kiểm tra | Kết quả |
+|----------|---------|
+| Tổng outcome trong Brief | ___ outcome |
+| Đã có module phục vụ | ___ outcome |
+| CHƯA có module (outcome orphan) | ___ outcome |
+| Tổng metric trong Brief | ___ metric |
+| Đã có deliverable verify | ___ metric |
+| CHƯA có deliverable (metric orphan) | ___ metric |
+```
+
+**Quy tắc:**
+
+- **0 outcome orphan + 0 metric orphan** = đạt.
+- Outcome orphan → thêm module hoặc mở rộng module hiện có. Không được bỏ qua (outcome là cam kết với user/stakeholder).
+- Metric orphan → thêm deliverable Tu hoặc checkpoint đánh giá. Module có hay không mà không có cách verify metric = module vô nghĩa với Brief.
+- Ngược lại: module KHÔNG phục vụ outcome nào trong Brief → **cảnh báo scope creep**, hỏi user có cần giữ không. Không giữ module chỉ vì "hay ho".
+- **Trình bày Brief Coverage Map cho user xác nhận** trước khi chuyển Bước 3. Cùng với Content Coverage Check (2C) thành 1 gói xác nhận duy nhất.
+
 **5 quy tắc phân tách:**
 
 - 1 module = 1 chủ đề trọng tâm
@@ -268,14 +303,26 @@ Sau khi phân module xong, **điền cột "→ Module"** trong Content Inventor
 
 ### Bước 3: Thiết kế từng module
 
+**Brief là compass — Mở lại TRƯỚC khi thiết kế từng module:**
+
+Training Brief (Bước 1) không phải checkpoint 1 lần rồi treo tường. Nó là la bàn. MỖI module, trước khi quyết định tỷ lệ / chiều đi / deliverable, mở lại Brief và trả lời 3 câu sau:
+
+| Câu hỏi compass | Nguồn trong Brief | Ảnh hưởng quyết định nào |
+|---|---|---|
+| Module này phục vụ outcome hành vi nào? | Câu 2 (Outcome) | Xác định deliverable chính |
+| Module này sinh bằng chứng cho metric nào? | Câu 5 (Metric) | Xác định format bài thực hành + checkpoint đánh giá |
+| Người học module này đang ở cấp độ nào (câu 3 Brief) và bối cảnh áp dụng ra sao (câu 4 Brief)? | Câu 3 + Câu 4 | Xác định tỷ lệ Văn-Tư-Tu + chiều đi + mức độ guided |
+
+**Rule:** Nếu không trả lời được câu 1 hoặc câu 2 → quay lại Bước 2 (Brief Coverage Map). Đừng thiết kế module mồ côi.
+
 Với mỗi module, xác định:
 
-| Quyết định            | Lựa chọn                                       |
-| --------------------- | ---------------------------------------------- |
-| **Tỷ lệ Văn-Tư-Tu**   | Dựa vào loại kiến thức và cấp độ người học     |
-| **Chiều đi**          | Văn→Tư→Tu (mặc định) hay Tu→Tư→Văn (kiến tạo)? |
-| **Mức độ guided**     | Step-by-step / Semi-guided / Independent?      |
-| **Deliverable chính** | Người học nộp/trình bày gì cuối module?        |
+| Quyết định            | Lựa chọn                                       | Tham chiếu Brief |
+| --------------------- | ---------------------------------------------- | ---------------- |
+| **Tỷ lệ Văn-Tư-Tu**   | Dựa vào loại kiến thức và cấp độ người học     | Câu 3 Brief (cấp độ) |
+| **Chiều đi**          | Văn→Tư→Tu (mặc định) hay Tu→Tư→Văn (kiến tạo)? | Câu 3 Brief (có nền tảng chưa) |
+| **Mức độ guided**     | Step-by-step / Semi-guided / Independent?      | Câu 3 Brief + câu 7 (kỷ luật ngoài) |
+| **Deliverable chính** | Người học nộp/trình bày gì cuối module?        | Câu 2 + câu 5 Brief (phải verify được) |
 
 **Khi chọn chiều kiến tạo (Tu→Tư→Văn):**
 
@@ -385,7 +432,7 @@ Tạo bộ tài liệu theo cấu trúc folder chuẩn trong `references/modular
 
 ### Checklist 0 — Chất lượng nội dung (mỗi module)
 
-Với MỖI module, tự chấm 5 tiêu chí. Module đạt khi tiêu chí 1 và 5 = Có, và trung bình 2-3-4 ≥ 3/5.
+Với MỖI module, tự chấm 6 tiêu chí. Module đạt khi tiêu chí 1, 5, 6 = Có, và trung bình 2-3-4 ≥ 3/5.
 
 | # | Tiêu chí | Câu hỏi kiểm tra | Thang |
 |---|---|---|---|
@@ -394,8 +441,11 @@ Với MỖI module, tự chấm 5 tiêu chí. Module đạt khi tiêu chí 1 và
 | 3 | **Dự đoán lực** | Người học áp dụng module này dự đoán được tình huống mới không có trong bài? | 1-5 |
 | 4 | **Truyền đạt** | Một người đã học xong giải thích module cho đồng nghiệp trong 2 phút? | 1-5 |
 | 5 | **Hành động** | Sau module, người học biết CHÍNH XÁC phải làm gì tiếp, ở đâu, khi nào? | Có/Không |
+| 6 | **Brief alignment** | Module map rõ ít nhất 1 outcome (câu 2 Brief) + 1 metric (câu 5 Brief)? Deliverable sinh bằng chứng verify được metric? | Có/Không |
 
-Không đạt → quay lại Bước 4 bổ sung, tối đa 2 vòng. Nếu vẫn fail sau 2 vòng → cấu trúc module sai, quay Bước 2 phân tách lại.
+Tiêu chí 6 fail = module thiết kế ngoài Brief. Không đạt → quay Bước 3 mở lại Brief, map lại. Nếu thực sự Brief thiếu outcome cho nội dung này → quay Bước 1 bổ sung Brief (có confirm user).
+
+Không đạt các tiêu chí khác → quay lại Bước 4 bổ sung, tối đa 2 vòng. Nếu vẫn fail sau 2 vòng → cấu trúc module sai, quay Bước 2 phân tách lại.
 
 ### Checklist 1 — Naming & liên kết
 
