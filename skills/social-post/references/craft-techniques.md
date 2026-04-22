@@ -1,4 +1,4 @@
-# Kỹ thuật viết: Tiêu đề, Opening, Insight, Questioning, Micro-story
+# Kỹ thuật viết: Tiêu đề, Mở bài, Insight, Questioning, Micro-story
 
 ## Kiểu tiêu đề (ưu tiên paradox self-contained)
 
@@ -20,25 +20,31 @@ Tiêu đề chỉ có một dòng để dừng người đọc. Ba kiểu, theo 
 
 ---
 
-## Opening Palette (chọn 1 per bài)
+## Cách mở bài tự nhiên
 
-Hook 3 dòng đầu quyết định sống còn. Đa dạng giữa các bài, không lặp lại cùng một kiểu.
+Mở bài là phần quan trọng, nhưng KHÔNG phải vì nó cần "dừng scroll". Nó quan trọng vì nó định hình giọng điệu và không khí cho cả bài.
 
-| Kiểu               | Mục đích                    | Ví dụ                                                                                  |
-| ------------------ | --------------------------- | -------------------------------------------------------------------------------------- |
-| **observation**    | Quan sát đời thường sắc bén | "Sáng nay tôi thấy đồng nghiệp ngồi họp mà mắt nhìn vào điện thoại dưới bàn"           |
-| **question-first** | Câu hỏi tự vấn              | "Có khi nào bạn đang sống, mà không thực sự ở đây?"                                    |
-| **provocation**    | Nhận định bất ngờ           | "Đôi khi, không làm gì là điều khó nhất."                                              |
-| **contrast**       | Nghịch lý                   | "Người tự do nhất tôi biết là người chấp nhận mình không tự do."                       |
-| **memory-flash**   | Hồi ức mảnh ghép            | "Tôi nhớ lúc ấy, cảm giác như đứng giữa đường mà không biết nên đi tiếp hay quay lại." |
-| **micro-story**    | Tình huống cụ thể           | "Bạn tôi nghỉ việc hồi tháng trước. Anh ấy kể, một sáng thức dậy, bỗng thấy lạ với chính văn phòng mình đã ngồi bảy năm." |
+**Nguyên tắc số 1**: Mở bài BẰNG nội dung, không bằng kỹ thuật. Viết như bạn đang kể cho bạn bè, không phải đang "thiết kế câu mở đầu".
+
+Dưới đây là một số cách mở bài tự nhiên. Tham khảo để lấy cảm hứng, KHÔNG dùng như công thức:
+
+| Cách mở            | Ví dụ                                                                                  |
+| ------------------ | -------------------------------------------------------------------------------------- |
+| **Quan sát**       | "Sáng nay tôi thấy đồng nghiệp ngồi họp mà mắt nhìn vào điện thoại dưới bàn"           |
+| **Câu hỏi**        | "Có khi nào bạn đang sống, mà không thực sự ở đây?"                                    |
+| **Nhận định thẳng** | "Đôi khi, không làm gì là điều khó nhất."                                              |
+| **Nghịch lý**       | "Người tự do nhất tôi biết là người chấp nhận mình không tự do."                       |
+| **Hồi ức**          | "Tôi nhớ lúc ấy, cảm giác như đứng giữa đường mà không biết nên đi tiếp hay quay lại." |
+| **Tình huống**      | "Bạn tôi nghỉ việc hồi tháng trước. Anh ấy kể, một sáng thức dậy, bỗng thấy lạ với chính văn phòng mình đã ngồi bảy năm." |
 
 
-**Nguyên tắc**: Mỗi bài chỉ một kiểu. Nếu viết chuỗi nhiều bài cho cùng user, xoay vòng để không lặp.
+**Nguyên tắc**: Mỗi bài chỉ một cách. Nếu viết chuỗi nhiều bài cho cùng user, xoay vòng để không lặp.
+
+**KIỂM TRA**: Đọc lại câu mở đầu. Nó có nghe như đang nói chuyện bình thường không? Hay nó đang cố "ấn tượng"? Nếu cảm giác thứ hai, viết lại đơn giản hơn.
 
 ---
 
-## Insight Techniques (áp dụng ở phần Turn)
+## Insight Techniques (áp dụng ở phần Insight + Kết)
 
 Insight PHẢI được "earned" — build up context trước, không drop in bất ngờ. 4 cách tạo:
 
@@ -101,8 +107,8 @@ Ví dụ cụ thể (người thật, tình huống thật, kết quả thật) 
 
 **Khi nào dùng**:
 
-- Phần Tension cần một neo cụ thể.
-- Phần Turn cần minh hoạ cho insight.
+- Phần dựng vấn đề cần một neo cụ thể.
+- Phần insight cần minh hoạ.
 - Khi bạn cảm thấy đoạn văn đang trôi vào abstraction.
 
 **Khi nào tránh**:
@@ -116,9 +122,9 @@ Ví dụ cụ thể (người thật, tình huống thật, kết quả thật) 
 
 - **"Bạn"** xuyên suốt. KHÔNG "mọi người", "các bạn", "anh chị".
 - **Strategic vagueness** — để người đọc tự chiếu tình huống của mình vào. Không quá cụ thể đến mức chỉ áp dụng cho một người.
-- **Một câu memorable** — câu đọc xong muốn screenshot hoặc copy. Đặt ở Turn hoặc cuối bài.
+- **Một câu memorable** — câu đọc xong muốn screenshot hoặc copy. Đặt ở phần insight hoặc cuối bài.
 - **Để lại điều không nói hết** — kết bài mở, cho người đọc tự lấp khoảng trống.
-- **Xuống dòng theo beat, không theo câu** — 1 đoạn = 1 beat logic (có thể 1-4 câu cùng phục vụ một ý). Đừng tách mỗi câu thành một đoạn. Ví dụ: hook + câu trích dẫn + câu mở tension (3 câu nối nhau về cùng một chất liệu) nên viết liền thành 1 khối, không xuống dòng trống giữa chúng. Chỉ xuống dòng khi chuyển beat: hook → tension, tension → escalation, escalation → turn.
+- **Xuống dòng theo beat, không theo câu** — 1 đoạn = 1 beat logic (có thể 1-4 câu cùng phục vụ một ý). Đừng tách mỗi câu thành một đoạn. Ví dụ: mở bài + câu trích dẫn + câu mở vấn đề (3 câu nối nhau về cùng một chất liệu) nên viết liền thành 1 khối, không xuống dòng trống giữa chúng. Chỉ xuống dòng khi chuyển beat: mở bài → dựng vấn đề, dựng vấn đề → đẩy sâu, đẩy sâu → insight.
 - **Không emoji, không hashtag** trong thân bài.
 - **Không citations** — nói như người trải nghiệm, không như người đọc sách ("Theo nghiên cứu của...").
 - **Không mời gọi** — không FOMO, không ngôn ngữ bán hàng.

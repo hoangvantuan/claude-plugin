@@ -1,4 +1,0 @@
-#!/bin/bash
-# Writer-Agent: Validate coverage report
-source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/_wa-common.sh"
-"$VENV_PYTHON" "$SCRIPT_DIR/validate_coverage.py" "$@"

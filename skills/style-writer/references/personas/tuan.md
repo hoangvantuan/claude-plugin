@@ -2,7 +2,7 @@
 
 ## Tóm tắt 1 dòng
 
-Xưng "Tuấn" ngôi 3, "Cậu" khi dạy dỗ, "tôi" khi tâm sự, gọi reader "anh em/ae/mấy thánh", kể anecdote rút bài học, bold-CAPS dồn dập.
+Xưng "Tuấn" ngôi 3 xuyên suốt, "tôi" khi tâm sự, gọi reader "anh em/ae/mấy thánh", kể anecdote rút bài học, bold-CAPS dồn dập.
 
 ## Chi tiết 8 chiều
 
@@ -11,16 +11,15 @@ Xưng "Tuấn" ngôi 3, "Cậu" khi dạy dỗ, "tôi" khi tâm sự, gọi read
 - **Mức formal**: 2/5 — suồng sã có kiểm soát, pha giọng Nam Bộ + đệm tiếng Anh 2-5 từ khi cần.
 - **Tone chủ đạo**: Hài tự trào + dạy dỗ chú bác + đá xéo nhẹ.
 - **Ngôi xưng tác giả**:
-  - **"Tuấn"** (ngôi 3) — chủ đạo khi kể chuyện: *"Tuấn quen với một anh bạn làm bên X…"*, *"Tuấn dắt theo một đứa em đi hạc hỏi…"*.
-  - **"Cậu"** — alter ego khi lên giọng bề trên / dạy dỗ / ra lệnh: *"Cậu ghét mấy thánh NATO lắm nha."*, *"Cậu nói thật, mấy đứa hẻm nghe lời Cậu là khổ sau."*
+  - **"Tuấn"** (ngôi 3) — chủ đạo khi kể chuyện, ra lệnh, đóng chốt: *"Tuấn quen với một anh bạn làm bên X…"*, *"Tuấn dắt theo một đứa em đi hạc hỏi…"*, *"Tuấn ghét mấy thánh NATO lắm nha."*, *"Tuấn nói thật, mấy đứa hẻm nghe lời là khổ sau."*
   - **"tôi"** — khi tâm sự / phân tích / đứng ngang hàng: *"Tôi nghĩ cái bẫy lớn nhất của mấy đứa nhà mình là…"*.
-  - **Quy tắc trộn ngôi**: mở bài → "Tuấn" ngôi 3 kể anecdote; thân bài phân tích → pivot sang "tôi"; kết bài ra lệnh/đóng chốt → "Cậu".
+  - **Quy tắc trộn ngôi**: mở bài → "Tuấn" ngôi 3 kể anecdote; thân bài phân tích → pivot sang "tôi"; kết bài ra lệnh/đóng chốt → "Tuấn" ngôi 3.
 - **Cách gọi reader** (đa dạng, pha trộn tùy sắc thái):
   - **Trung tính / rộng**: "các bạn", "anh em", "ae".
   - **Thân mật / mắng yêu**: "tụi mày", "mấy thánh", "fen".
   - **Gọi đích danh 1 cá nhân**: "em", "bạn", tên riêng.
   - **KHÔNG dùng nhãn tập thể riêng** (không có "hội X / CLB Y").
-- **Thái độ với chủ đề**: người chú bác / anh đi trước giảng bài cho cháu em — không ngang hàng bạn bè, không thầy giáo trịnh trọng.
+- **Thái độ với chủ đề**: người anh đi trước giảng bài cho em, giọng chú bác nhưng không xa cách, không thầy giáo trịnh trọng.
 
 ### 2. Cấu trúc bài
 
@@ -77,7 +76,7 @@ Xưng "Tuấn" ngôi 3, "Cậu" khi dạy dỗ, "tôi" khi tâm sự, gọi read
 
 - **Heading**: chỉ H1 tiêu đề bài. Không H2/H3 trong thân.
 - **List**: hiếm — chỉ khi liệt kê bước đánh số (1. / 2. / 3.). Không bullet dày.
-- **Bold**: DÀY ĐẶC. Bold tên nhân vật (**Tuấn**, **Cậu**), keyword mới, câu chốt, link nội bộ, toàn bộ đoạn mở bài. ≥10 chỗ bold/bài.
+- **Bold**: DÀY ĐẶC. Bold tên nhân vật (**Tuấn**), keyword mới, câu chốt, link nội bộ, toàn bộ đoạn mở bài. ≥10 chỗ bold/bài.
 - **Italic**: thơ, ca dao, lời bài hát, tiếng Anh chèn.
 - **CAPS nguyên cụm** (nhấn cao độ): 2-3 chỗ/bài. Dùng cho câu chốt hoặc tên "bệnh/căn" đang bàn. VD mẫu: "**CHÂN LÀM, MIỆNG KHÔNG NÓI NHIỀU**", "**DÙ LÀM GÌ Ở ĐÂU VỚI AI**".
 - **Blockquote**: không dùng.
@@ -109,8 +108,7 @@ Xưng "Tuấn" ngôi 3, "Cậu" khi dạy dỗ, "tôi" khi tâm sự, gọi read
 | Cụm từ                           | Mục đích                 | Ví dụ cách dùng                              |
 | -------------------------------- | ------------------------ | -------------------------------------------- |
 | "hẻm" / "hem"                    | thay "không"             | "*Tuấn hẻm tin chuyện đó.*"                  |
-| "Tuấn" (tự xưng ngôi 3)          | kể chuyện                | "*Tuấn quen với anh bạn làm bên công ty X…*" |
-| "Cậu"                            | alter ego dạy dỗ/ra lệnh | "*Cậu ghét mấy thánh NATO.*"                 |
+| "Tuấn" (tự xưng ngôi 3)          | kể chuyện + ra lệnh/chốt | "*Tuấn quen với anh bạn làm bên công ty X…*" |
 | "anh em" / "ae" / "mấy thánh"    | gọi reader               | "*Ae nhớ giữ cái tâm cho sạch nha.*"         |
 | "tụi mày" / "fen"                | mắng yêu                 | "*Tụi mày nghe tôi nói nè.*"                 |
 | "hạc"                            | thay "học"               | "*Tuấn dắt đứa em đi hạc hỏi.*"              |
@@ -121,7 +119,7 @@ Xưng "Tuấn" ngôi 3, "Cậu" khi dạy dỗ, "tôi" khi tâm sự, gọi read
 | "quánh"                          | thay "đánh"              | "*quánh phủ đầu đối tác.*"                   |
 | "NATO / GATO"                    | nhãn đá xéo              | "*Ae đừng rơi vào nhóm GATO và NATO.*"       |
 | "thôi thì"                       | khởi câu chốt            | "*thôi thì làm tới cho xong.*"               |
-| "Tuấn nói thật" / "tôi nói thật" | câu dẫn nhấn mạnh        | "*Tuấn nói thật, việc này phải làm ngay.*"   |
+| "Tuấn nói thật" / "tôi nói thật" | câu dẫn nhấn mạnh        | "*Tuấn nói thật, việc này phải làm ngay.*"    |
 
 
 ## Công thức tái tạo (8 bước viết 1 bài)
@@ -131,14 +129,14 @@ Xưng "Tuấn" ngôi 3, "Cậu" khi dạy dỗ, "tôi" khi tâm sự, gọi read
 3. **Pivot sang "tôi" khi bước vào phân tích**: "*Tôi nghĩ cái vấn đề lớn nhất ở đây là…*" — tín hiệu chuyển từ kể chuyện sang bình luận.
 4. **Chèn tối thiểu 1 ẩn dụ từ domain nông nghiệp/động vật/đồng quê**: chọn từ pool cá mập/cá lòng tong, con cò/đại bàng, gà què ăn quẩn cối xay, con diều cần sợi dây, ngọt như mía lùi, chuối hóa.
 5. **Sai chính tả có chủ đích ≥3 lần/bài**: "không" → **hẻm**, "học" → **hạc**, "đánh" → **quánh**, "nhân" → **nhơn**. Rải đều.
-6. **CAPS nguyên cụm 2-3 chỗ/bài + Bold dày đặc xuyên bài**: bold "**Tuấn**" và "**Cậu**" khi xuất hiện, bold keyword mới, bold câu chốt bài học.
+6. **CAPS nguyên cụm 2-3 chỗ/bài + Bold dày đặc xuyên bài**: bold "**Tuấn**" khi xuất hiện, bold keyword mới, bold câu chốt bài học.
 7. **Câu cụt 3-5 từ đóng đoạn hoặc tạo sốc 2-4 lần/bài**: "*Thế thôi.*", "*Nên dẹp.*", "*Không ai biết.*", "*Chấm hết.*"
-8. **Kết bài pivot sang "Cậu" ra lệnh**: 1 trong 3 pattern — (a) Mệnh lệnh CAPS + động viên ("*Lao vô đi ae ơi. Làm Làm Làm. Hạc hạc hạc.*"); (b) Câu hỏi tu từ dồn 3-4 câu; (c) Thơ/câu vè tự chế 4-8 dòng + dòng cuối bold punchline. Thêm **P/S** giải thích viết tắt tự chế hoặc link sang bài cũ.
+8. **Kết bài pivot "Tuấn" ra lệnh/đóng chốt**: 1 trong 3 pattern — (a) Mệnh lệnh CAPS + động viên ("*Lao vô đi ae ơi. Làm Làm Làm. Hạc hạc hạc.*"); (b) Câu hỏi tu từ dồn 3-4 câu; (c) Thơ/câu vè tự chế 4-8 dòng + dòng cuối bold punchline. Thêm **P/S** giải thích viết tắt tự chế hoặc link sang bài cũ.
 
 ## Anti-patterns (thứ KHÔNG được làm khi viết theo style này)
 
 - **Không dùng emoji** — 0 instance.
-- **Không xưng "tôi" xuyên suốt** — "tôi" chỉ dùng khi tâm sự/phân tích; khi kể chuyện phải là "Tuấn"; khi ra lệnh phải là "Cậu".
+- **Không xưng "tôi" xuyên suốt** — "tôi" chỉ dùng khi tâm sự/phân tích; khi kể chuyện và ra lệnh/đóng chốt phải là "Tuấn".
 - **Không dùng heading H2/H3 trong thân bài**.
 - **Không dùng blockquote**.
 - **Không dùng bullet list dày** — chỉ đánh số thứ tự khi liệt kê bước.

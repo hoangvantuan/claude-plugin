@@ -1,0 +1,29 @@
+#!/bin/bash
+# Writer-Planner: Output skill directory paths
+# Used by main agent to resolve paths at runtime (Step 0)
+# Works regardless of installation location (project-local or global)
+# MUST be invoked with absolute path: bash /full/path/to/wa-env
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SKILL_DIR="$(dirname "$SCRIPT_DIR")"
+PROJECT_ROOT="$(pwd)"
+
+# Validate: SCRIPT_DIR must end with /scripts
+if [[ "$(basename "$SCRIPT_DIR")" != "scripts" ]]; then
+  echo "ERROR: wa-env resolved SCRIPT_DIR=$SCRIPT_DIR (expected */scripts/)" >&2
+  echo "HINT: Invoke with absolute path: bash /full/path/to/writer-planner/scripts/wa-env" >&2
+  return 1 2>/dev/null || exit 1
+fi
+
+# Validate: SKILL_DIR must contain references/
+if [[ ! -d "$SKILL_DIR/references" ]]; then
+  echo "ERROR: SKILL_DIR=$SKILL_DIR does not contain references/ directory" >&2
+  echo "HINT: Skill structure is broken. Re-install the plugin." >&2
+  return 1 2>/dev/null || exit 1
+fi
+
+echo "SCRIPTS_DIR=$SCRIPT_DIR"
+echo "SKILL_DIR=$SKILL_DIR"
+echo "PROJECT_ROOT=$PROJECT_ROOT"
+echo "OUTPUT_DIR=$PROJECT_ROOT/writer-planner"
+echo "REFERENCES_DIR=$SKILL_DIR/references"

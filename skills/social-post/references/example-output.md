@@ -1,6 +1,6 @@
 # Ví dụ output đạt chuẩn
 
-Đây là một bài social post đạt chuẩn (Facebook, Threads, LinkedIn đều dùng được). Đọc kỹ để cảm được tone, pacing, cách kết cấu 5 phần.
+Đây là một bài social post đạt chuẩn (Facebook, Threads, LinkedIn đều dùng được). Đọc kỹ để cảm được tone, pacing, cách một bài chia sẻ tự nhiên trông như thế nào.
 
 ## Bài mẫu
 
@@ -38,22 +38,22 @@ Thử ngẫm lại xem, cái thứ mà bạn đang giỏi nhất hiện tại, n
 - Dưới 15 từ (chính xác 7 từ).
 - Hợp với nội dung bài (nói về việc biết đủ và an yên).
 
-### Hook (3 dòng đầu sau tiêu đề)
+### Mở bài
 > "Sáng nay tôi nhớ đến hình ảnh một người bạn làm BrSE lương cao ngất ngưởng, thường xuyên mệt mỏi gục mặt trên vô lăng ô tô sau giờ làm."
 
-- Kiểu opening: **micro-story** (một tình huống cụ thể).
-- Không chào hỏi, không meta, vào thẳng hình ảnh.
-- Có neo cụ thể: "BrSE lương cao", "gục mặt trên vô lăng". Rất cụ thể, dễ hình dung.
-- Tạo tò mò: tại sao người lương cao lại như vậy?
+- Bắt đầu bằng một tình huống cụ thể, kể như đang nói chuyện bình thường.
+- Không chào hỏi, không meta, vào thẳng câu chuyện.
+- Có neo cụ thể: "BrSE lương cao", "gục mặt trên vô lăng". Dễ hình dung.
+- Tự nhiên dẫn vào vấn đề mà không cần "kỹ thuật dừng scroll".
 
-### Tension
+### Dựng vấn đề
 > "Ngay vỉa hè cạnh đó, cô bán hàng rong đang vừa dọn hàng vừa huýt sáo. Khoảng cách giữa họ chỉ là một tấm kính xe, nhưng thực ra lại là một hố sâu thăm thẳm."
 
-- Dùng **contrast** (nghịch lý): người giàu mệt mỏi vs. người nghèo huýt sáo.
+- Dùng **contrast**: người giàu mệt mỏi vs. người nghèo huýt sáo.
 - Câu memorable: "tấm kính xe" vs. "hố sâu thăm thẳm". Ẩn dụ sắc.
 - Kéo người đọc vào: ai từng cảm giác này cũng tự chiếu.
 
-### Escalation
+### Đẩy sâu
 > "Chúng ta được dạy từ bé rằng phải giải quyết thật xuất sắc những bài toán chuyên môn..."
 > "Năm hai mươi tuổi, bạn vật lộn lấy bằng cấp. Năm ba mươi tuổi, bạn trầy trật giữ cái ghế quản lý."
 
@@ -61,7 +61,7 @@ Thử ngẫm lại xem, cái thứ mà bạn đang giỏi nhất hiện tại, n
 - **Intensity escalation**: từ "giỏi chuyên môn" → "nằm trằn trọc lúc đêm".
 - Dùng "bạn" xuyên suốt.
 
-### Turn (insight)
+### Insight + Kết
 > "Kiến thức chuyên ngành giống như việc bạn luyện được kỹ năng lái xe thượng thừa... kỹ năng lái xe điêu luyện không bù đắp được việc bạn đang chạy mà không có bản đồ."
 > "Cái bẫy lớn nhất là chúng ta nhầm lẫn giữa công cụ sinh tồn và năng lực sống."
 
@@ -69,12 +69,12 @@ Thử ngẫm lại xem, cái thứ mà bạn đang giỏi nhất hiện tại, n
 - Insight technique: **Assumption Excavation** ("chúng ta nhầm lẫn giữa công cụ sinh tồn và năng lực sống", chỉ ra điều mọi người tin mà chưa kiểm chứng).
 - Câu memorable: "chạy mà không có bản đồ".
 
-### Kết (để lại điều không nói hết)
+### Câu kết (để lại điều không nói hết)
 > "Thử ngẫm lại xem, cái thứ mà bạn đang giỏi nhất hiện tại, nó có thực sự giúp bạn ngủ ngon hơn vào đêm nay không."
 
 - Câu hỏi tự vấn, không rhetorical.
 - Để người đọc tự trả lời, không áp đặt.
-- Vòng lại tiêu đề ("ngủ ngon"), tạo cảm giác bài đã khép vòng.
+- Vòng lại tiêu đề ("ngủ ngon"), bài khép vòng tự nhiên.
 - Không link, không CTA, không "đọc thêm". Bài khép kín.
 
 ## Ngôn ngữ đời thường, xuất hiện đúng chỗ
@@ -92,6 +92,7 @@ Thử ngẫm lại xem, cái thứ mà bạn đang giỏi nhất hiện tại, n
 - Không link, không URL, không "đọc thêm".
 - Không triple-list lặp đi lặp lại.
 - Không câu staccato kiểu "Không buồn. Không mệt. Chỉ nặng."
+- Không mở bài kiểu "attention-grabbing" cố tình.
 
 ## Độ dài
 

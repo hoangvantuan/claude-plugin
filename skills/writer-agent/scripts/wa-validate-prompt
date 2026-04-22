@@ -1,4 +1,0 @@
-#!/bin/bash
-# Writer-Agent: Validate subagent prompt template variables
-source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/_wa-common.sh"
-exec "$VENV_PYTHON" "$SCRIPT_DIR/validate_prompt.py" "$@"

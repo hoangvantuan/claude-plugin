@@ -212,7 +212,7 @@ Tiêu đề dạng nhận định "X quan trọng hơn Y" / "X mới thật sự
 1. Có em dash không? → Xoá.
 2. Có từ nào trong vocabulary blacklist không? → Thay.
 3. Có 2+ câu ngắn liên tiếp không? → Ghép lại.
-4. Có opening "Trong bối cảnh..." hay tương tự không? → Viết lại hook.
+4. Có opening "Trong bối cảnh..." hay tương tự không? → Viết lại mở bài.
 5. Có triple-list lặp không? → Đổi số item.
 6. Có câu nào nghe như corporate không? → Viết lại bằng từ đời thường.
 7. Có filler signposting ("Lạ ở chỗ,", "Thật ra,", "Điều thú vị là...") không? → Cắt, để câu tự đứng.

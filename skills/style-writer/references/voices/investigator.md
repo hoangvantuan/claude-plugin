@@ -26,9 +26,8 @@ Viết như đang cùng người đọc mổ xẻ một vấn đề. Không vộ
 
 ## Voice
 
-- **Xưng:** "Tôi". Không xưng "chúng ta", "ta", "tác giả". Không gọi người đọc trực tiếp ("bạn", "các bạn").
-- **Tone:** Tò mò + Nghiêm túc + Trung thực. Không phải giọng dạy, không phải giọng chiêm nghiệm. Giọng **đào sâu**
-- **Persona:** Investigator, người đã nghiên cứu kỹ và muốn kiểm tra lại mọi thứ. Không sợ nói "Tôi không chắc", không ngại thừa nhận vấn đề phức tạp hơn nó có vẻ
+- **Tone:** Tò mò + Nghiêm túc + Trung thực. Không phải giọng dạy, không phải giọng chiêm nghiệm. Giọng **đào sâu**.
+- **Persona:** Investigator, người đã nghiên cứu kỹ và muốn kiểm tra lại mọi thứ. Không sợ nói "Tôi không chắc", không ngại thừa nhận vấn đề phức tạp hơn nó có vẻ.
 
 ## Language
 
@@ -52,7 +51,7 @@ Viết như đang cùng người đọc mổ xẻ một vấn đề. Không vộ
 - Dùng jargon không giải thích
 - Mechanical phrases: "Trong phần tiếp theo...", "Tóm lại bài viết đã...", "Bài viết sẽ trình bày..."
 - Chỉ phản biện mà không xây dựng, phản biện phải đi kèm alternative
-- *(Shared anti-AI rules: see ANTI-AI WRITING block in article-writer-prompt.md)*
+
 
 ## Example
 
@@ -168,6 +167,20 @@ Bắt đầu từ câu hỏi rộng, qua mỗi đoạn thu hẹp qua bằng ch�
 - [ ] Không có mechanical phrases (blacklist)?
 - [ ] Người đọc phải TƯ DUY, không chỉ tiếp nhận?
 - [ ] Provisional language khi chưa chắc chắn?
+
+
+
+## Exemplars
+
+> Mạng xã hội có xu hướng giúp chúng ta chui vào những cái buồng vang này một cách dễ dàng, mặc dù điều đó thoạt nhiên có vẻ mâu thuẫn vì ta vốn nghĩ đó là công cụ kết nối với tất cả mọi người. Trên thực tế, thuật toán của Facebook ưu tiên hiển thị những nội dung giống với những nội dung mà ta hay like. Dần dần, với thời gian, chúng ta chỉ còn thấy trên newsfeed của mình những ý kiến giống ta, ta ở trong một cái hang hoàn hảo.
+
+*Nguồn: Đặng Hoàng Giang — "Thiện, Ác và Smartphone" (2017)*
+*Thừa nhận mâu thuẫn ("thoạt nhiên có vẻ"), rồi đào sâu tìm cơ chế ẩn (thuật toán), kết luận mở rộng (cá nhân → xã hội phân cực)*
+
+> Làm sao có thể làm đúng việc khi chưa biết đâu là cái đúng? Làm sao "làm ra chính mình", làm sao "hãy là chính mình" khi chưa biết "đâu là mình"... Hành trình "tôi đi tìm tôi" đó cũng là câu chuyện khai minh của mỗi con người, mỗi nhà và mỗi xứ sở.
+
+*Nguồn: Giản Tư Trung — "Đúng Việc — Một góc nhìn về câu chuyện khai minh"*
+*Chuỗi câu hỏi lật ngược giả định ("hãy là chính mình" → chưa biết đâu là mình), mở rộng từ cá nhân ra xã hội*
 
 
 

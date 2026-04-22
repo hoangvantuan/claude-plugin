@@ -27,7 +27,7 @@ Viết như một người thầy giỏi đang chia sẻ kiến thức với c�
 
 ## Voice
 
-Xưng **"tôi"**. Kiên nhẫn, rõ ràng, thân thiện, ấm áp. Không phải giảng dạy từ trên cao mà cùng khám phá. Không gọi trực tiếp người đọc.
+Kiên nhẫn, rõ ràng, thân thiện, ấm áp. Không phải giảng dạy từ trên cao mà cùng khám phá.
 
 ## Language
 
@@ -51,7 +51,7 @@ Xưng **"tôi"**. Kiên nhẫn, rõ ràng, thân thiện, ấm áp. Không phả
 - Nhảy ý không liên kết
 - Giọng trịch thượng, xa cách
 - Tạo cảm giác chủ đề quá khó cho người đọc
-- *(Shared anti-AI rules: see ANTI-AI WRITING block in article-writer-prompt.md)*
+
 
 ## Example
 
@@ -165,6 +165,23 @@ Nối ý bằng logic tự nhiên. Nếu ý tiếp hiển nhiên, bỏ transitio
 - [ ] Không có jargon unexplained?
 - [ ] Analogies gần gũi?
 - [ ] Practical applications?
+
+## Exemplars
+
+> Để học được võ công thượng thừa, phải rành những chiêu thức cơ bản trước. Những chiêu thức hoa mĩ đều từ cơ bản mà ra cả. Muốn cơ bắp to thì bạn phải tập gym chứ không thể xem tạp chí thể hình. Một cái cây có bộ rễ vững chắc có thể chống chọi được bão tố, nhưng nếu nó cứ chăm chút dinh dưỡng cho bộ rễ thì sẽ không vươn cao vươn xa được.
+
+*Nguồn: Phạm Huy Hoàng — toidicodedao.com — "Căn bản và Tư duy lập trình"*
+*Ba analogy song song (võ công, gym, cây cối) dẫn dắt cùng một ý, tone tự nhiên không lên lớp*
+
+> Rèn luyện tư duy lập trình cũng giống như tập tạ, muốn giỏi thì phải chịu khó rèn luyện thường xuyên. Thành công trong lập trình là chuyện của kiên trì, chứ không phải yêu cầu bất khả thi nào đó. Mỗi lần giải quyết một bài tập thuật toán hay xây dựng một dự án nhỏ đều là cơ hội quý báu để nâng cao khả năng tư duy.
+
+*Nguồn: Phạm Huy Hoàng — toidicodedao.com — "Bốn phương pháp rèn luyện tư duy lập trình"*
+*Analogy tập thể dục, nhấn kiên trì thay vì tài năng, khuyến khích tự nhiên*
+
+> Hãy suy nghĩ về nó giống như bạn đang đi qua một khu rừng của ký ức. Mỗi lần ôn tập, bạn vạch ra con đường trong não, giống như lối mòn hình thành qua đi lại hàng ngày. Làm việc chăm chỉ luôn luôn có giá trị hơn tài năng. Mỗi lần xem lại như vậy sẽ làm khắc sâu chủ đề đó vào bộ não của bạn thêm một chút.
+
+*Nguồn: Nguyen Minh Duc — Medium/Got It Vietnam — "Learning Resources: Cách học lập trình hiệu quả"*
+*Analogy rừng ký ức + lối mòn, giải thích cơ chế não bộ bằng hình ảnh quen thuộc*
 
 ## Inspiration
 

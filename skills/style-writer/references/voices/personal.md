@@ -27,9 +27,7 @@ Viết như cuộc hành trình tự khám phá. Không giảng dạy, chỉ chi
 
 ## Voice
 
-Xưng **"tôi"**, đối thoại trực tiếp như hai người nói chuyện lúc khuya. Thâm trầm, chân thành, không sợ thừa nhận sai lầm. Tác giả cũng đang đi tìm, đang học, đang bị lột.
-
-Không dùng "chúng ta", "người viết", "ta", "mình" làm đại từ xưng hô thay thế.
+Đối thoại trực tiếp như hai người nói chuyện lúc khuya. Thâm trầm, chân thành, không sợ thừa nhận sai lầm. Tác giả cũng đang đi tìm, đang học, đang bị lột.
 
 ## Language
 
@@ -54,7 +52,7 @@ Không dùng "chúng ta", "người viết", "ta", "mình" làm đại từ xưn
 - Từ áp đặt: "phải", "luôn luôn", "chắc chắn"
 - Nhảy ý đột ngột, giữ nhịp thở
 - Voice-specific: Em dash → dấu phẩy hoặc tách câu. Dùng dấu ba chấm (...) cho khoảng lặng
-- *(Shared anti-AI rules: see ANTI-AI WRITING block in article-writer-prompt.md)*
+
 
 ## Example
 
@@ -163,7 +161,11 @@ Nối ý bằng dòng chảy cảm xúc/liên tưởng. Dùng "..." cho khoảng
 | Kết thúc          | LUÔN mở                                           |
 
 
-## Quality Checklist
+## Arc Pattern
+
+Personal có arc mặc định **Quiet Devastation** (insight sắc, nghịch lý, phê phán xã hội ngầm). Chi tiết arc xem `structures/spiral-return.md` mục "Arc Pattern".
+
+## Quality Checklist (Voice)
 
 - [ ] Giọng thâm trầm, không giảng dạy?
 - [ ] Thừa nhận sai lầm, hoang mang?
@@ -172,6 +174,26 @@ Nối ý bằng dòng chảy cảm xúc/liên tưởng. Dùng "..." cho khoảng
 - [ ] Từ ngữ mềm mại, không áp đặt?
 - [ ] Trải nghiệm cá nhân thật?
 - [ ] Ẩn dụ nhất quán (2-3 hệ)?
+- [ ] Verbal tics tự nhiên?
+
+> Checklist về cấu trúc bài (xoáy ốc, kết thúc mở) xem `structures/spiral-return.md`.
+
+## Exemplars
+
+> Tôi thích những mối tình câm, tình thầm. Tôi tưởng tượng đó là những mối tình da diết, sâu sắc. Mãi mãi chẳng dám nói thật lòng, cho đến cuối đời, tình ấy vẫn bàng bạc, rập rờn, và mỗi khi có dịp (như đi qua chỗ ngồi cũ, con đường cũ, gương mặt cũ…), ta bỗng thấy nhói ran.
+
+*Nguồn: Nguyễn Ngọc Tư — tản văn*
+*Thừa nhận sở thích kỳ lạ, chi tiết cụ thể lồng trong dấu ngoặc, "nhói ran" kết đoạn bất ngờ, không giải thích tại sao*
+
+> Nhưng hơn ai hết, tôi biết không có gì vĩnh viễn. Sự biết này làm tôi hay buồn, khi ta ngồi cạnh nó, ta ở trong nó, cùng với nó, nghe thấy, chạm được nó, nhưng ta cũng đang mất nó, từ từ.
+
+*Nguồn: Nguyễn Ngọc Tư — tản văn*
+*Nhận biết buồn không phàn nàn, chi tiết giác quan (nghe, chạm), "từ từ" đặt cuối tạo nhịp lắng, câu flowing nhiều mệnh đề*
+
+> Ngày ngày kẹt giữa đám đông, chen chúc trên những con đường đông nghịt người, nhiều khi tôi giật mình, trời ơi, họ kia, đồng loại mình kia, sao mình lại thấy cô đơn đến rã rời…
+
+*Nguồn: Nguyễn Ngọc Tư — tản văn*
+*Giật mình giữa đời thường, mâu thuẫn vật lý gần/tâm hồn xa, "rã rời" kết bằng cảm giác cơ thể, dấu ba chấm bỏ lửng*
 
 ## Inspiration
 

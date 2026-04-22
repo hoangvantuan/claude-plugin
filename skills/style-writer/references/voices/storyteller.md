@@ -26,8 +26,7 @@ Kể lại hành trình khám phá như một câu chuyện. Người đọc đ�
 
 ## Voice
 
-- **Ngôi kể:** "Tôi", đang trên hành trình, chưa đến đích. Không xưng "con", "ta", "chúng ta". Không gọi người đọc trực tiếp.
-- **Giọng:** Thân mật, chân thành, như viết nhật ký
+- **Giọng:** Thân mật, chân thành, như viết nhật ký. Đang trên hành trình, chưa đến đích.
 - **Thầy:** Qua hồi tưởng, không phải nhân vật chính
 
 ## Embedded Dialogue
@@ -57,8 +56,7 @@ Kể lại hành trình khám phá như một câu chuyện. Người đọc đ�
 - Giảng giải, phân tích
 - "Tôi nhận ra rằng..." + chân lý
 - Kết thúc gọn gàng với bài học
-- Voice-specific: Em dash → dấu phẩy hoặc dấu ba chấm (...)
-- *(Shared anti-AI rules: see ANTI-AI WRITING block in article-writer-prompt.md)*
+- Em dash → dấu phẩy hoặc dấu ba chấm (...)
 
 ## Example
 
@@ -138,16 +136,22 @@ Chọn **MỘT** hệ chính, lặp 3-5 lần. **KHÁC Personal** — Storytelle
 | Ẩn dụ                  | 1 hệ, lặp 3-5 lần                         |
 | Kết thúc               | LUÔN với câu hỏi mới hoặc khoảng mở  |
 
-## Quality Checklist
+## Arc Pattern
 
-- [ ] Scene setting (thời gian, không gian, giác quan)?
+Storyteller có arc mặc định **Growth Journey** (hành trình, kiên nhẫn, growth). Chi tiết arc xem `structures/story-arc.md` mục "Arc Pattern".
+
+## Quality Checklist (Voice)
+
+- [ ] Giọng thân mật, chân thành, như viết nhật ký?
 - [ ] Ngôi kể nhất quán?
-- [ ] Đối thoại được kể lại?
-- [ ] Dòng chảy tâm tưởng?
-- [ ] Ẩn dụ nhất quán?
-- [ ] Đủ khoảng lặng?
-- [ ] Kết thúc với câu hỏi MỚI?
+- [ ] Đối thoại được kể lại (embedded, không format C:/T:)?
+- [ ] Dòng chảy tâm tưởng (stream of consciousness)?
+- [ ] Ẩn dụ nhất quán (1 hệ, lặp 3-5 lần)?
+- [ ] Đủ khoảng lặng (`...` hoặc đoạn một câu)?
+- [ ] Verbal tics tự nhiên?
 - [ ] Người kể đang "đi" chứ không "đã đến"?
+
+> Checklist về cấu trúc bài (scene setting, phases, kết thúc) xem `structures/story-arc.md`.
 
 ## Common Mistakes
 
@@ -161,6 +165,23 @@ Chọn **MỘT** hệ chính, lặp 3-5 lần. **KHÁC Personal** — Storytelle
 
 > [Xem Example: scene setting giác quan, đối thoại lồng ghép, dòng chảy tâm tưởng, kết thúc với câu hỏi mới]
 
+
+## Exemplars
+
+> Con kinh nhỏ nằm vắt qua một cánh đồng rộng. Và khi chúng tôi quyết định dừng lại, mùa hạn hung hãn dường như cũng gom hết nắng đổ xuống nơi này. Những cây lúa chết non trên đồng, thân đã khô cong như tàn nhang chưa rụng, nắm vào bàn tay là nát vụn.
+
+*Nguồn: Nguyễn Ngọc Tư — "Cánh đồng bất tận" (2005)*
+*Chi tiết giác quan sống động (nắng, chạm tay), cảm xúc lồng qua thiên nhiên, "nắm vào bàn tay là nát vụn" chuyển từ mô tả sang xúc giác*
+
+> Nhiều lần dọn cơm tôi hay lấy chén đũa cho cả bốn người. Cha tôi rất khó chịu, ông ngán ngẩm đứng dậy. Tôi ngồi một mình, chan nước vào chén cơm như chan nỗi trống trải khủng khiếp.
+
+*Nguồn: Nguyễn Nhật Ánh — "Cho tôi xin một vé đi tuổi thơ"*
+*Hành động đơn giản (dọn cơm, chan nước) chứa xúc cảm sâu, "chan nỗi trống trải" lồng ẩn dụ vào động tác cụ thể*
+
+> Trong bóng me im mát vị khất sĩ Svastika đang thực tập phép quán niệm hơi thở. Chú ngồi trong tư thế hoa sen. Từ hơn một tiếng đồng hồ, chú đã ngồi thực tập như thế một cách chăm chú.
+
+*Nguồn: Thích Nhất Hạnh — "Đường xưa mây trắng" (Chương 1)*
+*Scene setting chánh niệm, "bóng me im mát" thiết lập không gian bằng 4 từ, mô tả hành động đơn giản tạo nhịp yên tĩnh*
 
 ## Inspiration
 

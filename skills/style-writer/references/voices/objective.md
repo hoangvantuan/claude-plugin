@@ -26,7 +26,7 @@ Viết như một chuyên gia đang trình bày cho đồng nghiệp. Mục tiê
 
 ## Voice
 
-Xưng **"tôi"**. Giọng điệu khách quan, trung lập, có thẩm quyền nhưng không kiêu ngạo. Tự tin nhưng cân bằng, thừa nhận giới hạn khi cần. Không xưng "tác giả", "chúng ta", "ta". Không gọi người đọc trực tiếp ("bạn", "các bạn").
+Giọng điệu khách quan, trung lập, có thẩm quyền nhưng không kiêu ngạo. Tự tin nhưng cân bằng, thừa nhận giới hạn khi cần.
 
 ## Language
 
@@ -49,7 +49,7 @@ Xưng **"tôi"**. Giọng điệu khách quan, trung lập, có thẩm quyền n
 - Câu mơ hồ, không kiểm chứng được
 - Chỉ lạc quan hoặc chỉ bi quan, cần balance
 - Triple-listing mọi lúc. Dùng 2, 4, 5 items khi tự nhiên
-- *(Shared anti-AI rules: see ANTI-AI WRITING block in article-writer-prompt.md)*
+
 
 ## Example
 
@@ -165,6 +165,23 @@ Luôn kèm giới hạn: sample size, điều kiện, reproducibility.
 - [ ] Format consistent?
 - [ ] Evidence-based cho mỗi claim?
 - [ ] Technical terms được định nghĩa?
+
+## Exemplars
+
+> Với việc Cục Dự trữ Liên bang Mỹ và nhiều ngân hàng trung ương khác bước vào chu kỳ giảm lãi suất điều hành, Việt Nam sẽ tiếp tục duy trì chính sách nới lỏng để hỗ trợ tăng trưởng. Dự báo cụ thể cho thấy mặt bằng lãi suất sẽ giảm 0,7% trong năm tới.
+
+*Nguồn: Nguyễn Xuân Thành — chuyên gia kinh tế — CafeF.vn*
+*Logic nhân quả rõ (chính sách toàn cầu → nội địa → dự báo), số liệu cụ thể (0,7%), tone neutral*
+
+> Khảo sát cho thấy: 65% sinh viên học ban đêm, 70% dùng video học online, 40% thích học nhóm cho các môn khó. Từ những con số này, ta xây dựng logic nhân quả: học ban đêm phổ biến bởi sinh viên phải đi làm ban ngày; video được ưa chuộng vì tính linh hoạt và dễ tua lại.
+
+*Nguồn: Vietcetera — "Khi biết nhiều không còn là lợi thế: 4 Cấp độ xử lý dữ liệu"*
+*Dữ liệu (%) dẫn đầu, logic nhân quả tường minh, minh họa mô hình phân tích*
+
+> Kafi, ban đầu là công ty nhỏ với 10 nhân sự và vốn 150 tỷ đồng, đã đạt bước phát triển ngoạn mục sau ba năm. Hiện tại, công ty có 500 nhân sự và vốn điều lệ tăng gấp 33 lần lên 5.000 tỷ đồng, với lợi nhuận dự kiến đạt 800 tỷ đồng trong năm 2025.
+
+*Nguồn: The Leader — "Công thức chạy doanh số bền vững của doanh nghiệp"*
+*Số liệu cụ thể (10→500 nhân sự, 150→5000 tỷ, 33x), timeline rõ, kết luận dựa trên dữ liệu*
 
 ## Inspiration
 

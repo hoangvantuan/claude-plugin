@@ -1,0 +1,4 @@
+#!/bin/bash
+# Writer-Planner: Convert document wrapper
+source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/_wa-common.sh"
+exec "$VENV_PYTHON" "$SCRIPT_DIR/convert_to_markdown.py" "$@"
