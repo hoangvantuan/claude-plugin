@@ -14,40 +14,34 @@ claude plugin install gh:hoangvantuan/shun-claude-plugin
 
 | Skill | Description |
 | --- | --- |
-| `ai-artist` | Tạo ảnh qua Nano Banana — 129 curated prompts, validation interview, 3 modes (search/creative/wild), styles: Ukiyo-e, cyberpunk, cinematic, vintage patent |
-| `anti-ai-writing` | Rules viết tiếng Việt không giống AI — blacklist từ/cụm/chấm câu, cấu trúc câu Việt, self-critique bắt buộc, insight techniques. Dùng độc lập hoặc làm baseline cho mọi task viết |
+| `ai-artist` | Tạo ảnh qua Nano Banana, 129 curated prompts, validation interview, 3 modes (search/creative/wild) |
+| `anti-ai-writing` | Rules viết tiếng Việt không giống AI, blacklist từ/cụm/chấm câu, self-critique bắt buộc. Dùng độc lập hoặc làm baseline cho mọi task viết |
+| `content-planner` | Lên dàn ý, lập kế hoạch nội dung chi tiết cho bài Blog. Chỉ planning, không viết bài |
+| `creative-thought-partner` | Đối tác tư duy sáng tạo, brainstorming & insight discovery |
+| `deep-insight` | Quan sát đa chiều → Phân tích tách lớp → Đúc kết cốt lõi, hiểu sâu vấn đề qua chu trình 3 bước |
+| `deep-learner` | Dẫn dắt từng bước hiểu sâu bản chất nội dung, 4 lớp hiểu + áp dụng đời sống |
+| `facebook` | Facebook automation via PinchTab, đăng bài lên wall, tag bạn bè |
+| `game-theory-lens` | Phân tích chủ đề qua lăng kính Game Theory, nhận diện players/strategies/payoffs, Nash equilibrium, mechanism design |
 | `ghost-blog` | Ghost CMS blog management |
 | `outline-writer` | Content analysis & outline creation (presentation/blog/doc) |
-| `slidev-builder` | Slidev presentation builder from outline — theme selection, PDF export |
-| `pptx-creator` | Tạo PowerPoint đẹp, chuyên nghiệp — hỗ trợ font tiếng Việt, 18 color palettes, 4 style recipes, 5 slide types (PptxGenJS) |
-| `writer-agent` | Document transformation and article writing (v2.0.0 — tier workflows, preset presets, enhanced insights) |
-| `prompt-generator` | Meta-prompting — tạo prompt chất lượng cao, giảm hallucination |
-| `prompt-generator-v2` | KERNEL framework — prompt engineering nâng cao (94% first-try success, prompt chaining, verification criteria) |
-| `viral-post-creator` | Tạo bài đăng viral trên social media (3 archetype) |
-| `youtube-title-generator` | Tạo tiêu đề YouTube hấp dẫn từ ý tưởng nội dung |
-| `creative-thought-partner` | Đối tác tư duy sáng tạo — brainstorming & insight discovery |
-| `deep-post-ideas` | Trích xuất outline bài đăng từ tài liệu tham khảo |
-| `deep-insight` | Quan sát đa chiều → Phân tích tách lớp → Đúc kết cốt lõi — hiểu sâu bất kỳ vấn đề nào qua chu trình 3 bước tư duy |
-| `deep-learner` | Dẫn dắt từng bước hiểu sâu bản chất nội dung — 4 lớp hiểu + áp dụng đời sống |
-| `content-planner` | Lên kế hoạch và viết bài Facebook + Blog — 2-phase workflow (Plan → Write) |
+| `pinchtab` | Browser automation cho AI agents, điều khiển Chrome qua PinchTab HTTP API |
+| `pptx-creator` | Tạo PowerPoint đẹp, chuyên nghiệp, hỗ trợ font tiếng Việt (PptxGenJS) |
+| `problem-solving` | Kỹ thuật giải quyết vấn đề có hệ thống, inversion, collision-zone, scale-game, simplification cascades |
+| `prompt-generator` | Meta-prompting, tạo prompt chất lượng cao |
+| `prompt-generator-v2` | KERNEL framework, prompt engineering nâng cao |
+| `sequential-thinking` | Phân tích từng bước cho vấn đề phức tạp, revision, branching, hypothesis verification |
+| `skill-auto-improver` | Phân tích và cải tiến skill tự động, quality audit + improvement patterns |
+| `social-post` | Viết bài social đa platform (Facebook, Threads, LinkedIn, Zalo) chia sẻ góc nhìn chiều sâu, anti-AI rules, self-critique |
+| `style-writer` | Skill viết lách hợp nhất (từ style-library + style-dna), 2 workflow: Analyze (bóc tách DNA văn phong) + Writer (viết nội dung theo voice/persona/structure). Gồm personas, 7 voices, 8 structures |
+| `substack-tools` | Quản lý bài viết Substack: draft, schedule, publish, list, sections + scan/crawl newsletter khác |
+| `systems-thinking` | Phân tích tư duy hệ thống theo framework Donella Meadows, feedback loops, system traps, leverage points |
 | `things-manager` | Quản lý Things 3 tasks, projects, areas, tags qua things-cli (Go CLI) |
-| `pinchtab` | Browser automation cho AI agents — điều khiển Chrome qua PinchTab HTTP API (navigate, click, fill form, scrape, multi-tab) |
-| `facebook` | Facebook automation via PinchTab — đăng bài lên wall, tag bạn bè, quản lý nội dung Facebook |
-| `wisdom-mentor` | Trò chuyện với người thầy tri thức — Naval Ravikant, Daniel Schmachtenberger, Csikszentmihalyi, Krishnamurti, Ken Wilber, Thích Viên Minh, Trần Việt Quân, Thích Nhất Hạnh, Sư Tâm Pháp |
-| `work-explainer` | Personal teacher — giải thích công việc đã làm qua 9-step framework (approach, tradeoffs, mistakes, transferable lessons) |
-| `van-tu-tu-training` | Xây dựng bộ tài liệu training theo mô hình Văn-Tư-Tu (Tam Tuệ Học) — kiến trúc modular, tỷ lệ 10-20-70, templates đầy đủ cho VĂN/TƯ/TU |
-| `systems-thinking` | Phân tích tư duy hệ thống theo framework Donella Meadows — nhận diện feedback loops, stocks & flows, system traps, leverage points cho bất kỳ chủ đề nào |
-| `skill-auto-improver` | Phân tích và cải tiến skill tự động — quality audit 6 tiêu chí, 10 improvement patterns tổng quát, chống phình to |
-| `problem-solving` | Kỹ thuật giải quyết vấn đề có hệ thống — inversion, collision-zone thinking, scale-game, simplification cascades, meta-pattern recognition |
-| `sequential-thinking` | Phân tích từng bước cho vấn đề phức tạp — revision capability, branching, hypothesis verification, dynamic adjustment |
-| `workshop-builder` | Thiết kế workshop hoàn chỉnh theo Backwards Design + 4Cs + Kirkpatrick — 5 giai đoạn (Vision → Design → Prepare → Deliver → Follow-up) |
-| `game-theory-lens` | Phân tích sâu bất kỳ chủ đề nào qua lăng kính Lý thuyết Trò chơi — nhận diện players/strategies/payoffs, map sang game archetype, Nash equilibrium, bargaining, mechanism design |
-| `substack-tools` | Quản lý bài viết Substack: draft, schedule, publish, list, sections + scan/crawl newsletter khác (lấy tất cả bài qua archive API, rate limit handling) |
-| `social-post` | Viết bài social đa platform (Facebook, Threads, LinkedIn, Zalo, X) chia sẻ góc nhìn chiều sâu — 3 archetype (Patient Observer, Dramatic Prophet, Quiet Devastator), cấu trúc 5 phần, anti-AI rules, self-critique |
-| `style-dna` | Bóc tách DNA văn phong từ corpus bài viết của một tác giả thành style guide markdown tái sử dụng — phân tích 8 chiều, signature phrases, công thức tái tạo, anti-patterns. Input: file/folder, paste, URL |
-| `style-library` | Thư viện style guide viết lách, 3 catalog: `personas/` (tác giả cụ thể — hiện có Tuấn), `archetypes/` (kiểu viết có pattern: Patient Observer, Dramatic Prophet, Quiet Devastator), `voices/` (giọng generic: teacher, storyteller, objective, investigator, guide, personal, dialogue — mỗi voice có main/compact/exemplars). Độc lập, không load skill khác |
-| `writing-structures` | Thư viện khung bài + content framework — 9 structures (Story Arc, BLUF-Evidence, Building Blocks, Depth-Practice, Five Layers, Master-Student, Spiral Return, Adaptive, Social 5-Parts) + 5 frameworks (PAS, Inverted Pyramid, Step-by-step, SAR, Progressive Disclosure). Độc lập, không load skill khác |
-| `writing-context` | Thư viện context dimensions cho viết lách — 3 trục độc lập: identities (Contemplative Thinker, Knowledge Curator, Tech Builder), audiences (Busy Professionals, Curious Beginners, Deep Seekers), emotions (Empower & Challenge, Provoke & Transform, Reflect & Discover). Độc lập, không load skill khác |
+| `van-tu-tu-training` | Xây dựng tài liệu training theo mô hình Văn-Tư-Tu (Tam Tuệ Học), kiến trúc modular, tỷ lệ 10-20-70, templates đầy đủ |
+| `wisdom-mentor` | Trò chuyện với người thầy tri thức (28 mentors) |
+| `work-explainer` | Personal teacher, giải thích công việc đã làm qua 9-step framework |
+| `workshop-builder` | Thiết kế workshop theo Backwards Design + 4Cs + Kirkpatrick |
+| `writer-planner` | Xử lý input (PDF, DOCX, EPUB, URL, YouTube) và tạo kế hoạch chia bài viết, convert → analyze → plan. Tier workflows |
+| `youtube-title-generator` | Tạo tiêu đề YouTube hấp dẫn từ ý tưởng nội dung |
 
 ### Agents
 
