@@ -20,6 +20,7 @@ skills/                      # Các skill plugins (chi tiết xem ## Skill Struc
   facebook/                  # Facebook automation via PinchTab (wall post, tag friends)
   game-theory-lens/          # Phân tích chủ đề qua lăng kính Lý thuyết Trò chơi (Game Theory)
   ghost-blog/                # Ghost CMS blog management
+  meeting-minutes/           # Tạo biên bản họp từ transcript/ghi chú — metadata, quyết định, action items (bảng), pending/parking lot, rủi ro
   outline-writer/            # Content analysis & outline creation (presentation/blog/doc)
   pinchtab/                  # Browser automation for AI agents via PinchTab HTTP API
   problem-solving/           # Kỹ thuật giải quyết vấn đề có hệ thống — inversion, collision-zone, scale-game
@@ -77,6 +78,7 @@ skills/<skill-name>/
 | `facebook`                 | `scripts/`                                                           | fb-post.sh, snap-helpers.py, tag-search.py                                                                                                                                                                                           |
 | `game-theory-lens`         | `references/` `templates/`                                           | core-concepts, strategic-games, information-signaling, repeated-games-trust, mechanism-design, evolution-cooperation, bargaining-coalitions, paradoxes-fallacies, analysis-output                                                    |
 | `ghost-blog`               | `scripts/`                                                           | Python scripts + tests cho Ghost CMS API                                                                                                                                                                                             |
+| `meeting-minutes`          | `references/`                                                        | minutes-schema. Tạo biên bản họp từ transcript/ghi chú, action items dạng bảng                                                                                                                                                       |
 | `outline-writer`           | `references/`                                                        | outline-rules                                                                                                                                                                                                                        |
 | `pinchtab`                 | `references/`                                                        | api-reference, cli-reference, workflow-patterns                                                                                                                                                                                      |
 | `problem-solving`          | `references/`                                                        | collision-zone-thinking, inversion-exercise, meta-pattern-recognition, scale-game, simplification-cascades, when-stuck                                                                                                               |

@@ -23,6 +23,7 @@ claude plugin install gh:hoangvantuan/shun-claude-plugin
 | `facebook` | Facebook automation via PinchTab, đăng bài lên wall, tag bạn bè |
 | `game-theory-lens` | Phân tích chủ đề qua lăng kính Game Theory, nhận diện players/strategies/payoffs, Nash equilibrium, mechanism design |
 | `ghost-blog` | Ghost CMS blog management |
+| `meeting-minutes` | Tạo biên bản họp từ transcript/ghi chú, metadata, quyết định, action items (bảng), pending/parking lot, rủi ro. Hỗ trợ đọc file .txt/.md/.pdf/.docx |
 | `outline-writer` | Content analysis & outline creation (presentation/blog/doc) |
 | `pinchtab` | Browser automation cho AI agents, điều khiển Chrome qua PinchTab HTTP API |
 | `pptx-creator` | Tạo PowerPoint đẹp, chuyên nghiệp, hỗ trợ font tiếng Việt (PptxGenJS) |
