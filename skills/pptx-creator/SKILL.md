@@ -91,6 +91,22 @@ Prompt gợi ý: `"[Description], [color palette hex codes], 1920x1080, no text,
 
 Save vào `slides/assets/`, reference trong slide code bằng `path: "./assets/filename.jpg"`.
 
+### Step 3.7: Declare System & Confirm (BẮT BUỘC)
+
+Trước khi plan outline, viết tóm tắt design system cho user xem rồi chờ confirm. Bước này tốn 30 giây nhưng tránh được kịch bản generate xong 12 slides mới biết user không thích mood.
+
+Format declaration (5 dòng):
+
+```
+- Palette: <tên hoặc hex codes> (lý do chọn: <1 câu>)
+- Mood: <tên mood> + Style Recipe: <Sharp/Soft/Rounded/Pill>
+- Font: <titleFont> + <bodyFont>
+- Số slide dự kiến: <N> (cover + toc + N-3 content + summary)
+- Visual motif: <element lặp xuyên deck, ví dụ: pill badge, side border, icon circle>
+```
+
+Hỏi user: "Confirm system này hay muốn đổi gì?" Nếu user OK → tiếp Step 4. Nếu không → quay lại Step 2-3.
+
 ### Step 4: Plan Slide Outline
 
 Classify EVERY slide as one of 5 types. Read [references/slide-types.md](references/slide-types.md):
@@ -101,13 +117,26 @@ Classify EVERY slide as one of 5 types. Read [references/slide-types.md](referen
 4. **Content** — Main content (9 subtypes: 4a-4i)
 5. **Summary** — Closing, takeaways, CTA
 
-Không lặp cùng layout trên slides liên tiếp — tạo visual variety. Đọc [anti-AI slop patterns](references/design-system.md#anti-ai-slop-patterns) trước khi chốt outline.
+Không lặp cùng layout trên slides liên tiếp, tạo visual variety. Bắt buộc điền **Outline Rhythm Table** (3 trục: tone, density, scale) ở [references/slide-types.md](references/slide-types.md#visual-rhythm-checklist-3-trục) trước khi sang Step 5. Đọc [anti-AI slop patterns](references/design-system.md#anti-ai-slop-patterns) song song.
 
 ### Step 5: Generate Slide JS Files
 
 Create 1 JS file per slide in `slides/` directory. Each exports a synchronous `createSlide(pres, theme)` function.
 
 Read [references/pptxgenjs-api.md](references/pptxgenjs-api.md) for API reference and critical pitfalls.
+
+#### Step 5a: Showcase Checkpoint (BẮT BUỘC khi deck > 5 slides)
+
+Đừng batch hết slides ngay. Trước tiên generate **2 slides showcase** đại diện cho design system:
+
+1. **Cover slide** (định cảm giác mở deck).
+2. **Slide content phức tạp nhất** trong outline (thường là 4d Big Stat, 4g Asymmetric Hero, hoặc 4h Staggered Cards).
+
+Compile chỉ 2 slide này thành `showcase.pptx`, chạy Visual QA mini (Step 7 rút gọn: convert PDF, screenshot, check overlap + contrast + Vietnamese diacritics). Báo user: "Đây là 2 slide showcase, mood/palette/typography đã đúng ý chưa?"
+
+Nếu user OK → generate phần còn lại (có thể song song subagents). Nếu không → fix system rồi mới batch. Tránh được kịch bản phải làm lại 13 lần thay vì 2 lần.
+
+Skip checkpoint khi: deck ≤ 5 slides, hoặc đang dùng Series Mode (style đã chốt từ trước).
 
 #### Layout Helper (dùng cho content slides — tránh overlap)
 
@@ -215,7 +244,19 @@ Subagent checklist: overlapping elements, low contrast, uneven gaps, insufficien
 
 Anti-AI Slop Check: scan for repeated layouts, generic titles, missing visual variety → [references/design-system.md](references/design-system.md#anti-ai-slop-patterns).
 
-Verification loop: Generate → Inspect → Fix → Re-verify.
+**Design Quality Review (5 câu, mỗi câu 1 dòng):**
+
+Visual QA bắt lỗi kỹ thuật. Design Quality Review bắt lỗi "đẹp nhưng generic". Sau khi pass Visual QA, tự trả lời 5 câu:
+
+1. **Identity test**: Bỏ hết logo, page badge và text content. Slide còn nhận ra là deck của topic này không, hay có thể thuộc bất kỳ deck nào?
+2. **Rhythm test**: Click xuyên 3 slide bất kỳ liên tiếp. Có cảm giác "mỗi slide một nhịp" không, hay tất cả cùng một layout?
+3. **Density test**: Mỗi slide có đúng 1 core message không? Slide nào cần 2 câu để tóm tắt nội dung → tách 2 slides.
+4. **Mood alignment test**: Slide có đang phản ánh mood đã chọn ở Step 3 không? Ví dụ chọn Minimal Zen mà slide có 5 decorative shapes là sai.
+5. **Hallmark test**: Có accent line dưới title không? Có 3 icon cards đều nhau hàng ngang không? Có "Cảm ơn!" slide trống không? Bất kỳ "yes" nào → fix.
+
+Câu nào fail → quay lại slide đó, fix. Không deliver deck có ≥1 fail.
+
+Verification loop: Generate → Visual QA → Design Quality Review → Fix → Re-verify.
 
 ---
 

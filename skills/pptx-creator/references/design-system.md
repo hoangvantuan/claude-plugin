@@ -287,6 +287,23 @@ Warm Storytelling → photos of people, narrative flow, warm palette throughout
 Data Dashboard → charts on every content slide, dense but organized, cool tones
 ```
 
+### Mood Design Anchors
+
+Mỗi mood neo vào 1 designer/studio thực để có framework cụ thể, không phải label mơ hồ. Khi chốt mood, đối chiếu 3 đặc điểm visual của anchor để guide quyết định spacing, hierarchy, visual element.
+
+| Mood | Design Anchor | Đặc điểm visual cụ thể (3 rule) |
+|------|---------------|-------------------------------|
+| **Corporate Authority** | Pentagram (information architecture) | (1) Grid 12 cột nghiêm ngặt, mọi element snap vào. (2) 1 typeface duy nhất, hierarchy bằng size + weight. (3) Decorative shape = 0, mọi shape đều có function (divider, container) |
+| **Startup Energy** | Stripe / Linear (product-led design) | (1) 1 hero color + 1 accent gradient, dùng repeat xuyên deck. (2) Stat callout 60pt+ ít nhất 1 lần. (3) CTA button rõ trên Cover và Summary |
+| **Editorial Elegance** | Kinfolk magazine / Apartamento | (1) Whitespace ≥50% mỗi slide, không sợ "trống". (2) Title serif/display font, body sans nhẹ. (3) Image-text split asymmetric (60-40 hoặc 70-30), không bao giờ 50-50 |
+| **Playful Creative** | Pentagram (Paula Scher) / IDEO | (1) Min 3 màu accent rotate xuyên deck. (2) Type as image: title scale lớn, có thể chạm mép slide. (3) Icon/illustration vector, KHÔNG dùng generic stock icon |
+| **Minimal Zen** | Kenya Hara (MUJI) | (1) Whitespace 60%+ mỗi slide. (2) 1 màu accent duy nhất, mọi thứ khác là grayscale. (3) Decorative shape = 0, typography là visual chính |
+| **Bold Brutalist** | Balenciaga campaigns / Vetements | (1) Type 80pt+ trên Cover, có thể overlap với shape/image. (2) High contrast: pure black (#000) + pure white (#FFF) + 1 neon accent. (3) Grid lệch có chủ đích, không snap |
+| **Warm Storytelling** | Airbnb / Mailchimp brand | (1) Mỗi slide có ảnh người (face hoặc hand). (2) Earthy palette (cream, terracotta, sage), không neon. (3) Câu chuyện flow theo timeline, không bullet list khô khan |
+| **Data Dashboard** | Edward Tufte / FiveThirtyEight | (1) Chart trên ≥70% content slides. (2) Cool palette (blue, gray) + 1 highlight color cho data point quan trọng. (3) Chartjunk = 0: bỏ gridline thừa, label trực tiếp lên chart không legend |
+
+**Cách dùng:** Khi chốt mood ở Step 3, đọc 3 rule của anchor tương ứng. Mỗi quyết định layout/visual sau đó phải pass cả 3 rule. Nếu rule conflict với content (vd Minimal Zen nhưng cần show 5 stats) → chọn mood khác phù hợp hơn, đừng compromise rule.
+
 ---
 
 ## Layout Guidelines
@@ -373,11 +390,34 @@ AI-generated slides có "dấu hiệu nhận dạng" khiến output trông gener
 | "Cảm ơn!" slide trống | CTA cụ thể hoặc memorable closing statement |
 | Density đều mỗi slide | Alternate dense (data) và sparse (divider/stat) |
 
+### Density Discipline: 1 Slide = 1 Core Message
+
+Đây là rule căn bản nhất, đứng trên mọi rule khác về layout.
+
+**Quy tắc:** Mỗi slide phải có đúng **1 ý chính**. Nếu cần 2 câu để tóm tắt nội dung một slide → tách thành 2 slides.
+
+**Test nhanh:** Trước khi code mỗi slide, viết "core message" của slide đó vào 1 câu ≤15 từ. Không viết được → chưa rõ slide muốn nói gì → đừng code, plan lại.
+
+**Tại sao quan trọng:**
+
+- Audience xem slide ≤7 giây trước khi quay lại nghe speaker. Nhồi 3 message vào 1 slide = audience miss cả 3.
+- Khi có rule này, "tách thành 2 slides" trở thành reflex. Không phải đếm bullet, không phải lo "thiếu nội dung".
+- Slide deck dài hơn ≠ tệ. Slide nhồi nhét = tệ.
+
+**Ví dụ tách:**
+
+| Sai (1 slide nhồi 3 message) | Đúng (3 slides, mỗi slide 1 message) |
+|------------------------------|----------------------------------------|
+| "Sản phẩm có 3 lợi ích, đã ra mắt ở 5 quốc gia, doanh thu Q4 tăng 40%" | Slide 1: "3 lợi ích cốt lõi". Slide 2: "Đã có mặt ở 5 quốc gia". Slide 3: "Doanh thu Q4 +40%" |
+
+**Ngoại lệ:** TOC slide (5 sections), Comparison slide (Before vs After), Timeline (chuỗi steps). Đây là pattern quy ước, không phải "nhồi message".
+
 ### Self-Check Sau Mỗi Deck
 
 1. "Bỏ logo, slide này có thể thuộc bất kỳ deck nào khác?" → Thiếu personality
 2. "Đoán được layout slide tiếp theo?" → Thiếu variety
 3. "Có slide nào chỉ toàn text?" → Cần visual element
+4. "Mỗi slide có đúng 1 core message ≤15 từ?" → Nếu không, tách slides
 
 ---
 

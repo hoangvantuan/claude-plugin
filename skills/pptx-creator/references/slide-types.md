@@ -328,6 +328,60 @@ Dark background, centered, minimal.
 
 ---
 
+## Visual Rhythm Checklist (3 trục)
+
+Rule "không lặp layout liên tiếp" còn mờ. Trục cụ thể hơn: khi plan outline, label mỗi slide theo **3 trục độc lập**, đảm bảo có biến thiên xuyên deck.
+
+### Trục 1: Background tone (dark vs light)
+
+Dark slide tạo "moment", light slide chứa nội dung dài. Deck 100% light = đều đều, mệt mắt. Deck 100% dark = nặng nề, khó đọc bullet.
+
+**Quy tắc:** Mỗi 4-5 slides có ít nhất 1 dark slide. Cover thường dark, Section Divider thường dark hoặc accent, Summary thường dark (bookend với Cover).
+
+### Trục 2: Density (sparse vs dense)
+
+Sparse slide cho audience nghỉ mắt. Dense slide truyền thông tin. Xen kẽ tạo nhịp.
+
+| Density | Slide types | Đặc điểm |
+|---------|-------------|----------|
+| **Sparse** | Cover, Divider, 4i Full-Width Statement, 4d Big Stat | 1-3 elements, whitespace ≥50% |
+| **Medium** | TOC, 4a Icon Rows, 4f Timeline, Summary Takeaways | 4-7 elements, whitespace 30-50% |
+| **Dense** | 4b Two-Column, 4c Data Viz, 4e Comparison, 4h Staggered Cards | 8+ elements, whitespace ≤30% |
+
+**Quy tắc:** Không 2 dense slides liên tiếp. Pattern lý tưởng: Sparse → Medium → Dense → Sparse (chu kỳ 4 slides).
+
+### Trục 3: Type scale (normal vs hero text)
+
+Hero text = title 60pt+ hoặc statement chiếm ≥40% chiều cao slide. Tạo focal point mạnh, phá đều đặn.
+
+| Type scale | Slide types | Title size |
+|------------|-------------|-----------|
+| **Normal** | TOC, 4a, 4b, 4c, 4e, 4f, Summary | Title 36pt cố định |
+| **Hero** | Cover, Divider, 4d Big Stat, 4i Statement, 4g Asymmetric | Title 44-72pt hoặc text overlay lớn |
+
+**Quy tắc:** Mỗi 5-6 slides có ít nhất 1 hero slide. Deck dài >12 slides cần ≥3 hero moments.
+
+### Outline Rhythm Table
+
+Khi plan outline (Step 4 của SKILL.md), điền bảng này cho cả deck:
+
+| # | Slide | Type | Tone (D/L) | Density (S/M/D) | Scale (N/H) |
+|---|-------|------|------------|-----------------|-------------|
+| 1 | Cover | cover | D | S | H |
+| 2 | TOC | toc | L | M | N |
+| 3 | Divider 1 | divider | D | S | H |
+| 4 | Vấn đề | 4a | L | M | N |
+| 5 | Số liệu | 4d | L | S | H |
+| ... | | | | | |
+
+**Self-check sau khi điền:**
+
+- Trục 1: có ít nhất 20% slides là Dark không?
+- Trục 2: có 2 dense slides liên tiếp không? Nếu có → chèn sparse vào giữa.
+- Trục 3: có ít nhất 1 hero moment mỗi 5 slides không?
+
+Nếu fail bất kỳ trục nào → rework outline trước khi sang Step 5.
+
 ## Enforcement Rules
 
 1. **Classify every slide** before writing code
