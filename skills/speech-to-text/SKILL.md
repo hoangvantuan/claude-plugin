@@ -8,6 +8,7 @@ description: >
   Sử dụng skill này khi user muốn: transcribe audio/video, chuyển giọng nói thành text,
   lấy nội dung từ file ghi âm, trích xuất lời nói từ podcast/cuộc họp/phỏng vấn/video,
   hoặc bất kỳ yêu cầu nào liên quan đến chuyển đổi audio/video sang văn bản.
+disable-model-invocation: true
 ---
 
 # Speech-to-Text (Soniox)
@@ -53,10 +54,10 @@ node skills/speech-to-text/scripts/transcribe.js <đường-dẫn-file>
 
 Script hỗ trợ các option:
 
-| Flag | Mô tả | Mặc định |
-|------|--------|----------|
-| `--lang` | Gợi ý ngôn ngữ (mã ISO 639-1) | `vi` |
-| `--output` | Đường dẫn file output | stdout |
+| Flag       | Mô tả                                         | Mặc định     |
+| ---------- | --------------------------------------------- | ------------ |
+| `--lang`   | Gợi ý ngôn ngữ (mã ISO 639-1)                 | `vi`         |
+| `--output` | Đường dẫn file output                         | stdout       |
 | `--format` | Định dạng output: `text`, `timestamps`, `srt` | `timestamps` |
 
 **Ví dụ:**
@@ -92,14 +93,14 @@ Nếu user cần, có thể chuyển đổi sang các format khác (markdown, SR
 
 ## Xử lý lỗi thường gặp
 
-| Lỗi | Nguyên nhân | Cách xử lý |
-|-----|-------------|-------------|
-| `SONIOX_API_KEY not set` | Chưa set biến môi trường | `export SONIOX_API_KEY=<key>` |
-| `File not found` | Đường dẫn file sai | Kiểm tra lại path |
-| `Unsupported format` | Format audio không hỗ trợ | Convert sang mp3/wav trước |
-| `ffmpeg chưa được cài` | Video format cần ffmpeg | `brew install ffmpeg` |
-| `API error 401` | API key không hợp lệ | Kiểm tra key tại console.soniox.com |
-| `API error 429` | Vượt rate limit | Chờ vài giây rồi thử lại |
+| Lỗi                      | Nguyên nhân               | Cách xử lý                          |
+| ------------------------ | ------------------------- | ----------------------------------- |
+| `SONIOX_API_KEY not set` | Chưa set biến môi trường  | `export SONIOX_API_KEY=<key>`       |
+| `File not found`         | Đường dẫn file sai        | Kiểm tra lại path                   |
+| `Unsupported format`     | Format audio không hỗ trợ | Convert sang mp3/wav trước          |
+| `ffmpeg chưa được cài`   | Video format cần ffmpeg   | `brew install ffmpeg`               |
+| `API error 401`          | API key không hợp lệ      | Kiểm tra key tại console.soniox.com |
+| `API error 429`          | Vượt rate limit           | Chờ vài giây rồi thử lại            |
 
 ## Tham khảo
 
