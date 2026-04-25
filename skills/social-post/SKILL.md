@@ -67,6 +67,8 @@ Chọn bài tổng điểm cao nhất. Hai bài ngang nhau → ưu tiên bài đ
 
 Bài viết là một dòng chảy tự nhiên, KHÔNG phải một công thức lắp ghép. Bốn phần dưới đây là nhịp tự nhiên của một bài chia sẻ, không phải khuôn cứng.
 
+**Quy tắc chữ thường**: Toàn bộ bài viết (tiêu đề lẫn thân bài) viết bằng chữ thường, không viết hoa đầu câu. Chỉ viết hoa từ riêng (tên người, tên địa danh, tên tổ chức, viết tắt). Đây là lựa chọn phong cách tạo cảm giác gần gũi, bình thường, như đang nhắn tin cho bạn bè.
+
 Chi tiết insight techniques, questioning techniques, power techniques (xưng "bạn", strategic vagueness, memorable phrase, xuống dòng mỗi đoạn, không emoji/hashtag/citation/link/CTA) trong [references/craft-techniques.md](references/craft-techniques.md).
 
 1. **Tiêu đề** (dòng đầu tiên)

@@ -209,18 +209,19 @@ Tiêu đề dạng nhận định "X quan trọng hơn Y" / "X mới thật sự
 
 Đọc lại bài và hỏi:
 
-1. Có em dash không? → Xoá.
-2. Có từ nào trong vocabulary blacklist không? → Thay.
-3. Có 2+ câu ngắn liên tiếp không? → Ghép lại.
-4. Có opening "Trong bối cảnh..." hay tương tự không? → Viết lại mở bài.
-5. Có triple-list lặp không? → Đổi số item.
-6. Có câu nào nghe như corporate không? → Viết lại bằng từ đời thường.
-7. Có filler signposting ("Lạ ở chỗ,", "Thật ra,", "Điều thú vị là...") không? → Cắt, để câu tự đứng.
-8. Có reaction-telling ("khiến tôi ngồi lại rất lâu", "tôi sững người") không? → Cắt, kể thẳng.
-9. Có rhetorical time-setting ở câu kết ("Đêm nay,...", "Ngày mai,...") không? → Bỏ trừ khi thời gian thật sự có neo.
-10. Tiêu đề có claim so-sánh ("X quan trọng hơn Y") không? → Thử viết lại thành paradox self-contained (ví dụ "tìm đúng bằng cách sai"). Nếu vẫn giữ so-sánh, cân nhắc thêm "có khi", "có lẽ".
-11. Có từ mượn Anh corporate/kỹ thuật không cần thiết (proposal, guideline, framework, workflow) không? → Việt hoá (đề án, hướng dẫn, khung, quy trình). Giữ lại từ khẩu ngữ (yes, ok, job, deal).
-12. Câu hỏi kết có câu imperative "Thử X xem" dẫn trước không? → Cắt imperative, câu hỏi tự đứng đã đủ.
-13. Có một câu nào lệch tone nhẹ (personal aside) không? → Nếu không, thêm một câu.
+1. Có chữ viết hoa đầu câu không? → Chuyển thành chữ thường. Chỉ giữ hoa cho từ riêng (tên người, địa danh, tổ chức, viết tắt).
+2. Có em dash không? → Xoá.
+3. Có từ nào trong vocabulary blacklist không? → Thay.
+4. Có 2+ câu ngắn liên tiếp không? → Ghép lại.
+5. Có opening "Trong bối cảnh..." hay tương tự không? → Viết lại mở bài.
+6. Có triple-list lặp không? → Đổi số item.
+7. Có câu nào nghe như corporate không? → Viết lại bằng từ đời thường.
+8. Có filler signposting ("Lạ ở chỗ,", "Thật ra,", "Điều thú vị là...") không? → Cắt, để câu tự đứng.
+9. Có reaction-telling ("khiến tôi ngồi lại rất lâu", "tôi sững người") không? → Cắt, kể thẳng.
+10. Có rhetorical time-setting ở câu kết ("Đêm nay,...", "Ngày mai,...") không? → Bỏ trừ khi thời gian thật sự có neo.
+11. Tiêu đề có claim so-sánh ("X quan trọng hơn Y") không? → Thử viết lại thành paradox self-contained (ví dụ "tìm đúng bằng cách sai"). Nếu vẫn giữ so-sánh, cân nhắc thêm "có khi", "có lẽ".
+12. Có từ mượn Anh corporate/kỹ thuật không cần thiết (proposal, guideline, framework, workflow) không? → Việt hoá (đề án, hướng dẫn, khung, quy trình). Giữ lại từ khẩu ngữ (yes, ok, job, deal).
+13. Câu hỏi kết có câu imperative "Thử X xem" dẫn trước không? → Cắt imperative, câu hỏi tự đứng đã đủ.
+14. Có một câu nào lệch tone nhẹ (personal aside) không? → Nếu không, thêm một câu.
 
 Nếu bài pass checklist này, nó đã qua được 80% kiểm tra AI-detection của người đọc có kinh nghiệm.
