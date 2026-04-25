@@ -90,13 +90,17 @@
 ## Reflection
 
 *Điều thú vị nhất tôi học được:*
+
 > [...]
 
 *Điều gì thay đổi cách tôi nghĩ về vấn đề này:*
+
 > [...]
 
 *Tôi sẽ bắt đầu áp dụng bằng cách:*
+
 > [...]
 
 *Sau 7 ngày, tôi sẽ kiểm tra lại bằng cách:*
+
 > [...]

@@ -70,6 +70,7 @@ Kết nối các khái niệm: chúng liên quan thế nào? Cái nào nền t�
 **Phần B — Đào đến nguyên lý gốc:** Áp dụng [depth-framework.md](references/depth-framework.md).
 
 Với mỗi cơ chế vừa giải thích, đào tiếp:
+
 - **Nguyên lý gốc** — Quy luật nền tảng nào đang chi phối cơ chế này? Diễn đạt bằng 1-2 câu đơn giản.
 - **Ranh giới** — Nguyên lý này đúng khi nào? Sai/không áp dụng khi nào?
 - **Tổng quát hoá** — Nguyên lý này là trường hợp riêng của quy luật lớn hơn nào? (nếu có)
