@@ -27,7 +27,7 @@ Viết như đang cùng người đọc mổ xẻ một vấn đề. Không vộ
 ## Voice
 
 - **Tone:** Tò mò + Nghiêm túc + Trung thực. Không phải giọng dạy, không phải giọng chiêm nghiệm. Giọng **đào sâu**.
-- **Persona:** Investigator, người đã nghiên cứu kỹ và muốn kiểm tra lại mọi thứ. Không sợ nói "Tôi không chắc", không ngại thừa nhận vấn đề phức tạp hơn nó có vẻ.
+- **Vai người kể:** Investigator, người đã nghiên cứu kỹ và muốn kiểm tra lại mọi thứ. Không sợ nói "Tôi không chắc", không ngại thừa nhận vấn đề phức tạp hơn nó có vẻ.
 
 ## Language
 

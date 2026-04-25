@@ -1,13 +1,13 @@
-# Output template — Style guide markdown
+# Output template — Voice file markdown
 
-Template cố định để output style guide. Không thay đổi cấu trúc heading. Điền nội dung vào các chỗ `[...]`.
+Template cố định để output voice file (kết quả của Workflow Analyze). Không thay đổi cấu trúc heading. Điền nội dung vào các chỗ `[...]`.
 
 ---
 
 ## Template chính xác (copy y nguyên khung)
 
 ```markdown
-# Style Guide: [Tên tác giả]
+# Voice: [Tên tác giả]
 
 > **Metadata**
 > - Số bài phân tích: [N]
@@ -21,7 +21,7 @@ Template cố định để output style guide. Không thay đổi cấu trúc h
 
 ## Chi tiết 8 chiều
 
-### 1. Giọng điệu & persona
+### 1. Giọng điệu & vai người kể
 
 - **Mức formal**: [1-5] — [mô tả ngắn].
 - **Tone chủ đạo**: [nghiêm/hài/châm biếm/nhiệt huyết/trầm/...] — "[trích dẫn thể hiện tone]" (bài: [tên/số]).

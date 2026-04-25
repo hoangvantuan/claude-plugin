@@ -1,6 +1,6 @@
 ---
 name: style-writer
-description: "Skill viết lách có 2 workflow: (1) Analyze — bóc tách DNA văn phong từ corpus, (2) Writer — viết nội dung dựa trên input + voice/persona + structure. Kích hoạt khi user nhắc: 'phân tích văn phong', 'clone giọng văn', 'tạo style guide', 'stylometry', 'fingerprint viết lách', 'phân tích cách viết của X', 'có style/persona/voice/structure nào?', 'liệt kê style guide', 'load style X', 'dùng văn phong Y', 'viết theo giọng W', 'viết bài về Z', 'viết lại nội dung này', hoặc bất cứ task viết lách nào cần chọn/phân tích/áp dụng style."
+description: "Skill viết lách có 2 workflow: (1) Writer (mặc định) — viết nội dung dựa trên input + voice + structure, (2) Analyze — bóc tách DNA văn phong từ corpus → tạo voice mới. Kích hoạt khi user nhắc: 'viết bài về Z', 'viết lại nội dung này', 'viết theo giọng W', 'dùng văn phong Y', 'có voice/structure nào?', 'liệt kê voice', 'phân tích văn phong', 'clone giọng văn', 'tạo voice mới', 'stylometry', 'fingerprint viết lách', 'phân tích cách viết của X', hoặc bất cứ task viết lách nào cần chọn/phân tích/áp dụng style."
 disable-model-invocation: true
 ---
 
@@ -8,18 +8,23 @@ disable-model-invocation: true
 
 Skill quản lý văn phong viết lách, gồm 2 workflow:
 
-| Workflow | Mục đích | Khi nào dùng |
-|----------|----------|-------------|
-| **Analyze** | Bóc tách DNA văn phong từ corpus → tạo style guide | User muốn phân tích cách viết, tạo style guide mới |
-| **Writer** | Viết nội dung dựa trên input + voice/persona + structure | User muốn viết bài, viết lại nội dung, tạo content |
+| Workflow                | Mục đích                                          | Khi nào dùng                                       |
+| ----------------------- | ------------------------------------------------- | -------------------------------------------------- |
+| **Writer** _(mặc định)_ | Viết nội dung dựa trên input + voice + structure  | User muốn viết bài, viết lại nội dung, tạo content |
+| **Analyze**             | Bóc tách DNA văn phong từ corpus → tạo voice mới  | User muốn phân tích cách viết, tạo voice mới       |
 
-Khi user gọi skill này, xác định workflow phù hợp dựa trên ngữ cảnh. Nếu không rõ, hỏi user.
+
+**Mặc định: Workflow Writer.** Khi user gọi skill mà không chỉ định rõ workflow, dùng ngay **Writer** (đi thẳng đến mục `## Workflow 2: Writer` bên dưới).
+
+Chỉ dùng **Analyze** khi user nói rõ ý định phân tích/bóc tách văn phong, ví dụ: "phân tích văn phong", "clone giọng văn", "tạo voice mới", "stylometry", "fingerprint viết lách", "phân tích cách viết của X".
+
+Nếu thực sự mơ hồ (ví dụ user vừa nhắc tới phân tích vừa nhắc tới viết bài) → hỏi user chọn workflow nào.
 
 ---
 
 ## Workflow 1: Analyze
 
-Bóc tách DNA văn phong từ tập bài viết của MỘT tác giả, trả về style guide markdown theo template cố định.
+Bóc tách DNA văn phong từ tập bài viết của MỘT tác giả, trả về **voice file** markdown theo template cố định. File output lưu vào `references/voices/` để Workflow Writer dùng lại.
 
 ### Vai trò
 
@@ -56,7 +61,7 @@ User có thể cung cấp corpus theo 3 cách. Detect và xử lý tương ứng
 
 Tóm tắt 8 chiều:
 
-1. **Giọng điệu & persona** — Formal level (1-5), tone, ngôi xưng, distance với reader, thái độ.
+1. **Giọng điệu & vai người kể** — Formal level (1-5), tone, ngôi xưng, distance với reader, thái độ.
 2. **Cấu trúc bài** — Pattern mở bài, xương sống triển khai, pattern kết bài.
 3. **Nhịp & độ dài câu** — Độ dài TB, câu cụt, tỷ lệ đơn/phức/ghép, thủ pháp nhịp.
 4. **Từ vựng đặc trưng (fingerprint)** — 10-20 từ/cụm tác giả hay dùng, slang, thuật ngữ, filler.
@@ -67,16 +72,16 @@ Tóm tắt 8 chiều:
 
 **Nguyên tắc cốt lõi**: không bằng chứng → không ghi nhận. Pattern phải lặp ≥2 lần ở ≥2 bài. Thiếu data → ghi "Không đủ dữ liệu", không bịa. Chi tiết evidence rules (trích dẫn nguyên văn ≤30 từ, tham chiếu bài, v.v.) xem `references/anti-patterns.md` mục A.
 
-### Bước 3. Xuất style guide (Tu)
+### Bước 3. Xuất voice file (Tu)
 
 Đọc `references/output-template.md` để lấy template chính xác.
 
-**Tên file output**: `references/personas/<ten-tac-gia-kebab-case>.md`
+**Tên file output**: `references/voices/<ten-tac-gia-kebab-case>.md`
 
-- VD tác giả "Nguyễn Văn A" → `references/personas/nguyen-van-a.md`.
+- VD tác giả "Nguyễn Văn A" → `references/voices/nguyen-van-a.md`.
 - Nếu file đã tồn tại, hỏi user: ghi đè, đổi tên (thêm date suffix), hay skip.
 
-**Sau khi ghi file**, cập nhật bảng **Personas có sẵn** trong SKILL.md này (thêm dòng mới), rồi báo user:
+**Sau khi ghi file**, cập nhật bảng **Voices có sẵn** trong SKILL.md này (thêm dòng mới), rồi báo user:
 
 ```
 Đã tạo: [path file]
@@ -108,51 +113,48 @@ Luôn ghi số bài đã phân tích vào phần metadata đầu style guide.
 
 ## Style Catalog
 
-Danh mục style guide có sẵn, chia 3 category:
+Danh mục style guide có sẵn, chia 2 category:
 
-- **Personas** — bản sắc tác giả cụ thể (1 con người thật, có tên, có quirks, có signature phrases).
-- **Voices** — giọng điệu generic (teacher/storyteller/objective... không gắn người cụ thể). Voice chỉ chứa **da thịt** (giọng, nhịp, kỹ thuật, verbal tics, exemplars).
+- **Voices** — giọng điệu (gồm cả giọng generic như teacher/storyteller và giọng cá nhân do Workflow Analyze tạo ra). Voice chứa **da thịt** (giọng, nhịp, kỹ thuật, verbal tics, exemplars).
 - **Structures** — khung cấu trúc bài viết (story arc, BLUF, building blocks...). Structure chứa **xương** (phases, opening palette, arc patterns, content-type adaptation). Mỗi structure có recommended voice.
-
-### Personas có sẵn
-
-| Persona | Slug   | Tóm tắt 1 dòng                                                                                                                                    | File                                            |
-| ------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
-| Tuấn    | `tuan` | Xưng "Tuấn" ngôi 3, "Cậu" khi dạy dỗ, "tôi" khi tâm sự; giọng Nam Bộ, anecdote có tên nhân vật, bold-CAPS dồn dập, metaphor nông nghiệp/đồng quê. | [personas/tuan.md](references/personas/tuan.md) |
 
 ### Voices có sẵn
 
-| Voice | Slug | Tóm tắt 1 dòng | Khác biệt chính | File |
-|---|---|---|---|---|
-| Teacher | `teacher` | Dạy bài bản, giải thích khái niệm từng bước, scaffolding cho người mới. | vs Guide: thuần giáo dục, không triết học Đông-Tây | [voices/teacher.md](references/voices/teacher.md) |
-| Storyteller | `storyteller` | Kể chuyện chánh niệm, hành trình ngôi "tôi", trải nghiệm > lý thuyết. | vs Personal: có Thầy (embedded dialogue), metaphor không gian/thời tiết | [voices/storyteller.md](references/voices/storyteller.md) |
-| Objective | `objective` | Trung lập, dữ liệu, phân tích, giọng báo chí nghiêm túc. | vs Investigator: trình bày trung lập + khuyến nghị, không phản biện sâu | [voices/objective.md](references/voices/objective.md) |
-| Investigator | `investigator` | Điều tra, đặt câu hỏi, dẫn dắt người đọc tự khám phá qua manh mối. | vs Objective: đặt câu hỏi thật, phản biện sâu, không kết luận cứng | [voices/investigator.md](references/voices/investigator.md) |
-| Guide | `guide` | Hướng dẫn cụ thể, actionable, đi kèm người đọc như một mentor đồng hành. | vs Teacher: thêm lớp triết học + thực nghiệm, câu flowing dài hơn | [voices/guide.md](references/voices/guide.md) |
-| Personal | `personal` | Cá nhân, tự sự, reflective; kể chuyện mình để reader chiếu vào. | vs Storyteller: không có Thầy, tự vấn trực tiếp, metaphor cơ thể/đồ vật | [voices/personal.md](references/voices/personal.md) |
-| Dialogue | `dialogue` | Đối thoại thầy-trò (format C:/T:), triết lý qua hỏi-đáp. | Format riêng biệt, không trùng voice nào | [voices/dialogue.md](references/voices/dialogue.md) |
+| Voice        | Slug           | Tóm tắt 1 dòng                                                           | Khác biệt chính                                                         | File                                                        |
+| ------------ | -------------- | ------------------------------------------------------------------------ | ----------------------------------------------------------------------- | ----------------------------------------------------------- |
+| Teacher      | `teacher`      | Dạy bài bản, giải thích khái niệm từng bước, scaffolding cho người mới.  | vs Guide: thuần giáo dục, không triết học Đông-Tây                      | [voices/teacher.md](references/voices/teacher.md)           |
+| Storyteller  | `storyteller`  | Kể chuyện chánh niệm, hành trình ngôi "tôi", trải nghiệm > lý thuyết.    | vs Personal: có Thầy (embedded dialogue), metaphor không gian/thời tiết | [voices/storyteller.md](references/voices/storyteller.md)   |
+| Objective    | `objective`    | Trung lập, dữ liệu, phân tích, giọng báo chí nghiêm túc.                 | vs Investigator: trình bày trung lập + khuyến nghị, không phản biện sâu | [voices/objective.md](references/voices/objective.md)       |
+| Investigator | `investigator` | Điều tra, đặt câu hỏi, dẫn dắt người đọc tự khám phá qua manh mối.       | vs Objective: đặt câu hỏi thật, phản biện sâu, không kết luận cứng      | [voices/investigator.md](references/voices/investigator.md) |
+| Guide        | `guide`        | Hướng dẫn cụ thể, actionable, đi kèm người đọc như một mentor đồng hành. | vs Teacher: thêm lớp triết học + thực nghiệm, câu flowing dài hơn       | [voices/guide.md](references/voices/guide.md)               |
+| Personal     | `personal`     | Cá nhân, tự sự, reflective; kể chuyện mình để reader chiếu vào.          | vs Storyteller: không có Thầy, tự vấn trực tiếp, metaphor cơ thể/đồ vật | [voices/personal.md](references/voices/personal.md)         |
+| Dialogue     | `dialogue`     | Đối thoại thầy-trò (format C:/T:), triết lý qua hỏi-đáp.                 | Format riêng biệt, không trùng voice nào                                | [voices/dialogue.md](references/voices/dialogue.md)         |
+
 
 ### Structures có sẵn
 
 Mỗi structure định nghĩa khung cấu trúc bài viết: phases, opening palette, arc pattern (nếu có), content-type adaptation, quality checklist.
 
-| Structure | Slug | Recommended Voice | Arc Pattern | Best for | File |
-|---|---|---|---|---|---|
-| Story Arc | `story-arc` | storyteller | Growth Journey | Bài có hành trình thời gian | [structures/story-arc.md](references/structures/story-arc.md) |
-| BLUF-Evidence | `bluf-evidence` | objective | | Bài cần kết luận trước, chứng minh sau | [structures/bluf-evidence.md](references/structures/bluf-evidence.md) |
-| Building Blocks | `building-blocks` | teacher | | Bài xây kiến thức từng bước | [structures/building-blocks.md](references/structures/building-blocks.md) |
-| Spiral Return | `spiral-return` | personal | Quiet Devastation | Bài quay lại chủ đề, mỗi lần sâu hơn | [structures/spiral-return.md](references/structures/spiral-return.md) |
-| Five Layers | `five-layers` | investigator | | Bài đào sâu 5 tầng | [structures/five-layers.md](references/structures/five-layers.md) |
-| Master-Student | `master-student` | dialogue | | Bài đối thoại thầy-trò | [structures/master-student.md](references/structures/master-student.md) |
-| Depth-Practice | `depth-practice` | guide | Transformation | Bài chiều sâu + thực hành | [structures/depth-practice.md](references/structures/depth-practice.md) |
-| Adaptive | `adaptive` | (any) | | Nội dung hỗn hợp | [structures/adaptive.md](references/structures/adaptive.md) |
+| Structure       | Slug              | Recommended Voice | Arc Pattern       | Best for                               | File                                                                      |
+| --------------- | ----------------- | ----------------- | ----------------- | -------------------------------------- | ------------------------------------------------------------------------- |
+| Story Arc       | `story-arc`       | storyteller       | Growth Journey    | Bài có hành trình thời gian            | [structures/story-arc.md](references/structures/story-arc.md)             |
+| BLUF-Evidence   | `bluf-evidence`   | objective         |                   | Bài cần kết luận trước, chứng minh sau | [structures/bluf-evidence.md](references/structures/bluf-evidence.md)     |
+| Building Blocks | `building-blocks` | teacher           |                   | Bài xây kiến thức từng bước            | [structures/building-blocks.md](references/structures/building-blocks.md) |
+| Spiral Return   | `spiral-return`   | personal          | Quiet Devastation | Bài quay lại chủ đề, mỗi lần sâu hơn   | [structures/spiral-return.md](references/structures/spiral-return.md)     |
+| Five Layers     | `five-layers`     | investigator      |                   | Bài đào sâu 5 tầng                     | [structures/five-layers.md](references/structures/five-layers.md)         |
+| Master-Student  | `master-student`  | dialogue          |                   | Bài đối thoại thầy-trò                 | [structures/master-student.md](references/structures/master-student.md)   |
+| Depth-Practice  | `depth-practice`  | guide             | Transformation    | Bài chiều sâu + thực hành              | [structures/depth-practice.md](references/structures/depth-practice.md)   |
+| Adaptive        | `adaptive`        | (any)             |                   | Nội dung hỗn hợp                       | [structures/adaptive.md](references/structures/adaptive.md)               |
 
-### Thêm persona mới
-
-Dùng **Workflow 1: Analyze** để bóc tách DNA từ corpus. Output tự động lưu vào `references/personas/` và cập nhật bảng.
 
 ### Thêm voice mới
 
+Có 2 cách:
+
+**a. Bóc tách từ corpus có sẵn** (giọng cá nhân, fingerprint mạnh):
+- Dùng **Workflow 1: Analyze** để phân tích DNA từ tập bài viết. Output tự động lưu vào `references/voices/` và cập nhật bảng.
+
+**b. Soạn voice generic mới** (không có corpus, design từ đầu):
 1. Soạn file `<slug>.md` (kèm exemplars).
 2. File tối thiểu cần: Philosophy, Voice, Language (DO/DON'T), Core Techniques, Verbal Tics, Metaphor Bank, Pacing Rules, Quality Checklist (Voice), Exemplars.
 3. Arc pattern (nếu có) → thêm vào structure tương ứng, không vào voice file.
@@ -170,7 +172,7 @@ Dùng **Workflow 1: Analyze** để bóc tách DNA từ corpus. Output tự đ�
 
 ## Workflow 2: Writer
 
-Viết nội dung dựa trên input của user, áp dụng voice/persona + structure đã chọn.
+Viết nội dung dựa trên input của user, áp dụng voice + structure đã chọn.
 
 ### Bước 1. Nhận input
 
@@ -181,14 +183,9 @@ User cung cấp nội dung đầu vào theo 1 trong các dạng:
 - **Chủ đề**: mô tả chủ đề, user muốn viết bài mới.
 - **Transcript / raw notes**: nội dung thô cần chuyển thành bài viết.
 
-### Bước 2. Xác định style (Persona hoặc Voice)
+### Bước 2. Xác định voice
 
-Nếu user đã chỉ định → dùng ngay. Nếu chưa → hỏi user chọn:
-
-- **Persona** (viết giống ai cụ thể) — load file persona, dùng toàn bộ 8 chiều.
-- **Voice** (giọng kể generic) — load file voice.
-
-**Quy tắc**: chọn Persona HOẶC Voice, không kết hợp cả hai. Persona đã bao gồm voice bên trong.
+Nếu user đã chỉ định → dùng ngay. Nếu chưa → hỏi user chọn voice từ bảng **Voices có sẵn** (có cả giọng generic như teacher/storyteller và giọng cá nhân do Analyze tạo). Load file voice tương ứng.
 
 ### Bước 3. Xác định structure (optional)
 
@@ -202,11 +199,11 @@ Load file structure tương ứng.
 
 ### Bước 4. Viết bài
 
-1. **Read** toàn bộ file voice/persona + structure đã chọn.
+1. **Read** toàn bộ file voice + structure đã chọn.
 2. **Phân tích input**: xác định content type (narrative/conceptual/tutorial/analysis/mixed) để apply Content-Type Adaptation trong structure.
 3. **Viết** theo:
-   - **Voice/Persona**: giọng, nhịp, kỹ thuật, anti-patterns, verbal tics.
-   - **Structure**: phases, opening palette (chọn 1 technique), transitions.
+  - **Voice**: giọng, nhịp, kỹ thuật, anti-patterns, verbal tics.
+  - **Structure**: phases, opening palette (chọn 1 technique), transitions.
 4. **Self-critique**: chạy qua Quality Checklist của cả voice VÀ structure.
 5. Fix bất kỳ lỗi nào trước khi output.
 
@@ -214,26 +211,25 @@ Load file structure tương ứng.
 
 Trả bài viết hoàn chỉnh, sẵn sàng publish. Không heading meta, không label structure/voice, không commentary. Chỉ bài viết thuần túy.
 
-Sau bài viết, ghi ngắn 1-2 dòng: voice/persona đã dùng, structure đã dùng, content type detected.
+Sau bài viết, ghi ngắn 1-2 dòng: voice đã dùng, structure đã dùng, content type detected.
 
 ### Ràng buộc Writer
 
 - KHÔNG tự chọn style. User phải chọn hoặc confirm đề xuất.
-- KHÔNG viết nếu chưa load voice/persona. Hỏi user trước.
+- KHÔNG viết nếu chưa load voice. Hỏi user trước.
 - Output phải pass quality checklist. Không giao draft cẩu thả.
-- Bài viết phải đọc như người viết, không như AI. Tuân thủ mọi anti-pattern trong voice/persona.
+- Bài viết phải đọc như người viết, không như AI. Tuân thủ mọi anti-pattern trong voice.
 
 ---
 
 ## Quy ước file style guide
 
-- **Persona**: theo output chuẩn của Workflow Analyze — 8 chiều + signature phrases + công thức + anti-patterns + AI anti-patterns.
-- **Voice**: philosophy + voice + language + core techniques + verbal tics + metaphor bank + pacing rules + quality checklist (voice) + exemplars. KHÔNG chứa phases/arc pattern (đó thuộc structure).
+- **Voice (designed)**: philosophy + voice + language + core techniques + verbal tics + metaphor bank + pacing rules + quality checklist (voice) + exemplars. KHÔNG chứa phases/arc pattern (đó thuộc structure).
+- **Voice (analyzed từ Workflow Analyze)**: theo output chuẩn 8 chiều + signature phrases + công thức + anti-patterns + AI anti-patterns. Lưu chung folder `references/voices/`.
 - **Structure**: frontmatter (name, recommended_voice, best_for) + phases + opening palette + arc pattern (nếu có) + content-type adaptation + quality checklist (structure).
 
 ## Nguyên tắc
 
-- **Single source of truth**: mỗi style một file duy nhất trong skill này. Skill/AI khác reference bằng path, không copy nội dung đi nơi khác.
-- **Fingerprint > generic**: style guide tốt phải có nét nhận dạng mạnh (tên xưng, signature phrase, quirks), đủ để phân biệt qua 3 câu đầu. Voice thì có pattern rõ ràng, dễ nhận.
-- **Persona XOR Voice**: khi viết, chọn Persona HOẶC Voice, không kết hợp. Persona đã bao gồm voice.
-- **Viết như người, không như AI**: tuân thủ mọi anti-pattern trong voice/persona. Output phải pass quality checklist.
+- **Single source of truth**: mỗi voice một file duy nhất trong skill này. Skill/AI khác reference bằng path, không copy nội dung đi nơi khác.
+- **Fingerprint > generic**: voice tốt phải có nét nhận dạng mạnh (signature phrase, quirks, pattern rõ ràng), đủ để phân biệt qua 3 câu đầu.
+- **Viết như người, không như AI**: tuân thủ mọi anti-pattern trong voice. Output phải pass quality checklist.

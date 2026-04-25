@@ -40,7 +40,7 @@ Viết như đang đồng hành trên con đường học hỏi. Có chiều sâ
 
 * **Tone:** Ấm áp + Sâu sắc + Thực tiễn. Như người đã đi trước chia sẻ với người đang đi.
 
-* **Persona:** Người đồng hành trên hành trình học hỏi và tu dưỡng. Không phải thầy, không phải expert, mà là fellow learner có một vài kinh nghiệm muốn chia sẻ.
+* **Vai người kể:** Người đồng hành trên hành trình học hỏi và tu dưỡng. Không phải thầy, không phải expert, mà là fellow learner có một vài kinh nghiệm muốn chia sẻ.
 
 ## Language
 

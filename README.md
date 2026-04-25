@@ -16,7 +16,6 @@ claude plugin install gh:hoangvantuan/shun-claude-plugin
 | --- | --- |
 | `ai-artist` | Tạo ảnh qua Nano Banana, 129 curated prompts, validation interview, 3 modes (search/creative/wild) |
 | `anti-ai-writing` | Rules viết tiếng Việt không giống AI, blacklist từ/cụm/chấm câu, self-critique bắt buộc. Dùng độc lập hoặc làm baseline cho mọi task viết |
-| `content-planner` | Lên dàn ý, lập kế hoạch nội dung chi tiết cho bài Blog. Chỉ planning, không viết bài |
 | `creative-thought-partner` | Đối tác tư duy sáng tạo, brainstorming & insight discovery |
 | `deep-insight` | Quan sát đa chiều → Phân tích tách lớp → Đúc kết cốt lõi, hiểu sâu vấn đề qua chu trình 3 bước |
 | `deep-learner` | Dẫn dắt từng bước hiểu sâu bản chất nội dung, 4 lớp hiểu + áp dụng đời sống |
@@ -24,8 +23,9 @@ claude plugin install gh:hoangvantuan/shun-claude-plugin
 | `game-theory-lens` | Phân tích chủ đề qua lăng kính Game Theory, nhận diện players/strategies/payoffs, Nash equilibrium, mechanism design |
 | `ghost-blog` | Ghost CMS blog management |
 | `meeting-minutes` | 2 workflow: (1) Tạo biên bản họp từ transcript/ghi chú (quyết định, action items, pending/parking lot), (2) Phân tích hành vi giao tiếp (conflict avoidance, speaking ratio, filler words, active listening, facilitation style) |
-| `outline-writer` | Content analysis & outline creation (presentation/blog/doc) |
+| `outline-writer` | Phân tích nội dung & tạo outline thuần nội dung (sequence of sections; thesis, key arguments, evidence), không quyết định media (slide/blog/doc), không quy định cách viết/tone/style (đó là việc của writer) |
 | `pinchtab` | Browser automation cho AI agents, điều khiển Chrome qua PinchTab HTTP API |
+| `planning-content` | Phân tích nội dung & lên outline ý chính cho từng bài (audience, goal, angle, thesis, key points, data, takeaway). Hỗ trợ batch + content map cho input dài. KHÔNG can thiệp cách viết/tone/style/structure |
 | `pptx-creator` | Tạo PowerPoint đẹp, chuyên nghiệp, hỗ trợ font tiếng Việt (PptxGenJS) |
 | `problem-solving` | Kỹ thuật giải quyết vấn đề có hệ thống, inversion, collision-zone, scale-game, simplification cascades |
 | `prompt-engineering` | Prompt engineering patterns: few-shot, chain-of-thought, template systems, system prompt design, agent prompting best practices, persuasion principles cho LLM interaction |
@@ -34,7 +34,7 @@ claude plugin install gh:hoangvantuan/shun-claude-plugin
 | `sequential-thinking` | Phân tích từng bước cho vấn đề phức tạp, revision, branching, hypothesis verification |
 | `skill-auto-improver` | Phân tích và cải tiến skill tự động, quality audit + improvement patterns |
 | `social-post` | Viết bài social đa platform (Facebook, Threads, LinkedIn, Zalo) chia sẻ góc nhìn chiều sâu, anti-AI rules, self-critique |
-| `style-writer` | Skill viết lách hợp nhất (từ style-library + style-dna), 2 workflow: Analyze (bóc tách DNA văn phong) + Writer (viết nội dung theo voice/persona/structure). Gồm personas, 7 voices, 8 structures |
+| `style-writer` | Skill viết lách hợp nhất, 2 workflow: Writer (mặc định, viết nội dung theo voice + structure) + Analyze (bóc tách DNA văn phong → tạo voice mới). Gồm 7 voices generic + 8 structures |
 | `substack-tools` | Quản lý bài viết Substack: draft, schedule, publish, list, sections + scan/crawl newsletter khác |
 | `systems-thinking` | Phân tích tư duy hệ thống theo framework Donella Meadows, feedback loops, system traps, leverage points |
 | `things-manager` | Quản lý Things 3 tasks, projects, areas, tags qua things-cli (Go CLI) |

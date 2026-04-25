@@ -2,12 +2,14 @@
 
 Templates cho Coverage Report, Quality Report, và Outline file format. Load khi cần generate reports (Step 4).
 
+**Đơn vị**: section. Writer chuyển section thành slide / paragraph / page tùy media.
+
 ## Coverage Report Format
 
 Lưu tại `{output_folder}/coverage-report.md`.
 
 ```markdown
-# Coverage Report — [Tên presentation]
+# Coverage Report — [Tên outline]
 
 ## Tổng quan
 - **Source**: [tên file hoặc mô tả input]
@@ -16,9 +18,9 @@ Lưu tại `{output_folder}/coverage-report.md`.
 - **Topics covered**: [M] ([percentage]%)
 - **Topics omitted**: [K]
 
-## Source → Slide Mapping
+## Source → Section Mapping
 
-| # | Source Topic | Priority | Slide(s) | Status |
+| # | Source Topic | Priority | Section(s) | Status |
 |---|---|---|---|---|
 | 1 | Topic A | must | 3, 4 | ✅ Covered |
 | 2 | Topic B | must | 5 | ✅ Covered |
@@ -31,20 +33,20 @@ Lưu tại `{output_folder}/coverage-report.md`.
 
 | Topic | Priority | Lý do bỏ |
 |---|---|---|
-| Topic D | should | Trùng lặp nội dung với Topic B (slide 5) |
+| Topic D | should | Trùng lặp nội dung với Topic B (section 5) |
 | Topic E | nice | Edge case, vượt scope L2 |
 
 ## Key Data Check
-- ✅ [Metric/data point] → slide [N]
-- ✅ [Example] → slide [N]
-- ⚠️ [Table/data] → simplified thành bullets (slide [N])
+- ✅ [Metric/data point] → section [N]
+- ✅ [Example] → section [N]
+- ⚠️ [Table/data] → trimmed for L[n] (section [N])
 ```
 
 ### Coverage Report Rules
 
 - Mọi topic trong Content Analysis Map PHẢI xuất hiện trong report (covered hoặc omitted)
 - Mọi topic omitted PHẢI có justification cụ thể (không generic)
-- Justification hợp lệ: "trùng lặp với Topic X", "vượt scope L[n]", "gộp vào slide [N]", "quá chi tiết/edge case cho level này"
+- Justification hợp lệ: "trùng lặp với Topic X", "vượt scope L[n]", "gộp vào section [N]", "quá chi tiết/edge case cho level này"
 - Justification KHÔNG hợp lệ: "không quan trọng", "bỏ qua", "không cần thiết"
 - Nếu coverage < threshold → PHẢI thêm topics vào outline cho đến khi đạt threshold
 
@@ -60,7 +62,7 @@ Append vào cuối file `coverage-report.md`:
 ## Thesis Clarity
 - **Core message**: [1 câu thesis]
 - **Xuất hiện rõ ràng trong outline?** ✅/❌
-- **Vị trí**: [Slide/Section X]
+- **Vị trí**: [Section X]
 - **Intended transformation**: [educate/persuade/activate] — [mô tả]
 
 ## Argument Strength
@@ -85,7 +87,7 @@ Append vào cuối file `coverage-report.md`:
 **Depth Score hiện tại**: [X/4]
 
 ## Content Principles Check
-- [ ] Mọi slide/section title là assertion, không phải topic label?
+- [ ] Mọi section title là assertion, không phải topic label?
 - [ ] Mọi data point có implication kèm theo? ("So What?" test)
 - [ ] Outline phục vụ đúng 1 transformation?
 - [ ] Có tension-release pattern trong body?
@@ -94,7 +96,7 @@ Append vào cuối file `coverage-report.md`:
 
 ### Quality Report Rules
 
-- Quality Report BẮT BUỘC cho mọi output type (presentation, blog, doc)
+- Quality Report BẮT BUỘC cho mọi outline
 - **Tiêu chí đạt tối thiểu**: Thesis Clarity = ✅, Depth Score ≥ 2, Content Principles ≥ 3/5
 - Nếu Depth Score = 1 → CẢNH BÁO: outline chỉ là danh sách facts, cần bổ sung insight
 - Nếu Thesis Clarity = ❌ → CẢNH BÁO: outline thiếu core message
@@ -109,17 +111,14 @@ BẮT BUỘC có YAML frontmatter. Metadata cho phép reuse outline mà không c
 ---
 title: "Tên outline"
 slug: "ten-outline"
-output_type: "presentation" | "blog" | "doc"
-content_type: "..." # chỉ khi presentation
-framework: "..." # chỉ khi presentation
-audience: "..." # chỉ khi presentation
+framework: "Pyramid Principle | SCQA | Gagné | PAS+Sparkline | SCR"
 detail_level: "L1" | "L2" | "L3"
 language: "vi" | "en" | "bilingual"
 source: "mô tả source input"
 thesis: "core message 1 câu"
 intended_transformation: "educate" | "persuade" | "activate"
 created: "YYYY-MM-DD HH:mm"
-total_slides: N # hoặc total_sections cho blog/doc
+total_sections: N
 ---
 ```
 
@@ -137,10 +136,10 @@ total_slides: N # hoặc total_sections cho blog/doc
    1 câu mô tả hook
 
 [Body]
-3. [content] Assertion sentence (section gộp)
-   - Bullet ngắn <8 words
-   - Bullet ngắn <8 words
-   - Bullet ngắn <8 words
+3. [content] Assertion sentence (cluster gộp)
+   - Key point 1
+   - Key point 2
+   - Key point 3
 
 [Closing]
 N. [summary] Key Takeaways
@@ -156,32 +155,32 @@ N. [summary] Key Takeaways
 === OUTLINE (L2/L3) ===
 
 [Opening]
-1. [title] Title chính của presentation
+1. [title] Title chính
    Subtitle mô tả
 2. [content] Hook/Problem statement
    Brief description of hook content
 3. [agenda] Agenda
-   List of sections
+   List of body clusters
 
-[Body - Section 1: Tên section]
+[Body - Cluster 1: Tên cluster]
 4. [content] Assertion sentence as title
-   - Main bullet 1
-     · Sub-detail hoặc ví dụ
-   - Main bullet 2
-     · Sub-detail hoặc ví dụ
-   - Main bullet 3
-     · Sub-detail
+   - Main point 1
+     · Supporting detail / ví dụ
+   - Main point 2
+     · Supporting detail / ví dụ
+   - Main point 3
+     · Supporting detail
 5. [content] Next assertion
-   - Main bullet with detail
+   - Main point with detail
      · Code example hoặc config snippet
-   - Main bullet 2
+   - Main point 2
      · Giải thích ngắn
 
-[Body - Section 2: Tên section]
-6. [transition] Section divider
+[Body - Cluster 2: Tên cluster]
+6. [transition] Cluster divider
 7. [comparison] So sánh A vs B
-   Left: Option A - key characteristics
-   Right: Option B - key characteristics
+   - Option A: key characteristics
+   - Option B: key characteristics
 
 [Closing]
 N. [summary] Key Takeaways

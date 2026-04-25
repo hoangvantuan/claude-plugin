@@ -4,7 +4,7 @@ File này hướng dẫn CỤ THỂ cần tìm gì, đo gì trong corpus để p
 
 ---
 
-## 1. Giọng điệu & persona
+## 1. Giọng điệu & vai người kể
 
 **Mục tiêu**: Xác định "người kể chuyện" là ai, nói với ai, thái độ ra sao.
 
@@ -221,7 +221,7 @@ File này hướng dẫn CỤ THỂ cần tìm gì, đo gì trong corpus để p
 
 ## Quy trình gợi ý khi phân tích
 
-1. **Scan nhanh toàn corpus** lần 1 — nắm cảm nhận tổng thể (tone, persona, domain).
+1. **Scan nhanh toàn corpus** lần 1 — nắm cảm nhận tổng thể (tone, vai người kể, domain).
 2. **Quét tuần tự từng bài** — ghi chú nhanh vào scratch pad cho 8 chiều.
 3. **Tổng hợp pattern** — cái gì lặp ≥2 lần mới ghi nhận.
 4. **Chọn bằng chứng đắt nhất** cho mỗi đặc điểm — ưu tiên câu ngắn, đặc trưng, dễ đọc.
