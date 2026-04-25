@@ -31,6 +31,7 @@ skills/                      # Các skill plugins (chi tiết xem ## Skill Struc
   sequential-thinking/       # Phân tích từng bước cho vấn đề phức tạp — revision, branching, hypothesis
   skill-auto-improver/       # Phân tích và cải tiến skill tự động — quality audit + improvement patterns
   social-post/               # Viết bài social đa platform (Facebook, Threads, LinkedIn, Zalo) chia sẻ góc nhìn chiều sâu — anti-AI rules, self-critique
+  speech-to-text/            # Chuyển file audio/video thành text kèm timestamps qua Soniox API — hỗ trợ 60+ ngôn ngữ, audio (mp3/wav/flac) + video (mp4/mov/mkv/avi)
   style-writer/              # Skill viết lách hợp nhất — 2 workflow: Writer (mặc định, viết nội dung theo voice + structure) + Analyze (bóc tách DNA văn phong → tạo voice mới). Gồm voices (7 loại) + structures (8 loại)
   substack-tools/            # Quản lý bài viết Substack: draft, schedule, publish, list, sections + scan/crawl newsletter khác
   systems-thinking/          # Phân tích tư duy hệ thống theo framework Donella Meadows (Thinking in Systems)
@@ -41,6 +42,7 @@ skills/                      # Các skill plugins (chi tiết xem ## Skill Struc
   workshop-builder/          # Thiết kế workshop theo Backwards Design + 4Cs + Kirkpatrick
   writer-planner/            # Xử lý input (PDF, DOCX, EPUB, URL, YouTube) và tạo kế hoạch chia bài viết — convert, phân tích, chia sections
   youtube-title-generator/   # Tạo tiêu đề YouTube hấp dẫn
+  youtube-transcript/        # Tải transcript (phụ đề/captions) từ YouTube video qua yt-dlp, convert VTT sang plain text
 agents/                      # Các agent definitions (planned)
 hooks/                       # Các hook scripts (planned)
 mcp/                         # Các MCP server configs (planned)
@@ -90,6 +92,7 @@ skills/<skill-name>/
 | `sequential-thinking`      | `references/` `scripts/` `tests/`                                    | core-patterns, examples (api/debug/architecture), advanced-techniques, advanced-strategies, process-thought.js, format-thought.js                                                                                                    |
 | `skill-auto-improver`      | `references/`                                                        | quality-checklist, improvement-patterns                                                                                                                                                                                              |
 | `social-post`              | `references/`                                                        | craft-techniques, anti-ai-rules, example-output                                                                                                                                                                                      |
+| `speech-to-text`           | `references/` `scripts/`                                             | Soniox async API, transcribe.js (Node.js), audio + video (ffmpeg extract), output timestamps/text/SRT, 60+ ngôn ngữ                                                                                                                 |
 | `style-writer`             | `references/voices/` `references/structures/`                        | voices (7 voice generic, có thể thêm voice analyzed từ corpus), structures (8 loại), analysis-dimensions, anti-patterns, output-template. Workflow Writer (mặc định) + Analyze (output → voices/)                                    |
 | `substack-tools`           | `references/` `scripts/`                                             | substack_cli.py, substack_crawl.py, api-quirks, batch-operations, crawl-guide                                                                                                                                                        |
 | `systems-thinking`         | `references/` `templates/`                                           | system-traps, leverage-points, systems-wisdom, analysis-output                                                                                                                                                                       |
@@ -100,6 +103,7 @@ skills/<skill-name>/
 | `workshop-builder`         | `references/`                                                        | frameworks, activity-library, templates, example-walkthrough, prepare-deliver-followup                                                                                                                                               |
 | `writer-planner`           | `references/` `scripts/`                                             | Input processing (PDF/DOCX/EPUB/URL/YouTube) → convert → analyze → plan. Tier workflows, decision trees, context optimization                                                                                                        |
 | `youtube-title-generator`  | `references/`                                                        | title-examples                                                                                                                                                                                                                       |
+| `youtube-transcript`       | `references/` `scripts/`                                             | Tải transcript YouTube qua yt-dlp. vtt-to-txt.py (convert/dedup), whisper-guide, error-handling                                                                                                                                      |
 
 
 ## Installation
