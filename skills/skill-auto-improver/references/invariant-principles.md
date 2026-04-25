@@ -1,6 +1,6 @@
 # Nguyên lý bất biến khi viết / cải tiến Skill
 
-Mười nguyên lý này áp dụng cho mọi skill bất kể domain — content creation, automation, hay analysis. Dùng làm kim chỉ nam khi phân tích và cải tiến.
+Mười một nguyên lý này áp dụng cho mọi skill bất kể domain — content creation, automation, hay analysis. Dùng làm kim chỉ nam khi phân tích và cải tiến.
 
 ## 1. Giải thích lý do thay vì ra lệnh
 
@@ -19,11 +19,12 @@ Mọi hướng dẫn phải áp dụng được cho nhiều trường hợp. Fix
 
 ## 3. Progressive Disclosure (Tải theo nhu cầu)
 
-Không dump toàn bộ thông tin cùng lúc. Tận dụng primacy/recency bias — LLM ghi nhớ tốt nhất thông tin ở đầu và cuối prompt.
+Không dump toàn bộ thông tin cùng lúc. LLM có đường cong attention hình chữ U: thông tin ở đầu và cuối prompt được recall tốt hơn 10-40% so với thông tin ở giữa (lost-in-middle effect).
 
 - SKILL.md chỉ chứa **workflow + quyết định**
 - Chi tiết/ví dụ/API → `references/`, load khi cần
 - Sắp xếp: persona + core workflow (đầu) → context (giữa) → output format + constraints (cuối)
+- Constraints quan trọng nhất đặt ở đầu hoặc cuối, không chôn giữa prompt
 
 ## 4. Mỗi dòng phải earn chỗ đứng
 
@@ -88,3 +89,15 @@ Skill nên được thiết kế như **interface** — định nghĩa contract 
 - **References/scripts** = "chi tiết kỹ thuật khi cần" (implementation details)
 
 Tư duy này giúp tránh over-specification — thay vì nói Claude cách làm step-by-step, định nghĩa tiêu chí thành công và để Claude phát huy sức mạnh suy luận. Outcome delegation > task execution.
+
+## 11. Context là tài nguyên hữu hạn
+
+Mỗi token trong context cạnh tranh attention với mọi token khác. Thêm nội dung không chỉ tốn chỗ, nó **chủ động giảm chất lượng** trên toàn bộ nội dung còn lại.
+
+Ba hiện tượng cần biết:
+
+- **Attention Budget**: LLM có ngân sách attention cố định. Context dài hơn = ngân sách bị dàn mỏng hơn. Chi phí không tuyến tính mà tăng theo hàm mũ
+- **Distraction Step Function**: Chỉ 1 section không liên quan cũng giảm hiệu suất trên CẢ các section liên quan. Đây là step function, không tỉ lệ thuận với lượng noise. Nội dung "nice to have" không vô hại, nó tích cực gây hại
+- **Context Poisoning**: Thông tin sai trong prompt không chỉ gây 1 lỗi. Model reference thông tin sai → suy luận sai → output sai → nếu output quay lại context → feedback loop. Sai lệch cascade qua chuỗi reasoning
+
+Hệ quả cho skill design: tối ưu **mật độ tín hiệu** (informativity), không tối ưu **độ bao phủ** (exhaustiveness). Bộ token nhỏ, tín hiệu cao luôn thắng bộ token lớn, tín hiệu thấp.

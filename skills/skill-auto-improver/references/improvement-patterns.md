@@ -121,13 +121,15 @@ Chọn format phù hợp cho nội dung.
 
 **Khi nào:** Thông tin quan trọng bị chôn ở giữa hoặc cuối skill, nội dung ít quan trọng ở đầu.
 
-**Hành động:** Sắp xếp theo primacy/recency bias:
+**Hành động:** Sắp xếp theo đường cong attention hình chữ U (lost-in-middle effect): thông tin ở giữa context mất 10-40% recall so với đầu/cuối.
 
-1. **Đầu:** Persona + core workflow (quan trọng nhất)
-2. **Giữa:** Context, references, chi tiết
-3. **Cuối:** Output format, constraints, final checks
+1. **Đầu:** Persona + core workflow + constraints quan trọng nhất
+2. **Giữa:** Context, references, chi tiết (vùng attention thấp)
+3. **Cuối:** Output format, constraints bổ sung, final checks
 
-**Hiệu quả:** LLM ghi nhớ tốt hơn thông tin ở đầu và cuối prompt.
+**Dấu hiệu cần reorder:** Constraint quan trọng bị chôn ở giữa prompt, agent bỏ sót hướng dẫn không nhất quán giữa các lần chạy.
+
+**Hiệu quả:** Tận dụng vùng attention cao (đầu/cuối) cho thông tin quan trọng nhất.
 
 ---
 
@@ -249,4 +251,22 @@ Progress:
 3. Chỉ khi validate pass mới apply
 
 **Hiệu quả:** Phát hiện lỗi trước khi chạm production, plan reversible, debug dễ.
+
+---
+
+## P16: Context Distraction Audit (Kiểm tra section gây phân tán)
+
+**Khi nào:** Skill dài (>200 dòng), output không nhất quán giữa các lần chạy, hoặc Claude bỏ sót hướng dẫn quan trọng.
+
+**Hành động:** Với mỗi section trong SKILL.md, hỏi: "Nếu xoá section này, output có thay đổi không?"
+
+| Kết quả | Phân loại | Hành động |
+|---------|-----------|-----------|
+| Output thay đổi rõ | Essential | Giữ, cân nhắc đưa vào vùng attention cao (đầu/cuối) |
+| Output thay đổi nhẹ | Helpful | Giữ nhưng có thể chuyển vào references/ |
+| Output không đổi | Distractor | Xoá. Chỉ 1 section distractor cũng giảm hiệu suất trên toàn bộ section còn lại |
+
+Kiểm tra thêm: thông tin nào có thể sai/lỗi thời? Sai lệch trong prompt cascade qua chuỗi suy luận (context poisoning), nên ưu tiên loại bỏ thông tin có risk sai cao hơn thông tin dư thừa đơn thuần.
+
+**Hiệu quả:** Tăng mật độ tín hiệu (signal density), giảm attention waste. Skill gọn hơn hoạt động tốt hơn skill dài hơn.
 

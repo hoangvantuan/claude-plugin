@@ -10,7 +10,7 @@ Phân tích skill hiện có, trích xuất bài học, đề xuất cải tiế
 
 ## Nguyên lý bất biến
 
-Mười nguyên lý áp dụng cho mọi skill bất kể domain. Đọc [chi tiết + ví dụ](references/invariant-principles.md) khi cần tra cứu.
+Mười một nguyên lý áp dụng cho mọi skill bất kể domain. Đọc [chi tiết + ví dụ](references/invariant-principles.md) khi cần tra cứu.
 
 1. **Giải thích lý do thay vì ra lệnh** — LLM hiểu "tại sao" tốt hơn "phải làm"
 2. **Tổng quát hóa > Cụ thể hóa** — Không fix cho case cụ thể
@@ -22,6 +22,7 @@ Mười nguyên lý áp dụng cho mọi skill bất kể domain. Đọc [chi ti
 8. **Ngắn ≠ Tốt, Dài ≠ Xấu** — Ngắn nhất có thể mà không thiếu sót
 9. **Degrees of Freedom** — Chọn mức tự do (cao/vừa/thấp) phù hợp độ nhạy cảm
 10. **Skill = Interface** — Định nghĩa contract (output), không phải implementation (cách làm)
+11. **Context là tài nguyên hữu hạn** — Mỗi token cạnh tranh attention, nội dung dở hại chủ động toàn bộ
 
 ## Quy trình (4 pha)
 

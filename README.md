@@ -23,11 +23,12 @@ claude plugin install gh:hoangvantuan/shun-claude-plugin
 | `facebook` | Facebook automation via PinchTab, đăng bài lên wall, tag bạn bè |
 | `game-theory-lens` | Phân tích chủ đề qua lăng kính Game Theory, nhận diện players/strategies/payoffs, Nash equilibrium, mechanism design |
 | `ghost-blog` | Ghost CMS blog management |
-| `meeting-minutes` | Tạo biên bản họp từ transcript/ghi chú, metadata, quyết định, action items (bảng), pending/parking lot, rủi ro. Hỗ trợ đọc file .txt/.md/.pdf/.docx |
+| `meeting-minutes` | 2 workflow: (1) Tạo biên bản họp từ transcript/ghi chú (quyết định, action items, pending/parking lot), (2) Phân tích hành vi giao tiếp (conflict avoidance, speaking ratio, filler words, active listening, facilitation style) |
 | `outline-writer` | Content analysis & outline creation (presentation/blog/doc) |
 | `pinchtab` | Browser automation cho AI agents, điều khiển Chrome qua PinchTab HTTP API |
 | `pptx-creator` | Tạo PowerPoint đẹp, chuyên nghiệp, hỗ trợ font tiếng Việt (PptxGenJS) |
 | `problem-solving` | Kỹ thuật giải quyết vấn đề có hệ thống, inversion, collision-zone, scale-game, simplification cascades |
+| `prompt-engineering` | Prompt engineering patterns: few-shot, chain-of-thought, template systems, system prompt design, agent prompting best practices, persuasion principles cho LLM interaction |
 | `prompt-generator` | Meta-prompting, tạo prompt chất lượng cao |
 | `prompt-generator-v2` | KERNEL framework, prompt engineering nâng cao |
 | `sequential-thinking` | Phân tích từng bước cho vấn đề phức tạp, revision, branching, hypothesis verification |

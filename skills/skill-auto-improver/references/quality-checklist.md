@@ -78,6 +78,9 @@ Dùng 8 tiêu chí dưới đây để chấm điểm skill (thang 1-5 mỗi ti�
 - Có thông tin nào repeat giữa các sections?
 - Ví dụ/API details có nên chuyển vào references?
 - Mỗi câu có contribute vào hành vi mong muốn không?
+- Constraints quan trọng có nằm ở vùng attention cao (đầu/cuối) hay bị chôn ở giữa?
+- Có section nào xoá mà output không thay đổi? (distractor, gây hại chủ động cho các section khác)
+- Có thông tin sai/lỗi thời có thể cascade qua suy luận? (context poisoning)
 
 ## 6. Bloat Score (Mức phình to)
 
