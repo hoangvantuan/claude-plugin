@@ -7,7 +7,6 @@ description: >-
   Also triggers when user needs text content extracted from any YouTube video,
   even if they don't explicitly say "transcript" (e.g., "what does this video say",
   "get me the text from this video", "I need the content of this YouTube link").
-allowed-tools: Bash,Read,Write
 ---
 
 # YouTube Transcript Downloader
@@ -25,6 +24,7 @@ command -v yt-dlp
 ```
 
 If not found, install:
+
 - macOS: `brew install yt-dlp`
 - Linux: `sudo apt install -y yt-dlp`
 - Fallback: `pip3 install yt-dlp`
@@ -46,11 +46,13 @@ Note what's available: manual subtitles (higher quality) vs auto-generated.
 Try in order until one succeeds:
 
 **Manual subtitles (best quality):**
+
 ```bash
 yt-dlp --write-sub --skip-download --output "transcript_temp" "$VIDEO_URL"
 ```
 
 **Auto-generated subtitles (fallback):**
+
 ```bash
 yt-dlp --write-auto-sub --skip-download --output "transcript_temp" "$VIDEO_URL"
 ```
@@ -71,6 +73,7 @@ python3 skills/youtube-transcript/scripts/vtt-to-txt.py "$VTT_FILE" "${VIDEO_TIT
 ```
 
 Then clean up the temporary VTT file:
+
 ```bash
 rm "$VTT_FILE"
 ```
@@ -86,6 +89,7 @@ YouTube auto-generated VTT files show captions progressively with overlapping ti
 ## Language selection
 
 By default yt-dlp downloads all available subtitle languages. To target a specific language:
+
 ```bash
 yt-dlp --write-auto-sub --sub-langs vi --skip-download --output "transcript_temp" "$VIDEO_URL"
 ```
