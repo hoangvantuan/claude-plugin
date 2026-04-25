@@ -17,12 +17,12 @@ Tạo biên bản họp chất lượng cao, nhất quán từ nội dung cuộc
 
 ```
 {CWD}/meeting-minutes/
-└── {slug}-{YYMMDD-HHmm}/
-    └── minutes.md
+└── {slug}-{YYMMDD-HHmm}.md
 ```
 
 - `{slug}`: kebab-case từ tên cuộc họp (max 30 ký tự)
 - `{YYMMDD-HHmm}`: timestamp lúc tạo
+- Ví dụ: `meeting-minutes/standup-team-product-260421-0900.md`
 
 ## Workflow
 
@@ -64,8 +64,8 @@ Quy tắc xử lý:
 
 ### Bước 4: Lưu và trình bày
 
-1. Tạo thư mục output theo cấu trúc đã định
-2. Lưu biên bản vào `minutes.md`
+1. Tạo thư mục `meeting-minutes/` nếu chưa có
+2. Lưu biên bản vào file `{slug}-{YYMMDD-HHmm}.md`
 3. Hiển thị tóm tắt cho user: số quyết định, số action items, những chỗ cần xác nhận
 
 ## Nguyên tắc chất lượng
