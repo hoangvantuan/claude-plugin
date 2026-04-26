@@ -272,59 +272,6 @@ safe_click() {
   pinchtab press Enter >/dev/null 2>&1
 }
 
-# Insert single line via HTTP API (no newlines in text)
-insert_line_via_api() {
-  local text="$1"
-  CONTENT_TEXT="$text" API_BASE="$BASE" API_TOKEN="$TOKEN" python3 << 'PYEOF'
-import os, json, urllib.request
-content = os.environ['CONTENT_TEXT']
-js = 'document.execCommand("insertText", false, ' + json.dumps(content) + ')'
-payload = json.dumps({'expression': js}).encode()
-req = urllib.request.Request(os.environ['API_BASE'] + '/evaluate', data=payload,
-    headers={'Content-Type': 'application/json', 'Authorization': 'Bearer ' + os.environ['API_TOKEN']})
-urllib.request.urlopen(req)
-PYEOF
-}
-
-# Insert multiline text: type each line separately, press Enter for paragraph breaks
-# FB Lexical editor ignores \n in insertText but respects Enter key events
-insert_text_multiline() {
-  local text="$1"
-  local first=true
-  while IFS= read -r line || [[ -n "$line" ]]; do
-    if [[ "$first" == "true" ]]; then
-      first=false
-    else
-      pinchtab press Enter >/dev/null 2>&1
-      human_delay 100 300
-    fi
-    if [[ -n "$line" ]]; then
-      insert_line_via_api "$line" 2>/dev/null || {
-        pinchtab type "" "$line" >/dev/null 2>&1 || true
-      }
-      human_delay 50 150
-    fi
-  done <<< "$text"
-}
-
-check_upload_permission() {
-  curl -s "$BASE/api/config" -H "$AUTH" 2>/dev/null \
-    | python3 -c "
-import sys, json
-try:
-    data = json.load(sys.stdin)
-    if isinstance(data, dict):
-        d = data.get('data', data)
-        val = d.get('security.allowUpload')
-        if val is None:
-            val = (d.get('config', {}).get('security', {}).get('allowUpload')
-                   or d.get('security', {}).get('allowUpload'))
-        print('true' if val else 'false')
-    else: print('unknown')
-except: print('unknown')
-" 2>/dev/null
-}
-
 check_evaluate_permission() {
   curl -s "$BASE/api/config" -H "$AUTH" 2>/dev/null \
     | python3 -c "
@@ -354,26 +301,6 @@ validate_image_file() {
     52494646)  return 0 ;; # WebP (RIFF container)
     *)         return 1 ;;
   esac
-}
-
-discover_active_tab() {
-  local inst_id="$1"
-  local tab_id
-  tab_id=$(curl -s "$BASE/instances/$inst_id/tabs" -H "$AUTH" 2>/dev/null \
-    | python3 -c "
-import sys, json
-try:
-    resp = json.load(sys.stdin)
-    tabs = resp.get('data', resp) if isinstance(resp, dict) else resp
-    if isinstance(tabs, list) and tabs:
-        print(tabs[0].get('id', ''))
-except: pass
-" 2>/dev/null) || true
-  if [[ -n "$tab_id" ]]; then
-    pinchtab tab "$tab_id" >/dev/null 2>&1 || true
-    export PINCHTAB_TAB="$tab_id"
-    echo "$tab_id"
-  fi
 }
 
 verify_image_attached() {
@@ -441,8 +368,77 @@ click_and_verify() {
   return 1
 }
 
+nav_new_tab() {
+  local url="$1"
+  local tab_id
+  tab_id=$(pinchtab nav "$url" --new-tab --print-tab-id 2>/dev/null) || true
+  if [[ -n "$tab_id" ]]; then
+    export PINCHTAB_TAB="$tab_id"
+    log_info "Tab: $tab_id"
+  else
+    log_warn "Could not get tab ID from nav"
+  fi
+}
+
+upload_image_via_eval() {
+  local file_path="$1"
+  local mime_type="image/jpeg"
+  local ext="${file_path##*.}"
+  case "${ext,,}" in
+    png) mime_type="image/png" ;;
+    gif) mime_type="image/gif" ;;
+    webp) mime_type="image/webp" ;;
+  esac
+
+  IMG_PATH="$file_path" IMG_MIME="$mime_type" \
+  API_BASE="$BASE" API_TOKEN="$TOKEN" python3 << 'PYEOF'
+import os, json, urllib.request, base64, sys
+
+file_path = os.environ['IMG_PATH']
+mime = os.environ['IMG_MIME']
+name = os.path.basename(file_path)
+
+with open(file_path, 'rb') as f:
+    b64 = base64.b64encode(f.read()).decode()
+
+js = """(function() {
+  var b = atob(%s);
+  var a = new Uint8Array(b.length);
+  for (var i = 0; i < b.length; i++) a[i] = b.charCodeAt(i);
+  var blob = new Blob([a], {type: %s});
+  var file = new File([blob], %s, {type: %s});
+  var dt = new DataTransfer();
+  dt.items.add(file);
+  var evt = new ClipboardEvent("paste", {clipboardData: dt, bubbles: true, cancelable: true});
+  document.activeElement.dispatchEvent(evt);
+  return "dispatched";
+})()""" % (json.dumps(b64), json.dumps(mime), json.dumps(name), json.dumps(mime))
+
+payload = json.dumps({'expression': js}).encode()
+req = urllib.request.Request(
+    os.environ['API_BASE'] + '/evaluate',
+    data=payload,
+    headers={
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + os.environ['API_TOKEN']
+    }
+)
+try:
+    resp = urllib.request.urlopen(req, timeout=30).read().decode()
+    result = json.loads(resp)
+    if 'dispatched' in str(result.get('result', '')):
+        sys.exit(0)
+    else:
+        print('Unexpected eval result: ' + str(result), file=sys.stderr)
+        sys.exit(1)
+except Exception as e:
+    print('Eval request failed: ' + str(e), file=sys.stderr)
+    sys.exit(1)
+PYEOF
+}
+
 detect_user_profile() {
-  pinchtab nav "https://www.facebook.com/me" >/dev/null 2>&1
+  nav_new_tab "https://www.facebook.com/me"
   sleep 3
   local current_url
   current_url=$(pinchtab snap --compact=false 2>/dev/null | python3 -c "
@@ -533,21 +529,18 @@ if [[ ${#IMAGES[@]} -gt 0 ]]; then
     fi
   done
   log_info "All ${#IMAGES[@]} image(s) validated (magic bytes OK)"
-
-  UPLOAD_OK=$(check_upload_permission) || true
-  if [[ "$UPLOAD_OK" == "false" ]]; then
-    log_error "security.allowUpload is disabled. Enable with:"
-    log_error "  pinchtab config set security.allowUpload true"
-    exit $EXIT_UPLOAD
-  elif [[ "$UPLOAD_OK" == "unknown" ]]; then
-    log_warn "Cannot verify upload permission. Proceeding anyway."
-  fi
 fi
 
 EVAL_OK=$(check_evaluate_permission) || true
 if [[ "$EVAL_OK" == "false" ]]; then
-  log_warn "security.allowEvaluate is disabled. Text input will use CLI fallback (may truncate special chars)."
-  log_warn "For best results: pinchtab config set security.allowEvaluate true"
+  if [[ ${#IMAGES[@]} -gt 0 ]]; then
+    log_error "security.allowEvaluate is required for image upload. Enable with:"
+    log_error "  pinchtab config set security.allowEvaluate true"
+    exit $EXIT_UPLOAD
+  else
+    log_warn "security.allowEvaluate is disabled. Text input will use CLI fallback."
+    log_warn "For best results: pinchtab config set security.allowEvaluate true"
+  fi
 fi
 
 # =============================================================
@@ -581,25 +574,19 @@ else
   start_new_instance
 fi
 
-# ---- Tab discovery: prevent stale tab ID from killed instances ----
-TAB_ID=$(discover_active_tab "$INST") || true
-if [[ -n "$TAB_ID" ]]; then
-  export PINCHTAB_TAB="$TAB_ID"
-  log_info "Active tab: $TAB_ID"
-else
-  log_warn "Could not discover active tab, using CLI default"
-fi
+export PINCHTAB_INSTANCE="$INST"
+log_info "PINCHTAB_INSTANCE=$INST"
 
 # =============================================================
 # STEP 2: Navigate to target (wall or group)
 # =============================================================
 if [[ "$POST_MODE" == "group" ]]; then
   log_info "[2/7] Opening group: $GROUP_URL"
-  pinchtab nav "$GROUP_URL" >/dev/null 2>&1
+  nav_new_tab "$GROUP_URL"
 else
   log_info "[2/7] Opening profile page"
   if [[ -n "$USER_ID" ]]; then
-    pinchtab nav "https://www.facebook.com/profile.php?id=$USER_ID" >/dev/null 2>&1
+    nav_new_tab "https://www.facebook.com/profile.php?id=$USER_ID"
   else
     log_info "No --user-id provided, detecting from logged-in session..."
     PROFILE_URL=$(detect_user_profile)
@@ -661,12 +648,11 @@ debug_screenshot "03-post-dialog"
 # =============================================================
 log_info "[4/7] Typing post content"
 
-pinchtab click "$TXT_POST" >/dev/null 2>&1
+pinchtab focus "$TXT_POST" >/dev/null 2>&1
 human_delay 400 900
-# Per-line typing: each line via insertText API, Enter between lines for Lexical paragraph breaks
-if ! insert_text_multiline "$CONTENT" 2>/dev/null; then
-  log_warn "Multiline insert failed, falling back to CLI type"
-  pinchtab type "$TXT_POST" "$CONTENT" >/dev/null 2>&1
+if ! pinchtab keyboard inserttext "$CONTENT" 2>/dev/null; then
+  log_warn "keyboard inserttext failed, falling back to CLI type"
+  pinchtab type "$TXT_POST" "$CONTENT" >/dev/null 2>&1 || true
 fi
 human_delay 800 2000
 log_info "Content entered (${#CONTENT} chars)"
@@ -676,53 +662,36 @@ debug_screenshot "04-content-entered"
 # STEP 5: Attach images (optional)
 # =============================================================
 if [[ ${#IMAGES[@]} -gt 0 ]]; then
-  log_info "[5/7] Attaching ${#IMAGES[@]} image(s) via composer paste"
+  log_info "[5/7] Attaching ${#IMAGES[@]} image(s) via eval ClipboardEvent"
 
-  # Focus composer textbox (already identified in Step 3)
-  pinchtab click "$TXT_POST" >/dev/null 2>&1
+  # Focus composer textbox before pasting
+  pinchtab focus "$TXT_POST" >/dev/null 2>&1
   human_delay 500 1000
 
   UPLOAD_COUNT=0
   for img in "${IMAGES[@]}"; do
-    log_info "Pasting image: $(basename "$img")"
+    log_info "Uploading: $(basename "$img")"
 
-    # Copy image to macOS clipboard
-    ext="${img##*.}"
-    clip_type="JPEG picture"
-    case "${ext,,}" in
-      png) clip_type="PNG picture" ;;
-      jpg|jpeg) clip_type="JPEG picture" ;;
-    esac
-
-    if ! osascript -e "set the clipboard to (read POSIX file \"$img\" as $clip_type)" 2>/dev/null; then
-      log_error "Cannot copy image to clipboard: $img"
-      debug_screenshot "05-error-clipboard-$UPLOAD_COUNT"
-      exit $EXIT_UPLOAD
-    fi
-
-    # CDP paste into focused composer (isTrusted=true, no file picker)
-    if ! node "$SCRIPT_DIR/cdp-paste.js" 2>/dev/null; then
-      log_error "CDP paste failed for: $img"
-      log_error "Ensure Chrome debug port is accessible and ws module installed."
-      debug_screenshot "05-error-cdp-$UPLOAD_COUNT"
+    if ! upload_image_via_eval "$img"; then
+      log_error "Eval paste failed for: $img"
+      debug_screenshot "05-error-eval-$UPLOAD_COUNT"
       exit $EXIT_UPLOAD
     fi
 
     UPLOAD_COUNT=$((UPLOAD_COUNT + 1))
     human_delay 2000 4000
-    log_info "Pasted ($UPLOAD_COUNT/${#IMAGES[@]}): $(basename "$img")"
-    debug_screenshot "05-pasted-$UPLOAD_COUNT"
+    log_info "Attached ($UPLOAD_COUNT/${#IMAGES[@]}): $(basename "$img")"
+    debug_screenshot "05-attached-$UPLOAD_COUNT"
   done
 
-  # Verify at least one image actually attached before proceeding
   log_info "Verifying image attachment..."
   if ! verify_image_attached 10; then
-    log_error "Images pasted but not detected in post. Facebook may not have accepted the paste."
+    log_error "Images dispatched but not detected in post."
     debug_screenshot "05-error-not-attached"
     exit $EXIT_UPLOAD
   fi
 
-  debug_screenshot "05-images-attached"
+  debug_screenshot "05-images-verified"
   log_info "All ${#IMAGES[@]} image(s) attached and verified"
 else
   log_info "[5/7] No images (skipped)"

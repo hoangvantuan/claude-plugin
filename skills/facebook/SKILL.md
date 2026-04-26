@@ -14,9 +14,8 @@ allowed-tools:
 
 - **PinchTab** installed và server đang chạy (`pinchtab server &`)
 - Một PinchTab **profile** có Facebook login session (cookies đã lưu từ lần login thủ công trước)
-- Nếu dùng `--image`: cần bật `pinchtab config set security.allowUpload true` và `pinchtab config set security.allowEvaluate true`
-- Upload ảnh dùng CDP native paste (clipboard + Chrome DevTools Protocol). Cần Node.js và module `ws`
-- Nên bật `pinchtab config set security.allowEvaluate true` để script nhập text chính xác (giữ line breaks, ký tự đặc biệt). Nếu tắt, script dùng CLI fallback nhưng có thể cắt nội dung dài
+- Bật `pinchtab config set security.allowEvaluate true` (bắt buộc cho image upload, khuyến khích cho text input)
+- Upload ảnh dùng eval ClipboardEvent + base64 (không cần clipboard, CDP, hay Node.js)
 
 Nếu user chưa login: hướng dẫn start headed instance → login thủ công → reuse profile.
 
@@ -89,7 +88,7 @@ bash scripts/fb-post.sh "Auto" --group tuhoccungai --mode headless --keep-instan
 | `2` | Instance failure (không start được browser, profile sai) |
 | `3` | Element not found (button, textbox, hoặc page không hợp lệ) |
 | `4` | Publish failed (không tìm thấy nút đăng) |
-| `5` | Upload failed (ảnh không upload được, hoặc `security.allowUpload` tắt) |
+| `5` | Upload failed (ảnh không upload được, hoặc `security.allowEvaluate` tắt) |
 
 ## Failure Modes — Lỗi AI hay mắc
 
@@ -98,7 +97,7 @@ bash scripts/fb-post.sh "Auto" --group tuhoccungai --mode headless --keep-instan
 - **Quên `--publish true`** — default là `false` (chỉ soạn), user phải xác nhận trước khi thêm `--publish true`
 - **Tag sai người** — khi có nhiều người trùng tên, dùng `--tag-id` để chính xác
 - **Post content chứa quotes** — wrap content bằng double quotes, escape `"` bên trong nếu cần
-- **Upload ảnh lỗi** — bật cả `security.allowUpload` và `security.allowEvaluate`. Script dùng CDP paste (isTrusted=true), cần Chrome debug port accessible
+- **Upload ảnh lỗi** — bật `security.allowEvaluate`. Script dùng eval ClipboardEvent + base64 inline, không cần clipboard hay Chrome debug port
 - **File ảnh không tồn tại hoặc sai format** — script validate path VÀ magic bytes (JPEG/PNG/GIF/WebP) trước khi mở browser. File .jpg thật ra là HTML sẽ bị bắt ngay
 - **Ảnh upload nhưng không attach** — script paste ảnh trực tiếp vào composer (không qua file picker). Verify bằng blob: URL hoặc nút "Gỡ file" trong 10s. Nếu fail, exit code 5
 - **Browser headed không đóng** — mặc định headless mode. Dùng `--mode headed` nếu cần nhìn browser, thêm `--keep-instance` nếu muốn giữ
