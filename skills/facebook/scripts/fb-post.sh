@@ -205,6 +205,10 @@ snap_find_exact() {
       python3 "$SCRIPT_DIR/snap-helpers.py"
 }
 
+safe_snap() {
+  timeout 10 pinchtab snap --compact=false 2>/dev/null || echo '{"nodes":[]}'
+}
+
 snap_find_button_multi() { snap_find_multi "button" "$1"; }
 snap_find_textbox_multi() { snap_find_multi "textbox" "$1"; }
 
@@ -265,9 +269,8 @@ safe_click() {
   pinchtab press Enter >/dev/null 2>&1
 }
 
-# Insert text via HTTP API — avoids shell escaping that truncates long/special content
-# Uses document.execCommand('insertText') which fires proper React input events
-insert_text_via_api() {
+# Insert single line via HTTP API (no newlines in text)
+insert_line_via_api() {
   local text="$1"
   CONTENT_TEXT="$text" API_BASE="$BASE" API_TOKEN="$TOKEN" python3 << 'PYEOF'
 import os, json, urllib.request
@@ -278,6 +281,27 @@ req = urllib.request.Request(os.environ['API_BASE'] + '/evaluate', data=payload,
     headers={'Content-Type': 'application/json', 'Authorization': 'Bearer ' + os.environ['API_TOKEN']})
 urllib.request.urlopen(req)
 PYEOF
+}
+
+# Insert multiline text: type each line separately, press Enter for paragraph breaks
+# FB Lexical editor ignores \n in insertText but respects Enter key events
+insert_text_multiline() {
+  local text="$1"
+  local first=true
+  while IFS= read -r line || [[ -n "$line" ]]; do
+    if [[ "$first" == "true" ]]; then
+      first=false
+    else
+      pinchtab press Enter >/dev/null 2>&1
+      human_delay 100 300
+    fi
+    if [[ -n "$line" ]]; then
+      insert_line_via_api "$line" 2>/dev/null || {
+        pinchtab type "" "$line" >/dev/null 2>&1 || true
+      }
+      human_delay 50 150
+    fi
+  done <<< "$text"
 }
 
 upload_image_via_api() {
@@ -311,7 +335,7 @@ try:
     data = json.load(sys.stdin)
     if isinstance(data, dict):
         d = data.get('data', data)
-        print('true' if d.get('security', {}).get('allowUpload') else 'false')
+        print('true' if d.get('security.allowUpload') else 'false')
     else: print('unknown')
 except: print('unknown')
 " 2>/dev/null
@@ -325,7 +349,7 @@ try:
     data = json.load(sys.stdin)
     if isinstance(data, dict):
         d = data.get('data', data)
-        print('true' if d.get('security', {}).get('allowEvaluate') else 'false')
+        print('true' if d.get('security.allowEvaluate') else 'false')
     else: print('unknown')
 except: print('unknown')
 " 2>/dev/null
@@ -359,6 +383,7 @@ except: pass
 " 2>/dev/null) || true
   if [[ -n "$tab_id" ]]; then
     pinchtab tab "$tab_id" >/dev/null 2>&1 || true
+    export PINCHTAB_TAB="$tab_id"
     echo "$tab_id"
   fi
 }
@@ -367,16 +392,26 @@ verify_image_attached() {
   local timeout="${1:-5}" elapsed=0
   while [[ $elapsed -lt $timeout ]]; do
     local found
-    found=$(pinchtab snap --compact=false 2>/dev/null \
+    found=$(safe_snap \
       | python3 -c "
 import sys, json
 try:
-    nodes = json.load(sys.stdin).get('nodes', [])
+    data = json.load(sys.stdin)
+    nodes = data.get('nodes', []) if isinstance(data, dict) else []
     for n in nodes:
         name = (n.get('name','') + ' ' + n.get('description','')).lower()
-        if 'blob:' in name or any(k in name for k in ['gỡ','remove','xóa','delete']):
+        role = n.get('role', '')
+        value = n.get('value', '').lower()
+        if 'blob:' in name or 'blob:' in value:
             print('attached'); break
-        if n.get('role') == 'img' and 'blob:' in n.get('value',''):
+        if any(k in name for k in ['gỡ','remove','xóa','delete','loại bỏ']):
+            print('attached'); break
+        if role == 'img' and ('blob:' in value or 'scontent' in value):
+            print('attached'); break
+        if any(k in name for k in ['photo','ảnh','thumbnail','hình ảnh']):
+            if role in ('img','button','link'):
+                print('attached'); break
+        if ('chỉnh sửa' in name and 'ảnh' in name) or ('edit' in name and 'photo' in name):
             print('attached'); break
 except: pass
 " 2>/dev/null) || true
@@ -389,12 +424,36 @@ except: pass
   return 1
 }
 
+upload_image_via_cdp() {
+  local file_path="$1"
+  local ext="${file_path##*.}"
+  local clip_type="JPEG picture"
+  case "${ext,,}" in
+    png) clip_type="PNG picture" ;;
+    jpg|jpeg) clip_type="JPEG picture" ;;
+  esac
+  if ! osascript -e "set the clipboard to (read POSIX file \"$file_path\" as $clip_type)" 2>/dev/null; then
+    return 1
+  fi
+  if ! node "$SCRIPT_DIR/cdp-paste.js" 2>/dev/null; then
+    return 1
+  fi
+  return 0
+}
+
 upload_image_with_fallback() {
   local file_path="$1" selector="$2"
+  # Method 1: CDP native paste (isTrusted=true, best FB acceptance)
+  if upload_image_via_cdp "$file_path" 2>/dev/null; then
+    return 0
+  fi
+  log_warn "CDP paste unavailable, trying PinchTab /upload API"
+  # Method 2: PinchTab setInputFiles
   if upload_image_via_api "$file_path" "$selector" 2>/dev/null; then
     return 0
   fi
   log_warn "PinchTab upload failed, trying DataTransfer JS fallback"
+  # Method 3: DataTransfer JS (isTrusted=false, limited to ~700KB)
   UPLOAD_FILE="$file_path" API_BASE="$BASE" API_TOKEN="$TOKEN" python3 << 'PYEOF'
 import os, json, urllib.request, base64, sys, mimetypes
 
@@ -689,9 +748,9 @@ log_info "[4/7] Typing post content"
 
 pinchtab click "$TXT_POST" >/dev/null 2>&1
 human_delay 400 900
-# HTTP API insertText — bypasses CLI argument parsing that truncates on special chars
-if ! insert_text_via_api "$CONTENT" 2>/dev/null; then
-  log_warn "API insertText failed, falling back to CLI type"
+# Per-line typing: each line via insertText API, Enter between lines for Lexical paragraph breaks
+if ! insert_text_multiline "$CONTENT" 2>/dev/null; then
+  log_warn "Multiline insert failed, falling back to CLI type"
   pinchtab type "$TXT_POST" "$CONTENT" >/dev/null 2>&1
 fi
 human_delay 800 2000
