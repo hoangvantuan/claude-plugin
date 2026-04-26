@@ -383,8 +383,9 @@ nav_new_tab() {
 upload_image_via_eval() {
   local file_path="$1"
   local mime_type="image/jpeg"
-  local ext="${file_path##*.}"
-  case "${ext,,}" in
+  local ext
+  ext=$(printf '%s' "${file_path##*.}" | tr '[:upper:]' '[:lower:]')
+  case "$ext" in
     png) mime_type="image/png" ;;
     gif) mime_type="image/gif" ;;
     webp) mime_type="image/webp" ;;

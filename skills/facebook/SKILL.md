@@ -1,6 +1,6 @@
 ---
 name: facebook
-description: "Đăng bài lên Facebook (wall cá nhân hoặc group) với ảnh đính kèm và tag bạn bè qua PinchTab browser control."
+description: "Đăng bài lên Facebook (wall cá nhân hoặc group) với ảnh đính kèm và tag bạn bè qua PinchTab browser control. Kích hoạt khi user nói đăng Facebook, post FB, chia sẻ lên wall, đăng group. Không dùng cho viết nội dung (dùng social-post) hay browser automation chung (dùng pinchtab)."
 allowed-tools:
   - Bash
   - Read
@@ -8,14 +8,13 @@ allowed-tools:
 
 # Facebook Automation via PinchTab
 
-Đăng bài Facebook (wall/group) + đính kèm ảnh + tag bạn bè qua PinchTab browser control. Script quản lý browser instance với saved profiles (cookies/sessions) nên không cần re-login mỗi lần.
+Đăng bài Facebook (wall/group) + đính kèm ảnh + tag bạn bè qua PinchTab browser control.
 
 ## Prerequisites
 
 - **PinchTab** installed và server đang chạy (`pinchtab server &`)
 - Một PinchTab **profile** có Facebook login session (cookies đã lưu từ lần login thủ công trước)
 - Bật `pinchtab config set security.allowEvaluate true` (bắt buộc cho image upload, khuyến khích cho text input)
-- Upload ảnh dùng eval ClipboardEvent + base64 (không cần clipboard, CDP, hay Node.js)
 
 Nếu user chưa login: hướng dẫn start headed instance → login thủ công → reuse profile.
 
@@ -52,55 +51,39 @@ bash scripts/fb-post.sh --content "<content>" [options]
 
 ```bash
 bash scripts/fb-post.sh "Hello world!"
-bash scripts/fb-post.sh "Hello!" --tag "Hoang Van Tuan" --publish false
-bash scripts/fb-post.sh "Quick update" --user-id 100003782705460 --publish true
-bash scripts/fb-post.sh "Test" --tag "Ngoc" --dry-run
+bash scripts/fb-post.sh "Hello!" --tag "Hoang Van Tuan" --publish true
 ```
 
 ### Post với ảnh đính kèm
 
 ```bash
-# Một ảnh
 bash scripts/fb-post.sh "Check this out!" --image /path/to/photo.jpg --publish true
-
-# Nhiều ảnh
-bash scripts/fb-post.sh "Album mới" --image photo1.jpg --image photo2.png --image photo3.jpg
-
-# Ảnh + tag + group
-bash scripts/fb-post.sh "Ảnh đẹp!" --image sunset.jpg --tag "Ngoc" --group tuhoccungai --publish true
+bash scripts/fb-post.sh "Ảnh đẹp!" --image photo1.jpg --image photo2.jpg --tag "Ngoc" --group tuhoccungai --publish true
 ```
 
 ### Post vào Group
 
 ```bash
-bash scripts/fb-post.sh "Hello group!" --group tuhoccungai --publish false
-bash scripts/fb-post.sh "Nội dung" --group "https://www.facebook.com/groups/tuhoccungai" --publish true
-bash scripts/fb-post.sh "Check this!" --group tuhoccungai --tag "Ngoc" --publish true
-bash scripts/fb-post.sh "Auto" --group tuhoccungai --mode headless --keep-instance --publish true
+bash scripts/fb-post.sh "Hello group!" --group tuhoccungai --publish true
+bash scripts/fb-post.sh "Nội dung" --group "https://www.facebook.com/groups/tuhoccungai" --keep-instance --publish true
 ```
 
-## Exit Codes
+## Exit Codes & Lỗi thường gặp
 
-| Code | Meaning |
-|---|---|
-| `0` | Thành công |
-| `1` | Thiếu hoặc sai arguments |
-| `2` | Instance failure (không start được browser, profile sai) |
-| `3` | Element not found (button, textbox, hoặc page không hợp lệ) |
-| `4` | Publish failed (không tìm thấy nút đăng) |
-| `5` | Upload failed (ảnh không upload được, hoặc `security.allowEvaluate` tắt) |
+| Code | Meaning | Nguyên nhân & cách xử lý |
+|---|---|---|
+| `0` | Thành công | — |
+| `1` | Sai arguments | Thiếu content, `--user-id` nhận vanity URL thay vì numeric ID, file ảnh không tồn tại hoặc sai format (script validate magic bytes trước khi mở browser) |
+| `2` | Instance failure | PinchTab chưa chạy (`pinchtab server &`) hoặc profile không tồn tại |
+| `3` | Element not found | FB UI thay đổi, group URL sai, không có quyền. Dùng `--debug` kiểm tra screenshot |
+| `4` | Publish failed | Nút đăng không tìm thấy |
+| `5` | Upload failed | `security.allowEvaluate` tắt → `pinchtab config set security.allowEvaluate true`. Ảnh dispatch nhưng không attach → verify blob: URL trong 10s |
 
-## Failure Modes — Lỗi AI hay mắc
+**Lỗi AI hay mắc (không báo exit code):**
 
-- **Gọi script khi PinchTab chưa chạy** — luôn kiểm tra `pinchtab server` trước khi gọi fb-post.sh
-- **Dùng vanity URL thay vì numeric ID** — `--user-id` chỉ nhận numeric Facebook ID, không phải username
-- **Quên `--publish true`** — default là `false` (chỉ soạn), user phải xác nhận trước khi thêm `--publish true`
-- **Tag sai người** — khi có nhiều người trùng tên, dùng `--tag-id` để chính xác
-- **Post content chứa quotes** — wrap content bằng double quotes, escape `"` bên trong nếu cần
-- **Upload ảnh lỗi** — bật `security.allowEvaluate`. Script dùng eval ClipboardEvent + base64 inline, không cần clipboard hay Chrome debug port
-- **File ảnh không tồn tại hoặc sai format** — script validate path VÀ magic bytes (JPEG/PNG/GIF/WebP) trước khi mở browser. File .jpg thật ra là HTML sẽ bị bắt ngay
-- **Ảnh upload nhưng không attach** — script paste ảnh trực tiếp vào composer (không qua file picker). Verify bằng blob: URL hoặc nút "Gỡ file" trong 10s. Nếu fail, exit code 5
-- **Browser headed không đóng** — mặc định headless mode. Dùng `--mode headed` nếu cần nhìn browser, thêm `--keep-instance` nếu muốn giữ
+- Quên `--publish true` — default là `false`, user phải xác nhận trước khi thêm
+- Tag sai người — nhiều người trùng tên, dùng `--tag-id` cho chính xác
+- Content chứa quotes — wrap bằng double quotes, escape `"` bên trong
 
 ## Chi tiết kỹ thuật
 
