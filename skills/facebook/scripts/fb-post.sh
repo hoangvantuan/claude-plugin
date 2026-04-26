@@ -89,6 +89,14 @@ else
   POST_MODE="wall"
 fi
 
+# ---- PinchTab connection (needed by dry-run and main flow) ----
+TOKEN=$(PINCHTAB_CONFIG="$HOME/.pinchtab/config.json" python3 -c "
+import json, os
+print(json.load(open(os.environ['PINCHTAB_CONFIG']))['server']['token'])
+")
+BASE="http://localhost:9867"
+AUTH="Authorization: Bearer $TOKEN"
+
 if [[ "$DRY_RUN" == "true" ]]; then
   log_info "[DRY-RUN] Mode enabled — no browser actions will be performed"
   log_info "[DRY-RUN] Post mode: $POST_MODE"
@@ -141,12 +149,6 @@ else
 fi
 
 # ---- Helpers ----
-TOKEN=$(PINCHTAB_CONFIG="$HOME/.pinchtab/config.json" python3 -c "
-import json, os
-print(json.load(open(os.environ['PINCHTAB_CONFIG']))['server']['token'])
-")
-BASE="http://localhost:9867"
-AUTH="Authorization: Bearer $TOKEN"
 
 # ---- Human-like random delay to avoid bot detection ----
 # Usage: human_delay <min_ms> <max_ms>
@@ -173,14 +175,14 @@ debug_screenshot() {
 # Uses stdin pipe instead of env var to avoid OS env size limits on large pages
 snap_find_multi() {
   local role="$1" keywords="$2"
-  pinchtab snap 2>/dev/null \
+  pinchtab snap --compact=false 2>/dev/null \
     | SNAP_ROLE="$role" SNAP_KW="$keywords" SNAP_MODE="multi" \
       python3 "$SCRIPT_DIR/snap-helpers.py"
 }
 
 snap_find_exact() {
   local role="$1" keywords="$2"
-  pinchtab snap 2>/dev/null \
+  pinchtab snap --compact=false 2>/dev/null \
     | SNAP_ROLE="$role" SNAP_KW="$keywords" SNAP_MODE="exact" \
       python3 "$SCRIPT_DIR/snap-helpers.py"
 }
@@ -221,7 +223,7 @@ wait_for_element_exact() {
 
 instance_health_check() {
   local inst_id="$1"
-  timeout 5 pinchtab snap --instance "$inst_id" >/dev/null 2>&1
+  timeout 5 pinchtab snap --compact=false --instance "$inst_id" >/dev/null 2>&1
   return $?
 }
 
@@ -279,12 +281,36 @@ detect_user_profile() {
   pinchtab nav "https://www.facebook.com/me" >/dev/null 2>&1
   sleep 3
   local current_url
-  current_url=$(pinchtab snap 2>/dev/null | python3 -c "
+  current_url=$(pinchtab snap --compact=false 2>/dev/null | python3 -c "
 import sys, json
 data = json.load(sys.stdin)
 print(data.get('url',''))
 " 2>/dev/null) || true
-  echo "$current_url"
+
+  # Try extracting numeric ID from URL (profile.php?id=...) or page JS
+  if [[ "$current_url" == *"profile.php?id="* ]]; then
+    echo "$current_url"
+    return
+  fi
+
+  # Vanity URL: extract numeric ID via JS evaluation
+  local numeric_id
+  numeric_id=$(EVAL_BASE="$BASE" EVAL_TOKEN="$TOKEN" python3 -c "
+import os, json, urllib.request, re
+js = 'document.querySelector(\"meta[property=\\\\\"al:android:url\\\\\"]\")?.content || \"\"'
+payload = json.dumps({'expression': js}).encode()
+req = urllib.request.Request(os.environ['EVAL_BASE'] + '/evaluate', data=payload,
+    headers={'Content-Type': 'application/json', 'Authorization': 'Bearer ' + os.environ['EVAL_TOKEN']})
+resp = urllib.request.urlopen(req).read().decode()
+m = re.search(r'fb://profile/(\d+)', json.loads(resp).get('result',''))
+print(m.group(1) if m else '')
+" 2>/dev/null) || true
+
+  if [[ -n "$numeric_id" ]]; then
+    echo "https://www.facebook.com/profile.php?id=$numeric_id"
+  else
+    echo "$current_url"
+  fi
 }
 
 # ---- Instance lifecycle (fix #9: --keep-instance support) ----
@@ -384,7 +410,7 @@ fi
 # Wait for page to load (fix #8: poll-based instead of fixed sleep)
 TITLE=""
 for i in $(seq 1 15); do
-  TITLE=$(pinchtab snap 2>/dev/null | python3 -c "
+  TITLE=$(pinchtab snap --compact=false 2>/dev/null | python3 -c "
 import sys, json
 nodes = json.load(sys.stdin).get('nodes',[])
 print(nodes[0].get('name','') if nodes else '')
@@ -464,7 +490,7 @@ if [[ -n "$TAG_NAME" ]]; then
       debug_screenshot "05-tag-search-results"
 
       # Fix #5 + #11: use external Python helper, pipe snap data via stdin
-      TAG_REF=$(pinchtab snap 2>/dev/null \
+      TAG_REF=$(pinchtab snap --compact=false 2>/dev/null \
         | TAG_NAME="$TAG_NAME" TAG_ID="$TAG_ID" FRIEND_KW="$KW_FRIEND" \
           python3 "$SCRIPT_DIR/tag-search.py") || true
 

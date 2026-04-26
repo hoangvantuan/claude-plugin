@@ -24,10 +24,10 @@ Nếu user chưa login: hướng dẫn start headed instance → login thủ cô
 
 ```bash
 # Positional syntax
-bash "$(dirname "$0")/scripts/fb-post.sh" "<content>" [options]
+bash scripts/fb-post.sh "<content>" [options]
 
 # Named syntax
-bash "$(dirname "$0")/scripts/fb-post.sh" --content "<content>" [options]
+bash scripts/fb-post.sh --content "<content>" [options]
 ```
 
 **Parameters:**
