@@ -234,6 +234,8 @@ pinchtab fill e5 "data" --humanize
 
 ## 8. JavaScript Extraction
 
+> **Prerequisite**: `security.allowEvaluate` phải bật: `pinchtab config set security.allowEvaluate true`
+
 Extract structured data from pages using JavaScript:
 
 ```bash
@@ -255,6 +257,13 @@ curl -s -X POST "$BASE/evaluate" \
 ---
 
 ## 9. File Download & Upload
+
+> **Prerequisite**: Bật security gates trước khi dùng:
+> ```bash
+> pinchtab config set security.allowDownload true
+> pinchtab config set security.allowUpload true
+> ```
+> Upload limits mặc định: 5 MB/file, 8 file/request, 10 MB tổng.
 
 ```bash
 # Download: navigate to page with file link, then download

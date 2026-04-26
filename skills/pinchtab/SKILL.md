@@ -76,6 +76,20 @@ pinchtab tab tab_XXX                   # switch to tab
 pinchtab tab close tab_XXX             # close tab
 ```
 
+## Security Gates
+
+5 tính năng nhạy cảm bị **tắt mặc định**. Nếu dùng upload, download, eval, macro, hoặc screencast mà bị lỗi, bật gate tương ứng:
+
+```bash
+pinchtab config set security.allowUpload true      # cho pinchtab upload
+pinchtab config set security.allowDownload true     # cho pinchtab download
+pinchtab config set security.allowEvaluate true     # cho pinchtab eval
+pinchtab config set security.allowMacro true        # cho POST /macro
+pinchtab config set security.allowScreencast true   # cho pinchtab screencast
+```
+
+Upload limits mặc định: 5 MB/file, 8 file/request, 10 MB tổng.
+
 ## Error Recovery
 
 Lỗi phổ biến nhất: **stale element refs** (action fail vì trang đã thay đổi).
@@ -87,6 +101,7 @@ Action fail → re-snapshot (pinchtab snap -ic) → retry với ref mới
 | Lỗi | Xử lý |
 |-----|--------|
 | Element ref not found | Re-snapshot, dùng ref mới |
+| Upload/Download/Eval fail | Bật security gate tương ứng (xem mục trên) |
 | Server not running | `pinchtab server &` |
 | Instance won't start | Kiểm tra `pinchtab instances`, stop instance cũ nếu cần |
 | Bot detection | `pinchtab config set chrome.stealth light` + `--humanize` flag |

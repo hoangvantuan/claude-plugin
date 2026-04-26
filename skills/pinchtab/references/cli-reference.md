@@ -87,7 +87,7 @@ pinchtab find "query"          # Semantic element search
   --limit 5                    # Max results
   --threshold 0.7              # Match threshold
 
-pinchtab eval "expression"     # Execute JavaScript in page context
+pinchtab eval "expression"     # Execute JS (requires security.allowEvaluate = true)
 ```
 
 ### Snapshot Flags Combo
@@ -110,8 +110,8 @@ pinchtab pdf                   # Export page as PDF
   --landscape                  # Landscape orientation
   --scale 1.5                  # Scale factor
 
-pinchtab download "selector"   # Download file via link/button
-pinchtab upload "selector" /path/to/file  # Upload file to input
+pinchtab download "selector"   # Download file (requires security.allowDownload = true)
+pinchtab upload "selector" /path/to/file  # Upload file (requires security.allowUpload = true)
 
 pinchtab screencast            # Start WebRTC stream
 ```
@@ -171,6 +171,41 @@ pinchtab security              # Review security posture
 pinchtab security up           # Harden configuration
 pinchtab security down         # Relax restrictions
 ```
+
+### Sensitive Endpoint Gates
+
+5 tính năng nhạy cảm bị **tắt mặc định**. Phải bật thủ công trước khi dùng:
+
+| Key | Mặc định | Ảnh hưởng lệnh |
+|-----|----------|-----------------|
+| `security.allowUpload` | `false` | `pinchtab upload` |
+| `security.allowDownload` | `false` | `pinchtab download` |
+| `security.allowEvaluate` | `false` | `pinchtab eval` |
+| `security.allowMacro` | `false` | `POST /macro` |
+| `security.allowScreencast` | `false` | `pinchtab screencast` |
+
+Bật từng gate:
+
+```bash
+pinchtab config set security.allowUpload true
+pinchtab config set security.allowDownload true
+pinchtab config set security.allowEvaluate true
+```
+
+### Upload Limits
+
+| Key | Mặc định |
+|-----|----------|
+| `security.uploadMaxFileBytes` | 5 MB |
+| `security.uploadMaxFiles` | 8 file/request |
+| `security.uploadMaxTotalBytes` | 10 MB |
+
+### Download Limits
+
+| Key | Mặc định |
+|-----|----------|
+| `security.downloadMaxBytes` | 20 MB |
+| `security.downloadAllowedDomains` | `[]` (tất cả domain) |
 
 ---
 

@@ -205,19 +205,21 @@ Common keys: `Enter`, `Tab`, `Escape`, `Backspace`, `ArrowDown`, `ArrowUp`, `Con
 | GET | `/snapshot` | `?interactive=true&compact=true&format=diff` | Accessibility tree |
 | GET | `/text` | — | Plain text extraction |
 | POST | `/find` | `{"query":"login button","limit":5,"threshold":0.7}` | Semantic element search |
-| POST | `/evaluate` | `{"expression":"document.title"}` | Execute JavaScript |
+| POST | `/evaluate` | `{"expression":"document.title"}` | Execute JavaScript (requires `security.allowEvaluate = true`) |
 
 ---
 
 ## Media & Files
 
-| Method | Endpoint | Purpose |
-|--------|----------|---------|
-| GET | `/screenshot` | Tab screenshot (supports `?quality=95&format=png\|jpeg\|webp`) |
-| GET | `/pdf` | PDF export (supports `?landscape=true&scale=1.5`) |
-| GET | `/download` | File download via browser |
-| POST | `/upload` | File upload (`{"selector":"input[type=file]","filePath":"/path"}`) |
-| GET | `/screencast` | WebRTC stream URL |
+| Method | Endpoint | Purpose | Security Gate |
+|--------|----------|---------|---------------|
+| GET | `/screenshot` | Tab screenshot (`?quality=95&format=png\|jpeg\|webp`) | — |
+| GET | `/pdf` | PDF export (`?landscape=true&scale=1.5`) | — |
+| GET | `/download` | File download via browser | `security.allowDownload` |
+| POST | `/upload` | File upload (`{"selector":"input[type=file]","filePath":"/path"}`) | `security.allowUpload` |
+| GET | `/screencast` | WebRTC stream URL | `security.allowScreencast` |
+
+> **Security gates**: Các endpoint có cột Security Gate bị **tắt mặc định**. Phải bật trong config trước khi gọi, nếu không sẽ trả `ERR_UPLOAD_FAILED` / `ERR_DOWNLOAD_FAILED`.
 
 ---
 
@@ -273,6 +275,26 @@ Common keys: `Enter`, `Tab`, `Escape`, `Backspace`, `ArrowDown`, `ArrowUp`, `Con
   "logging.level": "info"
 }
 ```
+
+### Sensitive Endpoint Gates
+
+5 tính năng nhạy cảm bị **tắt mặc định** (`false`). Bật qua `PUT /api/config` hoặc CLI `pinchtab config set`:
+
+| Key | Ảnh hưởng endpoint |
+|-----|---------------------|
+| `security.allowUpload` | `POST /upload` |
+| `security.allowDownload` | `GET /download` |
+| `security.allowEvaluate` | `POST /evaluate` |
+| `security.allowMacro` | `POST /macro` |
+| `security.allowScreencast` | `GET /screencast` |
+
+Upload limits khi đã bật:
+
+| Key | Mặc định |
+|-----|----------|
+| `security.uploadMaxFileBytes` | 5 MB |
+| `security.uploadMaxFiles` | 8 |
+| `security.uploadMaxTotalBytes` | 10 MB |
 
 ---
 
