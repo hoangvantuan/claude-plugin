@@ -16,6 +16,7 @@ skills/                      # Các skill plugins (chi tiết xem ## Skill Struc
   creative-thought-partner/  # Đối tác tư duy sáng tạo — brainstorming
   deep-insight/              # Quan sát đa chiều → Phân tích tách lớp → Đúc kết cốt lõi để hiểu sâu vấn đề
   deep-learner/              # Dẫn dắt từng bước hiểu sâu bản chất nội dung — 4 lớp hiểu + áp dụng đời sống
+  deep-reader/               # Bộ 10 command phân tích đa chiều: summary, explain, insights, concept map, critique, article, video script, questions, checklist, gap analysis
   facebook/                  # Facebook automation via PinchTab (wall post, attach images, tag friends)
   game-theory-lens/          # Phân tích chủ đề qua lăng kính Lý thuyết Trò chơi (Game Theory)
   ghost-blog/                # Ghost CMS blog management
@@ -78,6 +79,7 @@ skills/<skill-name>/
 | `creative-thought-partner` | —                                                                    | Chỉ có SKILL.md                                                                                                                                                                                                                      |
 | `deep-insight`             | `references/`                                                        | framework-foundation, observation-guide, analysis-patterns, synthesis-methods                                                                                                                                                        |
 | `deep-learner`             | `references/` `templates/`                                           | easy-explain-guide, long-content-strategy, note-structure, output-template                                                                                                                                                           |
+| `deep-reader`              | —                                                                    | Chỉ có SKILL.md. 10 command phân tích đa chiều: summary, explain, insights, map, critique, article, script, questions, checklist, gaps                                                                                               |
 | `facebook`                 | `scripts/` `references/`                                             | fb-post.sh, snap-helpers.py, tag-search.py. Hỗ trợ text + ảnh (multi-image) + tag friends                                                                                                                                           |
 | `game-theory-lens`         | `references/` `templates/`                                           | core-concepts, strategic-games, information-signaling, repeated-games-trust, mechanism-design, evolution-cooperation, bargaining-coalitions, paradoxes-fallacies, analysis-output                                                    |
 | `ghost-blog`               | `scripts/`                                                           | Python scripts + tests cho Ghost CMS API                                                                                                                                                                                             |
