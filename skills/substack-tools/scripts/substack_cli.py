@@ -156,10 +156,11 @@ def resolve_section_id(api: Api, section_name: str) -> int:
 
 
 def apply_section(post: Post, api: Api | None, section_name: str | None) -> None:
-    """Gán section cho post nếu có `--section`.
+    """Gán section cho post payload (dry-run only).
 
+    Substack API bỏ qua draft_section_id khi POST /drafts (tạo mới).
+    Phải dùng PUT /drafts/{id} sau khi tạo draft. Xem _put_section().
     Dry-run: fake draft_section_id để payload có field này khi in ra.
-    Real: match name → id qua endpoint /publication/sections/.
     """
     if not section_name:
         return
@@ -167,6 +168,23 @@ def apply_section(post: Post, api: Api | None, section_name: str | None) -> None
         post.draft_section_id = f"<dry-run:{section_name}>"
         return
     post.draft_section_id = resolve_section_id(api, section_name)
+
+
+def _put_section(api: Api, draft_id: int, section_name: str | None) -> None:
+    """PUT section cho draft đã tạo. Gọi sau post_draft().
+
+    Substack API chỉ nhận draft_section_id qua PUT, không qua POST tạo draft.
+    """
+    if not section_name or api is None:
+        return
+    section_id = resolve_section_id(api, section_name)
+    resp = api._session.put(
+        f"{api.publication_url}/drafts/{draft_id}",
+        json={"draft_section_id": section_id},
+    )
+    if resp.status_code != 200:
+        sys.exit(f"PUT section lỗi {resp.status_code}: {resp.text[:300]}")
+    print(f"Đã gán section {section_name!r} (id={section_id}) cho draft {draft_id}")
 
 
 def build_post(
@@ -232,6 +250,7 @@ def cmd_draft(args: argparse.Namespace) -> None:
         return
 
     result = api.post_draft(payload)
+    _put_section(api, result["id"], args.section)
     print(f"Đã tạo draft id={result.get('id')} title={result.get('draft_title')!r}")
 
 
@@ -292,6 +311,7 @@ def cmd_schedule(args: argparse.Namespace) -> None:
 
     draft = api.post_draft(payload)
     draft_id = draft["id"]
+    _put_section(api, draft_id, args.section)
     _schedule_draft_raw(api, draft_id, dt, args.audience)
     print(f"Đã schedule draft id={draft_id} tại {_format_trigger_at(dt)}")
 
@@ -330,6 +350,7 @@ def cmd_publish(args: argparse.Namespace) -> None:
 
     draft = api.post_draft(payload)
     draft_id = draft["id"]
+    _put_section(api, draft_id, args.section)
     safe_prepublish(api, draft_id)
     api.publish_draft(draft_id, send=args.send, share_automatically=False)
     print(f"Đã publish draft id={draft_id}")
@@ -343,12 +364,20 @@ def cmd_list(args: argparse.Namespace) -> None:
     api = make_api(False)
     # Substack hỗ trợ filter server-side: draft | scheduled | published | None
     server_filter = None if args.filter == "all" else args.filter
-    drafts = api.get_drafts(filter=server_filter, offset=0, limit=args.limit)
+    limit = min(args.limit, 25)  # Substack API reject limit > 25
+    if args.limit > 25:
+        print(f"[warn] limit={args.limit} vượt giới hạn API, dùng limit=25")
+    drafts = api.get_drafts(filter=server_filter, offset=0, limit=limit)
     items = drafts if isinstance(drafts, list) else drafts.get("drafts", drafts)
 
     if not items:
         print(f"Không có bài nào với filter={args.filter}")
         return
+
+    bad = [x for x in items if not isinstance(x, dict)]
+    if bad:
+        print(f"[warn] API trả {len(bad)} item không phải dict, bỏ qua")
+        items = [x for x in items if isinstance(x, dict)]
 
     for d in items:
         schedules = d.get("postSchedules") or []

@@ -38,3 +38,4 @@ sleep 8
 3. **Verify sau batch**: `$PY $SCRIPT list --filter scheduled` — check đúng số lượng. 429 có thể khiến 1-2 bài rơi mà script không nhận ra.
 4. **Delay tối thiểu 8s** giữa mỗi call để giảm xác suất 429.
 5. **Retry tối đa 5 lần**, mỗi lần chờ 60s — đủ cho cooldown rate limit.
+6. **`list --limit` tối đa 25**: Substack API reject limit > 25 với status 400.

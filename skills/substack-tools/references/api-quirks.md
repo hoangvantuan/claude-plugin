@@ -4,13 +4,26 @@
 
 | Endpoint | Ghi chú |
 |---|---|
-| `GET /drafts?filter=draft\|scheduled\|published` | Server-side filter, phải có `offset=0` |
+| `GET /drafts?filter=draft\|scheduled\|published` | Server-side filter, phải có `offset=0`, `limit` tối đa 25 |
+| `POST /drafts` | Tạo draft mới, **bỏ qua `draft_section_id`** trong body. Phải PUT sau |
 | `GET /drafts/{id}/prepublish` | Flaky, random 500 với body rỗng. Script bypass — không ảnh hưởng publish |
 | `POST /drafts/{id}/publish` với `post_date` tương lai | KHÔNG schedule — publish NGAY. Đừng dùng cho schedule |
 | `POST /drafts/{id}/schedule` (python-substack cũ) | 404 — Substack đã bỏ endpoint này |
 | `POST /drafts/{id}/scheduled_release` | Endpoint schedule đúng (mới, capture từ DevTools) |
 | `DELETE /drafts/{id}/scheduled_release` | Unschedule — chuyển về draft |
 | `GET /publication/sections/` | Endpoint sections đúng (python-substack.get_sections() broken) |
+
+## Section: POST bỏ qua, phải PUT
+
+Substack API **bỏ qua** `draft_section_id` trong POST `/drafts` (tạo draft mới). Phải dùng PUT `/drafts/{id}` với body `{"draft_section_id": <id>}` sau khi tạo.
+
+Hai field dễ nhầm trong response:
+- `section_id`: luôn `null` cho draft. Không dùng field này.
+- `draft_section_id`: field thật chứa section đã gán. Dùng field này để verify.
+
+## Limit tối đa 25
+
+`GET /drafts` reject `limit > 25` với status 400. CLI tự cap về 25 và warn.
 
 ## Rate limit
 
