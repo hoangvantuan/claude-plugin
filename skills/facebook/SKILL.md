@@ -1,7 +1,6 @@
 ---
 name: facebook
 description: "Đăng bài lên Facebook (wall cá nhân hoặc group) và tag bạn bè qua PinchTab browser control."
-disable-model-invocation: true
 allowed-tools:
   - Bash
   - Read
