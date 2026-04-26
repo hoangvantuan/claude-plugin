@@ -149,18 +149,6 @@ except: print('unknown')
   exit $EXIT_OK
 fi
 
-# ---- Pre-check: security.allowUpload when images provided ----
-if [[ ${#IMAGES[@]} -gt 0 ]]; then
-  UPLOAD_OK=$(check_upload_permission) || true
-  if [[ "$UPLOAD_OK" == "false" ]]; then
-    log_error "security.allowUpload is disabled. Enable with:"
-    log_error "  pinchtab config set security.allowUpload true"
-    exit $EXIT_UPLOAD
-  elif [[ "$UPLOAD_OK" == "unknown" ]]; then
-    log_warn "Cannot verify upload permission (server not running?). Proceeding anyway."
-  fi
-fi
-
 # ---- Multi-language keywords for Facebook UI elements ----
 KW_CREATE_POST_WALL="nghĩ gì|what's on your mind"
 KW_CREATE_POST_GROUP="viết gì|write something"
@@ -253,8 +241,17 @@ wait_for_element_exact() {
 
 instance_health_check() {
   local inst_id="$1"
-  timeout 5 pinchtab snap --compact=false --instance "$inst_id" >/dev/null 2>&1
-  return $?
+  local status
+  status=$(curl -s --max-time 5 "$BASE/instances/$inst_id" -H "$AUTH" 2>/dev/null \
+    | python3 -c "
+import sys, json
+try:
+    resp = json.load(sys.stdin)
+    d = resp.get('data', resp) if isinstance(resp, dict) else resp
+    print(d.get('status', ''))
+except: pass
+" 2>/dev/null) || true
+  [[ "$status" == "running" ]]
 }
 
 safe_click() {
@@ -318,6 +315,135 @@ try:
     else: print('unknown')
 except: print('unknown')
 " 2>/dev/null
+}
+
+check_evaluate_permission() {
+  curl -s "$BASE/api/config" -H "$AUTH" 2>/dev/null \
+    | python3 -c "
+import sys, json
+try:
+    data = json.load(sys.stdin)
+    if isinstance(data, dict):
+        d = data.get('data', data)
+        print('true' if d.get('security', {}).get('allowEvaluate') else 'false')
+    else: print('unknown')
+except: print('unknown')
+" 2>/dev/null
+}
+
+validate_image_file() {
+  local file="$1"
+  local header
+  header=$(xxd -p -l 4 "$file" 2>/dev/null) || return 1
+  case "$header" in
+    ffd8ff*)   return 0 ;; # JPEG
+    89504e47)  return 0 ;; # PNG
+    47494638)  return 0 ;; # GIF
+    52494646)  return 0 ;; # WebP (RIFF container)
+    *)         return 1 ;;
+  esac
+}
+
+discover_active_tab() {
+  local inst_id="$1"
+  local tab_id
+  tab_id=$(curl -s "$BASE/instances/$inst_id/tabs" -H "$AUTH" 2>/dev/null \
+    | python3 -c "
+import sys, json
+try:
+    resp = json.load(sys.stdin)
+    tabs = resp.get('data', resp) if isinstance(resp, dict) else resp
+    if isinstance(tabs, list) and tabs:
+        print(tabs[0].get('id', ''))
+except: pass
+" 2>/dev/null) || true
+  if [[ -n "$tab_id" ]]; then
+    pinchtab tab "$tab_id" >/dev/null 2>&1 || true
+    echo "$tab_id"
+  fi
+}
+
+verify_image_attached() {
+  local timeout="${1:-5}" elapsed=0
+  while [[ $elapsed -lt $timeout ]]; do
+    local found
+    found=$(pinchtab snap --compact=false 2>/dev/null \
+      | python3 -c "
+import sys, json
+try:
+    nodes = json.load(sys.stdin).get('nodes', [])
+    for n in nodes:
+        name = (n.get('name','') + ' ' + n.get('description','')).lower()
+        if 'blob:' in name or any(k in name for k in ['gỡ','remove','xóa','delete']):
+            print('attached'); break
+        if n.get('role') == 'img' and 'blob:' in n.get('value',''):
+            print('attached'); break
+except: pass
+" 2>/dev/null) || true
+    if [[ "$found" == "attached" ]]; then
+      return 0
+    fi
+    sleep 1
+    elapsed=$((elapsed + 1))
+  done
+  return 1
+}
+
+upload_image_with_fallback() {
+  local file_path="$1" selector="$2"
+  if upload_image_via_api "$file_path" "$selector" 2>/dev/null; then
+    return 0
+  fi
+  log_warn "PinchTab upload failed, trying DataTransfer JS fallback"
+  UPLOAD_FILE="$file_path" API_BASE="$BASE" API_TOKEN="$TOKEN" python3 << 'PYEOF'
+import os, json, urllib.request, base64, sys, mimetypes
+
+file_path = os.environ['UPLOAD_FILE']
+mime = mimetypes.guess_type(file_path)[0] or 'image/jpeg'
+fname = os.path.basename(file_path)
+
+file_size = os.path.getsize(file_path)
+if file_size > 700_000:
+    print('File too large for base64 inline (%d bytes), skipping JS fallback' % file_size, file=sys.stderr)
+    sys.exit(1)
+
+with open(file_path, 'rb') as f:
+    b64 = base64.b64encode(f.read()).decode()
+
+js = '''
+(async () => {
+  const b64 = "%s";
+  const mime = "%s";
+  const fname = "%s";
+  const bin = atob(b64);
+  const arr = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) arr[i] = bin.charCodeAt(i);
+  const file = new File([arr], fname, {type: mime});
+  const dt = new DataTransfer();
+  dt.items.add(file);
+  const inputs = document.querySelectorAll('[aria-label*="bài viết"] input[type=file], [aria-label*="post"] input[type=file], input[type=file]');
+  const input = inputs[0];
+  if (!input) throw new Error("No file input found");
+  input.files = dt.files;
+  input.dispatchEvent(new Event("change", {bubbles: true}));
+  return "ok";
+})()
+''' % (b64, mime, fname)
+
+payload = json.dumps({'expression': js}).encode()
+req = urllib.request.Request(
+    os.environ['API_BASE'] + '/evaluate', data=payload,
+    headers={'Content-Type': 'application/json', 'Authorization': 'Bearer ' + os.environ['API_TOKEN']})
+try:
+    resp = urllib.request.urlopen(req)
+    result = json.loads(resp.read().decode())
+    if result.get('error'):
+        print(result['error'], file=sys.stderr)
+        sys.exit(1)
+except urllib.error.HTTPError as e:
+    print('HTTP %d: %s' % (e.code, e.read().decode()), file=sys.stderr)
+    sys.exit(1)
+PYEOF
 }
 
 # Click with retry (fix #7: verify element appeared, retry up to max_retries)
@@ -423,6 +549,35 @@ except (json.JSONDecodeError, KeyError):
 }
 
 # =============================================================
+# FAIL-FAST: validate inputs before touching browser
+# =============================================================
+if [[ ${#IMAGES[@]} -gt 0 ]]; then
+  for img in "${IMAGES[@]}"; do
+    if ! validate_image_file "$img"; then
+      log_error "Invalid image (not JPEG/PNG/GIF/WebP): $img"
+      log_error "File may be corrupted or wrong format (e.g. HTML saved as .jpg)"
+      exit $EXIT_ARGS
+    fi
+  done
+  log_info "All ${#IMAGES[@]} image(s) validated (magic bytes OK)"
+
+  UPLOAD_OK=$(check_upload_permission) || true
+  if [[ "$UPLOAD_OK" == "false" ]]; then
+    log_error "security.allowUpload is disabled. Enable with:"
+    log_error "  pinchtab config set security.allowUpload true"
+    exit $EXIT_UPLOAD
+  elif [[ "$UPLOAD_OK" == "unknown" ]]; then
+    log_warn "Cannot verify upload permission. Proceeding anyway."
+  fi
+fi
+
+EVAL_OK=$(check_evaluate_permission) || true
+if [[ "$EVAL_OK" == "false" ]]; then
+  log_warn "security.allowEvaluate is disabled. Text input will use CLI fallback (may truncate special chars)."
+  log_warn "For best results: pinchtab config set security.allowEvaluate true"
+fi
+
+# =============================================================
 # STEP 1: Start browser instance with health check
 # =============================================================
 log_info "[1/7] Starting browser with profile: $PROFILE"
@@ -451,6 +606,14 @@ if [[ -n "$EXISTING" ]]; then
   fi
 else
   start_new_instance
+fi
+
+# ---- Tab discovery: prevent stale tab ID from killed instances ----
+TAB_ID=$(discover_active_tab "$INST") || true
+if [[ -n "$TAB_ID" ]]; then
+  log_info "Active tab: $TAB_ID"
+else
+  log_warn "Could not discover active tab, using CLI default"
 fi
 
 # =============================================================
@@ -556,10 +719,13 @@ if [[ ${#IMAGES[@]} -gt 0 ]]; then
   human_delay 1500 2500
   debug_screenshot "05-photo-area-opened"
 
+  # Scoped selector: target file input inside the post dialog, not profile/cover/story inputs
+  UPLOAD_SELECTOR='[role="dialog"] input[type="file"], [aria-label*="bài viết"] input[type="file"], [aria-label*="post" i] input[type="file"], input[type="file"]'
+
   UPLOAD_COUNT=0
   for img in "${IMAGES[@]}"; do
     log_info "Uploading: $(basename "$img")"
-    if ! upload_image_via_api "$img" 'input[type="file"]' 2>/dev/null; then
+    if ! upload_image_with_fallback "$img" "$UPLOAD_SELECTOR"; then
       log_error "Failed to upload: $img"
       debug_screenshot "05-error-upload-$UPLOAD_COUNT"
       exit $EXIT_UPLOAD
@@ -569,8 +735,16 @@ if [[ ${#IMAGES[@]} -gt 0 ]]; then
     log_info "Uploaded ($UPLOAD_COUNT/${#IMAGES[@]}): $(basename "$img")"
   done
 
+  # Verify at least one image actually attached before proceeding
+  log_info "Verifying image attachment..."
+  if ! verify_image_attached 8; then
+    log_error "Images uploaded but not detected in post. Facebook may not have accepted the files."
+    debug_screenshot "05-error-not-attached"
+    exit $EXIT_UPLOAD
+  fi
+
   debug_screenshot "05-images-attached"
-  log_info "All ${#IMAGES[@]} image(s) attached"
+  log_info "All ${#IMAGES[@]} image(s) attached and verified"
 else
   log_info "[5/7] No images (skipped)"
 fi
