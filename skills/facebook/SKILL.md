@@ -44,8 +44,8 @@ bash scripts/fb-post.sh --content "<content>" [options]
 | `--tag` | No | — | Tên hiển thị của bạn bè cần tag |
 | `--tag-id` | No | — | Facebook ID của bạn bè (chính xác hơn search theo tên) |
 | `--publish` | No | `false` | `true` = đăng ngay, `false` = chỉ soạn (user review trước) |
-| `--mode` | No | `headed` | `headed` = hiển thị browser, `headless` = chạy nền |
-| `--debug` | No | `false` | Chụp screenshot mỗi bước vào `/tmp/` |
+| `--mode` | No | `headless` | `headed` = hiển thị browser, `headless` = chạy nền |
+| `--debug` | No | `false` | Chụp screenshot mỗi bước vào `/tmp/` (flag, không cần value: `--debug`) |
 | `--dry-run` | No | — | Log actions mà không mở browser (kiểm tra params) |
 | `--keep-instance` | No | — | Giữ browser instance sau khi xong (dùng cho chain nhiều posts) |
 
@@ -100,8 +100,8 @@ bash scripts/fb-post.sh "Auto" --group tuhoccungai --mode headless --keep-instan
 - **Post content chứa quotes** — wrap content bằng double quotes, escape `"` bên trong nếu cần
 - **Upload ảnh lỗi** — bật cả `security.allowUpload` và `security.allowEvaluate`. Script dùng CDP paste (isTrusted=true), cần Chrome debug port accessible
 - **File ảnh không tồn tại hoặc sai format** — script validate path VÀ magic bytes (JPEG/PNG/GIF/WebP) trước khi mở browser. File .jpg thật ra là HTML sẽ bị bắt ngay
-- **Ảnh upload nhưng không attach** — script verify ảnh thực sự hiện trong post (blob img hoặc nút Gỡ) trước khi publish. Nếu không detect trong 8s sẽ exit code 5
-- **Browser headed không đóng** — mặc định headed mode luôn đóng browser sau khi xong. Dùng `--keep-instance` nếu muốn giữ
+- **Ảnh upload nhưng không attach** — script paste ảnh trực tiếp vào composer (không qua file picker). Verify bằng blob: URL hoặc nút "Gỡ file" trong 10s. Nếu fail, exit code 5
+- **Browser headed không đóng** — mặc định headless mode. Dùng `--mode headed` nếu cần nhìn browser, thêm `--keep-instance` nếu muốn giữ
 
 ## Chi tiết kỹ thuật
 

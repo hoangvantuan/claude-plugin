@@ -33,9 +33,9 @@ Khi `--image` được cung cấp:
 
 1. **Magic byte validation** — kiểm tra 4 byte đầu file: FFD8FF (JPEG), 89504E47 (PNG), 47494638 (GIF), 52494646 (WebP/RIFF). File sai format (vd: HTML lưu thành .jpg) bị reject trước khi mở browser
 2. **Permission check** — verify `security.allowUpload` và `security.allowEvaluate` qua `GET /api/config`. Hỗ trợ cả flat key (`security.allowUpload`) và nested key (`config.security.allowUpload`) cho PinchTab 0.10+. Fail-fast nếu tắt
-3. **Click "Ảnh/Video"** — tìm button bằng keyword multi-language ("ảnh/video", "photo/video"). Fallback: tìm không giới hạn role
-4. **Upload qua CDP paste** — copy ảnh vào macOS clipboard, dùng Chrome DevTools Protocol để dispatch native paste event (isTrusted=true). Chi tiết xem "### CDP Paste Method"
-5. **Post-upload verification** — poll accessibility snapshot tối đa 8s, tìm blob image, nút "Gỡ"/"Remove", hoặc thumbnail/photo indicators. Nếu không detect ảnh thì exit code 5
+3. **Focus composer** — click vào composer textbox (đã mở từ Step 3)
+4. **CDP paste trực tiếp vào composer** — copy ảnh vào macOS clipboard, dùng CDP dispatch native paste (isTrusted=true) vào composer. Không click "Ảnh/Video" button, tránh OS file picker dialog. Chi tiết xem "### CDP Paste Method"
+5. **Post-upload verification** — poll accessibility snapshot tối đa 10s, tìm blob: URL, nút "Gỡ file"/"Remove file", hoặc role=img có blob/scontent URL. Keyword chung (ảnh, photo) bị loại để tránh false positive từ button "Đính kèm một ảnh hoặc video"
 
 ### CDP Paste Method
 
@@ -109,7 +109,7 @@ Nếu instance stale (commands timeout), scripts tự detect và restart. Force-
 
 | Issue | Solution |
 |---|---|
-| "Cannot find button" | Facebook UI có thể đã thay đổi. Dùng `--debug true` và check screenshots + `pinchtab snap`. |
+| "Cannot find button" | Facebook UI có thể đã thay đổi. Dùng `--debug` và check screenshots + `pinchtab snap`. |
 | Session expired | Re-login thủ công ở headed mode để refresh cookies trong profile. |
 | Browser won't start | Đảm bảo `pinchtab server` đang chạy và không có instance conflict. |
 | Stale instance | Script detect qua `/instances/{id}` API (status != running) và restart tự động. |
@@ -118,11 +118,10 @@ Nếu instance stale (commands timeout), scripts tự detect và restart. Force-
 | Bad profile name | Script báo lỗi rõ với exit code 2. Verify profile tồn tại trong PinchTab. |
 | Group not accessible | Script validate group page sớm (exit code 3). Check URL và membership. |
 | Dialog didn't open | Script tự retry click 3 lần. Check `--debug true` screenshots. |
-| Upload failed (exit 5) | Bật `security.allowUpload`: `pinchtab config set security.allowUpload true`. Script thử DataTransfer JS fallback tự động. |
-| Image not attached | Script verify blob img/nút Gỡ trong 8s. Nếu fail: check file format (magic bytes), `allowEvaluate` (cho JS fallback). |
+| Upload failed (exit 5) | Bật `security.allowUpload`: `pinchtab config set security.allowUpload true`. Kiểm tra Chrome debug port. |
+| Image not attached | Script verify blob:/nút "Gỡ file" trong 10s. Nếu fail: check file format (magic bytes), Chrome debug port, `ws` module. |
 | Invalid image format | Script check magic bytes trước khi mở browser. File .jpg thật ra là HTML sẽ bị reject ngay. |
-| Photo/Video button not found | Facebook UI có thể thay đổi. Check `pinchtab snap` cho keyword mới. |
-| Image quá lớn | PinchTab giới hạn 5MB/file. DataTransfer fallback giới hạn ~700KB. Resize ảnh trước khi upload. |
+| CDP paste failed | Kiểm tra Chrome debug port (mặc định 9222), cài `ws` module (`npm i -g ws`), đảm bảo Facebook tab active. |
 | Text bị cắt/mất line breaks | Bật `security.allowEvaluate`: `pinchtab config set security.allowEvaluate true`. |
 
 ## Known Limitations (PinchTab)

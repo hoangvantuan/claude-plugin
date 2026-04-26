@@ -44,7 +44,7 @@ TAG_NAME=""
 TAG_ID=""
 IMAGES=()
 PUBLISH="false"
-MODE="headed"
+MODE="headless"
 DEBUG="false"
 DRY_RUN="false"
 KEEP_INSTANCE="false"
@@ -68,7 +68,12 @@ while [[ $# -gt 0 ]]; do
     --image)          IMAGES+=("$2");      shift 2 ;;
     --publish)        PUBLISH="$2";        shift 2 ;;
     --mode)           MODE="$2";           shift 2 ;;
-    --debug)          DEBUG="$2";          shift 2 ;;
+    --debug)
+      if [[ $# -ge 2 && "${2:0:2}" != "--" ]]; then
+        DEBUG="$2"; shift 2
+      else
+        DEBUG="true"; shift
+      fi ;;
     --dry-run)        DRY_RUN="true";      shift ;;
     --keep-instance)  KEEP_INSTANCE="true"; shift ;;
     *) log_error "Unknown option: $1"; exit $EXIT_ARGS ;;
@@ -158,8 +163,6 @@ KW_SEARCH="tìm kiếm|search"
 KW_DONE="xong|done"
 KW_PUBLISH="đăng|post"
 KW_FRIEND="bạn bè|friend"
-KW_PHOTO_VIDEO="ảnh/video|photo/video|thêm ảnh|add photo"
-
 if [[ "$POST_MODE" == "group" ]]; then
   KW_CREATE_POST="$KW_CREATE_POST_GROUP"
 else
@@ -387,17 +390,21 @@ try:
         name = (n.get('name','') + ' ' + n.get('description','')).lower()
         role = n.get('role', '')
         value = n.get('value', '').lower()
+        # Signal 1: blob: URL in name or value (actual image preview)
         if 'blob:' in name or 'blob:' in value:
             print('attached'); break
-        if any(k in name for k in ['gỡ','remove','xóa','delete','loại bỏ']):
+        # Signal 2: removal button (only exists when image is attached)
+        if role == 'button' and any(k in name for k in ['gỡ file','remove file','gỡ ảnh','remove photo']):
             print('attached'); break
+        # Signal 3: img element with blob or scontent URL (uploaded image thumbnail)
         if role == 'img' and ('blob:' in value or 'scontent' in value):
             print('attached'); break
-        if any(k in name for k in ['photo','ảnh','thumbnail','hình ảnh']):
-            if role in ('img','button','link'):
+        # Signal 4: edit-photo button (only appears after image attached)
+        if role == 'button':
+            if ('chỉnh sửa' in name and ('ảnh' in name or 'tất cả' in name)):
                 print('attached'); break
-        if ('chỉnh sửa' in name and 'ảnh' in name) or ('edit' in name and 'photo' in name):
-            print('attached'); break
+            if ('edit' in name and ('photo' in name or 'all' in name)):
+                print('attached'); break
 except: pass
 " 2>/dev/null) || true
     if [[ "$found" == "attached" ]]; then
@@ -409,31 +416,6 @@ except: pass
   return 1
 }
 
-upload_image_via_cdp() {
-  local file_path="$1"
-  local ext="${file_path##*.}"
-  local clip_type="JPEG picture"
-  case "${ext,,}" in
-    png) clip_type="PNG picture" ;;
-    jpg|jpeg) clip_type="JPEG picture" ;;
-  esac
-  if ! osascript -e "set the clipboard to (read POSIX file \"$file_path\" as $clip_type)" 2>/dev/null; then
-    return 1
-  fi
-  if ! node "$SCRIPT_DIR/cdp-paste.js" 2>/dev/null; then
-    return 1
-  fi
-  return 0
-}
-
-upload_image_with_fallback() {
-  local file_path="$1" selector="$2"
-  if upload_image_via_cdp "$file_path" 2>/dev/null; then
-    return 0
-  fi
-  log_error "CDP paste failed. Ensure Chrome debug port is accessible and Node.js + ws module installed."
-  return 1
-}
 
 # Click with retry (fix #7: verify element appeared, retry up to max_retries)
 click_and_verify() {
@@ -694,43 +676,48 @@ debug_screenshot "04-content-entered"
 # STEP 5: Attach images (optional)
 # =============================================================
 if [[ ${#IMAGES[@]} -gt 0 ]]; then
-  log_info "[5/7] Attaching ${#IMAGES[@]} image(s)"
+  log_info "[5/7] Attaching ${#IMAGES[@]} image(s) via composer paste"
 
-  BTN_PHOTO=$(wait_for_element_multi "button" "$KW_PHOTO_VIDEO" 10) || true
-  if [[ -z "$BTN_PHOTO" ]]; then
-    BTN_PHOTO=$(wait_for_element_multi "" "$KW_PHOTO_VIDEO" 5) || true
-  fi
-
-  if [[ -z "$BTN_PHOTO" ]]; then
-    log_error "Cannot find Photo/Video button."
-    debug_screenshot "05-error-no-photo-btn"
-    exit $EXIT_ELEMENT
-  fi
-
-  pinchtab click "$BTN_PHOTO" >/dev/null 2>&1
-  human_delay 1500 2500
-  debug_screenshot "05-photo-area-opened"
-
-  # Scoped selector: target file input inside the post dialog, not profile/cover/story inputs
-  UPLOAD_SELECTOR='[role="dialog"] input[type="file"], [aria-label*="bài viết"] input[type="file"], [aria-label*="post" i] input[type="file"], input[type="file"]'
+  # Focus composer textbox (already identified in Step 3)
+  pinchtab click "$TXT_POST" >/dev/null 2>&1
+  human_delay 500 1000
 
   UPLOAD_COUNT=0
   for img in "${IMAGES[@]}"; do
-    log_info "Uploading: $(basename "$img")"
-    if ! upload_image_with_fallback "$img" "$UPLOAD_SELECTOR"; then
-      log_error "Failed to upload: $img"
-      debug_screenshot "05-error-upload-$UPLOAD_COUNT"
+    log_info "Pasting image: $(basename "$img")"
+
+    # Copy image to macOS clipboard
+    ext="${img##*.}"
+    clip_type="JPEG picture"
+    case "${ext,,}" in
+      png) clip_type="PNG picture" ;;
+      jpg|jpeg) clip_type="JPEG picture" ;;
+    esac
+
+    if ! osascript -e "set the clipboard to (read POSIX file \"$img\" as $clip_type)" 2>/dev/null; then
+      log_error "Cannot copy image to clipboard: $img"
+      debug_screenshot "05-error-clipboard-$UPLOAD_COUNT"
       exit $EXIT_UPLOAD
     fi
+
+    # CDP paste into focused composer (isTrusted=true, no file picker)
+    if ! node "$SCRIPT_DIR/cdp-paste.js" 2>/dev/null; then
+      log_error "CDP paste failed for: $img"
+      log_error "Ensure Chrome debug port is accessible and ws module installed."
+      debug_screenshot "05-error-cdp-$UPLOAD_COUNT"
+      exit $EXIT_UPLOAD
+    fi
+
     UPLOAD_COUNT=$((UPLOAD_COUNT + 1))
     human_delay 2000 4000
-    log_info "Uploaded ($UPLOAD_COUNT/${#IMAGES[@]}): $(basename "$img")"
+    log_info "Pasted ($UPLOAD_COUNT/${#IMAGES[@]}): $(basename "$img")"
+    debug_screenshot "05-pasted-$UPLOAD_COUNT"
   done
 
   # Verify at least one image actually attached before proceeding
   log_info "Verifying image attachment..."
-  if ! verify_image_attached 8; then
-    log_error "Images uploaded but not detected in post. Facebook may not have accepted the files."
+  if ! verify_image_attached 10; then
+    log_error "Images pasted but not detected in post. Facebook may not have accepted the paste."
     debug_screenshot "05-error-not-attached"
     exit $EXIT_UPLOAD
   fi
