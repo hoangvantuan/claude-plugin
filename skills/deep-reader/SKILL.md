@@ -5,6 +5,7 @@ description: >
   Dùng skill này khi user muốn: tìm hiểu sâu tài liệu, tóm tắt nội dung, phân tích đa chiều, trích insight, phản biện, chuyển nội dung thành bài viết hoặc video script, tạo câu hỏi nghiên cứu, tạo checklist hành động, tìm lỗ hổng.
   Kể cả khi user chỉ nói "phân tích tài liệu này", "tóm tắt giúp mình", "giải thích nội dung này", "đào sâu bài này", "tạo insight", "chuyển thành bài viết", "tạo script video", "tìm lỗ hổng".
   Hỗ trợ input text trực tiếp, file (PDF/DOCX/TXT/MD), và URL.
+disable-model-invocation: true
 ---
 
 # Deep Reader
@@ -33,7 +34,6 @@ Nếu không chỉ định command, hiển thị bảng command bên dưới và
 | `questions` | `q`     | 10 câu hỏi nghiên cứu sâu               |
 | `checklist` | `check` | Checklist hành động ưu tiên             |
 | `gaps`      | `gap`   | Phát hiện lỗ hổng & mở rộng             |
-
 
 ## Xử lý input
 
