@@ -1,6 +1,6 @@
 ---
 name: facebook
-description: "Đăng bài lên Facebook (wall cá nhân hoặc group) và tag bạn bè qua PinchTab browser control."
+description: "Đăng bài lên Facebook (wall cá nhân hoặc group) với ảnh đính kèm và tag bạn bè qua PinchTab browser control."
 allowed-tools:
   - Bash
   - Read
@@ -8,12 +8,13 @@ allowed-tools:
 
 # Facebook Automation via PinchTab
 
-Đăng bài Facebook (wall/group) + tag bạn bè qua PinchTab browser control. Script quản lý browser instance với saved profiles (cookies/sessions) nên không cần re-login mỗi lần.
+Đăng bài Facebook (wall/group) + đính kèm ảnh + tag bạn bè qua PinchTab browser control. Script quản lý browser instance với saved profiles (cookies/sessions) nên không cần re-login mỗi lần.
 
 ## Prerequisites
 
 - **PinchTab** installed và server đang chạy (`pinchtab server &`)
 - Một PinchTab **profile** có Facebook login session (cookies đã lưu từ lần login thủ công trước)
+- Nếu dùng `--image`: cần bật `pinchtab config set security.allowUpload true`
 
 Nếu user chưa login: hướng dẫn start headed instance → login thủ công → reuse profile.
 
@@ -37,6 +38,7 @@ bash scripts/fb-post.sh --content "<content>" [options]
 | `--profile` | No | `default` | PinchTab profile name |
 | `--user-id` | No | auto | Facebook numeric ID (wall mode) |
 | `--group` | No | — | Group slug hoặc full URL → post vào group thay vì wall |
+| `--image` | No | — | Đường dẫn ảnh đính kèm (dùng nhiều lần cho nhiều ảnh, tối đa 8) |
 | `--tag` | No | — | Tên hiển thị của bạn bè cần tag |
 | `--tag-id` | No | — | Facebook ID của bạn bè (chính xác hơn search theo tên) |
 | `--publish` | No | `false` | `true` = đăng ngay, `false` = chỉ soạn (user review trước) |
@@ -52,6 +54,19 @@ bash scripts/fb-post.sh "Hello world!"
 bash scripts/fb-post.sh "Hello!" --tag "Hoang Van Tuan" --publish false
 bash scripts/fb-post.sh "Quick update" --user-id 100003782705460 --publish true
 bash scripts/fb-post.sh "Test" --tag "Ngoc" --dry-run
+```
+
+### Post với ảnh đính kèm
+
+```bash
+# Một ảnh
+bash scripts/fb-post.sh "Check this out!" --image /path/to/photo.jpg --publish true
+
+# Nhiều ảnh
+bash scripts/fb-post.sh "Album mới" --image photo1.jpg --image photo2.png --image photo3.jpg
+
+# Ảnh + tag + group
+bash scripts/fb-post.sh "Ảnh đẹp!" --image sunset.jpg --tag "Ngoc" --group tuhoccungai --publish true
 ```
 
 ### Post vào Group
@@ -72,6 +87,7 @@ bash scripts/fb-post.sh "Auto" --group tuhoccungai --mode headless --keep-instan
 | `2` | Instance failure (không start được browser, profile sai) |
 | `3` | Element not found (button, textbox, hoặc page không hợp lệ) |
 | `4` | Publish failed (không tìm thấy nút đăng) |
+| `5` | Upload failed (ảnh không upload được, hoặc `security.allowUpload` tắt) |
 
 ## Failure Modes — Lỗi AI hay mắc
 
@@ -80,6 +96,9 @@ bash scripts/fb-post.sh "Auto" --group tuhoccungai --mode headless --keep-instan
 - **Quên `--publish true`** — default là `false` (chỉ soạn), user phải xác nhận trước khi thêm `--publish true`
 - **Tag sai người** — khi có nhiều người trùng tên, dùng `--tag-id` để chính xác
 - **Post content chứa quotes** — wrap content bằng double quotes, escape `"` bên trong nếu cần
+- **Upload ảnh lỗi ERR_UPLOAD_FAILED** — cần bật `pinchtab config set security.allowUpload true` trước khi dùng `--image`
+- **File ảnh không tồn tại** — script validate path trước khi mở browser, dùng đường dẫn tuyệt đối cho chắc
+- **Ảnh quá lớn** — PinchTab giới hạn 5MB/file, tối đa 8 file, tổng 10MB
 
 ## Chi tiết kỹ thuật
 

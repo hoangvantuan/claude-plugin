@@ -11,8 +11,9 @@ Script dùng PinchTab accessibility snapshot để tìm UI elements theo role v�
 3. **Validate page** — group mode kiểm tra create-post button tồn tại (early error nếu URL sai hoặc không có quyền)
 4. **Open post dialog** — click button với retry logic: verify textbox xuất hiện, retry tối đa 3 lần
 5. **Type content** — dùng HTTP API `/evaluate` + `document.execCommand('insertText')` để giữ line breaks và tránh CLI cắt nội dung chứa ký tự đặc biệt
-6. **Tag friend** (optional) — mở tag dialog, search theo tên, chọn bằng keyboard (ArrowDown + Enter); dùng `--tag-id` cho precise match, ưu tiên "Bạn bè" (friends)
-7. **Publish or hold** — dùng **exact match** cho nút "Đăng"/"Post" để tránh click nhầm "Đăng ẩn danh"
+6. **Attach images** (optional) — click "Ảnh/Video" button, upload từng file qua PinchTab `/upload` API
+7. **Tag friend** (optional) — mở tag dialog, search theo tên, chọn bằng keyboard (ArrowDown + Enter); dùng `--tag-id` cho precise match, ưu tiên "Bạn bè" (friends)
+8. **Publish or hold** — dùng **exact match** cho nút "Đăng"/"Post" để tránh click nhầm "Đăng ẩn danh"
 
 ### Wall vs Group — Điểm khác biệt chính
 
@@ -23,6 +24,21 @@ Script dùng PinchTab accessibility snapshot để tìm UI elements theo role v�
 | Page validation | Không | Kiểm tra create-post button tồn tại |
 
 Các bước còn lại (textbox, tagging, publish) hoạt động giống nhau.
+
+### Image Upload Flow
+
+Khi `--image` được cung cấp:
+
+1. **Pre-check** — validate file tồn tại, resolve đường dẫn tuyệt đối, kiểm tra `security.allowUpload` qua PinchTab config API
+2. **Click "Ảnh/Video"** — tìm button bằng keyword multi-language ("ảnh/video", "photo/video"). Fallback: tìm không giới hạn role
+3. **Upload từng file** — gọi PinchTab HTTP API `POST /upload` với selector `input[type="file"]` và đường dẫn file. Mỗi file upload riêng lẻ với delay 2-4 giây cho Facebook xử lý
+4. **Retry logic** — nếu upload fail, script dừng ngay (exit code 5) thay vì tiếp tục
+
+Giới hạn PinchTab: 5MB/file, tối đa 8 file/request, tổng 10MB. Bật quyền upload:
+
+```bash
+pinchtab config set security.allowUpload true
+```
 
 ## Instance Lifecycle
 
@@ -59,3 +75,6 @@ Nếu instance stale (commands timeout), scripts tự detect và restart. Force-
 | Bad profile name | Script báo lỗi rõ với exit code 2. Verify profile tồn tại trong PinchTab. |
 | Group not accessible | Script validate group page sớm (exit code 3). Check URL và membership. |
 | Dialog didn't open | Script tự retry click 3 lần. Check `--debug true` screenshots. |
+| Upload failed (exit 5) | Bật `security.allowUpload`: `pinchtab config set security.allowUpload true` |
+| Photo/Video button not found | Facebook UI có thể thay đổi. Check `pinchtab snap` cho keyword mới. |
+| Image quá lớn | PinchTab giới hạn 5MB/file. Resize ảnh trước khi upload. |

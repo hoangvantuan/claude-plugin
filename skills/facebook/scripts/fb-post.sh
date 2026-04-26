@@ -1,6 +1,6 @@
 #!/bin/bash
 # =============================================================
-# Facebook Post (Wall / Group) + Tag User via PinchTab
+# Facebook Post (Wall / Group) + Images + Tag User via PinchTab
 # =============================================================
 # Usage (positional):
 #   fb-post.sh <content> [options]
@@ -12,6 +12,8 @@
 #   fb-post.sh "Hello world!"
 #   fb-post.sh "Hello group!" --group tuhoccungai --publish true
 #   fb-post.sh "Tag post" --tag "Ngoc" --tag-id 12345 --publish false
+#   fb-post.sh "With photo" --image photo.jpg --publish true
+#   fb-post.sh "Album" --image a.jpg --image b.jpg --image c.jpg
 # =============================================================
 
 set -uo pipefail
@@ -22,6 +24,7 @@ EXIT_ARGS=1
 EXIT_INSTANCE=2
 EXIT_ELEMENT=3
 EXIT_PUBLISH=4
+EXIT_UPLOAD=5
 
 # ---- Structured logging (architecture C) ----
 log() {
@@ -39,6 +42,7 @@ GROUP=""
 CONTENT=""
 TAG_NAME=""
 TAG_ID=""
+IMAGES=()
 PUBLISH="false"
 MODE="headed"
 DEBUG="false"
@@ -61,6 +65,7 @@ while [[ $# -gt 0 ]]; do
     --content)        CONTENT="$2";        shift 2 ;;
     --tag)            TAG_NAME="$2";       shift 2 ;;
     --tag-id)         TAG_ID="$2";         shift 2 ;;
+    --image)          IMAGES+=("$2");      shift 2 ;;
     --publish)        PUBLISH="$2";        shift 2 ;;
     --mode)           MODE="$2";           shift 2 ;;
     --debug)          DEBUG="$2";          shift 2 ;;
@@ -75,6 +80,17 @@ if [[ -z "$CONTENT" ]]; then
   echo "Usage: fb-post.sh <content> [options]"
   echo "       fb-post.sh --content <content> [options]"
   exit $EXIT_ARGS
+fi
+
+# Validate and resolve image paths
+if [[ ${#IMAGES[@]} -gt 0 ]]; then
+  for i in "${!IMAGES[@]}"; do
+    IMAGES[$i]=$(python3 -c "import os,sys; print(os.path.abspath(sys.argv[1]))" "${IMAGES[$i]}")
+    if [[ ! -f "${IMAGES[$i]}" ]]; then
+      log_error "Image file not found: ${IMAGES[$i]}"
+      exit $EXIT_ARGS
+    fi
+  done
 fi
 
 # Determine posting mode: group or wall
@@ -101,6 +117,7 @@ if [[ "$DRY_RUN" == "true" ]]; then
   log_info "[DRY-RUN] Mode enabled — no browser actions will be performed"
   log_info "[DRY-RUN] Post mode: $POST_MODE"
   log_info "[DRY-RUN] Content: ${CONTENT:0:80}..."
+  [[ ${#IMAGES[@]} -gt 0 ]] && log_info "[DRY-RUN] Images: ${IMAGES[*]}"
   [[ -n "$TAG_NAME" ]] && log_info "[DRY-RUN] Tag: $TAG_NAME (ID: ${TAG_ID:-none})"
   [[ -n "$GROUP" ]] && log_info "[DRY-RUN] Group: ${GROUP_URL:-$GROUP}"
   log_info "[DRY-RUN] Publish: $PUBLISH"
@@ -132,6 +149,18 @@ except: print('unknown')
   exit $EXIT_OK
 fi
 
+# ---- Pre-check: security.allowUpload when images provided ----
+if [[ ${#IMAGES[@]} -gt 0 ]]; then
+  UPLOAD_OK=$(check_upload_permission) || true
+  if [[ "$UPLOAD_OK" == "false" ]]; then
+    log_error "security.allowUpload is disabled. Enable with:"
+    log_error "  pinchtab config set security.allowUpload true"
+    exit $EXIT_UPLOAD
+  elif [[ "$UPLOAD_OK" == "unknown" ]]; then
+    log_warn "Cannot verify upload permission (server not running?). Proceeding anyway."
+  fi
+fi
+
 # ---- Multi-language keywords for Facebook UI elements ----
 KW_CREATE_POST_WALL="nghĩ gì|what's on your mind"
 KW_CREATE_POST_GROUP="viết gì|write something"
@@ -141,6 +170,7 @@ KW_SEARCH="tìm kiếm|search"
 KW_DONE="xong|done"
 KW_PUBLISH="đăng|post"
 KW_FRIEND="bạn bè|friend"
+KW_PHOTO_VIDEO="ảnh/video|photo/video|thêm ảnh|add photo"
 
 if [[ "$POST_MODE" == "group" ]]; then
   KW_CREATE_POST="$KW_CREATE_POST_GROUP"
@@ -253,6 +283,43 @@ urllib.request.urlopen(req)
 PYEOF
 }
 
+upload_image_via_api() {
+  local file_path="$1" selector="${2:-input[type=file]}"
+  UPLOAD_FILE="$file_path" UPLOAD_SELECTOR="$selector" API_BASE="$BASE" API_TOKEN="$TOKEN" python3 << 'PYEOF'
+import os, json, urllib.request, sys
+payload = json.dumps({
+    'selector': os.environ['UPLOAD_SELECTOR'],
+    'filePath': os.environ['UPLOAD_FILE']
+}).encode()
+req = urllib.request.Request(os.environ['API_BASE'] + '/upload', data=payload,
+    headers={'Content-Type': 'application/json', 'Authorization': 'Bearer ' + os.environ['API_TOKEN']})
+try:
+    resp = urllib.request.urlopen(req)
+    result = json.loads(resp.read().decode())
+    if not result.get('success'):
+        print(result.get('error', 'Upload failed'), file=sys.stderr)
+        sys.exit(1)
+except urllib.error.HTTPError as e:
+    body = e.read().decode()
+    print('HTTP %d: %s' % (e.code, body), file=sys.stderr)
+    sys.exit(1)
+PYEOF
+}
+
+check_upload_permission() {
+  curl -s "$BASE/api/config" -H "$AUTH" 2>/dev/null \
+    | python3 -c "
+import sys, json
+try:
+    data = json.load(sys.stdin)
+    if isinstance(data, dict):
+        d = data.get('data', data)
+        print('true' if d.get('security', {}).get('allowUpload') else 'false')
+    else: print('unknown')
+except: print('unknown')
+" 2>/dev/null
+}
+
 # Click with retry (fix #7: verify element appeared, retry up to max_retries)
 click_and_verify() {
   local click_ref="$1" verify_role="$2" verify_kw="$3"
@@ -358,7 +425,7 @@ except (json.JSONDecodeError, KeyError):
 # =============================================================
 # STEP 1: Start browser instance with health check
 # =============================================================
-log_info "[1/6] Starting browser with profile: $PROFILE"
+log_info "[1/7] Starting browser with profile: $PROFILE"
 
 # Fix #5: use env vars for Python inline
 EXISTING=$(curl -s "$BASE/instances" -H "$AUTH" 2>/dev/null \
@@ -390,10 +457,10 @@ fi
 # STEP 2: Navigate to target (wall or group)
 # =============================================================
 if [[ "$POST_MODE" == "group" ]]; then
-  log_info "[2/6] Opening group: $GROUP_URL"
+  log_info "[2/7] Opening group: $GROUP_URL"
   pinchtab nav "$GROUP_URL" >/dev/null 2>&1
 else
-  log_info "[2/6] Opening profile page"
+  log_info "[2/7] Opening profile page"
   if [[ -n "$USER_ID" ]]; then
     pinchtab nav "https://www.facebook.com/profile.php?id=$USER_ID" >/dev/null 2>&1
   else
@@ -434,7 +501,7 @@ fi
 # =============================================================
 # STEP 3: Open "Create post" dialog (fix #7: click with retry)
 # =============================================================
-log_info "[3/6] Opening create post dialog"
+log_info "[3/7] Opening create post dialog"
 
 BTN_CREATE=$(wait_for_element_multi "button" "$KW_CREATE_POST" 10) || true
 if [[ -z "$BTN_CREATE" ]]; then
@@ -455,7 +522,7 @@ debug_screenshot "03-post-dialog"
 # =============================================================
 # STEP 4: Type post content
 # =============================================================
-log_info "[4/6] Typing post content"
+log_info "[4/7] Typing post content"
 
 pinchtab click "$TXT_POST" >/dev/null 2>&1
 human_delay 400 900
@@ -469,10 +536,50 @@ log_info "Content entered (${#CONTENT} chars)"
 debug_screenshot "04-content-entered"
 
 # =============================================================
-# STEP 5: Tag user (optional)
+# STEP 5: Attach images (optional)
+# =============================================================
+if [[ ${#IMAGES[@]} -gt 0 ]]; then
+  log_info "[5/7] Attaching ${#IMAGES[@]} image(s)"
+
+  BTN_PHOTO=$(wait_for_element_multi "button" "$KW_PHOTO_VIDEO" 10) || true
+  if [[ -z "$BTN_PHOTO" ]]; then
+    BTN_PHOTO=$(wait_for_element_multi "" "$KW_PHOTO_VIDEO" 5) || true
+  fi
+
+  if [[ -z "$BTN_PHOTO" ]]; then
+    log_error "Cannot find Photo/Video button."
+    debug_screenshot "05-error-no-photo-btn"
+    exit $EXIT_ELEMENT
+  fi
+
+  pinchtab click "$BTN_PHOTO" >/dev/null 2>&1
+  human_delay 1500 2500
+  debug_screenshot "05-photo-area-opened"
+
+  UPLOAD_COUNT=0
+  for img in "${IMAGES[@]}"; do
+    log_info "Uploading: $(basename "$img")"
+    if ! upload_image_via_api "$img" 'input[type="file"]' 2>/dev/null; then
+      log_error "Failed to upload: $img"
+      debug_screenshot "05-error-upload-$UPLOAD_COUNT"
+      exit $EXIT_UPLOAD
+    fi
+    UPLOAD_COUNT=$((UPLOAD_COUNT + 1))
+    human_delay 2000 4000
+    log_info "Uploaded ($UPLOAD_COUNT/${#IMAGES[@]}): $(basename "$img")"
+  done
+
+  debug_screenshot "05-images-attached"
+  log_info "All ${#IMAGES[@]} image(s) attached"
+else
+  log_info "[5/7] No images (skipped)"
+fi
+
+# =============================================================
+# STEP 6: Tag user (optional)
 # =============================================================
 if [[ -n "$TAG_NAME" ]]; then
-  log_info "[5/6] Tagging: $TAG_NAME"
+  log_info "[6/7] Tagging: $TAG_NAME"
 
   BTN_TAG=$(wait_for_element_multi "button" "$KW_TAG_OTHERS" 10) || true
   if [[ -z "$BTN_TAG" ]]; then
@@ -487,7 +594,7 @@ if [[ -n "$TAG_NAME" ]]; then
 
       # Wait for search results to populate (Facebook AJAX)
       human_delay 1500 3000
-      debug_screenshot "05-tag-search-results"
+      debug_screenshot "06-tag-search-results"
 
       # Fix #5 + #11: use external Python helper, pipe snap data via stdin
       TAG_REF=$(pinchtab snap --compact=false 2>/dev/null \
@@ -516,29 +623,29 @@ if [[ -n "$TAG_NAME" ]]; then
     fi
   fi
 else
-  log_info "[5/6] No tagging (skipped)"
+  log_info "[6/7] No tagging (skipped)"
 fi
 
 # =============================================================
-# STEP 6: Publish or hold (exit code D)
+# STEP 7: Publish or hold
 # =============================================================
 if [[ "$PUBLISH" == "true" ]]; then
-  log_info "[6/6] Publishing..."
+  log_info "[7/7] Publishing..."
   BTN_POST=$(wait_for_element_exact "button" "$KW_PUBLISH" 5) || true
   if [[ -n "$BTN_POST" ]]; then
     pinchtab click "$BTN_POST" >/dev/null 2>&1
     human_delay 2000 4000
     log_info "Post published!"
-    debug_screenshot "06-published"
+    debug_screenshot "07-published"
   else
     log_error "Publish button not found"
-    debug_screenshot "06-error-no-publish"
+    debug_screenshot "07-error-no-publish"
     exit $EXIT_PUBLISH
   fi
 else
-  log_info "[6/6] Post ready, NOT PUBLISHED."
+  log_info "[7/7] Post ready, NOT PUBLISHED."
   log_info "Open browser and click 'Post' when ready."
-  debug_screenshot "06-ready"
+  debug_screenshot "07-ready"
 fi
 
 if [[ "$DEBUG" == "true" ]]; then
