@@ -32,22 +32,14 @@ Các bước còn lại (textbox, tagging, publish) hoạt động giống nhau.
 Khi `--image` được cung cấp:
 
 1. **Magic byte validation** — kiểm tra 4 byte đầu file: FFD8FF (JPEG), 89504E47 (PNG), 47494638 (GIF), 52494646 (WebP/RIFF). File sai format (vd: HTML lưu thành .jpg) bị reject trước khi mở browser
-2. **Permission check** — verify `security.allowUpload` qua `GET /api/config` (flat dot-notation key: `security.allowUpload`). Fail-fast nếu tắt
+2. **Permission check** — verify `security.allowUpload` và `security.allowEvaluate` qua `GET /api/config`. Hỗ trợ cả flat key (`security.allowUpload`) và nested key (`config.security.allowUpload`) cho PinchTab 0.10+. Fail-fast nếu tắt
 3. **Click "Ảnh/Video"** — tìm button bằng keyword multi-language ("ảnh/video", "photo/video"). Fallback: tìm không giới hạn role
-4. **Upload (3-tier fallback chain)** — chi tiết xem "### CDP Paste Method" bên dưới
+4. **Upload qua CDP paste** — copy ảnh vào macOS clipboard, dùng Chrome DevTools Protocol để dispatch native paste event (isTrusted=true). Chi tiết xem "### CDP Paste Method"
 5. **Post-upload verification** — poll accessibility snapshot tối đa 8s, tìm blob image, nút "Gỡ"/"Remove", hoặc thumbnail/photo indicators. Nếu không detect ảnh thì exit code 5
 
-### CDP Paste Method (Primary)
+### CDP Paste Method
 
-Upload ảnh qua CDP native paste, giải quyết vấn đề FB reject synthetic events.
-
-**3-tier fallback chain** (từ tốt nhất đến kém nhất):
-
-| # | Method | Mechanism | isTrusted | Giới hạn |
-|---|--------|-----------|-----------|----------|
-| 1 | **CDP paste** | osascript clipboard + Input.dispatchKeyEvent | true | macOS only, JPEG/PNG |
-| 2 | PinchTab /upload | setInputFiles via selector | N/A (direct) | 5MB/file, FB có thể reject filename |
-| 3 | DataTransfer JS | base64 inline + Event dispatch | false | ~700KB, FB thường reject |
+Upload ảnh qua CDP native paste. Facebook reject synthetic events (isTrusted=false), nên CDP paste là phương pháp duy nhất đáng tin cậy.
 
 **CDP paste hoạt động thế nào:**
 
@@ -137,11 +129,11 @@ Nếu instance stale (commands timeout), scripts tự detect và restart. Force-
 
 | Limitation | Workaround |
 |---|---|
-| `/evaluate` body limit ~1MB | DataTransfer fallback reject ảnh > 700KB (base64 bloat ~33%). Ảnh lớn phải dùng CDP paste hoặc `/upload` |
-| `security.allowEvaluate` mặc định off | Cần bật thủ công. Đổi config xong phải restart server nếu đang có instance (mất compose dialog state) |
+| `security.allowEvaluate` mặc định off | Cần bật thủ công. Áp dụng ngay, không cần restart server |
+| PinchTab 0.10+ nested config key | `GET /api/config` trả `config.security.allowUpload` (nested) thay vì `security.allowUpload` (flat). Script hỗ trợ cả hai format |
 | `pinchtab press "Meta+V"` không chord | Giải quyết bằng CDP `Input.dispatchKeyEvent` với `commands: ['Paste']`. Không dùng PinchTab CLI cho paste |
 | `pinchtab snap --instance <id>` không tồn tại | Dùng `GET /instances/{id}` API để health-check thay vì CLI snap |
 | PinchTab CLI lưu stale tab ID | Script export `PINCHTAB_TAB` sau mỗi instance start/reuse. Query `/instances/{id}/tabs` API rồi set |
 | CDP paste chỉ hỗ trợ macOS | `osascript set the clipboard to` là macOS-only. Linux cần thay bằng `xclip` / `wl-copy` |
 | FB Lexical editor bỏ `\n` trong insertText | Script type per-line với Enter key giữa các dòng |
-| PinchTab `/upload` rename file | FB detect pattern `upload-0.jpg`. CDP paste bypass hoàn toàn vấn đề này |
+| Headed mode đóng browser | Mặc định headed luôn stop instance khi xong. Dùng `--keep-instance` để giữ |

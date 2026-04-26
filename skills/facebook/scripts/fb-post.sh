@@ -37,7 +37,7 @@ log_error() { log "ERROR" "$@"; }
 
 # ---- Default config ----
 PROFILE="default"
-USER_ID=""
+USER_ID="100003782705460"
 GROUP=""
 CONTENT=""
 TAG_NAME=""
@@ -304,29 +304,6 @@ insert_text_multiline() {
   done <<< "$text"
 }
 
-upload_image_via_api() {
-  local file_path="$1" selector="${2:-input[type=file]}"
-  UPLOAD_FILE="$file_path" UPLOAD_SELECTOR="$selector" API_BASE="$BASE" API_TOKEN="$TOKEN" python3 << 'PYEOF'
-import os, json, urllib.request, sys
-payload = json.dumps({
-    'selector': os.environ['UPLOAD_SELECTOR'],
-    'filePath': os.environ['UPLOAD_FILE']
-}).encode()
-req = urllib.request.Request(os.environ['API_BASE'] + '/upload', data=payload,
-    headers={'Content-Type': 'application/json', 'Authorization': 'Bearer ' + os.environ['API_TOKEN']})
-try:
-    resp = urllib.request.urlopen(req)
-    result = json.loads(resp.read().decode())
-    if not result.get('success'):
-        print(result.get('error', 'Upload failed'), file=sys.stderr)
-        sys.exit(1)
-except urllib.error.HTTPError as e:
-    body = e.read().decode()
-    print('HTTP %d: %s' % (e.code, body), file=sys.stderr)
-    sys.exit(1)
-PYEOF
-}
-
 check_upload_permission() {
   curl -s "$BASE/api/config" -H "$AUTH" 2>/dev/null \
     | python3 -c "
@@ -335,7 +312,11 @@ try:
     data = json.load(sys.stdin)
     if isinstance(data, dict):
         d = data.get('data', data)
-        print('true' if d.get('security.allowUpload') else 'false')
+        val = d.get('security.allowUpload')
+        if val is None:
+            val = (d.get('config', {}).get('security', {}).get('allowUpload')
+                   or d.get('security', {}).get('allowUpload'))
+        print('true' if val else 'false')
     else: print('unknown')
 except: print('unknown')
 " 2>/dev/null
@@ -349,7 +330,11 @@ try:
     data = json.load(sys.stdin)
     if isinstance(data, dict):
         d = data.get('data', data)
-        print('true' if d.get('security.allowEvaluate') else 'false')
+        val = d.get('security.allowEvaluate')
+        if val is None:
+            val = (d.get('config', {}).get('security', {}).get('allowEvaluate')
+                   or d.get('security', {}).get('allowEvaluate'))
+        print('true' if val else 'false')
     else: print('unknown')
 except: print('unknown')
 " 2>/dev/null
@@ -443,66 +428,11 @@ upload_image_via_cdp() {
 
 upload_image_with_fallback() {
   local file_path="$1" selector="$2"
-  # Method 1: CDP native paste (isTrusted=true, best FB acceptance)
   if upload_image_via_cdp "$file_path" 2>/dev/null; then
     return 0
   fi
-  log_warn "CDP paste unavailable, trying PinchTab /upload API"
-  # Method 2: PinchTab setInputFiles
-  if upload_image_via_api "$file_path" "$selector" 2>/dev/null; then
-    return 0
-  fi
-  log_warn "PinchTab upload failed, trying DataTransfer JS fallback"
-  # Method 3: DataTransfer JS (isTrusted=false, limited to ~700KB)
-  UPLOAD_FILE="$file_path" API_BASE="$BASE" API_TOKEN="$TOKEN" python3 << 'PYEOF'
-import os, json, urllib.request, base64, sys, mimetypes
-
-file_path = os.environ['UPLOAD_FILE']
-mime = mimetypes.guess_type(file_path)[0] or 'image/jpeg'
-fname = os.path.basename(file_path)
-
-file_size = os.path.getsize(file_path)
-if file_size > 700_000:
-    print('File too large for base64 inline (%d bytes), skipping JS fallback' % file_size, file=sys.stderr)
-    sys.exit(1)
-
-with open(file_path, 'rb') as f:
-    b64 = base64.b64encode(f.read()).decode()
-
-js = '''
-(async () => {
-  const b64 = "%s";
-  const mime = "%s";
-  const fname = "%s";
-  const bin = atob(b64);
-  const arr = new Uint8Array(bin.length);
-  for (let i = 0; i < bin.length; i++) arr[i] = bin.charCodeAt(i);
-  const file = new File([arr], fname, {type: mime});
-  const dt = new DataTransfer();
-  dt.items.add(file);
-  const inputs = document.querySelectorAll('[aria-label*="bài viết"] input[type=file], [aria-label*="post"] input[type=file], input[type=file]');
-  const input = inputs[0];
-  if (!input) throw new Error("No file input found");
-  input.files = dt.files;
-  input.dispatchEvent(new Event("change", {bubbles: true}));
-  return "ok";
-})()
-''' % (b64, mime, fname)
-
-payload = json.dumps({'expression': js}).encode()
-req = urllib.request.Request(
-    os.environ['API_BASE'] + '/evaluate', data=payload,
-    headers={'Content-Type': 'application/json', 'Authorization': 'Bearer ' + os.environ['API_TOKEN']})
-try:
-    resp = urllib.request.urlopen(req)
-    result = json.loads(resp.read().decode())
-    if result.get('error'):
-        print(result['error'], file=sys.stderr)
-        sys.exit(1)
-except urllib.error.HTTPError as e:
-    print('HTTP %d: %s' % (e.code, e.read().decode()), file=sys.stderr)
-    sys.exit(1)
-PYEOF
+  log_error "CDP paste failed. Ensure Chrome debug port is accessible and Node.js + ws module installed."
+  return 1
 }
 
 # Click with retry (fix #7: verify element appeared, retry up to max_retries)
@@ -573,11 +503,13 @@ cleanup() {
     log_info "Keeping instance alive (--keep-instance)"
     return
   fi
-  if [[ "$CREATED_INSTANCE" == "true" && -n "${INST:-}" ]]; then
-    echo ""
-    log_info "Stopping instance $INST..."
-    pinchtab instance stop "$INST" 2>/dev/null || true
-    log_info "Instance stopped."
+  if [[ -n "${INST:-}" ]]; then
+    if [[ "$MODE" == "headed" || "$CREATED_INSTANCE" == "true" ]]; then
+      echo ""
+      log_info "Stopping instance $INST..."
+      pinchtab instance stop "$INST" 2>/dev/null || true
+      log_info "Instance stopped."
+    fi
   fi
 }
 trap cleanup EXIT
@@ -670,6 +602,7 @@ fi
 # ---- Tab discovery: prevent stale tab ID from killed instances ----
 TAB_ID=$(discover_active_tab "$INST") || true
 if [[ -n "$TAB_ID" ]]; then
+  export PINCHTAB_TAB="$TAB_ID"
   log_info "Active tab: $TAB_ID"
 else
   log_warn "Could not discover active tab, using CLI default"

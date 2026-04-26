@@ -90,6 +90,8 @@ pinchtab config set security.allowScreencast true   # cho pinchtab screencast
 
 Upload limits mặc định: 5 MB/file, 8 file/request, 10 MB tổng.
 
+**Lưu ý PinchTab 0.10+:** `GET /api/config` trả config dạng nested (`config.security.allowUpload`) thay vì flat (`security.allowUpload`). Script cần hỗ trợ cả hai format khi kiểm tra permission. Setting áp dụng ngay sau `pinchtab config set`, không cần restart server.
+
 ## Error Recovery
 
 Lỗi phổ biến nhất: **stale element refs** (action fail vì trang đã thay đổi).

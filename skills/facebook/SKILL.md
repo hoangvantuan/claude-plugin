@@ -14,7 +14,8 @@ allowed-tools:
 
 - **PinchTab** installed và server đang chạy (`pinchtab server &`)
 - Một PinchTab **profile** có Facebook login session (cookies đã lưu từ lần login thủ công trước)
-- Nếu dùng `--image`: cần bật `pinchtab config set security.allowUpload true`
+- Nếu dùng `--image`: cần bật `pinchtab config set security.allowUpload true` và `pinchtab config set security.allowEvaluate true`
+- Upload ảnh dùng CDP native paste (clipboard + Chrome DevTools Protocol). Cần Node.js và module `ws`
 - Nên bật `pinchtab config set security.allowEvaluate true` để script nhập text chính xác (giữ line breaks, ký tự đặc biệt). Nếu tắt, script dùng CLI fallback nhưng có thể cắt nội dung dài
 
 Nếu user chưa login: hướng dẫn start headed instance → login thủ công → reuse profile.
@@ -37,7 +38,7 @@ bash scripts/fb-post.sh --content "<content>" [options]
 |---|---|---|---|
 | `<content>` | Yes | — | Post content (positional arg hoặc `--content`) |
 | `--profile` | No | `default` | PinchTab profile name |
-| `--user-id` | No | auto | Facebook numeric ID (wall mode) |
+| `--user-id` | No | `100003782705460` | Facebook numeric ID (wall mode) |
 | `--group` | No | — | Group slug hoặc full URL → post vào group thay vì wall |
 | `--image` | No | — | Đường dẫn ảnh đính kèm (dùng nhiều lần cho nhiều ảnh, tối đa 8) |
 | `--tag` | No | — | Tên hiển thị của bạn bè cần tag |
@@ -97,10 +98,10 @@ bash scripts/fb-post.sh "Auto" --group tuhoccungai --mode headless --keep-instan
 - **Quên `--publish true`** — default là `false` (chỉ soạn), user phải xác nhận trước khi thêm `--publish true`
 - **Tag sai người** — khi có nhiều người trùng tên, dùng `--tag-id` để chính xác
 - **Post content chứa quotes** — wrap content bằng double quotes, escape `"` bên trong nếu cần
-- **Upload ảnh lỗi ERR_UPLOAD_FAILED** — cần bật `pinchtab config set security.allowUpload true` trước khi dùng `--image`
+- **Upload ảnh lỗi** — bật cả `security.allowUpload` và `security.allowEvaluate`. Script dùng CDP paste (isTrusted=true), cần Chrome debug port accessible
 - **File ảnh không tồn tại hoặc sai format** — script validate path VÀ magic bytes (JPEG/PNG/GIF/WebP) trước khi mở browser. File .jpg thật ra là HTML sẽ bị bắt ngay
-- **Ảnh quá lớn** — PinchTab giới hạn 5MB/file, tối đa 8 file, tổng 10MB. DataTransfer JS fallback giới hạn ~700KB/file (base64 inline)
 - **Ảnh upload nhưng không attach** — script verify ảnh thực sự hiện trong post (blob img hoặc nút Gỡ) trước khi publish. Nếu không detect trong 8s sẽ exit code 5
+- **Browser headed không đóng** — mặc định headed mode luôn đóng browser sau khi xong. Dùng `--keep-instance` nếu muốn giữ
 
 ## Chi tiết kỹ thuật
 
