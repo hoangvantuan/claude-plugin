@@ -1,7 +1,6 @@
 ---
 name: prompt-engineering
 description: "Use this skill when writing commands, hooks, skills for Agent, or prompts for sub agents or any other LLM interaction, including optimizing prompts, improving LLM outputs, or designing production prompt templates. Trigger when user mentions 'write a prompt', 'optimize prompt', 'improve prompt', 'system prompt', 'few-shot', 'chain of thought', 'prompt template', 'agent prompt', 'skill prompt', 'hook prompt', or any task involving crafting instructions for an LLM. Also trigger when writing SKILL.md, agent definitions, hook scripts that include LLM instructions, or designing sub-agent prompts within Claude Code workflows."
-disable-model-invocation: true
 ---
 
 # Prompt Engineering Patterns
