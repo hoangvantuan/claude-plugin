@@ -1,14 +1,6 @@
 # Tier Processing Guide
 
-Hướng dẫn xử lý tài liệu đã convert theo kích thước. Load file này khi input là tài liệu đã convert (có structure.json).
-
-## Context Rule (quan trọng)
-
-**Luôn đọc structure.json TRƯỚC, KHÔNG đọc content.md toàn bộ.**
-
-structure.json chứa đủ thông tin cho content map: outline (section titles, word counts, critical markers), stats, tier. Chỉ đọc content.md theo section cụ thể (`offset`/`limit` từ `line`/`line_end`) khi cần chi tiết cho outline.
-
-Lý do: tài liệu 35K words chiếm ~37K context nếu đọc cả hai. Chỉ đọc structure.json chiếm ~2K. Tiết kiệm ~75% context budget.
+Hướng dẫn xử lý tài liệu đã convert theo kích thước. Load file này khi Phase 4 cần xử lý input có structure.json.
 
 ## Tier Detection
 
@@ -23,38 +15,15 @@ tier = structure["tier_recommendation"]["tier"]  # 1, 2, hoặc 3
 |---|---|---|
 | 1 (Standard) | < 50K | Content map + tạo tất cả outline 1 lượt |
 | 2 | 50K-100K | Content map trước, batch ~10 outline/lượt |
-| 3 | >= 100K | Fast path, minimal analysis, batch ~10 outline/lượt |
+| 3 | >= 100K | Minimal analysis, batch ~10 outline/lượt |
 
 ### Xác định số bài
-
-Công thức chính (áp dụng mọi tier):
 
 ```python
 target = user_specified_count or max(3, round(word_count / 2500))
 ```
 
 `structure.json.stats.estimated_articles` là ước lượng sơ bộ (dựa trên heading count), chỉ dùng tham khảo.
-
-## Direct Path (chỉ Tier 1)
-
-Direct Path xử lý toàn bộ tài liệu trong 1 lượt, không cần batch.
-
-**Eligible khi:** `word_count < 20K` HOẶC `word_count < 50K VÀ estimated_articles <= 3`
-
-**Capacity limit theo ngôn ngữ:**
-
-| Ngôn ngữ | Limit | Token/word ratio |
-|---|---|---|
-| EN | ~44K words | ~1.3 |
-| VI | ~32K words | ~1.8 |
-| Mixed | ~38K words | ~1.5 |
-
-```
-eligible?
-├─ YES AND capacity_ok → Xử lý 1 lượt
-├─ YES BUT NOT capacity_ok → Dùng subagent (xem mục Subagent)
-└─ NO → Xử lý theo tier workflow
-```
 
 ## Tier Workflows
 
@@ -64,6 +33,8 @@ eligible?
 2. Tạo content map: group sections theo cluster từ outline
 3. Tạo outline cho tất cả bài (1 lượt)
 
+Nếu word count lớn gần 50K và gặp vấn đề context: dùng subagent (xem mục Subagent bên dưới).
+
 ### Tier 2 (50K-100K words)
 
 1. Đọc structure.json: outline, stats, tier
@@ -72,9 +43,9 @@ eligible?
 4. Coverage check sau mỗi batch
 5. Hỏi user confirm trước batch tiếp
 
-### Tier 3 (>= 100K words): Fast Path
+### Tier 3 (>= 100K words)
 
-Giảm 40% overhead bằng cách tối giản analysis.
+Giảm overhead bằng cách tối giản analysis.
 
 1. Đọc structure.json: outline, stats, `suggested_chunks`
 2. Tạo content map: dùng `suggested_chunks` + outline
@@ -94,11 +65,11 @@ Khi conversion thành công nhưng structure.json không tạo được (script 
 1. Đọc content.md trực tiếp (toàn bộ nếu < 20K words, 5K words đầu nếu lớn hơn)
 2. Tự tạo content map thủ công từ headings trong content.md
 3. Ước lượng số bài: `max(3, round(word_count / 2500))` (đếm word_count bằng `wc -w`)
-4. Xử lý như Tier 1 (không batch) nếu < 50K, như Tier 2 (batch) nếu lớn hơn
+4. Xử lý như Tier 1 nếu < 50K, như Tier 2 (batch) nếu lớn hơn
 
 ## Subagent Workflow
 
-Dùng khi `direct_path.capacity_ok = false` hoặc tài liệu lớn cần xử lý song song.
+Dùng khi tài liệu lớn cần xử lý song song hoặc Tier 1 gặp vấn đề context.
 
 ### Flow
 
@@ -146,7 +117,7 @@ Ghi output vào {output_dir}/chunk-{chunk_id}-outlines.md
 | Sections mapped | Tất cả sections trong structure.json đã được map vào ít nhất 1 outline |
 | Critical sections | Sections có `critical: true` được ưu tiên cover |
 | Coverage 100% | Sau tất cả batches, mọi concept trong content map có outline |
-| Số bài hợp lý | Gần với `max(3, round(word_count / 2500))`, sai lệch > 30% cần giải thích |
+| Số bài hợp lý | Gần với formula, sai lệch > 30% cần giải thích |
 
 ## Lưu ý chất lượng conversion
 
