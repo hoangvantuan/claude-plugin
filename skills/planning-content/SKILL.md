@@ -18,8 +18,7 @@ Workflow: Detect & Convert → Interview → Research → Content Map → Outlin
 
 | Reference | Mục đích | Load khi |
 |---|---|---|
-| [context-optimization.md](references/context-optimization.md) | Anti-patterns khi đọc content.md | Phase 4 (nếu có structure.json) |
-| [tier-processing.md](references/tier-processing.md) | Xử lý tài liệu theo tier, Direct Path, batch, subagent | Phase 4 (nếu input đã convert) |
+| [tier-processing.md](references/tier-processing.md) | Tier detection, context rule, batch, subagent, quality gate, fallback | Phase 4 (nếu input đã convert) |
 
 ## Phase 1: Detect & Convert Input
 
@@ -48,18 +47,24 @@ Chỉ cần khi input là file hoặc URL cần convert.
 | **File (PDF/DOCX/EPUB)** | Path + extension | `wa-convert {path}` → content.md + structure.json |
 | **File (XLSX/PPTX)** | Path + extension | `wa-convert {path}` (qua Docling). Kiểm tra chất lượng conversion, xem [tier-processing.md](references/tier-processing.md) mục "Lưu ý chất lượng conversion" |
 | **File (HTML/AsciiDoc)** | Path + extension | `wa-convert {path}` (qua Docling) |
-| **Image (PNG/JPEG/TIFF/BMP/WEBP)** | Path + extension | `wa-convert {path}` (OCR qua Docling, cần enable_ocr) |
-| **URL (web page)** | `http://` hoặc `https://` (không YouTube) | `wa-convert {url}` hoặc WebFetch |
+| **Image (PNG/JPEG/TIFF/BMP/WEBP)** | Path + extension | Dùng Read tool (multimodal) để đọc ảnh trực tiếp. Nếu cần text extraction: `wa-convert {path}` (OCR qua Docling) |
+| **URL (web page)** | `http://` hoặc `https://` (không YouTube) | Ưu tiên `WebFetch` (nhanh, xử lý JavaScript). Dùng `wa-convert {url}` khi WebFetch trả về nội dung rác hoặc user yêu cầu convert offline |
 | **YouTube URL** | `youtube.com` hoặc `youtu.be` | `wa-convert {url}` |
 | **Plain text / .txt / .md** | Không extension phức tạp | Rewrite → `wa-paste-text` hoặc Read trực tiếp |
 
 ### 1.2 File/URL Conversion
 
 ```bash
-{SCRIPTS_DIR}/wa-convert [/path/to/file.pdf or url]
+# Auto-generate output dir
+{SCRIPTS_DIR}/wa-convert /path/to/file.pdf
+
+# Custom output dir (khi user chỉ định)
+{SCRIPTS_DIR}/wa-convert /path/to/file.pdf my-project/input-handling
 ```
 
-**Output**: `planning-content/{slug}-{timestamp}/input-handling/content.md` + `structure.json`
+**Output**: `content.md` + `structure.json` trong output dir.
+- Mặc định: `planning-content/{slug}-{timestamp}/input-handling/`
+- Custom: thư mục user chỉ định (argument thứ 2)
 
 > **Lưu ý venv**: Scripts dùng venv riêng tại `{SCRIPTS_DIR}/.venv/` (tách biệt với venv hệ thống). Nếu chưa setup, chạy `bash {SCRIPTS_DIR}/setup.sh` trước.
 
@@ -68,10 +73,13 @@ Chỉ cần khi input là file hoặc URL cần convert.
 1. Read content (nếu là file)
 2. Rewrite thành structured markdown (thêm headings, giữ nguyên nội dung)
 3. Đề xuất title
-4. Chạy:
+4. Ghi rewritten content vào file tạm, rồi chạy:
 
 ```bash
-echo "{rewritten_content}" | {SCRIPTS_DIR}/wa-paste-text - --title "{title}"
+# Ghi content vào file tạm (tránh lỗi shell escape với echo)
+Write("/tmp/planning-content-input.md", rewritten_content)
+
+{SCRIPTS_DIR}/wa-paste-text /tmp/planning-content-input.md --title "{title}"
 ```
 
 ### 1.4 Multi-Input
@@ -99,7 +107,7 @@ Nếu scripts không available (chưa setup, lỗi path):
 | URL fetch failed | Báo lỗi, dừng |
 | Empty content | Cảnh báo, xác nhận trước khi tiếp |
 | Encrypted PDF | Hỏi bản giải mã |
-| YouTube không có transcript | Báo user, dừng. Code trả về warning page, không có nội dung để tạo outline |
+| YouTube không có transcript | Script tạo warning page (không có nội dung thật). Báo user, hỏi có muốn dùng WebSearch research topic thay thế không. Nếu không, dừng |
 
 ## Phase 2: Interview
 
@@ -107,7 +115,10 @@ Hỏi tất cả câu hỏi trong 1 lượt:
 
 1. **Audience**: Người đọc chính là ai? (founder, marketer, developer, sinh viên...)
 2. **Goal**: Mục tiêu chính? (educate / engage / convert / thought leadership)
-3. *(Optional)* **Constraints**: Yêu cầu đặc biệt (deadline, topic cần tránh, kênh đăng)
+3. **Scope**: Bao phủ toàn bộ nội dung hay chọn lọc phần cụ thể?
+4. *(Optional)* **Số bài**: User muốn bao nhiêu bài? (mặc định: tự tính từ word count)
+5. *(Optional)* **Ngôn ngữ output**: Tiếng Việt (mặc định) hay ngôn ngữ khác?
+6. *(Optional)* **Constraints**: Yêu cầu đặc biệt (deadline, topic cần tránh, kênh đăng)
 
 *Fast-track: Nếu input đã đủ context hoặc user yêu cầu "làm luôn", giả định sensible defaults và sang Phase 3.*
 
@@ -141,8 +152,9 @@ Tiêu chí "đầy đủ": tài liệu tự cung cấp đủ data, ví dụ, evi
 
 Nếu input đã convert (có `structure.json`):
 
-1. **Đọc structure.json ONLY** (không đọc content.md). Xem [context-optimization.md](references/context-optimization.md).
-2. Xác định tier và Direct Path. Chi tiết workflow, criteria, subagent: xem [tier-processing.md](references/tier-processing.md).
+1. **Đọc structure.json ONLY** (không đọc content.md). Chỉ đọc content.md theo section khi cần chi tiết cho outline cụ thể.
+2. Xác định tier và Direct Path. Chi tiết workflow, fallback, subagent: xem [tier-processing.md](references/tier-processing.md).
+3. Nếu structure.json không tạo được (script báo `structure_error`): xem mục "Fallback" trong [tier-processing.md](references/tier-processing.md).
 
 ### 4.1 Content Map
 

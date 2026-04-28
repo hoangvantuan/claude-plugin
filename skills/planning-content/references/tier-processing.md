@@ -2,149 +2,154 @@
 
 Hướng dẫn xử lý tài liệu đã convert theo kích thước. Load file này khi input là tài liệu đã convert (có structure.json).
 
+## Context Rule (quan trọng)
+
+**Luôn đọc structure.json TRƯỚC, KHÔNG đọc content.md toàn bộ.**
+
+structure.json chứa đủ thông tin cho content map: outline (section titles, word counts, critical markers), stats, tier. Chỉ đọc content.md theo section cụ thể (`offset`/`limit` từ `line`/`line_end`) khi cần chi tiết cho outline.
+
+Lý do: tài liệu 35K words chiếm ~37K context nếu đọc cả hai. Chỉ đọc structure.json chiếm ~2K. Tiết kiệm ~75% context budget.
+
 ## Tier Detection
 
-Đọc `structure.json` để xác định tier:
+Đọc `structure.json`:
 
 ```python
-structure = read("input-handling/structure.json")
 word_count = structure["stats"]["word_count"]
 tier = structure["tier_recommendation"]["tier"]  # 1, 2, hoặc 3
 ```
 
-| JSON tier value | Tên | Word Count | Strategy |
-|---|---|---|---|
-| `1` | Tier 1 (Standard) | < 50K words | Xử lý 1 lượt, tạo tất cả outline cùng lúc |
-| `2` | Tier 2 | 50K-100K | Content map trước, batch ~10 outline/lượt |
-| `3` | Tier 3 | >= 100K | Fast path, minimal analysis, batch ~10 outline/lượt |
-
-## Direct Path (chỉ Tier 1)
-
-Direct Path cho phép xử lý toàn bộ tài liệu trong 1 lượt, không cần batch.
-
-### Tiêu chí eligible
-
-Từ `extract_structure.py`:
-
-```
-eligible = (word_count < 20,000) HOẶC (word_count < 50,000 VÀ estimated_articles ≤ 3)
-```
-
-Tài liệu nhỏ hoặc ít nội dung phân tán: xử lý trực tiếp hiệu quả hơn chia batch.
-
-### Tiêu chí capacity_ok
-
-Tùy ngôn ngữ tài liệu, context window có giới hạn khác nhau:
-
-| Ngôn ngữ | Capacity limit | Lý do |
+| Tier | Word Count | Strategy |
 |---|---|---|
-| EN | ~44K words | Token/word ratio thấp (~1.3) |
-| VI | ~32K words | Token/word ratio cao (~1.8) |
-| Mixed | ~38K words | Trung bình (~1.5) |
-
-### Decision tree
-
-```
-structure.json → direct_path.eligible?
-├─ YES AND capacity_ok → Xử lý 1 lượt, không batch
-├─ YES BUT NOT capacity_ok → Cảnh báo, cân nhắc dùng subagent (xem mục Subagent)
-└─ NO → Xử lý theo tier workflow bên dưới
-```
-
-## Tier 1: Standard (< 50K words)
-
-### Workflow
-
-1. **Đọc structure.json**: outline, stats, tier. KHÔNG đọc content.md (xem [context-optimization.md](context-optimization.md))
-2. **Tạo content map**: dùng outline từ JSON, group sections theo cluster
-3. **Tạo outline cho tất cả bài**: 1 lượt, không cần batch
+| 1 (Standard) | < 50K | Content map + tạo tất cả outline 1 lượt |
+| 2 | 50K-100K | Content map trước, batch ~10 outline/lượt |
+| 3 | >= 100K | Fast path, minimal analysis, batch ~10 outline/lượt |
 
 ### Xác định số bài
 
-Dùng công thức từ SKILL.md Phase 4.2: `word_count / 2500`. `structure.json.stats.estimated_articles` là ước lượng sơ bộ (dựa trên heading count), chỉ dùng tham khảo.
+Công thức chính (áp dụng mọi tier):
 
-### Quality Gate
+```python
+target = user_specified_count or max(3, round(word_count / 2500))
+```
 
-- [ ] Tất cả sections đã được map vào outline
-- [ ] Critical sections được đánh dấu
-- [ ] Coverage 100%
+`structure.json.stats.estimated_articles` là ước lượng sơ bộ (dựa trên heading count), chỉ dùng tham khảo.
 
-## Tier 2 (50K-100K words)
+## Direct Path (chỉ Tier 1)
 
-### Workflow
+Direct Path xử lý toàn bộ tài liệu trong 1 lượt, không cần batch.
 
-1. **Đọc structure.json**: outline, stats, tier. KHÔNG đọc content.md (xem [context-optimization.md](context-optimization.md))
-2. **Tạo content map**: bắt buộc trước khi tạo outline
-3. **Batch processing**: ~10 outline/batch
-4. **Coverage check**: sau mỗi batch, đối chiếu content map
+**Eligible khi:** `word_count < 20K` HOẶC `word_count < 50K VÀ estimated_articles <= 3`
 
-### Batch Processing
+**Capacity limit theo ngôn ngữ:**
 
-- Hỏi user confirm trước khi làm batch tiếp
-- Mỗi batch cập nhật `index.md`
+| Ngôn ngữ | Limit | Token/word ratio |
+|---|---|---|
+| EN | ~44K words | ~1.3 |
+| VI | ~32K words | ~1.8 |
+| Mixed | ~38K words | ~1.5 |
 
-### Đọc content.md khi cần
+```
+eligible?
+├─ YES AND capacity_ok → Xử lý 1 lượt
+├─ YES BUT NOT capacity_ok → Dùng subagent (xem mục Subagent)
+└─ NO → Xử lý theo tier workflow
+```
 
-Khi cần chi tiết cho outline cụ thể, đọc theo section:
+## Tier Workflows
+
+### Tier 1 (< 50K words)
+
+1. Đọc structure.json: outline, stats, tier
+2. Tạo content map: group sections theo cluster từ outline
+3. Tạo outline cho tất cả bài (1 lượt)
+
+### Tier 2 (50K-100K words)
+
+1. Đọc structure.json: outline, stats, tier
+2. Tạo content map (bắt buộc trước khi tạo outline)
+3. Batch processing: ~10 outline/batch
+4. Coverage check sau mỗi batch
+5. Hỏi user confirm trước batch tiếp
+
+### Tier 3 (>= 100K words): Fast Path
+
+Giảm 40% overhead bằng cách tối giản analysis.
+
+1. Đọc structure.json: outline, stats, `suggested_chunks`
+2. Tạo content map: dùng `suggested_chunks` + outline
+3. Batch processing: ~10 outline/batch, dùng `heading_path` từ chunks để hiểu context
+
+### Đọc content.md khi cần (mọi tier)
 
 ```python
 section = structure["outline"][i]
 Read(content_md, offset=section["line"], limit=section["line_end"] - section["line"] + 1)
 ```
 
-### Quality Gate
+## Fallback: structure.json không có hoặc lỗi
 
-- [ ] Content map hoàn chỉnh
-- [ ] Tất cả sections mapped
-- [ ] Coverage 100% sau tất cả batches
-- [ ] Critical sections marked
+Khi conversion thành công nhưng structure.json không tạo được (script báo `structure_error`):
 
-## Tier 3 (>= 100K words): Fast Path
+1. Đọc content.md trực tiếp (toàn bộ nếu < 20K words, 5K words đầu nếu lớn hơn)
+2. Tự tạo content map thủ công từ headings trong content.md
+3. Ước lượng số bài: `max(3, round(word_count / 2500))` (đếm word_count bằng `wc -w`)
+4. Xử lý như Tier 1 (không batch) nếu < 50K, như Tier 2 (batch) nếu lớn hơn
 
-### Nguyên tắc
+## Subagent Workflow
 
-Giảm 40% overhead bằng cách tối giản analysis. Tài liệu quá lớn để đọc chi tiết, tập trung vào cấu trúc.
+Dùng khi `direct_path.capacity_ok = false` hoặc tài liệu lớn cần xử lý song song.
 
-### Workflow
+### Flow
 
-1. **Đọc structure.json**: outline, stats, chunks
-2. **Tạo content map**: dùng `suggested_chunks` + `outline` từ JSON
-3. **Batch processing**: ~10 outline/batch, dùng heading_path từ chunks để hiểu context
-
-### Xử lý chunks
-
-```python
-for chunk in structure["suggested_chunks"]:
-    # chunk có sẵn: line_start, line_end, word_count, heading_path
-    # Dùng heading_path để hiểu vị trí trong tài liệu
-    # Chỉ đọc content.md khi cần chi tiết cụ thể
-```
-
-### Đọc content.md selective
-
-- Chỉ đọc section cụ thể khi cần chi tiết cho outline
-- Ưu tiên critical sections
-- Không đọc toàn bộ content.md
-
-### Quality Gate
-
-- [ ] Content map từ structure.json
-- [ ] Tất cả chunks covered
-- [ ] Coverage 100% sau tất cả batches
-- [ ] Critical sections marked
-
-## Subagent Workflow (khi capacity vượt giới hạn)
-
-Khi `direct_path.capacity_ok = false` hoặc tài liệu lớn cần xử lý song song:
-
-1. **Main agent**: đọc structure.json, tạo content map, phân chia chunks cho subagent
-2. **Subagent**: nhận chunk (line_start, line_end) + context (heading_path), đọc content.md section đó, tạo outline cho các bài thuộc chunk
-3. **Main agent**: tổng hợp outline từ subagents, chạy coverage check, tạo index.md
+1. **Main agent**: đọc structure.json, tạo content map, phân chia chunks
+2. **Subagent**: nhận chunk, đọc content.md section đó, tạo outline
+3. **Main agent**: tổng hợp outline, coverage check, tạo index.md
 
 Mỗi subagent xử lý 1 chunk (~11,500 words). Chunks có overlap (~10 dòng) để đảm bảo continuity.
 
+### Prompt template cho subagent
+
+```
+Bạn là content planner. Nhiệm vụ: tạo outline cho các bài viết từ đoạn tài liệu được giao.
+
+**Context:**
+- Tài liệu: {title}
+- Audience: {audience}
+- Goal: {goal}
+- Chunk {chunk_id}: dòng {line_start}-{line_end} ({word_count} words)
+- Heading path: {heading_path}
+- Tổng quan content map: {content_map_summary}
+
+**Nhiệm vụ:**
+1. Đọc file {content_md_path} từ dòng {line_start} đến {line_end}
+2. Xác định các ý chính có thể tách thành bài riêng
+3. Tạo outline cho mỗi bài theo format:
+   ### Bài [N]: [Tiêu đề]
+   - Thesis: [1 câu]
+   - Key points: [ý chính + data/ví dụ + nguồn]
+   - Takeaway: [insight chính]
+   - Open questions: [data còn thiếu]
+
+**Ràng buộc:**
+- 1 bài = 1 chủ đề duy nhất
+- KHÔNG viết draft, KHÔNG đề xuất cách viết/tone/style
+- Output tiếng Việt, giữ thuật ngữ gốc trong ngoặc
+
+Ghi output vào {output_dir}/chunk-{chunk_id}-outlines.md
+```
+
+## Quality Gate (áp dụng mọi tier)
+
+| Tiêu chí | Mô tả |
+|---|---|
+| Sections mapped | Tất cả sections trong structure.json đã được map vào ít nhất 1 outline |
+| Critical sections | Sections có `critical: true` được ưu tiên cover |
+| Coverage 100% | Sau tất cả batches, mọi concept trong content map có outline |
+| Số bài hợp lý | Gần với `max(3, round(word_count / 2500))`, sai lệch > 30% cần giải thích |
+
 ## Lưu ý chất lượng conversion
 
-**XLSX/PPTX**: Docling chuyển spreadsheet/presentation sang markdown có thể mất cấu trúc (table layout, cell formatting, slide layout). Sau khi convert, kiểm tra nhanh content.md:
-- Nếu bảng bị vỡ hoặc data không đọc được: báo user, đề xuất export sang CSV/PDF trước rồi convert lại.
-- Nếu slide chỉ có hình ảnh (ít text): báo user nội dung text có thể không đủ để tạo outline.
+**XLSX/PPTX**: Docling chuyển spreadsheet/presentation sang markdown có thể mất cấu trúc. Sau khi convert, kiểm tra content.md:
+- Bảng bị vỡ hoặc data không đọc được: báo user export sang CSV/PDF trước
+- Slide chỉ có hình ảnh (ít text): báo user nội dung text có thể không đủ

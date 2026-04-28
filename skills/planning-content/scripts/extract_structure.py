@@ -317,8 +317,7 @@ def extract_structure(
     elif h1_count > 0:
         estimated_articles = h1_count
     else:
-        # No headings: estimate ~3000 words per article
-        estimated_articles = max(1, word_count // 3000)
+        estimated_articles = max(1, round(word_count / 2500))
 
     # Language-based capacity limits for Direct Path
     # Model ~200K tokens, reserve 50% output = 100K, 40% buffer = 60K, -3K overhead
