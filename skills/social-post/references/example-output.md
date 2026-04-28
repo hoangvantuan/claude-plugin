@@ -43,7 +43,7 @@ thử ngẫm lại xem, cái thứ mà bạn đang giỏi nhất hiện tại, n
 ```
 bận rộn là lời nói dối lịch sự nhất
 
-hồi trước có ai hỏi dạo này sao, tôi hay đáp "bận lắm". nói xong thấy oai oai, như thể bận là bằng chứng mình đang sống có ích.
+hồi trước có ai hỏi dạo này sao?, tôi hay đáp "cũng bận lắm". nói xong thấy oai oai, như thể bận là bằng chứng mình đang sống có ích.
 
 rồi một hôm nhìn lại lịch tuần, tám cuộc họp, bốn cái tôi ngồi im từ đầu đến cuối, hai cái có thể gói trong một email. tôi bận thật, nhưng bận kiểu gì thì chưa bao giờ dừng lại hỏi.
 
@@ -101,7 +101,7 @@ mười năm làm kỹ sư, "kỹ sư" không chỉ là nghề. nó là cách t�
 
 giai đoạn đầu giống như đi trong nhà tối. biết là nhà mình, nhưng vẫn va vào đồ đạc.
 
-bạn bè hỏi "dạo này làm gì", tôi ấp úng. không phải vì xấu hổ, mà vì câu trả lời cũ không còn đúng và câu trả lời mới chưa có.
+bạn bè hỏi "dạo này làm gì", tôi ấp úng. vì câu trả lời cũ không còn đúng và câu trả lời mới chưa có.
 
 có một thứ sách self-help ít nói: buông bỏ không nhẹ nhõm như người ta vẽ. nó nặng, nó rối. có những tuần tôi muốn quay lại chỉ vì cái cảm giác "biết mình là ai" dễ chịu quá.
 
@@ -122,11 +122,12 @@ tôi vẫn chưa có câu trả lời gọn gàng cho "dạo này làm gì". nh�
 
 ## So sánh 4 bài mẫu
 
-| | Bài 1 | Bài 2 | Bài 3 | Bài 4 |
-|---|---|---|---|---|
-| **Archetype** | Patient Observer | Quiet Devastator | Patient Observer | Gentle Challenger |
-| **Sắc thái** | Chiêm nghiệm | Hài hước | Tò mò | Chiêm nghiệm (vulnerability) |
-| **Độ dài** | ~350 từ | ~200 từ | ~180 từ | ~250 từ |
-| **Mở bài** | Hình ảnh BrSE | Tự kể thói quen | Tình huống gia đình | Sự kiện đổi nghề |
-| **Kỹ thuật chính** | Contrast + metaphor | Chi tiết cụ thể + reframe | Câu hỏi đệ quy | Narrative vulnerability |
-| **Kết** | Câu hỏi vòng lại tiêu đề | Câu hỏi lật ngược | Nhận xét gợi mở | Nhận xét mở (tự do) |
+|                    | Bài 1                    | Bài 2                     | Bài 3               | Bài 4                        |
+| ------------------ | ------------------------ | ------------------------- | ------------------- | ---------------------------- |
+| **Archetype**      | Patient Observer         | Quiet Devastator          | Patient Observer    | Gentle Challenger            |
+| **Sắc thái**       | Chiêm nghiệm             | Hài hước                  | Tò mò               | Chiêm nghiệm (vulnerability) |
+| **Độ dài**         | ~350 từ                  | ~200 từ                   | ~180 từ             | ~250 từ                      |
+| **Mở bài**         | Hình ảnh BrSE            | Tự kể thói quen           | Tình huống gia đình | Sự kiện đổi nghề             |
+| **Kỹ thuật chính** | Contrast + metaphor      | Chi tiết cụ thể + reframe | Câu hỏi đệ quy      | Narrative vulnerability      |
+| **Kết**            | Câu hỏi vòng lại tiêu đề | Câu hỏi lật ngược         | Nhận xét gợi mở     | Nhận xét mở (tự do)          |
+

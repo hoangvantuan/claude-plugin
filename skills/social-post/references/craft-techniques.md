@@ -4,11 +4,12 @@
 
 Tiêu đề chỉ có một dòng để dừng người đọc. Ba kiểu, theo thứ tự ưu tiên khi chất liệu cho phép:
 
-| Kiểu                       | Ví dụ                                          | Khi nào dùng                                                 |
-| -------------------------- | ---------------------------------------------- | ------------------------------------------------------------ |
-| **Paradox self-contained** | "tìm đúng bằng cách sai"                       | Khi nội dung có contrast đủ mạnh gói trong 3-5 từ            |
-| **Câu hỏi gợi mở**         | "điều gì giúp bạn ngủ ngon mỗi ngày?"          | Khi bài khép bằng câu hỏi tự vấn, tiêu đề vòng lại           |
-| **So-sánh hedged**         | "cái không làm có khi quan trọng hơn cái làm"  | Khi không tìm được paradox đủ chặt; phải thêm "có khi"       |
+| Kiểu                       | Ví dụ                                         | Khi nào dùng                                           |
+| -------------------------- | --------------------------------------------- | ------------------------------------------------------ |
+| **Paradox self-contained** | "tìm đúng bằng cách sai"                      | Khi nội dung có contrast đủ mạnh gói trong 3-5 từ      |
+| **Câu hỏi gợi mở**         | "điều gì giúp bạn ngủ ngon mỗi ngày?"         | Khi bài khép bằng câu hỏi tự vấn, tiêu đề vòng lại     |
+| **So-sánh hedged**         | "cái không làm có khi quan trọng hơn cái làm" | Khi không tìm được paradox đủ chặt; phải thêm "có khi" |
+
 
 **Quy tắc chọn**:
 
@@ -28,13 +29,13 @@ Mở bài là phần quan trọng, nhưng KHÔNG phải vì nó cần "dừng sc
 
 Dưới đây là một số cách mở bài tự nhiên. Tham khảo để lấy cảm hứng, KHÔNG dùng như công thức:
 
-| Cách mở            | Ví dụ                                                                                  |
-| ------------------ | -------------------------------------------------------------------------------------- |
-| **Quan sát**       | "sáng nay tôi thấy đồng nghiệp ngồi họp mà mắt nhìn vào điện thoại dưới bàn"           |
-| **Câu hỏi**        | "có khi nào bạn đang sống, mà không thực sự ở đây?"                                    |
-| **Nhận định thẳng** | "đôi khi, không làm gì là điều khó nhất."                                              |
-| **Nghịch lý**       | "người tự do nhất tôi biết là người chấp nhận mình không tự do."                       |
-| **Hồi ức**          | "tôi nhớ lúc ấy, cảm giác như đứng giữa đường mà không biết nên đi tiếp hay quay lại." |
+| Cách mở             | Ví dụ                                                                                                                     |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| **Quan sát**        | "sáng nay tôi thấy đồng nghiệp ngồi họp mà mắt nhìn vào điện thoại dưới bàn"                                              |
+| **Câu hỏi**         | "có khi nào bạn đang sống, mà không thực sự ở đây?"                                                                       |
+| **Nhận định thẳng** | "đôi khi, không làm gì là điều khó nhất."                                                                                 |
+| **Nghịch lý**       | "người tự do nhất tôi biết là người chấp nhận mình không tự do."                                                          |
+| **Hồi ức**          | "tôi nhớ lúc ấy, cảm giác như đứng giữa đường mà không biết nên đi tiếp hay quay lại."                                    |
 | **Tình huống**      | "bạn tôi nghỉ việc hồi tháng trước. anh ấy kể, một sáng thức dậy, bỗng thấy lạ với chính văn phòng mình đã ngồi bảy năm." |
 
 
@@ -78,11 +79,11 @@ Ví dụ: "chúng ta ngầm tin rằng lương cao thì đời ổn. nhưng anh 
 
 ## Questioning Techniques (tối đa 2 câu hỏi / bài)
 
-| Kiểu          | Mục đích     | Ví dụ                                                         |
-| ------------- | ------------ | ------------------------------------------------------------- |
-| **Nghịch lý** | Phá lối mòn  | "nếu buông bỏ cần nỗ lực, đó có phải buông bỏ?"               |
-| **Lật ngược** | Đảo kỳ vọng  | "nếu không có ai khen, bạn còn muốn sống cuộc đời này không?" |
-| **Chất vấn**  | Đào sâu      | "cái thích ấy đến từ đâu?"                                    |
+| Kiểu          | Mục đích    | Ví dụ                                                         |
+| ------------- | ----------- | ------------------------------------------------------------- |
+| **Nghịch lý** | Phá lối mòn | "nếu buông bỏ cần nỗ lực, đó có phải buông bỏ?"               |
+| **Lật ngược** | Đảo kỳ vọng | "nếu không có ai khen, bạn còn muốn sống cuộc đời này không?" |
+| **Chất vấn**  | Đào sâu     | "cái thích ấy đến từ đâu?"                                    |
 
 
 **Nguyên tắc**: Câu hỏi phải khiến người đọc thực sự dừng lại suy nghĩ, không phải trang trí. Đặt xong phải explore hoặc để người đọc tự trả lời (ở câu kết). "Bạn đã bao giờ tự hỏi...?" là trang trí. "Nếu buông bỏ cần nỗ lực, đó có phải buông bỏ?" là câu hỏi thật vì nó tạo friction trong đầu người đọc.
