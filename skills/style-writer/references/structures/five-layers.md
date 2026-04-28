@@ -32,11 +32,13 @@ Nội dung nói gì? Bức tranh toàn cảnh.
 
 **Opening Palette** (chọn 1 per bài, KHÔNG lặp technique giữa 2 bài liên tiếp trong series):
 
-- `assumption-challenge`: Giả định phổ biến bị thách thức — "Ai cũng nghĩ [X] là đúng. Nhưng nếu ngược lại thì sao?"
-- `question-first`: Câu hỏi đào sâu — "Tại sao điều hiển nhiên nhất lại thường sai nhất?"
-- `contrast`: Tương phản phản trực giác — "Hai nghiên cứu, cùng dữ liệu, kết luận ngược nhau."
-- `scene-setting`: Quan sát bất ngờ — "Trong một phòng lab ở MIT, một thí nghiệm cho kết quả không ai dự đoán."
-- `provocation`: Nhận định gây tranh cãi — "Tác giả sai. Nhưng cái sai đó dạy ta nhiều hơn cái đúng."
+> Mô tả chi tiết từng technique xem [shared-rules.md](../shared-rules.md#opening-palette-master).
+
+- `assumption-challenge` — "Ai cũng nghĩ [X] là đúng. Nhưng nếu ngược lại thì sao?"
+- `question-first` — "Tại sao điều hiển nhiên nhất lại thường sai nhất?"
+- `contrast` — "Hai nghiên cứu, cùng dữ liệu, kết luận ngược nhau."
+- `scene-setting` — "Trong một phòng lab ở MIT, một thí nghiệm cho kết quả không ai dự đoán."
+- `provocation` — "Tác giả sai. Nhưng cái sai đó dạy ta nhiều hơn cái đúng."
 
 ### 2. STRUCTURE: Cấu trúc (Development Layer 1)
 

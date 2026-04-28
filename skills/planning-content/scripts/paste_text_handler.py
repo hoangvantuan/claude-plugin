@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Handle pasted text input for writer-planner.
+"""Handle pasted text input for planning-content.
 
 Usage:
     # From file containing pasted text
@@ -10,7 +10,7 @@ Usage:
 
 Output: content.md + structure.json in output directory
     - If output specified: uses that folder
-    - If not specified: creates writer-planner/{slug}-{YYMMDD-HHMM}/input-handling/ in CWD
+    - If not specified: creates planning-content/{slug}-{YYMMDD-HHMM}/input-handling/ in CWD
 """
 from __future__ import annotations
 
@@ -144,7 +144,7 @@ def handle_pasted_text(
 def main():
     """CLI entry point."""
     parser = argparse.ArgumentParser(
-        description="Handle pasted text input for writer-planner"
+        description="Handle pasted text input for planning-content"
     )
     parser.add_argument("input", help="Input file path or '-' for stdin")
     parser.add_argument("--title", "-t", default="", help="Document title")

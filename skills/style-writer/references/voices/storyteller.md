@@ -48,7 +48,7 @@ Kể lại hành trình khám phá như một câu chuyện. Người đọc đ�
 
 - Chi tiết giác quan (thấy, nghe, chạm)
 - Kể trước, chiêm nghiệm sau
-- "Có lẽ", "tôi chợt nghĩ"
+- "Tôi chợt nghĩ", "không biết nữa"
 - Chấp nhận không-biết
 
 ### DON'T
@@ -56,7 +56,6 @@ Kể lại hành trình khám phá như một câu chuyện. Người đọc đ�
 - Giảng giải, phân tích
 - "Tôi nhận ra rằng..." + chân lý
 - Kết thúc gọn gàng với bài học
-- Em dash → dấu phẩy hoặc dấu ba chấm (...)
 
 ## Example
 
@@ -68,7 +67,7 @@ Kể lại hành trình khám phá như một câu chuyện. Người đọc đ�
 >
 > ...
 >
-> Có lẽ tôi đã hiểu nhầm điều gì đó về việc "có được", và câu hỏi đó không cần câu trả lời, ít nhất là không phải hôm nay.
+> Tôi đã hiểu nhầm điều gì đó về việc "có được", và câu hỏi đó không cần câu trả lời, ít nhất là không phải hôm nay.
 
 ## Stream of Consciousness
 
@@ -82,14 +81,6 @@ Kể lại hành trình khám phá như một câu chuyện. Người đọc đ�
 - Đoạn văn ngắn một câu (có chủ-vị): dừng lại có trọng lượng
 - Khoảng trắng giữa đoạn: im lặng sâu
 - Mô tả hành động lồng trong câu: "Tôi không nói gì, chỉ ngồi đó nhìn ra ngoài."
-
-## Breath Rhythm
-
-- Xương sống = câu flowing 12-25 từ, nhiều mệnh đề nối dấu phẩy
-- Câu ngắn (<8 từ, có chủ-vị): tối đa 2-3/bài, đứng sau buildup — KHÔNG liên tiếp
-- Đoạn một câu = điểm nhấn (hiếm, bất ngờ)
-- Lặp cấu trúc = mantra
-- KHÔNG xếp nominal phrases liên tiếp: "Mùi X. Tiếng Y." → Lồng vào câu có động từ
 
 ## Embedded Dialogue Guidelines
 
@@ -110,9 +101,10 @@ Kể lại hành trình khám phá như một câu chuyện. Người đọc đ�
 
 - "Tôi nhớ...", "Hồi đó..."
 - "Tôi chợt nghĩ...", "Và rồi..."
-- "Không biết nữa.", "Có lẽ vậy."
+- "Không biết nữa.", "Vậy đó."
 - "Thầy nói gì đó mà tôi không nhớ chính xác..."
 - "Lúc ấy tôi chưa hiểu..."
+
 
 ## Metaphor Bank
 
@@ -127,6 +119,8 @@ Chọn **MỘT** hệ chính, lặp 3-5 lần. **KHÁC Personal** — Storytelle
 
 ## Pacing Rules
 
+> Quy tắc nhịp thở chung, dấu câu, từ cấm xem [shared-rules.md](../shared-rules.md). Bổ sung riêng voice này:
+
 | Yếu tố                 | Quy tắc                                     |
 | ------------------------ | -------------------------------------------- |
 | Scene setting            | 2-4 câu đầu có chi tiết giác quan      |
@@ -134,7 +128,7 @@ Chọn **MỘT** hệ chính, lặp 3-5 lần. **KHÁC Personal** — Storytelle
 | Khoảng lặng            | Ít nhất 2-3 `...` hoặc đoạn một câu |
 | Độ dài                | 400-800 từ/bài                             |
 | Ẩn dụ                  | 1 hệ, lặp 3-5 lần                         |
-| Kết thúc               | LUÔN với câu hỏi mới hoặc khoảng mở  |
+| Kết thúc               | LUÔN với câu hỏi mới hoặc khoảng mở, CÓ SỨC NẶNG  |
 
 ## Arc Pattern
 
@@ -142,14 +136,20 @@ Storyteller có arc mặc định **Growth Journey** (hành trình, kiên nhẫn
 
 ## Quality Checklist (Voice)
 
+> Base checklist (hình thức) xem [shared-rules.md](../shared-rules.md). Bổ sung riêng:
+
+**Hình thức:**
 - [ ] Giọng thân mật, chân thành, như viết nhật ký?
 - [ ] Ngôi kể nhất quán?
 - [ ] Đối thoại được kể lại (embedded, không format C:/T:)?
 - [ ] Dòng chảy tâm tưởng (stream of consciousness)?
-- [ ] Ẩn dụ nhất quán (1 hệ, lặp 3-5 lần)?
-- [ ] Đủ khoảng lặng (`...` hoặc đoạn một câu)?
-- [ ] Verbal tics tự nhiên?
 - [ ] Người kể đang "đi" chứ không "đã đến"?
+
+**Giá trị** (xem chi tiết [value-framework.md](../value-framework.md)):
+- [ ] Người đọc học được gì MỚI?
+- [ ] Có ít nhất 1 khoảnh khắc khiến dừng lại?
+- [ ] "Vậy thì sao?" — mỗi đoạn trả lời được?
+- [ ] Kết thúc mở CÓ SỨC NẶNG, không phải triết lý chung chung?
 
 > Checklist về cấu trúc bài (scene setting, phases, kết thúc) xem `structures/story-arc.md`.
 

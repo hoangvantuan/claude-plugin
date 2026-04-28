@@ -35,7 +35,7 @@ Giọng điệu khách quan, trung lập, có thẩm quyền nhưng không kiêu
 - Thuật ngữ chính xác, định nghĩa khi cần
 - Câu active voice rõ ràng: "Nghiên cứu cho thấy..." thay vì "Đã được cho thấy..."
 - Quantify khi có thể: "47%" thay vì "gần một nửa"
-- Hedging có kiểm soát: "suggests", "indicates" cho kết quả không chắc chắn
+- Hedging có kiểm soát: "gợi ý rằng", "cho thấy" cho kết quả không chắc chắn
 - Parallel structure trong danh sách
 - Mix câu ngắn mạnh (5-10 từ) và câu chi tiết (15-25 từ) tạo rhythm
 - Giải thích thuật ngữ phức tạp bằng ngôn ngữ đơn giản khi cần
@@ -126,13 +126,13 @@ Luôn kèm giới hạn: sample size, điều kiện, reproducibility.
 
 | Mục đích          | Cụm từ                                              |
 | ----------------- | ---------------------------------------------------- |
-| Giới thiệu evidence | "Dữ liệu cho thấy...", "Nghiên cứu indicates..."   |
-| Phân tích         | "Điều này suggests...", "Phân tích reveals..."        |
+| Giới thiệu evidence | "Dữ liệu cho thấy...", "Nghiên cứu chỉ ra..."   |
+| Phân tích         | "Điều này gợi ý...", "Phân tích cho thấy..."        |
 | Contrast          | "Tuy nhiên,", "Ngược lại,", "Mặt khác,"             |
 | Causation         | "Do đó,", "Kết quả là,", "Dẫn đến,"                 |
 | Conclusion        | "Tóm lại,", "Kết luận,", "Dựa trên analysis,"       |
 | Recommendation    | "Khuyến nghị:", "Đề xuất:", "Next steps:"             |
-| Experimentation   | "Kết quả thử nghiệm cho thấy...", "Testing reveals..." |
+| Experimentation   | "Kết quả thử nghiệm cho thấy...", "Thử nghiệm phát lộ..." |
 
 ## Tone Calibration
 
@@ -145,6 +145,8 @@ Luôn kèm giới hạn: sample size, điều kiện, reproducibility.
 | **Exploratory**       | Curious, grounded        | "Kết quả thử nghiệm gợi ý một hướng tiếp cận mới..." |
 
 ## Pacing Rules
+
+> Quy tắc nhịp thở chung, dấu câu xem [shared-rules.md](../shared-rules.md). Bổ sung riêng voice này:
 
 | Yếu tố         | Quy tắc                                                      |
 | --------------- | ------------------------------------------------------------ |
@@ -159,12 +161,19 @@ Luôn kèm giới hạn: sample size, điều kiện, reproducibility.
 
 ## Quality Checklist
 
+> Base checklist (hình thức) xem [shared-rules.md](../shared-rules.md). Bổ sung riêng:
+
+**Hình thức:**
 - [ ] Tone objective và professional?
 - [ ] Không có emotional appeals?
-- [ ] Mix câu ngắn + dài tạo rhythm?
-- [ ] Format consistent?
 - [ ] Evidence-based cho mỗi claim?
 - [ ] Technical terms được định nghĩa?
+
+**Giá trị** (xem chi tiết [value-framework.md](../value-framework.md)):
+- [ ] Người đọc học được gì MỚI từ data/evidence?
+- [ ] Có ít nhất 1 insight bất ngờ từ phân tích?
+- [ ] "Vậy thì sao?" — mỗi đoạn trả lời được?
+- [ ] Recommendations đủ cụ thể để hành động?
 
 ## Exemplars
 

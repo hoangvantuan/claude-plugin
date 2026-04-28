@@ -27,11 +27,13 @@ Cấu trúc đối thoại giữa hai người: người hỏi (từ trải nghi
 
 **Opening Palette** (chọn 1 per bài, KHÔNG lặp technique giữa 2 bài liên tiếp trong series):
 
-- `scene-setting`: Khoảnh khắc trước cuộc đối thoại — "Hiên nhà thầy phủ sương. Tách trà còn bốc khói."
-- `in-medias-res`: Nhảy vào giữa đối thoại — "**C:** Thầy ơi, con không hiểu tại sao mình cứ lặp sai lầm cũ."
-- `question-first`: Câu hỏi mở — "Có bao giờ hỏi một câu, và câu trả lời là im lặng?"
-- `memory-flash`: Hồi ức về Thầy — "Tôi nhớ thầy hay xoay tách trà. Xoay chậm, như đang nghĩ. Rồi hỏi ngược."
-- `contrast`: Nghịch lý — "Con đến để hỏi. Nhưng thầy lại là người đặt nhiều câu hỏi hơn."
+> Mô tả chi tiết từng technique xem [shared-rules.md](../shared-rules.md#opening-palette-master).
+
+- `scene-setting` — "Hiên nhà thầy phủ sương. Tách trà còn bốc khói."
+- `in-medias-res` — "**C:** Thầy ơi, con không hiểu tại sao mình cứ lặp sai lầm cũ."
+- `question-first` — "Có bao giờ hỏi một câu, và câu trả lời là im lặng?"
+- `memory-flash` — "Tôi nhớ thầy hay xoay tách trà. Xoay chậm, như đang nghĩ. Rồi hỏi ngược."
+- `contrast` — "Con đến để hỏi. Nhưng thầy lại là người đặt nhiều câu hỏi hơn."
 
 ### 2. Development
 

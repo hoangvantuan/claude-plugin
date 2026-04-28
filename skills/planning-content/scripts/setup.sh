@@ -1,5 +1,5 @@
 #!/bin/bash
-# Writer-Planner Setup Script
+# Planning-Content Setup Script
 # Uses uv for fast, reliable Python environment management
 
 set -e
@@ -8,7 +8,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SKILL_DIR="$(dirname "$SCRIPT_DIR")"
 VENV_DIR="$SCRIPT_DIR/.venv"
 
-echo "=== Writer-Planner Setup ==="
+echo "=== Planning-Content Setup ==="
 echo "Skill directory: $SKILL_DIR"
 echo "Virtual env: $VENV_DIR"
 echo ""

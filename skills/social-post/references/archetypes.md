@@ -19,37 +19,31 @@ Khi viết, tạo **3 bản nháp trong đầu** (không output), mỗi bản th
 5. Empowerment ("Tôi làm được")
 
 **Pattern mẫu** (tham khảo, đừng copy nguyên):
-> "For weeks, nothing changes. For months, you question everything. For years, you watch others speed past you... Then, the growth hits you all at once."
-
-Tiếng Việt:
-> "Tuần đầu, chẳng có gì khác. Tháng đầu, bạn bắt đầu nghi ngờ. Năm đầu, bạn nhìn người khác bứt phá. Rồi một sáng, mọi thứ đổ vào cùng một lúc."
+> "tuần đầu, chẳng có gì khác. tháng đầu, bạn bắt đầu nghi ngờ. năm đầu, bạn nhìn người khác bứt phá. rồi một sáng, mọi thứ đổ vào cùng một lúc."
 
 ---
 
-## Archetype 2: Dramatic Prophet
+## Archetype 2: Gentle Challenger
 
-**Khi nào phù hợp**: Bài về thay đổi tư duy, phá bỏ cái cũ, reset, transformation, chuyển đổi paradigm.
+**Khi nào phù hợp**: Bài về thay đổi tư duy, nhìn lại giả định cũ, chuyển đổi góc nhìn, buông bỏ.
 
 **Kỹ thuật cốt lõi**:
-- Imperative commands — câu mệnh lệnh ngắn, quyết liệt.
-- Metaphor mạnh: lửa, phá hủy, tái sinh, blank slate.
-- Intensity escalation: "Burn it down" energy.
-- Promise transcendence through destruction — chỉ khi phá đi cái cũ, mới có không gian cho cái mới.
+- Đặt câu hỏi thay vì ra lệnh. "Nếu cái bạn đang giữ chặt nhất lại là cái đang giữ chặt bạn thì sao?" thay vì "Buông đi."
+- Reframe nhẹ nhàng: không phá bỏ mà xoay góc, giúp người đọc nhìn cùng vấn đề từ phía khác.
+- Kể chuyện mình thay đổi, không bảo người khác phải thay đổi.
+- Thừa nhận cái mất khi chuyển đổi, không chỉ ca ngợi cái được.
 
 **Emotional Arc**:
-1. Assumption ("Mọi người đều nghĩ X...")
-2. Challenge ("Nhưng nếu X sai thì sao?")
-3. Crack ("Vậy mô hình cũ...")
-4. New perspective ("Nếu nhìn theo cách này...")
-5. Transformed question ("Vậy câu hỏi thật sự là...")
+1. Giả định quen thuộc ("ai cũng nghĩ X...")
+2. Khoảnh khắc nghi ngờ ("rồi một hôm tôi nhận ra...")
+3. Nhìn lại ("nếu lật ngược...")
+4. Góc nhìn mới ("có khi nó đơn giản hơn mình tưởng")
+5. Câu hỏi mở ("vậy bạn đang giữ cái gì?")
 
 **Pattern mẫu**:
-> "You have to reset your life. You have to reset your mind. You have to let go of everything you were... Beauty starts with a blank slate."
+> "mười năm tôi tin rằng thành công là leo lên. rồi một sáng, đứng trên cái đỉnh nhỏ xíu của mình, nhìn xuống, tôi thấy: mình leo đúng núi chưa cũng không biết."
 
-Tiếng Việt:
-> "Bạn phải reset lại đời mình. Reset lại đầu mình. Buông hết những gì bạn từng là. Cái đẹp chỉ bắt đầu trên một tờ giấy trắng."
-
-**Lưu ý**: Archetype này mạnh nhất khi nội dung gốc thực sự về phá-và-tái-tạo. Nếu bài gốc nhẹ nhàng, dùng archetype này sẽ thành overacting.
+**Lưu ý**: Archetype này mạnh khi viết từ trải nghiệm thật. Nếu chưa trải qua chuyển đổi, đừng bịa. Chuyển sang Patient Observer hoặc Quiet Devastator.
 
 ---
 
@@ -72,36 +66,24 @@ Tiếng Việt:
 6. Openness ("Và câu hỏi vẫn ở đó")
 
 **Pattern mẫu**:
-> "People in third-world countries aspire to talking, playing, and dancing with their friends and family. People in first-world countries aspire to not having to. I think about this often."
-
-Tiếng Việt:
-> "Người ở nước nghèo mơ được ngồi nói chuyện, chơi đùa, nhảy múa với gia đình bạn bè. Người ở nước giàu mơ không phải làm những chuyện đó. Tôi hay nghĩ về điều này."
+> "người ở nước nghèo mơ được ngồi nói chuyện, chơi đùa, nhảy múa với gia đình bạn bè. người ở nước giàu mơ không phải làm những chuyện đó. tôi hay nghĩ về điều này."
 
 **Lưu ý**: Archetype này đòi hỏi một quan sát thật sắc. Nếu bạn không tìm được contrast đủ mạnh, đừng ép — chuyển archetype khác.
 
 ---
 
-## Phong cách bổ sung (blend vào bất kỳ archetype nào)
+## Sắc thái cảm xúc (blend vào bất kỳ archetype nào)
 
-### Paradox
+Mỗi archetype có thể kết hợp với các sắc thái cảm xúc khác nhau. Chọn sắc thái phù hợp với chất liệu, không mặc định chiêm nghiệm buồn cho mọi bài.
 
-Đặt hai mặt đối lập cạnh nhau, opposing pairs, "impossible to label" identity framing.
+| Sắc thái | Khi nào dùng | Ví dụ giọng |
+|-----------|-------------|-------------|
+| **Chiêm nghiệm** | Bài về tự vấn, nhìn lại, hành trình nội tâm | "tôi ngồi với câu hỏi đó suốt hai tuần" |
+| **Hài hước** | Insight đến từ nhìn ra cái absurd trong đời thường | "tám cuộc họp, bốn cái tôi ngồi im, hai cái có thể là email" |
+| **Tò mò** | Hành trình khám phá, phát hiện bất ngờ | "con gái hỏi tại sao trời xanh. đến câu thứ ba tôi hết kiến thức" |
+| **Phẫn nộ nhẹ** | Chỉ ra vấn đề hệ thống mà nhiều người chịu đựng im lặng | "chúng ta được dạy chịu đựng là đức tính tốt, nhưng không ai nói chịu đựng cái gì mới quan trọng" |
 
-Ví dụ:
-> "Be an artist and a capitalist. Be a savage and a saint."
-
-Tiếng Việt:
-> "Vừa là nghệ sĩ, vừa là tư bản. Vừa hoang dại, vừa thánh thiện."
-
-### Isolation / Vision
-
-Specific timeframe cho authority, triple "can't listen", progressive fragmentation.
-
-Ví dụ:
-> "It takes 4-6 weeks of uncomfortable isolation to rediscover who you are."
-
-Tiếng Việt:
-> "Phải mất 4-6 tuần cô lập khó chịu, bạn mới tìm lại được mình."
+**Nguyên tắc**: Đọc chất liệu, hỏi "cảm xúc tự nhiên nhất khi nói về chuyện này là gì?" rồi chọn. Viết 3 bài liên tiếp cùng sắc thái là dấu hiệu đang chạy autopilot.
 
 ---
 
@@ -110,7 +92,9 @@ Tiếng Việt:
 Sau khi đọc bài gốc, hỏi:
 
 1. **Bài nói về quá trình dài, kiên nhẫn, tích luỹ?** → Patient Observer.
-2. **Bài đòi hỏi người đọc buông bỏ, reset, phá cái cũ?** → Dramatic Prophet.
-3. **Bài có một observation sắc, nghịch lý, phê phán ngầm?** → Quiet Devastator.
+2. **Bài về thay đổi tư duy, nhìn lại giả định, buông bỏ?** → Gentle Challenger.
+3. **Bài có observation sắc, nghịch lý, phê phán ngầm?** → Quiet Devastator.
 
-Nếu không rõ, thử cả ba trong đầu và xem cái nào cho hook khỏe nhất.
+Chọn archetype xong, chọn sắc thái cảm xúc. Hai lựa chọn này độc lập nhau: Patient Observer + Hài hước, Quiet Devastator + Tò mò đều hợp lệ.
+
+Nếu không rõ, thử cả ba trong đầu và xem cái nào tự nhiên nhất với chất liệu.

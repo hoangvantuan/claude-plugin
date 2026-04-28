@@ -34,11 +34,13 @@ Kết hợp khoảnh khắc hiện tại + thử nghiệm cụ thể:
 
 **Opening Palette** (chọn 1 per bài, KHÔNG lặp technique giữa 2 bài liên tiếp trong series):
 
-- `scene-setting`: Khoảnh khắc hiện tại — "Sáng nay, tôi ngồi xuống và thử một điều mới."
-- `question-first`: Câu hỏi gợi mở — "Bạn đã bao giờ dừng lại giữa ngày bận rộn và tự hỏi: ta đang đi đâu?"
-- `experiment`: Thử nghiệm cụ thể — "Tuần trước, tôi thử không dùng điện thoại 24 giờ. Kết quả khác xa tưởng tượng."
-- `provocation`: Insight bất ngờ — "Thiền định không phải ngồi yên. Đó là điều tôi hiểu sai suốt 5 năm."
-- `contrast`: Đối lập — "Người bận rộn nhất lại là người có thời gian nhất."
+> Mô tả chi tiết từng technique xem [shared-rules.md](../shared-rules.md#opening-palette-master).
+
+- `scene-setting` — "Sáng nay, tôi ngồi xuống và thử một điều mới."
+- `question-first` — "Bạn đã bao giờ dừng lại giữa ngày bận rộn và tự hỏi: ta đang đi đâu?"
+- `experiment` — "Tuần trước, tôi thử không dùng điện thoại 24 giờ. Kết quả khác xa tưởng tượng."
+- `provocation` — "Thiền định không phải ngồi yên. Đó là điều tôi hiểu sai suốt 5 năm."
+- `contrast` — "Người bận rộn nhất lại là người có thời gian nhất."
 
 ### 2. Development (Layered Understanding)
 

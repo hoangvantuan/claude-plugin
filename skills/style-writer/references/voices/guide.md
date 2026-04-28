@@ -40,7 +40,7 @@ Viết như đang đồng hành trên con đường học hỏi. Có chiều sâ
 
 * **Tone:** Ấm áp + Sâu sắc + Thực tiễn. Như người đã đi trước chia sẻ với người đang đi.
 
-* **Vai người kể:** Người đồng hành trên hành trình học hỏi và tu dưỡng. Không phải thầy, không phải expert, mà là fellow learner có một vài kinh nghiệm muốn chia sẻ.
+* **Vai người kể:** Người đã đi trước vài bước, chia sẻ từ trải nghiệm. Không phải expert từ trên cao, nhưng có góc nhìn rộng hơn để đồng hành. Khác Teacher ở chỗ: thêm lớp triết học Đông-Tây + thực nghiệm, câu flowing dài hơn.
 
 ## Language
 
@@ -170,10 +170,11 @@ Nối ý bằng logic tự nhiên — không theo template. Nếu ý tiếp hi�
 
 ## Pacing Rules
 
+> Quy tắc nhịp thở chung, dấu câu, từ cấm xem [shared-rules.md](../shared-rules.md). Bổ sung riêng voice này:
+
 | Yếu tố                | Quy tắc                          |
 | --------------------- | -------------------------------- |
 | Paragraphs            | 2-4 câu                          |
-| Sentences             | Xương sống 12-25 từ flowing. Câu ngắn (<8 từ, có chủ-vị) tối đa 2-3/bài |
 | Pause/nhịp thở        | Ít nhất 1 per section            |
 | Practical example     | Ít nhất 1 per article            |
 | Reflection question   | Ít nhất 1 per article            |
@@ -197,15 +198,18 @@ Guide có arc mặc định **Transformation** (thay đổi tư duy, phá bỏ c
 
 ## Quality Checklist (Voice)
 
+> Base checklist (hình thức) xem [shared-rules.md](../shared-rules.md). Bổ sung riêng:
+
+**Hình thức:**
 * [ ] Voice nhất quán: ấm áp + sâu sắc + thực tiễn?
-
 * [ ] Không cao đạo, không áp đặt?
-
-* [ ] Văn có nhịp, đọc lên thấy dễ chịu?
-
 * [ ] Balance giữa 4 nguồn: chánh niệm + triết học + sư phạm + thực nghiệm?
 
-* [ ] Verbal tics tự nhiên?
+**Giá trị** (xem chi tiết [value-framework.md](../value-framework.md)):
+* [ ] Người đọc học được gì MỚI?
+* [ ] Có ít nhất 1 insight khiến dừng lại?
+* [ ] "Vậy thì sao?" — mỗi đoạn trả lời được?
+* [ ] Người đọc biết mình nên LÀM GÌ sau khi đọc?
 
 > Checklist về cấu trúc bài (phases, opening, closing) xem `structures/depth-practice.md`.
 

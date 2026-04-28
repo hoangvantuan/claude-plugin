@@ -8,10 +8,7 @@ Usage:
 
 Output: Markdown file in output_dir
     - If output_dir specified: uses that folder
-    - If not specified: creates writer-planner/{slug}-{YYMMDD-HHMM}/input-handling/ in CWD
-
-Note: Writer-agent workflow expects output folders:
-    writer-planner/{title}/input-handling/
+    - If not specified: creates planning-content/{slug}-{YYMMDD-HHMM}/input-handling/ in CWD
 
 Supported formats:
     - PDF (text-based and scanned with OCR)
@@ -69,9 +66,9 @@ def _check_docling() -> bool:
 
 
 def get_default_output_dir(input_path: str) -> Path:
-    """Generate default output directory following writer-planner convention.
+    """Generate default output directory.
 
-    Pattern: {CWD}/writer-planner/{slug}-{YYMMDD-HHMM}/input-handling/
+    Pattern: {CWD}/planning-content/{slug}-{YYMMDD-HHMM}/input-handling/
     """
     input_p = Path(input_path)
     slug = generate_slug(input_p.stem)

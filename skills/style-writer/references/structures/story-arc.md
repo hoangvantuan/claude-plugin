@@ -27,11 +27,13 @@ Cấu trúc kể chuyện 4 giai đoạn: thiết lập bối cảnh, gặp gỡ
 
 **Opening Palette** (chọn 1 per bài, KHÔNG lặp technique giữa 2 bài liên tiếp trong series):
 
-- `scene-setting`: Khoảnh khắc qua giác quan — "Buổi chiều hôm đó, căn phòng mờ ánh đèn vàng..."
-- `in-medias-res`: Nhảy vào giữa hành động/đối thoại — "'Thầy biết không, con sợ.' Tôi nói trước khi kịp nghĩ."
-- `memory-flash`: Hồi ức mảnh ghép — "Tôi nhớ mùi trà. Nhớ giọng thầy. Nhưng không nhớ mình đã khóc hay chưa."
-- `question-first`: Câu hỏi trước, bối cảnh sau — "Có bao giờ nghe một câu hỏi rồi mười năm vẫn không trả lời được?"
-- `contrast`: Nghịch lý, tương phản — "Người bình thản nhất trong phòng là người vừa mất tất cả."
+> Mô tả chi tiết từng technique xem [shared-rules.md](../shared-rules.md#opening-palette-master).
+
+- `scene-setting` — "Buổi chiều hôm đó, căn phòng mờ ánh đèn vàng..."
+- `in-medias-res` — "'Thầy biết không, con sợ.' Tôi nói trước khi kịp nghĩ."
+- `memory-flash` — "Tôi nhớ mùi trà. Nhớ giọng thầy. Nhưng không nhớ mình đã khóc hay chưa."
+- `question-first` — "Có bao giờ nghe một câu hỏi rồi mười năm vẫn không trả lời được?"
+- `contrast` — "Người bình thản nhất trong phòng là người vừa mất tất cả."
 
 ### 2. Encounter
 

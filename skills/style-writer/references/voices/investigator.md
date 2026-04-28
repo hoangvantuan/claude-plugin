@@ -137,10 +137,12 @@ Bắt đầu từ câu hỏi rộng, qua mỗi đoạn thu hẹp qua bằng ch�
 
 ## Pacing Rules
 
+> Quy tắc nhịp thở chung, dấu câu xem [shared-rules.md](../shared-rules.md). Bổ sung riêng voice này:
+
 | Yếu tố               | Quy tắc                                                     |
 | -------------------- | ----------------------------------------------------------- |
 | Đoạn văn             | 3-5 câu (dài hơn contemplative vì cần reasoning chain)      |
-| Câu                  | Mix: ngắn (5-10 từ) cho punch, dài (15-30 từ) cho reasoning |
+| Câu                  | Mix: ngắn (≤10 từ) cho punch, dài (15-30 từ) cho reasoning |
 | Câu hỏi thật         | 1 per 500-800 từ. Không rhetorical, phải có follow-through  |
 | Giả định named       | Ít nhất 1 per article section                               |
 | Cross-domain example | Ít nhất 1 per article                                       |
@@ -162,11 +164,19 @@ Bắt đầu từ câu hỏi rộng, qua mỗi đoạn thu hẹp qua bằng ch�
 
 ## Quality Checklist
 
+> Base checklist (hình thức) xem [shared-rules.md](../shared-rules.md). Bổ sung riêng:
+
+**Hình thức:**
 - [ ] Voice nhất quán: tò mò + nghiêm túc + trung thực?
 - [ ] Reasoning chain rõ: claim → evidence → interpretation?
 - [ ] Không có mechanical phrases (blacklist)?
-- [ ] Người đọc phải TƯ DUY, không chỉ tiếp nhận?
 - [ ] Provisional language khi chưa chắc chắn?
+
+**Giá trị** (xem chi tiết [value-framework.md](../value-framework.md)):
+- [ ] Người đọc phải TƯ DUY, không chỉ tiếp nhận?
+- [ ] Có ít nhất 1 giả định bị lật khiến dừng lại?
+- [ ] "Vậy thì sao?" — mỗi đoạn trả lời được?
+- [ ] Câu hỏi mở cuối bài CÓ SỨC NẶNG, liên quan đời sống?
 
 
 

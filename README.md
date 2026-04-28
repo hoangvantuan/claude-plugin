@@ -26,7 +26,7 @@ claude plugin install gh:hoangvantuan/shun-claude-plugin
 | `outline-writer` | Phân tích nội dung & tạo outline thuần nội dung (sequence of sections; thesis, key arguments, evidence), không quyết định media (slide/blog/doc), không quy định cách viết/tone/style (đó là việc của writer) |
 | `pexels-media` | Source ảnh/video royalty-free từ Pexels API: search, curated, popular, collections, multi-resolution download + sidecar metadata bắt buộc. Cần `PEXELS_API_KEY` |
 | `pinchtab` | Browser automation cho AI agents, điều khiển Chrome qua PinchTab HTTP API |
-| `planning-content` | Phân tích nội dung & lên outline ý chính cho từng bài (audience, goal, angle, thesis, key points, data, takeaway). Hỗ trợ batch + content map cho input dài. KHÔNG can thiệp cách viết/tone/style/structure |
+| `planning-content` | Phân tích nội dung & lên outline ý chính cho từng bài. Hỗ trợ mọi input: topic, notes, URL, file (PDF/DOCX/EPUB), YouTube. Convert tài liệu, research, content map, tier processing cho tài liệu lớn. KHÔNG can thiệp cách viết/tone/style |
 | `pptx-creator` | Tạo PowerPoint đẹp, chuyên nghiệp, hỗ trợ font tiếng Việt (PptxGenJS) |
 | `problem-solving` | Kỹ thuật giải quyết vấn đề có hệ thống, inversion, collision-zone, scale-game, simplification cascades |
 | `prompt-engineering` | Prompt engineering patterns: few-shot, chain-of-thought, template systems, system prompt design, agent prompting best practices, persuasion principles cho LLM interaction |
@@ -43,7 +43,6 @@ claude plugin install gh:hoangvantuan/shun-claude-plugin
 | `wisdom-mentor` | Trò chuyện với người thầy tri thức (28 mentors) |
 | `work-explainer` | Personal teacher, giải thích công việc đã làm qua 9-step framework |
 | `workshop-builder` | Thiết kế workshop theo Backwards Design + 4Cs + Kirkpatrick |
-| `writer-planner` | Xử lý input (PDF, DOCX, EPUB, URL, YouTube) và tạo kế hoạch chia bài viết, convert → analyze → plan. Tier workflows |
 | `speech-to-text` | Chuyển file audio/video thành text kèm timestamps qua Soniox API, hỗ trợ 60+ ngôn ngữ, audio (mp3/wav/flac) + video (mp4/mov/mkv/avi) |
 | `youtube-title-generator` | Tạo tiêu đề YouTube hấp dẫn từ ý tưởng nội dung |
 | `youtube-transcript` | Tải transcript (phụ đề/captions) từ YouTube video qua yt-dlp, convert VTT sang plain text |

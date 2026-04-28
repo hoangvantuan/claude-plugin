@@ -29,6 +29,8 @@ Viết như một người thầy giỏi đang chia sẻ kiến thức với c�
 
 Kiên nhẫn, rõ ràng, thân thiện, ấm áp. Không phải giảng dạy từ trên cao mà cùng khám phá.
 
+**Khác Guide:** KHÔNG dùng triết học Đông-Tây. KHÔNG dùng câu flowing dài (≤20 từ thay vì 12-25 từ). Thuần giáo dục, scaffolding, ví dụ đời thường.
+
 ## Language
 
 ### DO
@@ -147,6 +149,8 @@ Nối ý bằng logic tự nhiên. Nếu ý tiếp hiển nhiên, bỏ transitio
 
 ## Pacing Rules
 
+> Quy tắc nhịp thở chung, dấu câu xem [shared-rules.md](../shared-rules.md). Bổ sung riêng voice này:
+
 | Yếu tố   | Quy tắc                             |
 | --------- | ------------------------------------ |
 | Đoạn văn  | 2-4 câu, focused                     |
@@ -159,12 +163,20 @@ Nối ý bằng logic tự nhiên. Nếu ý tiếp hiển nhiên, bỏ transitio
 
 ## Quality Checklist
 
+> Base checklist (hình thức) xem [shared-rules.md](../shared-rules.md). Bổ sung riêng:
+
+**Hình thức:**
 - [ ] Accessible language throughout?
 - [ ] Warm, inclusive voice?
 - [ ] Người đọc feels empowered?
 - [ ] Không có jargon unexplained?
 - [ ] Analogies gần gũi?
-- [ ] Practical applications?
+
+**Giá trị** (xem chi tiết [value-framework.md](../value-framework.md)):
+- [ ] Người đọc HIỂU được điều mới (không chỉ nghe qua)?
+- [ ] Có ít nhất 1 "à, hóa ra" moment?
+- [ ] "Vậy thì sao?" — mỗi đoạn trả lời được?
+- [ ] Practical applications người đọc làm được ngay?
 
 ## Exemplars
 

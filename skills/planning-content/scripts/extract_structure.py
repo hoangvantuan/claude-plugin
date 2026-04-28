@@ -79,8 +79,8 @@ def get_project_root() -> Path:
 
 
 def get_output_base() -> Path:
-    """Return absolute path to output base directory (= CWD/writer-planner/)."""
-    return get_project_root() / "writer-planner"
+    """Return absolute path to output base directory (= CWD/planning-content/)."""
+    return get_project_root() / "planning-content"
 
 
 def detect_language(text: str, sample_size: int = 5000) -> str:

@@ -1,5 +1,5 @@
 #!/bin/bash
-# Writer-Planner: Output skill directory paths
+# Planning-Content: Output skill directory paths
 # Used by main agent to resolve paths at runtime (Step 0)
 # Works regardless of installation location (project-local or global)
 # MUST be invoked with absolute path: bash /full/path/to/wa-env
@@ -11,7 +11,7 @@ PROJECT_ROOT="$(pwd)"
 # Validate: SCRIPT_DIR must end with /scripts
 if [[ "$(basename "$SCRIPT_DIR")" != "scripts" ]]; then
   echo "ERROR: wa-env resolved SCRIPT_DIR=$SCRIPT_DIR (expected */scripts/)" >&2
-  echo "HINT: Invoke with absolute path: bash /full/path/to/writer-planner/scripts/wa-env" >&2
+  echo "HINT: Invoke with absolute path: bash /full/path/to/planning-content/scripts/wa-env" >&2
   return 1 2>/dev/null || exit 1
 fi
 
@@ -25,5 +25,5 @@ fi
 echo "SCRIPTS_DIR=$SCRIPT_DIR"
 echo "SKILL_DIR=$SKILL_DIR"
 echo "PROJECT_ROOT=$PROJECT_ROOT"
-echo "OUTPUT_DIR=$PROJECT_ROOT/writer-planner"
+echo "OUTPUT_DIR=$PROJECT_ROOT/planning-content"
 echo "REFERENCES_DIR=$SKILL_DIR/references"

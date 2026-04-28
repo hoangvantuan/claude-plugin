@@ -26,19 +26,23 @@ Cấu trúc linh hoạt, tự chọn tổ chức dựa trên nội dung thực t
 
 ## Development Strategy (chọn theo CONTENT_TYPE)
 
-| Content Type | Strategy | Style Reference |
-|---|---|---|
-| `tutorial` | Intuition → Concept → Example → Apply | Building Blocks |
-| `conceptual` | Surface → Deeper → Connections | Five Layers |
-| `narrative` | Scene → Encounter → Transformation | Story Arc |
-| `analysis` | Conclusion → Evidence → Implications | BLUF-Evidence |
-| `mixed` | Combine techniques. Start with dominant type, weave others in. | Subagent decides |
+| Content Type | Strategy                                                       | Style Reference  |
+| ------------ | -------------------------------------------------------------- | ---------------- |
+| `tutorial`   | Intuition → Concept → Example → Apply                          | Building Blocks  |
+| `conceptual` | Surface → Deeper → Connections                                 | Five Layers      |
+| `narrative`  | Scene → Encounter → Transformation                             | Story Arc        |
+| `analysis`   | Conclusion → Evidence → Implications                           | BLUF-Evidence    |
+| `mixed`      | Combine techniques. Start with dominant type, weave others in. | Subagent decides |
+
 
 **Khi `mixed`:** Xác định loại content chiếm >50% → dùng strategy đó làm backbone → weave các loại khác vào.
 
 ## Opening Palette
 
+> Mô tả chi tiết từng technique xem [shared-rules.md](../shared-rules.md#opening-palette-master).
+
 Adaptive có thể dùng Opening Palette từ BẤT KỲ structure nào. Lựa chọn dựa trên content_type hint:
+
 - `tutorial` → question-first, scenario, provocation
 - `conceptual` → assumption-challenge, contrast, question-first
 - `narrative` → scene-setting, in-medias-res, memory-flash

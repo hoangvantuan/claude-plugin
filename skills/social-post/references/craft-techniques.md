@@ -85,7 +85,7 @@ Ví dụ: "chúng ta ngầm tin rằng lương cao thì đời ổn. nhưng anh 
 | **Chất vấn**  | Đào sâu      | "cái thích ấy đến từ đâu?"                                    |
 
 
-**Nguyên tắc**: Câu hỏi phải thật, không rhetorical. Đặt xong phải explore, không bỏ lửng. Nếu bạn không định trả lời câu hỏi đó trong bài, đừng đặt.
+**Nguyên tắc**: Câu hỏi phải khiến người đọc thực sự dừng lại suy nghĩ, không phải trang trí. Đặt xong phải explore hoặc để người đọc tự trả lời (ở câu kết). "Bạn đã bao giờ tự hỏi...?" là trang trí. "Nếu buông bỏ cần nỗ lực, đó có phải buông bỏ?" là câu hỏi thật vì nó tạo friction trong đầu người đọc.
 
 **TRÁNH pattern "Có khi nào bạn...?"**: kiểu này giống sách self-help và AI tạo ra hàng loạt. Nếu muốn hỏi tự vấn, đi thẳng vào câu hỏi cụ thể, không mở bằng "Có khi nào...".
 
@@ -121,7 +121,7 @@ Ví dụ cụ thể (người thật, tình huống thật, kết quả thật) 
 ## Power Techniques (áp dụng xuyên suốt bài)
 
 - **"Bạn"** xuyên suốt. KHÔNG "mọi người", "các bạn", "anh chị".
-- **Strategic vagueness** — để người đọc tự chiếu tình huống của mình vào. Không quá cụ thể đến mức chỉ áp dụng cho một người.
+- **Strategic vagueness** — vague ở mức CẢM XÚC và TÌNH HUỐNG (để người đọc tự chiếu), cụ thể ở mức CHI TIẾT GIÁC QUAN (để bài có neo). Ví dụ: "bạn từng thức dậy mà không muốn đi làm" (vague, ai cũng chiếu được) kết hợp "anh bạn tôi ngồi trong xe mười phút trước khi mở cửa vào công ty" (cụ thể, tạo hình ảnh).
 - **Một câu memorable** — câu đọc xong muốn screenshot hoặc copy. Đặt ở phần insight hoặc cuối bài.
 - **Để lại điều không nói hết** — kết bài mở, cho người đọc tự lấp khoảng trống.
 - **Xuống dòng theo beat, không theo câu** — 1 đoạn = 1 beat logic (có thể 1-4 câu cùng phục vụ một ý). Đừng tách mỗi câu thành một đoạn. Ví dụ: mở bài + câu trích dẫn + câu mở vấn đề (3 câu nối nhau về cùng một chất liệu) nên viết liền thành 1 khối, không xuống dòng trống giữa chúng. Chỉ xuống dòng khi chuyển beat: mở bài → dựng vấn đề, dựng vấn đề → đẩy sâu, đẩy sâu → insight.

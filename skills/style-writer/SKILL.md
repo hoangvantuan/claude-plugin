@@ -8,10 +8,10 @@ disable-model-invocation: true
 
 Skill quản lý văn phong viết lách, gồm 2 workflow:
 
-| Workflow                | Mục đích                                          | Khi nào dùng                                       |
-| ----------------------- | ------------------------------------------------- | -------------------------------------------------- |
-| **Writer** _(mặc định)_ | Viết nội dung dựa trên input + voice + structure  | User muốn viết bài, viết lại nội dung, tạo content |
-| **Analyze**             | Bóc tách DNA văn phong từ corpus → tạo voice mới  | User muốn phân tích cách viết, tạo voice mới       |
+| Workflow                | Mục đích                                         | Khi nào dùng                                       |
+| ----------------------- | ------------------------------------------------ | -------------------------------------------------- |
+| **Writer** *(mặc định)* | Viết nội dung dựa trên input + voice + structure | User muốn viết bài, viết lại nội dung, tạo content |
+| **Analyze**             | Bóc tách DNA văn phong từ corpus → tạo voice mới | User muốn phân tích cách viết, tạo voice mới       |
 
 
 **Mặc định: Workflow Writer.** Khi user gọi skill mà không chỉ định rõ workflow, dùng ngay **Writer** (đi thẳng đến mục `## Workflow 2: Writer` bên dưới).
@@ -152,9 +152,11 @@ Mỗi structure định nghĩa khung cấu trúc bài viết: phases, opening pa
 Có 2 cách:
 
 **a. Bóc tách từ corpus có sẵn** (giọng cá nhân, fingerprint mạnh):
+
 - Dùng **Workflow 1: Analyze** để phân tích DNA từ tập bài viết. Output tự động lưu vào `references/voices/` và cập nhật bảng.
 
 **b. Soạn voice generic mới** (không có corpus, design từ đầu):
+
 1. Soạn file `<slug>.md` (kèm exemplars).
 2. File tối thiểu cần: Philosophy, Voice, Language (DO/DON'T), Core Techniques, Verbal Tics, Metaphor Bank, Pacing Rules, Quality Checklist (Voice), Exemplars.
 3. Arc pattern (nếu có) → thêm vào structure tương ứng, không vào voice file.
@@ -174,6 +176,11 @@ Có 2 cách:
 
 Viết nội dung dựa trên input của user, áp dụng voice + structure đã chọn.
 
+**Tài liệu hỗ trợ** (đọc khi cần):
+
+- `references/value-framework.md` — framework đảm bảo giá trị nội dung
+- `references/shared-rules.md` — quy tắc chung (nhịp thở, dấu câu, checklist hình thức, opening palette)
+
 ### Bước 1. Nhận input
 
 User cung cấp nội dung đầu vào theo 1 trong các dạng:
@@ -183,11 +190,24 @@ User cung cấp nội dung đầu vào theo 1 trong các dạng:
 - **Chủ đề**: mô tả chủ đề, user muốn viết bài mới.
 - **Transcript / raw notes**: nội dung thô cần chuyển thành bài viết.
 
-### Bước 2. Xác định voice
+### Bước 2. Đào insight
+
+Đọc `references/value-framework.md` phần "Đào Insight" và "Reader Empathy". Trả lời 4 câu hỏi bắt buộc:
+
+1. **Điều mới**: Input nói gì mà người đọc phổ thông CHƯA biết?
+2. **Góc nhìn**: Góc nào chưa ai khai thác?
+3. **"À, hóa ra"**: Người đọc sẽ bất ngờ ở chỗ nào?
+4. **Một câu cốt lõi**: Nếu người đọc chỉ nhớ 1 câu, câu đó là gì?
+
+Xác định reader profile: người đọc là ai, họ đã biết gì, đang đau ở đâu, sau khi đọc họ làm gì.
+
+**Nếu không trả lời được** → chưa viết. Hỏi user thêm thông tin, hoặc đề xuất góc nhìn mới.
+
+### Bước 3. Xác định voice
 
 Nếu user đã chỉ định → dùng ngay. Nếu chưa → hỏi user chọn voice từ bảng **Voices có sẵn** (có cả giọng generic như teacher/storyteller và giọng cá nhân do Analyze tạo). Load file voice tương ứng.
 
-### Bước 3. Xác định structure (optional)
+### Bước 4. Xác định structure (optional)
 
 Nếu user đã chỉ định → dùng ngay. Nếu chưa:
 
@@ -197,39 +217,58 @@ Nếu user đã chỉ định → dùng ngay. Nếu chưa:
 
 Load file structure tương ứng.
 
-### Bước 4. Viết bài
+### Bước 5. Viết bài
 
-1. **Read** toàn bộ file voice + structure đã chọn.
+1. **Read** toàn bộ file voice + structure + `references/shared-rules.md`.
 2. **Phân tích input**: xác định content type (narrative/conceptual/tutorial/analysis/mixed) để apply Content-Type Adaptation trong structure.
 3. **Viết** theo:
+  - **Insight cốt lõi** (từ Bước 2): mọi đoạn phục vụ insight này.
   - **Voice**: giọng, nhịp, kỹ thuật, anti-patterns, verbal tics.
   - **Structure**: phases, opening palette (chọn 1 technique), transitions.
-4. **Self-critique**: chạy qua Quality Checklist của cả voice VÀ structure.
-5. Fix bất kỳ lỗi nào trước khi output.
+  - **Value**: mỗi đoạn pass "Vậy thì sao?" test (xem `references/value-framework.md`).
+4. **Self-critique**: chạy qua Quality Checklist của cả voice VÀ structure VÀ Base Checklist (`references/shared-rules.md`).
+5. Fix bất kỳ lỗi nào trước khi sang bước tiếp.
 
-### Bước 5. Output
+### Bước 6. Revision
+
+Đọc `references/value-framework.md` phần "Revision Protocol" và "Reader Impact Checklist".
+
+1. **Đọc lại như người đọc**: chỗ nào phải đọc 2 lần thì viết lại.
+2. **"Vậy thì sao?" sweep**: đoạn nào không pass → cắt hoặc nối.
+3. **Đoạn yếu nhất**: mạnh lên hoặc cắt đi.
+4. **Share test**: "Tôi có share bài này không?" Không → sửa.
+5. **Reader Impact Checklist**: chạy 8 ô kiểm tra giá trị. Fail bất kỳ ô nào → sửa trước khi output.
+
+### Bước 7. Output
 
 Trả bài viết hoàn chỉnh, sẵn sàng publish. Không heading meta, không label structure/voice, không commentary. Chỉ bài viết thuần túy.
 
-Sau bài viết, ghi ngắn 1-2 dòng: voice đã dùng, structure đã dùng, content type detected.
+Sau bài viết, ghi ngắn:
+
+- Voice, structure, content type detected
+- Insight cốt lõi (1 câu)
+- Quality level tự đánh giá: Đạt / Tốt / Xuất sắc (xem rubric trong `references/value-framework.md`)
 
 ### Ràng buộc Writer
 
 - KHÔNG tự chọn style. User phải chọn hoặc confirm đề xuất.
 - KHÔNG viết nếu chưa load voice. Hỏi user trước.
-- Output phải pass quality checklist. Không giao draft cẩu thả.
+- KHÔNG viết nếu chưa xác định insight cốt lõi (Bước 2). Chất lượng nội dung quan trọng hơn tốc độ.
+- Output phải pass CẢ form checklist (`references/shared-rules.md` + voice + structure) VÀ value checklist (`references/value-framework.md`).
 - Bài viết phải đọc như người viết, không như AI. Tuân thủ mọi anti-pattern trong voice.
+- Kết bài theo phân loại voice category (xem `references/shared-rules.md` phần "Kết Bài").
 
 ---
 
 ## Quy ước file style guide
 
-- **Voice (designed)**: philosophy + voice + language + core techniques + verbal tics + metaphor bank + pacing rules + quality checklist (voice) + exemplars. KHÔNG chứa phases/arc pattern (đó thuộc structure).
+- **Voice (designed)**: philosophy + voice + language + core techniques + verbal tics + metaphor bank + pacing rules + quality checklist (voice) + exemplars. KHÔNG chứa phases/arc pattern (đó thuộc structure). Quy tắc chung (nhịp thở, dấu câu) nằm trong `references/shared-rules.md`.
 - **Voice (analyzed từ Workflow Analyze)**: theo output chuẩn 8 chiều + signature phrases + công thức + anti-patterns + AI anti-patterns. Lưu chung folder `references/voices/`.
-- **Structure**: frontmatter (name, recommended_voice, best_for) + phases + opening palette + arc pattern (nếu có) + content-type adaptation + quality checklist (structure).
+- **Structure**: frontmatter (name, recommended_voice, best_for) + phases + opening palette + arc pattern (nếu có) + content-type adaptation + quality checklist (structure). Opening Palette master list nằm trong `references/shared-rules.md`.
 
 ## Nguyên tắc
 
-- **Single source of truth**: mỗi voice một file duy nhất trong skill này. Skill/AI khác reference bằng path, không copy nội dung đi nơi khác.
+- **Single source of truth**: mỗi voice một file duy nhất trong skill này. Skill/AI khác reference bằng path, không copy nội dung đi nơi khác. Quy tắc chung nằm trong `references/shared-rules.md`, không copy vào từng voice.
+- **Giá trị > Hình thức**: bài viết đẹp mà rỗng thì vô giá trị. Luôn đào insight trước khi viết. Xem `references/value-framework.md`.
 - **Fingerprint > generic**: voice tốt phải có nét nhận dạng mạnh (signature phrase, quirks, pattern rõ ràng), đủ để phân biệt qua 3 câu đầu.
 - **Viết như người, không như AI**: tuân thủ mọi anti-pattern trong voice. Output phải pass quality checklist.

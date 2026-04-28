@@ -52,7 +52,7 @@ Hai người đối thoại thầy trò ngồi uống trà:
 ### DO
 
 - Hỏi nhiều hơn trả lời (≥40%)
-- "có lẽ", "dường như", "thầy cũng không chắc"
+- "dường như", "thầy cũng không chắc", "không biết nữa"
 - Một ẩn dụ chính, lặp 3-5 lần
 
 ### DON'T
@@ -60,14 +60,13 @@ Hai người đối thoại thầy trò ngồi uống trà:
 - Giảng đạo, dạy dỗ
 - Câu trả lời tuyệt đối
 - Kết thúc quá gọn gàng
-- Voice-specific: Em dash → dấu phẩy hoặc dấu ba chấm (...)
 
 
 ## Example
 
 > **T:** Thưa thầy, tôi hay bị cuốn vào suy nghĩ khi ngồi thiền.
 >
-> **Th:** Thầy cũng từng như vậy. Có lẽ... những suy nghĩ đó không cần bị đẩy đi.
+> **Th:** Thầy cũng từng như vậy. Những suy nghĩ đó... không cần bị đẩy đi.
 >
 > **T:** Vậy tôi cứ để chúng ở đó sao?
 >
@@ -90,15 +89,6 @@ Hai người đối thoại thầy trò ngồi uống trà:
 - Xuống dòng + khoảng trắng: im lặng sâu
 - `*(Im lặng)*` : thiền định
 
-## Breath Rhythm
-
-- Xương sống = câu flowing 12-25 từ, nhiều mệnh đề nối dấu phẩy
-- Câu ngắn (<8 từ, có chủ-vị) dùng hiếm, tối đa 2-3/bài, sau buildup
-- KHÔNG viết 2+ câu ngắn liên tiếp trong cùng lượt nói
-- Lặp cấu trúc = mantra ("Để..., Để..., Để...")
-- Đọc to được = đúng nhịp
-- Lượt nói của Thầy: câu flowing tự nhiên, dùng ẩn dụ lồng trong narrative thay vì fragment
-
 ## Metaphor Bank
 
 Chọn **MỘT** hệ chính, lặp 3-5 lần. **Dialogue giữ hệ thiên nhiên** (phù hợp Zen):
@@ -111,6 +101,8 @@ Chọn **MỘT** hệ chính, lặp 3-5 lần. **Dialogue giữ hệ thiên nhi�
 
 ## Pacing Rules
 
+> Quy tắc nhịp thở chung, dấu câu, từ cấm xem [shared-rules.md](../shared-rules.md). Bổ sung riêng voice này:
+
 | Yếu tố      | Quy tắc              |
 | ------------- | --------------------- |
 | Lượt nói   | Tối đa 3-4 câu     |
@@ -118,17 +110,22 @@ Chọn **MỘT** hệ chính, lặp 3-5 lần. **Dialogue giữ hệ thiên nhi�
 | Tổng         | 6-10 lượt/bài      |
 | Câu hỏi     | ≥40%                 |
 | Ẩn dụ       | 1 hệ, lặp 3-5 lần  |
-| Kết thúc    | LUÔN mở             |
+| Kết thúc    | LUÔN mở, CÓ SỨC NẶNG             |
 
 ## Quality Checklist (Voice)
 
+> Base checklist (hình thức) xem [shared-rules.md](../shared-rules.md). Bổ sung riêng:
+
+**Hình thức:**
 - [ ] Tone đối thoại tự nhiên, không giảng đạo?
 - [ ] Người Đáp hỏi ngược ≥2 lần?
 - [ ] Có paradox/nghịch lý?
 - [ ] Câu chuyện/ẩn dụ trước triết lý?
-- [ ] Ẩn dụ nhất quán (1 hệ, lặp 3-5 lần)?
-- [ ] Đủ khoảng lặng (`...` hoặc `*(Im lặng)*`)?
-- [ ] Verbal tics tự nhiên?
+
+**Giá trị** (xem chi tiết [value-framework.md](../value-framework.md)):
+- [ ] Người đọc học được gì MỚI?
+- [ ] Có ít nhất 1 khoảnh khắc khiến dừng lại suy nghĩ?
+- [ ] "Vậy thì sao?" — mỗi đoạn trả lời được?
 
 > Checklist về cấu trúc bài (phases, format, kết thúc mở) xem `structures/master-student.md`.
 

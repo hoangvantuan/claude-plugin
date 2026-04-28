@@ -41,7 +41,7 @@ Viết như cuộc hành trình tự khám phá. Không giảng dạy, chỉ chi
 - Chi tiết giác quan: "nước chảy qua tay", "sương tan trên ngọn cỏ"
 - Câu flowing nhiều mệnh đề nối dấu phẩy — nhịp tự nhiên tiếng Việt
 - Câu ngắn (<8 từ) phải có chủ-vị, tối đa 2-3/bài, đứng sau buildup — KHÔNG liên tiếp
-- "Có lẽ": tối đa 1 lần/bài, dùng đúng chỗ cần provisional
+
 
 ### DON'T
 
@@ -51,7 +51,6 @@ Viết như cuộc hành trình tự khám phá. Không giảng dạy, chỉ chi
 - Kết luận quá gọn gàng
 - Từ áp đặt: "phải", "luôn luôn", "chắc chắn"
 - Nhảy ý đột ngột, giữ nhịp thở
-- Voice-specific: Em dash → dấu phẩy hoặc tách câu. Dùng dấu ba chấm (...) cho khoảng lặng
 
 
 ## Example
@@ -64,7 +63,7 @@ Viết như cuộc hành trình tự khám phá. Không giảng dạy, chỉ chi
 >
 > Cổ nhân có nói: "Tri nhân giả trí, tự tri giả minh", biết người là trí, biết mình mới là sáng suốt. Vậy thế nào là biết mình?
 >
-> Có lẽ... chính khi ngưng so sánh, mới thực sự bắt đầu sống.
+> Chính khi ngưng so sánh, mới thực sự bắt đầu sống.
 
 ## Common Mistakes
 
@@ -101,7 +100,7 @@ Mô tả như thật, không bình luận. Để người đọc tự rút ra ý
 
 > **Pattern:** "[Quan sát cụ thể lồng trong câu flowing]. [Liên hệ nhẹ nhàng]."
 
-> Chiếc lá rụng từ cành, rơi nhẹ xuống mặt đất ẩm mà không vội cũng không chậm, chỉ rơi theo cách duy nhất nó biết. Người ta có lẽ cũng thế — có lúc cần buông mà không cần biết lý do.
+> Chiếc lá rụng từ cành, rơi nhẹ xuống mặt đất ẩm mà không vội cũng không chậm, chỉ rơi theo cách duy nhất nó biết. Người ta cũng thế, có lúc cần buông mà không cần biết lý do.
 
 ### 4. Present Moment Anchoring
 
@@ -149,16 +148,16 @@ Nối ý bằng dòng chảy cảm xúc/liên tưởng. Dùng "..." cho khoảng
 
 ## Pacing Rules
 
+> Quy tắc nhịp thở chung, dấu câu, từ cấm xem [shared-rules.md](../shared-rules.md). Bổ sung riêng voice này:
+
 | Yếu tố          | Quy tắc                                           |
 | ---------------- | -------------------------------------------------- |
-| Đoạn văn         | 2-5 câu, có nhịp thở                              |
-| Câu              | Xương sống 12-25 từ flowing. Câu ngắn (<8 từ, có chủ-vị) tối đa 2-3/bài, sau buildup |
 | Câu hỏi          | 15-25% tổng số câu                                |
 | Trải nghiệm      | Ít nhất 3-4 lần: "Tôi đã từng..."                 |
 | Ẩn dụ            | 2-3 hệ, lặp xuyên suốt                           |
 | Trích dẫn triết học | 1-3 lần/bài, tự nhiên không gượng                 |
 | Khoảng lặng       | Ít nhất 2-3 per bài (`...` hoặc đoạn một câu)    |
-| Kết thúc          | LUÔN mở                                           |
+| Kết thúc          | LUÔN mở, CÓ SỨC NẶNG (xem shared-rules.md)      |
 
 
 ## Arc Pattern
@@ -167,14 +166,19 @@ Personal có arc mặc định **Quiet Devastation** (insight sắc, nghịch l�
 
 ## Quality Checklist (Voice)
 
+> Base checklist (hình thức) xem [shared-rules.md](../shared-rules.md). Bổ sung riêng:
+
+**Hình thức:**
 - [ ] Giọng thâm trầm, không giảng dạy?
 - [ ] Thừa nhận sai lầm, hoang mang?
-- [ ] Văn có nhịp, đọc lên thấy có hơi thở?
 - [ ] Người đọc "bị lột" nhưng không bị tổn thương?
-- [ ] Từ ngữ mềm mại, không áp đặt?
 - [ ] Trải nghiệm cá nhân thật?
-- [ ] Ẩn dụ nhất quán (2-3 hệ)?
-- [ ] Verbal tics tự nhiên?
+
+**Giá trị** (xem chi tiết [value-framework.md](../value-framework.md)):
+- [ ] Người đọc học được gì MỚI về chính mình?
+- [ ] Có ít nhất 1 insight khiến dừng lại?
+- [ ] "Vậy thì sao?" — mỗi đoạn trả lời được?
+- [ ] Kết thúc mở CÓ SỨC NẶNG, không phải triết lý chung chung?
 
 > Checklist về cấu trúc bài (xoáy ốc, kết thúc mở) xem `structures/spiral-return.md`.
 
