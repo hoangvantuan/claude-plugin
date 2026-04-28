@@ -1,4 +1,4 @@
 #!/bin/bash
-# Writer-Planner: Paste text wrapper
+# Planning-Content: Paste text wrapper
 source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/_wa-common.sh"
 exec "$VENV_PYTHON" "$SCRIPT_DIR/paste_text_handler.py" "$@"

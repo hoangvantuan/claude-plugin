@@ -20,6 +20,18 @@ if ! command -v uv &> /dev/null; then
     exit 1
 fi
 
+# Check Python version (3.10+ required)
+PYTHON_VERSION=$(python3 -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")' 2>/dev/null)
+if [ -z "$PYTHON_VERSION" ]; then
+    echo "Error: Python 3 not found."
+    exit 1
+fi
+PYTHON_MINOR=$(echo "$PYTHON_VERSION" | cut -d. -f2)
+if [ "$PYTHON_MINOR" -lt 10 ]; then
+    echo "Error: Python 3.10+ required (found $PYTHON_VERSION)."
+    exit 1
+fi
+
 # Create virtual environment
 echo "[1/3] Creating virtual environment..."
 if [ -d "$VENV_DIR" ]; then

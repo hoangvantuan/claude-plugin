@@ -211,7 +211,7 @@ def convert_with_docling(
         else:
             # Docling handling for other formats (lazy import)
             if not _check_docling():
-                result["error"] = "Docling not installed. Run: pip install docling"
+                result["error"] = "Docling not installed. Run setup first: bash {SCRIPTS_DIR}/setup.sh"
                 return result
 
             from docling.document_converter import DocumentConverter, PdfFormatOption
@@ -348,7 +348,7 @@ def main():
     if not is_epub and not is_yt and not _check_docling():
         print(json.dumps({
             "success": False,
-            "error": "Docling not installed. Run: pip install docling"
+            "error": "Docling not installed. Run setup first: bash {SCRIPTS_DIR}/setup.sh"
         }, indent=2))
         sys.exit(2)
 

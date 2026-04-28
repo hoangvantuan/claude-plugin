@@ -1,12 +1,12 @@
 ---
 name: planning-content
-description: "Phân tích nội dung và lên kế hoạch outline chi tiết cho bài viết. Hỗ trợ mọi loại input: topic thuần, notes, URL, file (PDF/DOCX/EPUB), YouTube. Convert tài liệu sang markdown, research bổ sung khi cần, tạo content map và outline ý chính cho từng bài. CHỈ tập trung phân tích + outline, KHÔNG hướng dẫn cách viết, tone, style, hay cấu trúc trình bày."
+description: "Phân tích nội dung và lên outline ý chính cho từng bài. Hỗ trợ mọi loại input: topic thuần, notes, URL, file (PDF/DOCX/EPUB/XLSX/PPTX), YouTube. Convert tài liệu sang markdown, research bổ sung khi cần, tạo content map và outline ý chính cho từng bài. CHỈ tập trung phân tích + outline, KHÔNG hướng dẫn cách viết, tone, style, hay cấu trúc trình bày."
 disable-model-invocation: true
 ---
 
 # Planning Content
 
-Workflow: Detect & Convert Input → Interview → Research → Map Content → Generate Outlines → Save
+Workflow: Detect & Convert → Interview → Research → Content Map → Outlines → Save → Adjust (nếu cần)
 
 **Nguyên tắc cốt lõi:**
 
@@ -18,21 +18,24 @@ Workflow: Detect & Convert Input → Interview → Research → Map Content → 
 
 | Reference | Mục đích | Load khi |
 |---|---|---|
-| [detail-levels.md](references/detail-levels.md) | Các mức chi tiết output | Phase 2 (Interview) |
 | [context-optimization.md](references/context-optimization.md) | Anti-patterns khi đọc content.md | Phase 4 (nếu có structure.json) |
-| [tier-processing.md](references/tier-processing.md) | Xử lý tài liệu lớn theo tier | Phase 4 (nếu input đã convert) |
+| [tier-processing.md](references/tier-processing.md) | Xử lý tài liệu theo tier, Direct Path, batch, subagent | Phase 4 (nếu input đã convert) |
 
 ## Phase 1: Detect & Convert Input
 
 ### 1.0 Resolve Skill Paths (khi cần convert)
 
-Chỉ cần khi input là file hoặc URL cần convert. Tìm `wa-env` → chạy → dùng paths tuyệt đối.
+Chỉ cần khi input là file hoặc URL cần convert.
 
-```bash
-Glob("**/planning-content/scripts/wa-env")
-bash {path_to_wa-env}
-# → SCRIPTS_DIR, SKILL_DIR, PROJECT_ROOT, OUTPUT_DIR, REFERENCES_DIR
-```
+1. Dùng tool **Glob** tìm `wa-env`:
+   ```
+   Glob("**/planning-content/scripts/wa-env")
+   ```
+2. Chạy bằng **Bash**:
+   ```bash
+   bash {path_to_wa-env}
+   ```
+3. Parse output lấy: `SCRIPTS_DIR`, `SKILL_DIR`, `PROJECT_ROOT`, `OUTPUT_DIR`, `REFERENCES_DIR`
 
 > **FAIL CONDITION**: Không tìm thấy `wa-env` → dùng WebFetch cho URL, Read cho file text. Conversion scripts không bắt buộc.
 
@@ -43,6 +46,9 @@ bash {path_to_wa-env}
 | **Topic thuần** | Chỉ có chủ đề, không file/URL | → Phase 2 trực tiếp |
 | **Notes/ý tưởng rời** | Bullet points, gạch đầu dòng | → Phase 2 trực tiếp |
 | **File (PDF/DOCX/EPUB)** | Path + extension | `wa-convert {path}` → content.md + structure.json |
+| **File (XLSX/PPTX)** | Path + extension | `wa-convert {path}` (qua Docling). Kiểm tra chất lượng conversion, xem [tier-processing.md](references/tier-processing.md) mục "Lưu ý chất lượng conversion" |
+| **File (HTML/AsciiDoc)** | Path + extension | `wa-convert {path}` (qua Docling) |
+| **Image (PNG/JPEG/TIFF/BMP/WEBP)** | Path + extension | `wa-convert {path}` (OCR qua Docling, cần enable_ocr) |
 | **URL (web page)** | `http://` hoặc `https://` (không YouTube) | `wa-convert {url}` hoặc WebFetch |
 | **YouTube URL** | `youtube.com` hoặc `youtu.be` | `wa-convert {url}` |
 | **Plain text / .txt / .md** | Không extension phức tạp | Rewrite → `wa-paste-text` hoặc Read trực tiếp |
@@ -55,6 +61,8 @@ bash {path_to_wa-env}
 
 **Output**: `planning-content/{slug}-{timestamp}/input-handling/content.md` + `structure.json`
 
+> **Lưu ý venv**: Scripts dùng venv riêng tại `{SCRIPTS_DIR}/.venv/` (tách biệt với venv hệ thống). Nếu chưa setup, chạy `bash {SCRIPTS_DIR}/setup.sh` trước.
+
 ### 1.3 Plain Text Processing
 
 1. Read content (nếu là file)
@@ -66,13 +74,21 @@ bash {path_to_wa-env}
 echo "{rewritten_content}" | {SCRIPTS_DIR}/wa-paste-text - --title "{title}"
 ```
 
-### 1.4 Fallback (không có scripts)
+### 1.4 Multi-Input
+
+Khi user đưa nhiều file/URL cùng lúc:
+
+- Xử lý **tuần tự**, mỗi input tạo thư mục riêng.
+- Sau khi convert xong tất cả, hỏi user: gộp thành 1 content map chung hay tách riêng từng bộ outline?
+- Nếu gộp: tạo 1 thư mục chung, content map reference đến nhiều source.
+
+### 1.5 Fallback (không có scripts)
 
 Nếu scripts không available (chưa setup, lỗi path):
 
 - **URL**: dùng `WebFetch` trực tiếp
 - **File text (.md/.txt)**: dùng `Read` trực tiếp
-- **PDF/DOCX/EPUB**: báo user chạy `setup.sh` trước: `bash {SCRIPTS_DIR}/setup.sh`
+- **PDF/DOCX/EPUB/XLSX/PPTX**: báo user chạy `setup.sh` trước: `bash {SCRIPTS_DIR}/setup.sh`
 
 ### Error Handling
 
@@ -83,6 +99,7 @@ Nếu scripts không available (chưa setup, lỗi path):
 | URL fetch failed | Báo lỗi, dừng |
 | Empty content | Cảnh báo, xác nhận trước khi tiếp |
 | Encrypted PDF | Hỏi bản giải mã |
+| YouTube không có transcript | Báo user, dừng. Code trả về warning page, không có nội dung để tạo outline |
 
 ## Phase 2: Interview
 
@@ -90,14 +107,7 @@ Hỏi tất cả câu hỏi trong 1 lượt:
 
 1. **Audience**: Người đọc chính là ai? (founder, marketer, developer, sinh viên...)
 2. **Goal**: Mục tiêu chính? (educate / engage / convert / thought leadership)
-3. **Detail Level** *(chỉ khi input đã convert)*: Mức chi tiết output?
-   - Concise (15-25%): tóm lược, giữ ý chính
-   - **Standard (30-40%)**: cân bằng *(Default)*
-   - Comprehensive (50-65%): chi tiết, giữ nhiều ví dụ
-   - Faithful (75-90%): gần như đầy đủ nội dung gốc
-4. *(Optional)* **Constraints**: Yêu cầu đặc biệt (deadline, topic cần tránh, kênh đăng)
-
-Chi tiết Detail Level: xem [detail-levels.md](references/detail-levels.md).
+3. *(Optional)* **Constraints**: Yêu cầu đặc biệt (deadline, topic cần tránh, kênh đăng)
 
 *Fast-track: Nếu input đã đủ context hoặc user yêu cầu "làm luôn", giả định sensible defaults và sang Phase 3.*
 
@@ -111,16 +121,19 @@ Chi tiết Detail Level: xem [detail-levels.md](references/detail-levels.md).
 
 ### Khi nào chạy
 
-- **Chạy**: input là topic thuần, notes/ý tưởng rời, hoặc URL bài viết ngắn
-- **Skip**: input là tài liệu đã convert (PDF/DOCX/EPUB/YouTube) vì nội dung đã đầy đủ
+- **Luôn chạy**: input là topic thuần, notes/ý tưởng rời
+- **Chạy nếu cần**: tài liệu convert nhưng nội dung mỏng (ít data, ít ví dụ), YouTube transcript ngắn/thiếu context
+- **Skip**: tài liệu đã convert có nội dung đầy đủ (sách, report dài, tài liệu chuyên sâu)
+
+Tiêu chí "đầy đủ": tài liệu tự cung cấp đủ data, ví dụ, evidence cho các ý chính. Nếu outline có nhiều `Open questions`, cân nhắc chạy research.
 
 ### Quy trình
 
 - WebSearch 3-5 queries liên quan topic + audience + trends.
-- Nếu input là URL → WebFetch phân tích nội dung.
-- Nếu input là file → đọc và bóc ý chính.
 - Thu thập: data, số liệu, góc nhìn mới, content gaps, ví dụ thực tế, case study.
 - **Bắt buộc cite nguồn** cho mọi data point.
+
+> **Lưu ý**: Nếu input đã qua Phase 1 convert (URL hay file), nội dung gốc đã nằm trong content.md. Research ở Phase 3 là tìm **bổ sung** (trend mới, góc nhìn khác, data gap), KHÔNG phải fetch lại nội dung đã có.
 
 ## Phase 4: Map Content & Generate Outlines
 
@@ -128,14 +141,8 @@ Chi tiết Detail Level: xem [detail-levels.md](references/detail-levels.md).
 
 Nếu input đã convert (có `structure.json`):
 
-1. **Đọc structure.json ONLY** cho outline, stats, tier. KHÔNG đọc content.md ở bước này. Xem [context-optimization.md](references/context-optimization.md).
-2. Xác định tier xử lý. Xem [tier-processing.md](references/tier-processing.md).
-
-| Tier | Điều kiện | Strategy |
-|---|---|---|
-| Standard | < 50K words | Xử lý 1 lượt, tạo tất cả outline cùng lúc |
-| Tier 2 | 50K-100K | Content map trước, batch ~10 outline/lượt |
-| Tier 3 | >= 100K | Fast path, minimal analysis, batch ~10 outline/lượt |
+1. **Đọc structure.json ONLY** (không đọc content.md). Xem [context-optimization.md](references/context-optimization.md).
+2. Xác định tier và Direct Path. Chi tiết workflow, criteria, subagent: xem [tier-processing.md](references/tier-processing.md).
 
 ### 4.1 Content Map
 
@@ -148,7 +155,6 @@ Nếu input đã convert (có `structure.json`):
 - Dùng `outline` từ `structure.json`: section titles, word counts, critical markers.
 - Group sections thành clusters theo heading hierarchy.
 - Đánh dấu critical sections (đã có từ structure.json).
-- KHÔNG đọc content.md cho bước này.
 
 ### 4.2 Generate Outlines
 
@@ -157,16 +163,16 @@ Nếu input đã convert (có `structure.json`):
 - **Topic thuần** → 3-10 bài (tùy scope).
 - **Notes/ý tưởng rời** → theo số ý tưởng có sẵn.
 - **URL/article** → 5-15 bài (tùy độ dài + density).
-- **Tài liệu đã convert** → tính từ word count và detail level:
+- **Tài liệu đã convert** → tính từ word count:
 
 ```python
 if user_specified_article_count:
     target = user_specified_count
 else:
-    detail_ratio = 0.35  # Standard default
-    total_output = word_count * detail_ratio
-    target = max(3, min(10, round(total_output / 2500)))
+    target = max(3, round(word_count / 2500))
 ```
+
+> `structure.json.stats.estimated_articles` là ước lượng sơ bộ (dựa trên heading count), dùng làm tham khảo. Formula trên chính xác hơn.
 
 - **Sách/tài liệu dài** → bao phủ toàn bộ giá trị cốt lõi. Chia thành **batches** (mỗi batch ~10 bài).
 
@@ -203,7 +209,7 @@ Lưu thành nhiều file để dễ quản lý:
 **Cho tài liệu đã convert (có input-handling/):**
 
 ```
-{CWD}/planning-content/{topic-slug}/
+{CWD}/planning-content/{topic-slug}-{YYMMDD-HHMM}/
 ├── input-handling/
 │   ├── content.md              # Markdown source (từ scripts)
 │   └── structure.json          # Document structure (từ scripts)
@@ -216,7 +222,7 @@ Lưu thành nhiều file để dễ quản lý:
 **Cho topic thuần/notes (không convert):**
 
 ```
-{CWD}/planning-content/{topic-slug}/
+{CWD}/planning-content/{topic-slug}-{YYMMDD-HHMM}/
 ├── index.md
 ├── outline-[NN]-[slug].md
 ├── research.md
@@ -238,14 +244,29 @@ Lưu thành nhiều file để dễ quản lý:
 
 Cuối cùng hỏi: "Đã hoàn thành outline cho [N] bài. Bạn muốn điều chỉnh outline nào trước khi chuyển cho skill viết bài không?"
 
+## Phase 6: Adjust Outlines (nếu user yêu cầu)
+
+Khi user muốn điều chỉnh sau Phase 5:
+
+| Yêu cầu | Xử lý |
+|---|---|
+| **Sửa 1 outline** | Đọc file outline cụ thể, chỉnh theo feedback, ghi đè |
+| **Merge 2+ outlines** | Gộp key points, chọn thesis mới, xoá file thừa, cập nhật index.md |
+| **Tách 1 outline thành nhiều** | Chia key points thành groups, tạo file mới cho mỗi group, cập nhật index.md |
+| **Thêm outline mới** | Tạo file outline mới theo format Phase 4.2, thêm vào index.md |
+| **Xoá outline** | Xoá file, cập nhật index.md, chạy coverage check nếu input đã convert |
+| **Đổi thứ tự** | Rename file numbers (outline-01, 02...), cập nhật index.md |
+
+Sau mỗi lần điều chỉnh, chạy coverage check (nếu input đã convert) để đảm bảo không bỏ sót nội dung.
+
 ## Constraints
 
-- Output tiếng Việt (trừ khi user yêu cầu khác).
+- Output tiếng Việt (trừ khi user yêu cầu khác). Khi source khác ngôn ngữ (ví dụ sách tiếng Anh): outline viết tiếng Việt, giữ nguyên thuật ngữ chuyên ngành gốc trong ngoặc.
 - Mọi data point phải cite nguồn (khi có research).
 - KHÔNG đề xuất tone, style, cách trình bày, cấu trúc section, framework viết, độ dài bài.
 - KHÔNG viết draft câu mở bài, câu kết, hay bất kỳ phần nào của bài hoàn chỉnh.
 - Outline phải đủ rõ ý để writer không cần tự suy luận thêm ý chính.
-- Default output dir: `{CWD}/planning-content/[topic-slug]/` nếu user không chỉ định.
+- Default output dir: `{CWD}/planning-content/{topic-slug}-{YYMMDD-HHMM}/` nếu user không chỉ định.
 
 ## Output Format
 
@@ -257,7 +278,6 @@ Cuối cùng hỏi: "Đã hoàn thành outline cho [N] bài. Bạn muốn điề
 ## Overview
 - Audience: [...]
 - Goal: [...]
-- Detail Level: [...] (nếu có)
 - Tổng số bài: [N]
 - Nguồn input: [URL/file/topic]
 - Word count gốc: [N] (nếu có structure.json)

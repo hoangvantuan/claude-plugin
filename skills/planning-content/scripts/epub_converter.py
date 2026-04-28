@@ -282,7 +282,7 @@ def convert_epub_to_markdown(epub_path: str) -> tuple[str, dict]:
             continue
 
     # Join chapters with separator
-    markdown_content = "\n\n---\n\n".join(markdown_parts)
+    markdown_content = "\n\n".join(markdown_parts)
 
     # Add title as H1 if not present
     if markdown_content and not markdown_content.strip().startswith("# "):

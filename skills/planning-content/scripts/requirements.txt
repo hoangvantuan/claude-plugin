@@ -1,4 +1,4 @@
-# Writer-Planner Skill Dependencies
+# Planning-Content Skill Dependencies
 # Python 3.10+ required
 # Install with: uv pip install -r requirements.txt
 
