@@ -2,6 +2,41 @@
 
 Chi tiết kỹ thuật bên trong script. Đọc khi cần debug, xử lý sự cố, hoặc hiểu cách script hoạt động.
 
+## Dependencies
+
+**Required** (script exit 6 nếu thiếu):
+
+| Binary | Mục đích | Cài đặt |
+|---|---|---|
+| `pinchtab` | Browser automation | `npm install -g @nicepkg/pinchtab` |
+| `python3` | JSON parsing, image encoding, helper scripts | macOS có sẵn |
+| `curl` | HTTP API calls | macOS có sẵn |
+| `xxd` | Image magic byte validation (chỉ khi có `--image`) | `brew install vim` |
+
+**Optional** (script có fallback nếu thiếu):
+
+| Binary | Mục đích | Cài đặt | Fallback |
+|---|---|---|---|
+| `timeout` / `gtimeout` | Giới hạn thời gian chạy lệnh | `brew install coreutils` | Pure-bash: background process + watchdog kill |
+
+### Timeout Behavior
+
+Script dùng `_timeout` shim thay vì gọi `timeout` trực tiếp. Shim thử theo thứ tự: `timeout` → `gtimeout` → pure-bash fallback. Fallback dùng background process + watchdog sleep, hoạt động trên mọi bash 4+ nhưng không chính xác bằng GNU timeout (không phân biệt exit-by-timeout vs exit-by-error).
+
+### Fast-Fail Detection
+
+Khi `nav_new_tab` fail, script đo thời gian thực tế:
+
+- **< 3s** (nhưng timeout khai báo 30s): log "failed immediately", gợi ý kiểm tra binary/server/network
+- **exit 127**: log "command not found", exit 6
+- **>= 3s**: log "timed out" bình thường
+
+Mục đích: phân biệt "service chậm" (timeout thật) vs "tool không tồn tại" (fail tức thì).
+
+### Strict Mode
+
+Script dùng `set -uo pipefail` (không có `-e`). Lý do: nhiều command dùng `|| true` pattern. Bù lại, script validate tất cả critical binaries ở đầu (trước khi mở browser). Nếu không có `-e`, command-not-found (exit 127) không kill script. Dependency check giúp bắt lỗi này sớm.
+
 ## How It Works
 
 Script dùng PinchTab accessibility snapshot để tìm UI elements theo role và **multi-language keywords** (Tiếng Việt + English). Mỗi lần tìm element sẽ thử tất cả ngôn ngữ cho đến khi match — không cần cấu hình locale.
@@ -145,6 +180,9 @@ Nếu instance stale (commands timeout), scripts tự detect và restart. Force-
 | Image not attached | Script verify blob:/nút "Gỡ file" trong 10s. Nếu fail: check file format (magic bytes), `allowEvaluate`. |
 | Invalid image format | Script check magic bytes trước khi mở browser. File .jpg thật ra là HTML sẽ bị reject ngay. |
 | Text bị cắt/mất line breaks | Bật `security.allowEvaluate`: `pinchtab config set security.allowEvaluate true`. |
+| Missing dependency (exit 6) | Script báo rõ binary nào thiếu + cách cài. Chạy lại sau khi cài xong. |
+| Fast failure (< 1s nhưng log ghi "timeout") | Không phải timeout thật. Kiểm tra: binary tồn tại? Server đang chạy? Script phân biệt tự động từ v2 (log ghi "failed immediately" thay vì "timed out"). |
+| `timeout` not found trên macOS | Script tự fallback sang `gtimeout` hoặc pure-bash. Khuyến khích `brew install coreutils` cho chính xác hơn. |
 
 ## Known Limitations (PinchTab)
 

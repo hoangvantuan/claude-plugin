@@ -25,6 +25,7 @@ EXIT_INSTANCE=2
 EXIT_ELEMENT=3
 EXIT_PUBLISH=4
 EXIT_UPLOAD=5
+EXIT_DEPS=6
 
 # ---- Structured logging (architecture C) ----
 log() {
@@ -34,6 +35,49 @@ log() {
 log_info()  { log "INFO"  "$@"; }
 log_warn()  { log "WARN"  "$@"; }
 log_error() { log "ERROR" "$@"; }
+
+# ---- Dependency helpers ----
+require_cmd() {
+  local cmd="$1" hint="${2:-}"
+  if ! command -v "$cmd" &>/dev/null; then
+    log_error "Required command not found: $cmd"
+    [[ -n "$hint" ]] && log_error "  Install: $hint"
+    exit $EXIT_DEPS
+  fi
+}
+
+_TIMEOUT_CMD=""
+_TIMEOUT_WARNED="false"
+_timeout() {
+  local duration="$1"; shift
+  if [[ -z "$_TIMEOUT_CMD" ]]; then
+    if command -v timeout &>/dev/null; then
+      _TIMEOUT_CMD="timeout"
+    elif command -v gtimeout &>/dev/null; then
+      _TIMEOUT_CMD="gtimeout"
+    else
+      _TIMEOUT_CMD="fallback"
+      if [[ "$_TIMEOUT_WARNED" == "false" ]]; then
+        log_warn "timeout/gtimeout not found, using pure-bash fallback (install: brew install coreutils)"
+        _TIMEOUT_WARNED="true"
+      fi
+    fi
+  fi
+
+  if [[ "$_TIMEOUT_CMD" == "fallback" ]]; then
+    "$@" &
+    local pid=$!
+    ( sleep "$duration" && kill "$pid" 2>/dev/null ) &
+    local watchdog=$!
+    wait "$pid" 2>/dev/null
+    local ret=$?
+    kill "$watchdog" 2>/dev/null
+    wait "$watchdog" 2>/dev/null 2>&1
+    return $ret
+  else
+    "$_TIMEOUT_CMD" "$duration" "$@"
+  fi
+}
 
 # ---- Default config ----
 PROFILE="default"
@@ -191,7 +235,7 @@ debug_screenshot() {
     mkdir -p "$DEBUG_DIR"
     local step_name="$1"
     local output_path="$DEBUG_DIR/${step_name}.png"
-    if timeout 10 pinchtab screenshot -o "$output_path" 2>/dev/null; then
+    if _timeout 10 pinchtab screenshot -o "$output_path" 2>/dev/null; then
       if [[ -s "$output_path" ]]; then
         log_info "[debug] Screenshot: $output_path"
       else
@@ -221,7 +265,7 @@ snap_find_exact() {
 }
 
 safe_snap() {
-  timeout 10 pinchtab snap --compact=false 2>/dev/null || echo '{"nodes":[]}'
+  _timeout 10 pinchtab snap --compact=false 2>/dev/null || echo '{"nodes":[]}'
 }
 
 snap_find_button_multi() { snap_find_multi "button" "$1"; }
@@ -273,7 +317,7 @@ except: pass
   [[ "$status" != "running" ]] && return 1
 
   local snap_result
-  snap_result=$(PINCHTAB_INSTANCE="$inst_id" timeout 5 pinchtab snap --compact=false 2>/dev/null \
+  snap_result=$(PINCHTAB_INSTANCE="$inst_id" _timeout 5 pinchtab snap --compact=false 2>/dev/null \
     | python3 -c "
 import sys, json
 try:
@@ -393,21 +437,33 @@ click_and_verify() {
 }
 
 pinchtab_cmd() {
-  timeout 15 pinchtab "$@"
+  _timeout 15 pinchtab "$@"
 }
 
 nav_new_tab() {
   local url="$1"
-  local tab_id
-  tab_id=$(timeout 30 pinchtab nav "$url" --new-tab --print-tab-id 2>/dev/null) || true
-  if [[ -n "$tab_id" ]]; then
+  local tab_id ret=0
+  local t_start t_end elapsed
+  t_start=$(python3 -c "import time; print(int(time.time()))")
+  tab_id=$(_timeout 30 pinchtab nav "$url" --new-tab --print-tab-id 2>/dev/null) || ret=$?
+  if [[ -n "$tab_id" && "$tab_id" != "" ]]; then
     export PINCHTAB_TAB="$tab_id"
     log_info "Tab: $tab_id"
-  else
-    log_error "Navigation failed or timed out (30s): $url"
-    debug_screenshot "nav-timeout"
-    exit $EXIT_ELEMENT
+    return 0
   fi
+  t_end=$(python3 -c "import time; print(int(time.time()))")
+  elapsed=$((t_end - t_start))
+  if [[ $ret -eq 127 ]]; then
+    log_error "Command not found in pipeline (exit 127). Check pinchtab is installed."
+    exit $EXIT_DEPS
+  elif [[ $elapsed -lt 3 ]]; then
+    log_error "Navigation failed immediately (${elapsed}s, expected up to 30s): $url"
+    log_error "Likely cause: pinchtab binary issue, server not running, or network error"
+  else
+    log_error "Navigation timed out (${elapsed}s): $url"
+  fi
+  debug_screenshot "nav-fail"
+  exit $EXIT_ELEMENT
 }
 
 resize_image_if_needed() {
@@ -592,6 +648,16 @@ except (json.JSONDecodeError, KeyError):
 }
 
 # =============================================================
+# DEPENDENCY CHECK: validate required binaries before any work
+# =============================================================
+require_cmd pinchtab "npm install -g @nicepkg/pinchtab"
+require_cmd python3
+require_cmd curl
+if [[ ${#IMAGES[@]} -gt 0 ]]; then
+  require_cmd xxd "part of vim package (brew install vim)"
+fi
+
+# =============================================================
 # FAIL-FAST: validate inputs before touching browser
 # =============================================================
 if [[ ${#IMAGES[@]} -gt 0 ]]; then
@@ -758,7 +824,7 @@ log_info "[4/7] Typing post content"
 
 pinchtab_cmd focus "$TXT_POST" >/dev/null 2>&1
 human_delay 400 900
-if ! timeout 30 pinchtab keyboard inserttext "$CONTENT" 2>/dev/null; then
+if ! _timeout 30 pinchtab keyboard inserttext "$CONTENT" 2>/dev/null; then
   log_warn "keyboard inserttext failed or timed out, falling back to CLI type"
   pinchtab_cmd type "$TXT_POST" "$CONTENT" >/dev/null 2>&1 || true
 fi

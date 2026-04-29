@@ -15,6 +15,7 @@ allowed-tools:
 - **PinchTab** installed và server đang chạy (`pinchtab server &`)
 - Một PinchTab **profile** có Facebook login session (cookies đã lưu từ lần login thủ công trước)
 - Bật `pinchtab config set security.allowEvaluate true` (bắt buộc cho image upload, khuyến khích cho text input)
+- **macOS**: khuyến khích `brew install coreutils` (cung cấp `gtimeout`). Không bắt buộc, script có pure-bash fallback
 
 Nếu user chưa login: hướng dẫn start headed instance → login thủ công → reuse profile.
 
@@ -80,12 +81,14 @@ bash scripts/fb-post.sh "Nội dung bài viết" --title "[Series AI Agent] Vòn
 | `3` | Element not found | FB UI thay đổi, group URL sai, không có quyền. Dùng `--debug` kiểm tra screenshot |
 | `4` | Publish failed | Nút đăng không tìm thấy |
 | `5` | Upload failed | `security.allowEvaluate` tắt → `pinchtab config set security.allowEvaluate true`. Ảnh dispatch nhưng không attach → verify blob: URL trong 10s |
+| `6` | Missing dependency | Thiếu binary cần thiết (pinchtab, python3, curl, xxd). Log ghi rõ binary nào thiếu và cách cài |
 
 **Lỗi AI hay mắc (không báo exit code):**
 
 - Quên `--publish true` — default là `false`, user phải xác nhận trước khi thêm
 - Tag sai người — nhiều người trùng tên, dùng `--tag-id` cho chính xác
 - Content chứa quotes — wrap bằng double quotes, escape `"` bên trong
+- Fast failure (< 1s) — script báo "timed out" nhưng thực ra binary không tồn tại hoặc server chưa chạy. Xem exit code và thời gian thực tế trong log
 
 ## Chi tiết kỹ thuật
 
