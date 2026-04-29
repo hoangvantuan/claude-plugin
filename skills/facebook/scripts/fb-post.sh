@@ -40,7 +40,7 @@ PROFILE="default"
 USER_ID="100003782705460"
 GROUP=""
 CONTENT=""
-TITLE=""
+POST_TITLE=""
 TAG_NAME=""
 TAG_ID=""
 IMAGES=()
@@ -64,7 +64,7 @@ while [[ $# -gt 0 ]]; do
     --user-id)        USER_ID="$2";        shift 2 ;;
     --group)          GROUP="$2";          shift 2 ;;
     --content)        CONTENT="$2";        shift 2 ;;
-    --title)          TITLE="$2";          shift 2 ;;
+    --title)          POST_TITLE="$2";     shift 2 ;;
     --tag)            TAG_NAME="$2";       shift 2 ;;
     --tag-id)         TAG_ID="$2";         shift 2 ;;
     --image)          IMAGES+=("$2");      shift 2 ;;
@@ -124,7 +124,7 @@ if [[ "$DRY_RUN" == "true" ]]; then
   log_info "[DRY-RUN] Mode enabled — no browser actions will be performed"
   log_info "[DRY-RUN] Post mode: $POST_MODE"
   log_info "[DRY-RUN] Content: ${CONTENT:0:80}..."
-  [[ -n "$TITLE" ]] && log_info "[DRY-RUN] Title: $TITLE"
+  [[ -n "$POST_TITLE" ]] && log_info "[DRY-RUN] Title: $POST_TITLE"
   [[ ${#IMAGES[@]} -gt 0 ]] && log_info "[DRY-RUN] Images: ${IMAGES[*]}"
   [[ -n "$TAG_NAME" ]] && log_info "[DRY-RUN] Tag: $TAG_NAME (ID: ${TAG_ID:-none})"
   [[ -n "$GROUP" ]] && log_info "[DRY-RUN] Group: ${GROUP_URL:-$GROUP}"
@@ -637,17 +637,17 @@ else
 fi
 
 # Wait for page to load (fix #8: poll-based instead of fixed sleep)
-TITLE=""
+PAGE_TITLE=""
 for i in $(seq 1 15); do
-  TITLE=$(pinchtab snap --compact=false 2>/dev/null | python3 -c "
+  PAGE_TITLE=$(pinchtab snap --compact=false 2>/dev/null | python3 -c "
 import sys, json
 nodes = json.load(sys.stdin).get('nodes',[])
 print(nodes[0].get('name','') if nodes else '')
 " 2>/dev/null) || true
-  [[ -n "$TITLE" ]] && break
+  [[ -n "$PAGE_TITLE" ]] && break
   sleep 1
 done
-log_info "Page: $TITLE"
+log_info "Page: $PAGE_TITLE"
 debug_screenshot "02-page-loaded"
 
 # Fix #10: validate group page has create-post button before continuing
@@ -685,21 +685,23 @@ debug_screenshot "03-post-dialog"
 # STEP 3.5: Fill title with H1 formatting (group only, optional)
 # Lexical editor converts "# " prefix to H1 automatically
 # =============================================================
-if [[ -n "$TITLE" && "$POST_MODE" == "group" ]]; then
+if [[ -n "$POST_TITLE" && "$POST_MODE" == "group" ]]; then
   log_info "[3.5/7] Filling group post title (H1 via markdown)"
 
   pinchtab focus "$TXT_POST" >/dev/null 2>&1
   human_delay 400 900
-  if ! pinchtab keyboard inserttext "# $TITLE" 2>/dev/null; then
-    pinchtab type "$TXT_POST" "# $TITLE" >/dev/null 2>&1 || true
+  pinchtab type "$TXT_POST" "# " >/dev/null 2>&1
+  human_delay 300 600
+  if ! pinchtab keyboard inserttext "$POST_TITLE" 2>/dev/null; then
+    pinchtab type "$TXT_POST" "$POST_TITLE" >/dev/null 2>&1 || true
   fi
   human_delay 500 1000
-  pinchtab press "Enter" >/dev/null 2>&1
+  pinchtab type "$TXT_POST" $'\n' >/dev/null 2>&1
   human_delay 300 600
 
-  log_info "Title entered: ${TITLE:0:60}"
+  log_info "Title entered: ${POST_TITLE:0:60}"
   debug_screenshot "03.5-title-entered"
-elif [[ -n "$TITLE" && "$POST_MODE" != "group" ]]; then
+elif [[ -n "$POST_TITLE" && "$POST_MODE" != "group" ]]; then
   log_warn "Title is only supported for group posts, ignoring --title"
 fi
 
