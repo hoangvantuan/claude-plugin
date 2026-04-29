@@ -40,6 +40,7 @@ PROFILE="default"
 USER_ID="100003782705460"
 GROUP=""
 CONTENT=""
+TITLE=""
 TAG_NAME=""
 TAG_ID=""
 IMAGES=()
@@ -63,6 +64,7 @@ while [[ $# -gt 0 ]]; do
     --user-id)        USER_ID="$2";        shift 2 ;;
     --group)          GROUP="$2";          shift 2 ;;
     --content)        CONTENT="$2";        shift 2 ;;
+    --title)          TITLE="$2";          shift 2 ;;
     --tag)            TAG_NAME="$2";       shift 2 ;;
     --tag-id)         TAG_ID="$2";         shift 2 ;;
     --image)          IMAGES+=("$2");      shift 2 ;;
@@ -122,6 +124,7 @@ if [[ "$DRY_RUN" == "true" ]]; then
   log_info "[DRY-RUN] Mode enabled — no browser actions will be performed"
   log_info "[DRY-RUN] Post mode: $POST_MODE"
   log_info "[DRY-RUN] Content: ${CONTENT:0:80}..."
+  [[ -n "$TITLE" ]] && log_info "[DRY-RUN] Title: $TITLE"
   [[ ${#IMAGES[@]} -gt 0 ]] && log_info "[DRY-RUN] Images: ${IMAGES[*]}"
   [[ -n "$TAG_NAME" ]] && log_info "[DRY-RUN] Tag: $TAG_NAME (ID: ${TAG_ID:-none})"
   [[ -n "$GROUP" ]] && log_info "[DRY-RUN] Group: ${GROUP_URL:-$GROUP}"
@@ -162,6 +165,7 @@ KW_TAG_OTHERS="gắn thẻ người khác|gắn thẻ|tag people|tag others"
 KW_SEARCH="tìm kiếm|search"
 KW_DONE="xong|done"
 KW_PUBLISH="đăng|post"
+KW_TITLE="tiêu đề|title"
 KW_FRIEND="bạn bè|friend"
 if [[ "$POST_MODE" == "group" ]]; then
   KW_CREATE_POST="$KW_CREATE_POST_GROUP"
@@ -679,6 +683,30 @@ fi
 debug_screenshot "03-post-dialog"
 
 # =============================================================
+# STEP 3.5: Fill title (group only, optional)
+# =============================================================
+if [[ -n "$TITLE" && "$POST_MODE" == "group" ]]; then
+  log_info "[3.5/7] Filling group post title"
+  TXT_TITLE=$(wait_for_element_multi "textbox" "$KW_TITLE" 5) || true
+  if [[ -n "$TXT_TITLE" ]]; then
+    pinchtab focus "$TXT_TITLE" >/dev/null 2>&1
+    human_delay 400 900
+    if ! pinchtab keyboard inserttext "$TITLE" 2>/dev/null; then
+      log_warn "keyboard inserttext failed for title, falling back to CLI type"
+      pinchtab type "$TXT_TITLE" "$TITLE" >/dev/null 2>&1 || true
+    fi
+    human_delay 500 1000
+    log_info "Title entered: ${TITLE:0:60}"
+    debug_screenshot "03.5-title-entered"
+  else
+    log_warn "Title textbox not found, skipping title"
+    debug_screenshot "03.5-title-not-found"
+  fi
+elif [[ -n "$TITLE" && "$POST_MODE" != "group" ]]; then
+  log_warn "Title is only supported for group posts, ignoring --title"
+fi
+
+# =============================================================
 # STEP 4: Type post content
 # =============================================================
 log_info "[4/7] Typing post content"
@@ -789,6 +817,15 @@ if [[ -n "$TAG_NAME" ]]; then
   fi
 else
   log_info "[6/7] No tagging (skipped)"
+fi
+
+# =============================================================
+# STEP 6.5: Wait for link thumbnail preview (if content has URL)
+# =============================================================
+if [[ "$CONTENT" =~ https?:// ]]; then
+  log_info "Link detected in content, waiting 5s for thumbnail preview to load..."
+  sleep 5
+  debug_screenshot "06.5-thumbnail-wait"
 fi
 
 # =============================================================

@@ -11,6 +11,7 @@
 | `POST /drafts/{id}/schedule` (python-substack cũ) | 404 — Substack đã bỏ endpoint này |
 | `POST /drafts/{id}/scheduled_release` | Endpoint schedule đúng (mới, capture từ DevTools) |
 | `DELETE /drafts/{id}/scheduled_release` | Unschedule — chuyển về draft |
+| `DELETE /drafts/{id}` | Xoá draft, kể cả draft đã schedule. Không undo |
 | `GET /publication/sections/` | Endpoint sections đúng (python-substack.get_sections() broken) |
 
 ## Section: POST bỏ qua, phải PUT
@@ -32,6 +33,30 @@ Substack siết rất gắt:
 - Chạy liên tục 7-8 CLI call → dính `429 Too Many Requests`
 - Cooldown 60-120s mới hết
 - Không có cách bypass — retry với backoff là lựa chọn duy nhất
+
+## Custom slug
+
+Draft mới tạo có `slug = None`. Slug chỉ tự sinh sau khi schedule hoặc publish. Slug tự sinh bị cắt ngắn và xấu (vd: `series-ai-agentbai-so-02-vong-lap`).
+
+**Set custom slug** bằng PUT `/drafts/{id}` với body `{"slug": "ten-slug-dep"}`. Hoạt động cả trước và sau khi schedule. Có thể combine với `draft_section_id` trong cùng 1 PUT call.
+
+URL cuối cùng: `https://{publication}.substack.com/p/{slug}`.
+
+## Schedule time và timezone
+
+`scheduled_release` yêu cầu datetime có timezone. API lưu UTC.
+
+Ví dụ: truyền `09:00+07:00` → API lưu `02:00:00Z`. Nếu truyền naive datetime (không timezone), hành vi không xác định.
+
+## Multi-publication
+
+Env var `SUBSTACK_PUBLICATION_URL` chỉ trỏ 1 publication. Khi thao tác publication khác, phải override trực tiếp:
+
+```python
+api = Api(cookies_string=cookie, publication_url="https://other.substack.com")
+```
+
+`get_drafts()` có thể trả rỗng cho publication phụ. Verify bằng `get_draft(id)` từng bài.
 
 ## Troubleshooting
 

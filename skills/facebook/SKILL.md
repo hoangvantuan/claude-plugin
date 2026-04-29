@@ -38,6 +38,7 @@ bash scripts/fb-post.sh --content "<content>" [options]
 | `--profile` | No | `default` | PinchTab profile name |
 | `--user-id` | No | `100003782705460` | Facebook numeric ID (wall mode) |
 | `--group` | No | — | Group slug hoặc full URL → post vào group thay vì wall |
+| `--title` | No | — | Tiêu đề bài viết (chỉ group, hiển thị bold phía trên nội dung) |
 | `--image` | No | — | Đường dẫn ảnh đính kèm (dùng nhiều lần cho nhiều ảnh, tối đa 8) |
 | `--tag` | No | — | Tên hiển thị của bạn bè cần tag |
 | `--tag-id` | No | — | Facebook ID của bạn bè (chính xác hơn search theo tên) |
@@ -66,6 +67,7 @@ bash scripts/fb-post.sh "Ảnh đẹp!" --image photo1.jpg --image photo2.jpg --
 ```bash
 bash scripts/fb-post.sh "Hello group!" --group tuhoccungai --publish true
 bash scripts/fb-post.sh "Nội dung" --group "https://www.facebook.com/groups/tuhoccungai" --keep-instance --publish true
+bash scripts/fb-post.sh "Nội dung bài viết" --title "[Series AI Agent] Vòng lặp nghĩ-làm" --group tuhoccungai --publish true
 ```
 
 ## Exit Codes & Lỗi thường gặp
