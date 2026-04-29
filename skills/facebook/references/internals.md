@@ -23,7 +23,7 @@ Script dùng PinchTab accessibility snapshot để tìm UI elements theo role v�
 | Navigation | `facebook.com/me` hoặc profile ID | Group URL (slug hoặc full) |
 | Create post button | "nghĩ gì" / "what's on your mind" | "viết gì" / "write something" |
 | Page validation | Không | Kiểm tra create-post button tồn tại |
-| Title field | Không hỗ trợ | Có (`--title`), textbox "tiêu đề"/"title" |
+| Title field | Không hỗ trợ | Có (`--title`), rich text H1 formatting |
 
 Các bước còn lại (textbox, tagging, publish) hoạt động giống nhau.
 

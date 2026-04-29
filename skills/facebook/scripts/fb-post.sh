@@ -165,7 +165,6 @@ KW_TAG_OTHERS="gắn thẻ người khác|gắn thẻ|tag people|tag others"
 KW_SEARCH="tìm kiếm|search"
 KW_DONE="xong|done"
 KW_PUBLISH="đăng|post"
-KW_TITLE="tiêu đề|title"
 KW_FRIEND="bạn bè|friend"
 if [[ "$POST_MODE" == "group" ]]; then
   KW_CREATE_POST="$KW_CREATE_POST_GROUP"
@@ -683,25 +682,23 @@ fi
 debug_screenshot "03-post-dialog"
 
 # =============================================================
-# STEP 3.5: Fill title (group only, optional)
+# STEP 3.5: Fill title with H1 formatting (group only, optional)
+# Lexical editor converts "# " prefix to H1 automatically
 # =============================================================
 if [[ -n "$TITLE" && "$POST_MODE" == "group" ]]; then
-  log_info "[3.5/7] Filling group post title"
-  TXT_TITLE=$(wait_for_element_multi "textbox" "$KW_TITLE" 5) || true
-  if [[ -n "$TXT_TITLE" ]]; then
-    pinchtab focus "$TXT_TITLE" >/dev/null 2>&1
-    human_delay 400 900
-    if ! pinchtab keyboard inserttext "$TITLE" 2>/dev/null; then
-      log_warn "keyboard inserttext failed for title, falling back to CLI type"
-      pinchtab type "$TXT_TITLE" "$TITLE" >/dev/null 2>&1 || true
-    fi
-    human_delay 500 1000
-    log_info "Title entered: ${TITLE:0:60}"
-    debug_screenshot "03.5-title-entered"
-  else
-    log_warn "Title textbox not found, skipping title"
-    debug_screenshot "03.5-title-not-found"
+  log_info "[3.5/7] Filling group post title (H1 via markdown)"
+
+  pinchtab focus "$TXT_POST" >/dev/null 2>&1
+  human_delay 400 900
+  if ! pinchtab keyboard inserttext "# $TITLE" 2>/dev/null; then
+    pinchtab type "$TXT_POST" "# $TITLE" >/dev/null 2>&1 || true
   fi
+  human_delay 500 1000
+  pinchtab press "Enter" >/dev/null 2>&1
+  human_delay 300 600
+
+  log_info "Title entered: ${TITLE:0:60}"
+  debug_screenshot "03.5-title-entered"
 elif [[ -n "$TITLE" && "$POST_MODE" != "group" ]]; then
   log_warn "Title is only supported for group posts, ignoring --title"
 fi
