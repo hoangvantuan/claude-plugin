@@ -79,7 +79,31 @@ Sau instance start, env `PINCHTAB_TAB` mặc định trỏ tab cũ (stale). Navi
 
 ### Instance Health Check
 
-Script dùng `GET /instances/{id}` API và kiểm tra field `status == "running"`. Timeout 5s để tránh block trên instance zombie.
+Script health-check 2 tầng:
+
+1. **API status**: `GET /instances/{id}`, kiểm tra `status == "running"`. Timeout 5s
+2. **Snap smoke-test**: `pinchtab snap --compact=false` với timeout 5s, verify trả về nodes > 0. Bắt trường hợp instance "running" nhưng Chrome đã crash hoặc không có tab nào
+
+Nếu một trong hai fail thì coi instance là stale, stop và start mới.
+
+### Chrome Lifecycle
+
+`pinchtab instance stop` stop PinchTab instance nhưng **không kill Chrome process**. Chrome tiếp tục chạy ngầm với profile dir. Hệ quả:
+
+- Composer state (dialog đã mở, text đã nhập) từ run trước **còn lại** trong Chrome
+- Run tiếp theo có thể thấy state cũ (textbox đã mở, create-post button biến mất)
+
+Script xử lý:
+
+- **Normal exit**: chỉ stop PinchTab instance
+- **Error exit** (exit code != 0): stop instance + `pgrep/kill` Chrome process matching profile name. Tránh leftover state gây lỗi run tiếp theo
+- **Group validation**: check cả create-post button VÀ composer textbox đã mở (handle leftover state)
+
+Nếu gặp vấn đề persistent, kill Chrome thủ công:
+
+```bash
+pkill -f "chrome.*default"  # thay "default" bằng profile name
+```
 
 ## Instance Lifecycle
 

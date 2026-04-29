@@ -29,7 +29,7 @@ EXIT_UPLOAD=5
 # ---- Structured logging (architecture C) ----
 log() {
   local level="$1"; shift
-  printf "[%s] [%-5s] %s\n" "$(date '+%H:%M:%S')" "$level" "$*"
+  printf "[%s] [%-5s] %s\n" "$(date '+%H:%M:%S')" "$level" "$*" >&2
 }
 log_info()  { log "INFO"  "$@"; }
 log_warn()  { log "WARN"  "$@"; }
@@ -190,8 +190,17 @@ debug_screenshot() {
   if [[ "$DEBUG" == "true" ]]; then
     mkdir -p "$DEBUG_DIR"
     local step_name="$1"
-    pinchtab screenshot -o "$DEBUG_DIR/${step_name}.png" 2>/dev/null || true
-    log_info "[debug] Screenshot: $DEBUG_DIR/${step_name}.png"
+    local output_path="$DEBUG_DIR/${step_name}.png"
+    if timeout 10 pinchtab screenshot -o "$output_path" 2>/dev/null; then
+      if [[ -s "$output_path" ]]; then
+        log_info "[debug] Screenshot: $output_path"
+      else
+        log_warn "[debug] Screenshot empty: $output_path"
+        rm -f "$output_path"
+      fi
+    else
+      log_warn "[debug] Screenshot failed for step: $step_name"
+    fi
   fi
 }
 
@@ -261,7 +270,19 @@ try:
     print(d.get('status', ''))
 except: pass
 " 2>/dev/null) || true
-  [[ "$status" == "running" ]]
+  [[ "$status" != "running" ]] && return 1
+
+  local snap_result
+  snap_result=$(PINCHTAB_INSTANCE="$inst_id" timeout 5 pinchtab snap --compact=false 2>/dev/null \
+    | python3 -c "
+import sys, json
+try:
+    data = json.load(sys.stdin)
+    nodes = data.get('nodes', [])
+    print('ok' if len(nodes) > 0 else 'empty')
+except: print('fail')
+" 2>/dev/null) || true
+  [[ "$snap_result" == "ok" ]]
 }
 
 safe_click() {
@@ -371,15 +392,21 @@ click_and_verify() {
   return 1
 }
 
+pinchtab_cmd() {
+  timeout 15 pinchtab "$@"
+}
+
 nav_new_tab() {
   local url="$1"
   local tab_id
-  tab_id=$(pinchtab nav "$url" --new-tab --print-tab-id 2>/dev/null) || true
+  tab_id=$(timeout 30 pinchtab nav "$url" --new-tab --print-tab-id 2>/dev/null) || true
   if [[ -n "$tab_id" ]]; then
     export PINCHTAB_TAB="$tab_id"
     log_info "Tab: $tab_id"
   else
-    log_warn "Could not get tab ID from nav"
+    log_error "Navigation failed or timed out (30s): $url"
+    debug_screenshot "nav-timeout"
+    exit $EXIT_ELEMENT
   fi
 }
 
@@ -515,15 +542,24 @@ print(m.group(1) if m else '')
 CREATED_INSTANCE="false"
 
 cleanup() {
+  local exit_code=$?
   if [[ "$KEEP_INSTANCE" == "true" ]]; then
     log_info "Keeping instance alive (--keep-instance)"
     return
   fi
   if [[ -n "${INST:-}" ]]; then
     if [[ "$MODE" == "headed" || "$CREATED_INSTANCE" == "true" ]]; then
-      echo ""
+      echo "" >&2
       log_info "Stopping instance $INST..."
       pinchtab instance stop "$INST" 2>/dev/null || true
+      if [[ $exit_code -ne 0 ]]; then
+        local chrome_pids
+        chrome_pids=$(pgrep -f "chrome.*${PROFILE}" 2>/dev/null) || true
+        if [[ -n "$chrome_pids" ]]; then
+          log_warn "Error exit ($exit_code): killing Chrome for profile '$PROFILE' to prevent leftover state"
+          echo "$chrome_pids" | xargs kill 2>/dev/null || true
+        fi
+      fi
       log_info "Instance stopped."
     fi
   fi
@@ -650,13 +686,18 @@ done
 log_info "Page: $PAGE_TITLE"
 debug_screenshot "02-page-loaded"
 
-# Fix #10: validate group page has create-post button before continuing
+# Validate group page: create-post button OR composer already open (leftover from previous run)
+COMPOSER_OPEN=""
 if [[ "$POST_MODE" == "group" ]]; then
   GROUP_CHECK=$(snap_find_button_multi "$KW_CREATE_POST") || true
   if [[ -z "$GROUP_CHECK" ]]; then
-    log_error "Cannot access group or not a member. Check group URL: $GROUP_URL"
-    debug_screenshot "02-error-invalid-group"
-    exit $EXIT_ELEMENT
+    COMPOSER_OPEN=$(snap_find_textbox_multi "$KW_POST_TEXTBOX") || true
+    if [[ -z "$COMPOSER_OPEN" ]]; then
+      log_error "Cannot access group or not a member. Check group URL: $GROUP_URL"
+      debug_screenshot "02-error-invalid-group"
+      exit $EXIT_ELEMENT
+    fi
+    log_info "Composer already open (reused state from previous run)"
   fi
 fi
 
@@ -665,19 +706,24 @@ fi
 # =============================================================
 log_info "[3/7] Opening create post dialog"
 
-BTN_CREATE=$(wait_for_element_multi "button" "$KW_CREATE_POST" 10) || true
-if [[ -z "$BTN_CREATE" ]]; then
-  log_error "Cannot find create post button in any supported language."
-  debug_screenshot "03-error-no-button"
-  exit $EXIT_ELEMENT
-fi
+if [[ -n "$COMPOSER_OPEN" ]]; then
+  TXT_POST="$COMPOSER_OPEN"
+  log_info "Using existing composer textbox"
+else
+  BTN_CREATE=$(wait_for_element_multi "button" "$KW_CREATE_POST" 10) || true
+  if [[ -z "$BTN_CREATE" ]]; then
+    log_error "Cannot find create post button in any supported language."
+    debug_screenshot "03-error-no-button"
+    exit $EXIT_ELEMENT
+  fi
 
-# Click and verify textbox appeared (fix #7 + #8: retry + smart wait)
-TXT_POST=$(click_and_verify "$BTN_CREATE" "textbox" "$KW_POST_TEXTBOX" 3 10) || true
-if [[ -z "$TXT_POST" ]]; then
-  log_error "Cannot find post textbox after clicking create post button."
-  debug_screenshot "03-error-no-textbox"
-  exit $EXIT_ELEMENT
+  # Click and verify textbox appeared (fix #7 + #8: retry + smart wait)
+  TXT_POST=$(click_and_verify "$BTN_CREATE" "textbox" "$KW_POST_TEXTBOX" 3 10) || true
+  if [[ -z "$TXT_POST" ]]; then
+    log_error "Cannot find post textbox after clicking create post button."
+    debug_screenshot "03-error-no-textbox"
+    exit $EXIT_ELEMENT
+  fi
 fi
 debug_screenshot "03-post-dialog"
 
@@ -688,15 +734,15 @@ debug_screenshot "03-post-dialog"
 if [[ -n "$POST_TITLE" && "$POST_MODE" == "group" ]]; then
   log_info "[3.5/7] Filling group post title (H1 via markdown)"
 
-  pinchtab focus "$TXT_POST" >/dev/null 2>&1
+  pinchtab_cmd focus "$TXT_POST" >/dev/null 2>&1
   human_delay 400 900
-  pinchtab type "$TXT_POST" "# " >/dev/null 2>&1
+  pinchtab_cmd type "$TXT_POST" "# " >/dev/null 2>&1
   human_delay 300 600
-  if ! pinchtab keyboard inserttext "$POST_TITLE" 2>/dev/null; then
-    pinchtab type "$TXT_POST" "$POST_TITLE" >/dev/null 2>&1 || true
+  if ! pinchtab_cmd keyboard inserttext "$POST_TITLE" 2>/dev/null; then
+    pinchtab_cmd type "$TXT_POST" "$POST_TITLE" >/dev/null 2>&1 || true
   fi
   human_delay 500 1000
-  pinchtab type "$TXT_POST" $'\n' >/dev/null 2>&1
+  pinchtab_cmd type "$TXT_POST" $'\n' >/dev/null 2>&1
   human_delay 300 600
 
   log_info "Title entered: ${POST_TITLE:0:60}"
@@ -710,11 +756,11 @@ fi
 # =============================================================
 log_info "[4/7] Typing post content"
 
-pinchtab focus "$TXT_POST" >/dev/null 2>&1
+pinchtab_cmd focus "$TXT_POST" >/dev/null 2>&1
 human_delay 400 900
-if ! pinchtab keyboard inserttext "$CONTENT" 2>/dev/null; then
-  log_warn "keyboard inserttext failed, falling back to CLI type"
-  pinchtab type "$TXT_POST" "$CONTENT" >/dev/null 2>&1 || true
+if ! timeout 30 pinchtab keyboard inserttext "$CONTENT" 2>/dev/null; then
+  log_warn "keyboard inserttext failed or timed out, falling back to CLI type"
+  pinchtab_cmd type "$TXT_POST" "$CONTENT" >/dev/null 2>&1 || true
 fi
 human_delay 800 2000
 log_info "Content entered (${#CONTENT} chars)"
@@ -727,7 +773,7 @@ if [[ ${#IMAGES[@]} -gt 0 ]]; then
   log_info "[5/7] Attaching ${#IMAGES[@]} image(s) via eval ClipboardEvent"
 
   # Focus composer textbox before pasting
-  pinchtab focus "$TXT_POST" >/dev/null 2>&1
+  pinchtab_cmd focus "$TXT_POST" >/dev/null 2>&1
   human_delay 500 1000
 
   UPLOAD_COUNT=0
@@ -821,8 +867,13 @@ fi
 # =============================================================
 # STEP 6.5: Wait for link thumbnail preview (if content has URL)
 # =============================================================
-if [[ "$CONTENT" =~ https?:// ]]; then
-  log_info "Link detected in content, waiting 5s for thumbnail preview to load..."
+if [[ "$CONTENT" =~ (https?://[^[:space:]]+) ]]; then
+  DETECTED_URL="${BASH_REMATCH[1]}"
+  HTTP_STATUS=$(curl -s -o /dev/null -w '%{http_code}' --max-time 5 -L "$DETECTED_URL" 2>/dev/null) || true
+  if [[ -n "$HTTP_STATUS" && "$HTTP_STATUS" -ge 400 ]] 2>/dev/null; then
+    log_warn "Link returns HTTP $HTTP_STATUS: $DETECTED_URL (preview may show error)"
+  fi
+  log_info "Link detected, waiting 5s for thumbnail preview..."
   sleep 5
   debug_screenshot "06.5-thumbnail-wait"
 fi
