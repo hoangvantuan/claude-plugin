@@ -1,7 +1,6 @@
 ---
 name: social-post
 description: Viết bài đăng mạng xã hội (Facebook, Threads, LinkedIn, Zalo, group, profile...) để CHIA SẺ một góc nhìn có chiều sâu, bài tự nó đã có giá trị cho người đọc (không phải quảng cáo, không phải giới thiệu sản phẩm). Dùng skill này mỗi khi user cần viết một bài social ~200-500 từ theo giọng triết học - chiều sâu từ một ý tưởng, một trải nghiệm, một insight, hoặc một nội dung gốc nào đó. Cũng kích hoạt khi user nói "viết bài fb", "viết post", "viết caption", "viết bài threads", "viết post linkedin", "chia sẻ góc nhìn", "làm bài đăng chiều sâu", "viết bài ngẫm", hoặc bất kỳ request nào về việc tạo ra một bài đăng social theo hướng chia sẻ chứ không phải bán hàng. KHÔNG dùng cho viết quảng cáo sản phẩm, viết caption ngắn cho ảnh, viral hook kiểu TikTok, hay viết post fanpage brand-voice.
-disable-model-invocation: true
 ---
 
 # Social Post Generator

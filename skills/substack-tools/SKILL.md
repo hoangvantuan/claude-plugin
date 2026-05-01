@@ -1,7 +1,6 @@
 ---
 name: substack-tools
 description: "Quản lý bài viết Substack: draft, schedule, publish, list, sections + scan/crawl newsletter khác. Trigger khi user nhắc 'substack', 'newsletter', 'đăng bài', 'schedule bài', 'publish bài', 'scan newsletter', 'crawl substack', 'đọc bài substack khác'."
-disable-model-invocation: true
 ---
 
 # Substack Tools

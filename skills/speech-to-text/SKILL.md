@@ -8,7 +8,6 @@ description: >
   Sử dụng skill này khi user muốn: transcribe audio/video, chuyển giọng nói thành text,
   lấy nội dung từ file ghi âm, trích xuất lời nói từ podcast/cuộc họp/phỏng vấn/video,
   hoặc bất kỳ yêu cầu nào liên quan đến chuyển đổi audio/video sang văn bản.
-disable-model-invocation: true
 ---
 
 # Speech-to-Text (Soniox)

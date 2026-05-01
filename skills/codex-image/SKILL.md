@@ -2,7 +2,6 @@
 name: codex-image
 description: "Tạo và chỉnh sửa ảnh qua OpenAI Codex CLI (model gpt-image-2). Hỗ trợ text-to-image, transparent background (chroma-key), batch generation, image editing. Dùng skill này khi user muốn tạo ảnh, generate image, icon, logo, banner, illustration, hoặc chỉnh sửa ảnh bằng Codex CLI."
 argument-hint: "[mô tả ảnh] [--size WxH] [--transparent] [--batch N] [--edit input.png]"
-disable-model-invocation: true
 ---
 
 # Codex Image: Tạo ảnh qua Codex CLI

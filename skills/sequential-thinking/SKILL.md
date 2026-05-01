@@ -1,7 +1,6 @@
 ---
 name: sequential-thinking
 description: "Step-by-step analysis for complex problems — multi-step reasoning, hypothesis verification, adaptive planning with revision."
-disable-model-invocation: true
 license: MIT
 argument-hint: "[problem to analyze step-by-step]"
 ---

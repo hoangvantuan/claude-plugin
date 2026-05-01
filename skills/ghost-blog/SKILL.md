@@ -1,7 +1,6 @@
 ---
 name: ghost-blog
 description: "Manage Ghost blog posts via Admin API — list/filter, CRUD, bulk operations, tag management."
-disable-model-invocation: true
 license: MIT
 allowed-tools:
   - Bash

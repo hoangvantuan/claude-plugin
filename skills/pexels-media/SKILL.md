@@ -7,7 +7,6 @@ description: >
   download royalty-free images, get placeholder images for UI/design, source hero backgrounds,
   search for specific photo styles/colors/orientations, browse curated or popular media,
   or any request involving Pexels, stock media, or royalty-free content sourcing.
-disable-model-invocation: true
 ---
 
 # Pexels Media Sourcing

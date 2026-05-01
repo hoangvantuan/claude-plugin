@@ -1,7 +1,6 @@
 ---
 name: workshop-builder
 description: "Thiết kế và xây dựng bộ khung workshop hoàn chỉnh theo phương pháp Backwards Design + 4Cs."
-disable-model-invocation: true
 ---
 
 # Workshop Builder

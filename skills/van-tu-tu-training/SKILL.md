@@ -1,7 +1,6 @@
 ---
 name: van-tu-tu-training
 description: "Xây dựng bộ tài liệu training theo mô hình Văn-Tư-Tu (Tam Tuệ Học)."
-disable-model-invocation: true
 ---
 
 # Văn-Tư-Tu Training Builder

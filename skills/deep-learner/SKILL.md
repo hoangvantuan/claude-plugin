@@ -1,7 +1,6 @@
 ---
 name: deep-learner
 description: "Dẫn dắt từng bước hiểu sâu bản chất nội dung (bài viết, sách, video) — từ bề mặt đến nguyên lý gốc, kết nối liên lĩnh vực, và áp dụng vào đời sống."
-disable-model-invocation: true
 ---
 
 # Deep Learner

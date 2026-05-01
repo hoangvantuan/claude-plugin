@@ -1,7 +1,6 @@
 ---
 name: creative-thought-partner
 description: "Interactive creative thought partner — discovers hidden brilliance through pattern spotting, paradox hunting, and naming unnamed concepts."
-disable-model-invocation: true
 ---
 
 # Creative Thought Partner

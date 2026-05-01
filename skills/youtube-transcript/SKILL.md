@@ -7,7 +7,6 @@ description: >-
   Also triggers when user needs text content extracted from any YouTube video,
   even if they don't explicitly say "transcript" (e.g., "what does this video say",
   "get me the text from this video", "I need the content of this YouTube link").
-disable-model-invocation: true
 ---
 
 # YouTube Transcript Downloader

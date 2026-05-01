@@ -1,7 +1,6 @@
 ---
 name: game-theory-lens
 description: "Phân tích sâu bất kỳ chủ đề nào qua lăng kính Lý thuyết Trò chơi (Game Theory)."
-disable-model-invocation: true
 ---
 
 # Game Theory Lens — Phân tích qua Lý thuyết Trò chơi

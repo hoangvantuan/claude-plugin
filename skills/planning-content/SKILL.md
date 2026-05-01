@@ -1,7 +1,6 @@
 ---
 name: planning-content
 description: "Phân tích nội dung và lên outline ý chính cho từng bài. Hỗ trợ mọi loại input: topic thuần, notes, URL, file (PDF/DOCX/EPUB/XLSX/PPTX), YouTube. Convert tài liệu sang markdown, research bổ sung khi cần, tạo content map và outline ý chính cho từng bài. CHỈ tập trung phân tích + outline, KHÔNG hướng dẫn cách viết, tone, style, hay cấu trúc trình bày."
-disable-model-invocation: true
 ---
 
 # Planning Content

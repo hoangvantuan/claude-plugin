@@ -1,7 +1,6 @@
 ---
 name: prompt-generator
 description: "Meta-prompting skill — creates well-structured, verifiable, low-hallucination prompts for any use case."
-disable-model-invocation: true
 ---
 
 # Prompt Generator

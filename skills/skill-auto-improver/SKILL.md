@@ -1,7 +1,6 @@
 ---
 name: skill-auto-improver
 description: "Tự động phân tích và cải tiến skill — quality audit, improvement patterns, refactoring."
-disable-model-invocation: true
 ---
 
 # Skill Auto-Improver

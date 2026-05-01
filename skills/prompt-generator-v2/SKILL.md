@@ -1,7 +1,6 @@
 ---
 name: prompt-generator-v2
 description: "KERNEL-based prompt engineering — transforms vague requests into structured, high-performance prompts optimized for first-try success."
-disable-model-invocation: true
 ---
 
 # Prompt Generator V2 — KERNEL Framework

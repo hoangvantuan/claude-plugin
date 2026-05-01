@@ -1,7 +1,6 @@
 ---
 name: tri-thuc-goc
 description: "Giải quyết vấn đề và trả lời câu hỏi qua lăng kính Tri Thức Gốc (Sự Thật Man). Dùng khi user muốn phân tích vấn đề cuộc sống, công việc, cảm xúc, tương tác, ra quyết định bằng tư duy gốc rễ. Trigger khi: user hỏi về bản chất cuộc sống, tìm gốc rễ vấn đề, muốn sống hiệu quả, muốn nhìn nhận khách quan, cần cân bằng thân-tâm, muốn áp dụng công thức 4T, hoặc nhắc đến 'tri thức gốc', 'sự thật man', 'ba game lớn', 'sống hiệu quả'."
-disable-model-invocation: true
 ---
 
 # Tri Thức Gốc

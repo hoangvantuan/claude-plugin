@@ -1,7 +1,6 @@
 ---
 name: systems-thinking
 description: "Phân tích tư duy hệ thống theo framework Donella Meadows — feedback loops, stocks & flows, system traps, leverage points. Output có Mermaid diagrams."
-disable-model-invocation: true
 ---
 
 # Systems Thinking Analysis

@@ -1,7 +1,6 @@
 ---
 name: problem-solving
 description: "Systematic problem-solving techniques — inversion, collision-zone, scale-game, simplification cascades."
-disable-model-invocation: true
 argument-hint: "[problem description]"
 ---
 

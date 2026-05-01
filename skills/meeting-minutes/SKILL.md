@@ -1,7 +1,6 @@
 ---
 name: meeting-minutes
 description: 'Hai workflow cho cuộc họp: (1) Tạo biên bản họp (meeting minutes) từ transcript/ghi chú, gồm metadata, quyết định, action items, pending/parking lot. (2) Phân tích hành vi giao tiếp (Meeting Insights) từ transcript, nhận diện pattern né tránh xung đột, tỉ lệ nói/nghe, filler words, kỹ năng lắng nghe, phong cách điều hành. Dùng skill này khi user nhắc đến "biên bản", "meeting minutes", "ghi chú cuộc họp", "tóm tắt cuộc họp", "meeting notes", "phân tích cuộc họp", "communication patterns", "meeting insights", "speaking ratio". Không dùng cho tóm tắt nội dung chung (dùng outline-writer) hay phân tích văn phong viết (dùng style-writer).'
-disable-model-invocation: true
 ---
 
 # Meeting Minutes: Biên bản họp & Phân tích giao tiếp

@@ -1,7 +1,6 @@
 ---
 name: ai-artist
 description: "Generate images via Nano Banana with 129 curated prompts. 3 modes: search, creative, wild."
-disable-model-invocation: true
 argument-hint: "[concept] [--mode search|creative|wild|all] [--skip]"
 ---
 

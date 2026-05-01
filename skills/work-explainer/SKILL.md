@@ -1,7 +1,6 @@
 ---
 name: work-explainer
 description: "Personal teacher — breaks down completed work into deep learning documents covering approach, reasoning, tradeoffs, and transferable lessons."
-disable-model-invocation: true
 ---
 
 # Work Explainer

@@ -1,7 +1,6 @@
 ---
 name: pinchtab
 description: "Browser automation for AI agents via PinchTab HTTP API and CLI — navigate, extract, fill forms, click, scrape, screenshot, export PDF."
-disable-model-invocation: true
 allowed-tools:
   - Bash
   - Read

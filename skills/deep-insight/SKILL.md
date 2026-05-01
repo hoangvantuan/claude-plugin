@@ -1,7 +1,6 @@
 ---
 name: deep-insight
 description: "Quan sát đa chiều → Phân tích tách lớp → Đúc kết cốt lõi để hiểu sâu bất kỳ vấn đề nào."
-disable-model-invocation: true
 ---
 
 # Deep Insight — Quan sát · Phân tích · Đúc kết
