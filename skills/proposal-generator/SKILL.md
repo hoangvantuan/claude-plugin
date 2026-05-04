@@ -196,9 +196,23 @@ Xem `references/section_guidance.md` để có hướng dẫn chi tiết theo se
 
 Lý do: proposal đầu là draft. User cần đọc nhanh, comment, sửa nội dung, trước khi tốn công format thành Word/PowerPoint. Markdown render tốt trong chat, dễ copy, dễ chỉnh, và sẽ convert nhanh sang format khác sau.
 
+**Thư mục output:**
+
+Tạo folder `proposal-generator/` trong thư mục làm việc hiện tại (hoặc thư mục user chỉ định). Tất cả deliverable của proposal lưu vào đây:
+
+```
+proposal-generator/
+├── proposal-<tên-dự-án-ngắn>.md      # Draft Markdown (luôn tạo trước)
+├── proposal-<tên-dự-án-ngắn>.docx    # Word document (sau khi user confirm)
+├── proposal-<tên-dự-án-ngắn>.pptx    # Pitch deck (nếu user yêu cầu)
+└── research-notes.md                  # Ghi chú research (tùy chọn, nếu research nhiều)
+```
+
+Tạo folder nếu chưa tồn tại: `mkdir -p proposal-generator`
+
 **Cách tạo Markdown deliverable:**
 
-1. Tạo file `.md` trong thư mục làm việc hiện tại hoặc thư mục user chỉ định. Đặt tên `proposal-<tên-dự-án-ngắn>.md`
+1. Tạo file `proposal-generator/proposal-<tên-dự-án-ngắn>.md`
 
 2. Cấu trúc theo `references/proposal_template.md`, đầy đủ tất cả section
 
@@ -228,7 +242,7 @@ Proposal .docx phải có:
 
 - Phụ lục cho diagram architecture chi tiết, bảng pricing chi tiết, CV team (nếu liên quan)
 
-Lưu cùng thư mục với file Markdown.
+Lưu vào `proposal-generator/` cùng file Markdown.
 
 ### Tùy chọn: Pitch deck (.pptx)
 
@@ -260,7 +274,7 @@ Nếu user yêu cầu pitch deck, slide deck, presentation, hoặc "bản execut
 
 13. Next steps / call to action (1 slide)
 
-Dùng skill `pptx` hoặc `pptx-creator` (nếu có) để sinh slide. Nếu không có skill, dùng PptxGenJS hoặc python-pptx.
+Dùng skill `pptx` hoặc `pptx-creator` (nếu có) để sinh slide. Nếu không có skill, dùng PptxGenJS hoặc python-pptx. Lưu vào `proposal-generator/`.
 
 ---
 
