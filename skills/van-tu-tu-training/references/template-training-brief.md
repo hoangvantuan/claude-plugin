@@ -65,19 +65,21 @@ User thường trả lời mơ hồ ở câu này. Cung cấp template + ví d�
 
 **Ví dụ đạt:**
 
-| Outcome | Tại sao đạt |
-|---|---|
-| "Sau 30 ngày, 80% leader cấp M2 đưa SBI feedback 3 lần/tuần, verify bằng sổ ghi 1:1 + spot-check HR" | Có thời điểm, số liệu, đối tượng, hành động, tần suất, bằng chứng |
-| "Sau khoá, 100% sales rep thực hiện quy trình discovery call 5 bước trong 20 deal tiếp theo, verify bằng ghi âm call + review với manager" | Có số lượng tuyệt đối + nguồn verify cụ thể |
-| "Sau 60 ngày, 70% PM áp dụng OKR quarterly review với team, verify bằng template OKR được submit vào shared folder" | Có ngưỡng + bằng chứng artifact |
+| Outcome                                                                                                                                    | Tại sao đạt                                                       |
+| ------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------- |
+| "Sau 30 ngày, 80% leader cấp M2 đưa SBI feedback 3 lần/tuần, verify bằng sổ ghi 1:1 + spot-check HR"                                       | Có thời điểm, số liệu, đối tượng, hành động, tần suất, bằng chứng |
+| "Sau khoá, 100% sales rep thực hiện quy trình discovery call 5 bước trong 20 deal tiếp theo, verify bằng ghi âm call + review với manager" | Có số lượng tuyệt đối + nguồn verify cụ thể                       |
+| "Sau 60 ngày, 70% PM áp dụng OKR quarterly review với team, verify bằng template OKR được submit vào shared folder"                        | Có ngưỡng + bằng chứng artifact                                   |
+
 
 **Ví dụ mơ hồ (tránh):**
 
-| Outcome mơ hồ | Thiếu gì |
-|---|---|
-| "Team hiểu và biết cách feedback" | Không số liệu, không hành vi cụ thể, không bằng chứng |
-| "Nâng cao kỹ năng leadership" | Không định nghĩa "nâng cao", không metric |
-| "Áp dụng được kiến thức vào công việc" | Áp dụng gì? Như thế nào? Verify bằng gì? |
+| Outcome mơ hồ                          | Thiếu gì                                              |
+| -------------------------------------- | ----------------------------------------------------- |
+| "Team hiểu và biết cách feedback"      | Không số liệu, không hành vi cụ thể, không bằng chứng |
+| "Nâng cao kỹ năng leadership"          | Không định nghĩa "nâng cao", không metric             |
+| "Áp dụng được kiến thức vào công việc" | Áp dụng gì? Như thế nào? Verify bằng gì?              |
+
 
 ### 2.2 Câu "Metric thành công"
 
@@ -87,19 +89,21 @@ User thường trả lời mơ hồ ở câu này. Cung cấp template + ví d�
 
 **Ví dụ đạt:**
 
-| Metric | Tại sao đạt |
-|---|---|
-| "Tỷ lệ áp dụng SBI đo bằng survey 1 câu + ghi chép 1:1, đo sau 30/60/90 ngày, đạt khi ≥60%" | Công cụ cụ thể + thời điểm + ngưỡng |
-| "NPS team sau đào tạo đo bằng form Google Form, tại tuần cuối khoá, đạt khi ≥40" | Đo được bằng công cụ có sẵn |
+| Metric                                                                                          | Tại sao đạt                            |
+| ----------------------------------------------------------------------------------------------- | -------------------------------------- |
+| "Tỷ lệ áp dụng SBI đo bằng survey 1 câu + ghi chép 1:1, đo sau 30/60/90 ngày, đạt khi ≥60%"     | Công cụ cụ thể + thời điểm + ngưỡng    |
+| "NPS team sau đào tạo đo bằng form Google Form, tại tuần cuối khoá, đạt khi ≥40"                | Đo được bằng công cụ có sẵn            |
 | "Số deal closed/quarter đo bằng CRM, quarter tiếp theo, đạt khi tăng ≥15% so với quarter trước" | Metric tác động (outcome), có baseline |
+
 
 **Ví dụ mơ hồ (tránh):**
 
-| Metric mơ hồ | Thiếu gì |
-|---|---|
-| "Team feedback tốt hơn" | Không có cách đo, không ngưỡng |
+| Metric mơ hồ            | Thiếu gì                         |
+| ----------------------- | -------------------------------- |
+| "Team feedback tốt hơn" | Không có cách đo, không ngưỡng   |
 | "Hài lòng với khoá học" | Chỉ đo cảm xúc, không đo hành vi |
-| "Áp dụng được" | Không verify |
+| "Áp dụng được"          | Không verify                     |
+
 
 ## 3. Quy trình Validate thay cho "skip cứng"
 
@@ -111,11 +115,12 @@ Ngay cả khi user đã cung cấp đủ 5-8 câu, KHÔNG skip ngay. Chạy quy 
 
 ### Bước 2: Check từng câu theo 3 tiêu chí
 
-| Tiêu chí | Câu hỏi lọc | Đạt | Fail |
-|---|---|---|---|
-| Số liệu | Có con số cụ thể không? | "80% M2 leaders" | "đa số team" |
-| Danh từ cụ thể | Danh từ có ngữ cảnh rõ không, tránh từ ô dù? | "SBI feedback trong 1:1" | "kỹ năng giao tiếp" |
-| Bằng chứng verify | Làm sao biết đạt? | "sổ ghi 1:1 + HR spot-check" | (không có) |
+| Tiêu chí          | Câu hỏi lọc                                  | Đạt                          | Fail                |
+| ----------------- | -------------------------------------------- | ---------------------------- | ------------------- |
+| Số liệu           | Có con số cụ thể không?                      | "80% M2 leaders"             | "đa số team"        |
+| Danh từ cụ thể    | Danh từ có ngữ cảnh rõ không, tránh từ ô dù? | "SBI feedback trong 1:1"     | "kỹ năng giao tiếp" |
+| Bằng chứng verify | Làm sao biết đạt?                            | "sổ ghi 1:1 + HR spot-check" | (không có)          |
+
 
 Câu thiếu 1 trong 3 tiêu chí → đánh dấu `⚠️ Cần làm rõ`.
 
@@ -127,6 +132,7 @@ Gửi cả bản tóm tắt kèm các câu `⚠️ Cần làm rõ` (nếu có) c
 
 > "Dựa trên thông tin bạn cung cấp, Training Brief tôi hiểu như sau: [bản tóm tắt]. 
 > Có 2 câu tôi cần làm rõ thêm:
+>
 > - Câu 2 (Outcome): bạn ghi '...' nhưng thiếu số liệu và bằng chứng. Bạn có thể cụ thể hơn theo công thức [X]% [đối tượng] [hành động] verify bằng [bằng chứng]?
 > - ..."
 
@@ -144,12 +150,13 @@ Nếu user đồng ý → lock-in, không quay lại sửa (trừ khi phát hi�
 
 Dựa trên câu 3 (Người học), đề xuất sơ bộ ngay ở Bước 1. Quyết định chính thức ở Bước 3.
 
-| Đặc điểm người học | Chiều đi đề xuất | Lý do |
-|---|---|---|
-| Mới, chưa có nền | Văn→Tư→Tu | Cần framework trước để có ngôn ngữ chung |
-| Có nền tảng cơ bản | Văn→Tư→Tu (Văn gọn) | Văn tinh gọn, đẩy trọng tâm vào Tư + Tu |
-| Tiềm năng cao, nhiều kinh nghiệm thực chiến | Tu→Tư→Văn | Có trải nghiệm rồi, cần đúc kết, framework cuối |
-| Expert | Tu→Tư→Văn hoặc peer learning | Framework không mới, giá trị ở đúc kết cross-case |
+| Đặc điểm người học                          | Chiều đi đề xuất             | Lý do                                             |
+| ------------------------------------------- | ---------------------------- | ------------------------------------------------- |
+| Mới, chưa có nền                            | Văn→Tư→Tu                    | Cần framework trước để có ngôn ngữ chung          |
+| Có nền tảng cơ bản                          | Văn→Tư→Tu (Văn gọn)          | Văn tinh gọn, đẩy trọng tâm vào Tư + Tu           |
+| Tiềm năng cao, nhiều kinh nghiệm thực chiến | Tu→Tư→Văn                    | Có trải nghiệm rồi, cần đúc kết, framework cuối   |
+| Expert                                      | Tu→Tư→Văn hoặc peer learning | Framework không mới, giá trị ở đúc kết cross-case |
+
 
 Chủ đề trải nghiệm (leadership, giao tiếp, sáng tạo, ra quyết định) thường ưu tiên Tu→Tư→Văn bất kể cấp độ, vì không thể "dạy" bằng lý thuyết.
 
@@ -211,13 +218,13 @@ Khoá này KHÔNG dạy:
 
 Không phải lúc nào cũng bật full 8 câu. Quy tắc đơn giản:
 
-| Quy mô | Bật câu Context? |
-|---|---|
-| Cá nhân tự học 1 chủ đề đơn | Không bật. Chỉ cần 5 Core, hoặc dùng Quick Start trong SKILL.md |
-| Team 5-15 người | Bật câu 6 (Pain) + câu 7 (Ràng buộc) |
-| Công ty (rolling deployment) | Bật đủ 3 câu Context |
-| User chỉ có topic mơ hồ, chưa rõ trọng tâm | Bật câu 6 (Pain) để tìm trọng tâm |
-| User có tài liệu gốc | Bật câu 8 (Tài liệu) để rẽ nhánh 2A |
+| Tình huống                                  | Bật câu Context?                                                |
+| ------------------------------------------ | --------------------------------------------------------------- |
+| Chủ đề rõ ràng, user cung cấp đủ 5 Core   | Không bật. Chỉ cần 5 Core                                       |
+| Cần hiểu bối cảnh tổ chức / rào cản        | Bật câu 6 (Pain) + câu 7 (Ràng buộc)                            |
+| User chỉ có topic mơ hồ, chưa rõ trọng tâm | Bật câu 6 (Pain) để tìm trọng tâm                               |
+| User có tài liệu gốc                       | Bật câu 8 (Tài liệu) để rẽ nhánh 2A                             |
+
 
 Khi không chắc, mặc định bật cả 3 câu Context nhưng đánh dấu "(tuỳ chọn, có thể bỏ qua)".
 
@@ -227,14 +234,15 @@ Khi case quan trọng (khoá chiến lược, ngân sách lớn, rủi ro cao) h
 
 ### 7.1 Bảng mapping 6 hạng mục → Bước 1
 
-| # | Hạng mục | Lens | Câu hỏi gợi ý | Ánh xạ |
-|---|---|---|---|---|
-| 1 | Đối tượng | Nhân | Họ là ai (văn phòng / freelance / quản lý)? Tự chấm 1/10 hay 5/10? Nỗi đau lớn nhất khiến họ mất ngủ? | Câu 3 (đã tích hợp) |
-| 2 | Mục tiêu | Quả | Cầm tay làm được gì cụ thể? Nếu KHÔNG có khoá, tự mò mất bao lâu? Tiêu chuẩn "tốt nghiệp" là gì? | Câu 2 + Câu 5 (đã tích hợp) |
-| 3 | Nội dung | Lõi | Nếu chỉ được dạy 3 điều, đó là gì? Phần nào nguyên lý (bất biến) vs công cụ (thay đổi theo thời gian)? Có case study thực tế không? | **Thuộc Bước 2** — chỉ thu thập đầu vào ở Bước 1 |
-| 4 | Cách học | Duyên | Bao nhiêu phút/ngày? Thích đọc (Substack) / xem (Video) / làm (Workshop)? Cần "đẩy mông" hay tự giác? | Câu 7 (đã tích hợp) |
-| 5 | Thực hành | Tu | Bài tập chiếm % thời lượng? Feedback ngay sau khi làm bằng cách nào? Công cụ/môi trường đã sẵn sàng? | **Thuộc Bước 3 + 5** — chỉ thu thập ràng buộc ở Bước 1 |
-| 6 | Đo lường | Feedback loops | Chỉ số nào chứng minh tiến bộ? Sau 3 tháng còn đọng lại gì? | Câu 5 + retention metric (đã tích hợp) |
+| #   | Hạng mục  | Lens           | Câu hỏi gợi ý                                                                                                                       | Ánh xạ                                                 |
+| --- | --------- | -------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
+| 1   | Đối tượng | Nhân           | Họ là ai (văn phòng / freelance / quản lý)? Tự chấm 1/10 hay 5/10? Nỗi đau lớn nhất khiến họ mất ngủ?                               | Câu 3 (đã tích hợp)                                    |
+| 2   | Mục tiêu  | Quả            | Cầm tay làm được gì cụ thể? Nếu KHÔNG có khoá, tự mò mất bao lâu? Tiêu chuẩn "tốt nghiệp" là gì?                                    | Câu 2 + Câu 5 (đã tích hợp)                            |
+| 3   | Nội dung  | Lõi            | Nếu chỉ được dạy 3 điều, đó là gì? Phần nào nguyên lý (bất biến) vs công cụ (thay đổi theo thời gian)? Có case study thực tế không? | **Thuộc Bước 2** — chỉ thu thập đầu vào ở Bước 1       |
+| 4   | Cách học  | Duyên          | Bao nhiêu phút/ngày? Thích đọc (Substack) / xem (Video) / làm (Workshop)? Cần "đẩy mông" hay tự giác?                               | Câu 7 (đã tích hợp)                                    |
+| 5   | Thực hành | Tu             | Bài tập chiếm % thời lượng? Feedback ngay sau khi làm bằng cách nào? Công cụ/môi trường đã sẵn sàng?                                | **Thuộc Bước 3 + 5** — chỉ thu thập ràng buộc ở Bước 1 |
+| 6   | Đo lường  | Feedback loops | Chỉ số nào chứng minh tiến bộ? Sau 3 tháng còn đọng lại gì?                                                                         | Câu 5 + retention metric (đã tích hợp)                 |
+
 
 ### 7.2 Cách dùng
 
@@ -243,13 +251,14 @@ Khi case quan trọng (khoá chiến lược, ngân sách lớn, rủi ro cao) h
 
 ### 7.3 Khi nào dùng lens này
 
-| Tình huống | Nên dùng? |
-|---|---|
-| Cá nhân tự học 1 chủ đề quen | Không cần, 5 Core là đủ |
-| Team 5-15 người, chủ đề rõ ràng | Không cần, Core + Context là đủ |
-| Khoá chiến lược công ty, budget lớn, high stakes | Nên, đào sâu từng hạng mục |
-| User mơ hồ, không biết diễn đạt | Nên, 6 lens giúp cấu trúc hoá suy nghĩ |
-| Facilitator muốn hiểu sâu trước khi thiết kế | Nên |
+| Tình huống                                       | Nên dùng?                              |
+| ------------------------------------------------ | -------------------------------------- |
+| Cá nhân tự học 1 chủ đề quen                     | Không cần, 5 Core là đủ                |
+| Team 5-15 người, chủ đề rõ ràng                  | Không cần, Core + Context là đủ        |
+| Khoá chiến lược công ty, budget lớn, high stakes | Nên, đào sâu từng hạng mục             |
+| User mơ hồ, không biết diễn đạt                  | Nên, 6 lens giúp cấu trúc hoá suy nghĩ |
+| Facilitator muốn hiểu sâu trước khi thiết kế     | Nên                                    |
+
 
 ### 7.4 Nguyên tắc khi đào sâu
 
