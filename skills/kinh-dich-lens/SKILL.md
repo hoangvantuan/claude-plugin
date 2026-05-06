@@ -10,11 +10,15 @@ description: "Phân tích sâu bất kỳ tình huống nào qua lăng kính Kin
 > cho nên biết duyên cớ của tối sáng."
 > — Hệ Từ Thượng Truyện
 
-Kinh Dịch không phải sách bói toán. Đây là hệ thống tư duy phân tích tình huống lâu đời nhất nhân loại, dựa trên 3 trụ cột:
+Kinh Dịch không phải sách bói toán. Đây là hệ thống tư duy phân tích tình huống lâu đời nhất nhân loại, thuộc hệ thống **Nhất Nguyên Lưỡng Cực Động** (monisme dynamique polarisable), đứng ngoài Thiện Ác, Thị Phi, chỉ nói LỢI HẠI.
 
-1. **Mọi sự vật đều BIẾN**: không trạng thái cố định, chỉ có xu hướng
-2. **Biến theo QUY LUẬT**: Âm Dương tiêu trưởng, Ngũ Hành tương sinh tương khắc
-3. **Biến quanh BẤT BIẾN**: trục Thái Cực (Đạo) là cái lõi không đổi giữa vạn biến
+Nền tảng: **Tam Dịch** (3 quy luật tối cao):
+
+1. **Biến Dịch**: Mọi sự vật đều biến. Biến theo 3 luật: Phản Phục (cực tất phản), Tích Tiệm (tích lũy dần), Tiêu Trưởng (Âm Dương đắp đổi)
+2. **Bất Dịch**: Biến theo quỹ đạo bất biến. "Từ chỗ biến mà biết chỗ không biến, mới bàn được Dịch." Đạo Thường = Đạo Trung = Quân Bình
+3. **Giản Dị**: Vạn tượng phức tạp qui về một lẽ giản dị. Đạo đi về = từ phức tạp trở về Thái Nhất
+
+Cốt tủy: **"Dịch giả hà dã? Trung Chánh nhi dĩ hĩ!"** (Dịch là gì? Trung Chánh mà thôi!) Toàn bộ Dịch tóm trong một chữ: **THỜI**.
 
 Ứng dụng: phân tích bất kỳ tình huống nào (kinh doanh, quan hệ, dự án, xung đột, sức khỏe, tổ chức, sự nghiệp) để thấy rõ mình đang ở đâu, xu hướng đi đâu, và nên hành động thế nào.
 
@@ -51,9 +55,11 @@ Output: Bảng mô tả quẻ + vị trí hào + quẻ biến.
 
 ### Bước 2: Phân tích Âm Dương
 
-> Tra cứu: `references/am-duong-tieu-truong.md`
+> Tra cứu: `references/am-duong-tieu-truong.md` + `references/dich-hoc-tinh-hoa.md` (§2 Nhất Nguyên Lưỡng Cực Động, §5 Luật Tham Thiên Lưỡng Địa)
 
-Mục tiêu: Đọc cặp đối lập và xu hướng tiêu trưởng trong tình huống.
+Mục tiêu: Đọc cặp đối lập, xu hướng tiêu trưởng, và động lực vận hành trong tình huống.
+
+**Nguyên lý nền**: "Thiện Ác giai Thiên Lý" (không gán tốt/xấu tuyệt đối cho lực nào). Chỉ xét: tiêu trưởng bên nào, quân bình hay mất cân bằng.
 
 **Quy trình:**
 
@@ -62,9 +68,12 @@ Mục tiêu: Đọc cặp đối lập và xu hướng tiêu trưởng trong tì
   - Tiến vs Thoái (mở rộng vs thu gọn)
   - Nội vs Ngoại (bên trong vs bên ngoài)
   - Minh vs Ám (rõ ràng vs ẩn khuất)
+  - Đạo đi ra vs Đạo đi về (phân tán/phức tạp hóa vs qui tụ/đơn giản hóa)
 2. **Phân tích Tiêu Trưởng**: Lực nào đang tăng (trưởng), lực nào đang giảm (tiêu)?
-3. **Phúc-Họa**: Trong thuận lợi hiện tại ẩn rủi ro gì? Trong khó khăn hiện tại ẩn cơ hội gì?
-4. **Định vị 12 Quẻ Tiêu Tức**: Tình huống ở quẻ nào trong vòng tuần hoàn Phục → Lâm → Thái → Đại Tráng → Quải → Kiền → Cấu → Độn → Bĩ → Quan → Bác → Khôn?
+3. **Luật Tham Thiên Lưỡng Địa (3:2)**: Sự chênh lệch vĩnh cửu tạo vận động. Quân bình KHÔNG là cân bằng tĩnh 50-50, mà là luật vô hình chỉ huy sự chênh lệch. Hệ thống đang mất cân bằng theo hướng nào?
+4. **Phúc-Họa**: "Họa hề phúc chi sở ý, phúc hề họa chi sở phục." Trong thuận lợi ẩn rủi ro gì? Trong khó khăn ẩn cơ hội gì?
+5. **Luật Tích Tiệm**: Sự biến đang tích lũy từ bao lâu? Đã đủ "ngưỡng" để bùng phát chưa?
+6. **Định vị 12 Quẻ Tiêu Tức**: Tình huống ở quẻ nào trong vòng tuần hoàn Phục → Lâm → Thái → Đại Tráng → Quải → Kiền → Cấu → Độn → Bĩ → Quan → Bác → Khôn?
 
 ### Bước 3: Xét Ngũ Hành
 
@@ -83,28 +92,37 @@ Output: Sơ đồ Ngũ Hành bằng Mermaid với trạng thái cân bằng hi�
 
 ### Bước 4: Định vị Chu Kỳ & Biến Thông
 
-> Tra cứu: `references/bien-thong.md`
+> Tra cứu: `references/bien-thong.md` + `references/dich-hoc-tinh-hoa.md` (§4 THỜI, §6 Tứ Tượng, §7 Đạo Đi Ra và Đạo Đi Về)
 
 Mục tiêu: Xác định vị trí trong chu kỳ và đề xuất chiến lược thích ứng.
 
 **Quy trình:**
 
-1. **Nguyên-Hanh-Lợi-Trinh** (4 pha):
-  - **Nguyên** (Xuân): Khởi đầu, gieo mầm → xây nền, tập trung tầm nhìn
-  - **Hanh** (Hạ): Phát triển, thông suốt → mở rộng, phát huy tiềm năng
-  - **Lợi** (Thu): Thu hoạch, thích nghi → tối ưu, thu gom kết quả
-  - **Trinh** (Đông): Hoàn thiện, bền vững → bảo toàn, chuẩn bị chu kỳ mới
-2. **Đánh giá Lý-Tình**:
+1. **Tứ Tượng: Chu kỳ biện chứng thực** (Thành → Thịnh → Suy → Hủy):
+  - **Thành** (Nguyên-Hanh): Khởi đầu + phát triển → xây nền, mở rộng
+  - **Thịnh** (Lợi-Trinh): Thu hoạch + hoàn thiện → tối ưu, bảo toàn
+  - **Suy**: Bắt đầu thoái trào → dấu hiệu nào đang xuất hiện?
+  - **Hủy**: Tan rã, chuẩn bị chu kỳ mới → đã đến ngưỡng chưa?
+  Lưu ý: Nguyên-Hanh-Lợi-Trinh chỉ mô tả 2 pha đầu (Thành, Thịnh). Ý thánh nhân: duy trì cái tốt càng lâu càng hay. Nhưng phân tích phải xét đủ 4 pha.
+2. **Nội Thời vs Ngoại Thời**:
+  - Ngoại Thời: cơ hội/thách thức bên ngoài đang ở pha nào?
+  - Nội Thời: nội lực/sự dự bị bên trong đã đủ chưa?
+  - Hai thời có tương ứng không? Thất bại thường do lệch pha giữa nội và ngoại.
+3. **Đánh giá Lý-Tình**:
   - Lý: Việc đang làm minh chính hay tà khuất?
   - Tình: Thái độ thực hiện thành khẩn hay giả dối?
-3. **Chiến lược Biến Thông**:
-  - Cương hay Nhu? (phụ thuộc Thời và Vị)
+4. **Đạo Đi Ra hay Đạo Đi Về?**:
+  - Tình huống đang mở rộng/phức tạp hóa (đi ra) hay thu gọn/tinh giản (đi về)?
+  - Nên tiếp tục hướng hiện tại hay đảo chiều?
+5. **Chiến lược Biến Thông**:
+  - Cương hay Nhu? (phụ thuộc Thời và Vị. "Thuật tu dưỡng lấy bổ Âm làm gốc")
   - Tiến hay thoái? (xét vị trí Hào và xu hướng Tiêu Trưởng)
+  - "Cảm nhi hậu ứng, bách nhi hậu động": Phản ứng đúng thời hay hành động chủ động?
   - "Dĩ bất biến ứng vạn biến": Cái bất biến (lõi, mục đích) là gì? Cái khả biến (phương pháp) là gì?
 
 ### Bước 5: Đúc kết & Đạo Quân Tử
 
-> Tra cứu: `references/quan-tu-dao.md` (khi tình huống liên quan cá nhân, lãnh đạo, tu dưỡng)
+> Tra cứu: `references/quan-tu-dao.md` + `references/dich-hoc-tinh-hoa.md` (§10 Tu dưỡng theo Dịch, §11 Các hữu Thái Cực, §12 Kinh Vô Tự, §13 Tri Tiến Thoái)
 
 Mục tiêu: Tổng hợp phân tích và kết nối với con đường tự thân.
 
@@ -115,26 +133,33 @@ Mục tiêu: Tổng hợp phân tích và kết nối với con đường tự t
   - Âm Dương → ĐANG ĐI ĐÂU
   - Ngũ Hành → CẦN CÂN BẰNG GÌ
   - Chu kỳ + Biến Thông → NÊN LÀM GÌ
+  - Nội/Ngoại Thời → ĐÃ ĐỦ ĐIỀU KIỆN CHƯA
 2. **Chiều sâu Quân Tử** (tự thân):
-  - Tĩnh tâm: giữ tâm hư tĩnh trước biến động
-  - Tự tri: nhận biết thiên kiến và giả định
-  - Thuận tự nhiên: hành động thuận Đạo, không gượng ép
-  - Công thành thân thoái: biết dừng đúng lúc
+  - **Tẩy Tâm**: gột rửa thành kiến quá khứ, "nhật tân chi vị thịnh đức"
+  - **Hư Kỳ Tâm**: giữ tâm hư tĩnh trước biến động (trống rỗng = sẵn sàng tiếp nhận)
+  - **Vô Vọng** (Vô Tư, Vô Ngã): hành động không xen tư tâm, Ta và Người là Một
+  - **Tri Tiến Thoái Tồn Vong**: biết tiến biết thoái mà không mất Trung Chánh
+  - **Tri Túc Tri Chỉ**: biết đủ biết dừng. "Công thành thân thoái, Thiên chi Đạo"
+  - **Cảm Nhi Hậu Ứng**: không hành động khi chưa cần, có cảm mới ứng
+  - **Trường Xuân Bất Lão**: tâm hồn mềm dẻo, thích ứng, không cứng nhắc trong giáo điều
 3. **Cảnh báo** (sai lầm thường gặp theo Dịch Lý):
   - Kháng long hữu hối: lên đỉnh mà không biết thoái
   - Cô Âm bất sinh, Cô Dương bất trưởng: cực đoan một phía
-  - Bĩ cực Thái lai nhưng cần kiên nhẫn: hệ thống có delay
+  - Bĩ cực Thái lai nhưng cần kiên nhẫn: hệ thống có delay (luật Tích Tiệm)
+  - Chấp vào Lời mà quên Ý: dính mắc bề mặt, bỏ bản chất
+  - Phòng loạn hơn trị loạn: "trong yên đã nằm sẵn nguy, trong còn đã nằm sẵn mất"
 4. **Sơ đồ tổng hợp**: Mermaid diagram kết nối các phân tích
 
 ## Bảng tra cứu Reference
 
-| Cần phân tích         | File                                 | Nội dung                                                   |
-| --------------------- | ------------------------------------ | ---------------------------------------------------------- |
-| Quẻ, Lục Hào          | `references/que-dich.md`             | Bát Quái, nguyên lý ánh xạ, 12 quẻ then chốt, Lục Hào      |
-| Âm Dương, Tiêu Trưởng | `references/am-duong-tieu-truong.md` | Quy luật Âm Dương, 12 Quẻ Tiêu Tức, Phúc-Họa, Tứ Tượng     |
-| Ngũ Hành cân bằng     | `references/ngu-hanh.md`             | Tương sinh tương khắc, chẩn đoán mất cân bằng, bảng ánh xạ |
-| Biến Thông, Chu kỳ    | `references/bien-thong.md`           | Nguyên-Hanh-Lợi-Trinh, Lý-Tình, Cương-Nhu, Tùy Thời Đắc Vị |
-| Tu dưỡng, Quân Tử     | `references/quan-tu-dao.md`          | Hư Kỳ Tâm, Tĩnh Tọa, Vô Vọng, Tự Tri, Ngũ Đức              |
+| Cần phân tích               | File                                 | Nội dung                                                                                                                                                                                                  |
+| --------------------------- | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Quẻ, Lục Hào                | `references/que-dich.md`             | Bát Quái, nguyên lý ánh xạ, 12 quẻ then chốt, Lục Hào                                                                                                                                                     |
+| Âm Dương, Tiêu Trưởng       | `references/am-duong-tieu-truong.md` | Quy luật Âm Dương, 12 Quẻ Tiêu Tức, Phúc-Họa, Tứ Tượng                                                                                                                                                    |
+| Ngũ Hành cân bằng           | `references/ngu-hanh.md`             | Tương sinh tương khắc, chẩn đoán mất cân bằng, bảng ánh xạ                                                                                                                                                |
+| Biến Thông, Chu kỳ          | `references/bien-thong.md`           | Nguyên-Hanh-Lợi-Trinh, Lý-Tình, Cương-Nhu, Tùy Thời Đắc Vị                                                                                                                                                |
+| Tu dưỡng, Quân Tử           | `references/quan-tu-dao.md`          | Hư Kỳ Tâm, Tĩnh Tọa, Vô Vọng, Tự Tri, Ngũ Đức                                                                                                                                                             |
+| Triết lý cốt lõi (đa nguồn) | `references/dich-hoc-tinh-hoa.md`    | Tam Dịch, Nhất Nguyên Lưỡng Cực Động, Trung Chánh, Thời, Tích Tiệm, Tham Thiên Lưỡng Địa, Tứ Tượng thực, Đạo Đi Ra/Về, Tẩy Tâm, Vô Vọng, Đạo Khiêm, Cơ Vi, Nội/Ngoại Quái, Hào Ứng-Tỷ, Đắc Trung > Đắc Vị |
 
 
 ## Quy tắc output
@@ -149,23 +174,9 @@ Mục tiêu: Tổng hợp phân tích và kết nối với con đường tự t
 6. **Kết thúc bằng**: 3 câu hỏi mở để user tiếp tục suy ngẫm
 7. **Không dài dòng**: Ưu tiên bảng, sơ đồ, bullet point. Tránh đoạn văn dài
 
-## Phân biệt với skill liên quan
-
-| Skill              | Lăng kính                                              | Khi nào dùng                                   |
-| ------------------ | ------------------------------------------------------ | ---------------------------------------------- |
-| `kinh-dich-lens`   | Dịch Lý chuyên sâu (64 Quẻ, Ngũ Hành, Quân Tử)         | Muốn phân tích bằng framework Kinh Dịch đầy đủ |
-| `nhat-di-quan-chi` | Thu Giang tổng hợp (Thuật Tư Tưởng + Dịch + Lão Trang) | Muốn tư duy Đông phương tổng hợp nhiều nguồn   |
-| `systems-thinking` | Donella Meadows (feedback loops, leverage points)      | Muốn phân tích hệ thống phương Tây             |
-| `game-theory-lens` | Game Theory (Nash equilibrium, payoff matrix)          | Muốn phân tích tương tác chiến lược            |
-| `tri-thuc-goc`     | Phật giáo ứng dụng (Tứ Diệu Đế, 4T)                    | Muốn tìm gốc rễ vấn đề sống                    |
-
-
 ## Ví dụ ứng dụng
 
 - Startup quyết định mở rộng hay tập trung → Quẻ + Chu kỳ + Biến Thông
-- 
-- 
-- 
 - Xung đột trong đội nhóm → Âm Dương + Ngũ Hành cân bằng
 - Lãnh đạo ở đỉnh cao sự nghiệp → Hào Thượng + Kháng Long + Quân Tử
 - Dự án thất bại liên tiếp → 12 Quẻ Tiêu Tức + Bĩ cực Thái lai
