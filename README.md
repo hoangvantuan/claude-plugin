@@ -23,6 +23,7 @@ claude plugin install gh:hoangvantuan/shun-claude-plugin
 | `game-theory-lens` | Phân tích chủ đề qua lăng kính Game Theory, nhận diện players/strategies/payoffs, Nash equilibrium, mechanism design |
 | `ghost-blog` | Ghost CMS blog management |
 | `meeting-minutes` | 2 workflow: (1) Tạo biên bản họp từ transcript/ghi chú (quyết định, action items, pending/parking lot), (2) Phân tích hành vi giao tiếp (conflict avoidance, speaking ratio, filler words, active listening, facilitation style) |
+| `nhat-di-quan-chi` | Phân tích vấn đề thực tế bằng tư duy Đông phương tổng hợp (Thu Giang Nguyễn Duy Cần). 4 giai đoạn: Tẩy Tâm → Mổ Xẻ (Dịch Lý) → Định Vị (Thời-Vị-Cơ) → Hành Động (Hoàn Trung, Lưỡng Hành, Vô Vi) |
 | `outline-writer` | Phân tích nội dung & tạo outline thuần nội dung (sequence of sections; thesis, key arguments, evidence), không quyết định media (slide/blog/doc), không quy định cách viết/tone/style (đó là việc của writer) |
 | `pexels-media` | Source ảnh/video royalty-free từ Pexels API: search, curated, popular, collections, multi-resolution download + sidecar metadata bắt buộc. Cần `PEXELS_API_KEY` |
 | `pinchtab` | Browser automation cho AI agents, điều khiển Chrome qua PinchTab HTTP API |
