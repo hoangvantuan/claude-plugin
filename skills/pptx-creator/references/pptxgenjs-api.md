@@ -137,7 +137,9 @@ slide.addShape(pres.shapes.RECTANGLE, {
 | `angle` | number | 0-359 degrees | 135 = bottom-right, 270 = upward |
 | `opacity` | number | 0.0-1.0 | Use this for transparency |
 
-**Available shapes:** RECTANGLE, OVAL, LINE, ROUNDED_RECTANGLE
+**Curated shapes (we restrict to these 4 for design consistency):** RECTANGLE, OVAL, LINE, ROUNDED_RECTANGLE.
+
+PptxGenJS supports ~180 shapes (RIGHT_TRIANGLE, ARROW, STAR, CHEVRON, ...). We avoid them because mixed shapes break visual rhythm and read as AI slop. Use these 4 plus images/icons for variety.
 
 **No gradient fills** — use a gradient image as background instead.
 

@@ -140,7 +140,7 @@ Accent line or shape as separator.
 
 ## 4. Content Page
 
-The workhorse — 6 subtypes to maintain visual variety.
+The workhorse — 9 subtypes (4a-4i) to maintain visual variety.
 
 **All content slides require:**
 - Non-text visual element (image, chart, icon, or shape)

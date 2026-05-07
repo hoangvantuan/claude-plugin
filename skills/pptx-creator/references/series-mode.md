@@ -8,6 +8,7 @@ Khi tạo nhiều presentations trong cùng series (ví dụ: training Part 1, 2
 {
   "series": "Kỹ Năng Mềm Training 2026",
   "mood": "Warm Storytelling",
+  "styleRecipe": "soft",
   "theme": {
     "primary": "1B2A4A",
     "secondary": "2E4A7A",
@@ -16,12 +17,20 @@ Khi tạo nhiều presentations trong cùng series (ví dụ: training Part 1, 2
     "bg": "F0F5FB",
     "titleFont": "Montserrat",
     "bodyFont": "Be Vietnam Pro"
-  },
-  "style": "soft",
-  "rectRadius": 0.1,
-  "pageBadge": "circle"
+  }
 }
 ```
+
+**Schema fields:**
+
+| Field | Type | Required | Notes |
+|-------|------|----------|-------|
+| `series` | string | yes | Tên series, hiển thị log khi compile |
+| `mood` | string | yes | Tên mood từ design-system.md (Corporate Authority, Warm Storytelling, ...) |
+| `styleRecipe` | string | yes | `sharp`, `soft`, `rounded`, `pill`. Slides tự enforce qua rectRadius và spacing |
+| `theme` | object | yes | 7 keys (5 colors + 2 fonts) — compile.js load trực tiếp |
+
+**Lưu ý:** `mood` và `styleRecipe` chỉ là metadata để slide author tham chiếu khi viết code. compile.js không enforce — slide files phải tự áp dụng nhất quán (rectRadius, spacing, decorative shape count).
 
 ## Step 2: Mỗi compile.js trong series load cùng config
 

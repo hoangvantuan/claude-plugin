@@ -16,6 +16,9 @@ const PAGE_BADGE = { x: 9.3, y: 5.1, w: 0.4, h: 0.4 };
 
 // Line height lookup (inches per line) — based on Vietnamese text measurements
 const LINE_HEIGHTS = {
+  80: 1.45,
+  72: 1.30,
+  60: 1.10,
   44: 0.85,
   36: 0.65,
   28: 0.55,

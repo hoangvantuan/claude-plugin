@@ -23,13 +23,40 @@ Tạo presentation đẹp, chuyên nghiệp với hỗ trợ font tiếng Việt
 ## Setup
 
 ```bash
+# Required: PptxGenJS + icon stack
 npm install -g pptxgenjs
-npm install -g react-icons react react-dom sharp  # for icons
-pip install "markitdown[pptx]"                     # for QA text extraction
-# Optional (visual QA): brew install libreoffice poppler
+npm install -g react-icons react react-dom sharp
+
+# Required: text extraction QA (Step 7)
+pip install "markitdown[pptx]"
+
+# Required for Visual QA in Step 7 (Step 7 đánh dấu "Required")
+# macOS:
+brew install libreoffice poppler
+# Ubuntu/Debian:
+# apt install libreoffice poppler-utils
 ```
 
-Vietnamese font: Download [Be Vietnam Pro](https://fonts.google.com/specimen/Be+Vietnam+Pro) — hỗ trợ dấu tiếng Việt tốt, chuyên nghiệp.
+Cài `-g` global trên macOS/Linux có thể cần `sudo` nếu Node install vào `/usr/local`. Dùng `nvm` hoặc `volta` thay vì `sudo` được khuyến nghị.
+
+**Vietnamese font (cần cài cả 2 chỗ):**
+
+1. **Máy generate** (chạy compile.js): Download [Be Vietnam Pro](https://fonts.google.com/specimen/Be+Vietnam+Pro). PptxGenJS không embed font vào .pptx — chỉ ghi tên font.
+2. **Máy presenter** (mở .pptx trình chiếu): cũng phải cài font Be Vietnam Pro. Nếu thiếu, PowerPoint fallback sang font hệ thống → dấu tiếng Việt vỡ.
+
+Cài font:
+
+```bash
+# macOS (homebrew-cask-fonts)
+brew tap homebrew/cask-fonts
+brew install --cask font-be-vietnam-pro
+
+# Linux: copy .ttf vào ~/.fonts/ rồi fc-cache -fv
+
+# Windows: drag-drop .ttf vào Settings > Fonts
+```
+
+**Output location:** `slides/output/presentation.pptx` (sau khi chạy `node compile.js`). Open bằng PowerPoint, Keynote, hoặc LibreOffice.
 
 ---
 
@@ -45,14 +72,16 @@ Vietnamese font: Download [Be Vietnam Pro](https://fonts.google.com/specimen/Be+
 
 **Priority order:**
 
-1. **Series mode** — check `series-config.json` in working/parent directory. If found, load and skip Steps 2-3. Chi tiết: [references/series-mode.md](references/series-mode.md)
+1. **Series mode** — Hỏi user upfront: "Đây là deck mới hay nằm trong series có sẵn?" Nếu series, check `series-config.json` ở project root (level cha của `slides/`). Nếu found, load và skip Steps 2-3. Chi tiết: [references/series-mode.md](references/series-mode.md)
 2. **User custom** — nếu user cung cấp bộ màu hoặc font riêng, dùng trực tiếp.
 3. **Catalog** — chọn từ bảng có sẵn trong [references/design-system.md](references/design-system.md).
 
 ```bash
-# Auto-detect series
+# Auto-detect series (chạy trong project root, trước khi tạo slides/ subfolder)
 ls series-config.json ../series-config.json 2>/dev/null
 ```
+
+Nếu Claude đang ở project root (`my-presentation/`): check `./series-config.json`. Nếu đã `cd slides/`: check `../series-config.json`. Cả 2 path đều được compile.js auto-detect.
 
 Custom palette: map hex codes vào 5 theme keys theo brightness (darkest → lightest). Custom font: gán `titleFont`/`bodyFont`, cảnh báo nếu không hỗ trợ Vietnamese. Chi tiết: [references/design-system.md](references/design-system.md#custom-color-palette).
 
@@ -172,7 +201,7 @@ const { calcStack, calcColumns, SAFE_AREA, TITLE_AREA, PAGE_BADGE } = require('.
 
 const slideConfig = {
   type: 'content',  // cover | toc | divider | content | summary
-  index: 3,
+  index: 3,         // PHẢI khớp số trong filename slide-03.js → page badge hiện đúng
   title: 'Slide Title'
 };
 
@@ -222,40 +251,21 @@ Copy [scripts/compile.js](scripts/compile.js) into `slides/` directory. Adjust `
 
 Run: `cd slides && node compile.js`
 
+Output: `slides/output/presentation.pptx`. Compile.js in absolute path khi succeed + nhắc viewer apps trong console. Mở bằng PowerPoint, Keynote, hoặc LibreOffice.
+
+**Boundary safety:** `calcStack` throw nếu vượt safe area. Slide hardcode positions nên gọi `assertBounds(elements)` cuối hàm `createSlide` — xem [scripts/layout-helpers.js](scripts/layout-helpers.js).
+
 ### Step 7: QA (Required)
 
-**Content QA:**
+Full checklist + commands: [references/qa-checklist.md](references/qa-checklist.md).
 
-```bash
-python -m markitdown output/presentation.pptx
-python -m markitdown output/presentation.pptx | grep -iE "xxxx|lorem|ipsum|placeholder|TODO"
-```
+3 phần phải pass theo thứ tự:
 
-**Visual QA** (use subagent with fresh eyes):
+1. **Content QA** — markitdown extract text, scan placeholder
+2. **Visual QA** — convert PDF, screenshot per slide, check overlap/contrast/alignment
+3. **Design Quality Review** — 5 câu test (Identity, Rhythm, Density, Mood, Hallmark)
 
-```bash
-# Convert to images for visual inspection
-soffice --headless --convert-to pdf output/presentation.pptx --outdir output/
-pdftoppm -jpeg -r 150 output/presentation.pdf output/slide
-```
-
-Subagent checklist: overlapping elements, low contrast, uneven gaps, insufficient margins (<0.5"), misaligned columns, placeholder content, font rendering issues.
-
-Anti-AI Slop Check: scan for repeated layouts, generic titles, missing visual variety → [references/design-system.md](references/design-system.md#anti-ai-slop-patterns).
-
-**Design Quality Review (5 câu, mỗi câu 1 dòng):**
-
-Visual QA bắt lỗi kỹ thuật. Design Quality Review bắt lỗi "đẹp nhưng generic". Sau khi pass Visual QA, tự trả lời 5 câu:
-
-1. **Identity test**: Bỏ hết logo, page badge và text content. Slide còn nhận ra là deck của topic này không, hay có thể thuộc bất kỳ deck nào?
-2. **Rhythm test**: Click xuyên 3 slide bất kỳ liên tiếp. Có cảm giác "mỗi slide một nhịp" không, hay tất cả cùng một layout?
-3. **Density test**: Mỗi slide có đúng 1 core message không? Slide nào cần 2 câu để tóm tắt nội dung → tách 2 slides.
-4. **Mood alignment test**: Slide có đang phản ánh mood đã chọn ở Step 3 không? Ví dụ chọn Minimal Zen mà slide có 5 decorative shapes là sai.
-5. **Hallmark test**: Có accent line dưới title không? Có 3 icon cards đều nhau hàng ngang không? Có "Cảm ơn!" slide trống không? Bất kỳ "yes" nào → fix.
-
-Câu nào fail → quay lại slide đó, fix. Không deliver deck có ≥1 fail.
-
-Verification loop: Generate → Visual QA → Design Quality Review → Fix → Re-verify.
+Câu nào fail → fix → recompile → repeat full QA. Không deliver deck có ≥1 fail.
 
 ---
 

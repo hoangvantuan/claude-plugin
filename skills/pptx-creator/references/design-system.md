@@ -51,7 +51,7 @@ const theme = {
 1. Yêu cầu tối thiểu 3 màu (primary, accent, bg), tối đa 5 màu
 2. Nếu chỉ 3 màu → tự sinh secondary (trung gian primary-accent) và light (trung gian accent-bg)
 3. Luôn sort theo brightness: darkest → lightest
-4. Nếu bg quá tối (luminance < 70%) → cảnh báo và đề xuất thay bằng `"FAFAFA"`
+4. Nếu bg "tối" theo Quick test (xem mục Contrast Rules — first 2 chars 0-E) → cảnh báo và đề xuất thay bằng `"FAFAFA"`. Bg lý tưởng start bằng `F` (FAFAFA, F0F5FB, FFF8FA, ...)
 5. Validate hex format: 6 ký tự, KHÔNG có `#`
 
 ### Custom Font
@@ -323,7 +323,7 @@ Mỗi mood neo vào 1 designer/studio thực để có framework cụ thể, kh�
 
 **Rule: Every addText() call must pass this check:**
 1. What is the DIRECT background of this text? (slide bg? shape fill? card fill?)
-2. Is that background DARK (luminance < 50%) or LIGHT (luminance > 50%)?
+2. Is that background DARK or LIGHT? Use Quick test (below) — single source of truth.
 3. Dark bg → text MUST be `"FFFFFF"` or `"F0F0F0"`. Light bg → text MUST be `"222222"` or `"333333"` or `theme.primary`.
 
 **Safe text colors:**
@@ -347,7 +347,9 @@ WRONG: "ffddd2" text on "FFFFFF" bg (peach on white)
 WRONG: theme.accent text when accent is a light color
 ```
 
-**Quick test:** If the first 2 chars of the hex are 0-6 → it's dark → use light text. If A-F → it's light → use dark text.
+**Quick test (single source of truth):** If the first 2 chars of the hex are `00`-`6F` → it's dark → use light text. If `70`-`FF` → it's light → use dark text. Edge case `7X`-`9X` → check actual hex (e.g., `83c5be` light teal needs dark text on it because all 3 channels mid-bright).
+
+Apply this Quick test consistently for: contrast decisions, custom palette bg validation, and bg darkness checks. No separate luminance % rule.
 
 **On cards/shapes:** Check text color against the SHAPE fill color, not the slide background behind it.
 
@@ -427,7 +429,7 @@ PptxGenJS không hỗ trợ gradient fills, nhưng dùng **background images** �
 
 ### Gradient Backgrounds (via AI-generated images)
 
-Dùng `ai-multimodal` skill tạo gradient background:
+Dùng `ai-artist` hoặc `codex-image` skill tạo gradient background:
 
 ```
 Prompt examples:

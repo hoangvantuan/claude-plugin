@@ -5,6 +5,10 @@
  * then run: node compile.js
  *
  * Each slide-XX.js must export: { createSlide(pres, theme), slideConfig }
+ *
+ * Boundary safety: position validation lives in layout-helpers.js.
+ * Slides hardcoding positions should call `assertBounds(elements)` themselves.
+ * Slides using `calcStack` get automatic throw on overflow.
  */
 
 const pptxgen = require("pptxgenjs");
@@ -63,30 +67,20 @@ for (let i = 1; i <= SLIDE_COUNT; i++) {
   console.log(`Compiled slide ${num}: ${slideModule.slideConfig?.title || "untitled"}`);
 }
 
-// --- BOUNDARY CHECK ---
-console.log("\n--- Boundary Check ---");
-let hasWarning = false;
-for (let i = 1; i <= SLIDE_COUNT; i++) {
-  const num = String(i).padStart(2, "0");
-  const src = fs.readFileSync(path.join(__dirname, `slide-${num}.js`), "utf-8");
-  const yValues = [...src.matchAll(/\by:\s*([\d.]+)/g)]
-    .map((m) => parseFloat(m[1]))
-    .filter((v) => v > 5.0 && v !== 5.1); // 5.1 = page badge, OK
-  if (yValues.length > 0) {
-    console.warn(
-      `  ⚠ slide-${num}: y values [${yValues.join(", ")}] may overflow (safe area ends at 5.0")`
-    );
-    hasWarning = true;
-  }
-}
-if (!hasWarning) console.log("  ✓ All slides within bounds.");
-
 // --- WRITE OUTPUT ---
 if (!fs.existsSync(OUTPUT_DIR)) {
   fs.mkdirSync(OUTPUT_DIR, { recursive: true });
 }
 
 const outputPath = path.join(OUTPUT_DIR, OUTPUT_FILE);
-pres.writeFile({ fileName: outputPath }).then(() => {
-  console.log(`\nDone! ${outputPath}`);
-});
+const absPath = path.resolve(outputPath);
+pres
+  .writeFile({ fileName: outputPath })
+  .then(() => {
+    console.log(`\nDone! ${absPath}`);
+    console.log(`Open with PowerPoint, Keynote, or LibreOffice.`);
+  })
+  .catch((err) => {
+    console.error(`\nWrite failed: ${err.message}`);
+    process.exit(1);
+  });
