@@ -1,6 +1,6 @@
 ---
 name: skill-auto-improver
-description: "Tự động phân tích và cải tiến skill — quality audit, improvement patterns, refactoring."
+description: "Audit và cải tiến skill: chất lượng, pattern, refactor, đo trước/sau."
 ---
 
 # Skill Auto-Improver

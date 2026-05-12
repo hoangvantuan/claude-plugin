@@ -1,6 +1,6 @@
 ---
 name: work-explainer
-description: "Personal teacher — breaks down completed work into deep learning documents covering approach, reasoning, tradeoffs, and transferable lessons."
+description: "Giải thích task đã làm thành tài liệu học sâu: cách làm, lý do, tradeoff, bài học chuyển dùng."
 ---
 
 # Work Explainer

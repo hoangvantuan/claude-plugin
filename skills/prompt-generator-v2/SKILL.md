@@ -1,6 +1,6 @@
 ---
 name: prompt-generator-v2
-description: "KERNEL-based prompt engineering — transforms vague requests into structured, high-performance prompts optimized for first-try success."
+description: "Tạo prompt KERNEL từ yêu cầu mơ hồ thành chỉ dẫn cấu trúc, dễ kiểm chứng."
 ---
 
 # Prompt Generator V2 — KERNEL Framework

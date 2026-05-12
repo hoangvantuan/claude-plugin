@@ -1,6 +1,6 @@
 ---
 name: wisdom-mentor
-description: "Đối thoại với 28 người thầy tri thức — mang phong cách tư duy và triết lý của các bậc thầy tư tưởng."
+description: "Đối thoại 1:1 hoặc bàn tròn với 28 người thầy tri thức."
 ---
 
 # Wisdom Mentor

@@ -1,7 +1,7 @@
 ---
 name: proposal-generator
 
-description: Nghiên cứu một chủ đề và tạo proposal/đề án dự án hoàn chỉnh bao gồm CẢ business lẫn technical, từ bất kỳ input nào (một câu ý tưởng, RFP của khách hàng, brief nội bộ, tài liệu nghiên cứu, hoặc transcript cuộc họp). Kích hoạt khi user nói "viết proposal", "tạo đề án", "soạn proposal", "make a proposal", "draft a proposal", "đề xuất dự án", "viết bid", "phản hồi RFP", "nghiên cứu và đề xuất", "pitch deck cho dự án", hoặc bất cứ khi nào user mô tả một ý tưởng/vấn đề và muốn một deliverable có cấu trúc mà khách hàng hoặc lãnh đạo có thể review. Skill này được thiết kế để mở rộng input mỏng thành proposal đầy đủ có nghiên cứu, vì vậy hãy dùng skill này NGAY CẢ KHI user chỉ đưa vài dòng mô tả ngắn. Output mặc định là Markdown (để review nhanh trước), sau đó có thể export sang .docx hoặc .pptx khi user xác nhận. Ngôn ngữ mặc định tiếng Việt; chỉ chuyển sang tiếng Anh nếu user yêu cầu rõ ràng hoặc input hoàn toàn bằng tiếng Anh và hướng đến khách hàng quốc tế.
+description: "Tạo proposal/đề án có research, business case, technical solution. Trigger: RFP, bid, draft proposal, đề xuất dự án."
 ---
 
 # Proposal Generator
@@ -35,15 +35,10 @@ KHÔNG dùng skill này cho:
 Skill chạy theo 4 phase. Không bỏ qua phase nào: kể cả input mỏng cũng cần phase research, vì đó là chỗ proposal có được độ tin cậy.
 
 ```
-
 Phase 1: Intake & Gap Analysis     →  Hiểu input, xác định thiếu gì
-
 Phase 2: Research                   →  Lấp khoảng trống bằng web search + suy luận
-
 Phase 3: Structured Drafting        →  Áp dụng template (business + technical)
-
 Phase 4: Deliverable                →  Markdown trước; .docx/.pptx sau khi confirm
-
 ```
 
 ---
@@ -84,7 +79,7 @@ Trước khi bước sang Research, xác định 2-3 "win themes" cho proposal. 
 - "Practice QA automation in-house giảm defect rate"
 - "Accelerator framework giảm 40% thời gian setup"
 
-Win themes phải xuyên suốt mọi section. Nếu theme là QA thì Architecture section nhấn testability, Team section highlight QA engineer, Timeline có QA gate mỗi phase. Proposal không có win theme đọc như tài liệu mô tả. Proposal có win theme đọc như lập luận thuyết phục.
+Win themes phải xuyên suốt các section liên quan. Nếu theme là QA thì Architecture section nhấn testability, Team section highlight QA engineer, Timeline có QA gate mỗi phase. Proposal không có win theme đọc như tài liệu mô tả. Proposal có win theme đọc như lập luận thuyết phục.
 
 Nếu user không cung cấp differentiator, infer từ context (ngành nghề, tech stack quen thuộc, dự án tương tự) và state rõ assumption.
 
@@ -108,7 +103,7 @@ Nếu biết audience cụ thể (ví dụ: proposal cho CTO), tăng depth phầ
 
 ## Phase 2: Research
 
-Research là thứ tách biệt một proposal thực sự với boilerplate generic. Dùng web_search: và nếu user có connect tools nội bộ (Drive, Gmail), kiểm tra cả thông qua tool_search để tìm context liên quan.
+Research là thứ tách biệt một proposal thực sự với boilerplate generic. Dùng tool tìm kiếm web hiện có. Nếu có connector nội bộ như Drive, Gmail, hoặc CRM, kiểm tra thêm context liên quan khi được cấp quyền.
 
 **Research checklist**: tối thiểu phải search:
 
@@ -116,13 +111,13 @@ Research là thứ tách biệt một proposal thực sự với boilerplate gen
 
 - **Giải pháp tương đương**: Ai khác đang giải quyết vấn đề này? Họ tính giá ra sao? Architecture của họ ra sao?
 
-- **Technical state-of-the-art**: Stack/pattern best-practice cho loại hệ thống này năm 2026 là gì? (Đừng tin vào trí nhớ với tech thay đổi nhanh: search.)
+- **Technical state-of-the-art**: Stack/pattern best-practice hiện tại cho loại hệ thống này là gì? Với tech thay đổi nhanh, luôn verify bằng nguồn mới.
 
 - **Regulatory / compliance**: GDPR, HIPAA, PCI-DSS, **Nghị định 13/2023 (PDP) của Việt Nam**, Luật An ninh mạng 2018, tùy domain
 
 - **Case study hoặc benchmark gần đây**: số liệu thực tế từ deployment tương tự
 
-Làm 3-6 search cho input thin, 1-3 cho input rich. Cite nguồn trong proposal cuối cùng tại các chỗ có claim định lượng cụ thể (market size, benchmark numbers, regulatory facts).
+Số lượt search theo `references/research_checklist.md`. Cite nguồn trong proposal cuối cùng tại các chỗ có claim định lượng cụ thể như market size, benchmark numbers, regulatory facts.
 
 **Lưu ý copyright**: paraphrase research findings; không paste verbatim từ source. Direct quote dưới 15 từ và không quá một quote/nguồn.
 
@@ -144,7 +139,7 @@ Template **bắt buộc về cấu trúc** nhưng **linh hoạt về độ sâu*
 
 Proposal mạnh một bên yếu một bên là output không chấp nhận được. Nếu input technical mỏng, research thêm; không cắt xén phần technical. Phần Quản trị & Thay đổi có thể giản lược cho POC nhưng không bỏ hoàn toàn cho dự án >=6 tháng.
 
-**Xuyên suốt: reinforce win themes.** Mỗi section phải có ít nhất 1 điểm kết nối với win themes đã xác định ở Phase 1. Không chỉ liệt kê ở "Why Us" cuối cùng.
+**Xuyên suốt: reinforce win themes.** Kết nối win themes ở nơi tự nhiên và có bằng chứng. Không ép mọi section nhắc lại cùng một ý. Không chỉ liệt kê ở "Why Us" cuối cùng.
 
 ### Style cho proposal
 
@@ -209,6 +204,8 @@ proposal-generator/
 ```
 
 Tạo folder nếu chưa tồn tại: `mkdir -p proposal-generator`
+
+Nếu môi trường không cho ghi file, xuất Markdown inline trong câu trả lời và ghi rõ rằng chưa tạo file.
 
 **Cách tạo Markdown deliverable:**
 
@@ -295,9 +292,7 @@ Nếu user đưa input mỏng nhưng nói "cứ chạy đi", bỏ qua câu hỏi
 ## Reference files
 
 - `references/proposal_template.md`: Cấu trúc proposal đầy đủ, từng section
-
 - `references/section_guidance.md`: Hướng dẫn viết chi tiết và ví dụ tốt/xấu cho mỗi section
-
 - `references/research_checklist.md`: Search gì khi gặp domain và loại dự án khác nhau
 
 Đọc khi cần; không load tất cả lên trước cho task ngắn.

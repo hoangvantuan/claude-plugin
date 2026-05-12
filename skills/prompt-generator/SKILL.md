@@ -1,6 +1,6 @@
 ---
 name: prompt-generator
-description: "Meta-prompting skill — creates well-structured, verifiable, low-hallucination prompts for any use case."
+description: "Tạo meta-prompt rõ cấu trúc, kiểm chứng được, giảm hallucination."
 ---
 
 # Prompt Generator

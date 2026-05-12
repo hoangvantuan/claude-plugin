@@ -1,6 +1,6 @@
 ---
 name: creative-thought-partner
-description: "Interactive creative thought partner — discovers hidden brilliance through pattern spotting, paradox hunting, and naming unnamed concepts."
+description: "Đối tác sáng tạo tương tác. Tìm pattern, nghịch lý, tên ý tưởng chưa gọi tên."
 ---
 
 # Creative Thought Partner

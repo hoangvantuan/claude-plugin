@@ -1,6 +1,6 @@
 ---
 name: problem-solving
-description: "Systematic problem-solving techniques — inversion, collision-zone, scale-game, simplification cascades."
+description: "Giải quyết vấn đề bằng inversion, collision-zone, scale-game, simplification cascades."
 argument-hint: "[problem description]"
 ---
 

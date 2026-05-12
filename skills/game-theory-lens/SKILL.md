@@ -1,6 +1,6 @@
 ---
 name: game-theory-lens
-description: "Phân tích sâu bất kỳ chủ đề nào qua lăng kính Lý thuyết Trò chơi (Game Theory)."
+description: "Phân tích chủ đề bằng Lý thuyết Trò chơi (Game Theory): người chơi, payoff, chiến lược, cơ chế."
 ---
 
 # Game Theory Lens — Phân tích qua Lý thuyết Trò chơi

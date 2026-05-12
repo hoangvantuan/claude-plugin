@@ -1,6 +1,6 @@
 ---
 name: facebook
-description: "Đăng bài lên Facebook (wall cá nhân hoặc group) với ảnh đính kèm và tag bạn bè qua PinchTab browser control. Kích hoạt khi user nói đăng Facebook, post FB, chia sẻ lên wall, đăng group. Không dùng cho viết nội dung (dùng social-post) hay browser automation chung (dùng pinchtab)."
+description: "Đăng Facebook wall/group bằng PinchTab, kèm ảnh và tag. Không viết nội dung."
 allowed-tools:
   - Bash
   - Read

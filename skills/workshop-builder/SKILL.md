@@ -1,6 +1,6 @@
 ---
 name: workshop-builder
-description: "Thiết kế và xây dựng bộ khung workshop hoàn chỉnh theo phương pháp Backwards Design + 4Cs."
+description: "Thiết kế workshop bằng Backwards Design, 4Cs, Kirkpatrick: mục tiêu, đánh giá, agenda, follow-up."
 ---
 
 # Workshop Builder

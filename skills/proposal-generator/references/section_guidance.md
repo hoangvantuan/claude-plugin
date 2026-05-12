@@ -264,7 +264,7 @@ Luôn bắt đầu ROI bằng câu hỏi: "Nếu không làm gì, tổ chức m�
 > Nếu không triển khai, công ty sẽ tiếp tục gặp khó khăn.
 
 **Ví dụ tốt**:
-> Mỗi tháng delay, ACME tiếp tục chi 200 triệu VND cho 14 nhân sự xử lý hóa đơn thủ công. Trong 12 tháng tới, tổng chi phí không hành động ước tính 2,4 tỷ VND, chưa tính rủi ro sai sót (hiện 3,2% error rate trên invoices) và chi phí cơ hội khi 14 nhân sự không thể chuyển sang công việc giá trị cao hơn. Ngoài ra, quy định hóa đơn điện tử bắt buộc từ Q3/2026 đặt deadline cứng: không tuân thủ = phạt hành chính.
+> Mỗi tháng delay, ACME tiếp tục chi 200 triệu VND cho 14 nhân sự xử lý hóa đơn thủ công. Trong 12 tháng tới, tổng chi phí không hành động ước tính 2,4 tỷ VND, chưa tính rủi ro sai sót (hiện 3,2% error rate trên invoices) và chi phí cơ hội khi 14 nhân sự không thể chuyển sang công việc giá trị cao hơn. Nếu có deadline pháp lý đã verify, nêu rõ mốc thời gian, nghĩa vụ tuân thủ và mức phạt theo nguồn chính thức.
 
 ### TCO Comparison
 

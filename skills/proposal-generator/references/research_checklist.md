@@ -7,7 +7,7 @@ Dùng khi plan Phase 2 research. Chọn domain section liên quan; combine nếu
 ## Universal: luôn research các mục này
 
 1. **Giải pháp tương đương / đối thủ** trong problem space: search "[problem] solutions" hoặc "[problem] software vendors"
-2. **Industry report / analyst take gần đây** (trong 12 tháng): "[domain] market size 2026", "[domain] trends"
+2. **Industry report / analyst take gần đây** (trong 12 tháng): "[domain] market size [năm hiện tại]", "[domain] trends"
 3. **Best-practice technical pattern cho lớp vấn đề**: "[problem type] architecture patterns", "[problem type] reference architecture"
 4. **Failure mode / pitfall thường gặp** trong dự án loại này: "[problem type] project failures", "[problem type] lessons learned"
 
@@ -42,7 +42,7 @@ Làm cho mọi proposal bất kể domain nào.
 
 ## AI / ML project
 
-- **Model selection**: search current state cho task: search "best [task] model 2026" vì cái này thay đổi hàng tháng
+- **Model selection**: search current state cho task: search "best [task] model [năm hiện tại]" vì cái này thay đổi hàng tháng
 - Tradeoff API vs self-hosted: pricing API hiện tại của các provider chính, chi phí hardware self-host
 - Methodology eval: "good" trông như thế nào, đo bằng gì
 - Latency và cost per request kỳ vọng
@@ -71,8 +71,8 @@ Làm cho mọi proposal bất kể domain nào.
 
 Khi proposal cho khách hàng Việt Nam hoặc vận hành tại Việt Nam, research thêm:
 
-- **Nghị định 13/2023 về bảo vệ dữ liệu cá nhân** (luật privacy của VN)
-- **Luật An ninh mạng 2018** yêu cầu data localization
+- **Nghị định 13/2023 về bảo vệ dữ liệu cá nhân**: verify bằng nguồn pháp lý hoặc cơ quan nhà nước
+- **Luật An ninh mạng 2018** và văn bản hướng dẫn liên quan: verify nghĩa vụ data localization theo case cụ thể
 - **Quy định hóa đơn điện tử** (nếu có invoicing: yêu cầu nghiêm ngặt, phải tích hợp với cơ quan thuế GDT)
 - **Banking / fintech**: thông tư SBV (Ngân hàng Nhà nước) về fintech, license payment intermediary
 - **Đấu thầu khu vực công**: quy định nếu buyer là chính phủ / SOE

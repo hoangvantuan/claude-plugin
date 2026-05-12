@@ -1,6 +1,6 @@
 ---
 name: sequential-thinking
-description: "Step-by-step analysis for complex problems — multi-step reasoning, hypothesis verification, adaptive planning with revision."
+description: "Phân tích từng bước cho vấn đề phức tạp: giả thuyết, kiểm chứng, đổi plan."
 license: MIT
 argument-hint: "[problem to analyze step-by-step]"
 ---

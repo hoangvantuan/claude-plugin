@@ -1,12 +1,6 @@
 ---
 name: pexels-media
-description: >
-  Source royalty-free images and videos from Pexels API for design, placeholders, or content.
-  Supports search, curated/popular content, collections, multiple resolutions, and ALWAYS creates
-  detailed sidecar metadata files. Use this skill when the user wants to: find stock photos/videos,
-  download royalty-free images, get placeholder images for UI/design, source hero backgrounds,
-  search for specific photo styles/colors/orientations, browse curated or popular media,
-  or any request involving Pexels, stock media, or royalty-free content sourcing.
+description: "Tìm/tải ảnh, video Pexels miễn phí bản quyền. Tạo metadata sidecar. Trigger: stock media, hero image, placeholder."
 ---
 
 # Pexels Media Sourcing

@@ -1,6 +1,6 @@
 ---
 name: deep-insight
-description: "Quan sát đa chiều → Phân tích tách lớp → Đúc kết cốt lõi để hiểu sâu bất kỳ vấn đề nào."
+description: "Hiểu sâu vấn đề bằng Quan sát, Phân tích, Đúc kết lõi."
 ---
 
 # Deep Insight — Quan sát · Phân tích · Đúc kết

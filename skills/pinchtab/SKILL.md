@@ -1,6 +1,6 @@
 ---
 name: pinchtab
-description: "Browser automation for AI agents via PinchTab HTTP API and CLI — navigate, extract, fill forms, click, scrape, screenshot, export PDF."
+description: "Tự động hóa trình duyệt bằng PinchTab HTTP API/CLI: navigate, extract, fill, click, scrape, screenshot, PDF."
 allowed-tools:
   - Bash
   - Read

@@ -1,6 +1,6 @@
 ---
 name: deep-learner
-description: "Dẫn dắt từng bước hiểu sâu bản chất nội dung (bài viết, sách, video) — từ bề mặt đến nguyên lý gốc, kết nối liên lĩnh vực, và áp dụng vào đời sống."
+description: "Dẫn user hiểu sâu nội dung từ bề mặt đến nguyên lý, liên hệ, ứng dụng."
 ---
 
 # Deep Learner

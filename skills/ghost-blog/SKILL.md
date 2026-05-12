@@ -1,6 +1,6 @@
 ---
 name: ghost-blog
-description: "Manage Ghost blog posts via Admin API — list/filter, CRUD, bulk operations, tag management."
+description: "Quản lý bài Ghost qua Admin API: list/filter, CRUD, bulk, tag."
 license: MIT
 allowed-tools:
   - Bash

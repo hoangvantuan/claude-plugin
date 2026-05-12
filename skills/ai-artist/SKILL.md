@@ -1,6 +1,6 @@
 ---
 name: ai-artist
-description: "Generate images via Nano Banana with 129 curated prompts. 3 modes: search, creative, wild."
+description: "Tạo ảnh Nano Banana bằng 129 prompt. Mode: search, creative, wild."
 argument-hint: "[concept] [--mode search|creative|wild|all] [--skip]"
 ---
 

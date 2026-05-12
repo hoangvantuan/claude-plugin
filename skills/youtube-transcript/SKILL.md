@@ -1,12 +1,6 @@
 ---
 name: youtube-transcript
-description: >-
-  Download YouTube video transcripts (subtitles/captions) using yt-dlp.
-  Use this skill whenever the user provides a YouTube URL and wants the transcript,
-  asks to "download transcript", "get captions/subtitles", or "transcribe a YouTube video".
-  Also triggers when user needs text content extracted from any YouTube video,
-  even if they don't explicitly say "transcript" (e.g., "what does this video say",
-  "get me the text from this video", "I need the content of this YouTube link").
+description: "Tải transcript/caption YouTube bằng yt-dlp. Trigger: YouTube URL, subtitles, captions, video text."
 ---
 
 # YouTube Transcript Downloader

@@ -1,18 +1,6 @@
 ---
 name: nhat-di-quan-chi
-description: >-
-  Phân tích vấn đề thực tế (công việc, cuộc sống, kinh doanh, ra quyết định, xung đột, chiến lược)
-  bằng tư duy Đông phương tổng hợp của Thu Giang Nguyễn Duy Cần, gồm Thuật Tư Tưởng, Dịch Lý, và Lão Trang.
-  Framework 4 giai đoạn - Tâm Thế, Phân Tích, Định Vị, Hành Động.
-  Dùng skill này khi user muốn phân tích sâu một vấn đề bằng tư duy Đông phương,
-  nhìn hai mặt của vấn đề (Âm Dương), tìm chu kỳ và điểm bùng phát,
-  xác định thời cơ hành động, hoặc tìm giải pháp quân bình không cực đoan.
-  Kích hoạt khi user nhắc đến "nhất dĩ quán chi", "thông suốt vạn vật",
-  "phân tích theo Dịch Lý", "Thu Giang", "Nguyễn Duy Cần", "Âm Dương của vấn đề",
-  "hai mặt", "tìm điểm cân bằng", "đúng thời đúng vị", "vật cùng tắc biến",
-  hoặc bất kỳ yêu cầu phân tích nào muốn dùng triết lý Đông phương.
-  Cũng kích hoạt khi user đang phân vân một quyết định lớn
-  và muốn góc nhìn toàn diện hơn framework phương Tây thông thường.
+description: "Phân tích quyết định/vấn đề bằng Thu Giang Nguyễn Duy Cần: Thuật Tư Tưởng, Dịch Lý, Lão Trang, quân bình."
 ---
 
 # Nhất Dĩ Quán Chi: Thông Suốt Vạn Vật

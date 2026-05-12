@@ -1,6 +1,6 @@
 ---
 name: pptx-creator
-description: "Create professional PowerPoint presentations with Vietnamese font support using PptxGenJS. For creating new .pptx from scratch."
+description: "Tạo PowerPoint chuyên nghiệp bằng PptxGenJS, hỗ trợ font tiếng Việt."
 ---
 
 # PPTX Creator

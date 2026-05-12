@@ -1,13 +1,6 @@
 ---
 name: speech-to-text
-description: >
-  Chuyển đổi file audio/video thành văn bản (speech-to-text) qua Soniox API.
-  Hỗ trợ audio (mp3, wav, flac, ogg, aac, m4a) và video (mp4, webm, mov, mkv, avi).
-  Video format ngoài mp4/webm sẽ tự trích xuất audio bằng ffmpeg.
-  Output là text kèm timestamps theo từng đoạn.
-  Sử dụng skill này khi user muốn: transcribe audio/video, chuyển giọng nói thành text,
-  lấy nội dung từ file ghi âm, trích xuất lời nói từ podcast/cuộc họp/phỏng vấn/video,
-  hoặc bất kỳ yêu cầu nào liên quan đến chuyển đổi audio/video sang văn bản.
+description: "Chuyển audio/video sang text bằng Soniox, kèm timestamp. Hỗ trợ podcast, họp, phỏng vấn, video."
 ---
 
 # Speech-to-Text (Soniox)

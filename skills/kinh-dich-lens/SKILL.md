@@ -1,6 +1,6 @@
 ---
 name: kinh-dich-lens
-description: "Phân tích sâu bất kỳ tình huống nào qua lăng kính Kinh Dịch: 64 Quẻ, Âm Dương, Ngũ Hành, Biến Thông, và Đạo Quân Tử. Dùng skill này khi user muốn phân tích tình huống bằng triết lý Đông phương chuyên sâu Dịch Lý, hiểu chu kỳ thịnh suy, tìm cân bằng Ngũ Hành trong hệ thống, xác định vị trí trong tiến trình (đang ở giai đoạn nào), hoặc tìm hướng xử thế theo đạo Quân Tử. Kích hoạt khi user nhắc: 'kinh dịch', 'quẻ dịch', 'âm dương', 'ngũ hành', 'biến thông', 'quân tử', 'phân tích theo dịch lý', 'chu kỳ thịnh suy', 'cân bằng ngũ hành', 'tùy thời', 'lục hào', 'quẻ biến', 'tiêu trưởng', hoặc bất kỳ yêu cầu phân tích nào có thể hưởng lợi từ tư duy chu kỳ, cân bằng đối lập, và mô hình 64 tình huống mẫu. Cũng kích hoạt khi user muốn phân tích cân bằng các yếu tố trong tổ chức/dự án/đội nhóm theo mô hình tương sinh tương khắc, hoặc muốn lời khuyên tu dưỡng bản thân theo triết lý cổ điển."
+description: "Phân tích tình huống bằng Kinh Dịch: 64 quẻ, Âm Dương, Ngũ Hành, thời, biến, quân tử."
 ---
 
 # Kinh Dịch Lens

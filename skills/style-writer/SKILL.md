@@ -1,6 +1,6 @@
 ---
 name: style-writer
-description: "Skill viết lách có 2 workflow: (1) Writer (mặc định) — viết nội dung dựa trên input + voice + structure, (2) Analyze — bóc tách DNA văn phong từ corpus → tạo voice mới. Kích hoạt khi user nhắc: 'viết bài về Z', 'viết lại nội dung này', 'viết theo giọng W', 'dùng văn phong Y', 'có voice/structure nào?', 'liệt kê voice', 'phân tích văn phong', 'clone giọng văn', 'tạo voice mới', 'stylometry', 'fingerprint viết lách', 'phân tích cách viết của X', hoặc bất cứ task viết lách nào cần chọn/phân tích/áp dụng style."
+description: "Viết theo voice/structure hoặc phân tích DNA văn phong. Trigger: viết lại, clone giọng, stylometry, tạo voice."
 ---
 
 # Style Writer
