@@ -1,5 +1,7 @@
 # Value Framework
 
+> **Checklist đánh giá bài viết** đã gộp vào `shared-rules.md` (3 tier: Must/Should/Nice). File này chỉ chứa framework đào insight, reader empathy, revision protocol, và quality rubric.
+
 Bài viết đẹp mà rỗng thì vô giá trị. Framework này đảm bảo output có CHẤT, không chỉ có HÌNH.
 
 Áp dụng trong Writer workflow: Bước 2 (Đào insight), Bước 5 (Viết), Bước 6 (Revision).
@@ -57,44 +59,7 @@ Viết cho ai, phải biết người đó.
 
 ---
 
-## 3. "Vậy Thì Sao?" Test
-
-Áp dụng cho MỖI đoạn văn, mỗi phần (section), và toàn bài.
-
-### Cách test
-
-Sau mỗi đoạn, hỏi: **"Vậy điều này liên quan gì đến đời sống người đọc?"**
-
-| Kết quả | Hành động |
-|---|---|
-| Trả lời được ngay | Đoạn tốt, giữ |
-| Cần giải thích thêm | Thêm câu nối: "Điều này có nghĩa là..." hoặc ví dụ cụ thể |
-| Không trả lời được | CẮT hoặc viết lại. Quan sát đẹp nhưng không dẫn đến đâu = ballast |
-
-### Áp dụng theo cấp
-
-- **Đoạn**: Đoạn này phục vụ insight chính thế nào?
-- **Section**: Section này đưa người đọc đến đâu?
-- **Toàn bài**: Sau khi đọc xong, người đọc khác đi ở điểm nào?
-
----
-
-## 4. Reader Impact Checklist
-
-Chạy SAU khi viết xong, TRƯỚC khi output. Đây là checklist GIÁ TRỊ, bổ sung cho checklist HÌNH THỨC ở shared-rules.md.
-
-- [ ] **Insight mới**: Người đọc biết/hiểu điều gì mà trước đó họ chưa biết?
-- [ ] **Khoảnh khắc dừng**: Có ít nhất 1 câu/đoạn khiến người đọc dừng lại suy nghĩ?
-- [ ] **Cognitive dissonance**: Có ít nhất 1 chỗ thách thức niềm tin/giả định cũ của người đọc?
-- [ ] **Liên quan đời sống**: Người đọc thấy mình trong bài (không chỉ thấy kiến thức trừu tượng)?
-- [ ] **Hành động rõ**: Sau khi đọc, người đọc biết mình nên LÀM GÌ (hành động cụ thể, hoặc suy nghĩ lại một niềm tin cụ thể)?
-- [ ] **Đáng share**: Tôi (người viết) có share bài này trên trang cá nhân không? Nếu không, vì sao?
-- [ ] **Kết thúc có trọng lượng**: Không phải triết lý chung chung. Người đọc mang theo băn khoăn CỤ THỂ.
-- [ ] **Không thừa**: Mọi đoạn phục vụ insight chính. Không có đoạn "cho đẹp" hay "cho đủ dài".
-
----
-
-## 5. Revision Protocol
+## 3. Revision Protocol
 
 Sau khi viết xong bản đầu, TRƯỚC khi output.
 
@@ -112,7 +77,7 @@ Sau khi viết xong bản đầu, TRƯỚC khi output.
 
 ---
 
-## 6. Output Quality Rubric
+## 4. Output Quality Rubric
 
 Phân biệt 3 mức. Mục tiêu tối thiểu: **Tốt**. Hướng đến: **Xuất sắc**.
 
