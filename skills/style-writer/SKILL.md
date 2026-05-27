@@ -114,23 +114,21 @@ Luôn ghi số bài đã phân tích vào phần metadata đầu style guide.
 
 Danh mục style guide có sẵn, chia 2 category:
 
-- **Voices** — giọng điệu (gồm cả giọng generic như teacher/storyteller và giọng cá nhân do Workflow Analyze tạo ra). Voice chứa **da thịt** (giọng, nhịp, kỹ thuật, verbal tics, exemplars).
+- **Voices** — giọng điệu (gồm cả giọng generic và giọng cá nhân do Workflow Analyze tạo ra). Voice chứa **da thịt** (giọng, nhịp, kỹ thuật, Language Feel, exemplars).
 - **Structures** — khung cấu trúc bài viết (story arc, BLUF, building blocks...). Structure chứa **xương** (phases, opening palette, arc patterns, content-type adaptation). Mỗi structure có recommended voice.
 
 ### Voices có sẵn
 
-| Voice        | Slug           | Tóm tắt 1 dòng                                                           | Khác biệt chính                                                         | File                                                        |
-| ------------ | -------------- | ------------------------------------------------------------------------ | ----------------------------------------------------------------------- | ----------------------------------------------------------- |
-| Teacher      | `teacher`      | Dạy bài bản, giải thích khái niệm từng bước, scaffolding cho người mới.  | vs Guide: thuần giáo dục, không triết học Đông-Tây                      | [voices/teacher.md](references/voices/teacher.md)           |
-| Storyteller  | `storyteller`  | Kể chuyện chánh niệm, hành trình ngôi "tôi", trải nghiệm > lý thuyết.    | vs Personal: có Thầy (embedded dialogue), metaphor không gian/thời tiết | [voices/storyteller.md](references/voices/storyteller.md)   |
-| Objective    | `objective`    | Trung lập, dữ liệu, phân tích, giọng báo chí nghiêm túc.                 | vs Investigator: trình bày trung lập + khuyến nghị, không phản biện sâu | [voices/objective.md](references/voices/objective.md)       |
-| Investigator | `investigator` | Điều tra, đặt câu hỏi, dẫn dắt người đọc tự khám phá qua manh mối.       | vs Objective: đặt câu hỏi thật, phản biện sâu, không kết luận cứng      | [voices/investigator.md](references/voices/investigator.md) |
-| Guide        | `guide`        | Hướng dẫn cụ thể, actionable, đi kèm người đọc như một mentor đồng hành. | vs Teacher: thêm lớp triết học + thực nghiệm, câu flowing dài hơn       | [voices/guide.md](references/voices/guide.md)               |
-| Personal     | `personal`     | Cá nhân, tự sự, reflective; kể chuyện mình để reader chiếu vào.          | vs Storyteller: không có Thầy, tự vấn trực tiếp, metaphor cơ thể/đồ vật | [voices/personal.md](references/voices/personal.md)         |
-| Dialogue     | `dialogue`     | Đối thoại thầy-trò (format C:/T:), triết lý qua hỏi-đáp.                 | Format riêng biệt, không trùng voice nào                                | [voices/dialogue.md](references/voices/dialogue.md)         |
-| Tony Buổi Sáng | `tony-buoi-sang` | Dượng dạy cháu: kể chuyện đời thường rồi chốt bài học, câu cụt nhấn nhịp, tự trào, bold CAPS mệnh lệnh. | Analyzed từ 45 bài. Persona "Dượng/Tony" xưng tên, từ vựng miền Nam dân dã (hẻm, hạc, xớ rớ). | [voices/tony-buoi-sang.md](references/voices/tony-buoi-sang.md) |
-| Sự Thật Man | `su-that-man` | Phá niềm tin bằng logic loại trừ, câu hỏi dồn dập, công thức hóa gốc rễ. Hai mode: mentor sách và anh xóm Facebook. | Analyzed từ 1 sách + 15+ bài Facebook. Neologism ("Tri Thức Gốc", "kiến thức ngọn"), biến tấu từ bằng dấu chấm, chữ ký "Hẹ hẹ!". | [voices/su-that-man.md](references/voices/su-that-man.md) |
-| Nghệ | `bac-7b` | Nói chuyện đời bằng triết Phật dân dã, câu ngắn rơi nhịp, xưng "tôi" gọi "anh em", đoạn 1-3 câu thở chậm. | Analyzed từ 11 bài Facebook. Metaphor game/cuộc đời, dấu nháy đơn nhấn khái niệm, chữ thường đầu câu, "…" mở dòng 2. Đã loại bỏ dấu ấn cá nhân (tagline, ký tên, credit). | [voices/bac-7b.md](references/voices/bac-7b.md) |
+| Voice | Slug | Tóm tắt | Best for | File |
+|---|---|---|---|---|
+| Storyteller | `storyteller` | Kể chuyện ngôi "tôi", chiêm nghiệm, stream of consciousness, kết mở. Optional: Thầy, East-West Bridge | Personal essays, memoirs, tản văn, mindfulness, self-discovery | [voices/storyteller.md](references/voices/storyteller.md) |
+| Guide | `guide` | Ấm áp, scaffolding, đồng hành, ví dụ trước lý thuyết. Optional: triết Đông-Tây | Tutorials, educational, career guidance, thought leadership | [voices/guide.md](references/voices/guide.md) |
+| Objective | `objective` | Trung lập, dữ liệu, phân tích, khuyến nghị actionable | Technical reports, proposals, research summaries, case studies | [voices/objective.md](references/voices/objective.md) |
+| Investigator | `investigator` | Đào sâu, câu hỏi thật, phản biện, thừa nhận giới hạn | Non-fiction analysis, philosophy, complex topic exploration | [voices/investigator.md](references/voices/investigator.md) |
+| Dialogue | `dialogue` | Đối thoại thầy-trò (format C:/T:), triết lý qua hỏi-đáp | Wisdom dialogues, Zen/mindfulness, mentorship narratives | [voices/dialogue.md](references/voices/dialogue.md) |
+| Tony Buổi Sáng | `tony-buoi-sang` | Kể chuyện đời thường rồi chốt bài học, câu cụt nhấn nhịp, từ vựng miền Nam dân dã | Analyzed từ 45 bài | [voices/tony-buoi-sang.md](references/voices/tony-buoi-sang.md) |
+| Nghệ | `bac-7b` | Triết Phật dân dã, câu ngắn rơi nhịp, xưng "tôi" gọi "anh em" | Analyzed từ 11 bài | [voices/bac-7b.md](references/voices/bac-7b.md) |
+| Sự Thật Man | `su-that-man` | Logic loại trừ, câu hỏi dồn dập, công thức hóa gốc rễ | Analyzed từ 1 sách + 15+ bài | [voices/su-that-man.md](references/voices/su-that-man.md) |
 
 
 ### Structures có sẵn
@@ -141,8 +139,8 @@ Mỗi structure định nghĩa khung cấu trúc bài viết: phases, opening pa
 | --------------- | ----------------- | ----------------- | ----------------- | -------------------------------------- | ------------------------------------------------------------------------- |
 | Story Arc       | `story-arc`       | storyteller       | Growth Journey    | Bài có hành trình thời gian            | [structures/story-arc.md](references/structures/story-arc.md)             |
 | BLUF-Evidence   | `bluf-evidence`   | objective         |                   | Bài cần kết luận trước, chứng minh sau | [structures/bluf-evidence.md](references/structures/bluf-evidence.md)     |
-| Building Blocks | `building-blocks` | teacher           |                   | Bài xây kiến thức từng bước            | [structures/building-blocks.md](references/structures/building-blocks.md) |
-| Spiral Return   | `spiral-return`   | personal          | Quiet Devastation | Bài quay lại chủ đề, mỗi lần sâu hơn   | [structures/spiral-return.md](references/structures/spiral-return.md)     |
+| Building Blocks | `building-blocks` | guide             |                   | Bài xây kiến thức từng bước            | [structures/building-blocks.md](references/structures/building-blocks.md) |
+| Spiral Return   | `spiral-return`   | storyteller       | Quiet Devastation | Bài quay lại chủ đề, mỗi lần sâu hơn   | [structures/spiral-return.md](references/structures/spiral-return.md)     |
 | Five Layers     | `five-layers`     | investigator      |                   | Bài đào sâu 5 tầng                     | [structures/five-layers.md](references/structures/five-layers.md)         |
 | Master-Student  | `master-student`  | dialogue          |                   | Bài đối thoại thầy-trò                 | [structures/master-student.md](references/structures/master-student.md)   |
 | Depth-Practice  | `depth-practice`  | guide             | Transformation    | Bài chiều sâu + thực hành              | [structures/depth-practice.md](references/structures/depth-practice.md)   |
@@ -160,7 +158,7 @@ Có 2 cách:
 **b. Soạn voice generic mới** (không có corpus, design từ đầu):
 
 1. Soạn file `<slug>.md` (kèm exemplars).
-2. File tối thiểu cần: Philosophy, Voice, Language (DO/DON'T), Core Techniques, Verbal Tics, Metaphor Bank, Pacing Rules, Quality Checklist (Voice), Exemplars.
+2. File tối thiểu cần: Philosophy, Voice, Language (DO/DON'T), Core Techniques, Language Feel, Metaphor Bank, Pacing Rules, Quality Checklist (Voice, ≤3 ô), Exemplars.
 3. Arc pattern (nếu có) → thêm vào structure tương ứng, không vào voice file.
 4. Lưu vào `references/voices/`.
 5. Thêm dòng mới vào bảng **Voices có sẵn**.
@@ -178,10 +176,17 @@ Có 2 cách:
 
 Viết nội dung dựa trên input của user, áp dụng voice + structure đã chọn.
 
-**Tài liệu hỗ trợ** (đọc khi cần):
+**Hai tầng quy trình** tùy cỡ bài:
 
-- `references/value-framework.md` — framework đảm bảo giá trị nội dung
-- `references/shared-rules.md` — quy tắc chung (nhịp thở, dấu câu, checklist hình thức, opening palette)
+| Cỡ bài | Quy trình | Checklist |
+|---|---|---|
+| **Ngắn** (<800 từ) | Rút gọn: Bước 1 → 3 → 5 → 7 | Chỉ tier MUST (5 ô) |
+| **Dài** (≥800 từ) | Đầy đủ: Bước 1 → 2 → 3 → 4 → 5 → 6 → 7 | MUST + SHOULD + NICE |
+
+**Tài liệu hỗ trợ** (đọc khi cần, bài dài):
+
+- `references/value-framework.md` — framework đào insight, revision protocol
+- `references/shared-rules.md` — quy tắc chung, anti-AI blacklist, checklist gộp
 
 ### Bước 1. Nhận input
 
@@ -192,7 +197,7 @@ User cung cấp nội dung đầu vào theo 1 trong các dạng:
 - **Chủ đề**: mô tả chủ đề, user muốn viết bài mới.
 - **Transcript / raw notes**: nội dung thô cần chuyển thành bài viết.
 
-### Bước 2. Đào insight
+### Bước 2. Đào insight *(bài dài, skip cho bài ngắn)*
 
 Đọc `references/value-framework.md` phần "Đào Insight" và "Reader Empathy". Trả lời 4 câu hỏi bắt buộc:
 
@@ -203,13 +208,15 @@ User cung cấp nội dung đầu vào theo 1 trong các dạng:
 
 Xác định reader profile: người đọc là ai, họ đã biết gì, đang đau ở đâu, sau khi đọc họ làm gì.
 
-**Nếu không trả lời được** → chưa viết. Hỏi user thêm thông tin, hoặc đề xuất góc nhìn mới.
+**Bài ngắn**: chỉ cần trả lời câu 4 (một câu cốt lõi). Skip 1-3 và reader profile.
+
+**Nếu không trả lời được** → chưa viết. Hỏi user thêm thông tin.
 
 ### Bước 3. Xác định voice
 
-Nếu user đã chỉ định → dùng ngay. Nếu chưa → hỏi user chọn voice từ bảng **Voices có sẵn** (có cả giọng generic như teacher/storyteller và giọng cá nhân do Analyze tạo). Load file voice tương ứng.
+Nếu user đã chỉ định → dùng ngay. Nếu chưa → hỏi user chọn voice từ bảng **Voices có sẵn**. Load file voice tương ứng.
 
-### Bước 4. Xác định structure (optional)
+### Bước 4. Xác định structure *(bài dài, skip cho bài ngắn)*
 
 Nếu user đã chỉ định → dùng ngay. Nếu chưa:
 
@@ -217,54 +224,55 @@ Nếu user đã chỉ định → dùng ngay. Nếu chưa:
 2. User confirm hoặc chọn structure khác.
 3. Nếu user không muốn structure cụ thể → dùng `adaptive`.
 
+**Bài ngắn (<800 từ)**: tự động dùng `adaptive`, không hỏi user.
+
 Load file structure tương ứng.
 
 ### Bước 5. Viết bài
 
-1. **Read** toàn bộ file voice + structure + `references/shared-rules.md`.
-2. **Phân tích input**: xác định content type (narrative/conceptual/tutorial/analysis/mixed) để apply Content-Type Adaptation trong structure.
-3. **Viết** theo:
-  - **Insight cốt lõi** (từ Bước 2): mọi đoạn phục vụ insight này.
-  - **Voice**: giọng, nhịp, kỹ thuật, anti-patterns, verbal tics.
-  - **Structure**: phases, opening palette (chọn 1 technique), transitions.
-  - **Value**: mỗi đoạn pass "Vậy thì sao?" test (xem `references/value-framework.md`).
-4. **Self-critique**: chạy qua Quality Checklist của cả voice VÀ structure VÀ Base Checklist (`references/shared-rules.md`).
-5. Fix bất kỳ lỗi nào trước khi sang bước tiếp.
+1. **Read** file voice + `references/shared-rules.md`. Bài dài: thêm file structure.
+2. **Viết** theo:
+   - **Insight cốt lõi**: mọi đoạn phục vụ insight này.
+   - **Voice**: giọng, nhịp, kỹ thuật, Language Feel.
+   - **Structure** *(bài dài)*: phases, opening palette, transitions.
+3. **Self-check**: chạy checklist tier MUST. Bài dài: thêm SHOULD.
 
-### Bước 6. Revision
+### Bước 6. Revision *(bài dài, skip cho bài ngắn)*
 
-Đọc `references/value-framework.md` phần "Revision Protocol" và "Reader Impact Checklist".
+Đọc `references/value-framework.md` phần "Revision Protocol".
 
 1. **Đọc lại như người đọc**: chỗ nào phải đọc 2 lần thì viết lại.
 2. **"Vậy thì sao?" sweep**: đoạn nào không pass → cắt hoặc nối.
 3. **Đoạn yếu nhất**: mạnh lên hoặc cắt đi.
 4. **Share test**: "Tôi có share bài này không?" Không → sửa.
-5. **Reader Impact Checklist**: chạy 8 ô kiểm tra giá trị. Fail bất kỳ ô nào → sửa trước khi output.
+5. Chạy checklist tier NICE. Fix nếu cần.
+
+**Bài ngắn**: đọc lại 1 lượt, sửa chỗ vấp. Xong.
 
 ### Bước 7. Output
 
-Trả bài viết hoàn chỉnh, sẵn sàng publish. Không heading meta, không label structure/voice, không commentary. Chỉ bài viết thuần túy.
+Trả bài viết hoàn chỉnh. Không heading meta, không label structure/voice, không commentary. Chỉ bài viết thuần túy.
 
 Sau bài viết, ghi ngắn:
 
-- Voice, structure, content type detected
+- Voice, structure (nếu có), content type detected
 - Insight cốt lõi (1 câu)
-- Quality level tự đánh giá: Đạt / Tốt / Xuất sắc (xem rubric trong `references/value-framework.md`)
+- Quality level: Đạt / Tốt / Xuất sắc (xem rubric trong `references/value-framework.md`)
 
 ### Ràng buộc Writer
 
 - KHÔNG tự chọn style. User phải chọn hoặc confirm đề xuất.
-- KHÔNG viết nếu chưa load voice. Hỏi user trước.
-- KHÔNG viết nếu chưa xác định insight cốt lõi (Bước 2). Chất lượng nội dung quan trọng hơn tốc độ.
-- Output phải pass CẢ form checklist (`references/shared-rules.md` + voice + structure) VÀ value checklist (`references/value-framework.md`).
-- Bài viết phải đọc như người viết, không như AI. Tuân thủ mọi anti-pattern trong voice.
+- KHÔNG viết nếu chưa load voice.
+- KHÔNG viết nếu chưa xác định insight cốt lõi (ít nhất 1 câu cốt lõi).
+- Output phải pass checklist tier MUST (mọi bài) + SHOULD (bài dài). Checklist gộp nằm trong `references/shared-rules.md`.
+- Bài viết phải đọc như người viết, không như AI. Tuân thủ anti-AI blacklist.
 - Kết bài theo phân loại voice category (xem `references/shared-rules.md` phần "Kết Bài").
 
 ---
 
 ## Quy ước file style guide
 
-- **Voice (designed)**: philosophy + voice + language + core techniques + verbal tics + metaphor bank + pacing rules + quality checklist (voice) + exemplars. KHÔNG chứa phases/arc pattern (đó thuộc structure). Quy tắc chung (nhịp thở, dấu câu) nằm trong `references/shared-rules.md`.
+- **Voice (designed)**: philosophy + voice + language + core techniques + Language Feel + metaphor bank + pacing rules + quality checklist (voice, ≤3 ô) + exemplars. KHÔNG chứa verbal tics cố định, KHÔNG chứa phases/arc pattern (đó thuộc structure). Quy tắc chung nằm trong `references/shared-rules.md`.
 - **Voice (analyzed từ Workflow Analyze)**: theo output chuẩn 8 chiều + signature phrases + công thức + anti-patterns + AI anti-patterns. Lưu chung folder `references/voices/`.
 - **Structure**: frontmatter (name, recommended_voice, best_for) + phases + opening palette + arc pattern (nếu có) + content-type adaptation + quality checklist (structure). Opening Palette master list nằm trong `references/shared-rules.md`.
 
