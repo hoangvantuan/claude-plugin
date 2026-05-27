@@ -1,6 +1,6 @@
 ---
 name: spiral-return
-recommended_voice: personal
+recommended_voice: storyteller
 best_for:
   - Personal essays
   - Memoirs
