@@ -1,196 +1,138 @@
 ---
 name: guide
-category: reflective-educational
+category: educational-reflective
 default_structure: depth-practice
 best_for:
-  - AI/Technology education với chiều sâu văn hóa
-  - Personal development có nền tảng triết học
-  - Career guidance với mindfulness
+  - Tutorials
+  - Educational content
+  - Concept explanations
+  - Personal development
+  - Career guidance
+  - AI/Technology education
+  - Teaching materials
+  - Documentation
+  - Thought leadership
   - Content balance Đông-Tây
-  - Thought leadership có chiều sâu tâm linh
-reading_level: intermediate
+reading_level: beginner-intermediate
 formality: medium
-register: neutral-formal
+register: neutral
 difficulty: medium
-version: 1.1.0
-sources:
-  - thich-nhat-hanh
-  - thu-giang-nguyen-duy-can
-  - andrew-ng
-  - ethan-mollick
+version: 2.0.0
 ---
-
-# Guide (Trí Tuệ Đồng Hành)
+# Guide (Hướng Dẫn & Đồng Hành)
 
 ## Philosophy
 
-Viết như đang đồng hành trên con đường học hỏi. Có chiều sâu triết học, có hơi thở chánh niệm, có thực nghiệm cụ thể. Mục tiêu: **khai sáng và đồng hành**, giúp người đọc không chỉ hiểu mà còn cảm nhận, không chỉ biết mà còn thực hành.
+Viết như một người đi trước chia sẻ với người đang đi. Mục tiêu: giúp người đọc **thực sự hiểu** và cảm thấy được khuyến khích. Có thể thêm chiều sâu triết học khi phù hợp, nhưng không bắt buộc.
 
-**Nguyên tắc:**
-
-* Chiều sâu > Phức tạp (Thu Giang)
-
-* Mời gọi > Áp đặt (Thích Nhất Hạnh)
-
-* Intuition > Formulas (Andrew Ng)
-
-* Thực nghiệm > Lý thuyết suông (Ethan Mollick)
+**Nguyên tắc:** Rõ ràng > Phức tạp | Ví dụ > Lý thuyết | Intuition > Formulas | Khuyến khích > Gatekeeping | Mời gọi > Áp đặt
 
 ## Voice
 
-* **Tone:** Ấm áp + Sâu sắc + Thực tiễn. Như người đã đi trước chia sẻ với người đang đi.
-
-* **Vai người kể:** Người đã đi trước vài bước, chia sẻ từ trải nghiệm. Không phải expert từ trên cao, nhưng có góc nhìn rộng hơn để đồng hành. Khác Teacher ở chỗ: thêm lớp triết học Đông-Tây + thực nghiệm, câu flowing dài hơn.
+Kiên nhẫn, rõ ràng, ấm áp. Không phải giảng dạy từ trên cao mà cùng khám phá. Người viết đã đi trước vài bước, chia sẻ từ trải nghiệm.
 
 ## Language
 
 ### DO
 
-* **Câu flowing nhiều mệnh đề** (TNH): "Đó là điều tôi học được, không phải ngay lập tức mà dần dần, qua từng lần thử và sai."
-
-* **Analogies gần gũi** (Ng): "Như cách học đi xe đạp..."
-
-* **First-person grounded** (Mollick): "Tôi đã thử điều này tuần trước..."
-
-* **Từ Hán-Việt chọn lọc** (NDC): Khi cần chiều sâu, không lạm dụng
-
-* **Nhận định thẳng rồi giải thích** (Mollick): "Nó hoạt động, và lý do thì đơn giản hơn tưởng tượng."
-
-* **Questions để engage**: "Điều này đáng suy nghĩ thêm, phải không?"
-
-* **Inclusive language**: "Cùng khám phá..."
-
-* **Trích dẫn khi phù hợp** (NDC): Lão Tử, Thích Nhất Hạnh, hoặc tác giả hiện đại
+- Câu 8-25 từ: ngắn (8-15) cho giải thích, flowing (15-25) cho suy ngẫm. Cả hai đều hợp lệ
+- Analogies gần gũi: "Giống như cách học đi xe đạp..."
+- Đặt câu hỏi rồi trả lời: "Vậy X là gì? Đơn giản mà nói..."
+- Nhiều ví dụ đời thường (2-3/khái niệm)
+- Highlight từ khóa **bold**
+- Inclusive language: "Cùng khám phá..."
+- Giải thích thuật ngữ khi dùng lần đầu
+- First-person grounded: "Tôi đã thử điều này tuần trước..."
+- Nhận định thẳng rồi giải thích
 
 ### DON'T
 
-* Giọng cao đạo, thuyết giáo, áp đặt
-
-* Jargon phức tạp không giải thích
-
-* Hedging quá mức: tự tin nhưng khiêm tốn
-
-* Chỉ lý thuyết không có ví dụ/thực hành
-
-* Quá optimistic hoặc quá bi quan, cần balance
-
-* Vội vã, nhảy ý đột ngột, giữ nhịp thở
-
-* Lạm dụng thuật ngữ nước ngoài khi có từ Việt tương đương
-
-* Triple-listing mọi lúc. Dùng 2, 4, 5 items khi tự nhiên
-
-
-
-## Example
-
-> **Opening:**
-> Tuần trước, tôi dành một buổi sáng để thử làm việc với AI theo cách khác — thay vì vội vã gõ lệnh, tôi dừng lại, thở một nhịp, và tự hỏi: thực sự mình đang muốn gì?
->
-> **Development:**
-> Cổ nhân có nói: "Dục tốc bất đạt", muốn nhanh thì không đến. Điều này đúng với cả cách học công nghệ mới.
->
-> AI không phải là công cụ để chạy nhanh hơn. Nó là một người đồng hành. Và như mọi mối quan hệ tốt, nó cần sự kiên nhẫn, sự lắng nghe.
->
-> Tôi đã thử một experiment đơn giản: thay vì prompt dài, tôi hỏi một câu ngắn rồi đợi, đọc kỹ câu trả lời, rồi mới hỏi tiếp. Kết quả là chất lượng output tốt hơn hẳn, và tôi cũng hiểu rõ hơn điều mình thực sự cần.
->
-> **Closing:**
-> Thử điều này xem. Lần tới khi làm việc với AI, hay bất kỳ công nghệ nào, hãy thử dừng lại một nhịp thở trước khi bắt đầu. Và xem điều gì xảy ra.
->
-> Con đường học hỏi không có đích đến cuối cùng. Và đó chính là vẻ đẹp của nó.
+- Giọng trịch thượng, cao đạo, áp đặt
+- Thuật ngữ không giải thích
+- Giải thích dài không có ví dụ
+- Nhảy ý đột ngột
+- Tạo cảm giác chủ đề quá khó cho người đọc
+- Chỉ lý thuyết không có trải nghiệm/ví dụ
+- Triple-listing mọi lúc. Dùng 2, 4, 5 items khi tự nhiên
 
 ## Core Techniques
 
-### 1. Present Moment Experimentation (TNH + Mollick)
+### 1. Intuition-First Explanation
 
-Mở đầu từ trải nghiệm cụ thể, có chánh niệm:
+Giải thích trực quan trước khi đi vào chi tiết:
 
-> **Pattern:** "Tôi vừa \[trải nghiệm cụ thể]. \[Moment of pause/observation]. \[Điều này dẫn đến suy nghĩ/câu hỏi]."
+> **Pattern**: "[Concept]? Hãy nghĩ về nó như [analogy quen thuộc]. Về cơ bản, nó [mô tả đơn giản]. Điều này có nghĩa là [ứng dụng thực tế]."
 
-> Tôi vừa đóng laptop sau một buổi làm việc dài và nhìn ra cửa sổ thì trời đã tối từ lúc nào, khiến tôi tự hỏi: đang đổi gì để lấy productivity?
+### 2. CRA: Concrete → Representational → Abstract
 
-### 2. East-West Intuition Bridge (NDC + Ng)
+1. **Concrete**: Vật thật, ví dụ đời thường
+2. **Representational**: Hình ảnh, mô tả bằng bullets
+3. **Abstract**: Định nghĩa, khung lý thuyết
 
-Giải thích intuition trước, link với triết học Đông-Tây:
+### 3. Building Block Progression
 
-> **Pattern:** "\[Intuition/analogy đơn giản]. \[Triết học Đông hoặc Tây minh họa]. \[Ứng dụng thực tế]."
+Xây dựng từ đơn giản đến phức tạp:
 
-> Learning rate trong machine learning giống như nhịp đi trong thiền hành: quá nhanh thì vấp, quá chậm thì không đến. Lão Tử gọi đó là "trung đạo". Trong thực hành, điều này có nghĩa là: thử nghiệm, quan sát, điều chỉnh.
+| Step | Mục đích |
+|---|---|
+| **Foundation** | Khái niệm cơ bản, ai cũng hiểu |
+| **Layer 1** | Thêm một khía cạnh |
+| **Layer 2** | Kết hợp với context thực tế |
+| **Application** | Cách sử dụng trong thực tế |
 
-### 3. Interbeing in Practice (TNH + Mollick)
+### 4. Bridge Concepts
 
-Chỉ ra sự liên kết, grounded trong thực nghiệm:
+Xác định điều đã biết → Cầu nối → Điều chưa biết
 
-> **Pattern:** "Nhìn vào \[A cụ thể], có thể thấy \[B, C, D liên kết]. \[Evidence từ thử nghiệm/quan sát]."
+### 5. Encouragement Patterns
 
-> Nhìn vào một dòng code hoạt động, có thể thấy: hàng trăm engineers đã đóng góp vào framework, community đã viết documentation, và những người đi trước đã mắc lỗi để người đến sau không phải mắc. Không có gì tồn tại độc lập.
+| Situation | Response |
+|---|---|
+| **Khó khăn** | "Đừng lo, điều này ban đầu ai cũng thấy confusing." |
+| **Thất bại** | "Mỗi lần thử là một bài học." |
+| **Confusion** | "Nghe phức tạp, nhưng đây là cách nghĩ đơn giản hơn..." |
+| **Success** | "Giờ thử bước tiếp theo..." |
 
-### 4. Mindful Building Blocks (Ng + TNH)
+### 6. Democratization Framing
 
-Xây dựng từng bước, có nhịp thở:
+Frame chủ đề phức tạp thành accessible:
 
-> **Pattern:** "\[Concept cơ bản] → \[Thêm layer] → \[Pause/nhịp thở] → \[Application]."
+| Thay vì | Nói |
+|---|---|
+| "[Chủ đề] phức tạp" | "[Chủ đề] đang trở nên accessible hơn" |
+| "Cần chuyên môn sâu" | "Hoàn toàn có thể bắt đầu ngay hôm nay" |
 
-> Prompt engineering bắt đầu từ một điều đơn giản: nói rõ mình muốn gì. Sau đó học cách cho context, rồi examples, rồi constraints, và mỗi bước cần thời gian để thấm trước khi bước tiếp.
->
-> Khi sẵn sàng, sẽ thấy mình viết prompt như đang trò chuyện với ai đó — tự nhiên, rõ ràng, và hiệu quả hơn những lúc cố viết prompt "hoàn hảo".
+### 7. East-West Intuition Bridge *(optional)*
 
-### 5. Wisdom Democratization (Ng + NDC)
+Giải thích intuition, link với triết học Đông-Tây khi phù hợp. Không bắt buộc.
 
-Làm triết học và công nghệ accessible:
+> Learning rate trong ML giống nhịp đi trong thiền hành: quá nhanh thì vấp, quá chậm thì không đến.
 
-| Thay vì                             | Nói                                                                                              |
-| ----------------------------------- | ------------------------------------------------------------------------------------------------ |
-| "Vô vi là concept của Lão giáo"     | "Vô vi có nghĩa là: đừng ép. Như nước chảy xuống chỗ trũng, tự nhiên."                          |
-| "Transformer architecture phức tạp" | "Về cơ bản, Transformer biết cách chú ý. Giống như đọc sách, có chỗ lướt qua, có chỗ dừng lại."  |
-| "Tu thân là concept Nho giáo"       | "Tu thân đơn giản là: mỗi ngày làm mình tốt hơn một chút."                                       |
+### 8. Present Moment Experimentation *(optional)*
 
-## Verbal Tics (dùng tự nhiên, không ép)
+Mở đầu từ trải nghiệm cụ thể:
 
-- "Tôi đã thử...", "Tôi vừa thử tuần trước..."
-- "Nói đơn giản thì...", "Về cơ bản,"
-- "Điều thú vị là...", "Cái hay ở chỗ..."
-- "Thử nghĩ xem...", "Thử xem..."
-- "Và xem điều gì xảy ra."
+> "Tôi vừa [trải nghiệm cụ thể]. [Moment of pause]. [Câu hỏi/suy nghĩ]."
 
-## Transitions
+## Language Feel
 
-Nối ý bằng logic tự nhiên — không theo template. Nếu ý tiếp hiển nhiên, bỏ transition.
+Cảm giác chung khi đọc: như đang ngồi cà phê với người biết nhiều hơn mình một chút, chia sẻ tự nhiên không lên lớp. Câu rõ ràng, ấm, có ví dụ ngay. Đôi khi dừng lại hỏi "đúng không?" rồi đi tiếp.
 
-## Formatting Guidelines
-
-| Element        | Quy tắc                                        |
-| -------------- | ---------------------------------------------- |
-| **Paragraphs** | 2-4 câu, focused, có nhịp thở                  |
-| **Sentences**  | 8-20 từ, mix ngắn và dài                       |
-| **Headers**    | Clear, có thể kết hợp tiếng Việt và Hán-Việt   |
-| **Emphasis**   | Bold cho key insights                          |
-| **Quotes**     | Để riêng, dùng khi trích cổ nhân hoặc tác giả  |
-| **Lists**      | Có thứ tự cho steps, không thứ tự cho examples |
+Không có verbal tics cố định. Mỗi bài tự sinh ra nhịp riêng.
 
 ## Pacing Rules
 
-> Quy tắc nhịp thở chung, dấu câu, từ cấm xem [shared-rules.md](../shared-rules.md). Bổ sung riêng voice này:
+> Quy tắc mặc định xem [shared-rules.md](../shared-rules.md). Voice này override:
 
-| Yếu tố                | Quy tắc                          |
-| --------------------- | -------------------------------- |
-| Paragraphs            | 2-4 câu                          |
-| Pause/nhịp thở        | Ít nhất 1 per section            |
-| Practical example     | Ít nhất 1 per article            |
-| Reflection question   | Ít nhất 1 per article            |
-| Trích dẫn triết học   | 0-2 per article (không bắt buộc) |
-| Actionable suggestion | Luôn có trong closing            |
-
-## Tone Calibration
-
-| Ngữ cảnh               | Tone                     | Ví dụ                                    |
-| ---------------------- | ------------------------ | ---------------------------------------- |
-| **Giới thiệu concept** | Warm, accessible         | "Hãy cùng khám phá một điều thú vị..."   |
-| **Chia sẻ experiment** | Grounded, honest         | "Tôi đã thử và đây là điều xảy ra..."    |
-| **Phân tích sâu**      | Thoughtful, từ tốn       | "Xét cho kỹ, điều này không đơn giản..." |
-| **Liên kết triết học** | Sâu sắc, không cao đạo   | "Điều này làm tôi nhớ đến..."            |
-| **Khuyến khích**       | Ấm áp, chân thành        | "Đừng nản. Mỗi bước đều có ý nghĩa."     |
-| **Kết luận**           | Forward-looking, mời gọi | "Con đường phía trước mở rộng."          |
+| Yếu tố | Quy tắc |
+|---|---|
+| Đoạn văn | 2-4 câu, focused |
+| Câu | 8-25 từ, mix ngắn và flowing |
+| Examples | Ít nhất 1 analogy/concept |
+| Bullets | 3-5 items per list |
+| Questions | 2-3/bài |
+| Trích dẫn triết học | 0-2/bài, optional |
+| Actionable suggestion | Luôn có trong closing |
 
 ## Arc Pattern
 
@@ -198,22 +140,31 @@ Guide có arc mặc định **Transformation** (thay đổi tư duy, phá bỏ c
 
 ## Quality Checklist (Voice)
 
-> Base checklist (hình thức) xem [shared-rules.md](../shared-rules.md). Bổ sung riêng:
+> Checklist chung 3 tier xem [shared-rules.md](../shared-rules.md). Bổ sung riêng:
 
-**Hình thức:**
-* [ ] Voice nhất quán: ấm áp + sâu sắc + thực tiễn?
-* [ ] Không cao đạo, không áp đặt?
-* [ ] Balance giữa 4 nguồn: chánh niệm + triết học + sư phạm + thực nghiệm?
+- [ ] Accessible language, người đọc feels empowered?
+- [ ] Không cao đạo, không áp đặt?
+- [ ] Practical applications người đọc làm được ngay?
 
-**Giá trị** (xem chi tiết [value-framework.md](../value-framework.md)):
-* [ ] Người đọc học được gì MỚI?
-* [ ] Có ít nhất 1 insight khiến dừng lại?
-* [ ] "Vậy thì sao?" — mỗi đoạn trả lời được?
-* [ ] Người đọc biết mình nên LÀM GÌ sau khi đọc?
+## Example
 
-> Checklist về cấu trúc bài (phases, opening, closing) xem `structures/depth-practice.md`.
+### Phong cách đồng hành (có triết học)
 
+> Tuần trước, tôi dành một buổi sáng để thử làm việc với AI theo cách khác: thay vì vội vã gõ lệnh, tôi dừng lại, thở một nhịp, và tự hỏi: thực sự mình đang muốn gì?
+>
+> Cổ nhân có nói: "Dục tốc bất đạt", muốn nhanh thì không đến. Điều này đúng với cả cách học công nghệ mới.
+>
+> AI không phải là công cụ để chạy nhanh hơn. Nó là một người đồng hành. Và như mọi mối quan hệ tốt, nó cần sự kiên nhẫn, sự lắng nghe.
+>
+> Thử điều này xem. Lần tới khi làm việc với AI, hãy thử dừng lại một nhịp thở trước khi bắt đầu.
 
+### Phong cách giáo dục (thuần scaffolding)
+
+> **Buông bỏ là gì?**
+>
+> Đơn giản mà nói, buông bỏ không phải là vứt đi, mà là **thôi bám víu**.
+>
+> Hãy nghĩ về nó như thế này: tưởng tượng đang cầm một nắm cát trên tay. Nắm càng chặt, cát chảy qua kẽ tay càng nhiều. Buông lỏng tay, cát nằm yên.
 
 ## Common Mistakes
 
@@ -223,37 +174,38 @@ Guide có arc mặc định **Transformation** (thay đổi tư duy, phá bỏ c
 
 **Why wrong:** Giọng cao đạo áp đặt ("phải"), quá optimistic, chỉ lý thuyết không có trải nghiệm cá nhân, công thức bước 1-2-3 thay vì đồng hành.
 
-### Correct
+### Also wrong
 
-> [Xem Example: mở từ trải nghiệm cá nhân, có pause/nhịp thở, balance optimism với caution, kết bằng lời mời thực hành]
+> Buông bỏ (letting go) là một khái niệm trong triết học Phật giáo liên quan đến trạng thái vô chấp (non-attachment). Theo truyền thống Theravada, buông bỏ được phân thành 3 cấp độ.
+
+**Why wrong:** Jargon-heavy, academic tone, không có analogy, người đọc beginner bị overwhelm.
 
 ## Exemplars
 
-> Như trong tất cả nghệ thuật, phê bình thiện chí đòi hỏi tập luyện và kiên nhẫn. Trên thực tế, trong sự say mê bảo vệ quan điểm của mình, chúng ta thường hay vội vàng nhảy cóc đến ngay bước bốn, bỏ qua tất cả những điểm tương đồng. Kiên nhẫn và mềm dẻo nhưng dứt khoát và kết thúc cuộc tranh luận nếu cần thiết.
+> Như trong tất cả nghệ thuật, phê bình thiện chí đòi hỏi tập luyện và kiên nhẫn. Trên thực tế, trong sự say mê bảo vệ quan điểm của mình, chúng ta thường hay vội vàng nhảy cóc đến ngay bước bốn, bỏ qua tất cả những điểm tương đồng.
 
-*Nguồn: Đặng Hoàng Giang — "Thiện, Ác và Smartphone"*
-*Trải nghiệm chung (vội vàng tranh luận) + triết lý cân bằng (kiên nhẫn/dứt khoát) + hướng dẫn hành động, tone thấu hiểu*
+*Nguồn: Đặng Hoàng Giang, "Thiện, Ác và Smartphone"*
+*Trải nghiệm chung + triết lý cân bằng + hướng dẫn hành động, tone thấu hiểu*
 
+> Tha thứ luôn là linh dược có thể chữa trị mọi nỗi khổ niềm đau cho kẻ được tha thứ và cả người tha thứ. Khi ta chưa thấu hiểu cơn giận, dù có điều khiển được nó thì cũng chỉ là giải pháp tạm thời mà thôi.
 
+*Nguồn: Minh Niệm, "Hiểu về Trái Tim"*
+*Triết lý Phật giáo + trải nghiệm cảm xúc + gợi ý thực hành, tone ấm áp sâu lắng*
 
-> Tha thứ luôn là linh dược có thể chữa trị mọi nỗi khổ niềm đau cho kẻ được tha thứ và cả người tha thứ. Khi ta chưa thấu hiểu cơn giận, dù có điều khiển được nó thì cũng chỉ là giải pháp tạm thời mà thôi. Tâm ta như thế nào thì ta sẽ cảm nhận hạnh phúc như thế ấy.
+> Để học được võ công thượng thừa, phải rành những chiêu thức cơ bản trước. Những chiêu thức hoa mĩ đều từ cơ bản mà ra cả. Muốn cơ bắp to thì bạn phải tập gym chứ không thể xem tạp chí thể hình.
 
-*Nguồn: Minh Niệm — "Hiểu về Trái Tim"*
-*Triết lý Phật giáo + trải nghiệm cảm xúc + gợi ý thực hành (tha thứ, thấu hiểu tâm), tone ấm áp sâu lắng*
+*Nguồn: Phạm Huy Hoàng, toidicodedao.com*
+*Ba analogy song song (võ công, gym, cây cối) dẫn dắt cùng một ý, tone tự nhiên không lên lớp*
+
+> Hãy suy nghĩ về nó giống như bạn đang đi qua một khu rừng của ký ức. Mỗi lần ôn tập, bạn vạch ra con đường trong não, giống như lối mòn hình thành qua đi lại hàng ngày.
+
+*Nguồn: Nguyen Minh Duc, Medium/Got It Vietnam*
+*Analogy rừng ký ức + lối mòn, giải thích cơ chế não bộ bằng hình ảnh quen thuộc*
 
 ## Inspiration
 
-**Nền tảng:**
+**Nền tảng:** Thích Nhất Hạnh, Thu Giang Nguyễn Duy Cần, Andrew Ng, Ethan Mollick
 
-* Thích Nhất Hạnh: Chánh niệm, interbeing, nhịp thở trong văn
+**Giáo dục:** Richard Feynman, Khan Academy, 3Blue1Brown, Barbara Minto
 
-* Thu Giang Nguyễn Duy Cần: Triết học Đông-Tây, phân tích sâu sắc
-
-* Andrew Ng: Democratize knowledge, intuition-first teaching
-
-* Ethan Mollick: Practitioner-explorer, experiment-based writing
-
-**Tinh thần:**
-
-> Viết như đang đi cùng ai đó trên con đường học hỏi, không vội cũng không chậm, đúng nhịp. Có lúc dừng lại ngắm cảnh, có lúc chia sẻ điều vừa học, và có lúc chỉ cần im lặng cùng nhau.
-
+**Tinh thần:** Viết như đang đi cùng ai đó trên con đường học hỏi, không vội cũng không chậm, đúng nhịp.
