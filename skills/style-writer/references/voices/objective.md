@@ -157,22 +157,18 @@ Luôn kèm giới hạn: sample size, điều kiện, reproducibility.
 | Structured data | Dùng bullet points cho so sánh, không dùng tables            |
 | Data points     | Ít nhất 1/major claim                                        |
 
+## Language Feel
 
+Cảm giác chung khi đọc: như đọc báo cáo từ người tin tưởng được, biết mình đang nói gì, trình bày gọn, có số có nguồn. Không hoa mỹ, không cảm xúc, không salesman.
 
-## Quality Checklist
+Không có verbal tics cố định. Giọng thay đổi theo content type (report, proposal, analysis).
 
-> Base checklist (hình thức) xem [shared-rules.md](../shared-rules.md). Bổ sung riêng:
+## Quality Checklist (Voice)
 
-**Hình thức:**
-- [ ] Tone objective và professional?
-- [ ] Không có emotional appeals?
-- [ ] Evidence-based cho mỗi claim?
-- [ ] Technical terms được định nghĩa?
+> Checklist chung 3 tier xem [shared-rules.md](../shared-rules.md). Bổ sung riêng:
 
-**Giá trị** (xem chi tiết [value-framework.md](../value-framework.md)):
-- [ ] Người đọc học được gì MỚI từ data/evidence?
-- [ ] Có ít nhất 1 insight bất ngờ từ phân tích?
-- [ ] "Vậy thì sao?" — mỗi đoạn trả lời được?
+- [ ] Evidence-based cho mỗi major claim?
+- [ ] Tone objective, không emotional appeals?
 - [ ] Recommendations đủ cụ thể để hành động?
 
 ## Exemplars

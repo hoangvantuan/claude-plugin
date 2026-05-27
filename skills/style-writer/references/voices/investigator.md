@@ -122,17 +122,11 @@ Bắt đầu từ câu hỏi rộng, qua mỗi đoạn thu hẹp qua bằng ch�
 
 > **Pattern:** "[Câu hỏi rộng]? → Nhưng nếu ta xét [bối cảnh cụ thể]... → Dữ liệu cho thấy [pattern]... → Điều này có nghĩa [insight cụ thể]."
 
-## Transition Phrases
+## Language Feel
 
-| Mục đích                     | Cụm từ                                                                                                              |
-| ---------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| Đặt vấn đề                   | "Hầu hết mọi người giả định...", "Ở bề mặt, điều này có vẻ...", "Câu hỏi không phải là X, mà là Y"                   |
-| Đào giả định                 | "Nhưng giả định ẩn ở đây là...", "Điều này mặc định rằng...", "Ở đây đang coi X là hiển nhiên, nhưng..."         |
-| Tạo tension                  | "Đây là chỗ đáng dừng lại.", "Nhưng chờ đã,", "Nếu điều này đúng, tại sao ta lại thấy...?"                          |
-| Phản biện                    | "Một người phản đối có thể chỉ ra...", "Nhưng ở góc nhìn khác...", "Logic này chưa chặt vì..."                      |
-| Kết nối                      | "Nguyên lý này phản chiếu trong...", "Tương tự, ở lĩnh vực X...", "Điều này liên hệ với..."                         |
-| Thừa nhận giới hạn           | "Tôi không chắc về điểm này.", "Dữ liệu chưa đủ để...", "Đây là vùng chưa có câu trả lời rõ."           |
-| Đúc kết (không phải tóm tắt) | "Nếu phải chắt lọc, tư tưởng cốt lõi là...", "Câu hỏi còn mở là...", "Điều thay đổi trong cách tôi nghĩ là..." |
+Cảm giác chung khi đọc: như đi cùng ai đang đào giếng, không biết sẽ tìm gì ở dưới nhưng mỗi lớp đất bỏ đi đều cho thấy thêm. Tò mò thật sự, không giả vờ. Dừng lại ở chỗ chưa hiểu thay vì lướt qua. Provisional language khi chưa chắc, thẳng thắn khi chắc.
+
+Không có verbal tics cố định. Không dùng transition phrases theo template.
 
 
 ## Pacing Rules
@@ -162,21 +156,13 @@ Bắt đầu từ câu hỏi rộng, qua mỗi đoạn thu hẹp qua bằng ch�
 | **Đúc kết**              | Grounded, forward-looking | "Câu hỏi còn mở là..."                      |
 
 
-## Quality Checklist
+## Quality Checklist (Voice)
 
-> Base checklist (hình thức) xem [shared-rules.md](../shared-rules.md). Bổ sung riêng:
+> Checklist chung 3 tier xem [shared-rules.md](../shared-rules.md). Bổ sung riêng:
 
-**Hình thức:**
-- [ ] Voice nhất quán: tò mò + nghiêm túc + trung thực?
 - [ ] Reasoning chain rõ: claim → evidence → interpretation?
-- [ ] Không có mechanical phrases (blacklist)?
-- [ ] Provisional language khi chưa chắc chắn?
-
-**Giá trị** (xem chi tiết [value-framework.md](../value-framework.md)):
-- [ ] Người đọc phải TƯ DUY, không chỉ tiếp nhận?
-- [ ] Có ít nhất 1 giả định bị lật khiến dừng lại?
-- [ ] "Vậy thì sao?" — mỗi đoạn trả lời được?
-- [ ] Câu hỏi mở cuối bài CÓ SỨC NẶNG, liên quan đời sống?
+- [ ] Ít nhất 1 giả định bị lật?
+- [ ] Honest limitation: thừa nhận chỗ chưa biết?
 
 
 

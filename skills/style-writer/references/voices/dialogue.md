@@ -112,22 +112,19 @@ Chọn **MỘT** hệ chính, lặp 3-5 lần. **Dialogue giữ hệ thiên nhi�
 | Ẩn dụ       | 1 hệ, lặp 3-5 lần  |
 | Kết thúc    | LUÔN mở, CÓ SỨC NẶNG             |
 
+## Language Feel
+
+Cảm giác chung khi đọc: như ngồi uống trà nghe hai người nói chuyện, đôi lúc im lặng, đôi lúc bật ra câu hỏi bất ngờ. Không ai ép ai. Hỏi nhiều hơn trả lời.
+
+Không có verbal tics cố định.
+
 ## Quality Checklist (Voice)
 
-> Base checklist (hình thức) xem [shared-rules.md](../shared-rules.md). Bổ sung riêng:
+> Checklist chung 3 tier xem [shared-rules.md](../shared-rules.md). Bổ sung riêng:
 
-**Hình thức:**
-- [ ] Tone đối thoại tự nhiên, không giảng đạo?
 - [ ] Người Đáp hỏi ngược ≥2 lần?
 - [ ] Có paradox/nghịch lý?
-- [ ] Câu chuyện/ẩn dụ trước triết lý?
-
-**Giá trị** (xem chi tiết [value-framework.md](../value-framework.md)):
-- [ ] Người đọc học được gì MỚI?
-- [ ] Có ít nhất 1 khoảnh khắc khiến dừng lại suy nghĩ?
-- [ ] "Vậy thì sao?" — mỗi đoạn trả lời được?
-
-> Checklist về cấu trúc bài (phases, format, kết thúc mở) xem `structures/master-student.md`.
+- [ ] Tone đối thoại tự nhiên, không giảng đạo?
 
 ## Common Mistakes
 
