@@ -1,6 +1,8 @@
 # Quy Tắc Chung
 
-Tài liệu này chứa các quy tắc áp dụng cho TẤT CẢ voices và structures. Voice/structure file chỉ chứa điều RIÊNG BIỆT, reference đến đây cho phần chung.
+Tài liệu này chứa quy tắc MẶC ĐỊNH cho mọi voice và structure.
+
+**Override rule:** Voice file có quyền override bất kỳ mục nào dưới đây (ghi rõ mục override). Analyzed voices (tạo từ Workflow Analyze) ưu tiên data corpus, chỉ bắt buộc tuân thủ phần "Từ Cấm (Anti-AI)" và "Dấu Câu".
 
 ---
 
@@ -41,25 +43,78 @@ Hai chuẩn tùy nhóm voice:
 
 ---
 
-## Từ Cấm (Anti-AI)
+## Từ Cấm (Anti-AI Blacklist)
 
-Các từ/cụm bị cấm vì mang dấu hiệu AI rõ ràng:
+Áp dụng MỌI voice, KỂ CẢ analyzed voices. Không ngoại lệ.
 
-- **"Có lẽ"**: Cấm ở MỌI voice. Đây là marker phổ biến nhất của văn AI tiếng Việt. Thay bằng cách diễn đạt tự nhiên hơn: viết thẳng quan điểm, dùng câu hỏi mở, hoặc "tôi chưa chắc", "không biết nữa".
+### Từ cấm tuyệt đối
+
+- **"Có lẽ"**: marker phổ biến nhất của văn AI tiếng Việt. Thay bằng: viết thẳng quan điểm, "tôi chưa chắc", "không biết nữa", câu hỏi mở.
+
+### Cụm mở bài sáo (Nhóm A)
+
+Cấm mở bài bằng các cụm sau hoặc biến thể gần nghĩa:
+
+- "Hãy cùng khám phá..."
+- "Trong thế giới ngày nay..."
+- "Bạn đã bao giờ tự hỏi..."
+- "Đây là một hành trình..."
+
+### Cụm chuyển đoạn máy (Nhóm B)
+
+Cấm dùng làm transition giữa đoạn:
+
+- "Không chỉ... mà còn..."
+- "Bên cạnh đó..."
+- "Hơn nữa..."
+- "Điều đáng chú ý là..."
+- "Thật thú vị là..."
+
+### Cụm kết bài template (Nhóm C)
+
+Cấm kết bài bằng:
+
+- "Cuối cùng, điều quan trọng nhất là..."
+- "Hãy bắt đầu ngay hôm nay..."
+- "Mỗi người đều có thể..."
+
+### Triple adjective / virtue words rỗng (Nhóm D)
+
+- Cấm xếp 3 tính từ liên tiếp bằng phẩy + "và": "sâu sắc, tinh tế, và đầy ý nghĩa"
+- Cấm virtue words không định lượng: "tuyệt vời", "đáng kinh ngạc", "vô cùng"
+
+### Hedging rỗng (Nhóm E)
+
+- "một cách nào đó"
+- "ở một mức độ nào đó"
 
 ---
 
-## Base Quality Checklist (Hình Thức)
+## Quality Checklist (gộp)
 
-Áp dụng cho MỌI bài viết, bất kể voice/structure. Voice-specific checklist BỔ SUNG thêm, không thay thế.
+Checklist DUY NHẤT cho mọi bài viết. Voice/structure file BỔ SUNG tối đa 2-3 ô riêng, không lặp lại ô dưới đây.
 
+### MUST (bài ngắn + dài đều chạy)
+
+- [ ] Không có từ/cụm trong Anti-AI Blacklist?
+- [ ] Không có em-dash (— –)?
 - [ ] Giọng nhất quán xuyên suốt bài?
-- [ ] Verbal tics tự nhiên (không ép, không đều đặn quá)?
+- [ ] Đọc to: nghe tự nhiên, không vấp?
+- [ ] Insight cốt lõi rõ (nói được trong 1 câu)?
+
+### SHOULD (bài dài ≥800 từ)
+
+- [ ] "Vậy thì sao?" — mỗi đoạn trả lời được?
+- [ ] Ít nhất 1 khoảnh khắc khiến người đọc dừng lại?
 - [ ] Ẩn dụ nhất quán (không trộn nhiều hệ)?
 - [ ] Nhịp thở: xen kẽ câu dài/ngắn đúng quy tắc?
-- [ ] Kết thúc phù hợp với voice category (xem SKILL.md)?
-- [ ] Không có em-dash?
-- [ ] Đọc to: nghe tự nhiên, không vấp?
+- [ ] Kết bài phù hợp voice category?
+
+### NICE (hướng đến xuất sắc)
+
+- [ ] Cognitive dissonance: thách thức giả định cũ của người đọc?
+- [ ] Đáng share: tôi có share bài này lên trang cá nhân không?
+- [ ] "Kể lại test": người đọc kể lại cho bạn trong 1 câu, câu đó có thú vị không?
 
 ---
 
