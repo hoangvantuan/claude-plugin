@@ -1,11 +1,11 @@
 ---
 name: user-story
-description: "Viết/rà soát/tách user story, acceptance criteria, Gherkin, INVEST, epic, backlog từ requirement/PRD/bug/feature."
+description: "Viết/rà soát/tách user story, acceptance criteria, INVEST, epic, backlog từ requirement/PRD/bug/feature."
 ---
 
 # User Story
 
-Biến input thô thành user story có persona rõ, vấn đề đúng, outcome đo được, và acceptance criteria kiểm thử được.
+Biến input thô thành user story có persona rõ, vấn đề đúng, outcome đo được, và acceptance criteria xác minh được.
 
 ## Khi Nào Dùng
 
@@ -18,7 +18,7 @@ Dùng khi user cần:
 - Tách epic hoặc story lớn thành story nhỏ.
 - Tìm persona hoặc problem statement trước khi viết story.
 
-Không dùng khi việc là tech task thuần túy. Ví dụ: "refactor database". Khi đó tạo engineering task, trừ khi user value đã rõ.
+Không dùng khi việc không liên quan đến giá trị người dùng.
 
 ## Nguyên Tắc Lõi
 
@@ -30,6 +30,8 @@ User story tốt trả lời 5 câu:
 4. Họ muốn làm hành động nào?
 5. Làm sao biết story đã xong?
 
+**Không đề cập kỹ thuật.** Story mô tả giá trị và hành vi từ góc nhìn người dùng. Không nhắc đến công nghệ, kiến trúc, giải pháp cài đặt, hay cách triển khai. Ví dụ: viết "đăng nhập nhanh bằng tài khoản Google" thay vì "tích hợp OAuth 2.0 với Google Identity Platform".
+
 Nếu thiếu dữ liệu, đừng bịa. Ghi rõ giả định và hỏi tối đa 3 câu nếu thiếu chặn việc viết.
 
 ## Workflow Chuẩn
@@ -39,7 +41,7 @@ Nếu thiếu dữ liệu, đừng bịa. Ghi rõ giả định và hỏi tối 
 - **Ý tưởng mỏng:** Discovery. Làm persona ngắn, problem statement, rồi story.
 - **Requirement rõ:** Story. Viết story và acceptance criteria.
 - **Epic lớn:** Epic. Viết hypothesis, rồi tách thành story.
-- **Story có sẵn:** Review. Rà soát INVEST, Gherkin, scope.
+- **Story có sẵn:** Review. Rà soát INVEST, acceptance criteria, scope.
 - **Story quá to:** Split. Tách theo pattern phù hợp.
 
 ### Bước 2: Persona Tối Thiểu
@@ -121,9 +123,9 @@ Chấm nhanh:
 - **Independent:** Story có thể làm độc lập không?
 - **Negotiable:** Story còn là điểm mở để thảo luận không?
 - **Valuable:** User nhận giá trị thật không?
-- **Estimable:** Team có đủ hiểu để estimate không?
-- **Small:** Làm được trong 1 đến 5 ngày không?
-- **Testable:** QA có kiểm thử được không?
+- **Estimable:** Team có đủ hiểu để ước lượng công sức không?
+- **Small:** Hoàn thành và giao được trong 1 đến 5 ngày không?
+- **Testable:** Có thể xác minh bằng tiêu chí cụ thể không?
 
 Nếu trượt `Valuable`, quay lại problem statement. Nếu trượt `Small`, tách story.
 
@@ -131,16 +133,15 @@ Nếu trượt `Valuable`, quay lại problem statement. Nếu trượt `Small`,
 
 Khi story quá lớn, thử các pattern theo thứ tự:
 
-1. **Workflow steps:** tách theo các bước trong hành trình.
-2. **Business rule variations:** tách theo rule, quyền, giá, trạng thái.
-3. **Data variations:** tách theo loại dữ liệu hoặc input.
+1. **Workflow steps:** tách theo các bước trong hành trình người dùng.
+2. **Business rule variations:** tách theo quy tắc nghiệp vụ, quyền, trạng thái.
+3. **Data variations:** tách theo loại thông tin hoặc input khác nhau.
 4. **Acceptance criteria complexity:** tách theo từng cặp When/Then.
-5. **Major effort:** tách theo milestone kỹ thuật vẫn giao được giá trị.
-6. **External dependencies:** tách theo API, bên thứ ba, tích hợp.
-7. **DevOps steps:** tách theo vận hành, deployment, lưu trữ, monitoring.
-8. **Tiny Acts of Discovery:** nếu còn mơ hồ, đề xuất thử nghiệm nhỏ trước.
+5. **Milestone giá trị:** tách theo từng phần giao được giá trị cho người dùng.
+6. **Phụ thuộc bên ngoài:** tách theo bên thứ ba, đối tác, dịch vụ liên kết.
+7. **Tiny Acts of Discovery:** nếu còn mơ hồ, đề xuất thử nghiệm nhỏ trước.
 
-Mỗi split phải có user value riêng. Không tách ngang kiểu "làm API" và "làm UI".
+Mỗi phần tách phải có giá trị riêng cho người dùng. Không tách theo tầng hệ thống.
 
 ## Output Mặc Định
 
@@ -190,25 +191,25 @@ Output:
 ### Context
 - **Persona:** Trial user lần đầu vào app.
 - **Problem:** Trial user cần vào app nhanh vì tạo mật khẩu mới làm tăng ma sát, hiện khiến họ dễ bỏ dở onboarding.
-- **Assumptions:** App đã có trang login và hỗ trợ OAuth.
+- **Assumptions:** App đã có trang đăng nhập và hỗ trợ đăng nhập qua Google.
 
 ### Story
 - **Summary:** Đăng nhập Google để giảm ma sát onboarding.
 - **As a** trial user
-- **I want to** log in with Google
-- **so that** I can access the app without creating a new password
+- **I want to** đăng nhập bằng tài khoản Google
+- **so that** tôi vào app ngay mà không cần tạo mật khẩu mới
 
 ### Acceptance Criteria
 - **Scenario:** Trial user đăng nhập lần đầu bằng Google.
-- **Given:** I am on the login page.
-- **Given:** I have a valid Google account.
-- **When:** I choose "Sign in with Google" and authorize the app.
-- **Then:** I am logged in and redirected to onboarding.
+- **Given:** Tôi đang ở trang đăng nhập.
+- **Given:** Tôi có tài khoản Google hợp lệ.
+- **When:** Tôi chọn "Đăng nhập bằng Google" và cho phép liên kết.
+- **Then:** Tôi đã đăng nhập và được chuyển đến bước hướng dẫn sử dụng.
 
 ### Quality Check
-- **INVEST:** Pass. Story nhỏ, có giá trị, kiểm thử được.
+- **INVEST:** Pass. Story nhỏ, có giá trị, xác minh được.
 - **Split needed:** No.
-- **Open questions:** Cần xác nhận onboarding URL và lỗi khi Google authorization thất bại.
+- **Open questions:** Cần xác nhận trang đích sau đăng nhập và trải nghiệm khi đăng nhập Google thất bại.
 ```
 
 ## Script Hỗ Trợ
@@ -226,6 +227,7 @@ Script nằm tại `skills/user-story/scripts/user-story-template.py`.
 - Không viết "As a user" nếu có thể cụ thể hơn.
 - Không để `so that` lặp lại `I want to`.
 - Không dùng acceptance criteria mơ hồ như "better UX" hoặc "faster".
-- Không biến tech task thành user story giả.
-- Không tách story thành layer kỹ thuật.
+- Không viết story cho việc chỉ phục vụ nội bộ mà người dùng không nhận được giá trị.
+- Không tách story theo tầng hệ thống (ví dụ: "phần lưu trữ" và "phần hiển thị").
 - Không viết full PRD khi user chỉ cần story.
+- Không đề cập chi tiết kỹ thuật, công nghệ, hay giải pháp cài đặt trong story.
