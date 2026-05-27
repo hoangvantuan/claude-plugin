@@ -128,6 +128,9 @@ Danh mục style guide có sẵn, chia 2 category:
 | Guide        | `guide`        | Hướng dẫn cụ thể, actionable, đi kèm người đọc như một mentor đồng hành. | vs Teacher: thêm lớp triết học + thực nghiệm, câu flowing dài hơn       | [voices/guide.md](references/voices/guide.md)               |
 | Personal     | `personal`     | Cá nhân, tự sự, reflective; kể chuyện mình để reader chiếu vào.          | vs Storyteller: không có Thầy, tự vấn trực tiếp, metaphor cơ thể/đồ vật | [voices/personal.md](references/voices/personal.md)         |
 | Dialogue     | `dialogue`     | Đối thoại thầy-trò (format C:/T:), triết lý qua hỏi-đáp.                 | Format riêng biệt, không trùng voice nào                                | [voices/dialogue.md](references/voices/dialogue.md)         |
+| Tony Buổi Sáng | `tony-buoi-sang` | Dượng dạy cháu: kể chuyện đời thường rồi chốt bài học, câu cụt nhấn nhịp, tự trào, bold CAPS mệnh lệnh. | Analyzed từ 45 bài. Persona "Dượng/Tony" xưng tên, từ vựng miền Nam dân dã (hẻm, hạc, xớ rớ). | [voices/tony-buoi-sang.md](references/voices/tony-buoi-sang.md) |
+| Sự Thật Man | `su-that-man` | Phá niềm tin bằng logic loại trừ, câu hỏi dồn dập, công thức hóa gốc rễ. Hai mode: mentor sách và anh xóm Facebook. | Analyzed từ 1 sách + 15+ bài Facebook. Neologism ("Tri Thức Gốc", "kiến thức ngọn"), biến tấu từ bằng dấu chấm, chữ ký "Hẹ hẹ!". | [voices/su-that-man.md](references/voices/su-that-man.md) |
+| Nghệ | `bac-7b` | Nói chuyện đời bằng triết Phật dân dã, câu ngắn rơi nhịp, xưng "tôi" gọi "anh em", đoạn 1-3 câu thở chậm. | Analyzed từ 11 bài Facebook. Metaphor game/cuộc đời, dấu nháy đơn nhấn khái niệm, chữ thường đầu câu, "…" mở dòng 2. Đã loại bỏ dấu ấn cá nhân (tagline, ký tên, credit). | [voices/bac-7b.md](references/voices/bac-7b.md) |
 
 
 ### Structures có sẵn
