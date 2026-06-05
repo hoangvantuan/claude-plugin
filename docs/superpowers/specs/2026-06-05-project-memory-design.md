@@ -14,6 +14,8 @@ Cái lõi: **tách 2 pha rõ ràng**.
 
 Một skill điều phối cả vòng đời: ghi → đúc kết → (khi cần) thực thi.
 
+Tham chiếu tư tưởng: pattern này mượn từ "LLM Wiki" (kho tri thức compound do LLM tự bảo trì) nhưng thu hẹp cho domain bộ nhớ cải tiến dự án. Điểm mượn: bookkeeping là phần tốn sức, giao hết cho LLM để kho luôn sống. Khác biệt cố ý: LLM Wiki tích hợp ngay lúc ingest (đụng nhiều trang/nguồn); ta tách **capture rẻ** khỏi **consolidate đắt**, nên phần "integration" của wiki rơi đúng vào pha consolidate (xem mục 6.2), không kéo ngược lên capture.
+
 ## 2. Ràng buộc cốt lõi
 
 1. **Skill chạy độc lập.** Không gọi `skill-auto-improver` hay `skill-creator` (máy khác có thể không cài). `project-memory` tự chứa đủ hướng dẫn tối thiểu để thực thi.
@@ -55,6 +57,7 @@ flowchart LR
     end
     RECALL["/project-memory recall<br/>(đọc khi làm việc)"]
     EXEC["Thực thi tự chứa<br/>(spec hành động rõ)"]
+    LOG["log.md<br/>(timeline append-only)"]
 
     A1 --> ENT
     A2 --> ENT
@@ -64,7 +67,13 @@ flowchart LR
     CONSOL --> ENT
     CONSOL --> ARC
     CONSOL -->|"entry consolidated"| EXEC
+    RECALL -.->|"file-answer-back"| ENT
+    A1 -.-> LOG
+    CONSOL -.-> LOG
+    EXEC -.-> LOG
 ```
+
+Mọi thao tác lớn (capture, consolidate, execute) đều append một dòng vào `log.md`. `recall` có thể "file-answer-back": tổng hợp xong một câu trả lời thì đề nghị lưu lại thành entry mới, để khám phá tự compound vào kho.
 
 ### 4.1. Bố cục thư mục
 
@@ -83,7 +92,8 @@ skills/project-memory/
 
 <project-root>/
   memory/
-    index.md
+    index.md              # catalog content-oriented (routing)
+    log.md                # timeline chronological, append-only
     entries/
     archive/
 ```
@@ -177,6 +187,24 @@ Tình huống fact này hữu ích.
 Vì sao ghi lại.
 ```
 
+### 5.5. Frontmatter mở rộng (tùy chọn, do consolidate bảo trì)
+
+- `contradicts: [id]` — gắn cờ khi entry mâu thuẫn entry khác. Lint phát hiện, consolidate ghi cờ này để không mất dấu.
+- `related` được consolidate bảo trì **2 chiều**: nếu A liên quan B thì B cũng có A. Link là công dân hạng nhất.
+
+### 5.6. `memory/log.md` (timeline append-only)
+
+Mỗi dòng một sự kiện, prefix nhất quán để grep được:
+
+```markdown
+## [2026-06-05] capture | T-001 style-writer thiếu ví dụ voice
+## [2026-06-05] consolidate | gộp T-003+T-007 → T-003, archive 2 entry
+## [2026-06-06] execute | T-001 đã cải tiến style-writer
+## [2026-06-06] recall | "cách tạo skill" → file-answer-back M-004
+```
+
+Lấy 5 sự kiện gần nhất: `grep "^## \[" memory/log.md | tail -5`. Giúp Claude biết "vừa làm gì" để gợi ý cuối phiên chính xác hơn.
+
 ## 6. Ba thao tác
 
 ### 6.1. capture
@@ -197,20 +225,30 @@ flowchart TD
     S1["Đọc index, lọc entry status=raw"] --> S2["Nhóm theo type + tags + related"]
     S2 --> S3["Gộp trùng: merge entry cùng chủ đề<br/>→ viết lại 1 entry gọn, status=consolidated"]
     S3 --> S4["Phát hiện pattern: ≥3 entry<br/>cùng trỏ 1 gốc → tạo entry tổng hợp mới"]
-    S4 --> S5["Đề xuất archive: entry đã xong/lỗi thời"]
-    S5 --> S6["User duyệt từng đề xuất"]
-    S6 --> S7["script: archive + reindex"]
+    S4 --> S5["Lint: orphan, mâu thuẫn, thiếu cross-ref, gap"]
+    S5 --> S6["Bảo trì cross-ref: cập nhật related 2 chiều,<br/>gắn cờ contradicts"]
+    S6 --> S7["Đề xuất archive: entry đã xong/lỗi thời"]
+    S7 --> S8["User duyệt từng đề xuất"]
+    S8 --> S9["script: archive + reindex + ghi log"]
 ```
 
+**Lint (mượn từ LLM Wiki, làm giàu consolidate)** — health-check kho, chỉ *đề xuất*, không tự sửa cấu trúc:
+- **Orphan**: entry không entry nào link tới, và không link ra. Gợi ý gắn cross-ref hoặc archive.
+- **Mâu thuẫn**: 2 entry nói ngược nhau → gắn `contradicts`, hỏi user chọn cái đúng.
+- **Thiếu cross-ref**: 2 entry cùng tag/chủ đề nhưng chưa link → đề xuất nối.
+- **Gap**: khái niệm nhắc nhiều nhưng chưa có entry riêng → đề xuất câu hỏi/entry cần tạo.
+
 Chốt:
-- Consolidation **dừng ở tầng tri thức**, không tự thực thi. Output là entry `consolidated` sạch + danh sách pattern.
-- Mọi thay đổi cấu trúc (merge, archive) **user duyệt trước**. Script chỉ chạy sau khi duyệt.
+- Consolidation **dừng ở tầng tri thức**, không tự thực thi. Output là entry `consolidated` sạch + danh sách pattern + báo cáo lint.
+- Mọi thay đổi cấu trúc (merge, archive, sửa cross-ref) **user duyệt trước**. Script chỉ chạy sau khi duyệt.
 - Khi gộp, entry gốc **không xóa thẳng** mà chuyển `archive/` (giữ vết).
+- Cross-ref bảo trì **2 chiều**: link A→B luôn kèm B→A.
 
 ### 6.3. recall (progressive disclosure)
 
 - `/project-memory recall [query]` → đọc **chỉ `index.md`** trước, match theo type/tags/tiêu đề, rồi **chỉ load file entry liên quan**.
 - Tự động gợi recall: đầu phiên hoặc khi bắt đầu task khớp tag, Claude chủ động "memory có N entry liên quan, đọc không?".
+- **File-answer-back (mượn từ LLM Wiki)**: khi recall tổng hợp ra một câu trả lời có giá trị (vd so sánh, phân tích, một quy trình vừa đúc ra), Claude đề nghị lưu lại thành entry mới (thường là Map hoặc Fact). User duyệt. Nhờ vậy khám phá không trôi vào chat history mà compound vào kho, giống như nguồn được ingest.
 
 ## 7. Phân vai LLM vs script
 
@@ -219,15 +257,18 @@ Chốt:
 | Tạo file entry mới, cấp ID tăng dần | script (`new-entry.py`) |
 | Regenerate `index.md` từ frontmatter | script (`reindex.py`) |
 | Archive entry, đổi status | script (`archive.py`) |
+| Append dòng vào `log.md` | script (`log.py`) |
 | Gộp trùng, đúc kết, phát hiện pattern | LLM |
+| Lint (orphan, mâu thuẫn, gap), bảo trì cross-ref | LLM đề xuất, user duyệt, script ghi |
 | Quyết định entry nào nên archive | LLM đề xuất, user duyệt, script thực thi |
 
 Lý do: bảng index dễ lệch nếu sửa tay. Script quét frontmatter rồi dựng lại bảng, luôn đồng bộ. LLM khỏi gõ lại bảng.
 
 Đặc tả script:
-- `new-entry.py <type> <subtype>` — tạo file entry skeleton + cấp ID, in path.
+- `new-entry.py <type> <subtype>` — tạo file entry skeleton + cấp ID, in path. Append log.
 - `reindex.py` — quét `memory/entries/` + `memory/archive/`, dựng lại `index.md`.
-- `archive.py <id>` — chuyển entry sang archive, đổi status, gọi reindex.
+- `archive.py <id>` — chuyển entry sang archive, đổi status, gọi reindex. Append log.
+- `log.py <op> <summary>` — append một dòng `## [date] <op> | <summary>` vào `log.md`. Dùng chung cho mọi thao tác.
 
 ## 8. Thực thi tự chứa (không phụ thuộc skill ngoài)
 
@@ -242,9 +283,15 @@ Lý do: bảng index dễ lệch nếu sửa tay. Script quét frontmatter rồi
 
 Hai cái bổ sung, không trùng. `project-memory` tự chứa phần execute tối thiểu nên chạy được kể cả khi máy không có `skill-auto-improver`/`skill-creator`.
 
-## 10. Hạng mục cho plan triển khai
+## 10. Mở rộng tương lai (chưa làm, ghi để khỏi quên)
 
-1. `SKILL.md` — workflow 3 thao tác + tín hiệu capture + checklist execute tự chứa.
-2. `references/schemas.md`, `consolidation.md`, `capture-signals.md`, `self-contained-exec.md`.
-3. Scripts: `new-entry.py`, `reindex.py`, `archive.py`.
+- **Search engine over wiki** (vd `qmd`, BM25/vector + re-rank, có CLI + MCP). Khi kho vượt scale vừa, index routing không đủ thì thêm. Hiện tại index + grep log là đủ.
+- **Raw immutable source layer**: lưu cả conversation/nguồn gốc thành lớp bất biến. Hiện field `source` trỏ nguồn là đủ cho lesson dự án.
+- Hai cái trên modular, thêm sau mà không phá schema.
+
+## 11. Hạng mục cho plan triển khai
+
+1. `SKILL.md` — workflow 3 thao tác (capture/consolidate/recall) + lint + file-answer-back + tín hiệu capture + checklist execute tự chứa.
+2. `references/schemas.md` (entry + index + log + frontmatter mở rộng), `consolidation.md` (gồm lint + cross-ref), `capture-signals.md`, `self-contained-exec.md`.
+3. Scripts: `new-entry.py`, `reindex.py`, `archive.py`, `log.py`.
 4. Cập nhật `CLAUDE.md` + `README.md` (thêm skill mới vào danh sách).
