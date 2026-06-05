@@ -80,8 +80,8 @@ related: []
 ## Trigger
 Khi nào kích hoạt workflow này.
 ## Trình tự (bản đồ)
-1. Bước A, dùng tool/skill nào, output gì
-2. Bước B, dùng tool/skill nào, output gì
+1. Bước A: dùng tool/skill nào → ra output gì
+2. Bước B: dùng tool/skill nào → ra output gì
 ## Cạm bẫy / lưu ý
 Chỗ hay sai khi chạy.
 ```
