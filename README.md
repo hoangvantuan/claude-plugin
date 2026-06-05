@@ -31,6 +31,7 @@ claude plugin install gh:hoangvantuan/shun-claude-plugin
 | `planning-content` | Phân tích nội dung & lên outline ý chính cho từng bài. Hỗ trợ mọi input: topic, notes, URL, file (PDF/DOCX/EPUB), YouTube. Convert tài liệu, research, content map, tier processing cho tài liệu lớn. KHÔNG can thiệp cách viết/tone/style |
 | `pptx-creator` | Tạo PowerPoint đẹp, chuyên nghiệp, hỗ trợ font tiếng Việt (PptxGenJS) |
 | `problem-solving` | Kỹ thuật giải quyết vấn đề có hệ thống, inversion, collision-zone, scale-game, simplification cascades |
+| `project-memory` | Bộ nhớ tri thức cấp dự án tự cải tiến. 4 thao tác capture/consolidate/recall/execute, 3 loại entry Tool/Map/Fact với index routing và log timeline. Cơ chế portable trong skill, dữ liệu ghi vào memory/ ở gốc repo. Script Python stdlib giữ index luôn đồng bộ |
 | `prompt-engineering` | Prompt engineering patterns: few-shot, chain-of-thought, template systems, system prompt design, agent prompting best practices, persuasion principles cho LLM interaction |
 | `prompt-generator` | Meta-prompting, tạo prompt chất lượng cao |
 | `prompt-generator-v2` | KERNEL framework, prompt engineering nâng cao |
