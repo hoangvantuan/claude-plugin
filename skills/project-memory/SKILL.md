@@ -17,22 +17,24 @@ Skill nằm trong `skills/project-memory/`, dùng cho mọi dự án. Dữ liệ
 
 `/project-memory <op> [query]`:
 
-| op | Việc |
-|----|------|
-| capture | Ghi một bài học hoặc context vào kho |
-| consolidate | Đúc kết kho: gộp trùng, phát hiện pattern, lint, archive |
-| recall [query] | Đọc index, load entry liên quan |
-| execute <id> | Thực thi entry Tool/Map (pha tách riêng, user kích hoạt) |
+| op             | Việc                                                     |
+| -------------- | -------------------------------------------------------- |
+| capture        | Ghi một bài học hoặc context vào kho                     |
+| consolidate    | Đúc kết kho: gộp trùng, phát hiện pattern, lint, archive |
+| recall [query] | Đọc index, load entry liên quan                          |
+| execute        | Thực thi entry Tool/Map (pha tách riêng, user kích hoạt) |
 
-Không có op: hỏi user muốn làm gì.
+
+Không có op: tự động phán đoán dựa vào yêu cầu của user hoặc hỏi user muốn làm gì.
 
 ## Taxonomy: 3 loại bản chất
 
-| Loại | Prefix | Trả lời | Ghi gì |
-|------|--------|---------|--------|
-| Tool (subtype improve/new) | T- | Làm việc X thế nào? | Cách làm + contract |
-| Map | M- | Khi nào dùng tool nào, thứ tự ra sao? | Trình tự + tool mỗi bước |
-| Fact | F- | Cần nhớ gì khi làm? | Sự kiện + khi nào liên quan |
+| Loại                       | Prefix | Trả lời                               | Ghi gì                      |
+| -------------------------- | ------ | ------------------------------------- | --------------------------- |
+| Tool (subtype improve/new) | T-     | Làm việc X thế nào?                   | Cách làm + contract         |
+| Map                        | M-     | Khi nào dùng tool nào, thứ tự ra sao? | Trình tự + tool mỗi bước    |
+| Fact                       | F-     | Cần nhớ gì khi làm?                   | Sự kiện + khi nào liên quan |
+
 
 Schema chi tiết 3 loại, index, log, frontmatter mở rộng: [references/schemas.md](references/schemas.md).
 
@@ -40,13 +42,14 @@ Schema chi tiết 3 loại, index, log, frontmatter mở rộng: [references/sch
 
 Script giữ index và log luôn đồng bộ với frontmatter, LLM khỏi gõ tay bảng:
 
-| Việc | Ai |
-|------|----|
-| Tạo entry, cấp ID tăng dần | `scripts/new-entry.py <type> [subtype]` |
-| Dựng lại index.md từ frontmatter | `scripts/reindex.py` |
-| Archive entry, đổi status, reindex | `scripts/archive.py <id>` |
-| Append timeline | `scripts/log.py <op> <summary>` |
+| Việc                                        | Ai                                        |
+| ------------------------------------------- | ----------------------------------------- |
+| Tạo entry, cấp ID tăng dần                  | `scripts/new-entry.py <type> [subtype]`   |
+| Dựng lại index.md từ frontmatter            | `scripts/reindex.py`                      |
+| Archive entry, đổi status, reindex          | `scripts/archive.py <id>`                 |
+| Append timeline                             | `scripts/log.py <op> <summary>`           |
 | Đúc kết, phát hiện pattern, lint, cross-ref | LLM đề xuất, user duyệt thay đổi cấu trúc |
+
 
 Chạy script bằng python (stdlib, không cần cài gói):
 `python skills/project-memory/scripts/new-entry.py fact`
@@ -60,6 +63,7 @@ Thủ công: user gọi `capture` hoặc nói "ghi nhớ cái này". Đoán type
 Gợi ý cuối phiên: khi task xong, quét hội thoại tìm tín hiệu đáng ghi, liệt kê đề xuất "nên capture X vào nhóm Y". User duyệt rồi mới ghi. Không tự ghi lén.
 
 Tín hiệu nhận biết: [references/capture-signals.md](references/capture-signals.md). Tóm tắt:
+
 - Gotcha mất thời gian thử sai, ghi Fact.
 - Một trình tự làm 2 lần trở lên, ghi Map.
 - Skill có sẵn yếu hoặc thiếu năng lực, ghi Tool.
@@ -69,6 +73,7 @@ Tín hiệu nhận biết: [references/capture-signals.md](references/capture-si
 Chạy thủ công. Quy trình đầy đủ, lint, cross-ref: [references/consolidation.md](references/consolidation.md).
 
 Năm chốt:
+
 - Đọc index, lọc entry `status: raw`, nhóm theo type + tags + related.
 - Gộp trùng thành 1 entry gọn `status: consolidated`. Entry gốc không xóa, chuyển archive qua `archive.py` (giữ vết).
 - Phát hiện pattern: từ 3 entry cùng trỏ 1 gốc, tạo entry tổng hợp mới.
