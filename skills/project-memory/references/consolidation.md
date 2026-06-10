@@ -13,7 +13,7 @@ flowchart TD
     S5 --> S6["Bảo trì cross-ref: cập nhật related 2 chiều,<br/>gắn cờ contradicts"]
     S6 --> S7["Đề xuất archive: entry đã xong/lỗi thời"]
     S7 --> S8["User duyệt từng đề xuất"]
-    S8 --> S9["script: archive + reindex + ghi log"]
+    S8 --> S9["script: archive + reindex"]
 ```
 
 ## Lint (health-check kho, chỉ đề xuất, không tự sửa)
@@ -40,4 +40,3 @@ Link A đến B luôn kèm B đến A. Khi sửa `related`, cập nhật cả 2 
 Mọi thay đổi cấu trúc (merge, archive, sửa cross-ref) phải được user duyệt trước. Script chỉ chạy sau khi duyệt:
 - `archive.py <id>` để chuyển entry và reindex.
 - `reindex.py` sau khi sửa frontmatter tay.
-- `log.py consolidate "<tóm tắt>"` ghi lại thao tác.

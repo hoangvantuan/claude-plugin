@@ -1,6 +1,6 @@
 # Thực thi tự chứa (không gọi skill ngoài)
 
-project-memory chạy độc lập. Khi execute entry Tool, làm trực tiếp bằng năng lực chung, không phụ thuộc `skill-auto-improver` hay `skill-creator` (máy khác có thể không cài).
+project-memory chạy độc lập. Khi recall load entry Tool và user muốn hành động, làm trực tiếp bằng năng lực chung, không phụ thuộc `skill-auto-improver` hay `skill-creator` (máy khác có thể không cài).
 
 ## Cải tiến skill (subtype improve)
 
@@ -28,4 +28,4 @@ Theo cấu trúc chuẩn (xem CLAUDE.md mục Skill Structure):
 
 ## Ranh giới
 
-Execute là pha tách riêng, user kích hoạt. Consolidation không bao giờ tự nhảy sang execute. Sau khi execute xong, ghi log: `log.py execute "<id> <tóm tắt>"`.
+Consolidation không bao giờ tự nhảy sang recall để thực thi. User kích hoạt recall riêng.

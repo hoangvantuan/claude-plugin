@@ -28,7 +28,8 @@ Câu hỏi kiểm tra: "có công cụ nào nên sửa hoặc tạo mới không
 
 Một sự kiện đơn lẻ thì ghi Fact. Một chuỗi bước có thứ tự thì ghi Map.
 
-## Hai ngả capture
+## Ba ngả capture
 
 - Thủ công: user gọi capture hoặc nói "ghi nhớ cái này".
 - Gợi ý cuối phiên: khi task xong, liệt kê đề xuất "nên capture X vào nhóm Y", user duyệt rồi mới ghi. Không tự ghi lén.
+- File-answer-back: khi recall tổng hợp ra câu trả lời có giá trị (so sánh, phân tích, quy trình vừa đúc), đề nghị capture thành entry mới (thường Map hoặc Fact). User duyệt.

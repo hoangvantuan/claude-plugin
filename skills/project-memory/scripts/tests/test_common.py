@@ -45,9 +45,3 @@ def test_parse_frontmatter_no_frontmatter():
     assert body == "just text\n"
 
 
-def test_append_log_writes_line(tmp_path, monkeypatch):
-    monkeypatch.setenv("PROJECT_MEMORY_ROOT", str(tmp_path))
-    line = _common.append_log("capture", "T-001 hello")
-    log = (tmp_path / "memory" / "log.md").read_text()
-    assert "capture | T-001 hello" in log
-    assert line.startswith("## [")

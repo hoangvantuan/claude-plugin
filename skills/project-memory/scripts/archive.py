@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Chuyển entry sang archive/, đổi status=archived, reindex, append log."""
+"""Chuyển entry sang archive/, đổi status=archived, reindex."""
 import sys
 
 import _common
@@ -29,7 +29,6 @@ def main(argv):
     text = set_status(src.read_text(encoding="utf-8"), "archived")
     (_common.archive_dir() / f"{entry_id}.md").write_text(text, encoding="utf-8")
     src.unlink()
-    _common.append_log("archive", f"{entry_id} → archive/")
     reindex.main([])
     print(str(_common.archive_dir() / f"{entry_id}.md"))
     return 0

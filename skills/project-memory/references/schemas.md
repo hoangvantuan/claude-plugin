@@ -59,7 +59,7 @@ Tool yếu chỗ nào, hoặc khoảng trống năng lực cần tool mới.
 Tình huống thực tế phát sinh insight.
 ## Contract đề xuất (làm gì, không phải làm sao)
 Input / Output / ranh giới của tool.
-## Hành động (khi execute)
+## Hành động
 Bước cụ thể, tự chứa, không gọi skill ngoài.
 ```
 
@@ -111,15 +111,3 @@ Vì sao ghi lại.
 - `contradicts: [id]`: gắn cờ khi entry mâu thuẫn entry khác. Lint phát hiện, consolidate ghi cờ để không mất dấu.
 - `related` bảo trì 2 chiều: nếu A liên quan B thì B cũng có A. Link là công dân hạng nhất.
 
-## log.md (timeline append-only)
-
-Mỗi dòng một sự kiện, prefix nhất quán để grep:
-
-```markdown
-## [2026-06-05] capture | T-001 style-writer thiếu ví dụ voice
-## [2026-06-05] consolidate | gộp T-003 + T-007 → T-003, archive 2 entry
-## [2026-06-06] execute | T-001 đã cải tiến style-writer
-## [2026-06-06] recall | "cách tạo skill" → file-answer-back M-004
-```
-
-Lấy 5 sự kiện gần nhất: `grep "^## \[" memory/log.md | tail -5`. Giúp biết "vừa làm gì" để gợi ý cuối phiên chính xác.

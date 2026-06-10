@@ -15,7 +15,7 @@ def test_creates_tool_entry(tmp_path, run):
     assert meta["status"] == "raw"
     assert "title:" in text
     assert "## Contract đề xuất" in text
-    assert "## Hành động" in text
+    assert "## Hành động\n" in text
 
 
 def test_tool_defaults_subtype_improve(tmp_path, run):
@@ -43,7 +43,3 @@ def test_rejects_bad_type(tmp_path, run):
     assert r.returncode == 2
 
 
-def test_appends_capture_log(tmp_path, run):
-    run("new-entry.py", "map", root=tmp_path)
-    log = (tmp_path / "memory" / "log.md").read_text()
-    assert "capture | M-001" in log

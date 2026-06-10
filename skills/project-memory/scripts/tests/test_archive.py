@@ -24,8 +24,3 @@ def test_archive_missing_id_returns_1(tmp_path, run):
     assert r.returncode == 1
 
 
-def test_archive_logs(tmp_path, run):
-    run("new-entry.py", "map", root=tmp_path)
-    run("archive.py", "M-001", root=tmp_path)
-    log = (tmp_path / "memory" / "log.md").read_text()
-    assert "archive | M-001" in log

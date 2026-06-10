@@ -79,9 +79,3 @@ def today():
     return date.today().isoformat()
 
 
-def append_log(op, summary):
-    ensure_dirs()
-    line = f"## [{today()}] {op} | {summary}\n"
-    with (memory_dir() / "log.md").open("a", encoding="utf-8") as fh:
-        fh.write(line)
-    return line.strip()

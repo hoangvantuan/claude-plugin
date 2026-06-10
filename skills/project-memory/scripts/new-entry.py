@@ -11,7 +11,7 @@ BODIES = {
         "## Vấn đề / Cơ hội\n\n"
         "## Bài học gốc\n\n"
         "## Contract đề xuất (làm gì, không phải làm sao)\n\n"
-        "## Hành động (khi execute)\n"
+        "## Hành động\n"
     ),
     "map": (
         "## Mục tiêu workflow\n\n"
@@ -54,7 +54,6 @@ def main(argv):
     entry_id = _common.next_id(_common.PREFIX_BY_TYPE[etype])
     path = _common.entries_dir() / f"{entry_id}.md"
     path.write_text(skeleton(entry_id, etype, subtype), encoding="utf-8")
-    _common.append_log("capture", f"{entry_id} (new {etype} entry)")
     print(str(path))
     return 0
 
