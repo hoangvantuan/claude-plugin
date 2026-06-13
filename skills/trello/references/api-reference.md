@@ -1,151 +1,164 @@
 # Trello API Quick Reference
 
 Base URL: `https://api.trello.com/1`
-Auth: `?key=$TRELLO_API_KEY&token=$TRELLO_TOKEN` (append vào mọi request)
+Auth: `?key=$TRELLO_API_KEY&token=$TRELLO_TOKEN` (append to every request)
 
 ## Workspaces (Organizations)
 
-| Method | Endpoint | Mô tả |
-|--------|----------|-------|
-| GET | `/members/me/organizations` | Tất cả workspaces của tôi |
-| GET | `/organizations/{id}` | Chi tiết workspace |
-| GET | `/organizations/{id}/boards` | Boards trong workspace (`?filter=open/closed/all`) |
-| GET | `/organizations/{id}/members` | Members của workspace |
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/members/me/organizations` | All my workspaces |
+| GET | `/organizations/{id}` | Workspace details |
+| GET | `/organizations/{id}/boards` | Boards in workspace (`?filter=open/closed/all`) |
+| GET | `/organizations/{id}/members` | Workspace members |
 | GET | `/organizations/{id}/memberships` | Membership details (role, type) |
-| POST | `/organizations` | Tạo workspace (`displayName`, `name`, `desc`) |
-| PUT | `/organizations/{id}` | Cập nhật (`displayName`, `name`, `desc`, `website`) |
-| DELETE | `/organizations/{id}` | Xoá workspace (vĩnh viễn — xoá cả boards bên trong) |
+| POST | `/organizations` | Create workspace (`displayName`, `name`, `desc`) |
+| PUT | `/organizations/{id}` | Update (`displayName`, `name`, `desc`, `website`) |
+| DELETE | `/organizations/{id}` | Delete workspace (permanent — deletes all boards inside) |
 
-**Lưu ý**: `name` là short name (dùng trong URL), `displayName` là tên hiển thị đầy đủ.
+**Note**: `name` is the short name (used in URL), `displayName` is the full display name.
 
 ## Boards
 
-| Method | Endpoint | Mô tả |
-|--------|----------|-------|
-| GET | `/members/me/boards` | Tất cả boards của tôi |
-| GET | `/boards/{id}` | Chi tiết board |
-| GET | `/boards/{id}/lists` | Lists trong board (`?filter=open/closed/all`) |
-| GET | `/boards/{id}/cards` | Tất cả cards trong board |
-| GET | `/boards/{id}/members` | Members của board |
-| GET | `/boards/{id}/labels` | Labels của board |
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/members/me/boards` | All my boards |
+| GET | `/boards/{id}` | Board details |
+| GET | `/boards/{id}/lists` | Lists in board (`?filter=open/closed/all`) |
+| GET | `/boards/{id}/cards` | All cards in board |
+| GET | `/boards/{id}/members` | Board members |
+| GET | `/boards/{id}/checklists` | All checklists in board (progress overview) |
+| GET | `/boards/{id}/labels` | Board labels |
 | GET | `/boards/{id}/actions` | Activity log (`?limit=50`) |
-| POST | `/boards` | Tạo board (`name`, `defaultLists`, `idOrganization`) |
-| PUT | `/boards/{id}` | Cập nhật board (`name`, `desc`, `closed`) |
-| DELETE | `/boards/{id}` | Xoá board vĩnh viễn (ưu tiên archive `closed=true`) |
+| POST | `/boards` | Create board (`name`, `defaultLists`, `idOrganization`) |
+| PUT | `/boards/{id}` | Update board (`name`, `desc`, `closed`) |
+| DELETE | `/boards/{id}` | Delete board permanently (prefer archive `closed=true`) |
+| PUT | `/boards/{id}/members` | Invite member to board via email |
+| PUT | `/boards/{id}/members/{idMember}` | Add member to board (`type`: admin/normal/observer) |
+| DELETE | `/boards/{id}/members/{idMember}` | Remove member from board |
+| GET | `/boards/{id}/boardPlugins` | Active Power-Ups on board |
+| GET | `/boards/{id}/plugins` | All Power-Ups on board |
 
 ## Lists
 
-| Method | Endpoint | Mô tả |
-|--------|----------|-------|
-| GET | `/lists/{id}` | Chi tiết list |
-| GET | `/lists/{id}/cards` | Cards trong list |
-| POST | `/boards/{id}/lists` | Tạo list (`name`, `pos`) |
-| PUT | `/lists/{id}` | Cập nhật list (`name`, `pos`) |
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/lists/{id}` | List details |
+| GET | `/lists/{id}/cards` | Cards in list |
+| POST | `/boards/{id}/lists` | Create list (`name`, `pos`) |
+| PUT | `/lists/{id}` | Update list (`name`, `pos`) |
 | PUT | `/lists/{id}/closed` | Archive list (`value=true/false`) |
-| POST | `/lists/{id}/moveAllCards` | Move tất cả cards (`idBoard`, `idList`) |
+| POST | `/lists/{id}/archiveAllCards` | Archive all cards in list |
+| PUT | `/lists/{id}/idBoard` | Move list to another board (`value={boardId}`) |
+| POST | `/lists/{id}/moveAllCards` | Move all cards (`idBoard`, `idList`) |
 
 ## Cards
 
-| Method | Endpoint | Mô tả |
-|--------|----------|-------|
-| GET | `/cards/{id}` | Chi tiết card |
-| GET | `/cards/{id}/actions` | Activity của card (`?filter=commentCard`) |
-| GET | `/cards/{id}/checklists` | Checklists của card |
-| GET | `/cards/{id}/attachments` | Attachments của card |
-| POST | `/cards` | Tạo card (`idList`, `name`, `desc`, `due`, `pos`) |
-| PUT | `/cards/{id}` | Cập nhật (`name`, `desc`, `idList`, `idBoard`, `due`, `dueComplete`, `closed`) |
-| DELETE | `/cards/{id}` | Xoá vĩnh viễn card |
-| POST | `/cards/{id}/actions/comments` | Thêm comment (`text`) |
-| POST | `/cards/{id}/idLabels` | Gán label (`value={labelId}`) |
-| DELETE | `/cards/{id}/idLabels/{labelId}` | Gỡ label |
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/cards/{id}` | Card details |
+| GET | `/cards/{id}/actions` | Card activity (`?filter=commentCard`) |
+| GET | `/cards/{id}/checklists` | Card checklists |
+| GET | `/cards/{id}/attachments` | Card attachments |
+| POST | `/cards` | Create card (`idList`, `name`, `desc`, `due`, `pos`) |
+| PUT | `/cards/{id}` | Update (`name`, `desc`, `idList`, `idBoard`, `due`, `dueComplete`, `closed`) |
+| DELETE | `/cards/{id}` | Delete card permanently |
+| POST | `/cards/{id}/actions/comments` | Add comment (`text`) |
+| POST | `/cards/{id}/idLabels` | Assign label (`value={labelId}`) |
+| DELETE | `/cards/{id}/idLabels/{labelId}` | Remove label |
 | POST | `/cards/{id}/idMembers` | Assign member (`value={memberId}`) |
-| DELETE | `/cards/{id}/idMembers/{memberId}` | Bỏ assign |
+| DELETE | `/cards/{id}/idMembers/{memberId}` | Unassign member |
 | PUT | `/cards/{id}/checkItem/{checkItemId}` | Update checklist item (`state=complete/incomplete`) |
-| POST | `/cards/{id}/attachments` | Thêm attachment (`url` hoặc `file`) |
+| POST | `/cards/{id}/attachments` | Add attachment (`url` or `file`) |
+| GET | `/cards/{id}/attachments/{idAttachment}` | Attachment details |
+| DELETE | `/cards/{id}/attachments/{idAttachment}` | Delete attachment |
+| PUT | `/cards/{id}/actions/{idAction}/comments` | Edit comment (`text`) |
+| DELETE | `/cards/{id}/actions/{idAction}/comments` | Delete comment (card-scoped) |
+| GET | `/cards/{id}/pluginData` | Power-Up data on card |
 
 ## Labels
 
-| Method | Endpoint | Mô tả |
-|--------|----------|-------|
-| GET | `/labels/{id}` | Chi tiết label |
-| POST | `/labels` | Tạo label (`name`, `color`, `idBoard`) |
-| PUT | `/labels/{id}` | Cập nhật (`name`, `color`) |
-| DELETE | `/labels/{id}` | Xoá label |
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/labels/{id}` | Label details |
+| POST | `/labels` | Create label (`name`, `color`, `idBoard`) |
+| PUT | `/labels/{id}` | Update (`name`, `color`) |
+| DELETE | `/labels/{id}` | Delete label |
 
-**Màu hợp lệ**: `black`, `blue`, `green`, `lime`, `orange`, `pink`, `purple`, `red`, `sky`, `yellow`, `null`
+**Valid colors**: `black`, `blue`, `green`, `lime`, `orange`, `pink`, `purple`, `red`, `sky`, `yellow`, `null`
 
 ## Checklists
 
-| Method | Endpoint | Mô tả |
-|--------|----------|-------|
-| GET | `/checklists/{id}` | Chi tiết checklist |
-| POST | `/checklists` | Tạo checklist (`idCard`, `name`) |
-| DELETE | `/checklists/{id}` | Xoá checklist |
-| POST | `/checklists/{id}/checkItems` | Thêm item (`name`, `pos`, `checked`) |
-| GET | `/checklists/{id}/checkItems/{checkItemId}` | Chi tiết item |
-| PUT | `/checklists/{id}/checkItems/{checkItemId}` | Cập nhật item (`name`, `state`, `pos`) |
-| DELETE | `/checklists/{id}/checkItems/{checkItemId}` | Xoá item |
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/checklists/{id}` | Checklist details |
+| POST | `/checklists` | Create checklist (`idCard`, `name`) |
+| DELETE | `/checklists/{id}` | Delete checklist |
+| POST | `/checklists/{id}/checkItems` | Add item (`name`, `pos`, `checked`) |
+| GET | `/checklists/{id}/checkItems/{checkItemId}` | Item details |
+| PUT | `/checklists/{id}/checkItems/{checkItemId}` | Update item (`name`, `state`, `pos`) |
+| DELETE | `/checklists/{id}/checkItems/{checkItemId}` | Delete item |
 
 ## Members
 
-| Method | Endpoint | Mô tả |
-|--------|----------|-------|
-| GET | `/members/me` | Thông tin bản thân |
-| GET | `/members/{id}` | Thông tin member |
-| GET | `/members/{id}/boards` | Boards của member |
-| GET | `/members/{id}/cards` | Cards được assign |
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/members/me` | My info |
+| GET | `/members/{id}` | Member info |
+| GET | `/members/{id}/boards` | Member's boards |
+| GET | `/members/{id}/cards` | Assigned cards |
 
 ## Actions (Comments, History)
 
-| Method | Endpoint | Mô tả |
-|--------|----------|-------|
-| GET | `/actions/{id}` | Chi tiết action |
-| PUT | `/actions/{id}` | Sửa comment (`text`) |
-| DELETE | `/actions/{id}` | Xoá action/comment |
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/actions/{id}` | Action details |
+| PUT | `/actions/{id}` | Edit comment (`text`) |
+| DELETE | `/actions/{id}` | Delete action/comment |
 
 ## Search
 
-| Method | Endpoint | Mô tả |
-|--------|----------|-------|
-| GET | `/search` | Tìm kiếm (`query`, `modelTypes=cards,boards,members`, `idBoards`, `idOrganizations`, `cards_limit`) |
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/search` | Search (`query`, `modelTypes=cards,boards,members`, `idBoards`, `idOrganizations`, `cards_limit`) |
 
 ## Batch
 
-| Method | Endpoint | Mô tả |
-|--------|----------|-------|
-| GET | `/batch` | Tối đa 10 URLs trong 1 request (`urls=/path1,/path2`) |
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/batch` | Up to 10 URLs in 1 request (`urls=/path1,/path2`) |
 
 ---
 
-## Query Parameters hay dùng
+## Common Query Parameters
 
-| Parameter | Áp dụng cho | Giá trị |
-|-----------|------------|---------|
-| `fields` | GET | `all` hoặc comma-separated: `name,id,desc,due` |
+| Parameter | Applies to | Values |
+|-----------|-----------|--------|
+| `fields` | GET | `all` or comma-separated: `name,id,desc,due` |
 | `filter` | boards, lists, cards | `open`, `closed`, `all` |
-| `members` | boards, cards | `true/false` hoặc `all` |
+| `members` | boards, cards | `true/false` or `all` |
 | `checklists` | cards | `all`, `none` |
 | `attachments` | cards | `true/false` |
 | `labels` | boards | `all` |
-| `limit` | actions | Số nguyên (max 1000) |
+| `limit` | actions | Integer (max 1000) |
 
 ---
 
-## jq Patterns hay dùng
+## Common jq Patterns
 
 ```bash
-# Lấy name + id từ array
+# Get name + id from array
 jq '.[] | {name, id}'
 
-# Filter theo tên (case-insensitive)
+# Filter by name (case-insensitive)
 jq '.[] | select(.name | ascii_downcase | contains("sprint"))'
 
-# Lấy cards chưa xong (chưa archive)
+# Get non-archived cards
 jq '[.[] | select(.closed == false)]'
 
-# Đếm số cards theo list
+# Count cards per list
 jq 'group_by(.idList) | map({list: .[0].idList, count: length})'
 
-# Lấy text comments
+# Get comment text
 jq '.[] | {date, comment: .data.text, by: .memberCreator.fullName}'
 ```
