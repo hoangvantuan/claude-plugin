@@ -43,6 +43,7 @@ claude plugin install gh:hoangvantuan/shun-claude-plugin
 | `substack-tools` | Quản lý bài viết Substack: draft, schedule, publish, list, sections + scan/crawl newsletter khác |
 | `systems-thinking` | Phân tích tư duy hệ thống theo framework Donella Meadows, feedback loops, system traps, leverage points |
 | `things-manager` | Quản lý Things 3 tasks, projects, areas, tags qua things-cli (Go CLI) |
+| `trello` | Quản lý Trello workspaces, boards, lists, cards, labels, checklists, members, comments qua natural language (Trello REST API) |
 | `wisdom-mentor` | Trò chuyện với người thầy tri thức (28 mentors) |
 | `work-explainer` | Personal teacher, giải thích công việc đã làm qua 9-step framework |
 | `workshop-builder` | Thiết kế workshop theo Backwards Design + 4Cs + Kirkpatrick |
