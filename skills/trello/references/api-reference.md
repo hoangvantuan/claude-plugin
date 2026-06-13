@@ -29,8 +29,9 @@ Auth: `?key=$TRELLO_API_KEY&token=$TRELLO_TOKEN` (append vào mọi request)
 | GET | `/boards/{id}/members` | Members của board |
 | GET | `/boards/{id}/labels` | Labels của board |
 | GET | `/boards/{id}/actions` | Activity log (`?limit=50`) |
-| POST | `/boards` | Tạo board (`name`, `defaultLists`) |
+| POST | `/boards` | Tạo board (`name`, `defaultLists`, `idOrganization`) |
 | PUT | `/boards/{id}` | Cập nhật board (`name`, `desc`, `closed`) |
+| DELETE | `/boards/{id}` | Xoá board vĩnh viễn (ưu tiên archive `closed=true`) |
 
 ## Lists
 
@@ -106,7 +107,7 @@ Auth: `?key=$TRELLO_API_KEY&token=$TRELLO_TOKEN` (append vào mọi request)
 
 | Method | Endpoint | Mô tả |
 |--------|----------|-------|
-| GET | `/search` | Tìm kiếm (`query`, `modelTypes=cards,boards,members`, `idBoards`, `cards_limit`) |
+| GET | `/search` | Tìm kiếm (`query`, `modelTypes=cards,boards,members`, `idBoards`, `idOrganizations`, `cards_limit`) |
 
 ## Batch
 

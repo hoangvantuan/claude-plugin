@@ -41,7 +41,7 @@ Quản lý Trello qua natural language — Claude dịch yêu cầu thành API c
 
 Sau khi có ID, lưu vào biến shell để dùng lại trong cùng session.
 
-**Xử lý output**: Pipe qua `jq` để format. Dùng `jq '.[].{name,id}'` hoặc custom selectors.
+**Xử lý output**: Pipe qua `jq` để format. Dùng `jq '.[] | {name, id}'` hoặc custom selectors.
 
 ---
 
@@ -92,7 +92,7 @@ Khi user có nhiều workspace, luôn hỏi hoặc list workspaces trước đ�
 curl -s "https://api.trello.com/1/members/me/boards?key=$TRELLO_API_KEY&token=$TRELLO_TOKEN&fields=name,id,url,closed" | jq '.[] | select(.closed == false) | {name, id}'
 
 # Xem chi tiết một board
-curl -s "https://api.trello.com/1/boards/{boardId}?key=$TRELLO_API_KEY&token=$TRELLO_TOKEN&lists=open&members=all&labels=all" | jq '{name, id, lists: .lists[].name}'
+curl -s "https://api.trello.com/1/boards/{boardId}?key=$TRELLO_API_KEY&token=$TRELLO_TOKEN&lists=open&members=all&labels=all" | jq '{name, id, lists: [.lists[].name]}'
 
 # Tạo board mới
 curl -s -X POST "https://api.trello.com/1/boards?key=$TRELLO_API_KEY&token=$TRELLO_TOKEN" \
@@ -106,6 +106,9 @@ curl -s -X PUT "https://api.trello.com/1/boards/{boardId}?key=$TRELLO_API_KEY&to
 # Archive board (đóng, không xoá)
 curl -s -X PUT "https://api.trello.com/1/boards/{boardId}?key=$TRELLO_API_KEY&token=$TRELLO_TOKEN" \
   -d "closed=true"
+
+# Xoá board (vĩnh viễn — cảnh báo user trước, ưu tiên archive)
+curl -s -X DELETE "https://api.trello.com/1/boards/{boardId}?key=$TRELLO_API_KEY&token=$TRELLO_TOKEN"
 ```
 
 ---
@@ -322,7 +325,8 @@ curl -s "https://api.trello.com/1/batch?key=$TRELLO_API_KEY&token=$TRELLO_TOKEN&
 - **Rate limit**: 300 requests/10s (per API key); 100 requests/10s (per token)
 - **Endpoint `/1/members`**: giới hạn 100 requests/900s — tránh call liên tục
 - **Delete card**: vĩnh viễn, không undo được — hỏi confirm user trước khi xoá
-- **Delete board**: không có API delete board trực tiếp — chỉ archive (closed=true)
+- **Delete board**: `DELETE /boards/{id}` — vĩnh viễn, xoá cả lists/cards bên trong. Ưu tiên archive (`closed=true`) trước, chỉ delete khi user xác nhận rõ ràng
+- **Delete workspace**: vĩnh viễn, xoá cả boards bên trong — hỏi confirm user trước
 - **IDs**: stable, không đổi kể cả khi rename board/list/card
 - **Date format**: ISO 8601 — ví dụ `2025-12-31T23:59:59.000Z`
 - **Position**: dùng `"top"`, `"bottom"`, hoặc số float để sắp thứ tự chính xác
