@@ -1,6 +1,14 @@
 ---
 name: user-story
-description: "Viết/rà soát/tách user story, acceptance criteria, INVEST, epic, backlog từ requirement/PRD/bug/feature."
+description: >
+  Viết, rà soát, tách user story, acceptance criteria (Given/When/Then), kiểm tra INVEST, phân rã epic thành story.
+  Input: requirement, PRD, epic, ý tưởng, bug report, feature request — output: user story chuẩn Mike Cohn với persona,
+  problem statement, acceptance criteria, quality check.
+
+  Dùng khi user muốn viết user story, chuyển requirement thành story, viết acceptance criteria, rà soát story theo INVEST,
+  tách epic/story lớn thành story nhỏ, tìm persona, viết problem statement. Triggers: "user story", "acceptance criteria",
+  "Given When Then", "INVEST", "as a... I want to... so that...", "tách epic", "split story", "backlog", "story map",
+  "viết story từ PRD", "persona", "problem statement". Không dùng cho việc không liên quan giá trị người dùng.
 ---
 
 # User Story

@@ -1,6 +1,6 @@
 ---
 name: anti-ai-writing
-description: "Viết tiếng Việt không mùi AI. Trigger: viết bài, rewrite, edit, proofread, humanize, check AI smell."
+description: "Rules viết tiếng Việt không giống AI — blacklist từ/cụm buzzword, cấu trúc câu thuần Việt, chấm câu, tone có ý kiến. Dùng độc lập hoặc làm baseline cho mọi task viết. Trigger: viết bài, rewrite, edit, proofread, humanize, kiểm tra mùi AI, check AI smell, viết tự nhiên hơn, bớt giống AI, sửa văn phong. KHÁC style-writer (skill này là rules chống AI smell, style-writer là viết theo voice + structure cụ thể). KHÁC social-post (skill này là rules chung, social-post là viết bài social cụ thể)."
 ---
 
 # Anti-AI Writing Rules

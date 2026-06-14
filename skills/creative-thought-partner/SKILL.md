@@ -1,6 +1,6 @@
 ---
 name: creative-thought-partner
-description: "Đối tác sáng tạo tương tác. Tìm pattern, nghịch lý, tên ý tưởng chưa gọi tên."
+description: "Đối tác sáng tạo tương tác. Tìm pattern, nghịch lý, tên ý tưởng chưa gọi tên. Dùng khi user muốn brainstorm, khám phá ý tưởng, tìm điểm khác biệt, đặt tên cho phương pháp/triết lý riêng, hoặc cần 'fresh eyes' nhìn ra thứ mình chưa thấy. Trigger: brainstorm, explore idea, tìm insight, đào sâu ý tưởng, điều gì khiến mình khác biệt, tìm paradox, đặt tên concept, naming, tôi có ý tưởng, giúp tôi suy nghĩ, think together, thought partner. KHÁC deep-insight (skill này đào sâu ý tưởng CỦA USER qua đối thoại Socratic, deep-insight phân tích vấn đề/chủ đề có sẵn)."
 ---
 
 # Creative Thought Partner

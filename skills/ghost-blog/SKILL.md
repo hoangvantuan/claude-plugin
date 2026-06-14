@@ -1,6 +1,6 @@
 ---
 name: ghost-blog
-description: "Quản lý bài Ghost qua Admin API: list/filter, CRUD, bulk, tag."
+description: "Quản lý Ghost CMS blog qua Admin API. CRUD bài viết (tạo, sửa, xoá, publish, unpublish), bulk operations (publish hàng loạt, gắn/gỡ tag hàng loạt), quản lý tags, lọc bài theo status/tag/featured, tạo bài từ Markdown. Dùng khi user nhắc Ghost, ghost blog, CMS, 'đăng bài', 'publish draft', 'list posts', 'bulk publish', hoặc muốn quản lý nội dung blog."
 license: MIT
 allowed-tools:
   - Bash

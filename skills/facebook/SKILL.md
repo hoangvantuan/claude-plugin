@@ -1,6 +1,6 @@
 ---
 name: facebook
-description: "Đăng Facebook wall/group bằng PinchTab, kèm ảnh và tag. Không viết nội dung."
+description: "Đăng bài Facebook (wall cá nhân hoặc group) qua PinchTab browser automation. Hỗ trợ: đính kèm nhiều ảnh (tối đa 8), tag bạn bè, tiêu đề group, chế độ draft/publish. Trigger: đăng facebook, post facebook, đăng bài lên fb, facebook wall, facebook group, post lên group, đăng ảnh facebook, tag bạn. Skill này CHỈ đăng bài, KHÔNG viết nội dung — user cung cấp nội dung sẵn hoặc dùng skill viết khác trước."
 allowed-tools:
   - Bash
   - Read

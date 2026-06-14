@@ -1,6 +1,6 @@
 ---
 name: kinh-dich-lens
-description: "Phân tích tình huống bằng Kinh Dịch: 64 quẻ, Âm Dương, Ngũ Hành, thời, biến, quân tử."
+description: "Phân tích tình huống bằng Kinh Dịch: 64 quẻ, Âm Dương, Ngũ Hành, thời, biến, quân tử. Dùng khi user muốn phân tích theo Dịch Lý, xem quẻ, đọc Âm Dương tiêu trưởng, xét Ngũ Hành cân bằng, định vị chu kỳ Thành-Thịnh-Suy-Hủy, hoặc nhắc 'Kinh Dịch', 'quẻ', 'Âm Dương', 'Ngũ Hành', 'tiêu trưởng', 'Dịch Học', 'I Ching', 'Bát Quái', 'Lục Hào'. Ứng dụng cho kinh doanh, quan hệ, dự án, xung đột, sự nghiệp, tổ chức, thị trường. Khác kinh-dich-lens ở chỗ nhat-di-quan-chi dùng Thu Giang Nguyễn Duy Cần (Thuật Tư Tưởng + Lão Trang), còn skill này chuyên sâu vào hệ thống Dịch Học nguyên bản (64 quẻ, Hào, Quẻ Biến, 12 Quẻ Tiêu Tức)."
 ---
 
 # Kinh Dịch Lens

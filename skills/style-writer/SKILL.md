@@ -1,6 +1,6 @@
 ---
 name: style-writer
-description: "Viết theo voice/structure hoặc phân tích DNA văn phong. Trigger: viết lại, clone giọng, stylometry, tạo voice."
+description: "Skill viết lách hợp nhất — 2 workflow: Writer (viết nội dung theo voice + structure đã chọn, có 8 voices + 8 structures sẵn) và Analyze (bóc tách DNA văn phong từ corpus → tạo voice mới). Dùng khi user nói 'viết bài', 'viết lại theo giọng', 'rewrite', 'clone giọng văn', 'phân tích văn phong', 'stylometry', 'tạo voice mới', 'viết theo phong cách', 'fingerprint viết lách', 'phân tích cách viết của X', hoặc cần viết nội dung dài (blog, essay, tản văn, tutorial, report) với giọng văn cụ thể. Khác social-post (bài ngắn mạng xã hội) — skill này cho nội dung dài, có voice/structure rõ ràng."
 ---
 
 # Style Writer

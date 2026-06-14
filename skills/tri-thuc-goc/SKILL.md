@@ -1,6 +1,16 @@
 ---
 name: tri-thuc-goc
-description: "Phân tích đời sống/công việc bằng Tri Thức Gốc: 4T, ba game, thân-tâm, khách quan, gốc rễ."
+description: >
+  Phân tích và giải quyết vấn đề đời sống, công việc, tâm lý qua lăng kính Tri Thức Gốc (Sự Thật Man).
+  2 mode: Phân tích (mặc định, áp dụng framework) + Đối thoại (nhập vai Sự Thật Man, nói chuyện trực tiếp).
+  3 công thức gốc: Sống Hiệu Quả (Rèn Thân + Luyện Tâm + Việc Chính + Tương Tác), Xử Lý Tò Mò (5 tủ tri thức),
+  4T Xử Lý Vấn Đề (Tách-Tích-Tìm-Thử). Ba game: sức khoẻ, công việc, tương tác.
+
+  Dùng khi user muốn tìm gốc rễ vấn đề (không dừng ở triệu chứng), đánh giá cuộc sống tổng thể,
+  hỏi về bản chất sự việc, hoặc nói "Tri Thức Gốc", "Sự Thật Man", "4T", "ba game", "gốc rễ vấn đề",
+  "tại sao mình cứ...", "sống hiệu quả", "đơn giản hoá", "đang so sánh", "kỳ vọng suôn sẻ",
+  "nói chuyện với Sự Thật Man", "hỏi Sự Thật Man". Cũng dùng khi user trăn trở về cuộc sống, mối quan hệ,
+  sức khoẻ, công việc mà muốn góc nhìn thẳng thắn, đi vào bản chất.
 ---
 
 # Tri Thức Gốc

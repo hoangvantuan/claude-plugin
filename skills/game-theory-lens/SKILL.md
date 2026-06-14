@@ -1,6 +1,6 @@
 ---
 name: game-theory-lens
-description: "Phân tích chủ đề bằng Lý thuyết Trò chơi (Game Theory): người chơi, payoff, chiến lược, cơ chế."
+description: "Phân tích chủ đề bằng Lý thuyết Trò chơi (Game Theory): người chơi, payoff, chiến lược, cơ chế. Áp dụng cho kinh doanh, đàm phán, cạnh tranh, quan hệ, chính trị, xã hội. Bao gồm: payoff matrix, Nash equilibrium, Prisoner's Dilemma, Chicken, Stag Hunt, signaling, mechanism design, đàm phán, liên minh. Trigger: phân tích game theory, chiến lược các bên, ai được ai mất, đàm phán, cạnh tranh, incentive, cơ chế thưởng phạt, thiết kế luật chơi, tương tác chiến lược, thế tiến thoái lưỡng nan, cooperation vs defection, tình huống xung đột lợi ích."
 ---
 
 # Game Theory Lens — Phân tích qua Lý thuyết Trò chơi

@@ -1,6 +1,6 @@
 ---
 name: ai-artist
-description: "Tạo ảnh Nano Banana bằng 129 prompt. Mode: search, creative, wild."
+description: "Tạo ảnh AI từ 129 curated prompts (profile, avatar, infographic, banner, product shot, poster, anime, chibi). 3 mode: search (khớp prompt có sẵn), creative (remix), wild (biến thể nghệ thuật ngẫu nhiên). Trigger: tạo ảnh, generate image, vẽ ảnh, thiết kế banner, tạo avatar, poster, thumbnail, infographic, social media image, product photo, art style. Dùng khi cần ảnh AI với prompt chuyên nghiệp có sẵn. KHÔNG dùng cho edit ảnh có sẵn (dùng codex-image)."
 argument-hint: "[concept] [--mode search|creative|wild|all] [--skip]"
 ---
 

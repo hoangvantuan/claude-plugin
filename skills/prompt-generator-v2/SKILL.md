@@ -1,6 +1,6 @@
 ---
 name: prompt-generator-v2
-description: "Tạo prompt KERNEL từ yêu cầu mơ hồ thành chỉ dẫn cấu trúc, dễ kiểm chứng."
+description: "Tạo prompt nâng cao theo KERNEL framework — biến yêu cầu mơ hồ thành prompt có cấu trúc Context/Task/Constraints/Format/Verification, dễ kiểm chứng, giảm hallucination. Hỗ trợ prompt chaining cho task phức tạp. Dùng khi user nói 'tạo prompt', 'viết prompt', 'cải tiến prompt', 'prompt này chưa tốt', 'prompt cho AI', hoặc cần prompt rõ ràng có success criteria và negative constraints. Phiên bản nâng cao của prompt-generator — ưu tiên dùng khi cần prompt production-grade hoặc prompt chain."
 ---
 
 # Prompt Generator V2 — KERNEL Framework

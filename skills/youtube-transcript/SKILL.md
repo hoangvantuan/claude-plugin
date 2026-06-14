@@ -1,6 +1,13 @@
 ---
 name: youtube-transcript
-description: "Tải transcript/caption YouTube bằng yt-dlp. Trigger: YouTube URL, subtitles, captions, video text."
+description: >
+  Tải transcript (phụ đề/captions) từ YouTube video qua yt-dlp, convert VTT sang plain text sạch (deduplicated).
+  Hỗ trợ manual subtitles + auto-generated, 60+ ngôn ngữ, chọn ngôn ngữ cụ thể.
+
+  Dùng khi user chia sẻ YouTube URL và muốn lấy nội dung text, hoặc nói "transcript", "phụ đề", "subtitles",
+  "captions", "lấy text từ video", "nội dung video này nói gì", "tải phụ đề", "youtube transcript",
+  "chuyển video thành text". Cũng dùng khi user paste link YouTube và muốn đọc/phân tích nội dung video
+  mà không cần xem.
 ---
 
 # YouTube Transcript Downloader

@@ -7,6 +7,8 @@ description: >
   ALWAYS use this skill when the user mentions Trello, or wants to: switch workspaces,
   create/view/update boards, create/move/archive cards, manage lists, add labels/checklists/comments, search cards.
   Also use when the user says "task board", "kanban", "sprint board" without explicitly mentioning Trello.
+  Triggers: "tạo board", "thêm card", "chuyển card", "xem danh sách", "archive", "tìm card", "gán label",
+  "checklist", "assign member", "comment on card", "due date", "board nào", "list nào".
 swagger: https://dac-static.atlassian.com/cloud/trello/swagger.v3.json?_v=1.957.0
 ---
 

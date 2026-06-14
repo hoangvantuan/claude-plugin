@@ -1,7 +1,7 @@
 ---
 name: proposal-generator
 
-description: "Tạo proposal/đề án có research, business case, technical solution. Trigger: RFP, bid, draft proposal, đề xuất dự án."
+description: "Tạo proposal/đề án dự án hoàn chỉnh có research, business case, technical solution, ROI, timeline, pricing — deliverable cấp consulting firm. Dùng khi user nói 'viết proposal', 'tạo đề án', 'draft proposal', 'đề xuất dự án', 'soạn proposal', 'bid', 'RFP', 'đấu thầu', 'xin duyệt budget', 'gọi vốn', 'pitch dự án', hoặc cần tài liệu tổng hợp cả business lẫn technical cho một dự án. Hỗ trợ output Markdown, Word (.docx), pitch deck (.pptx). Không dùng cho spec kỹ thuật thuần túy hay marketing copy."
 ---
 
 # Proposal Generator

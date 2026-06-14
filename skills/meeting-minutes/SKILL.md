@@ -1,6 +1,6 @@
 ---
 name: meeting-minutes
-description: "Tạo biên bản họp hoặc phân tích giao tiếp từ transcript/ghi chú. Gồm decisions, action items, speaking ratio, patterns."
+description: "Tạo biên bản họp hoặc phân tích giao tiếp từ transcript/ghi chú. Gồm decisions, action items, speaking ratio, patterns. Dùng khi user có transcript cuộc họp, file ghi âm đã chuyển text, ghi chú meeting, hoặc nói 'tạo biên bản', 'tóm tắt cuộc họp', 'meeting minutes', 'ghi lại quyết định', 'action items', 'phân tích giao tiếp', 'speaking ratio', 'conflict avoidance', 'filler words', 'active listening', 'facilitation'. Hỗ trợ file .txt, .md, .pdf, .docx, .vtt, .srt. 2 workflow: Minutes (biên bản chuẩn) và Insights (phân tích hành vi giao tiếp, pattern, kỹ năng)."
 ---
 
 # Meeting Minutes: Biên bản họp & Phân tích giao tiếp

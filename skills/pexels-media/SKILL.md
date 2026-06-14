@@ -1,6 +1,6 @@
 ---
 name: pexels-media
-description: "Tìm/tải ảnh, video Pexels miễn phí bản quyền. Tạo metadata sidecar. Trigger: stock media, hero image, placeholder."
+description: "Source ảnh/video royalty-free từ Pexels API — search, curated, popular, collections, multi-resolution download + sidecar metadata (.meta.json) bắt buộc. Dùng khi user cần 'tìm ảnh', 'stock photo', 'stock video', 'hero image', 'placeholder image', 'background image', 'ảnh miễn phí', 'free photo', 'royalty-free', 'ảnh nền', 'product photography', 'tải ảnh từ Pexels', hoặc cần visual asset cho design, presentation, blog, social media. Hỗ trợ filter theo orientation, size, color, duration. Tự động tạo file metadata attribution cho mỗi file tải về."
 ---
 
 # Pexels Media Sourcing
