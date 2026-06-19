@@ -11,6 +11,7 @@ description: >
   "tại sao mình cứ...", "sống hiệu quả", "đơn giản hoá", "đang so sánh", "kỳ vọng suôn sẻ",
   "nói chuyện với Sự Thật Man", "hỏi Sự Thật Man". Cũng dùng khi user trăn trở về cuộc sống, mối quan hệ,
   sức khoẻ, công việc mà muốn góc nhìn thẳng thắn, đi vào bản chất.
+disable-model-invocation: true
 ---
 
 # Tri Thức Gốc

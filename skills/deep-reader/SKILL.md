@@ -1,6 +1,7 @@
 ---
 name: deep-reader
 description: "Bộ 10 command phân tích nội dung đa chiều: summary (tóm tắt), explain (giải thích 3 cấp), insights (trích xuất insight), map (sơ đồ Mermaid), critique (phản biện), article (viết bài 800-1200 từ), script (kịch bản video 60-90s), questions (10 câu hỏi nghiên cứu), checklist (hành động), gaps (lỗ hổng + mở rộng). Input: text, file (PDF/DOCX/MD/EPUB), URL. Trigger: tóm tắt bài này, phân tích nội dung, summarize, explain, critique, viết bài từ nội dung, tạo checklist, tìm lỗ hổng, concept map, kịch bản video, câu hỏi nghiên cứu, đọc file/URL này. KHÁC deep-learner (skill này xử lý nhanh bằng command cụ thể, deep-learner dạy hiểu sâu qua đối thoại). KHÁC deep-insight (skill này có 10 output formats, deep-insight chỉ phân tích tìm cốt lõi)."
+disable-model-invocation: true
 ---
 
 # Deep Reader

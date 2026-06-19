@@ -10,6 +10,7 @@ description: >
   "stocks and flows", "tư duy hệ thống", "systems thinking", "Donella Meadows", "vicious cycle", "virtuous cycle".
   Cũng dùng khi user muốn phân tích một hiện tượng dai dẳng (nghèo đói, ô nhiễm, burnout, xung đột leo thang)
   từ góc nhìn cấu trúc thay vì triệu chứng.
+disable-model-invocation: true
 ---
 
 # Systems Thinking Analysis
