@@ -368,7 +368,12 @@ def cmd_list(args: argparse.Namespace) -> None:
     if args.limit > 25:
         print(f"[warn] limit={args.limit} vượt giới hạn API, dùng limit=25")
     drafts = api.get_drafts(filter=server_filter, offset=0, limit=limit)
-    items = drafts if isinstance(drafts, list) else drafts.get("drafts", drafts)
+    # Substack đổi format: bản mới trả {"posts": [...], "hasMore", "nextCursor"};
+    # bản cũ trả list hoặc {"drafts": [...]}. Hỗ trợ cả hai.
+    if isinstance(drafts, list):
+        items = drafts
+    else:
+        items = drafts.get("posts") or drafts.get("drafts") or []
 
     if not items:
         print(f"Không có bài nào với filter={args.filter}")
