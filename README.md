@@ -16,6 +16,7 @@ claude plugin install gh:hoangvantuan/shun-claude-plugin
 | --- | --- |
 | `ai-artist` | Tạo ảnh qua Nano Banana, 129 curated prompts, validation interview, 3 modes (search/creative/wild) |
 | `anti-ai-writing` | Rules viết tiếng Việt không giống AI, blacklist từ/cụm/chấm câu, self-critique bắt buộc. Dùng độc lập hoặc làm baseline cho mọi task viết |
+| `codex-image` | Tạo và chỉnh sửa ảnh 2 chế độ: Codex CLI gpt-image-2 (mặc định, ChatGPT login) + fallback OpenAI API. Text-to-image, nền trong suốt (chroma-key + native gpt-image-1.5), batch, edit (style transfer + mask/high-fidelity), size chính xác tới 4K |
 | `creative-thought-partner` | Đối tác tư duy sáng tạo, brainstorming & insight discovery |
 | `decision-gate` | Trợ lý phán quyết go/no-go + ưu tiên cho MỘT hạng mục kỹ thuật mơ hồ (bug/feature/techdebt/task). Xác minh bằng chứng read-only trước khi kết luận, chấm điểm theo loại (RICE/ICE/WSJF), xuất decision brief. Luồng 3 pha: Xác minh → Cổng Go/No-Go (checkpoint 1 lần) → Ưu tiên. Dừng ở bản khuyến nghị, không tạo issue/kế hoạch |
 | `deep-insight` | Quan sát đa chiều → Phân tích tách lớp → Đúc kết cốt lõi, hiểu sâu vấn đề qua chu trình 3 bước |

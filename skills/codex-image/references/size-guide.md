@@ -13,8 +13,8 @@
 
 | Kích thước | Tổng pixel | Use case |
 |-----------|------------|----------|
-| 512x512 | 262K | Draft nhanh, preview |
-| 1024x1024 | 1M | Icon, avatar, social post |
+| 816x816 | 666K | Nhỏ nhất hợp lệ (draft nhanh — fallback CLI dùng `--quality low` thì nhanh hơn đổi size) |
+| 1024x1024 | 1M | Icon, avatar, social post — nhanh nhất trong thực tế |
 | 2048x2048 | 4.2M | In ấn chất lượng cao |
 
 ### Landscape (ngang)
@@ -33,7 +33,8 @@
 |-----------|--------|----------|
 | 1024x1536 | 2:3 | Story, poster dọc |
 | 1024x1792 | 4:7 | Mobile wallpaper |
-| 1080x1920 | 9:16 | Instagram Story, TikTok |
+| 1088x1920 | ~9:16 | Instagram Story, TikTok (1080 không chia hết cho 16) |
+| 2160x3840 | 9:16 | Poster dọc 4K |
 
 ### Social Media
 
@@ -46,11 +47,13 @@
 | LinkedIn | 1200x627 | Dùng 1200x624 |
 | YouTube Thumbnail | 1280x720 | OK, chia hết cho 16 |
 
-## Lưu ý
+## Lưu ý theo mode
 
-Built-in tool không có tham số size. Ghi kích thước mong muốn trong prompt, ví dụ:
+**Đường chính (`codex exec`)**: không có tham số size. Ghi kích thước mong muốn trong prompt, ví dụ:
 - "1024x1024 square format"
-- "wide landscape 1792x1024"
-- "tall portrait 1024x1792"
+- "wide landscape 1536x1024"
+- "tall portrait 1024x1536"
 
 Model có thể không tuân thủ chính xác, nhưng mô tả tỷ lệ (square, wide, tall) giúp định hướng output.
+
+**Fallback CLI (`scripts/image_gen.py`)**: kiểm soát chính xác qua `--size WxH` hoặc `--size auto`. Trên 2560x1440 tổng pixel là experimental. Chi tiết: `references/cli.md`.
