@@ -1,7 +1,6 @@
 ---
 name: deep-insight
 description: "Hiểu sâu vấn đề bằng chu trình Quan sát đa chiều → Phân tích tách lớp (nhân quả, tương tác, feedback loop) → Đúc kết cốt lõi (tìm cái chi phối tất cả). Output: report có sơ đồ Mermaid + nguyên lý gốc. Trigger: hiểu sâu, phân tích sâu, tìm bản chất, gốc rễ vấn đề, tại sao, cơ chế vận hành, đào sâu chủ đề, root cause, understand deeply, analyze topic. KHÁC deep-learner (skill này phân tích vấn đề/chủ đề để tìm cốt lõi, deep-learner dạy user hiểu nội dung từng bước Socratic). KHÁC deep-reader (skill này phân tích tìm nguyên lý, deep-reader là bộ 10 command xử lý nội dung: tóm tắt, critique, viết bài...)."
-disable-model-invocation: true
 ---
 
 # Deep Insight — Quan sát · Phân tích · Đúc kết

@@ -1,7 +1,6 @@
 ---
 name: planning-content
 description: "Phân tích nội dung & lên outline ý chính cho từng bài. Hỗ trợ mọi input: topic, notes, URL, file (PDF/DOCX/EPUB/XLSX/PPTX), YouTube. Convert tài liệu, research, content map, tier processing cho tài liệu lớn. Dùng khi user muốn 'lên kế hoạch nội dung', 'content plan', 'lập outline', 'phân tích tài liệu thành bài', 'chia sách thành series bài', 'plan content từ URL/PDF/video', 'tạo content map', hoặc có tài liệu nguồn cần tách thành nhiều bài viết. KHÔNG viết bài — chỉ tạo bản đồ ý tưởng và outline. Skill viết bài (style-writer, social-post) dùng output này để viết."
-disable-model-invocation: true
 ---
 
 # Planning Content

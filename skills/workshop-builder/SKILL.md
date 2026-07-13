@@ -10,7 +10,6 @@ description: >
   "thiết kế buổi học", "agenda workshop", "facilitation", "hoạt động nhóm", "icebreaker", "energizer",
   "backwards design", "4Cs", "Kirkpatrick", "mục tiêu học tập", "learning objectives", "buổi đào tạo",
   "tập huấn", "bootcamp", "hackathon", "offsite", "team building có nội dung học".
-disable-model-invocation: true
 ---
 
 # Workshop Builder

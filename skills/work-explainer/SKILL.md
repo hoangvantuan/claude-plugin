@@ -10,7 +10,6 @@ description: >
   "work explainer", "dạy lại cho mình", "tôi học được gì", "tổng kết task", "recap", "what did we learn",
   "tại sao chọn cách này", "tradeoff là gì". Cũng dùng khi user muốn biến kinh nghiệm làm việc thành
   tài liệu học tập có thể tái sử dụng.
-disable-model-invocation: true
 ---
 
 # Work Explainer

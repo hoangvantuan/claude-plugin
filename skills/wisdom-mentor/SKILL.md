@@ -9,7 +9,6 @@ description: >
   hoặc nói "hỏi Naval", "nói chuyện với Krishnamurti", "bàn tròn", "roundtable", "wisdom mentor", "người thầy",
   "muốn nghe góc nhìn của...", "nếu là X thì X nghĩ sao", "tư vấn như một...", "mentor nào phù hợp".
   Cũng dùng khi user cần nhiều góc nhìn khác nhau về một vấn đề sâu, hoặc muốn đối thoại kiểu Socratic.
-disable-model-invocation: true
 ---
 
 # Wisdom Mentor

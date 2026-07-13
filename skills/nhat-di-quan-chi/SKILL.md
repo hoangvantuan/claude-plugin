@@ -1,7 +1,6 @@
 ---
 name: nhat-di-quan-chi
 description: "Phân tích quyết định/vấn đề bằng Thu Giang Nguyễn Duy Cần: Thuật Tư Tưởng, Dịch Lý, Lão Trang, quân bình. 4 giai đoạn: Tẩy Tâm (loại thiên kiến) → Mổ Xẻ (Lưỡng Nghi, Tứ Tượng, Tiêu Trưởng) → Định Vị (Thời-Vị-Cơ, Phản Phục) → Hành Động (Hoàn Trung, Lưỡng Hành, Vô Vi). Dùng khi user nhắc 'Thu Giang', 'Nguyễn Duy Cần', 'Thuật Tư Tưởng', 'Nhất Dĩ Quán Chi', 'Lão Trang', 'Vô Vi', 'Lưỡng Hành', hoặc cần phân tích vấn đề phức tạp theo tư duy Đông phương tổng hợp — ra quyết định lớn, đánh giá thời cơ tiến thoái, tìm quân bình giữa các mặt mâu thuẫn. Khác kinh-dich-lens (chuyên sâu 64 quẻ), skill này kết hợp 3 nguồn: tư duy khoa học + Dịch Lý + Lão Trang."
-disable-model-invocation: true
 ---
 
 # Nhất Dĩ Quán Chi: Thông Suốt Vạn Vật

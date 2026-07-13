@@ -1,7 +1,6 @@
 ---
 name: deep-learner
 description: "Dẫn user hiểu sâu nội dung từng bước theo 4 lớp: Bản chất (ELI5, ẩn dụ) → Cơ chế & Nguyên lý → Kết nối liên lĩnh vực → Áp dụng vào đời sống. Phong cách Socratic, hỏi-đáp từng lớp. Input: URL, text, file. Trigger: giải thích cho tôi, dạy tôi, tôi muốn hiểu, explain this, teach me, learn about, đọc bài này giúp, hiểu sâu nội dung này, phân tích bài viết này để học. KHÁC deep-reader (skill này dạy user hiểu sâu qua đối thoại Socratic 4 lớp, deep-reader là 10 command xử lý nhanh: summary, critique, article...). KHÁC deep-insight (skill này dẫn dắt user học, deep-insight tự phân tích tìm cốt lõi vấn đề)."
-disable-model-invocation: true
 ---
 
 # Deep Learner
