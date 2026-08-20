@@ -1,6 +1,6 @@
 ---
 name: problem-solving
-description: "Kỹ thuật giải quyết vấn đề có hệ thống khi bị tắc (stuck). 5 kỹ thuật: Simplification Cascades (loại bỏ phức tạp), Collision-Zone Thinking (kết hợp ý tưởng bất ngờ), Meta-Pattern Recognition (nhận diện pattern xuyên domain), Inversion Exercise (đảo ngược giả định), Scale Game (test ở cực đại/cực tiểu). Dùng khi user 'bí', 'stuck', 'không biết giải sao', 'vấn đề phức tạp', 'special cases ngày càng nhiều', 'giải pháp thông thường không hiệu quả', 'cùng lỗi lặp lại nhiều chỗ', 'chỉ có 1 cách duy nhất', 'có scale được không', hoặc cần breakthrough thinking, tư duy sáng tạo giải bài toán khó."
+description: "Kỹ thuật giải quyết vấn đề có hệ thống khi bị tắc: simplification cascades, collision-zone, meta-pattern, inversion và scale game."
 argument-hint: "[problem description]"
 ---
 

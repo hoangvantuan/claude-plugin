@@ -1,6 +1,6 @@
 ---
 name: sequential-thinking
-description: "Phân tích từng bước cho vấn đề phức tạp: giả thuyết, kiểm chứng, revision, branching, đổi plan giữa chừng. Dùng khi cần suy nghĩ có cấu trúc (structured thinking), phân rã vấn đề lớn, lập kế hoạch thích ứng (adaptive planning), debug phức tạp, phân tích kiến trúc, hoặc bất kỳ vấn đề cần course correction giữa chừng. Trigger: 'suy nghĩ từng bước', 'phân tích step by step', 'think through this', 'break down this problem', hoặc vấn đề có scope chưa rõ cần khám phá dần."
+description: "Phân tích từng bước cho vấn đề phức tạp với giả thuyết, kiểm chứng, revision và branching."
 license: MIT
 argument-hint: "[problem to analyze step-by-step]"
 ---

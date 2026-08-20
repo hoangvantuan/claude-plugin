@@ -1,16 +1,6 @@
 ---
 name: m365-sharepoint
-description: >
-  Trigger this skill for SharePoint Online — PRIMARILY the documents shared inside a GROUP/TEAM:
-  the files in a team's "Shared Documents" library (the Files tab in Teams), said as "tài liệu nhóm",
-  "tài liệu/file chia sẻ trên nhóm/team", "file của team X", "file trong nhóm", "Shared Documents",
-  "thư viện tài liệu". Also covers SharePoint lists & list items, site files/folders
-  (upload/download/checkin/checkout/copy/move), permissions, and creating sites. Fire whenever a
-  request targets a TEAM/GROUP's files or a SharePoint site — đọc/list, tải lên (upload), tạo/xóa
-  file & folder, tạo list, thêm item, chia sẻ link, phân quyền. Casual or unaccented phrasing still
-  counts. This is SHARED/organizational storage, NOT personal — send the user's own private OneDrive
-  ("onedrive của tôi", "lên onedrive cá nhân") to m365-onedrive. For Teams chat/channels/members
-  (gửi tin nhắn, tạo channel, thành viên team) use m365-teams; for Google Drive use gws-drive.
+description: "SharePoint Online via the m365 CLI: a group/team's Shared Documents, site files and folders, lists, list items, permissions, and site creation."
 allowed-tools:
   - Bash
   - Read

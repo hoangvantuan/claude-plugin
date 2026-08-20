@@ -1,6 +1,6 @@
 ---
 name: substack-tools
-description: "Quản lý bài viết Substack qua CLI: draft, schedule, publish, list, sections, set-section, unschedule + scan/crawl newsletter khác (lấy tất cả bài, convert HTML→Markdown). Dùng khi user nói 'Substack', 'đăng bài Substack', 'tạo draft Substack', 'lên lịch Substack', 'publish Substack', 'liệt kê bài Substack', 'crawl newsletter', 'tải bài từ Substack', 'scan Substack', hoặc bất kỳ thao tác nào liên quan đến quản lý hoặc đọc nội dung Substack."
+description: "Quản lý bài viết Substack qua CLI (draft, schedule, publish, list, sections) và scan/crawl newsletter khác."
 ---
 
 # Substack Tools

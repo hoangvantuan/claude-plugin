@@ -1,6 +1,6 @@
 ---
 name: pinchtab
-description: "Browser automation for AI agents via PinchTab HTTP API/CLI. Navigate, extract text, fill forms, click elements, scrape pages, take screenshots, export PDF, multi-tab. Token-efficient (~800 tokens/page), built-in stealth, persistent login sessions. Dùng khi user nhắc 'PinchTab', 'pinchtab', hoặc cần tự động hóa trình duyệt qua PinchTab cụ thể (khác agent-browser). Hỗ trợ: scraping, login automation, pagination, form filling, screenshot, PDF export, batch actions via macro endpoint."
+description: "Browser automation for AI agents via the PinchTab HTTP API/CLI: navigate, extract, fill forms, click, scrape, screenshot, and export PDF."
 allowed-tools:
   - Bash
   - Read

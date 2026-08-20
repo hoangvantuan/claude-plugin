@@ -1,16 +1,6 @@
 ---
 name: m365-onedrive
-description: >
-  Trigger this skill for any action on the user's personal OneDrive — their own private Microsoft 365
-  cloud storage ("My files"), referred to as "onedrive", "onedrive cá nhân", "onedrive của tôi",
-  "trên onedrive", "lên onedrive". Fire the moment a request names OneDrive and wants to do something
-  with files or folders there: liệt kê/xem (list/browse), tạo/đổi tên/di chuyển/sao chép/xóa
-  (create/rename/move/copy/delete) files & folders, tải lên (upload local files), tải về (download),
-  tạo/gỡ link chia sẻ (share links), xem dung lượng trống/quota (free space), khôi phục bản cũ
-  (restore an earlier version). Casual, terse, or unaccented phrasing still counts — just proceed,
-  don't ask which storage they mean, and treat it as cloud storage rather than a local file task.
-  This is INDIVIDUAL cloud storage, NOT a team site: send a team/group's "Shared Documents" or
-  Files-tab documents to m365-sharepoint, Teams chat/channels to m365-teams, and Google Drive to gws-drive.
+description: "Quản lý file và folder trên OneDrive cá nhân (liệt kê, tải lên/về, di chuyển, chia sẻ link, khôi phục phiên bản) qua m365 CLI."
 allowed-tools:
   - Bash
   - Read

@@ -1,6 +1,6 @@
 ---
 name: codex-image
-description: "Tạo và chỉnh sửa ảnh bitmap qua OpenAI Codex CLI (gpt-image-2), có fallback gọi thẳng OpenAI API. Hỗ trợ: text-to-image, nền trong suốt (chroma-key + native transparency gpt-image-1.5), batch generation, image editing (style transfer qua codex exec -i, edit chính xác/mask qua API), size chính xác tới 4K, quality control. Trigger: tạo ảnh, generate image, vẽ icon, logo, banner, illustration, minh họa, transparent background, xóa nền, ảnh trong suốt, batch ảnh, sửa ảnh, edit image, chỉnh ảnh, tạo ảnh hàng loạt, inpainting, ảnh 4K. KHÁC ai-artist (skill này dùng OpenAI gpt-image-2 trực tiếp + hỗ trợ edit ảnh có sẵn, ai-artist dùng Nano Banana với 129 curated prompts). KHÔNG dùng khi cần sửa SVG/vector/icon-system có sẵn trong repo hoặc đồ họa nên làm bằng HTML/CSS/SVG code-native."
+description: "Tạo và chỉnh sửa ảnh bitmap qua OpenAI gpt-image-2 (fallback OpenAI API), hỗ trợ nền trong suốt, batch và edit ảnh tới 4K."
 argument-hint: "[mô tả ảnh] [--size WxH] [--transparent] [--batch N] [--edit input.png]"
 ---
 

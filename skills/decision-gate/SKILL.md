@@ -1,6 +1,6 @@
 ---
 name: decision-gate
-description: "Phán quyết go/no-go + ưu tiên cho một hạng mục kỹ thuật, xác minh bằng chứng read-only trước khi kết luận. Xử lý bug, feature, techdebt, hoặc task mơ hồ — verify trước, kết luận sau, chấm điểm RICE/ICE/WSJF, output decision brief. Trigger: nên làm không, có đáng làm không, go/no-go, đánh giá priority, ưu tiên task, bug này nghiêm trọng không, feature này có đáng không, techdebt này cần fix không, triage, đánh giá hạng mục, should we do this, prioritize this. Dùng khi cần quyết định CÓ NÊN LÀM hay không + mức ưu tiên cho MỘT item cụ thể."
+description: "Phán quyết go/no-go và chấm ưu tiên (RICE, ICE, WSJF) cho một hạng mục kỹ thuật, xác minh bằng chứng read-only trước khi kết luận."
 ---
 
 # Decision Gate — Phán quyết go/no-go có bằng chứng

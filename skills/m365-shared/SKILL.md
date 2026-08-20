@@ -1,9 +1,6 @@
 ---
 name: m365-shared
-description: >
-  CLI for Microsoft 365 (m365): shared patterns for authentication, installation, output formatting, and common flags.
-  Use when user mentions "m365 login", "m365 setup", "đăng nhập Microsoft 365", "m365 status", "kết nối Microsoft",
-  or when another m365-* skill needs auth/common pattern reference.
+description: "Shared patterns for the Microsoft 365 (m365) CLI: authentication, installation, output formatting, and common flags."
 allowed-tools:
   - Bash
   - Read

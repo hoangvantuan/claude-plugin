@@ -1,6 +1,6 @@
 ---
 name: prompt-engineering
-description: "Prompt engineering patterns, agent prompting best practices, persuasion principles cho LLM interaction. Dùng khi cần viết/tối ưu prompt, system prompt, hook, skill prompt, sub agent instruction, LLM template, few-shot examples, chain-of-thought, template systems, hoặc thiết kế system prompt. Cũng dùng khi hỏi về prompt design, context window management, degrees of freedom, instruction hierarchy, hoặc cách tăng hiệu quả prompt. Đây là tài liệu tham khảo (reference), không phải generator — dùng prompt-generator hoặc prompt-generator-v2 nếu cần TẠO prompt mới."
+description: "Tài liệu tham khảo về prompt engineering: few-shot, chain-of-thought, template systems, system prompt và agent prompting."
 ---
 
 # Prompt Engineering Patterns

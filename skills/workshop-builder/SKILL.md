@@ -1,15 +1,6 @@
 ---
 name: workshop-builder
-description: >
-  Thiết kế workshop theo Backwards Design (Wiggins & McTighe) + 4Cs (Sharon Bowman) + Kirkpatrick Model.
-  5 giai đoạn: Vision (mục tiêu Bloom) → Design (đánh giá + agenda 4Cs + hoạt động) → Prepare → Deliver → Follow-up.
-  Hỗ trợ online/offline/hybrid, mọi thời lượng (2h đến multi-day). Output: workshop plan đầy đủ với module chi tiết,
-  timeline, hoạt động cụ thể, facilitator cue cards.
-
-  Dùng khi user muốn thiết kế workshop, training, buổi đào tạo, seminar tương tác, hoặc nói "workshop", "training",
-  "thiết kế buổi học", "agenda workshop", "facilitation", "hoạt động nhóm", "icebreaker", "energizer",
-  "backwards design", "4Cs", "Kirkpatrick", "mục tiêu học tập", "learning objectives", "buổi đào tạo",
-  "tập huấn", "bootcamp", "hackathon", "offsite", "team building có nội dung học".
+description: "Thiết kế workshop theo Backwards Design + 4Cs + Kirkpatrick qua 5 giai đoạn Vision, Design, Prepare, Deliver, Follow-up."
 ---
 
 # Workshop Builder

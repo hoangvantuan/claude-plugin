@@ -1,6 +1,6 @@
 ---
 name: skill-auto-improver
-description: "Audit và cải tiến skill Claude Code: chấm điểm chất lượng (8 tiêu chí), phát hiện anti-patterns, đề xuất refactor, đo trước/sau, giữ skill gọn không phình. Dùng khi user nói 'cải tiến skill', 'review skill', 'audit skill', 'skill này chưa tốt', 'tối ưu skill', 'refactor skill', 'nâng cấp SKILL.md', hoặc muốn phân tích và cải thiện chất lượng một skill hiện có. Áp dụng 11 nguyên lý bất biến và improvement patterns có sẵn."
+description: "Audit và cải tiến skill Claude Code: chấm điểm chất lượng, phát hiện anti-pattern, đề xuất refactor và đo trước/sau."
 ---
 
 # Skill Auto-Improver

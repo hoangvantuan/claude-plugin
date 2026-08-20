@@ -1,15 +1,6 @@
 ---
 name: m365-teams
-description: >
-  Trigger this skill for Microsoft Teams collaboration — TEAMS, CHANNELS, MESSAGES, CHATS, and
-  MEMBERS via the m365 CLI. Fire whenever a request is about: gửi/đọc tin nhắn trong channel
-  (send/read channel messages), nhắn tin/chat 1:1 hoặc group chat với người khác, tạo/liệt kê team
-  (create/list teams), tạo/xóa/quản lý channel (manage channels), thêm/bớt/xem thành viên team hoặc
-  channel (members). Trigger phrases: "teams", "gửi tin nhắn teams", "nhắn qua teams", "chat teams",
-  "channel", "kênh", "tạo team", "thành viên team", "member team", "danh sách team". Casual or
-  unaccented phrasing still counts. This skill is about MESSAGING & team/channel structure, NOT file
-  storage — for a team's documents / "Shared Documents" / Files tab use m365-sharepoint, and for
-  personal OneDrive files use m365-onedrive. Non-Microsoft chat (Zalo, Slack) and Outlook email are out of scope.
+description: "Microsoft Teams via the m365 CLI: teams, channels, messages, chats, and members."
 allowed-tools:
   - Bash
   - Read

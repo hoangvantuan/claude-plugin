@@ -1,6 +1,6 @@
 ---
 name: project-memory
-description: "Bộ nhớ tri thức cấp dự án tự cải tiến — 3 op (capture/consolidate/recall), 3 loại entry (Tool/Map/Fact), index routing, script Python giữ index đồng bộ. Dữ liệu ghi vào memory/ ở gốc repo. Dùng khi user muốn 'ghi nhớ bài học', 'capture lesson', 'lưu context dự án', 'đúc kết tri thức', 'consolidate', 'recall', 'tra cứu memory', 'project memory', 'ghi gotcha', 'lưu cách làm', hoặc khi kết thúc task muốn lưu lại kinh nghiệm. Capture tự động gợi ý cuối phiên khi phát hiện tín hiệu đáng ghi (gotcha, quy trình lặp, skill gap). Khác pk-capture (hệ thống .cockpit/ cá nhân), skill này gắn với từng repo cụ thể."
+description: "Bộ nhớ tri thức cấp dự án tự cải tiến với 3 thao tác capture/consolidate/recall, lưu vào memory/ ở gốc repo."
 ---
 
 # Project Memory

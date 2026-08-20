@@ -1,6 +1,6 @@
 ---
 name: prompt-generator
-description: "Tạo prompt chất lượng cao hoặc cải tiến prompt có sẵn — meta-prompting với task decomposition, expert personas, verification checklist. Dùng khi user nói 'tạo prompt', 'viết prompt cho tôi', 'giúp tôi viết prompt', 'cải tiến prompt này', 'prompt này chưa tốt', 'review prompt', hoặc cần prompt cho system/task/conversation/role. Phiên bản cơ bản — dùng prompt-generator-v2 (KERNEL) nếu cần cấu trúc chặt hơn và prompt chaining."
+description: "Tạo hoặc cải tiến prompt chất lượng cao bằng meta-prompting với task decomposition, expert personas và verification checklist."
 ---
 
 # Prompt Generator

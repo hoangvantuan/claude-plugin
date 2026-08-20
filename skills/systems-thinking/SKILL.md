@@ -1,15 +1,6 @@
 ---
 name: systems-thinking
-description: >
-  Phân tích tư duy hệ thống theo framework Donella Meadows (Thinking in Systems): vẽ system map, stocks/flows,
-  feedback loops (reinforcing/balancing), phát hiện system traps, tìm leverage points, đề xuất can thiệp. Output có Mermaid diagrams.
-
-  Dùng khi user muốn hiểu TẠI SAO một vấn đề cứ lặp lại, tìm nguyên nhân cấu trúc thay vì đổ lỗi cá nhân,
-  phân tích hệ thống phức tạp (tổ chức, xã hội, kinh tế, cá nhân), hoặc nói "feedback loop", "vòng lặp", "hệ thống",
-  "cấu trúc gây ra hành vi", "tại sao vấn đề này không giải quyết được", "leverage point", "điểm đòn bẩy",
-  "stocks and flows", "tư duy hệ thống", "systems thinking", "Donella Meadows", "vicious cycle", "virtuous cycle".
-  Cũng dùng khi user muốn phân tích một hiện tượng dai dẳng (nghèo đói, ô nhiễm, burnout, xung đột leo thang)
-  từ góc nhìn cấu trúc thay vì triệu chứng.
+description: "Phân tích tư duy hệ thống theo framework Donella Meadows: system map, stocks/flows, feedback loops, traps và leverage points."
 ---
 
 # Systems Thinking Analysis

@@ -1,6 +1,6 @@
 ---
 name: pptx-creator
-description: "Tạo PowerPoint (.pptx) đẹp, chuyên nghiệp bằng PptxGenJS (Node.js) — hỗ trợ font tiếng Việt (Be Vietnam Pro), design system (8 moods, 4 style recipes, color palettes), layout helpers chống overlap, series mode cho nhiều deck cùng bộ. Dùng khi user muốn 'tạo slide', 'làm PowerPoint', 'tạo presentation', 'tạo deck', 'làm bài trình bày', 'slide tiếng Việt', hoặc cần generate file .pptx từ code. Gồm 7-step workflow: requirements → palette/font → mood/style → outline → generate JS → compile → QA (visual + content). Khác skill pptx (đọc/sửa file có sẵn), skill này TẠO MỚI presentation từ đầu bằng code."
+description: "Tạo file PowerPoint (.pptx) đẹp, chuyên nghiệp bằng PptxGenJS với hỗ trợ font tiếng Việt và design system."
 ---
 
 # PPTX Creator

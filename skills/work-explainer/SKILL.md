@@ -1,15 +1,6 @@
 ---
 name: work-explainer
-description: >
-  Personal teacher — giải thích công việc đã làm thành tài liệu học sâu (9-step framework): cách tiếp cận & lý do,
-  con đường không đi, các mảnh ghép kết nối, công cụ & phương pháp, đánh đổi, sai lầm & ngõ cụt, bẫy cần tránh,
-  mắt chuyên gia vs người mới, bài học mang đi được. Output file FOR {Name} dạng conversation, có analogies.
-
-  Dùng khi user vừa hoàn thành task/project và muốn hiểu sâu những gì đã làm, rút bài học, hoặc nói
-  "giải thích lại", "explain what we did", "tại sao làm vậy", "bài học rút ra", "viết breakdown",
-  "work explainer", "dạy lại cho mình", "tôi học được gì", "tổng kết task", "recap", "what did we learn",
-  "tại sao chọn cách này", "tradeoff là gì". Cũng dùng khi user muốn biến kinh nghiệm làm việc thành
-  tài liệu học tập có thể tái sử dụng.
+description: "Giải thích công việc đã làm thành tài liệu học sâu theo framework 9 bước (cách tiếp cận, đánh đổi, sai lầm, bài học)."
 ---
 
 # Work Explainer

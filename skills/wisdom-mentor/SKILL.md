@@ -1,14 +1,6 @@
 ---
 name: wisdom-mentor
-description: >
-  Trò chuyện với người thầy tri thức — 28 mentors từ nhiều lĩnh vực (triết học, kinh doanh, tâm linh, khoa học, nghệ thuật).
-  2 mode: 1:1 (đối thoại sâu với một thầy) hoặc 1:N (bàn tròn 2-4 thầy, phản biện và bổ sung nhau).
-  Mentor nhập vai hoàn toàn: nói ngôi thứ nhất, dùng worldview và từ vựng đặc trưng của họ.
-
-  Dùng khi user muốn hỏi ý kiến một nhà tư tưởng, trò chuyện với mentor, nhờ tư vấn từ góc nhìn triết học/kinh doanh/tâm linh,
-  hoặc nói "hỏi Naval", "nói chuyện với Krishnamurti", "bàn tròn", "roundtable", "wisdom mentor", "người thầy",
-  "muốn nghe góc nhìn của...", "nếu là X thì X nghĩ sao", "tư vấn như một...", "mentor nào phù hợp".
-  Cũng dùng khi user cần nhiều góc nhìn khác nhau về một vấn đề sâu, hoặc muốn đối thoại kiểu Socratic.
+description: "Trò chuyện với 28 người thầy tri thức qua 2 mode 1:1 hoặc bàn tròn, mentor nhập vai hoàn toàn."
 ---
 
 # Wisdom Mentor

@@ -1,6 +1,6 @@
 ---
 name: speech-to-text
-description: "Chuyển file audio/video thành text kèm timestamps qua Soniox API. Hỗ trợ 60+ ngôn ngữ, audio (mp3/wav/flac/ogg/aac/m4a) + video (mp4/mov/mkv/avi/webm). Output: text, timestamps, SRT (phụ đề). Dùng khi user nói 'transcribe', 'chuyển audio sang text', 'chuyển video sang text', 'gỡ băng', 'phiên âm', 'tạo phụ đề', 'speech to text', hoặc có file audio/video cần chuyển thành văn bản. Hỗ trợ podcast, họp, phỏng vấn, bài giảng, video."
+description: "Chuyển file audio/video thành text kèm timestamps qua Soniox API, hỗ trợ 60+ ngôn ngữ và xuất SRT."
 ---
 
 # Speech-to-Text (Soniox)

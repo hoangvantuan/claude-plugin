@@ -1,6 +1,6 @@
 ---
 name: social-post
-description: "Viết bài social media chia sẻ góc nhìn chiều sâu 200-500 từ cho Facebook, Threads, LinkedIn, Zalo, X. Bài tự có giá trị, viết như người không như AI, không bán hàng. Dùng khi user nói 'viết bài Facebook', 'viết post', 'viết status', 'caption dài', 'viết bài LinkedIn', 'viết Threads', 'đăng mạng xã hội', 'social post', 'chia sẻ suy nghĩ về...', hoặc muốn viết bài chia sẻ insight/trải nghiệm/góc nhìn lên mạng xã hội. Không dùng cho quảng cáo, marketing copy, hay bài bán hàng."
+description: "Viết bài social media chia sẻ góc nhìn chiều sâu 200-500 từ cho Facebook, Threads, LinkedIn, Zalo, X."
 ---
 
 # Social Post Generator
