@@ -38,6 +38,8 @@ m365 request --url 'https://graph.microsoft.com/v1.0/me/events' --method post \
 
 The response comes back as `type: "seriesMaster"`, and `calendarView` expands the individual occurrences (verified: a 4-week series yields 4 `occurrence` entries).
 
+**`daysOfWeek` takes plain strings**, e.g. `["monday","wednesday"]`. The typed object form `[{"day":"monday"}]` is rejected with 400 `UnableToDeserializePostBody` (measured for real, five payload variants).
+
 Common `pattern` shapes:
 
 | Need | `pattern` |

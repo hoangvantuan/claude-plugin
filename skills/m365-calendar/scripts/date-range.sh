@@ -9,7 +9,8 @@
 #      The script anchors midnight in VIETNAM time and converts to UTC, so "week" prints
 #      ...T17:00:00Z of the previous day, which is correct, not a bug.
 #
-# Usage: read START END < <(./date-range.sh week)
+# Usage: RANGE=$(./date-range.sh week); START="${RANGE% *}"; END="${RANGE#* }"
+# Avoid `read < <(./date-range.sh week)`: process substitution is a syntax error under POSIX sh.
 # The date -v syntax is BSD/macOS. On Linux switch to date -d.
 
 set -euo pipefail

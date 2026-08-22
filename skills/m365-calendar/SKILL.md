@@ -38,8 +38,10 @@ USER=$(m365 status -o json --query 'connectedAs' | tr -d '"')
 # while cwd is the project).
 DR="<skill-directory-path>/scripts/date-range.sh"
 
-# Date range, already anchored to midnight Vietnam time
-read START END < <("$DR" week)
+# Date range, already anchored to midnight Vietnam time. Do NOT use `read < <(...)`:
+# process substitution is not portable, it is a syntax error under POSIX `sh`.
+# Command substitution is verified working in both bash and zsh.
+RANGE=$("$DR" week); START="${RANGE% *}"; END="${RANGE#* }"
 ```
 
 Reading someone else's calendar requires that calendar to be shared with you, or admin rights. On a 403, state the permission limit plainly instead of probing around with other commands.
@@ -70,7 +72,7 @@ Not available with the m365 CLI default app: working hours and automatic replies
 This is the most frequent task, and `calendarView` is the only correct route because it expands each occurrence of a recurring series.
 
 ```bash
-read START END < <("$DR" week)
+RANGE=$("$DR" week); START="${RANGE% *}"; END="${RANGE#* }"
 
 m365 request \
   --url "https://graph.microsoft.com/v1.0/me/calendarView?startDateTime=$START&endDateTime=$END&\$select=subject,start,end,location,isAllDay,type,seriesMasterId&\$orderby=start/dateTime&\$top=200" \
@@ -159,7 +161,7 @@ m365 request --url 'https://graph.microsoft.com/v1.0/me/events' --method post \
   -o json --query '{id:id, subject:subject, start:start.dateTime}'
 ```
 
-To create in a different calendar, change the URL to `me/calendars/{calendarId}/events`.
+To create in a different calendar, change the URL to `me/calendars/{calendarId}/events`. Native `--id` flags take the raw ID untouched. For a hand-built URL, URL-encode it first as a precaution: `ENC=$(jq -rn --arg s "$CALID" '$s|@uri')`. Measured ids are base64url (`-`, `_`, `=`) and splice in fine unencoded, but Graph does not guarantee that alphabet, and a `/` or `+` would silently break the path.
 
 **Avoid duplicate creation**: if the POST times out or its success is unclear, do not resend it right away. Read the `calendarView` for that range first, because a second POST creates another event rather than overwriting. Watch for one easy variant of this: an error appearing on the **line after** the POST (a shell error, an empty variable, broken quoting) does not mean the POST failed. The event is already on the calendar; check before rerunning.
 
@@ -241,11 +243,13 @@ This is the easiest thing in the whole skill to get wrong, because the two look 
 | `singleInstance` | standalone event | changes itself |
 | `occurrence` | one occurrence of a series, carries `seriesMasterId` | changes **that occurrence only**, it becomes an `exception`, the others stay untouched |
 | `exception` | an occurrence already edited on its own | keeps editing that occurrence |
-| `seriesMaster` | the series definition | changes **all** occurrences that were not edited individually |
+| `seriesMaster` | the series definition | changes **all** occurrences; PATCHing its `start`/`end` additionally **resets** individually edited occurrences |
 
 Verified: a 4-occurrence weekly Monday series, PATCHing the second occurrence's ID to move it to 11:00, results in that occurrence becoming an `exception` at 11:00 while the other three stay at 09:00.
 
 Practical rule: when the user says "move tomorrow's meeting", ask explicitly whether they mean **that occurrence only or from now on**. Moving one occurrence PATCHes the `occurrence` ID; changing the series takes the `seriesMasterId` and PATCHes that.
+
+Measured for real: with one `exception` in the series, PATCHing only the `subject` on the master preserves that exception at its moved time; PATCHing `start`/`end` on the master wipes it, the occurrence snaps back to the new pattern time and reverts to type `occurrence`. Before moving a whole series that has hand-edited occurrences, warn the user those edits will be lost.
 
 ---
 
@@ -255,7 +259,7 @@ Practical rule: when the user says "move tomorrow's meeting", ask explicitly whe
 
 ```bash
 USER=$(m365 status -o json --query 'connectedAs' | tr -d '"')
-read START END < <("$DR" week)
+RANGE=$("$DR" week); START="${RANGE% *}"; END="${RANGE#* }"
 echo "Range in view: $START to $END"   # print it so the user can double-check
 m365 request --url "https://graph.microsoft.com/v1.0/me/calendarView?startDateTime=$START&endDateTime=$END&\$select=subject,start,end,location&\$orderby=start/dateTime&\$top=200" \
   --prefer 'outlook.timezone="SE Asia Standard Time"' \
@@ -273,7 +277,7 @@ m365 request --url "https://graph.microsoft.com/v1.0/me/calendarView?startDateTi
 ### 7.3 Move one occurrence of a recurring series
 
 ```bash
-read START END < <("$DR" tomorrow)
+RANGE=$("$DR" tomorrow); START="${RANGE% *}"; END="${RANGE#* }"
 # Fetch that occurrence, including type so you know whether you hold an occurrence or a series
 m365 request --url "https://graph.microsoft.com/v1.0/me/calendarView?startDateTime=$START&endDateTime=$END&\$select=id,subject,type,seriesMasterId,start" \
   --prefer 'outlook.timezone="SE Asia Standard Time"' \

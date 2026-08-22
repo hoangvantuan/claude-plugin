@@ -119,6 +119,21 @@ Common errors and solutions:
 | `Access denied` | Insufficient permissions | Check required permissions in `--help` |
 | `Resource not found` | Wrong ID or URL | Verify resource exists via list command |
 | `Request throttled` | Too many requests | Wait and retry |
+| `Request failed with status code 4xx` | `m365 request` swallows the Graph error body | Rerun the same call with `--debug`, see below |
+
+### Reading the real error behind a failed `m365 request`
+
+On a 4xx, `m365 request` prints only the status line and drops the response body, which is where Graph states what is actually wrong. Rerun the identical call with `--debug` and read the `Request error:` block:
+
+```bash
+# Without --debug:  Error: Request failed with status code 400
+m365 request --url 'https://graph.microsoft.com/v1.0/me/events?$select=nonExistent' -o json --debug 2>&1 \
+  | grep -E '"code"|"message"'
+# "code": "RequestBroker--ParseUri",
+# "message": "Could not find a property named 'nonExistent' on type 'Microsoft.OutlookServices.Event'."
+```
+
+Do this before guessing at a cause: a 400 from a malformed request body and a 400 from a wrong property name look identical without it.
 
 ## Security Rules
 
