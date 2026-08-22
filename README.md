@@ -26,6 +26,7 @@ claude plugin install gh:hoangvantuan/shun-claude-plugin
 | `ghost-blog` | Ghost CMS blog management |
 | `kinh-dich-lens` | Phân tích tình huống qua Kinh Dịch: 64 Quẻ & Lục Hào, Âm Dương tiêu trưởng, Ngũ Hành cân bằng hệ thống, Biến Thông (Nguyên-Hanh-Lợi-Trinh), Đạo Quân Tử tu dưỡng |
 | `m365-shared` | CLI for Microsoft 365: shared patterns — authentication (browser/device code/certificate/secret), installation, output formatting (json + JMESPath), common flags, error handling |
+| `m365-calendar` | Outlook calendar qua m365 CLI + Microsoft Graph: đọc lịch theo khoảng thời gian (`calendarView`, bung cả event lặp lại), CRUD calendar, tạo/sửa event, mời người tham dự, họp online Teams, đặt phòng họp (`beta/me/findRooms`), xem rảnh/bận, tìm khung giờ chung, dời một buổi trong chuỗi định kỳ, huỷ/xoá event. Kèm script quy đổi khoảng thời gian neo theo GMT+7 |
 | `m365-teams` | Microsoft Teams management qua m365 CLI: teams, channels, messages (channel + chat), members. Hỗ trợ gửi tin nhắn HTML, chat 1:1/group, quản lý thành viên team/channel |
 | `m365-onedrive` | OneDrive personal file management qua m365 CLI: resolve OneDrive URL non-admin (Graph `me/drive`), upload/download/copy/move files, quản lý folder, sharing links, file versions |
 | `m365-sharepoint` | SharePoint Online qua m365 CLI — trọng tâm: truy cập/ghi **tài liệu nhóm/Teams** (resolve site qua group, non-admin). Gồm sites, lists, list items (OData + CAML), files (upload/download/checkin/checkout), folders, permissions (users/groups/sharing) |
