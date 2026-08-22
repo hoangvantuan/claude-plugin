@@ -40,7 +40,7 @@ If not logged in, guide user through login:
 m365 login
 ```
 
-Default: **device code flow** — hiển thị mã code để xác thực qua trình duyệt. Muốn mở trình duyệt đăng nhập trực tiếp, dùng `m365 login --authType browser`.
+Default: **device code flow** — prints a code you enter in a browser to authenticate. To open a browser and sign in directly, use `m365 login --authType browser`.
 
 For other auth methods (certificate, secret, device code), see `references/authentication.md`.
 

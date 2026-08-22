@@ -11,8 +11,8 @@ allowed-tools:
 ## Prerequisites
 
 ```bash
-which m365 || echo "Chưa cài m365 CLI. Chạy: npm i -g @pnp/cli-microsoft365"
-m365 status || echo "Chưa đăng nhập. Chạy: m365 login"
+which m365 || echo "m365 CLI not installed. Run: npm i -g @pnp/cli-microsoft365"
+m365 status || echo "Not signed in. Run: m365 login"
 ```
 
 For auth details, see `../m365-shared/references/authentication.md`.
@@ -29,22 +29,22 @@ For auth details, see `../m365-shared/references/authentication.md`.
 
 ## 1. Sites
 
-> Trường hợp phổ biến nhất là **truy cập tài liệu của một nhóm/team** bạn là thành viên (KHÔNG cần quyền admin). Resolve site URL của nhóm qua Graph rồi dùng làm `SITE_URL` cho mục **4. Files** / **5. Folders**. Tài liệu nhóm nằm trong thư viện **"Shared Documents"** (tab Files trong Teams).
+> The most common case is **reaching the documents of a group/team you belong to** (NO admin rights needed). Resolve the group site URL through Graph, then use it as `SITE_URL` for **4. Files** / **5. Folders**. Group documents live in the **"Shared Documents"** library (the Files tab in Teams).
 
 ### Resolve Team/Group Site URL (non-admin)
 
 ```bash
-# 1. Liệt kê các nhóm/team bạn tham gia, lấy group id
+# 1. List the groups/teams you joined and take the group id
 m365 teams team list --joined -o json --query '[].{id:id, name:displayName}'
 
-# 2. Lấy SITE_URL (webUrl) của nhóm từ group id — non-admin, dùng cho mọi lệnh spo bên dưới
+# 2. Get the group SITE_URL (webUrl) from the group id — non-admin, used by every spo command below
 m365 request --url 'https://graph.microsoft.com/v1.0/groups/<GROUP_ID>/sites/root?$select=webUrl' -o json --query 'webUrl'
-# vd: https://miichisoftjsc.sharepoint.com/sites/AICLUB
+# e.g. https://miichisoftjsc.sharepoint.com/sites/AICLUB
 ```
 
 ### List Sites (admin)
 
-> `spo site list` cần quyền **SharePoint Administrator** — user thường nhận lỗi *Unauthorized*. Để làm việc với tài liệu nhóm, dùng cách resolve site qua group ở trên.
+> `spo site list` requires **SharePoint Administrator** — a regular user gets *Unauthorized*. To work with group documents, resolve the site through the group as shown above.
 
 ```bash
 # All sites
@@ -278,7 +278,7 @@ m365 spo file remove --webUrl "SITE_URL" --url "Shared Documents/unwanted.pdf" -
 ### Check In/Out
 
 ```bash
-# Check out (option đúng là --url, KHÔNG phải --fileUrl)
+# Check out (the correct option is --url, NOT --fileUrl)
 m365 spo file checkout --webUrl "SITE_URL" --url "Shared Documents/contract.docx"
 
 # Check in
@@ -328,7 +328,7 @@ m365 spo folder move --webUrl "SITE_URL" \
 ### Delete Folder
 
 ```bash
-# Confirm with user first! (option đúng là --url, KHÔNG phải --folderUrl)
+# Confirm with user first! (the correct option is --url, NOT --folderUrl)
 m365 spo folder remove --webUrl "SITE_URL" --url "Shared Documents/Unwanted" --force
 ```
 
@@ -400,8 +400,8 @@ m365 spo file sharinglink remove --webUrl "SITE_URL" --fileUrl "Shared Documents
 
 ## References
 
-| File | Khi nào đọc |
+| File | When to read |
 |------|-------------|
 | `references/advanced-commands.md` | Page, Search, Content Type, Hub Site, Site Design, Tenant Admin |
 | `../m365-shared/SKILL.md` | Output format, JMESPath, error handling |
-| `../m365-shared/references/authentication.md` | Auth methods chi tiết |
+| `../m365-shared/references/authentication.md` | Auth methods in detail |

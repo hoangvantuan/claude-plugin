@@ -1,27 +1,27 @@
-# Graph recipes — các ca ghi và tra cứu ít gặp hơn
+# Graph recipes — the less common write and lookup cases
 
-Mọi lệnh ở đây đi qua `m365 request`, nên ba quy tắc của đường Graph luôn áp dụng: body heredoc ra file rồi truyền `@đường-dẫn`, thêm `--content-type "application/json"` khi có body, và thêm `--prefer 'outlook.timezone="SE Asia Standard Time"'` với mọi thứ có yếu tố thời gian.
+Every command here goes through `m365 request`, so the three rules of the Graph route always apply: heredoc the body to a file and pass `@path`, add `--content-type "application/json"` whenever there is a body, and add `--prefer 'outlook.timezone="SE Asia Standard Time"'` to anything with a time component.
 
-Mục lục:
+Contents:
 
-1. [Event lặp lại (recurrence)](#1-event-lặp-lại)
-2. [Event cả ngày](#2-event-cả-ngày)
-3. [Trả lời thư mời](#3-trả-lời-thư-mời)
-4. [Phòng họp](#4-phòng-họp)
-5. [Xem rảnh bận (getSchedule)](#5-xem-rảnh-bận)
-6. [Tìm khung giờ chung (findMeetingTimes)](#6-tìm-khung-giờ-chung)
+1. [Recurring events](#1-recurring-events)
+2. [All-day events](#2-all-day-events)
+3. [Responding to invitations](#3-responding-to-invitations)
+4. [Meeting rooms](#4-meeting-rooms)
+5. [Free/busy (getSchedule)](#5-freebusy)
+6. [Finding a common slot (findMeetingTimes)](#6-finding-a-common-slot)
 
 ---
 
-## 1. Event lặp lại
+## 1. Recurring events
 
-`recurrence` gồm hai phần bắt buộc đi cùng nhau: `pattern` trả lời "lặp thế nào" và `range` trả lời "lặp đến bao giờ". Thiếu một trong hai thì Graph từ chối.
+`recurrence` has two mandatory halves that travel together: `pattern` answers "how does it repeat" and `range` answers "until when". Graph rejects the request if either is missing.
 
 ```bash
 SP="${TMPDIR:-/tmp}"
 cat > "$SP/ev.json" <<'JSON'
 {
-  "subject": "Họp đầu tuần",
+  "subject": "Monday standup",
   "start": { "dateTime": "2026-09-07T09:00:00", "timeZone": "SE Asia Standard Time" },
   "end":   { "dateTime": "2026-09-07T09:30:00", "timeZone": "SE Asia Standard Time" },
   "recurrence": {
@@ -36,42 +36,42 @@ m365 request --url 'https://graph.microsoft.com/v1.0/me/events' --method post \
   --prefer 'outlook.timezone="SE Asia Standard Time"' -o json --query '{id:id, type:type}'
 ```
 
-Kết quả trả về `type: "seriesMaster"`, và `calendarView` sẽ bung ra từng buổi (đã xác minh: chuỗi 4 tuần cho ra 4 buổi `occurrence`).
+The response comes back as `type: "seriesMaster"`, and `calendarView` expands the individual occurrences (verified: a 4-week series yields 4 `occurrence` entries).
 
-Các dạng `pattern` hay dùng:
+Common `pattern` shapes:
 
-| Nhu cầu | `pattern` |
-|---------|-----------|
-| hàng ngày | `{"type":"daily","interval":1}` |
-| các ngày trong tuần | `{"type":"weekly","interval":1,"daysOfWeek":["monday","wednesday","friday"]}` |
-| hai tuần một lần | `{"type":"weekly","interval":2,"daysOfWeek":["tuesday"]}` |
-| ngày 15 hàng tháng | `{"type":"absoluteMonthly","interval":1,"dayOfMonth":15}` |
-| thứ Hai đầu mỗi tháng | `{"type":"relativeMonthly","interval":1,"daysOfWeek":["monday"],"index":"first"}` |
+| Need | `pattern` |
+|------|-----------|
+| daily | `{"type":"daily","interval":1}` |
+| specific weekdays | `{"type":"weekly","interval":1,"daysOfWeek":["monday","wednesday","friday"]}` |
+| every two weeks | `{"type":"weekly","interval":2,"daysOfWeek":["tuesday"]}` |
+| the 15th of every month | `{"type":"absoluteMonthly","interval":1,"dayOfMonth":15}` |
+| the first Monday of every month | `{"type":"relativeMonthly","interval":1,"daysOfWeek":["monday"],"index":"first"}` |
 
-`index` nhận `first`, `second`, `third`, `fourth`, `last`.
+`index` accepts `first`, `second`, `third`, `fourth`, `last`.
 
-Các dạng `range`:
+The `range` shapes:
 
-| Nhu cầu | `range` |
-|---------|---------|
-| đến một ngày cụ thể | `{"type":"endDate","startDate":"2026-09-07","endDate":"2026-12-28"}` |
-| lặp N lần | `{"type":"numbered","startDate":"2026-09-07","numberOfOccurrences":10}` |
-| không có ngày kết thúc | `{"type":"noEnd","startDate":"2026-09-07"}` |
+| Need | `range` |
+|------|---------|
+| until a specific date | `{"type":"endDate","startDate":"2026-09-07","endDate":"2026-12-28"}` |
+| repeat N times | `{"type":"numbered","startDate":"2026-09-07","numberOfOccurrences":10}` |
+| no end date | `{"type":"noEnd","startDate":"2026-09-07"}` |
 
-`startDate` trong `range` phải trùng ngày của `start.dateTime`. Lệch nhau thì Graph **không báo lỗi**: nó âm thầm dịch buổi đầu tiên sang ngày `startDate`. Đã đo thật: `start.dateTime` là 07/09 mà `startDate` ghi 14/09 thì event tạo ra bắt đầu từ 14/09, POST vẫn trả về 201 như bình thường. Cách tự bảo vệ là đọc lại `start.dateTime` trong response của POST và đối chiếu với ngày mình định đặt.
+`startDate` inside `range` must match the date of `start.dateTime`. When they disagree, Graph **raises no error**: it silently shifts the first occurrence to `startDate`. Measured for real: `start.dateTime` on Sep 7 with `startDate` written as Sep 14 produced an event starting Sep 14, and the POST still returned 201 as usual. The way to protect yourself is to read `start.dateTime` back from the POST response and compare it with the date you intended.
 
-Sửa cả chuỗi thì PATCH vào ID của `seriesMaster`. Xem mục 6 của SKILL.md để phân biệt với việc sửa một buổi.
+To change the whole series, PATCH the `seriesMaster` ID. See section 6 of SKILL.md for the difference from editing one occurrence.
 
 ---
 
-## 2. Event cả ngày
+## 2. All-day events
 
-Ba điều kiện phải đủ cùng lúc, thiếu một là Graph báo lỗi: `isAllDay: true`, giờ của `start` và `end` đều là `00:00:00`, và `end` là ngày **hôm sau** ngày cuối cùng của event.
+Three conditions must hold at once, and Graph errors if one is missing: `isAllDay: true`, the times of both `start` and `end` are `00:00:00`, and `end` is the day **after** the event's last day.
 
 ```bash
 cat > "$SP/ev.json" <<'JSON'
 {
-  "subject": "Nghỉ phép",
+  "subject": "Annual leave",
   "isAllDay": true,
   "start": { "dateTime": "2026-09-12T00:00:00", "timeZone": "SE Asia Standard Time" },
   "end":   { "dateTime": "2026-09-13T00:00:00", "timeZone": "SE Asia Standard Time" }
@@ -79,27 +79,27 @@ cat > "$SP/ev.json" <<'JSON'
 JSON
 ```
 
-Ví dụ trên là nghỉ **một** ngày 12/09. Nghỉ 12 đến 14/09 thì `end` là `2026-09-15T00:00:00`.
+The example above is **one** day off, Sep 12. For Sep 12 through 14, `end` becomes `2026-09-15T00:00:00`.
 
 ---
 
-## 3. Trả lời thư mời
+## 3. Responding to invitations
 
-Ba hành động, cùng một hình dạng, khác nhau ở đoạn cuối URL: `accept`, `tentativelyAccept`, `decline`.
+Three actions, one shape, differing only in the last URL segment: `accept`, `tentativelyAccept`, `decline`.
 
 ```bash
 m365 request --url "https://graph.microsoft.com/v1.0/me/events/EVENT_ID/accept" --method post \
   --content-type "application/json" \
-  --body '{"comment":"Tôi tham dự được","sendResponse":true}'
+  --body '{"comment":"I can attend","sendResponse":true}'
 ```
 
-`sendResponse: true` là gửi thư trả lời cho người tổ chức, tức có phát ra ngoài. Người dùng nên biết điều đó trước khi chạy, và biết mình đang trả lời cuộc họp nào, nên in tiêu đề với người tổ chức ra cho họ xác nhận trước.
+`sendResponse: true` mails the reply to the organizer, so something does leave the mailbox. The user should know that before you run it, and should know which meeting is being answered, so print the subject and organizer for them to confirm first.
 
-Đề xuất giờ khác cho người tổ chức thì thêm `proposedNewTime` vào body của `tentativelyAccept` hoặc `decline`:
+To propose a different time to the organizer, add `proposedNewTime` to the body of `tentativelyAccept` or `decline`:
 
 ```json
 {
-  "comment": "Giờ đó tôi có việc, đề xuất muộn hơn 1 tiếng",
+  "comment": "I have a conflict then, proposing one hour later",
   "sendResponse": true,
   "proposedNewTime": {
     "start": { "dateTime": "2026-09-05T15:00:00", "timeZone": "SE Asia Standard Time" },
@@ -110,59 +110,59 @@ m365 request --url "https://graph.microsoft.com/v1.0/me/events/EVENT_ID/accept" 
 
 ---
 
-## 4. Phòng họp
+## 4. Meeting rooms
 
-Liệt kê phòng phải đi qua `beta`, vì `v1.0/places` và `m365 outlook room list` đều trả 403 với account thường (cần `Place.Read.All` mức admin). Endpoint `beta/me/findRooms` chỉ cần `Calendars.Read`, đây là đường Outlook app dùng:
+Listing rooms has to go through `beta`, because both `v1.0/places` and `m365 outlook room list` return 403 for a regular account (they need admin-level `Place.Read.All`). The `beta/me/findRooms` endpoint only needs `Calendars.Read`, and it is the route the Outlook app itself uses:
 
 ```bash
-# Danh sách phòng
+# Room list
 m365 request --url 'https://graph.microsoft.com/beta/me/findRooms' -o json --query 'value[].{name:name, email:address}'
 
-# Danh sách nhóm phòng (theo toà nhà, tầng, cơ sở)
+# Room lists (grouped by building, floor, site)
 m365 request --url 'https://graph.microsoft.com/beta/me/findRoomLists' -o json --query 'value[].{name:name, email:address}'
 
-# Phòng thuộc một nhóm
+# Rooms belonging to one room list
 m365 request --url "https://graph.microsoft.com/beta/me/findRooms(RoomList='miichisoft.room@contoso.com')" -o json --query 'value[].{name:name, email:address}'
 ```
 
-Đây là endpoint `beta`, Microsoft không bảo đảm ổn định. Nếu nó trả 404 nghĩa là Microsoft đã bỏ, không phải skill hỏng: lúc đó nhờ Exchange admin cấp `Place.Read.All` rồi chuyển sang `v1.0/places/microsoft.graph.room` hoặc `m365 outlook room list`.
+This is a `beta` endpoint and Microsoft does not guarantee its stability. A 404 means Microsoft retired it, not that the skill broke: at that point ask an Exchange admin to grant `Place.Read.All` and switch to `v1.0/places/microsoft.graph.room` or `m365 outlook room list`.
 
-Đặt phòng là thêm phòng vào `attendees` với `type: "resource"`, kèm `location` cho dễ đọc:
+Booking a room means adding it to `attendees` with `type: "resource"`, plus a `location` for readability:
 
 ```bash
 cat > "$SP/ev.json" <<'JSON'
 {
-  "subject": "Họp kickoff",
+  "subject": "Project kickoff",
   "start": { "dateTime": "2026-09-05T14:00:00", "timeZone": "SE Asia Standard Time" },
   "end":   { "dateTime": "2026-09-05T15:00:00", "timeZone": "SE Asia Standard Time" },
   "location": { "displayName": "Apolo", "locationEmailAddress": "apolo@contoso.com" },
   "attendees": [
-    { "type": "required", "emailAddress": { "address": "nguoia@contoso.com", "name": "Người A" } },
+    { "type": "required", "emailAddress": { "address": "persona@contoso.com", "name": "Person A" } },
     { "type": "resource", "emailAddress": { "address": "apolo@contoso.com", "name": "Apolo" } }
   ]
 }
 JSON
 ```
 
-Hộp thư phòng tự động nhận hoặc từ chối theo chính sách của phòng, nên POST thành công **chưa có nghĩa là giữ được phòng**. Đọc lại `attendees[].status.response` của event sau khi tạo để biết phòng đã nhận chưa:
+The room mailbox accepts or declines automatically according to the room's policy, so a successful POST **does not yet mean the room is held**. Read `attendees[].status.response` back from the event after creation to see whether the room accepted:
 
 ```bash
 m365 request --url "https://graph.microsoft.com/v1.0/me/events/EVENT_ID?\$select=attendees" -o json \
   --query 'attendees[].{who:emailAddress.name, response:status.response}'
 ```
 
-Muốn chắc trước khi đặt thì xem phòng rảnh chưa bằng `getSchedule` ở mục dưới, truyền email phòng như một người bình thường.
+To be sure before booking, check the room's availability with `getSchedule` below, passing the room email like any other person.
 
 ---
 
-## 5. Xem rảnh bận
+## 5. Free/busy
 
-`getSchedule` trả về tình trạng rảnh bận của nhiều người hoặc phòng cùng lúc, dạng chuỗi ký tự, mỗi ký tự là một khoảng bằng `availabilityViewInterval` phút.
+`getSchedule` returns the free/busy state of several people or rooms at once as a character string, where each character covers one `availabilityViewInterval` in minutes.
 
 ```bash
 cat > "$SP/sched.json" <<'JSON'
 {
-  "schedules": ["nguoia@contoso.com", "apolo@contoso.com"],
+  "schedules": ["persona@contoso.com", "apolo@contoso.com"],
   "startTime": { "dateTime": "2026-09-05T08:00:00", "timeZone": "SE Asia Standard Time" },
   "endTime":   { "dateTime": "2026-09-05T18:00:00", "timeZone": "SE Asia Standard Time" },
   "availabilityViewInterval": 30
@@ -175,34 +175,34 @@ m365 request --url 'https://graph.microsoft.com/v1.0/me/calendar/getSchedule' --
   -o json --query 'value[].{who:scheduleId, view:availabilityView}'
 ```
 
-Giải mã từng ký tự của `availabilityView`:
+Decoding each character of `availabilityView`:
 
-| Ký tự | Nghĩa |
-|-------|-------|
-| `0` | rảnh |
-| `1` | chưa chắc (tentative) |
-| `2` | bận |
-| `3` | ra ngoài (out of office) |
-| `4` | làm việc ở nơi khác |
+| Character | Meaning |
+|-----------|---------|
+| `0` | free |
+| `1` | tentative |
+| `2` | busy |
+| `3` | out of office |
+| `4` | working elsewhere |
 
-Ví dụ đã đo thật với `availabilityViewInterval: 60` cho khoảng 08:00 đến 18:00: `0220000000` nghĩa là bận 09:00 đến 11:00, còn lại rảnh. Ký tự đầu ứng với khoảng bắt đầu từ `startTime`, nên muốn quy ra giờ thì đếm từ đó.
+A real measurement with `availabilityViewInterval: 60` over 08:00 to 18:00: `0220000000` means busy from 09:00 to 11:00 and free otherwise. The first character covers the slot beginning at `startTime`, so count from there to convert to clock time.
 
-`getSchedule` chỉ cho biết rảnh hay bận, **không** trả về tiêu đề cuộc họp, kể cả lịch của chính mình. Cần biết bận vì việc gì thì đọc `calendarView`.
+`getSchedule` only reports free or busy; it does **not** return meeting subjects, not even for your own calendar. To learn what someone is busy with, read `calendarView`.
 
-Giới hạn: tối đa 20 địa chỉ trong `schedules` mỗi lần gọi. Nhiều hơn thì chia lô.
+Limit: at most 20 addresses in `schedules` per call. Batch beyond that.
 
 ---
 
-## 6. Tìm khung giờ chung
+## 6. Finding a common slot
 
-`findMeetingTimes` để Graph tự đề xuất khung giờ, thay vì mình tự đọc `availabilityView` rồi suy luận.
+`findMeetingTimes` lets Graph propose the slots instead of you reading `availabilityView` and reasoning it out.
 
 ```bash
 cat > "$SP/find.json" <<'JSON'
 {
   "attendees": [
-    { "type": "required", "emailAddress": { "address": "nguoia@contoso.com" } },
-    { "type": "required", "emailAddress": { "address": "nguoib@contoso.com" } }
+    { "type": "required", "emailAddress": { "address": "persona@contoso.com" } },
+    { "type": "required", "emailAddress": { "address": "personb@contoso.com" } }
   ],
   "timeConstraint": {
     "activityDomain": "work",
@@ -223,10 +223,10 @@ m365 request --url 'https://graph.microsoft.com/v1.0/me/findMeetingTimes' --meth
   -o json --query 'meetingTimeSuggestions[].{confidence:confidence, start:meetingTimeSlot.start.dateTime, end:meetingTimeSlot.end.dateTime}'
 ```
 
-Vài điểm cần biết:
+A few things to know:
 
-- Đây chính là lệnh bộc lộ bẫy header `Prefer` rõ nhất: thiếu nó thì response trả UTC, đã đo được `01:00` thay vì `08:00`, tức lệch đúng 7 tiếng dù body ghi timezone đầy đủ.
-- `meetingDuration` theo định dạng ISO 8601 duration: `PT30M` là 30 phút, `PT1H` là 1 tiếng, `PT1H30M` là 1 tiếng 30.
-- `activityDomain`: `work` giới hạn trong giờ làm việc, `personal`, `unrestricted` cho phép mọi lúc.
-- `confidence` là phần trăm khả năng mọi người rảnh. Hạ `minimumAttendeePercentage` xuống 70 nếu không tìm được khung giờ nào mà vẫn muốn có gợi ý.
-- Nếu Graph không tìm được khung nào, `emptySuggestionsReason` cho biết vì sao, đáng đọc để giải thích cho người dùng thay vì chỉ báo "không có". Đã gặp: `OrganizerUnavailable` (chính mình bận hoặc khoảng giờ nằm ngoài giờ làm việc), `AttendeesUnavailable` (người được mời bận).
+- This is the command that exposes the `Prefer` header pitfall most clearly: without it the response comes back in UTC, measured as `01:00` instead of `08:00`, exactly 7 hours off even though the body spelled out the timezone.
+- `meetingDuration` uses the ISO 8601 duration format: `PT30M` is 30 minutes, `PT1H` is one hour, `PT1H30M` is an hour and a half.
+- `activityDomain`: `work` confines suggestions to working hours; `personal` and `unrestricted` allow any time.
+- `confidence` is the percentage likelihood everyone is free. Lower `minimumAttendeePercentage` to 70 when nothing comes back and you still want suggestions.
+- When Graph finds no slot, `emptySuggestionsReason` says why, and it is worth reading so you can explain it to the user rather than just reporting "nothing". Seen in practice: `OrganizerUnavailable` (you are busy, or the window falls outside working hours) and `AttendeesUnavailable` (an invitee is busy).

@@ -12,10 +12,10 @@ allowed-tools:
 
 ```bash
 # Check m365 CLI installed
-which m365 || echo "Chưa cài m365 CLI. Chạy: npm i -g @pnp/cli-microsoft365"
+which m365 || echo "m365 CLI not installed. Run: npm i -g @pnp/cli-microsoft365"
 
 # Check logged in
-m365 status || echo "Chưa đăng nhập. Chạy: m365 login"
+m365 status || echo "Not signed in. Run: m365 login"
 ```
 
 For auth details, see `../m365-shared/references/authentication.md`.
@@ -151,7 +151,7 @@ m365 teams message send --teamId "TEAM_ID" --channelId "CHANNEL_ID" \
 m365 teams message get --teamId "TEAM_ID" --channelId "CHANNEL_ID" --id "MESSAGE_ID" -o json
 ```
 
-### Workflow: Gửi tin nhắn vào channel theo tên
+### Workflow: Send a message to a channel by name
 
 ```bash
 # Step 1: Get team ID
@@ -206,7 +206,7 @@ m365 teams chat message send --chatId "CHAT_ID" --message "<b>Important</b> upda
 ```
 
 NOTE: Chat message send only works with delegated permissions (not application).
-NOTE: Lệnh gửi thành công thường KHÔNG in stdout — dựa vào exit code (0 = đã gửi), đừng kỳ vọng JSON trả về.
+NOTE: A successful send usually prints NOTHING to stdout — rely on the exit code (0 = sent); do not expect JSON back.
 
 ---
 
@@ -255,8 +255,8 @@ NOTE: You can only add team members to a private channel. Add them to the team f
 
 ## References
 
-| File | Khi nào đọc |
+| File | When to read |
 |------|-------------|
-| `references/advanced-commands.md` | Khi cần Tab, Meeting, App, Settings |
+| `references/advanced-commands.md` | When you need Tab, Meeting, App, Settings |
 | `../m365-shared/SKILL.md` | Output format, JMESPath, error handling |
-| `../m365-shared/references/authentication.md` | Auth methods chi tiết |
+| `../m365-shared/references/authentication.md` | Auth methods in detail |

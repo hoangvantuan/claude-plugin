@@ -1,6 +1,6 @@
 ---
 name: m365-onedrive
-description: "Quản lý file và folder trên OneDrive cá nhân (liệt kê, tải lên/về, di chuyển, chia sẻ link, khôi phục phiên bản) qua m365 CLI."
+description: "Personal OneDrive files and folders via the m365 CLI: list, upload, download, move, share links, and restore versions."
 allowed-tools:
   - Bash
   - Read
@@ -11,8 +11,8 @@ allowed-tools:
 ## Prerequisites
 
 ```bash
-which m365 || echo "Chưa cài m365 CLI. Chạy: npm i -g @pnp/cli-microsoft365"
-m365 status || echo "Chưa đăng nhập. Chạy: m365 login"
+which m365 || echo "m365 CLI not installed. Run: npm i -g @pnp/cli-microsoft365"
+m365 status || echo "Not signed in. Run: m365 login"
 ```
 
 For auth details, see `../m365-shared/references/authentication.md`.
@@ -30,15 +30,15 @@ For auth details, see `../m365-shared/references/authentication.md`.
 
 ### Auto-resolve Current User's OneDrive URL (non-admin)
 
-KHÔNG construct URL bằng tay: tên tenant SharePoint thường KHÁC domain email (vd `@miichisoft.com` → host `miichisoftjsc-my.sharepoint.com`), nên ghép chuỗi bằng `sed` sẽ ra sai host. Hỏi thẳng Microsoft Graph để lấy `webUrl` chính xác:
+Do NOT build the URL by hand: the SharePoint tenant name is often DIFFERENT from the email domain (e.g. `@miichisoft.com` → host `miichisoftjsc-my.sharepoint.com`), so string-joining with `sed` lands on the wrong host. Ask Microsoft Graph for the exact `webUrl` instead:
 
 ```bash
-# webUrl của OneDrive cá nhân (non-admin). Graph trả về ".../personal/<user>/Documents"
+# webUrl of the personal OneDrive (non-admin). Graph returns ".../personal/<user>/Documents"
 m365 request --url 'https://graph.microsoft.com/v1.0/me/drive?$select=webUrl' -o json --query 'webUrl'
 
-# ONEDRIVE_URL dùng cho các lệnh spo = site root (bỏ "/Documents" ở cuối):
+# ONEDRIVE_URL for the spo commands = the site root (drop the trailing "/Documents"):
 ONEDRIVE_URL=$(m365 request --url 'https://graph.microsoft.com/v1.0/me/drive?$select=webUrl' -o json --query 'webUrl' | tr -d '"' | sed 's#/Documents$##')
-# vd: https://miichisoftjsc-my.sharepoint.com/personal/tuanhv_miichisoft_com
+# e.g. https://miichisoftjsc-my.sharepoint.com/personal/tuanhv_miichisoft_com
 ```
 
 ### Check Storage Usage (non-admin)
@@ -48,7 +48,7 @@ m365 request --url 'https://graph.microsoft.com/v1.0/me/drive?$select=quota' -o 
   --query 'quota.{usedBytes:used, totalBytes:total, remainingBytes:remaining}'
 ```
 
-> `m365 onedrive list` là lệnh **admin** (trả 403 với user thường). Đường Graph `me/drive` ở trên hoạt động với mọi user.
+> `m365 onedrive list` is an **admin** command (403 for a regular user). The Graph `me/drive` route above works for every user.
 
 ---
 
@@ -78,10 +78,10 @@ m365 spo file list --webUrl "ONEDRIVE_URL" --folderUrl "Documents" \
 
 ### Upload File
 
-`spo file add` sắp đổi mặc định `--overwrite` thành `false` — luôn set rõ ràng để tránh cảnh báo và hành vi bất ngờ.
+`spo file add` will soon default `--overwrite` to `false` — always set it explicitly to avoid the warning and surprises.
 
 ```bash
-# Upload to root (ghi đè nếu trùng tên)
+# Upload to root (overwrites a file with the same name)
 m365 spo file add --webUrl "ONEDRIVE_URL" --folder "Documents" --path "/local/path/file.pdf" --overwrite true -o json
 
 # Upload to subfolder
@@ -172,7 +172,7 @@ m365 spo folder move --webUrl "ONEDRIVE_URL" \
 ### Delete Folder
 
 ```bash
-# Confirm with user first! (option đúng là --url, KHÔNG phải --folderUrl)
+# Confirm with user first! (the correct option is --url, NOT --folderUrl)
 m365 spo folder remove --webUrl "ONEDRIVE_URL" --url "Documents/Unwanted-Folder" --force
 ```
 
@@ -246,10 +246,10 @@ m365 spo file version restore --webUrl "ONEDRIVE_URL" --fileUrl "Documents/repor
 Complete workflow for uploading a file to OneDrive:
 
 ```bash
-# 1. Resolve OneDrive site root URL (non-admin, qua Graph)
+# 1. Resolve the OneDrive site root URL (non-admin, through Graph)
 ONEDRIVE_URL=$(m365 request --url 'https://graph.microsoft.com/v1.0/me/drive?$select=webUrl' -o json --query 'webUrl' | tr -d '"' | sed 's#/Documents$##')
 
-# 2. Upload (set --overwrite rõ ràng)
+# 2. Upload (set --overwrite explicitly)
 m365 spo file add --webUrl "$ONEDRIVE_URL" --folder "Documents" --path "/local/file.pdf" --overwrite true -o json
 ```
 
@@ -257,8 +257,8 @@ m365 spo file add --webUrl "$ONEDRIVE_URL" --folder "Documents" --path "/local/f
 
 ## References
 
-| File | Khi nào đọc |
+| File | When to read |
 |------|-------------|
 | `../m365-shared/SKILL.md` | Output format, JMESPath, error handling |
-| `../m365-shared/references/authentication.md` | Auth methods chi tiết |
-| `../m365-sharepoint/SKILL.md` | Khi cần thao tác file trên SharePoint site (không phải OneDrive cá nhân) |
+| `../m365-shared/references/authentication.md` | Auth methods in detail |
+| `../m365-sharepoint/SKILL.md` | When you need file operations on a SharePoint site (not personal OneDrive) |

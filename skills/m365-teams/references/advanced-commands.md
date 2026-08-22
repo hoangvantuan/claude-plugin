@@ -23,7 +23,7 @@ m365 teams meeting list -o json --query '[].{id:id, subject:subject, start:start
 # List meetings for another user
 m365 teams meeting list --userName "user@contoso.com" -o json
 
-# Get meeting details (identify by join URL từ lời mời lịch — lệnh KHÔNG có --id)
+# Get meeting details (identify by the join URL from the calendar invite — the command has NO --id)
 m365 teams meeting get --joinUrl "https://teams.microsoft.com/l/meetup-join/..." -o json
 
 # Attendance reports
@@ -36,7 +36,7 @@ m365 teams meeting transcript list --meetingId "MEETING_ID" -o json
 ## Apps
 
 ```bash
-# List apps trong app catalog của tenant (lệnh này liệt kê catalog apps, KHÔNG nhận --teamId)
+# List apps in the tenant app catalog (this command lists catalog apps and does NOT accept --teamId)
 m365 teams app list -o json --query '[].{id:id, name:displayName}'
 
 # Install app
@@ -62,7 +62,7 @@ m365 teams membersettings set --teamId "TEAM_ID" --allowCreateUpdateChannels tru
 ## Call Records
 
 ```bash
-# List call records (option đúng là --startDateTime / --endDateTime, KHÔNG phải --fromDateTime)
+# List call records (the correct options are --startDateTime / --endDateTime, NOT --fromDateTime)
 m365 teams callrecord list --startDateTime "2024-01-01" --endDateTime "2024-01-31" -o json
 
 # Get call record

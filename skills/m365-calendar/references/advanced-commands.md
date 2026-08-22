@@ -1,53 +1,53 @@
-# Advanced commands — calendargroup, chia sẻ calendar, đường admin
+# Advanced commands — calendar groups, calendar sharing, the admin routes
 
-Những thứ ở đây ít dùng hơn hẳn phần trong SKILL.md. Đọc khi gặp đúng nhu cầu.
+The material here comes up far less often than what SKILL.md covers. Read it when the need actually arises.
 
-## 1. Calendar group
+## 1. Calendar groups
 
-Nhóm calendar là cách Outlook gom nhiều calendar lại cho gọn ("Lịch của tôi", "Lịch nhóm"). Nhóm `My Calendars` là nhóm mặc định, luôn có sẵn.
+A calendar group is how Outlook bundles several calendars together ("My Calendars", "Team Calendars"). The `My Calendars` group is the default and always exists.
 
-Lệnh native có `get`, `list`, `set`, `remove` nhưng **không có `add`**, tức tạo nhóm mới phải đi qua Graph.
+The native commands offer `get`, `list`, `set`, `remove` but **no `add`**, so creating a new group has to go through Graph.
 
 ```bash
 USER=$(m365 status -o json --query 'connectedAs' | tr -d '"')
 
-# Liệt kê nhóm
+# List groups
 m365 outlook calendargroup list --userName "$USER" -o json --query '[].{id:id, name:name, classId:classId}'
 
-# Lấy một nhóm
+# Get one group
 m365 outlook calendargroup get --userName "$USER" --name "My Calendars" -o json
 
-# Đổi tên nhóm
-m365 outlook calendargroup set --userName "$USER" --id "GROUP_ID" --name "Tên mới"
+# Rename a group
+m365 outlook calendargroup set --userName "$USER" --id "GROUP_ID" --name "New name"
 
-# Xoá nhóm (calendar bên trong bị xoá theo, hỏi người dùng trước)
-m365 outlook calendargroup remove --userName "$USER" --name "Tên nhóm" --force
+# Delete a group (the calendars inside go with it, ask the user first)
+m365 outlook calendargroup remove --userName "$USER" --name "Group name" --force
 
-# Tạo nhóm mới (không có lệnh native, đi qua Graph)
+# Create a group (no native command, go through Graph)
 m365 request --url 'https://graph.microsoft.com/v1.0/me/calendarGroups' --method post \
-  --content-type "application/json" --body '{"name":"Lịch dự án"}' -o json --query '{id:id, name:name}'
+  --content-type "application/json" --body '{"name":"Project calendars"}' -o json --query '{id:id, name:name}'
 ```
 
-Tạo calendar trực tiếp vào một nhóm thì `outlook calendar add` có sẵn `--calendarGroupName`:
+To create a calendar straight into a group, `outlook calendar add` already takes `--calendarGroupName`:
 
 ```bash
-m365 outlook calendar add --userName "$USER" --name "Dự án Alpha" --calendarGroupName "Lịch dự án" -o json --query 'id'
+m365 outlook calendar add --userName "$USER" --name "Project Alpha" --calendarGroupName "Project calendars" -o json --query 'id'
 ```
 
-## 2. Chia sẻ calendar cho người khác
+## 2. Sharing a calendar with someone
 
-Không có lệnh native, đi qua Graph `calendarPermissions`.
+No native command; go through Graph `calendarPermissions`.
 
 ```bash
-# Xem ai đang được chia sẻ
+# See who it is shared with
 m365 request --url 'https://graph.microsoft.com/v1.0/me/calendar/calendarPermissions' -o json \
   --query 'value[].{who:emailAddress.name, role:role, id:id}'
 
-# Chia sẻ cho một người
+# Share with one person
 SP="${TMPDIR:-/tmp}"
 cat > "$SP/perm.json" <<'JSON'
 {
-  "emailAddress": { "name": "Người A", "address": "nguoia@contoso.com" },
+  "emailAddress": { "name": "Person A", "address": "persona@contoso.com" },
   "role": "read",
   "allowedRoles": ["read"]
 }
@@ -55,22 +55,22 @@ JSON
 m365 request --url 'https://graph.microsoft.com/v1.0/me/calendar/calendarPermissions' --method post \
   --content-type "application/json" --body "@$SP/perm.json" -o json --query '{id:id, role:role}'
 
-# Thu hồi quyền
+# Revoke access
 m365 request --url 'https://graph.microsoft.com/v1.0/me/calendar/calendarPermissions/PERMISSION_ID' --method delete -o none
 ```
 
-Các mức `role`: `freeBusyRead` (chỉ thấy rảnh bận), `limitedRead` (thấy tiêu đề), `read`, `write`, `delegateWithoutPrivateEventAccess`, `delegateWithPrivateEventAccess`, `custom`.
+The `role` levels: `freeBusyRead` (free/busy only), `limitedRead` (subjects visible), `read`, `write`, `delegateWithoutPrivateEventAccess`, `delegateWithPrivateEventAccess`, `custom`.
 
-Chia sẻ calendar là thay đổi ai được xem dữ liệu của mình, nên xác nhận rõ với người dùng địa chỉ nhận và mức quyền trước khi chạy.
+Sharing a calendar changes who can see your data, so confirm the recipient address and the permission level with the user before running it.
 
-## 3. Đường phòng họp mức admin
+## 3. The admin-level meeting room routes
 
-Nếu Exchange admin đã cấp `Place.Read.All`, hai đường này hoạt động và ổn định hơn `beta/me/findRooms`:
+If an Exchange admin has granted `Place.Read.All`, these two routes work and are more stable than `beta/me/findRooms`:
 
 ```bash
-# Lệnh native
+# Native commands
 m365 outlook room list -o json --query '[].{name:displayName, email:emailAddress}'
-m365 outlook room list --roomlistEmail "toanha2@contoso.com" -o json
+m365 outlook room list --roomlistEmail "building2@contoso.com" -o json
 m365 outlook roomlist list -o json --query '[].{name:displayName, email:emailAddress}'
 
 # Graph v1.0
@@ -78,14 +78,14 @@ m365 request --url 'https://graph.microsoft.com/v1.0/places/microsoft.graph.room
   --query 'value[].{name:displayName, email:emailAddress, capacity:capacity, floor:floorLabel}'
 ```
 
-Không có quyền thì cả ba trả 403, khi đó dùng `beta/me/findRooms` trong `graph-recipes.md`. Ưu điểm của đường admin: có thêm `capacity` (số chỗ) và `floorLabel` (tầng), thứ mà `findRooms` không trả về.
+Without the permission all three return 403, in which case use `beta/me/findRooms` from `graph-recipes.md`. The advantage of the admin route: it also carries `capacity` and `floorLabel`, which `findRooms` does not return.
 
-## 4. Những thứ không khả dụng với app mặc định của m365 CLI
+## 4. What is unavailable with the m365 CLI default app
 
-| Nhu cầu | Endpoint | Trạng thái |
-|---------|----------|------------|
-| giờ làm việc, múi giờ ưa dùng | `me/mailboxSettings` | 403, thiếu `MailboxSettings.Read` |
-| trả lời tự động (auto reply) | `me/mailboxSettings/automaticRepliesSetting` | 403, cùng lý do |
-| danh sách phòng qua `/places` | `v1.0/places/...` | 403, thiếu `Place.Read.All` |
+| Need | Endpoint | Status |
+|------|----------|--------|
+| working hours, preferred time zone | `me/mailboxSettings` | 403, missing `MailboxSettings.Read` |
+| automatic replies | `me/mailboxSettings/automaticRepliesSetting` | 403, same reason |
+| room list through `/places` | `v1.0/places/...` | 403, missing `Place.Read.All` |
 
-Muốn mở các scope này thì phải đăng nhập bằng Microsoft Entra app riêng (`m365 login --appId ...`) thay cho app mặc định. Việc đó đổi cách xác thực của **cả bốn** skill m365, nên nếu cần thì làm ở `../m365-shared/references/authentication.md` chứ không phải ở đây.
+Unlocking those scopes requires signing in with your own Microsoft Entra app (`m365 login --appId ...`) instead of the default one. That changes authentication for **all four** m365 skills, so if you need it, do it in `../m365-shared/references/authentication.md`, not here.

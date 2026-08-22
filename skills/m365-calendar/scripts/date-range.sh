@@ -1,39 +1,39 @@
 #!/usr/bin/env bash
-# Quy đổi mốc thời gian tương đối thành khoảng ISO 8601 UTC cho Microsoft Graph / m365 CLI.
+# Turn a relative time anchor into an ISO 8601 UTC range for Microsoft Graph / the m365 CLI.
 #
-# Vì sao cần script, hai lý do đều là lỗi âm thầm (vẫn trả về event, chỉ là sai):
-#   1. Graph từ chối thẳng chuỗi thiếu hậu tố Z ("2026-08-17T00:00:00" -> lỗi
-#      "is not a valid ISO date-time"), còn tự cộng trừ tuần bằng suy luận thì dễ trượt.
-#   2. Nửa đêm UTC không phải nửa đêm giờ VN. Mốc 00:00:00Z tương ứng 07:00 sáng GMT+7,
-#      nên một cuộc họp 06:00 sáng thứ Hai sẽ rơi ra ngoài "tuần này", còn họp 06:00 sáng
-#      thứ Hai tuần sau lại bị đếm vào. Script neo vào nửa đêm GIỜ VN rồi quy về UTC,
-#      nên "week" in ra ...T17:00:00Z của ngày hôm trước, đó là đúng chứ không phải lỗi.
+# Why a script is needed; both reasons are silent failures (events still come back, just wrong):
+#   1. Graph rejects a string missing the Z suffix outright ("2026-08-17T00:00:00" -> error
+#      "is not a valid ISO date-time"), and adding or subtracting weeks by reasoning slips easily.
+#   2. UTC midnight is not Vietnam midnight. The 00:00:00Z mark is 07:00 in GMT+7, so a 06:00
+#      Monday meeting falls outside "this week" while next Monday's 06:00 meeting gets counted in.
+#      The script anchors midnight in VIETNAM time and converts to UTC, so "week" prints
+#      ...T17:00:00Z of the previous day, which is correct, not a bug.
 #
-# Dùng: read START END < <(./date-range.sh week)
-# Cú pháp date -v là của BSD/macOS. Trên Linux phải đổi sang date -d.
+# Usage: read START END < <(./date-range.sh week)
+# The date -v syntax is BSD/macOS. On Linux switch to date -d.
 
 set -euo pipefail
 
 usage() {
   cat >&2 <<'USAGE'
-Dùng: date-range.sh <mốc>
+Usage: date-range.sh <anchor>
   today | tomorrow | yesterday
-  week | next-week | last-week      (tuần bắt đầu thứ Hai)
+  week | next-week | last-week      (weeks start on Monday)
   month | next-month
-  <YYYY-MM-DD> <YYYY-MM-DD>         (chỉ định tay: từ ngày, đến ngày không bao gồm)
-In ra: "START END" dạng 2026-08-17T00:00:00Z 2026-08-24T00:00:00Z
+  <YYYY-MM-DD> <YYYY-MM-DD>         (explicit: from date, to date exclusive)
+Prints: "START END" as 2026-08-17T00:00:00Z 2026-08-24T00:00:00Z
 USAGE
   exit 1
 }
 
-# Nửa đêm giờ VN (GMT+7) quy về UTC: trừ 7 tiếng, nên ngày lùi lại 1 và giờ thành 17:00Z.
+# Vietnam midnight (GMT+7) in UTC: subtract 7 hours, so the date rolls back one day and the time becomes 17:00Z.
 TZ_OFFSET_HOURS=7
 iso() {
   date -v-"${TZ_OFFSET_HOURS}"H -j -f '%Y-%m-%d %H:%M:%S' "$1 00:00:00" '+%Y-%m-%dT%H:%M:%SZ'
 }
 d()   { date -v"$1" -j -f '%Y-%m-%d' "$2" '+%Y-%m-%d'; }
 
-# Thứ Hai của tuần chứa ngày truyền vào. date +%u: 1 = thứ Hai, 7 = Chủ Nhật.
+# The Monday of the week containing the given date. date +%u: 1 = Monday, 7 = Sunday.
 monday_of() {
   local ref="$1" dow
   dow=$(date -j -f '%Y-%m-%d' "$ref" '+%u')

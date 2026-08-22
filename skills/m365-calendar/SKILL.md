@@ -11,62 +11,63 @@ allowed-tools:
 ## Prerequisites
 
 ```bash
-which m365 || echo "Chưa cài m365 CLI. Chạy: npm i -g @pnp/cli-microsoft365"
-m365 status || echo "Chưa đăng nhập. Chạy: m365 login"
+which m365 || echo "m365 CLI not installed. Run: npm i -g @pnp/cli-microsoft365"
+m365 status || echo "Not signed in. Run: m365 login"
 ```
 
-Auth chi tiết: `../m365-shared/references/authentication.md`.
+Auth details: `../m365-shared/references/authentication.md`.
 
 ## Operating Principles
 
-Lệnh native `m365 outlook` không có `event add`/`event set`, nên skill này đi **hai đường song song**, và biết đang ở đường nào là điều kiện để không sai cú pháp:
+The native `m365 outlook` commands have no `event add`/`event set`, so this skill runs on **two parallel routes**, and knowing which route you are on is what keeps the syntax right:
 
-| Đường | Dùng cho | Đặc thù cú pháp |
-|-------|----------|-----------------|
-| Native `m365 outlook ...` | CRUD calendar, đọc event lẻ, huỷ/xoá event | bắt buộc `--userName`, thời gian phải có `Z` |
-| Graph qua `m365 request` | đọc theo khoảng, tạo/sửa event, rảnh/bận, tìm giờ, phòng họp | body heredoc ra file, bắt buộc header `Prefer` |
+| Route | Used for | Syntax quirks |
+|-------|----------|---------------|
+| Native `m365 outlook ...` | calendar CRUD, reading a single event, cancelling/removing an event | `--userName` is mandatory, times must carry `Z` |
+| Graph through `m365 request` | reading a date range, creating/updating events, free/busy, finding times, meeting rooms | write the body to a file via heredoc, the `Prefer` header is mandatory |
 
-Hai dòng lệnh mở đầu cho gần như mọi việc:
+Two opening lines cover almost every task:
 
 ```bash
-# Người dùng hiện tại (mọi lệnh native cần, không có mặc định "me")
+# Current user (every native command needs it, there is no "me" default)
 USER=$(m365 status -o json --query 'connectedAs' | tr -d '"')
 
-# Script tính khoảng thời gian, nằm cạnh SKILL.md này. Dùng đường dẫn tuyệt đối tới
-# thư mục chứa file SKILL.md vừa đọc, vì thư mục làm việc hiện tại thường không phải
-# thư mục skill (khi cài qua plugin thì skill nằm trong ~/.claude, còn cwd là project).
-DR="<đường-dẫn-thư-mục-skill>/scripts/date-range.sh"
+# Date-range helper script, sitting next to this SKILL.md. Use the absolute path of the
+# directory holding the SKILL.md you just read, because the current working directory is
+# usually NOT the skill directory (installed as a plugin the skill lives under ~/.claude,
+# while cwd is the project).
+DR="<skill-directory-path>/scripts/date-range.sh"
 
-# Khoảng thời gian, đã neo đúng nửa đêm giờ VN
+# Date range, already anchored to midnight Vietnam time
 read START END < <("$DR" week)
 ```
 
-Xem lịch người khác cần lịch đó được chia sẻ cho mình hoặc cần quyền admin. Gặp 403 thì báo thẳng giới hạn quyền, đừng thử vòng vo các lệnh khác.
+Reading someone else's calendar requires that calendar to be shared with you, or admin rights. On a 403, state the permission limit plainly instead of probing around with other commands.
 
 ---
 
-## Bẫy đã xác minh
+## Verified pitfalls
 
-Tám điều dưới đây đo được bằng cách chạy thật trên tenant, không tra tài liệu ra được. Bảy trong tám là **lỗi âm thầm**: lệnh vẫn chạy, vẫn trả về event, chỉ là kết quả sai, nên không có cách nào phát hiện ngoài việc biết trước.
+The eight items below were measured by running against a real tenant; documentation does not surface them. Seven of the eight are **silent failures**: the command still runs, still returns events, the result is simply wrong, so there is no way to notice except knowing in advance.
 
-| Bẫy | Biểu hiện | Cách đúng |
-|-----|-----------|-----------|
-| `event list` bỏ mất họp định kỳ | cùng một tuần: `/me/events` trả **12**, `/me/calendarView` trả **46**. `/me/events` chỉ trả `seriesMaster`, không bung từng buổi | mọi câu hỏi theo khoảng thời gian dùng `calendarView`, xem mục 1 |
-| Thiếu header `Prefer` | Graph trả UTC, lệch đúng 7 tiếng. `findMeetingTimes` trả `01:00` thay vì `08:00` dù body đã ghi timezone | mọi lệnh Graph có yếu tố thời gian đều thêm `--prefer 'outlook.timezone="SE Asia Standard Time"'`. Body ghi timezone là **không đủ** |
-| Nửa đêm UTC không phải nửa đêm giờ VN | `00:00:00Z` là 07:00 sáng GMT+7, nên họp 06:00 thứ Hai rơi ra ngoài "tuần này" | luôn lấy khoảng từ `scripts/date-range.sh`, nó neo nửa đêm GMT+7 nên in ra `...T17:00:00Z` của ngày hôm trước, đó là đúng |
-| Thời gian thiếu `Z` | `--startDateTime 2026-08-17T00:00:00` bị từ chối thẳng: "is not a valid ISO date-time" | luôn có `Z` hoặc offset |
-| `--userName` không có mặc định "me" | `Error: Specify either userId or userName, but not both` dù chỉ thiếu, không phải truyền cả hai. Thông báo lỗi này gây hiểu lầm | `calendar *` và `event list`/`event get` **bắt buộc**; `event cancel`/`event remove` thì không cần với delegated auth |
-| ID của `calendarView` là ID một buổi | `calendarView` trả `type: "occurrence"` kèm `seriesMasterId`. PATCH vào ID đó chỉ đổi buổi đó (nó thành `exception`), không đổi cả chuỗi | sửa cả chuỗi thì PATCH vào `seriesMasterId`. Xem mục 6 |
-| `recurrence` dịch ngày không báo lỗi | `range.startDate` lệch với `start.dateTime` thì Graph âm thầm dời buổi đầu sang `startDate`, POST vẫn trả về thành công | hai ngày đó phải trùng nhau, và đọc lại `start.dateTime` trong response để đối chiếu |
-| Danh sách phòng họp | `outlook room list` và `v1.0/places` trả **403** (cần `Place.Read.All` mức admin), nhưng phòng vẫn tra được | dùng `beta/me/findRooms`, đây là đường Outlook app dùng, chỉ cần `Calendars.Read` |
+| Pitfall | Symptom | Correct approach |
+|---------|---------|------------------|
+| `event list` drops recurring meetings | same week: `/me/events` returns **12**, `/me/calendarView` returns **46**. `/me/events` only returns the `seriesMaster`, it does not expand the individual occurrences | every date-range question goes through `calendarView`, see section 1 |
+| Missing `Prefer` header | Graph returns UTC, off by exactly 7 hours. `findMeetingTimes` returns `01:00` instead of `08:00` even when the body carries a timezone | every Graph call with a time component adds `--prefer 'outlook.timezone="SE Asia Standard Time"'`. A timezone in the body is **not enough** |
+| UTC midnight is not Vietnam midnight | `00:00:00Z` is 07:00 in GMT+7, so a 06:00 Monday meeting falls outside "this week" | always take the range from `scripts/date-range.sh`; it anchors GMT+7 midnight, so it prints `...T17:00:00Z` of the previous day, which is correct |
+| Times missing `Z` | `--startDateTime 2026-08-17T00:00:00` is rejected outright: "is not a valid ISO date-time" | always include `Z` or an offset |
+| `--userName` has no "me" default | `Error: Specify either userId or userName, but not both` even when it is merely missing, not both passed. The message is misleading | mandatory for `calendar *` and `event list`/`event get`; `event cancel`/`event remove` do not need it with delegated auth |
+| A `calendarView` ID is a single-occurrence ID | `calendarView` returns `type: "occurrence"` with a `seriesMasterId`. PATCHing that ID changes only that occurrence (it becomes an `exception`), not the whole series | to change the whole series, PATCH the `seriesMasterId`. See section 6 |
+| `recurrence` shifts the date without an error | when `range.startDate` disagrees with `start.dateTime`, Graph silently moves the first occurrence to `startDate` and the POST still reports success | the two dates must match, and read `start.dateTime` back from the response to confirm |
+| Meeting room list | `outlook room list` and `v1.0/places` return **403** (they need admin-level `Place.Read.All`), yet rooms are still discoverable | use `beta/me/findRooms`, the route the Outlook app itself uses; it only needs `Calendars.Read` |
 
-Không khả dụng với app mặc định của m365 CLI: giờ làm việc và trả lời tự động (`mailboxSettings` trả 403, thiếu `MailboxSettings.Read`).
+Not available with the m365 CLI default app: working hours and automatic replies (`mailboxSettings` returns 403, missing `MailboxSettings.Read`).
 
 ---
 
-## 1. Đọc lịch theo khoảng thời gian
+## 1. Read the calendar over a date range
 
-Đây là việc hay làm nhất, và `calendarView` là đường duy nhất đúng vì nó bung từng buổi của chuỗi định kỳ.
+This is the most frequent task, and `calendarView` is the only correct route because it expands each occurrence of a recurring series.
 
 ```bash
 read START END < <("$DR" week)
@@ -77,15 +78,15 @@ m365 request \
   -o json --query 'value[].{start:start.dateTime, end:end.dateTime, subject:subject, where:location.displayName}'
 ```
 
-Điểm cần biết:
+Things to know:
 
-- `$top=200` vì mặc định Graph phân trang 10 mục, thiếu nó là mất event mà không có dấu hiệu gì.
-- `calendarView` đọc **một** calendar mỗi lần, mặc định là calendar chính. Muốn gộp nhiều calendar thì lặp qua từng `id` với `me/calendars/{id}/calendarView`.
-- `$` trong URL phải escape thành `\$` khi ở trong nháy kép của bash.
-- Khoảng thời gian đã tính ra được nên **in cho người dùng thấy** trong câu trả lời (ví dụ "tuần 17 đến 23/08"), để họ phát hiện ngay nếu mình hiểu sai ý "tuần này".
+- `$top=200` because Graph pages at 10 items by default; without it you lose events with no sign anything went missing.
+- `calendarView` reads **one** calendar per call, the primary calendar by default. To merge several calendars, loop over each `id` with `me/calendars/{id}/calendarView`.
+- `$` inside the URL must be escaped as `\$` when it sits in a bash double-quoted string.
+- **Print the resolved date range to the user** in your answer (for example "week of Aug 17 to 23"), so they immediately catch it if you read "this week" differently than they meant.
 
 ```bash
-# Gộp mọi calendar. Dùng -o text để mỗi dòng là một id, khỏi phải cắt chuỗi JSON
+# Merge every calendar. Use -o text so each line is one id, no JSON slicing needed
 m365 outlook calendar list --userName "$USER" -o text --query '[].id' | while read -r CAL; do
   m365 request --url "https://graph.microsoft.com/v1.0/me/calendars/$CAL/calendarView?startDateTime=$START&endDateTime=$END&\$select=subject,start&\$top=200" \
     --prefer 'outlook.timezone="SE Asia Standard Time"' -o json --query 'value[].{start:start.dateTime, subject:subject}'
@@ -94,61 +95,61 @@ done
 
 ---
 
-## 2. Calendar (lệnh native, đủ CRUD)
+## 2. Calendars (native commands, full CRUD)
 
 ```bash
-# Liệt kê
+# List
 m365 outlook calendar list --userName "$USER" -o json --query '[].{id:id, name:name, canEdit:canEdit, isDefault:isDefaultCalendar}'
 
-# Lấy một calendar theo tên
+# Get one calendar by name
 m365 outlook calendar get --userName "$USER" --name "Calendar" -o json
 
-# Tạo
-m365 outlook calendar add --userName "$USER" --name "Dự án Alpha" --color lightGreen -o json --query 'id'
+# Create
+m365 outlook calendar add --userName "$USER" --name "Project Alpha" --color lightGreen -o json --query 'id'
 
-# Đổi tên hoặc màu (bắt buộc --id, không nhận --name để định danh)
-m365 outlook calendar set --userName "$USER" --id "CAL_ID" --name "Tên mới" --color lightBlue
+# Rename or recolor (--id is mandatory, --name is not accepted as the identifier)
+m365 outlook calendar set --userName "$USER" --id "CAL_ID" --name "New name" --color lightBlue
 
-# Xoá (xoá cả event bên trong, hỏi người dùng trước)
-m365 outlook calendar remove --userName "$USER" --name "Dự án Alpha" --force
+# Delete (deletes the events inside too, ask the user first)
+m365 outlook calendar remove --userName "$USER" --name "Project Alpha" --force
 ```
 
 `--color`: `auto`, `lightBlue`, `lightGreen`, `lightOrange`, `lightGray`, `lightYellow`, `lightTeal`, `lightPink`, `lightBrown`, `lightRed`, `maxColor`.
 
 ---
 
-## 3. Đọc event lẻ và đọc định nghĩa chuỗi
+## 3. Read a single event and read a series definition
 
 ```bash
-# Một event theo ID
+# One event by ID
 m365 outlook event get --userName "$USER" --id "EVENT_ID" --timeZone "SE Asia Standard Time" -o json \
   --query '{subject:subject, start:start.dateTime, organizer:organizer.emailAddress.name, attendees:attendees[].emailAddress.address}'
 
-# Định nghĩa chuỗi định kỳ (đây là chỗ event list có ích: nó trả seriesMaster, không bung từng buổi)
+# The recurring series definition (this is where event list earns its keep: it returns the seriesMaster and does not expand occurrences)
 m365 outlook event list --userName "$USER" --calendarName "Calendar" \
   --startDateTime "$START" --endDateTime "$END" --timeZone "SE Asia Standard Time" \
   -o json --query "[?type=='seriesMaster'].{id:id, subject:subject, pattern:recurrence.pattern.type}"
 ```
 
-`--timeZone` là bắt buộc về mặt thực dụng: thiếu nó thì trả UTC, lệch 7 tiếng.
+`--timeZone` is mandatory in practice: without it you get UTC, off by 7 hours.
 
 ---
 
-## 4. Tạo và sửa event (Graph)
+## 4. Create and update events (Graph)
 
-Body luôn heredoc ra file rồi truyền `@đường-dẫn`. Lý do: tiêu đề tiếng Việt có dấu, dấu nháy đơn (`"Họp anh Tuấn's team"`), hay body nhiều dòng nhồi vào `--body '{...}'` một dòng là vỡ quote. Delimiter đặt trong nháy đơn (`<<'JSON'`) để bash không nội suy gì.
+Always heredoc the body to a file and pass `@path`. Reason: accented subjects, a single quote (`"Tuan's team sync"`), or a multi-line body crammed into a one-line `--body '{...}'` breaks the quoting. Put the delimiter in single quotes (`<<'JSON'`) so bash interpolates nothing.
 
-### 4.1 Event đơn
+### 4.1 Single event
 
 ```bash
 SP="${TMPDIR:-/tmp}"
 cat > "$SP/ev.json" <<'JSON'
 {
-  "subject": "Rà soát kế hoạch Q4",
-  "body": { "contentType": "text", "content": "Nội dung ghi chú" },
+  "subject": "Q4 plan review",
+  "body": { "contentType": "text", "content": "Agenda notes" },
   "start": { "dateTime": "2026-09-05T10:00:00", "timeZone": "SE Asia Standard Time" },
   "end":   { "dateTime": "2026-09-05T11:00:00", "timeZone": "SE Asia Standard Time" },
-  "location": { "displayName": "Phòng Apolo" }
+  "location": { "displayName": "Apolo Room" }
 }
 JSON
 
@@ -158,153 +159,153 @@ m365 request --url 'https://graph.microsoft.com/v1.0/me/events' --method post \
   -o json --query '{id:id, subject:subject, start:start.dateTime}'
 ```
 
-Tạo vào calendar khác thì đổi URL thành `me/calendars/{calendarId}/events`.
+To create in a different calendar, change the URL to `me/calendars/{calendarId}/events`.
 
-**Chống tạo trùng**: nếu lệnh POST timeout hoặc không rõ đã thành công chưa, đừng gửi lại ngay. Đọc `calendarView` của khoảng đó trước, vì POST lại là tạo thêm một event nữa chứ không phải ghi đè. Chú ý một biến thể dễ mắc: lỗi hiện ra ở **dòng lệnh sau** POST (lỗi shell, biến rỗng, quote vỡ) không có nghĩa là POST thất bại. Event đã nằm trên lịch rồi, kiểm tra trước khi chạy lại.
+**Avoid duplicate creation**: if the POST times out or its success is unclear, do not resend it right away. Read the `calendarView` for that range first, because a second POST creates another event rather than overwriting. Watch for one easy variant of this: an error appearing on the **line after** the POST (a shell error, an empty variable, broken quoting) does not mean the POST failed. The event is already on the calendar; check before rerunning.
 
-### 4.2 Event có người tham dự
+### 4.2 Event with attendees
 
 ```bash
 cat > "$SP/ev.json" <<'JSON'
 {
-  "subject": "Họp kickoff dự án",
+  "subject": "Project kickoff",
   "start": { "dateTime": "2026-09-05T14:00:00", "timeZone": "SE Asia Standard Time" },
   "end":   { "dateTime": "2026-09-05T15:00:00", "timeZone": "SE Asia Standard Time" },
   "attendees": [
-    { "type": "required", "emailAddress": { "address": "nguoia@contoso.com", "name": "Người A" } },
-    { "type": "optional", "emailAddress": { "address": "nguoib@contoso.com", "name": "Người B" } }
+    { "type": "required", "emailAddress": { "address": "persona@contoso.com", "name": "Person A" } },
+    { "type": "optional", "emailAddress": { "address": "personb@contoso.com", "name": "Person B" } }
   ]
 }
 JSON
 ```
 
-Có `attendees` là Graph **gửi thư mời thật** ngay khi POST thành công, không có bước nháp. Xác nhận danh sách người nhận với người dùng trước khi chạy.
+With `attendees` present, Graph **sends real invitations** the moment the POST succeeds; there is no draft step. Confirm the recipient list with the user before running it.
 
-### 4.3 Họp online Teams
+### 4.3 Teams online meeting
 
-Thêm hai trường vào body của 4.1 hoặc 4.2:
+Add two fields to the body from 4.1 or 4.2:
 
 ```json
 "isOnlineMeeting": true,
 "onlineMeetingProvider": "teamsForBusiness"
 ```
 
-Graph tự sinh link, đọc lại ở `onlineMeeting.joinUrl` (đã xác minh có link sau khi tạo).
+Graph generates the link; read it back at `onlineMeeting.joinUrl` (verified: the link is present right after creation).
 
-### 4.4 Sửa event
+### 4.4 Update an event
 
-PATCH chỉ cần những trường muốn đổi, các trường khác giữ nguyên:
+A PATCH only needs the fields you want to change; the rest stay as they are:
 
 ```bash
 m365 request --url "https://graph.microsoft.com/v1.0/me/events/EVENT_ID" --method patch \
   --content-type "application/json" \
-  --body '{"subject":"Tiêu đề mới"}' \
+  --body '{"subject":"New subject"}' \
   --prefer 'outlook.timezone="SE Asia Standard Time"' -o json --query 'subject'
 ```
 
-Đổi giờ thì phải gửi **cả** `start` và `end`, gửi một mình `start` sẽ cho ra event có giờ kết thúc trước giờ bắt đầu.
+To move the time you must send **both** `start` and `end`; sending `start` alone yields an event whose end time precedes its start.
 
 ---
 
-## 5. Huỷ và xoá
+## 5. Cancel and remove
 
-Hai lệnh này khác nhau ở chỗ có phát thư ra ngoài hay không, chọn sai là gửi thư huỷ ngoài ý muốn cho khách mời:
+These two differ in whether mail goes out, and picking the wrong one sends unintended cancellation mail to the guests:
 
-| Lệnh | Làm gì | Khi nào |
-|------|--------|---------|
-| `event cancel` | huỷ cuộc họp và **gửi thư huỷ cho toàn bộ người tham dự** | mình là người tổ chức, cần thông báo |
-| `event remove` | chỉ bỏ event khỏi lịch của mình, không thông báo ai | event mình tự tạo không có khách, hoặc dọn lịch riêng |
+| Command | What it does | When |
+|---------|--------------|------|
+| `event cancel` | cancels the meeting and **sends a cancellation to every attendee** | you are the organizer and people need to be told |
+| `event remove` | only drops the event from your own calendar, notifies nobody | an event you created with no guests, or tidying your own calendar |
 
-Cả hai không hoàn tác được, và `cancel` còn ra khỏi tổ chức, nên trước khi chạy hãy in đầy đủ để người dùng nhận diện đúng event rồi chờ họ xác nhận, mỗi lần một event, không xoá theo lô:
+Neither can be undone, and `cancel` also leaves the organization, so before running either, print the event in full for the user to identify, then wait for their confirmation, one event at a time, never in bulk:
 
 ```bash
 m365 outlook event get --userName "$USER" --id "EVENT_ID" --timeZone "SE Asia Standard Time" -o json \
-  --query '{subject:subject, start:start.dateTime, organizer:organizer.emailAddress.name, soNguoiThamDu:length(attendees)}'
+  --query '{subject:subject, start:start.dateTime, organizer:organizer.emailAddress.name, attendeeCount:length(attendees)}'
 ```
 
-Sau khi người dùng đồng ý:
+After the user agrees:
 
 ```bash
-m365 outlook event cancel --id "EVENT_ID" --comment "Lý do huỷ" --force
+m365 outlook event cancel --id "EVENT_ID" --comment "Reason for cancelling" --force
 m365 outlook event remove --id "EVENT_ID" --force
 ```
 
 ---
 
-## 6. Một buổi hay cả chuỗi
+## 6. One occurrence or the whole series
 
-Đây là chỗ dễ sai nhất của cả skill, vì hai thứ trông giống nhau nhưng ID khác nhau. `calendarView` trả về từng **buổi**, không phải chuỗi:
+This is the easiest thing in the whole skill to get wrong, because the two look alike but carry different IDs. `calendarView` returns individual **occurrences**, not the series:
 
-| `type` | Nghĩa | PATCH/DELETE vào ID này thì |
-|--------|-------|------------------------------|
-| `singleInstance` | event lẻ | đổi chính nó |
-| `occurrence` | một buổi của chuỗi, có `seriesMasterId` | chỉ đổi **buổi đó**, nó thành `exception`, các buổi khác nguyên vẹn |
-| `exception` | buổi đã bị sửa riêng | đổi tiếp buổi đó |
-| `seriesMaster` | định nghĩa chuỗi | đổi **toàn bộ** các buổi chưa bị sửa riêng |
+| `type` | Meaning | PATCH/DELETE on this ID |
+|--------|---------|-------------------------|
+| `singleInstance` | standalone event | changes itself |
+| `occurrence` | one occurrence of a series, carries `seriesMasterId` | changes **that occurrence only**, it becomes an `exception`, the others stay untouched |
+| `exception` | an occurrence already edited on its own | keeps editing that occurrence |
+| `seriesMaster` | the series definition | changes **all** occurrences that were not edited individually |
 
-Đã xác minh: chuỗi 4 buổi thứ Hai hàng tuần, PATCH vào ID buổi thứ hai để dời sang 11:00, kết quả buổi đó thành `exception` lúc 11:00 và ba buổi còn lại vẫn 09:00.
+Verified: a 4-occurrence weekly Monday series, PATCHing the second occurrence's ID to move it to 11:00, results in that occurrence becoming an `exception` at 11:00 while the other three stay at 09:00.
 
-Quy tắc thực hành: khi người dùng nói "dời buổi họp mai", hỏi rõ **buổi đó thôi hay từ nay về sau**. Dời một buổi thì PATCH vào ID `occurrence`; đổi cả chuỗi thì lấy `seriesMasterId` rồi PATCH vào đó.
+Practical rule: when the user says "move tomorrow's meeting", ask explicitly whether they mean **that occurrence only or from now on**. Moving one occurrence PATCHes the `occurrence` ID; changing the series takes the `seriesMasterId` and PATCHes that.
 
 ---
 
-## 7. Workflow
+## 7. Workflows
 
-### 7.1 Xem lịch một khoảng thời gian
+### 7.1 View the calendar over a range
 
 ```bash
 USER=$(m365 status -o json --query 'connectedAs' | tr -d '"')
 read START END < <("$DR" week)
-echo "Khoảng đang xem: $START đến $END"   # in ra để người dùng đối chiếu
+echo "Range in view: $START to $END"   # print it so the user can double-check
 m365 request --url "https://graph.microsoft.com/v1.0/me/calendarView?startDateTime=$START&endDateTime=$END&\$select=subject,start,end,location&\$orderby=start/dateTime&\$top=200" \
   --prefer 'outlook.timezone="SE Asia Standard Time"' \
   -o json --query 'value[].{start:start.dateTime, subject:subject, where:location.displayName}'
 ```
 
-### 7.2 Đặt cuộc họp, mời người, chọn phòng
+### 7.2 Book a meeting, invite people, pick a room
 
-1. Nếu người dùng chưa chốt giờ, tìm khung giờ chung trước (7.4).
-2. Nếu cần phòng, liệt kê phòng rồi xem phòng nào rảnh, xem `references/graph-recipes.md`.
-3. Xác nhận với người dùng: giờ, danh sách người mời, phòng. Bước này quan trọng vì POST là gửi thư mời thật.
-4. Heredoc body (4.2, thêm phòng làm attendee `resource` nếu có) rồi POST.
-5. Đọc lại bằng `calendarView` để xác nhận event đã nằm đúng giờ, đừng chỉ tin response của POST.
+1. If the user has not fixed a time, find a common slot first (7.4).
+2. If a room is needed, list rooms and check which are free, see `references/graph-recipes.md`.
+3. Confirm with the user: time, invitee list, room. This step matters because the POST sends real invitations.
+4. Heredoc the body (4.2, adding the room as a `resource` attendee if any) and POST.
+5. Read it back with `calendarView` to confirm the event landed at the right time; do not just trust the POST response.
 
-### 7.3 Dời một buổi trong chuỗi định kỳ
+### 7.3 Move one occurrence of a recurring series
 
 ```bash
 read START END < <("$DR" tomorrow)
-# Lấy đúng buổi đó, kèm type để biết đang xử lý buổi hay chuỗi
+# Fetch that occurrence, including type so you know whether you hold an occurrence or a series
 m365 request --url "https://graph.microsoft.com/v1.0/me/calendarView?startDateTime=$START&endDateTime=$END&\$select=id,subject,type,seriesMasterId,start" \
   --prefer 'outlook.timezone="SE Asia Standard Time"' \
   -o json --query 'value[].{id:id, subject:subject, type:type, start:start.dateTime}'
 ```
 
-Hỏi người dùng dời một buổi hay cả chuỗi (mục 6), rồi PATCH vào ID tương ứng với `start` và `end` mới.
+Ask the user whether to move one occurrence or the whole series (section 6), then PATCH the matching ID with the new `start` and `end`.
 
-### 7.4 Tìm khung giờ rảnh chung
+### 7.4 Find a common free slot
 
-Dùng `findMeetingTimes` để lấy gợi ý, hoặc `getSchedule` khi cần xem trực tiếp ai bận lúc nào. Cả hai ở `references/graph-recipes.md`. Nhớ header `Prefer`, đây chính là chỗ thiếu nó thì lệch 7 tiếng.
+Use `findMeetingTimes` for suggestions, or `getSchedule` when you need to see directly who is busy when. Both live in `references/graph-recipes.md`. Remember the `Prefer` header, this is exactly where missing it costs you 7 hours.
 
-### 7.5 Huỷ họp và thông báo khách mời
+### 7.5 Cancel a meeting and notify the guests
 
-1. Tìm event, in đủ thông tin gồm số người tham dự (mục 5).
-2. Người dùng xác nhận đúng event đó.
-3. Phân biệt `cancel` với `remove` theo bảng ở mục 5, nói rõ cho người dùng biết lệnh sắp chạy có gửi thư cho khách mời hay không.
-4. Chạy với `--comment` nếu người dùng muốn kèm lý do.
+1. Find the event, print the full details including the attendee count (section 5).
+2. The user confirms it is the right event.
+3. Distinguish `cancel` from `remove` using the table in section 5, and tell the user plainly whether the command about to run mails the guests.
+4. Run it with `--comment` if the user wants to include a reason.
 
 ---
 
-## Phần chưa chạy thử
+## Not yet exercised
 
-Đã verify bằng cách chạy thật: đọc `calendarView`, CRUD calendar, tạo event đơn, event lặp lại, event cả ngày, event họp online Teams, PATCH cả chuỗi và PATCH một buổi, `getSchedule`, `findMeetingTimes`, `findRooms`, `event cancel`, `event remove`.
+Verified by running for real: reading `calendarView`, calendar CRUD, creating a single event, a recurring event, an all-day event, a Teams online meeting, PATCHing a whole series and PATCHing one occurrence, `getSchedule`, `findMeetingTimes`, `findRooms`, `event cancel`, `event remove`.
 
-Chưa chạy thử vì sẽ gửi thư thật vào hộp thư người khác: mời người tham dự bên ngoài và huỷ họp có khách mời. Schema theo tài liệu Graph. Lần đầu dùng nên kiểm lại kết quả trong Outlook.
+Not tried, because it would send real mail into other people's inboxes: inviting external attendees, and cancelling a meeting that has guests. Those schemas follow the Graph documentation. On first use, verify the result in Outlook.
 
 ## References
 
-| File | Khi nào đọc |
-|------|-------------|
-| `references/graph-recipes.md` | recurrence, event cả ngày, trả lời thư mời, đặt phòng họp, `getSchedule`, `findMeetingTimes` |
-| `references/advanced-commands.md` | calendargroup, chia sẻ calendar, đường `/places` mức admin |
-| `../m365-shared/SKILL.md` | output format, JMESPath, xử lý lỗi |
-| `../m365-shared/references/authentication.md` | các cách xác thực |
+| File | When to read |
+|------|--------------|
+| `references/graph-recipes.md` | recurrence, all-day events, responding to invitations, booking meeting rooms, `getSchedule`, `findMeetingTimes` |
+| `references/advanced-commands.md` | calendargroup, calendar sharing, the admin-level `/places` route |
+| `../m365-shared/SKILL.md` | output format, JMESPath, error handling |
+| `../m365-shared/references/authentication.md` | authentication methods |

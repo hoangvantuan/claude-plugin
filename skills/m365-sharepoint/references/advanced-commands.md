@@ -71,7 +71,7 @@ m365 spo hubsite list -o json --query '[].{id:ID, title:Title, url:SiteUrl}'
 # Get hub site
 m365 spo hubsite get --id "HUB_ID" -o json
 
-# Connect site to hub (option đúng là --parentId, KHÔNG phải --hubSiteId)
+# Connect site to hub (the correct option is --parentId, NOT --hubSiteId)
 m365 spo hubsite connect --url "SITE_URL" --parentId "HUB_ID"
 
 # Disconnect
