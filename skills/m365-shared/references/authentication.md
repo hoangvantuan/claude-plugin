@@ -1,14 +1,17 @@
 # Authentication Methods
 
-## 1. Browser Flow (Default — Recommended)
+## 1. Browser Flow (Recommended)
 
 ```bash
-m365 login
-# or explicitly:
 m365 login --authType browser
 ```
 
 Opens browser for interactive sign-in. Works with MFA and conditional access policies.
+
+Always pass `--authType browser` explicitly. A bare `m365 login` falls back to the device code
+flow, and a private app registration often has that flow switched off, in which case the login
+fails with a bare `invalid_client` that names neither the flow nor the registration. It reads like
+a broken install; it is a one-flag fix.
 
 ## 2. Device Code Flow
 
@@ -16,7 +19,7 @@ Opens browser for interactive sign-in. Works with MFA and conditional access pol
 m365 login --authType deviceCode
 ```
 
-Displays a code + URL (`https://aka.ms/devicelogin`). User enters code in browser. Useful for remote/headless environments where browser cannot open automatically.
+Displays a code + URL (`https://aka.ms/devicelogin`). User enters code in browser. Useful for remote/headless environments where browser cannot open automatically. This is also what a bare `m365 login` does.
 
 ## 3. Username + Password
 
@@ -57,7 +60,7 @@ m365 login --authType secret \
   --secret 'CLIENT_SECRET'
 ```
 
-For automation. NOTE: Does NOT work for SharePoint operations — use certificate instead.
+For automation. NOTE: Does NOT work for SharePoint operations, use certificate instead.
 
 ## Custom App Registration
 
@@ -93,6 +96,40 @@ Each command requires specific Microsoft Graph permissions. Check with:
 ```bash
 m365 <command> --help permissions
 ```
+
+### Two consent traps
+
+Both of these look like a broken login and are not. Recognising them saves an hour of
+re-authenticating against a wall that re-authenticating cannot move.
+
+**A token only carries what was consented, not what was declared.** The CLI requests scopes with
+`.default`, which means "everything already consented for this app". A permission added to the app
+registration but never consented to is simply absent from the token. The call then fails with a
+permission error while the Azure portal shows the permission sitting right there.
+
+**Adding a permission does not re-prompt.** Entra shows the consent dialog the first time an app
+asks for something. Once an admin has consented to the app, newly added permissions are granted
+silently or not at all, and either way there is no prompt on your next sign-in. So logging out and
+back in changes nothing, and the absence of a consent screen is not evidence that the permission
+went through.
+
+How to tell them apart, and what to do:
+
+```bash
+# What you actually hold right now, which is the only thing that decides a request
+m365 util accesstoken get --resource https://graph.microsoft.com -o text | python3 -c '
+import sys, base64, json
+p = sys.stdin.read().strip().split(".")[1]
+print(json.loads(base64.urlsafe_b64decode(p + "=" * (-len(p) % 4)))["scp"].replace(" ", "\n"))'
+```
+
+The `=` padding matters: a JWT payload is base64url without padding, and a plain `base64 -d` fails
+on it with a decode error that looks like a corrupt token.
+
+If a scope is missing, ask an admin to **add the permission and click Grant admin consent** in the
+same request. Reading the app registration yourself to check which half is missing needs
+`Application.Read.All`, which an ordinary user does not have (it returns 403), so asking for both
+at once is the fastest route.
 
 Common permission sets:
 

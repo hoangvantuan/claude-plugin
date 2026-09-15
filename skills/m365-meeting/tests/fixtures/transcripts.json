@@ -1,0 +1,32 @@
+{
+  "value": [
+    {
+      "id": "transcript-1",
+      "meetingId": "MSoxMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEqMCoqMTk6bWVldGluZ19BQUFBd2Vla2x5QHRocmVhZC52Mg==",
+      "createdDateTime": "2026-09-15T03:05:00.0000000Z",
+      "endDateTime": "2026-09-15T03:52:00.0000000Z",
+      "transcriptContentUrl": "https://graph.microsoft.com/v1.0/x/1/content"
+    },
+    {
+      "id": "transcript-2",
+      "meetingId": "MSoxMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEqMCoqMTk6bWVldGluZ19BQUFBd2Vla2x5QHRocmVhZC52Mg==",
+      "createdDateTime": "2026-09-08T03:07:00.0000000Z",
+      "endDateTime": "2026-09-08T03:49:00.0000000Z",
+      "transcriptContentUrl": "https://graph.microsoft.com/v1.0/x/2/content"
+    },
+    {
+      "id": "transcript-3",
+      "meetingId": "MSoyMjIyMjIyMi0yMjIyLTIyMjItMjIyMi0yMjIyMjIyMjIyMjIqMCoqMTk6bWVldGluZ19CQkJCbWlkbmlnaHRAdGhyZWFkLnYy",
+      "createdDateTime": "2026-09-10T23:05:00.0000000Z",
+      "endDateTime": "2026-09-10T23:48:00.0000000Z",
+      "transcriptContentUrl": "https://graph.microsoft.com/v1.0/x/3/content"
+    },
+    {
+      "id": "transcript-4",
+      "meetingId": "MSo0NDQ0NDQ0NC00NDQ0LTQ0NDQtNDQ0NC00NDQ0NDQ0NDQ0NDQqMCoqMTk6bWVldGluZ19EREREYWRob2NAdGhyZWFkLnYy",
+      "createdDateTime": "2026-09-12T02:00:00.0000000Z",
+      "endDateTime": "2026-09-12T02:30:00.0000000Z",
+      "transcriptContentUrl": "https://graph.microsoft.com/v1.0/x/4/content"
+    }
+  ]
+}

@@ -6,7 +6,7 @@ allowed-tools:
   - Read
 ---
 
-# m365-shared — Shared Patterns
+# m365-shared: Shared Patterns
 
 ## Installation Check
 
@@ -37,10 +37,10 @@ m365 status
 If not logged in, guide user through login:
 
 ```bash
-m365 login
+m365 login --authType browser
 ```
 
-Default: **device code flow** — prints a code you enter in a browser to authenticate. To open a browser and sign in directly, use `m365 login --authType browser`.
+Pass `--authType browser` explicitly. A bare `m365 login` defaults to the **device code flow**, which prints a code you enter in a browser, and which private app registrations often have disabled; when they do, the login fails with a bare `invalid_client` that points at nothing.
 
 For other auth methods (certificate, secret, device code), see `references/authentication.md`.
 

@@ -21,10 +21,11 @@ Auth details: `../m365-shared/references/authentication.md`.
 
 The native `m365 outlook` commands have no `event add`/`event set`, so this skill runs on **two parallel routes**, and knowing which route you are on is what keeps the syntax right:
 
-| Route | Used for | Syntax quirks |
-|-------|----------|---------------|
-| Native `m365 outlook ...` | calendar CRUD, reading a single event, cancelling/removing an event | `--userName` is mandatory, times must carry `Z` |
+| Route                        | Used for                                                                                | Syntax quirks                                                          |
+| ---------------------------- | --------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| Native `m365 outlook ...`    | calendar CRUD, reading a single event, cancelling/removing an event                     | `--userName` is mandatory, times must carry `Z`                        |
 | Graph through `m365 request` | reading a date range, creating/updating events, free/busy, finding times, meeting rooms | write the body to a file via heredoc, the `Prefer` header is mandatory |
+
 
 Two opening lines cover almost every task:
 
@@ -52,16 +53,17 @@ Reading someone else's calendar requires that calendar to be shared with you, or
 
 The eight items below were measured by running against a real tenant; documentation does not surface them. Seven of the eight are **silent failures**: the command still runs, still returns events, the result is simply wrong, so there is no way to notice except knowing in advance.
 
-| Pitfall | Symptom | Correct approach |
-|---------|---------|------------------|
-| `event list` drops recurring meetings | same week: `/me/events` returns **12**, `/me/calendarView` returns **46**. `/me/events` only returns the `seriesMaster`, it does not expand the individual occurrences | every date-range question goes through `calendarView`, see section 1 |
-| Missing `Prefer` header | Graph returns UTC, off by exactly 7 hours. `findMeetingTimes` returns `01:00` instead of `08:00` even when the body carries a timezone | every Graph call with a time component adds `--prefer 'outlook.timezone="SE Asia Standard Time"'`. A timezone in the body is **not enough** |
-| UTC midnight is not Vietnam midnight | `00:00:00Z` is 07:00 in GMT+7, so a 06:00 Monday meeting falls outside "this week" | always take the range from `scripts/date-range.sh`; it anchors GMT+7 midnight, so it prints `...T17:00:00Z` of the previous day, which is correct |
-| Times missing `Z` | `--startDateTime 2026-08-17T00:00:00` is rejected outright: "is not a valid ISO date-time" | always include `Z` or an offset |
-| `--userName` has no "me" default | `Error: Specify either userId or userName, but not both` even when it is merely missing, not both passed. The message is misleading | mandatory for `calendar *` and `event list`/`event get`; `event cancel`/`event remove` do not need it with delegated auth |
-| A `calendarView` ID is a single-occurrence ID | `calendarView` returns `type: "occurrence"` with a `seriesMasterId`. PATCHing that ID changes only that occurrence (it becomes an `exception`), not the whole series | to change the whole series, PATCH the `seriesMasterId`. See section 6 |
-| `recurrence` shifts the date without an error | when `range.startDate` disagrees with `start.dateTime`, Graph silently moves the first occurrence to `startDate` and the POST still reports success | the two dates must match, and read `start.dateTime` back from the response to confirm |
-| Meeting room list | `outlook room list` and `v1.0/places` return **403** (they need admin-level `Place.Read.All`), yet rooms are still discoverable | use `beta/me/findRooms`, the route the Outlook app itself uses; it only needs `Calendars.Read` |
+| Pitfall                                       | Symptom                                                                                                                                                                | Correct approach                                                                                                                                  |
+| --------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `event list` drops recurring meetings         | same week: `/me/events` returns **12**, `/me/calendarView` returns **46**. `/me/events` only returns the `seriesMaster`, it does not expand the individual occurrences | every date-range question goes through `calendarView`, see section 1                                                                              |
+| Missing `Prefer` header                       | Graph returns UTC, off by exactly 7 hours. `findMeetingTimes` returns `01:00` instead of `08:00` even when the body carries a timezone                                 | every Graph call with a time component adds `--prefer 'outlook.timezone="SE Asia Standard Time"'`. A timezone in the body is **not enough**       |
+| UTC midnight is not Vietnam midnight          | `00:00:00Z` is 07:00 in GMT+7, so a 06:00 Monday meeting falls outside "this week"                                                                                     | always take the range from `scripts/date-range.sh`; it anchors GMT+7 midnight, so it prints `...T17:00:00Z` of the previous day, which is correct |
+| Times missing `Z`                             | `--startDateTime 2026-08-17T00:00:00` is rejected outright: "is not a valid ISO date-time"                                                                             | always include `Z` or an offset                                                                                                                   |
+| `--userName` has no "me" default              | `Error: Specify either userId or userName, but not both` even when it is merely missing, not both passed. The message is misleading                                    | mandatory for `calendar *` and `event list`/`event get`; `event cancel`/`event remove` do not need it with delegated auth                         |
+| A `calendarView` ID is a single-occurrence ID | `calendarView` returns `type: "occurrence"` with a `seriesMasterId`. PATCHing that ID changes only that occurrence (it becomes an `exception`), not the whole series   | to change the whole series, PATCH the `seriesMasterId`. See section 6                                                                             |
+| `recurrence` shifts the date without an error | when `range.startDate` disagrees with `start.dateTime`, Graph silently moves the first occurrence to `startDate` and the POST still reports success                    | the two dates must match, and read `start.dateTime` back from the response to confirm                                                             |
+| Meeting room list                             | `outlook room list` and `v1.0/places` return **403** (they need admin-level `Place.Read.All`), yet rooms are still discoverable                                        | use `beta/me/findRooms`, the route the Outlook app itself uses; it only needs `Calendars.Read`                                                    |
+
 
 Not available with the m365 CLI default app: working hours and automatic replies (`mailboxSettings` returns 403, missing `MailboxSettings.Read`).
 
@@ -213,10 +215,11 @@ To move the time you must send **both** `start` and `end`; sending `start` alone
 
 These two differ in whether mail goes out, and picking the wrong one sends unintended cancellation mail to the guests:
 
-| Command | What it does | When |
-|---------|--------------|------|
-| `event cancel` | cancels the meeting and **sends a cancellation to every attendee** | you are the organizer and people need to be told |
-| `event remove` | only drops the event from your own calendar, notifies nobody | an event you created with no guests, or tidying your own calendar |
+| Command        | What it does                                                       | When                                                              |
+| -------------- | ------------------------------------------------------------------ | ----------------------------------------------------------------- |
+| `event cancel` | cancels the meeting and **sends a cancellation to every attendee** | you are the organizer and people need to be told                  |
+| `event remove` | only drops the event from your own calendar, notifies nobody       | an event you created with no guests, or tidying your own calendar |
+
 
 Neither can be undone, and `cancel` also leaves the organization, so before running either, print the event in full for the user to identify, then wait for their confirmation, one event at a time, never in bulk:
 
@@ -238,12 +241,13 @@ m365 outlook event remove --id "EVENT_ID" --force
 
 This is the easiest thing in the whole skill to get wrong, because the two look alike but carry different IDs. `calendarView` returns individual **occurrences**, not the series:
 
-| `type` | Meaning | PATCH/DELETE on this ID |
-|--------|---------|-------------------------|
-| `singleInstance` | standalone event | changes itself |
-| `occurrence` | one occurrence of a series, carries `seriesMasterId` | changes **that occurrence only**, it becomes an `exception`, the others stay untouched |
-| `exception` | an occurrence already edited on its own | keeps editing that occurrence |
-| `seriesMaster` | the series definition | changes **all** occurrences; PATCHing its `start`/`end` additionally **resets** individually edited occurrences |
+| `type`           | Meaning                                              | PATCH/DELETE on this ID                                                                                         |
+| ---------------- | ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `singleInstance` | standalone event                                     | changes itself                                                                                                  |
+| `occurrence`     | one occurrence of a series, carries `seriesMasterId` | changes **that occurrence only**, it becomes an `exception`, the others stay untouched                          |
+| `exception`      | an occurrence already edited on its own              | keeps editing that occurrence                                                                                   |
+| `seriesMaster`   | the series definition                                | changes **all** occurrences; PATCHing its `start`/`end` additionally **resets** individually edited occurrences |
+
 
 Verified: a 4-occurrence weekly Monday series, PATCHing the second occurrence's ID to move it to 11:00, results in that occurrence becoming an `exception` at 11:00 while the other three stay at 09:00.
 
@@ -307,9 +311,10 @@ Not tried, because it would send real mail into other people's inboxes: inviting
 
 ## References
 
-| File | When to read |
-|------|--------------|
-| `references/graph-recipes.md` | recurrence, all-day events, responding to invitations, booking meeting rooms, `getSchedule`, `findMeetingTimes` |
-| `references/advanced-commands.md` | calendargroup, calendar sharing, the admin-level `/places` route |
-| `../m365-shared/SKILL.md` | output format, JMESPath, error handling |
-| `../m365-shared/references/authentication.md` | authentication methods |
+| File                                          | When to read                                                                                                    |
+| --------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `references/graph-recipes.md`                 | recurrence, all-day events, responding to invitations, booking meeting rooms, `getSchedule`, `findMeetingTimes` |
+| `references/advanced-commands.md`             | calendargroup, calendar sharing, the admin-level `/places` route                                                |
+| `../m365-shared/SKILL.md`                     | output format, JMESPath, error handling                                                                         |
+| `../m365-shared/references/authentication.md` | authentication methods                                                                                          |
+

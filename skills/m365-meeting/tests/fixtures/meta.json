@@ -1,0 +1,11 @@
+{
+  "subject": "[Solution] Weekly MTG",
+  "start": "2026-09-15T06:30:00Z",
+  "end": "2026-09-15T07:30:00Z",
+  "organizer": "Trần Bảo Ngọc <ngoctb@example.com>",
+  "invitees": ["Trần Bảo Ngọc", "Shogo Osada"],
+  "attendees": ["Trần Bảo Ngọc (54m)", "Shogo Osada (48m)"],
+  "source": "Microsoft Graph getAllTranscripts",
+  "transcriptId": "ktVizInGAAAAtest",
+  "vttFile": "2026-09-15_[Solution] Weekly MTG.vtt"
+}

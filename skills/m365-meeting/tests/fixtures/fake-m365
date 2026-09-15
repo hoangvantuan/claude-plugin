@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+# A stand-in for the m365 CLI, so preflight.sh can be tested against every way a tenant can
+# say no without needing a tenant. FAKE_SCENARIO picks the wall; FAKE_STATE counts probes so
+# a scenario can answer differently on the second call, which is what propagation looks like.
+set -u
+SCEN="${FAKE_SCENARIO:-ready}"
+ARGS="$*"
+
+if [ "$1" = "status" ]; then
+  [ "$SCEN" = "logged-out" ] && { echo "Error: Log in to Microsoft 365 first"; exit 1; }
+  echo '{ "connectedAs": "probe@example.com", "authType": "browser", "appId": "app-0000" }'
+  exit 0
+fi
+
+if [ "$1" = "util" ]; then
+  case "$SCEN" in
+    no-transcript-scope) SCP="Calendars.Read User.Read" ;;
+    no-calendar-scope)   SCP="OnlineMeetingTranscript.Read.All User.Read" ;;
+    minimal)             SCP="OnlineMeetingTranscript.Read.All Calendars.ReadWrite" ;;
+    *) SCP="OnlineMeetingTranscript.Read.All Calendars.Read OnlineMeetingArtifact.Read.All OnlineMeetingRecording.Read.All OnlineMeetings.Read" ;;
+  esac
+  python3 -c "
+import base64, json, sys
+b = lambda o: base64.urlsafe_b64encode(json.dumps(o).encode()).decode().rstrip('=')
+print(b({'alg':'RS256'}) + '.' + b({'scp': sys.argv[1]}) + '.sig')" "$SCP"
+  exit 0
+fi
+
+case "$ARGS" in
+  *'/me?'*)        echo '"00000000-0000-0000-0000-000000000001"'; exit 0 ;;
+  *applications*)  echo "Error: Request failed with status code 403" >&2; exit 1 ;;
+  *getAllTranscripts*)
+    N=$(cat "${FAKE_STATE:-/dev/null}" 2>/dev/null || echo 0); N=$((N + 1))
+    [ -n "${FAKE_STATE:-}" ] && echo "$N" > "$FAKE_STATE"
+    case "$SCEN" in
+      policy-off|speaker-attribution) RESULT=403 ;;
+      propagating) [ "$N" -le 1 ] && RESULT=403 || RESULT=200 ;;
+      *) RESULT=200 ;;
+    esac
+    if [ "$RESULT" = 200 ]; then echo '{"value":[]}'; exit 0; fi
+    case "$ARGS" in
+      *--debug*)
+        if [ "$SCEN" = "speaker-attribution" ]; then
+          echo '{ "code": "Forbidden", "message": "SpeakerAttributionNotAllowed: speaker attribution is disabled" }'
+        else
+          echo '{ "code": "Forbidden", "message": "Meeting transcript access is disabled by policy" }'
+        fi ;;
+    esac
+    echo "Error: Request failed with status code 403" >&2
+    exit 1 ;;
+esac
+echo "fake-m365: unhandled call: $ARGS" >&2
+exit 70
